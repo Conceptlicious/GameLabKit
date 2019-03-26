@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\root\local-dir\Voidjumper\intrshp.gamelabkit\GL_Kit_2\GL Kit 2" t="IncludeRecursive">
+    <e p="C:\root\local-dir\Voidjumper\intrshp.gamelabkit\GameLabKit\GL Kit 2" t="IncludeRecursive">
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -43,6 +43,6 @@
       </e>
     </e>
     <e p="C:\Users\Voidjumper\.Rider2018.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Voidjumper\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_GL Kit 2.944176141.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Voidjumper\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_GL Kit 2.-542435143.00" t="ExcludeRecursive" />
   </component>
 </project>
