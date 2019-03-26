@@ -1,0 +1,24 @@
+{
+  "definedStrings": ["roomName", "intro", "task", "idle"],
+  "definedArrays": ["objects"],
+
+  "roomName": "Kamer 2 - Bedoeling",
+  "intro": "Hallo, welkom naar de Bedoeling kamer",
+  "task": "Jouw taak is te",
+  "idle": "Druk [] om te",
+
+  "objects": [
+    {
+      "name": "Ding 1",
+      "hintText": "dit ding doet iets"
+    },
+    {
+      "name": "Ding 2",
+      "hintText": "dit ding doet iets anders"
+    },
+    {
+      "name": "Ding 3",
+      "hintText": "dit ding doet nog iets anders"
+    }
+  ]
+}

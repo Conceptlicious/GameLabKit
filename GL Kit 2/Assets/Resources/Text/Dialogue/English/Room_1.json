@@ -1,0 +1,47 @@
+{
+  "definedArrays": ["objects", "explanations", "progress"],
+  "identifierKeywords": ["name", "tag"],
+  
+  "explanations": [
+    {
+      "tag": "intro",
+      "text": "Hello, and welcome to the TA  welcome to the TA welcome to the TA welcome to the TA welcome to the TA [N] room"
+    },
+    {
+      "tag": "task",
+      "text": "Your task is to do a thing!"
+    }
+  ],
+  
+  "objects": [
+    {
+      "name": "Book",
+      "hintText": "g",
+      "incorrectText": "eg"
+    },
+    {
+      "name": "Object 2",
+      "hintText": "this object does another thing"
+    },
+    {
+      "name": "Object 3",
+      "hintText": "this object does yet another thing"
+    }
+  ],
+
+  "progress": [
+    {
+      "name": "Education",
+      "hintText": "Education is the level of hebeheh"
+     
+    },
+    {
+      "name": "Mental Ability",
+      "hintText": "this object does another thing"
+    },
+    {
+      "name": "Object 3",
+      "hintText": "this object does yet another thing"
+    }
+  ]
+}

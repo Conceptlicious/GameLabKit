@@ -1,0 +1,24 @@
+{ 
+  "definedStrings": ["roomName", "intro", "task", "idle"],
+  "definedArrays": ["objects"],
+  
+  "roomName": "Room 2 - Goal",
+  "intro": "Hello, and welcome to the Goal Room",
+  "task": "Your task is to do a thing with goals",
+  "idle": "Press [] to do",
+  
+  "objects": [
+    {
+      "name": "Object 1",
+      "hintText": "this object does thing"
+    },
+    {
+      "name": "Object 2",
+      "hintText": "this object does another thing"
+    },
+    {
+      "name": "Object 3",
+      "hintText": "this object does yet another thing"
+    }
+  ]
+}

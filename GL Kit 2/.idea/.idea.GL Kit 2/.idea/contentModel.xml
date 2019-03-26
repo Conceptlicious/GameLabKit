@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\root\local-dir\Voidjumper\intrshp.gamelabkit\GL_Kit_2\GL Kit 2" t="IncludeRecursive">
+      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Plugins" t="Include">
+          <e p="SimpleJSON.cs" t="Include" />
+          <e p="SimpleJSONBinary.cs" t="Include" />
+          <e p="SimpleJSONUnity.cs" t="Include" />
+        </e>
+        <e p="Project Files" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="CameraControl.cs" t="Include" />
+            <e p="Dialogue.cs" t="Include" />
+            <e p="DialogueContents.cs" t="Include" />
+            <e p="DialogueEditor.cs" t="Include" />
+            <e p="DialogueObject.cs" t="Include" />
+            <e p="EventMessaging" t="Include">
+              <e p="EventInfo.cs" t="Include" />
+              <e p="EventSystem.cs" t="Include" />
+              <e p="EventTypes.cs" t="Include" />
+              <e p="ICustomMessageTarget.cs" t="Include" />
+            </e>
+            <e p="FindObject.cs" t="Include" />
+            <e p="GameData.cs" t="Include" />
+            <e p="JsonHelper.cs" t="Include" />
+            <e p="JsonParser.cs" t="Include" />
+            <e p="OnTouchDown.cs" t="Include" />
+            <e p="RoomManager.cs" t="Include" />
+            <e p="Settings.cs" t="Include" />
+            <e p="UIControl.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="GL Kit 2.sln" t="IncludeFlat" />
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+    <e p="C:\Users\Voidjumper\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Voidjumper\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_GL Kit 2.944176141.00" t="ExcludeRecursive" />
+  </component>
+</project>

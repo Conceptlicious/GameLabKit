@@ -1,0 +1,31 @@
+{ 
+  "definedStrings": ["roomName", "intro", "task", "idle", "pressed", "quick"],
+  "definedArrays": ["objects"],
+  
+  "roomName": "Kamer 1 - Doelgroep",
+  "intro": "Hallo, welkom naar de Doelgroep kamer",
+  "task": "Jouw taak is te...",
+  "idle": "Druk [] om te...",
+  "quick": "dsuu",
+  "pressed": "U heb een knopje ingedrukd.",
+  
+  "objects": [
+    {
+      "name": "Book",
+      "hintText": "dit ding doet iets",
+      "colour": "dit ding is groen"
+    },
+    {
+      "name": "Binoculars",
+      "hintText": "Binoculars reprensnsdnnfd"
+    },
+    {
+      "name": "Ding 3",
+      "hintText": "dit ding doet nog iets anders"
+    }
+  ]
+  
+  
+  
+  
+}
