@@ -79,3 +79,16 @@ public class NextRoomEventInfo : EventInfo
 }
 
 
+
+//
+//                    DETECT MARKER
+//
+public class DetectedMarkerEventInfo : EventInfo
+{
+    public string marker;
+    public DetectedMarkerEventInfo(string pDescription, string pMarker)
+    {
+        eventDescription = pDescription;
+        marker = pMarker;
+    } 
+}

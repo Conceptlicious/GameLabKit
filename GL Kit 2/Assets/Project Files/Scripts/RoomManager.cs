@@ -7,7 +7,8 @@ using EventType = CustomEventCallbacks.EventType;
 
 public class RoomManager : MonoBehaviour
 {
-    [SerializeField] private Transform[] roomFocalPoints = new Transform[Settings.SYS_VAL_MAX_NUMBER_ROOM_FOCALS];
+    [Tooltip("The available number of focal points is dictated by the Settings.cs file.")]
+    [SerializeField] private Transform[] roomFocalPoints; 
     
 
     private Vector2Int currentRoom = new Vector2Int(0, 0);
@@ -15,6 +16,7 @@ public class RoomManager : MonoBehaviour
     void Start()
     {
         registerAllListeners();
+        FillFocalsWithBlanks();
     }
    
     /// <summary>
@@ -36,6 +38,27 @@ public class RoomManager : MonoBehaviour
         EventSystem.ExecuteEvent(EventType.CAMERA_TARGET_SELECT, newInfo);
     }
 
+    private void FillFocalsWithBlanks()
+    {
+        for (int i = 0; i < roomFocalPoints.Length; i++)
+        {
+            //Debug.Log("Room focal " + i + ": " + roomFocalPoints[i].position);
+            if (roomFocalPoints[i] == null)
+            {
+                string path =
+                     Settings.PATH_PREFABS + Settings.OBJ_NAME_BLANK_GAMEOBJECT;
+                Debug.Log(path);
+                GameObject blankGameObjectTransform = Resources.Load<GameObject>(path);
+                if (blankGameObjectTransform == null)
+                {
+                    Debug.Log("Cannot instantiate " + Settings.OBJ_NAME_BLANK_GAMEOBJECT);
+                }
+                roomFocalPoints[i] = blankGameObjectTransform.transform;
+            }
+               
+        }
+    }
+    
     void OnValidate()
     {
         int oldLength = roomFocalPoints.Length;
@@ -49,11 +72,8 @@ public class RoomManager : MonoBehaviour
                 roomFocalPoints[i] = temp[i];
             }
 
-            for (int i = oldLength; i < Settings.SYS_VAL_MAX_NUMBER_ROOM_FOCALS - oldLength; i++)
-            {
-                roomFocalPoints[i] = Resources.Load<GameObject>(
-                    Settings.PATH_ASSETS_RESOURCES + Settings.PATH_PREFABS + Settings.OBJ_NAME_BLANK_GAMEOBJECT).transform;
-            }
+           FillFocalsWithBlanks();
+            
         }
     }
 }

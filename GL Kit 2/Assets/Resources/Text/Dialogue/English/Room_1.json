@@ -1,22 +1,18 @@
 {
   "definedArrays": ["objects", "explanations", "progress"],
-  "identifierKeywords": ["name", "tag"],
+  "identifierKeywords": ["name", "tag", "gamelab-dialogue"],
   
   "explanations": [
     {
-      "tag": "intro",
-      "text": "Hello, and welcome to the TA  welcome to the TA welcome to the TA welcome to the TA welcome to the TA [N] room"
-    },
-    {
-      "tag": "task",
-      "text": "Your task is to do a thing!"
+      "tag": "gamelab-dialogue",
+      "text": "Hello, and welcome to the TA  welcome to the TA welcome to the TA welcome to the %%% TA welcome to the TA [N] room"
     }
   ],
   
   "objects": [
     {
       "name": "Book",
-      "hintText": "g",
+      "hintText": "This is a book, it resperehwrk",
       "incorrectText": "eg"
     },
     {

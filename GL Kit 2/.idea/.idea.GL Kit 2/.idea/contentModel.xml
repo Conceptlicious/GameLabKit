@@ -17,6 +17,7 @@
             <e p="DialogueContents.cs" t="Include" />
             <e p="DialogueEditor.cs" t="Include" />
             <e p="DialogueObject.cs" t="Include" />
+            <e p="EventMarkers.cs" t="Include" />
             <e p="EventMessaging" t="Include">
               <e p="EventInfo.cs" t="Include" />
               <e p="EventSystem.cs" t="Include" />
@@ -29,7 +30,9 @@
             <e p="JsonParser.cs" t="Include" />
             <e p="OnTouchDown.cs" t="Include" />
             <e p="RoomManager.cs" t="Include" />
-            <e p="Settings.cs" t="Include" />
+            <e p="Settings" t="Include">
+              <e p="Settings.cs" t="Include" />
+            </e>
             <e p="UIControl.cs" t="Include" />
           </e>
         </e>

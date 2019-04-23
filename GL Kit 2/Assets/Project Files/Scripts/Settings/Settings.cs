@@ -9,6 +9,7 @@ public static class Settings
     //----------------------------------------------------------
     public const string STR_DEFAULT_DIALOGUE                   = "...";
     public const string STR_EVENT_FIRED                        = "Event Fired on premise: ";
+    public const string STR_WARNING_EVENT_CHAIN_GENERIC_INFO   = "WARNING: Events fired via markers use only generic info.";
     
     public const string FLTYPE_TEXT                            = ".txt";
     public const string FLTYPE_JSON                            = ".json";
@@ -19,12 +20,12 @@ public static class Settings
     public const string PATH_PREFABS                           = "Prefabs/";
     public const string PATH_ASSETS_RESOURCES                  = "Assets/Resources/";
     
-    public const string OBJ_NAME_BLANK_GAMEOBJECT              = "Blank GameObject";
+    public const string OBJ_NAME_BLANK_GAMEOBJECT              = "BlankGameObject";
 
     public const string JSON_DEF_IDENTIFIER_KEYWORDS           = "identifierKeywords";
     public const string JSON_DEF_DEFINED_ARRAYS                = "definedArrays";
 
-    
+    public const string DEFAULT_EVENTMARKER_MARKER             = "#";
     
     //----------------------------------------------------------
     //                    VALUES

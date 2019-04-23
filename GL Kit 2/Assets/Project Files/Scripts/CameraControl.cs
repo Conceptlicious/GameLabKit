@@ -66,20 +66,30 @@ public class CameraControl : MonoBehaviour
 
     private void OnTargetSelect(EventInfo pInfo)
     {
-        CameraTargetSelectEventInfo info = ((CameraTargetSelectEventInfo) pInfo);
-        //If the next and previous points are identical, keep the next but set the previous to the camera's current postion
-        //Useful on start since the camera has not yet focused a roomset before
-        info.FocalA.position = info.FocalA.position == info.FocalB.position  ? cam.transform.position : info.FocalA.position;
-        Vector3[] list = new Vector3[] { info.FocalA.position, info.FocalB.position, info.FocalB.position };
-        
-        for (int i = 0; i < targetList.Length; i++)
+        CameraTargetSelectEventInfo info = pInfo as CameraTargetSelectEventInfo;
+        if (info != null)
         {
-            float zoom = i < targetList.Length - 1 ? Settings.VAL_CAMERA_ZOOM_DISTANCE : 0.0f;
-            Debug.Log("Setting zoom for pos " + i + " to: " + zoom);
-            SetTargetList(i, list[i], zoom);
-        }
+            //If the next and previous points are identical, keep the next but set the previous to the camera's current postion
+            //Useful on start since the camera has not yet focused a roomset before
+            info.FocalA.position = info.FocalA.position == info.FocalB.position  ? cam.transform.position : info.FocalA.position;
+            Vector3[] list = new Vector3[] { info.FocalA.position, info.FocalB.position, info.FocalB.position };
+        
+            for (int i = 0; i < targetList.Length; i++)
+            {
+                float zoom = i < targetList.Length - 1 ? Settings.VAL_CAMERA_ZOOM_DISTANCE : 0.0f;
+                Debug.Log("Setting zoom for pos " + i + " to: " + zoom);
+                SetTargetList(i, list[i], zoom);
+            }
 
-        handler += MoveToTarget;
+            handler += MoveToTarget;
+        }
+        else
+        {
+            //Notifies the user that this event is not being acted upon correctly since the EventInfo cannot be cast and lists the current method and class for easy back-searching 
+            Debug.Log(
+                System.String.Format(EventSystem.STR_INCORRECT_EVENT_TYPE_CAST, System.Reflection.MethodBase.GetCurrentMethod().Name, GetType().FullName));
+        }
+        
     }
 
     private void SetTargetList(int pIndex, Vector3 pFocal, float pZoomDistance)
