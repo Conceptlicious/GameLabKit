@@ -70,6 +70,9 @@ namespace CustomEventCallbacks
 		public static readonly string DESC_EVENT_UI_NEXT_ROOM = Settings.STR_EVENT_FIRED + "A button has been pressed requesting progress to the following room.";
 		public static readonly string STR_INCORRECT_EVENT_TYPE_CAST = "Event info for {0} in {1} cannot be equated to the desired EventInfo type. Check if EventChain is trying to broadcast this event.";
 
+		public static readonly string DESC_EVENT_OBJECT_FOUND =
+			Settings.STR_EVENT_FIRED + "Object found in Room 2 of type: ";
+
 	}
 	
 	

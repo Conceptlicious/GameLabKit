@@ -28,6 +28,11 @@
             <e p="GameData.cs" t="Include" />
             <e p="JsonHelper.cs" t="Include" />
             <e p="JsonParser.cs" t="Include" />
+            <e p="Mini-Games" t="Include">
+              <e p="Room 2" t="Include">
+                <e p="HiddenObject.cs" t="Include" />
+              </e>
+            </e>
             <e p="OnTouchDown.cs" t="Include" />
             <e p="RoomManager.cs" t="Include" />
             <e p="Settings" t="Include">

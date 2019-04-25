@@ -12,7 +12,9 @@ namespace CustomEventCallbacks
 	    UI_MORE_INFO,
         UI_NEXT_ROOM,
         
-        CALL_EVENT_CHAIN
+        CALL_EVENT_CHAIN,
+        
+        R2_OBJECT_FOUND
     }
 
 
