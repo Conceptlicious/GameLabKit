@@ -57,7 +57,6 @@ namespace CustomEventCallbacks
 
 		public static void Safeguard<T>(string pMethodName, string pClassName, EventInfo pInfo)
 		{
-			
 			 //typeof(T) hello = pInfo as typeof(T);
 		}
 		

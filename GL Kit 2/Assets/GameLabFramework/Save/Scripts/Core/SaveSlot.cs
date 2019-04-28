@@ -26,6 +26,7 @@ namespace GameLab
 		{
 			SlotName = slotName;
 			saveFileInfo = new FileInfo(Path.Combine(Application.persistentDataPath, SaveManager.SaveFolderName, SlotName));
+			
 		}
 
 		/// <summary>
