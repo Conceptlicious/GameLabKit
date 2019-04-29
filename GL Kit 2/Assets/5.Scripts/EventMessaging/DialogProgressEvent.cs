@@ -1,12 +1,12 @@
 using System;
+using GameLab;
 
-public class DialogueProgressEventInfo : EventInfo
+public class DialogueProgressEvent : GameLabEvent
 {
     //An int used to represent the index in an array of strings
     public int progress;
-    public DialogueProgressEventInfo(string pDescription, int pProgress)
+    public DialogueProgressEvent(int pProgress)
     {
-        eventDescription = pDescription;
         progress = pProgress;
     } 
 }

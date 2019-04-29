@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
+using GameLab;
 
-public class CameraTargetSelectEventInfo : EventInfo
+public class CameraTargetSelectEvent : GameLabEvent
 {   
     public Transform FocalA;
     public Transform FocalB;
-    public CameraTargetSelectEventInfo(string pDescription, Transform pFocalA, Transform pFocalB)
+    public CameraTargetSelectEvent(Transform pFocalA, Transform pFocalB)
     {
-        eventDescription = pDescription;
+
         FocalA = pFocalA;
         FocalB = pFocalB;
     } 

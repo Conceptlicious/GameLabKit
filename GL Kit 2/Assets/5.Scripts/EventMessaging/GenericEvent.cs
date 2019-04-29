@@ -1,8 +1,8 @@
 using System;
 
-public class GenericEventInfo : EventInfo
+public class GenericEvent : EventInfo
 {
-    public GenericEventInfo(string pDescription)
+    public GenericEvent(string pDescription)
     {
         eventDescription = pDescription;
     }

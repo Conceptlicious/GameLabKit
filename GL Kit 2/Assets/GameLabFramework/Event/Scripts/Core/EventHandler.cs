@@ -40,7 +40,7 @@ namespace GameLab
 		}
 	}
 
-	public class EventHandler<TEvent> : EventHandler where TEvent : Event
+	public class EventHandler<TEvent> : EventHandler where TEvent : GameLabEvent
 	{
 		public EventHandler(Action<TEvent> callback, int priorityOrder) : base(callback, priorityOrder) {}
 

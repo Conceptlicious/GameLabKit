@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CustomEventCallbacks;
 using EventType = CustomEventCallbacks.EventType;
+using GameLab;
 
 public class EventMarkers : MonoBehaviour
 {
@@ -37,18 +38,19 @@ public class EventMarkers : MonoBehaviour
     /// </summary>
     private void registerAllListeners()
     {
-        EventSystem.RegisterListener(EventType.CALL_EVENT_CHAIN, OnEventMarkerCall);
+        //EventSystem.RegisterListener(EventType.CALL_EVENT_CHAIN, OnEventMarkerCall);
+        EventManager.Instance.AddListener<DetectedMarkerEvent>(OnEventMarkerCall);
+        
     }
     
-    public void OnEventMarkerCall(EventInfo pInfo)
+    public void OnEventMarkerCall(DetectedMarkerEvent info)
     {
-        
-        DetectedMarkerEventInfo info = pInfo as DetectedMarkerEventInfo;
+             
         if (info != null)
         {
             if (enableEventMarking)
             {
-                GenericEventInfo genericInfo = new GenericEventInfo(EventSystem.DESC_EVENT_GENERIC);
+                GenericEvent genericInfo = new GenericEvent(EventSystem.DESC_EVENT_GENERIC);
                 EventSystem.ExecuteEvent(markedEvents[info.marker], genericInfo);
             }
         }

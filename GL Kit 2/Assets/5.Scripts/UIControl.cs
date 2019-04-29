@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CustomEventCallbacks;
 using EventType = CustomEventCallbacks.EventType;
+using GameLab;
 
 
 public class UIControl : MonoBehaviour
@@ -22,8 +23,9 @@ public class UIControl : MonoBehaviour
 
     public void FocusNextRoom()
     {
-        NextRoomEventInfo newInfo = new NextRoomEventInfo(EventSystem.DESC_EVENT_UI_NEXT_ROOM);
-        EventSystem.ExecuteEvent(EventType.UI_NEXT_ROOM, newInfo);
+        NextRoomEvent newInfo = new NextRoomEvent();
+        //EventSystem.ExecuteEvent(EventType.UI_NEXT_ROOM, newInfo);
+        EventManager.Instance.RaiseEvent(newInfo);
     }
     
 }
