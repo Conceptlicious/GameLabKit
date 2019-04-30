@@ -5,6 +5,8 @@ using UnityEngine;
 public class QuestionManager : MonoBehaviour
 {
 	#region Varibles
+	private const string wrongAwnserMessage = "That is not the right awnser.\nPlease try again.";
+
 	[HideInInspector] public bool needsAwnser = false;
 	[HideInInspector] public int questionIndex = -1;
 
@@ -12,6 +14,7 @@ public class QuestionManager : MonoBehaviour
 	[SerializeField] ConveyorBeltMovement conveyorBeltMovement;
 
 	Dictionary<int, int> rightAwners = new Dictionary<int, int>();
+	float timeWrongMessageDisplayed = 3f;
 	#endregion
 
 	private void Awake()
@@ -39,9 +42,20 @@ public class QuestionManager : MonoBehaviour
 			}
 			else
 			{
-				dialogueManager.dialogueText.color = Color.white;
-				dialogueManager.dialogueText.text = "This is not the right awnser.\n Please try again.";
+				StartCoroutine(DisplayWrongAwnserMessage(dialogueManager.CurrentDialogue));
 			}
 		}
+	}
+
+	private IEnumerator DisplayWrongAwnserMessage(string lastQuestion)
+	{
+		dialogueManager.dialogueText.color = Color.red;
+		dialogueManager.dialogueText.text = wrongAwnserMessage;
+
+		yield return new WaitForSeconds(timeWrongMessageDisplayed);
+
+		dialogueManager.dialogueText.color = Color.cyan;
+		dialogueManager.dialogueText.text = lastQuestion;
+
 	}
 }

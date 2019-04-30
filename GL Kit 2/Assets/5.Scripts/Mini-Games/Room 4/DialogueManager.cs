@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
 	FileStream fileStream;
 	StreamReader reader;
 	string currentDialogue;
+	public string CurrentDialogue => currentDialogue;
 	int currentDialogueIndex = -1;
 	#endregion
 
