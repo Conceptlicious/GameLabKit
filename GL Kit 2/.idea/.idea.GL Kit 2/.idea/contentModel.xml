@@ -36,10 +36,18 @@
             <e p="Room 2" t="Include">
               <e p="HiddenObject.cs" t="Include" />
             </e>
+            <e p="Room 4" t="Include">
+              <e p="ConveyorBeltMovement.cs" t="Include" />
+              <e p="DialogueManager.cs" t="Include" />
+              <e p="DisplayPlatformInformation.cs" t="Include" />
+              <e p="PlatformInformation.cs" t="Include" />
+              <e p="QuestionManager.cs" t="Include" />
+            </e>
           </e>
           <e p="OnTouchDown.cs" t="Include" />
           <e p="RoomManager.cs" t="Include" />
           <e p="Settings" t="Include">
+            <e p="LoadingPaths.cs" t="Include" />
             <e p="Settings.cs" t="Include" />
           </e>
           <e p="UIControl.cs" t="Include" />
@@ -55,6 +63,7 @@
               </e>
               <e p="Editor" t="Include">
                 <e p="PropertyDrawers" t="Include">
+                  <e p="ClassTypeReferencePropertyDrawer.cs" t="Include" />
                   <e p="LayerAttributePropertyDrawer.cs" t="Include" />
                   <e p="ScenePickerDrawer.cs" t="Include" />
                 </e>
@@ -81,6 +90,8 @@
                 <e p="GameManager.cs" t="Include" />
               </e>
               <e p="Utilities" t="Include">
+                <e p="ClassTypeConstraintAttribute.cs" t="Include" />
+                <e p="ClassTypeReference.cs" t="Include" />
                 <e p="LayerAttribute.cs" t="Include" />
                 <e p="ScenePickerAttribute.cs" t="Include" />
               </e>

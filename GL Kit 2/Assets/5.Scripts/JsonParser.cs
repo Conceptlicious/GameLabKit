@@ -13,6 +13,7 @@ public static class JsonParser
         //Load our file
         TextAsset jsonObject = Resources.Load<TextAsset>(GetJSONPath(pFileName, out directory));
 
+        //Create the object to be returned.
         DialogueFile dialogueFile = new DialogueFile();
         dialogueFile.Name = pFileName;
 
@@ -22,6 +23,8 @@ public static class JsonParser
         //Create an array from only the designer-spesified arrays within that JSON file.
         JSONArray arrayNames = jsonObj[Settings.JSON_DEF_DEFINED_ARRAYS].AsArray;
         int numberOfContainers = arrayNames.Count;
+        
+        //Create the DialogueContainers the DialogueFile will own.
         dialogueFile.CreateContainers(numberOfContainers);
         
         //Go through each array in the file
@@ -31,6 +34,8 @@ public static class JsonParser
             
             //Fetch keys
             JSONNode containerNode = jsonObj[arrayNames[i].Value].AsObject;
+            
+            //Get key names since they are not accessible elsewise.
             string[] keys = new string[numberOfFields];
             int iterator = 0;
             foreach (KeyValuePair<string, JSONNode> kvp in containerNode)
@@ -39,10 +44,9 @@ public static class JsonParser
                 iterator++;
             }
             
+            //Save our info
             for (int j = 0; j < numberOfFields; j++)
             {
-                
-                
                 dialogueFile.SetContainerInfo(i, arrayNames[i], keys[j], jsonObj[arrayNames[i].Value][j]);
                 Debug.Log("i: " + i + " arrayName[i]: " + arrayNames[i] + " key: " + keys[j] + " val: " +
                           jsonObj[arrayNames[i].Value][j]);

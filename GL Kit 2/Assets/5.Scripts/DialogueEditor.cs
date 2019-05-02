@@ -9,24 +9,13 @@ using UnityEditor;
 [CustomEditor(typeof(DialogueObject))]
 public class DialogueEditor : Editor {
 
-    /*string[] areaChoices;
-    int areaChoiceIndex = 0;
-    private int oldAreaChoiceIndex = 0;
-    
-    string[] arrayChoices;
-    int arrayChoiceIndex = 0;
-        
-    string[] keywordChoices;
-    int keywordChoiceIndex = 0;
-    
-    string[] fieldChoices;
-    int fieldChoiceIndex = 0;*/
-
     private string[] fileNames;
     private int fileNameIndex = 0;
+    private int fileNameIndexPrevious = 0;
     
     private string[] containerNames;
     private int containerNameIndex = 0;
+    private int containerNameIndexPrevious = 0;
     
     private string[] keyNames;
     private int keyNameIndex = 0;
@@ -62,10 +51,25 @@ public class DialogueEditor : Editor {
         DialogueObject dialogueObject = (DialogueObject)target;
 
         fileNames = Dialogue.GetFileNames();
+        fileNameIndexPrevious = fileNameIndex;
         fileNameIndex = EditorGUILayout.Popup(fileNameIndex, fileNames);
+
+        //Reset indices if options change.
+        if (fileNameIndexPrevious != fileNameIndex)
+        {
+            containerNameIndex = 0;
+            keyNameIndex = 0;
+        }
         
         containerNames = Dialogue.GetContainerNames(fileNameIndex);
+        containerNameIndexPrevious = containerNameIndex;
         containerNameIndex = EditorGUILayout.Popup(containerNameIndex, containerNames);
+
+        //Reset indices if options change.
+        if (containerNameIndexPrevious != containerNameIndex)
+        {
+            keyNameIndex = 0;
+        }
         
         keyNames = Dialogue.GetKeyNames(fileNameIndex, containerNameIndex);
         keyNameIndex = EditorGUILayout.Popup(keyNameIndex, keyNames);

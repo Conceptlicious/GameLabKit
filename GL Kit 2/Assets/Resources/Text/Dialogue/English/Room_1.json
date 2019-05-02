@@ -15,8 +15,8 @@
 
   "RM 1 dialogue":
   {
-    "RM 1 dialogue": "RM1 This is paragraph one's text. Next I shall show you paragraph two.",
-    "RM 1 dialogue": "RM1 Welcome to paragraph two. I can talk in multiple stages."
+    "RM 1 dialogue step 1": "RM1 This is paragraph one's text. Next I shall show you paragraph two.",
+    "RM 1 dialogue step 2": "RM1 Welcome to paragraph two. I can talk in multiple stages."
 
   }
 }

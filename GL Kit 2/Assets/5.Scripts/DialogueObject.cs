@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Key data, allowing
-/// </summary>
+//Object to be edited through the DialogueEditor script.
 public class DialogueObject : MonoBehaviour
 {
     private string dialogueText = Settings.STR_DEFAULT_DIALOGUE; 
