@@ -7,21 +7,13 @@ using UnityEngine;
 /// </summary>
 public class DialogueObject : MonoBehaviour
 {
-    private string arrayName = "";
-    private int elementIndex = 0;
-    private string fieldName = "";
-    
-    // Start is called before the first frame update
-    void Start()
+    private string dialogueText = Settings.STR_DEFAULT_DIALOGUE; 
+
+    public string DialogueText
     {
-        GameData.SetLanguage(GameData.Language.ENGLISH);
-        Dialogue.LoadAreaDialogue("Room_1");
+        get { return dialogueText; }
+        set { dialogueText = value; }
     }
 
-    public void SetKeys(string pArrayName, int pElementIndex, string pFieldName)
-    {
-        arrayName = pArrayName;
-        elementIndex = pElementIndex;
-        fieldName = pFieldName;
-    }
+  
 }

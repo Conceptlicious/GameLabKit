@@ -6,6 +6,7 @@ public static class GameData
 {
     public static string INFO_VERSION_STATE = "Pre-Alpha";
     public static int INFO_VERSION_BUILD_NUMBER = 0;
+    public static bool initialised = false;
 
     public enum Language
     {
@@ -26,4 +27,11 @@ public static class GameData
         return gameLanguage;
     }
     
+    
+
+    public static bool Initialised
+    {
+        get { return initialised; }
+        set { initialised = value; }
+    }
 }

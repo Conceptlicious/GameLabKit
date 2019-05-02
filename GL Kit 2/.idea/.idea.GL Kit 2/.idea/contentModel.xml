@@ -2,44 +2,132 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\root\local-dir\Voidjumper\intrshp.gamelabkit\GameLabKit\GL Kit 2" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="5.Scripts" t="Include">
+          <e p="__RemoveScript.cs" t="Include" />
+          <e p="CameraControl.cs" t="Include" />
+          <e p="Dialogue.cs" t="Include" />
+          <e p="DialogueContainer.cs" t="Include" />
+          <e p="DialogueEditor.cs" t="Include" />
+          <e p="DialogueFile.cs" t="Include" />
+          <e p="DialogueObject.cs" t="Include" />
+          <e p="EventMarkers.cs" t="Include" />
+          <e p="EventMessaging" t="Include">
+            <e p="CameraTargetSelectedEvent.cs" t="Include" />
+            <e p="DetectedMarkerEvent.cs" t="Include" />
+            <e p="DialogFetchNextEvent.cs" t="Include" />
+            <e p="DialogProgressEvent.cs" t="Include" />
+            <e p="EventInfo.cs" t="Include" />
+            <e p="EventSystem.cs" t="Include" />
+            <e p="EventTypes.cs" t="Include" />
+            <e p="GenericEvent.cs" t="Include" />
+            <e p="ICustomMessageTarget.cs" t="Include" />
+            <e p="NextRoomEvent.cs" t="Include" />
+            <e p="ObjectFoundEvent.cs" t="Include" />
+          </e>
+          <e p="FindObject.cs" t="Include" />
+          <e p="GameData.cs" t="Include" />
+          <e p="JsonHelper.cs" t="Include" />
+          <e p="JsonParser.cs" t="Include" />
+          <e p="Mini-Games" t="Include">
+            <e p="Room 2" t="Include">
+              <e p="HiddenObject.cs" t="Include" />
+            </e>
+          </e>
+          <e p="OnTouchDown.cs" t="Include" />
+          <e p="RoomManager.cs" t="Include" />
+          <e p="Settings" t="Include">
+            <e p="Settings.cs" t="Include" />
+          </e>
+          <e p="UIControl.cs" t="Include" />
+        </e>
+        <e p="GameLabFramework" t="Include">
+          <e p="Core" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="Core" t="Include">
+                <e p="BetterMonoBehaviour.cs" t="Include" />
+                <e p="IManager.cs" t="Include" />
+                <e p="Manager.cs" t="Include" />
+                <e p="Singleton.cs" t="Include" />
+              </e>
+              <e p="Editor" t="Include">
+                <e p="PropertyDrawers" t="Include">
+                  <e p="LayerAttributePropertyDrawer.cs" t="Include" />
+                  <e p="ScenePickerDrawer.cs" t="Include" />
+                </e>
+                <e p="TemplatesInstaller" t="Include">
+                  <e p="CustomScriptTemplates" t="Include">
+                    <e p="81-C# Manager Script-NewManagerScript.cs.txt" t="Include" />
+                    <e p="81-C# Script-NewBehaviourScript.cs.txt" t="Include" />
+                  </e>
+                  <e p="InstallScriptTemplates.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Extensions" t="Include">
+                <e p="BoundsExtensions.cs" t="Include" />
+                <e p="Color32Extensions.cs" t="Include" />
+                <e p="FileInfoExtensions.cs" t="Include" />
+                <e p="GameObjectExtensions.cs" t="Include" />
+                <e p="HashtableExtensions.cs" t="Include" />
+                <e p="ObjectExtensions.cs" t="Include" />
+              </e>
+              <e p="Gameplay" t="Include">
+                <e p="Player.cs" t="Include" />
+              </e>
+              <e p="Managers" t="Include">
+                <e p="GameManager.cs" t="Include" />
+              </e>
+              <e p="Utilities" t="Include">
+                <e p="LayerAttribute.cs" t="Include" />
+                <e p="ScenePickerAttribute.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Event" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="Core" t="Include">
+                <e p="Event.cs" t="Include" />
+                <e p="EventHandler.cs" t="Include" />
+                <e p="ParameterlessEventHandler.cs" t="Include" />
+              </e>
+              <e p="Managers" t="Include">
+                <e p="EventManager.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Save" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="Core" t="Include">
+                <e p="IManager.cs" t="Include" />
+                <e p="Manager.cs" t="Include" />
+                <e p="SaveSlot.cs" t="Include" />
+              </e>
+              <e p="CustomScriptTemplates" t="Include">
+                <e p="82-C# Save Data Struct-NewSaveData.cs.txt" t="Include" />
+              </e>
+              <e p="Gameplay" t="Include">
+                <e p="PlayerSaveData.cs" t="Include" />
+                <e p="ScriptableObjectSaveData.cs" t="Include" />
+              </e>
+              <e p="Managers" t="Include">
+                <e p="SaveManager.cs" t="Include" />
+              </e>
+              <e p="Utils" t="Include">
+                <e p="ScriptableObjectConverter.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="JsonDotNet" t="Include">
+          <e p="link.xml" t="Include" />
+        </e>
         <e p="Plugins" t="Include">
           <e p="SimpleJSON.cs" t="Include" />
           <e p="SimpleJSONBinary.cs" t="Include" />
           <e p="SimpleJSONUnity.cs" t="Include" />
-        </e>
-        <e p="Project Files" t="Include">
-          <e p="Scripts" t="Include">
-            <e p="CameraControl.cs" t="Include" />
-            <e p="Dialogue.cs" t="Include" />
-            <e p="DialogueContents.cs" t="Include" />
-            <e p="DialogueEditor.cs" t="Include" />
-            <e p="DialogueObject.cs" t="Include" />
-            <e p="EventMarkers.cs" t="Include" />
-            <e p="EventMessaging" t="Include">
-              <e p="EventInfo.cs" t="Include" />
-              <e p="EventSystem.cs" t="Include" />
-              <e p="EventTypes.cs" t="Include" />
-              <e p="ICustomMessageTarget.cs" t="Include" />
-            </e>
-            <e p="FindObject.cs" t="Include" />
-            <e p="GameData.cs" t="Include" />
-            <e p="JsonHelper.cs" t="Include" />
-            <e p="JsonParser.cs" t="Include" />
-            <e p="Mini-Games" t="Include">
-              <e p="Room 2" t="Include">
-                <e p="HiddenObject.cs" t="Include" />
-              </e>
-            </e>
-            <e p="OnTouchDown.cs" t="Include" />
-            <e p="RoomManager.cs" t="Include" />
-            <e p="Settings" t="Include">
-              <e p="Settings.cs" t="Include" />
-            </e>
-            <e p="UIControl.cs" t="Include" />
-          </e>
         </e>
       </e>
       <e p="GL Kit 2.sln" t="IncludeFlat" />

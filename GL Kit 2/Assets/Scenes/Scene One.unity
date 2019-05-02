@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 451611830}
   - component: {fileID: 451611829}
   m_Layer: 0
-  m_Name: FP 3
+  m_Name: Camera Focal Point 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 454431123}
   - component: {fileID: 454431122}
   m_Layer: 0
-  m_Name: FP 1
+  m_Name: Camera Focal Point 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -820,7 +820,7 @@ GameObject:
   - component: {fileID: 945469110}
   - component: {fileID: 945469109}
   m_Layer: 5
-  m_Name: Obj 1
+  m_Name: Room 2 Mechanic Obj 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -858,7 +858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea72a08fffb9794396623c06e470226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsToFind: 0
+  objectsToFind: 1
 --- !u!114 &945469110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,8 +961,9 @@ GameObject:
   - component: {fileID: 1173331078}
   - component: {fileID: 1173331077}
   - component: {fileID: 1173331076}
+  - component: {fileID: 1173331080}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Dialogue Object Tester
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1040,6 +1041,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1173331080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173331075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 815a15e7bea46164ebedf33da96247cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1343666102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1299,7 @@ GameObject:
   - component: {fileID: 1492117835}
   - component: {fileID: 1492117834}
   m_Layer: 5
-  m_Name: Obj 2
+  m_Name: Room 2 Mechanic Obj 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1428,7 +1441,7 @@ GameObject:
   - component: {fileID: 1566096296}
   - component: {fileID: 1566096295}
   m_Layer: 0
-  m_Name: FP 2
+  m_Name: Camera Focal Point 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1521,7 +1534,7 @@ GameObject:
   - component: {fileID: 1584991117}
   - component: {fileID: 1584991121}
   m_Layer: 5
-  m_Name: Obj 3
+  m_Name: Room 2 Mechanic Obj 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1675,6 +1688,7 @@ GameObject:
   - component: {fileID: 1943482783}
   - component: {fileID: 1943482786}
   - component: {fileID: 1943482787}
+  - component: {fileID: 1943482788}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1758,6 +1772,18 @@ MonoBehaviour:
   - '%%%'
   - '%%%'
   events: 040000000000000000000000
+--- !u!114 &1943482788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943482782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a396d86c779add47a91073d9d2e5f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1954571216
 GameObject:
   m_ObjectHideFlags: 0

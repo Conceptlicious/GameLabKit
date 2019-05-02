@@ -9,7 +9,7 @@ using UnityEditor;
 [CustomEditor(typeof(DialogueObject))]
 public class DialogueEditor : Editor {
 
-    string[] areaChoices;
+    /*string[] areaChoices;
     int areaChoiceIndex = 0;
     private int oldAreaChoiceIndex = 0;
     
@@ -18,6 +18,18 @@ public class DialogueEditor : Editor {
         
     string[] keywordChoices;
     int keywordChoiceIndex = 0;
+    
+    string[] fieldChoices;
+    int fieldChoiceIndex = 0;*/
+
+    private string[] fileNames;
+    private int fileNameIndex = 0;
+    
+    private string[] containerNames;
+    private int containerNameIndex = 0;
+    
+    private string[] keyNames;
+    private int keyNameIndex = 0;
     
     public override void OnInspectorGUI()
     {
@@ -30,7 +42,13 @@ public class DialogueEditor : Editor {
             //do thing
             
         }
-        PopulateOptions();
+
+        if (GameData.Initialised == true)
+        {
+            PopulateOptions();
+           
+        }
+        
        
     }
 
@@ -42,28 +60,24 @@ public class DialogueEditor : Editor {
     private void PopulateOptions()
     {
         DialogueObject dialogueObject = (DialogueObject)target;
-        
-        areaChoices = Dialogue.GetLevelFileListings();
-        oldAreaChoiceIndex = areaChoiceIndex;
-        areaChoiceIndex = EditorGUILayout.Popup(areaChoiceIndex, areaChoices);
-        if (oldAreaChoiceIndex != areaChoiceIndex)
-        {
-            Dialogue.LoadAreaDialogue(areaChoices[areaChoiceIndex]);
-        }
-        
-        arrayChoices = Dialogue.GetArrayListings();
-        arrayChoiceIndex = EditorGUILayout.Popup(arrayChoiceIndex, arrayChoices);
-        
-        keywordChoices = Dialogue.GetKeywordListings(arrayChoices[arrayChoiceIndex]);
-        keywordChoiceIndex = EditorGUILayout.Popup(keywordChoiceIndex, keywordChoices);
-        
-        //dialogueObject.SetKeys(arrayChoices[arrayChoiceIndex], keywordChoiceIndex, );
 
+        fileNames = Dialogue.GetFileNames();
+        fileNameIndex = EditorGUILayout.Popup(fileNameIndex, fileNames);
         
-        if (GUILayout.Button("Populate"))
+        containerNames = Dialogue.GetContainerNames(fileNameIndex);
+        containerNameIndex = EditorGUILayout.Popup(containerNameIndex, containerNames);
+        
+        keyNames = Dialogue.GetKeyNames(fileNameIndex, containerNameIndex);
+        keyNameIndex = EditorGUILayout.Popup(keyNameIndex, keyNames);
+
+        dialogueObject.DialogueText = Dialogue.GetText(fileNameIndex, containerNameIndex, keyNames[keyNameIndex]);
+        
+        if(GUILayout.Button("Print Dialogue"))
         {
-            //dialogue.GenerateMap();
+            Debug.Log(dialogueObject.DialogueText);
         }
+       
+
         
         EditorUtility.SetDirty(target);
     }

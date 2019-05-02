@@ -7,53 +7,49 @@ using System.IO;
 public static class JsonParser 
 {
 
-    public static DialogueContents ParseJSONFile(string pFileName)
+    public static DialogueFile ParseJSONFile(string pFileName)
     {
         string[] directory = new string[] {""};
         //Load our file
         TextAsset jsonObject = Resources.Load<TextAsset>(GetJSONPath(pFileName, out directory));
-        
-        //Create a new contents instance
-        DialogueContents contents = new DialogueContents();
+
+        DialogueFile dialogueFile = new DialogueFile();
+        dialogueFile.Name = pFileName;
 
         //Load a JSONNode from the file.
         JSONNode jsonObj = JSON.Parse(jsonObject.text);
 
         //Create an array from only the designer-spesified arrays within that JSON file.
         JSONArray arrayNames = jsonObj[Settings.JSON_DEF_DEFINED_ARRAYS].AsArray;
-        
-        //Find, store and push the identifier keywords to the content class
-        JSONArray identifiers = jsonObj[Settings.JSON_DEF_IDENTIFIER_KEYWORDS].AsArray;
-
-        string[] identiferStrings = new string[identifiers.Count];
-        for (int i = 0; i < identifiers.Count; i++)
-        {
-            identiferStrings[i] = identifiers[i].ToString();
-        }
-        contents.SetIdentifierKeywords(identiferStrings);
-
+        int numberOfContainers = arrayNames.Count;
+        dialogueFile.CreateContainers(numberOfContainers);
         
         //Go through each array in the file
-        for (int i = 0; i < arrayNames.Count; i++)
+        for (int i = 0; i < numberOfContainers; i++)
         {
-            //A JSONArray that represents a single array in our file
-            JSONArray singleArray = jsonObj[arrayNames[i].Value].AsArray;
+            int numberOfFields = jsonObj[arrayNames[i].Value].Count;
             
-            //The number of elements present in that array
-            int numberOfElements = jsonObj[arrayNames[i].Value].Count;
-            Debug.Log("number ele: " + numberOfElements);
-            
-            //The number of fields present in each element of that array
-            int[] numberOfFields = new int[numberOfElements];
-            for (int j = 0; j < numberOfElements; j++)
+            //Fetch keys
+            JSONNode containerNode = jsonObj[arrayNames[i].Value].AsObject;
+            string[] keys = new string[numberOfFields];
+            int iterator = 0;
+            foreach (KeyValuePair<string, JSONNode> kvp in containerNode)
             {
-                numberOfFields[j] = jsonObj[arrayNames[i].Value][j].Count;
-                Debug.Log("num fields: " + numberOfFields[j]);
+                keys[iterator] = kvp.Key;
+                iterator++;
             }
-            contents.AddDialogueArray(arrayNames[i].ToString(), singleArray, numberOfElements, numberOfFields);
-        }
+            
+            for (int j = 0; j < numberOfFields; j++)
+            {
+                
+                
+                dialogueFile.SetContainerInfo(i, arrayNames[i], keys[j], jsonObj[arrayNames[i].Value][j]);
+                Debug.Log("i: " + i + " arrayName[i]: " + arrayNames[i] + " key: " + keys[j] + " val: " +
+                          jsonObj[arrayNames[i].Value][j]);
+            }
+        }      
 
-        return contents;
+        return dialogueFile;
     }
 
     /// <summary>

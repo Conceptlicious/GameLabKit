@@ -1,43 +1,22 @@
 {
-  "definedArrays": ["objects", "explanations", "progress"],
-  "identifierKeywords": ["name", "tag", "gamelab-dialogue"],
-  
-  "explanations": [
-    {
-      "tag": "gamelab-dialogue",
-      "text": "Hello, and welcome to the TA  welcome to the TA welcome to the TA welcome to the %%% TA welcome to the TA [N] room"
-    }
-  ],
-  
-  "objects": [
-    {
-      "name": "Book",
-      "hintText": "This is a book, it resperehwrk",
-      "incorrectText": "eg"
-    },
-    {
-      "name": "Object 2",
-      "hintText": "this object does another thing"
-    },
-    {
-      "name": "Object 3",
-      "hintText": "this object does yet another thing"
-    }
-  ],
+  "definedArrays": ["RM 1 pop ups", "RM 1 objects", "RM 1 dialogue"],
 
-  "progress": [
-    {
-      "name": "Education",
-      "hintText": "Education is the level of hebeheh"
-     
-    },
-    {
-      "name": "Mental Ability",
-      "hintText": "this object does another thing"
-    },
-    {
-      "name": "Object 3",
-      "hintText": "this object does yet another thing"
-    }
-  ]
+  "RM 1 pop ups":
+  {
+    "RM 1 help": "RM1 This window gives you helping dialogue as a pop-up form.",
+    "RM 1 confirmation": "RM1 This window confirms your choice."
+  },
+
+  "RM 1 objects":
+  {
+    "RM 1 book": "RM1 text",
+    "RM 1 compass": "RM1 text"
+  },
+
+  "RM 1 dialogue":
+  {
+    "RM 1 dialogue": "RM1 This is paragraph one's text. Next I shall show you paragraph two.",
+    "RM 1 dialogue": "RM1 Welcome to paragraph two. I can talk in multiple stages."
+
+  }
 }

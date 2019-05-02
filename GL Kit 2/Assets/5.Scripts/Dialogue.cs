@@ -7,25 +7,84 @@ using UnityEngine.UI;
 using SimpleJSON;
 using UnityEditor;
 using System.IO;
+using System.Linq;
 
 /// <summary>
 ///  
 /// </summary>
 public static class Dialogue 
 {
-    private static DialogueContents contents = null;
-    private static int index = 0;
+    private static DialogueFile[] files = null;
 
-    //TO DO: Change from hard-coded reference
-    private static string currentAreaName = "Room_1";
-    // Start is called before the first frame update   
-
-    public static void LoadAreaDialogue(string pAreaName)
+    public static void LoadAllText(string[] pLevelNames)
     {
-        currentAreaName = pAreaName;
-        contents = JsonParser.ParseJSONFile(pAreaName);
+        int size = pLevelNames.Length;
+        files = new DialogueFile[size];
+        for (int i = 0; i < size; i++)
+        {
+            files[i] = JsonParser.ParseJSONFile(pLevelNames[i]);
+        }
+
+        GameData.Initialised = true;
     }
-    
+
+    public static string[] GetFileNames()
+    {
+        string[] names = new string[files.Length];
+        for (int i = 0; i < files.Length; i++)
+        {
+            names[i] = files[i].Name;
+        }
+
+        return names;
+    }
+
+    /*private static string[] TrawlArrayForNameProperty<T>(T[] pArray)
+    {
+        string[] names = new string[pArray.Length];
+        for (int i = 0; i < pArray.Length; i++)
+        {
+            names[i] = pArray[i].Name;
+        }
+
+        return names;
+    }*/
+
+    public static string[] GetContainerNames(int pFileID)
+    {  
+        DialogueContainer[] containers = files[pFileID].GetContainers();
+        string[] names = new string[containers.Length];
+        for (int i = 0; i < containers.Length; i++)
+        {
+            names[i] = containers[i].Name;
+        }
+
+        return names;
+    }
+
+    public static string[] GetKeyNames(int pFileID, int pContainerID)
+    {
+        DialogueContainer container = files[pFileID].GetContainer(pContainerID);
+        Dictionary<string, string> kvp = container.GetInfoDictionary();
+        string[] names = new string[kvp.Count];
+        int iterator = 0;
+        foreach (KeyValuePair<string, string> pair in kvp)
+        {
+            names[iterator] = pair.Key;
+            iterator++;
+        }
+
+        return names;
+    }
+
+    public static string GetText(int pFileID, int pContainerID, string pField)
+    {
+        string text = Settings.STR_DEFAULT_DIALOGUE;
+        files[pFileID].GetContainer(pContainerID).GetInfoDictionary().TryGetValue(pField, out text);
+        return text;
+    }
+
+   
     //when language change event fires, reload dialogue
     public static void onLanguageChange()
     {
@@ -33,7 +92,7 @@ public static class Dialogue
         //Debug.Log("----------------------------------------");
         //TO DO: Should be on language change event
         //GameData.SetLanguage((GameData.Language)pID);
-        LoadAreaDialogue(currentAreaName);
+        //LoadAreaDialogue(currentAreaName);
         
         /*
          *
@@ -47,32 +106,5 @@ White room JSON file has array with name of each object, and dialogue GameLab wo
 
          */
     }
-
-    public static string[] GetArrayListings()
-    {
-        string[] output = new string[] { Settings.STR_DEFAULT_DIALOGUE };
-        if (contents != null)
-        {
-            output = contents.GetNames();
-        }       
-        return output;
-    }
-
-
-    public static string[] GetKeywordListings(string pArrayName)
-    {
-        string[] output = new string[] { Settings.STR_DEFAULT_DIALOGUE };
-        if (contents != null)
-        {
-            output = contents.GetKeywords(pArrayName);
-        }       
-        return output;
-    }
-
-    public static string[] GetLevelFileListings()
-    {
-        string[] output = new string[] { Settings.STR_DEFAULT_DIALOGUE };
-        JsonParser.GetJSONPath("", out output);
-        return output;
-    }
+    
 }
