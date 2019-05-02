@@ -1,12 +1,12 @@
 using System;
+using GameLab;
 
-public class ObjectFoundEventInfo : EventInfo
+public class ObjectFoundEvent : GameLabEvent
 {
     public bool correct;
     public Settings.R2_ObjectsToFind objectFound;
-    public ObjectFoundEventInfo(string pDescription, bool pCorrect, Settings.R2_ObjectsToFind pObjectFound)
+    public ObjectFoundEvent(bool pCorrect, Settings.R2_ObjectsToFind pObjectFound)
     {
-        eventDescription = pDescription;
         correct = pCorrect;
         objectFound = pObjectFound;
     } 

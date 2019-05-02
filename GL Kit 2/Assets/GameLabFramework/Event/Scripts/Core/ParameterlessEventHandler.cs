@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameLab
 {
-	public class ParameterlessEventHandler<TEvent> : EventHandler where TEvent : Event
+	public class ParameterlessEventHandler<TEvent> : EventHandler where TEvent : GameLabEvent
 	{
 		public ParameterlessEventHandler(Action callback, int priorityOrder) : base(callback, priorityOrder) { }
 

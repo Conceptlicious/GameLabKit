@@ -4,6 +4,7 @@ using UnityEngine;
 using CustomEventCallbacks;
 using UnityEditorInternal;
 using EventType = CustomEventCallbacks.EventType;
+using GameLab;
 
 public class RoomManager : MonoBehaviour
 {
@@ -24,18 +25,19 @@ public class RoomManager : MonoBehaviour
     /// </summary>
     private void registerAllListeners()
     {
-        EventSystem.RegisterListener(EventType.UI_NEXT_ROOM, OnNextRoomCommand);
+        //EventSystem.RegisterListener(EventType.UI_NEXT_ROOM, OnNextRoomCommand);
+        EventManager.Instance.AddListener<NextRoomEvent>(OnNextRoomCommand);
     }
 
 
-    private void OnNextRoomCommand(EventInfo pInfo)
+    private void OnNextRoomCommand(NextRoomEvent pInfo)
     {
         currentRoom.y = currentRoom.x;
         currentRoom.x++;
         Mathf.Clamp(currentRoom.x, 0, Settings.SYS_VAL_MAX_NUMBER_ROOM_FOCALS);   
         //Focal A is current. Focal B is next. Current[New, Old]
-        CameraTargetSelectEventInfo newInfo = new CameraTargetSelectEventInfo(EventSystem.DESC_EVENT_CAMERA_TARGET, roomFocalPoints[currentRoom.y], roomFocalPoints[currentRoom.x]);
-        EventSystem.ExecuteEvent(EventType.CAMERA_TARGET_SELECT, newInfo);
+        CameraTargetSelectEvent newInfo = new CameraTargetSelectEvent(roomFocalPoints[currentRoom.y], roomFocalPoints[currentRoom.x]);
+        EventManager.Instance.RaiseEvent(newInfo);
     }
 
     private void FillFocalsWithBlanks()

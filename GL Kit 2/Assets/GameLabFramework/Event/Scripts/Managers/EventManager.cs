@@ -16,7 +16,7 @@ namespace GameLab
 		/// </summary>
 		/// <typeparam name="TEvent">The type of event to raise</typeparam>
 		/// <param name="eventToRaise">The event information</param>
-		public void RaiseEvent<TEvent>(TEvent eventToRaise) where TEvent : Event
+		public void RaiseEvent<TEvent>(TEvent eventToRaise) where TEvent : GameLabEvent
 		{
 			List<EventHandler> handlers = GetEventHandlers<TEvent>();
 
@@ -49,7 +49,7 @@ namespace GameLab
 		/// <typeparam name="TEvent">The type of event to listen to</typeparam>
 		/// <param name="listener">Delegate function that accepts the event type as a parameter that will be called when the event is raised</param>
 		/// <param name="priorityOrder">The priority of the listener when the event is raised. Higher priority listeners get called first</param>
-		public void AddListener<TEvent>(Action<TEvent> listener, int priorityOrder = 0) where TEvent : Event
+		public void AddListener<TEvent>(Action<TEvent> listener, int priorityOrder = 0) where TEvent : GameLabEvent
 		{
 			EventHandler<TEvent> handler = new EventHandler<TEvent>(listener, priorityOrder);
 			AddListenerInternal<TEvent>(handler);
@@ -61,7 +61,7 @@ namespace GameLab
 		/// <typeparam name="TEvent">The type of event to listen to</typeparam>
 		/// <param name="listener">Delegate function that takes no parameters that will be called when the event is raised</param>
 		/// <param name="priorityOrder">The priority of the listener when the event is raised. Higher priority listeners get called first</param>
-		public void AddListener<TEvent>(Action listener, int priorityOrder = 0) where TEvent : Event
+		public void AddListener<TEvent>(Action listener, int priorityOrder = 0) where TEvent : GameLabEvent
 		{
 			ParameterlessEventHandler<TEvent> handler = new ParameterlessEventHandler<TEvent>(listener, priorityOrder);
 			AddListenerInternal<TEvent>(handler);
@@ -72,7 +72,7 @@ namespace GameLab
 		/// </summary>
 		/// <typeparam name="TEvent">The type of event to stop listening to</typeparam>
 		/// <param name="listener">The delegate function to remove</param>
-		public void RemoveListener<TEvent>(Action<TEvent> listener) where TEvent : Event
+		public void RemoveListener<TEvent>(Action<TEvent> listener) where TEvent : GameLabEvent
 		{
 			RemoveListenerInternal<TEvent>(listener);
 		}
@@ -82,12 +82,12 @@ namespace GameLab
 		/// </summary>
 		/// <typeparam name="TEvent">The type of event to stop listening to</typeparam>
 		/// <param name="listener">The delegate function to remove</param>
-		public void RemoveListener<TEvent>(Action listener) where TEvent : Event
+		public void RemoveListener<TEvent>(Action listener) where TEvent : GameLabEvent
 		{
 			RemoveListenerInternal<TEvent>(listener);
 		}
 
-		private void AddListenerInternal<TEvent>(EventHandler handler) where TEvent : Event
+		private void AddListenerInternal<TEvent>(EventHandler handler) where TEvent : GameLabEvent
 		{
 			if(!evenTypesToHandlers.ContainsKey(typeof(TEvent)))
 			{
@@ -100,7 +100,7 @@ namespace GameLab
 			handlers.Sort((firstHandler, secondHandler) => secondHandler.PriorityOrder.CompareTo(firstHandler.PriorityOrder));
 		}
 
-		private void RemoveListenerInternal<TEvent>(Delegate listener) where TEvent : Event
+		private void RemoveListenerInternal<TEvent>(Delegate listener) where TEvent : GameLabEvent
 		{
 			List<EventHandler> handlers = GetEventHandlers<TEvent>();
 
@@ -108,7 +108,7 @@ namespace GameLab
 			handlers.Remove(handler);
 		}
 
-		private List<EventHandler> GetEventHandlers<TEvent>() where TEvent : Event
+		private List<EventHandler> GetEventHandlers<TEvent>() where TEvent : GameLabEvent
 		{
 			if(!evenTypesToHandlers.TryGetValue(typeof(TEvent), out List<EventHandler> handlers))
 			{

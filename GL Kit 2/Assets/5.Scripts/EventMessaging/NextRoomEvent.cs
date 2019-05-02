@@ -1,10 +1,10 @@
 using System;
+using GameLab;
 
-public class NextRoomEventInfo : EventInfo
+public class NextRoomEvent : GameLabEvent
 {
-    public NextRoomEventInfo(string pDescription)
+    public NextRoomEvent()
     {
-        eventDescription = pDescription;  
     } 
 }
 

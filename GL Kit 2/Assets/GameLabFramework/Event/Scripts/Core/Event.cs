@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GameLab
 {
-	public abstract class Event
+	public abstract class GameLabEvent
 	{
 		public bool Consumed { get; private set; }
 

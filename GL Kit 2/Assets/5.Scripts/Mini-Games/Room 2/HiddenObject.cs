@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CustomEventCallbacks;
 using EventType = CustomEventCallbacks.EventType;
+using GameLab;
 
 public class HiddenObject : MonoBehaviour
 {
@@ -20,10 +21,12 @@ public class HiddenObject : MonoBehaviour
         
     }
 
-    public void CheckObject()
+    public void CheckObject(ObjectFoundEvent objectFoundEventInfo)
     {
         bool correctObject = objectsToFind != Settings.R2_ObjectsToFind.INCORRECT ? true : false;
-        EventInfo info = new ObjectFoundEventInfo(EventSystem.DESC_EVENT_OBJECT_FOUND + objectsToFind.ToString(), correctObject, objectsToFind);
-        EventSystem.ExecuteEvent(EventType.R2_OBJECT_FOUND, info);      
+        ObjectFoundEvent info = new ObjectFoundEvent( correctObject, objectsToFind);
+        //EventSystem.ExecuteEvent(EventType.R2_OBJECT_FOUND, info);
+        EventManager.Instance.RaiseEvent(info);
+
     }
 }

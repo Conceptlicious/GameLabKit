@@ -1,11 +1,11 @@
 using System;
+using GameLab;
 
-public class DetectedMarkerEventInfo : EventInfo
+public class DetectedMarkerEvent : GameLabEvent
 {
     public string marker;
-    public DetectedMarkerEventInfo(string pDescription, string pMarker)
+    public DetectedMarkerEvent(string pMarker)
     {
-        eventDescription = pDescription;
         marker = pMarker;
     } 
 }

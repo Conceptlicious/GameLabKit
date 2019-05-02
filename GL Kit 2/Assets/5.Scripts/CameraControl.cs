@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CustomEventCallbacks;
 using EventType = CustomEventCallbacks.EventType;
+using GameLab;
 
 public class CameraControl : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class CameraControl : MonoBehaviour
     /// </summary>
     private void registerAllListeners()
     {
-        EventSystem.RegisterListener(EventType.CAMERA_TARGET_SELECT, OnTargetSelect);
+        EventManager.Instance.AddListener<CameraTargetSelectEvent>(OnTargetSelect);
 
     }
 
@@ -51,7 +52,7 @@ public class CameraControl : MonoBehaviour
         {
             if ( currentTargetIndex < targetList.Length - 1)
             {
-                Debug.Log("reached target " + currentTargetIndex + " and incremnting to " + (currentTargetIndex + 1));
+                Debug.Log("reached target " + currentTargetIndex + " and incrementing to " + (currentTargetIndex + 1));
                 currentTargetIndex++;
             }
             else
@@ -64,12 +65,12 @@ public class CameraControl : MonoBehaviour
         }
     }
 
-    private void OnTargetSelect(EventInfo pInfo)
+    private void OnTargetSelect(CameraTargetSelectEvent info)
     {
-        CameraTargetSelectEventInfo info = pInfo as CameraTargetSelectEventInfo;
+        
         if (info != null)
         {
-            //If the next and previous points are identical, keep the next but set the previous to the camera's current postion
+            //If the next and previous points are identical, keep the next but set the previous to the camera's current position
             //Useful on start since the camera has not yet focused a roomset before
             info.FocalA.position = info.FocalA.position == info.FocalB.position  ? cam.transform.position : info.FocalA.position;
             Vector3[] list = new Vector3[] { info.FocalA.position, info.FocalB.position, info.FocalB.position };
