@@ -9,15 +9,15 @@
 
   "RM 2 objects":
   {
-    "RM 2 book": "RM2 text",
-    "RM 2 compass": "RM2 text"
+    "RM 2 book": "RM2 book text",
+    "RM 2 compass": "RM2 compass text"
   },
 
   "RM 2 dialogue":
   {
-    "RM 2 dialogue step 1": "RM2 Dialogue Step 1.",
-    "RM 2 dialogue step 2": "RM2 Dialogue Step 2.",
-    "RM 2 dialogue step 3": "RM2 Dialogue Step 3."
+    "RM 2 dialogue step 1": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "RM 2 dialogue step 2": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
+    "RM 2 dialogue step 3": "It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 
   }
 }

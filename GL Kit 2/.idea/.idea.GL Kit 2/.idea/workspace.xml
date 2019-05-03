@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="242ae21e-f6fb-49ec-a894-9847d147da7f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/Dialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/Dialogue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/DialogueEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/DialogueEditor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/DialogueObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/DialogueObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/GameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/GameData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/__RemoveScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/__RemoveScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Text/Dialogue/English/Room_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Text/Dialogue/English/Room_1.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Text/Dialogue/English/Room_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Text/Dialogue/English/Room_2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene One.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene One.unity" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,14 +66,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="12140" />
-          <entry key="json" value="340" />
+          <entry key="cs" value="12847" />
+          <entry key="json" value="426" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="12140" />
-          <entry key="JSON" value="340" />
+          <entry key="C#" value="12847" />
+          <entry key="JSON" value="426" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -134,34 +134,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/__RemoveScript.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-              <folding>
-                <marker date="1556875859337" expanded="false" signature="6:78" ph="..." />
-                <marker date="1556875859337" expanded="true" signature="123:479" ph="{...}" />
-                <marker date="1556875859337" expanded="true" signature="195:472" ph="{...}" />
-                <marker date="1556875859337" expanded="true" signature="320:466" ph="/* GameData.SetLanguage(GameData.Language.ENGLISH); ... */" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+            <state relative-caret-position="435">
+              <caret line="49" column="33" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
               <folding>
-                <marker date="1556875534545" expanded="false" signature="6:78" ph="..." />
-                <marker date="1556875534545" expanded="true" signature="108:2537" ph="{...}" />
-                <marker date="1556875534545" expanded="true" signature="115:287" ph="/* ---------------------------------------------------------- ... */" />
-                <marker date="1556875534545" expanded="true" signature="1264:1307" ph="{...}" />
-                <marker date="1556875534545" expanded="true" signature="1318:1476" ph="/* ---------------------------------------------------------- ... */" />
-                <marker date="1556875534545" expanded="true" signature="1697:1856" ph="/* ---------------------------------------------------------- ... */" />
-                <marker date="1556875534545" expanded="true" signature="2137:2307" ph="/* ---------------------------------------------------------- ... */" />
-                <marker date="1556875534545" expanded="true" signature="2340:2534" ph="{...}" />
+                <marker date="1556888225120" expanded="false" signature="6:78" ph="..." />
+                <marker date="1556888225120" expanded="true" signature="108:2655" ph="{...}" />
+                <marker date="1556888225120" expanded="true" signature="115:287" ph="/* ---------------------------------------------------------- ... */" />
+                <marker date="1556888225120" expanded="true" signature="1264:1307" ph="{...}" />
+                <marker date="1556888225120" expanded="true" signature="1318:1476" ph="/* ---------------------------------------------------------- ... */" />
+                <marker date="1556888225120" expanded="true" signature="1697:1856" ph="/* ---------------------------------------------------------- ... */" />
+                <marker date="1556888225120" expanded="true" signature="2255:2425" ph="/* ---------------------------------------------------------- ... */" />
+                <marker date="1556888225120" expanded="true" signature="2458:2652" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -171,7 +156,7 @@
         <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/GameData.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+              <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
               <folding>
                 <marker date="1556875842836" expanded="false" signature="6:78" ph="..." />
                 <marker date="1556875842836" expanded="true" signature="108:892" ph="{...}" />
@@ -187,8 +172,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Resources/Text/Dialogue/English/Room_1.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+            <state relative-caret-position="255">
+              <caret line="17" column="46" lean-forward="true" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -197,16 +182,16 @@
         <entry file="file://$PROJECT_DIR$/Assets/Resources/Text/Dialogue/English/Room_2.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
-              <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+              <caret line="19" column="50" lean-forward="true" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/DialogueEditor.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="230">
-              <caret line="64" column="56" lean-forward="true" selection-start-line="64" selection-start-column="56" selection-end-line="64" selection-end-column="56" />
+              <caret line="64" column="56" selection-start-line="64" selection-start-column="56" selection-end-line="64" selection-end-column="56" />
               <folding>
                 <marker date="1556875309473" expanded="false" signature="6:97" ph="..." />
                 <marker date="1556875309473" expanded="true" signature="99:237" ph="/// Helper script for the custom Unity Editor, allowing each object to have specific dialogue assigned to it. ... " />
@@ -226,29 +211,30 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Dialogue.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="271">
+              <caret line="95" column="45" lean-forward="true" selection-start-line="95" selection-start-column="45" selection-end-line="95" selection-end-column="45" />
               <folding>
-                <marker date="1556875141811" expanded="false" signature="7:188" ph="..." />
-                <marker date="1556875141811" expanded="true" signature="190:224" ph="///   ... " />
-                <marker date="1556875141811" expanded="true" signature="254:3384" ph="{...}" />
-                <marker date="1556875141811" expanded="true" signature="362:649" ph="{...}" />
-                <marker date="1556875141811" expanded="true" signature="486:571" ph="{...}" />
-                <marker date="1556875141811" expanded="true" signature="692:883" ph="{...}" />
-                <marker date="1556875141811" expanded="true" signature="796:854" ph="{...}" />
-                <marker date="1556875141811" expanded="true" signature="889:1151" ph="/* private static string[] TrawlArrayForNameProperty&lt;T&gt;(T[] pArray) ... */" />
-                <marker date="1556875141811" expanded="true" signature="1210:1491" ph="{...}" />
-                <marker date="1556875141811" expanded="true" signature="1399:1462" ph="{...}" />
-                <marker date="1556875141811" expanded="true" signature="1562:1967" ph="{...}" />
-                <marker date="1556875141811" expanded="true" signature="1854:1938" ph="{...}" />
-                <marker date="1556875141811" expanded="true" signature="2047:2234" ph="{...}" />
-                <marker date="1556875141811" expanded="true" signature="2339:2660" ph="{...}" />
-                <marker date="1556875141811" expanded="true" signature="2768:3377" ph="{...}" />
-                <marker date="1556875141811" expanded="true" signature="2783:3064" ph="/* Debug.Assert(pID &gt;= 0 &amp;&amp; pID &lt; (int)GameData.Language.TOTAL); ... */" />
-                <marker date="1556875141811" expanded="true" signature="3082:3371" ph="/* Room dialogue is just clicking next, and fetching ... */" />
+                <marker date="1556888265909" expanded="false" signature="7:188" ph="..." />
+                <marker date="1556888265909" expanded="true" signature="190:224" ph="///   ... " />
+                <marker date="1556888265909" expanded="true" signature="254:3711" ph="{...}" />
+                <marker date="1556888265909" expanded="true" signature="362:649" ph="{...}" />
+                <marker date="1556888265909" expanded="true" signature="486:571" ph="{...}" />
+                <marker date="1556888265909" expanded="true" signature="692:883" ph="{...}" />
+                <marker date="1556888265909" expanded="true" signature="796:854" ph="{...}" />
+                <marker date="1556888265909" expanded="true" signature="889:1151" ph="/* private static string[] TrawlArrayForNameProperty&lt;T&gt;(T[] pArray) ... */" />
+                <marker date="1556888265909" expanded="true" signature="1210:1491" ph="{...}" />
+                <marker date="1556888265909" expanded="true" signature="1399:1462" ph="{...}" />
+                <marker date="1556888265909" expanded="true" signature="1562:1967" ph="{...}" />
+                <marker date="1556888265909" expanded="true" signature="1854:1938" ph="{...}" />
+                <marker date="1556888265909" expanded="true" signature="2047:2234" ph="{...}" />
+                <marker date="1556888265909" expanded="true" signature="2339:2549" ph="{...}" />
+                <marker date="1556888265909" expanded="true" signature="2633:2982" ph="{...}" />
+                <marker date="1556888265909" expanded="true" signature="3095:3704" ph="{...}" />
+                <marker date="1556888265909" expanded="true" signature="3110:3391" ph="/* Debug.Assert(pID &gt;= 0 &amp;&amp; pID &lt; (int)GameData.Language.TOTAL); ... */" />
+                <marker date="1556888265909" expanded="true" signature="3409:3698" ph="/* Room dialogue is just clicking next, and fetching ... */" />
               </folding>
             </state>
           </provider>
@@ -257,16 +243,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/DialogueObject.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
+            <state relative-caret-position="320">
+              <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
               <folding>
-                <marker date="1556875255491" expanded="false" signature="6:78" ph="..." />
-                <marker date="1556875255491" expanded="true" signature="180:1361" ph="{...}" />
-                <marker date="1556875255491" expanded="true" signature="277:826" ph="{...}" />
-                <marker date="1556875255491" expanded="true" signature="554:820" ph="{...}" />
-                <marker date="1556875255491" expanded="true" signature="880:951" ph="{...}" />
-                <marker date="1556875255491" expanded="true" signature="991:1229" ph="{...}" />
-                <marker date="1556875255491" expanded="true" signature="1240:1357" ph="/* public string DialogueText ... */" />
+                <marker date="1556887431654" expanded="false" signature="6:78" ph="..." />
+                <marker date="1556887431654" expanded="true" signature="180:1587" ph="{...}" />
+                <marker date="1556887431654" expanded="true" signature="277:826" ph="{...}" />
+                <marker date="1556887431654" expanded="true" signature="554:820" ph="{...}" />
+                <marker date="1556887431654" expanded="true" signature="880:951" ph="{...}" />
+                <marker date="1556887431654" expanded="true" signature="991:1229" ph="{...}" />
+                <marker date="1556887431654" expanded="true" signature="1270:1455" ph="{...}" />
+                <marker date="1556887431654" expanded="true" signature="1466:1583" ph="/* public string DialogueText ... */" />
               </folding>
             </state>
           </provider>
@@ -285,7 +272,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/5.Scripts/Dialogue.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/5.Scripts/__RemoveScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/5.Scripts/GameData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../mnr.shaders-01/Flask Shaders/Assets/Shaders/FlaskLiquid.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/5.Scripts/DialogueContainer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -316,15 +302,15 @@
         <option value="$PROJECT_DIR$/Assets/5.Scripts/DialogueEntry.cs" />
         <option value="$PROJECT_DIR$/Assets/5.Scripts/DialogueFile.cs" />
         <option value="$PROJECT_DIR$/Assets/5.Scripts/DialogueContainer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Resources/Text/Dialogue/English/Room_1.json" />
         <option value="$PROJECT_DIR$/Assets/5.Scripts/JsonParser.cs" />
-        <option value="$PROJECT_DIR$/Assets/Resources/Text/Dialogue/English/Room_2.json" />
-        <option value="$PROJECT_DIR$/Assets/5.Scripts/Dialogue.cs" />
-        <option value="$PROJECT_DIR$/Assets/5.Scripts/DialogueObject.cs" />
         <option value="$PROJECT_DIR$/Assets/5.Scripts/DialogueEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs" />
         <option value="$PROJECT_DIR$/Assets/5.Scripts/GameData.cs" />
         <option value="$PROJECT_DIR$/Assets/5.Scripts/__RemoveScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Resources/Text/Dialogue/English/Room_1.json" />
+        <option value="$PROJECT_DIR$/Assets/Resources/Text/Dialogue/English/Room_2.json" />
+        <option value="$PROJECT_DIR$/Assets/5.Scripts/DialogueObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs" />
+        <option value="$PROJECT_DIR$/Assets/5.Scripts/Dialogue.cs" />
       </list>
     </option>
   </component>
@@ -335,10 +321,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="950" />
+    <option name="x" value="-8" />
     <option name="y" value="50" />
-    <option name="width" value="980" />
-    <option name="height" value="1040" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -408,12 +394,12 @@
       <workItem from="1556530160782" duration="11119000" />
       <workItem from="1556611716099" duration="5165000" />
       <workItem from="1556789832556" duration="11598000" />
-      <workItem from="1556872026572" duration="3907000" />
+      <workItem from="1556872026572" duration="6765000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81926000" />
+    <option name="totallyTimeSpent" value="84784000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -534,43 +520,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/DialogueEntry.cs" />
-    <entry file="file://$PROJECT_DIR$/Assets/Resources/Text/Dialogue/English/Room_1.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/DialogueContainer.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
-          <folding>
-            <marker date="1556800754010" expanded="false" signature="6:78" ph="..." />
-            <marker date="1556800754010" expanded="true" signature="110:545" ph="{...}" />
-            <marker date="1556800754010" expanded="true" signature="307:351" ph="{...}" />
-            <marker date="1556800754010" expanded="true" signature="410:443" ph="{...}" />
-            <marker date="1556800754010" expanded="true" signature="472:543" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/DialogueObject.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
-          <folding>
-            <marker date="1556875255491" expanded="false" signature="6:78" ph="..." />
-            <marker date="1556875255491" expanded="true" signature="180:1361" ph="{...}" />
-            <marker date="1556875255491" expanded="true" signature="277:826" ph="{...}" />
-            <marker date="1556875255491" expanded="true" signature="554:820" ph="{...}" />
-            <marker date="1556875255491" expanded="true" signature="880:951" ph="{...}" />
-            <marker date="1556875255491" expanded="true" signature="991:1229" ph="{...}" />
-            <marker date="1556875255491" expanded="true" signature="1240:1357" ph="/* public string DialogueText ... */" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/JsonParser.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -592,88 +541,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
-          <folding>
-            <marker date="1556875534545" expanded="false" signature="6:78" ph="..." />
-            <marker date="1556875534545" expanded="true" signature="108:2537" ph="{...}" />
-            <marker date="1556875534545" expanded="true" signature="115:287" ph="/* ---------------------------------------------------------- ... */" />
-            <marker date="1556875534545" expanded="true" signature="1264:1307" ph="{...}" />
-            <marker date="1556875534545" expanded="true" signature="1318:1476" ph="/* ---------------------------------------------------------- ... */" />
-            <marker date="1556875534545" expanded="true" signature="1697:1856" ph="/* ---------------------------------------------------------- ... */" />
-            <marker date="1556875534545" expanded="true" signature="2137:2307" ph="/* ---------------------------------------------------------- ... */" />
-            <marker date="1556875534545" expanded="true" signature="2340:2534" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Dialogue.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <marker date="1556875141811" expanded="false" signature="7:188" ph="..." />
-            <marker date="1556875141811" expanded="true" signature="190:224" ph="///   ... " />
-            <marker date="1556875141811" expanded="true" signature="254:3384" ph="{...}" />
-            <marker date="1556875141811" expanded="true" signature="362:649" ph="{...}" />
-            <marker date="1556875141811" expanded="true" signature="486:571" ph="{...}" />
-            <marker date="1556875141811" expanded="true" signature="692:883" ph="{...}" />
-            <marker date="1556875141811" expanded="true" signature="796:854" ph="{...}" />
-            <marker date="1556875141811" expanded="true" signature="889:1151" ph="/* private static string[] TrawlArrayForNameProperty&lt;T&gt;(T[] pArray) ... */" />
-            <marker date="1556875141811" expanded="true" signature="1210:1491" ph="{...}" />
-            <marker date="1556875141811" expanded="true" signature="1399:1462" ph="{...}" />
-            <marker date="1556875141811" expanded="true" signature="1562:1967" ph="{...}" />
-            <marker date="1556875141811" expanded="true" signature="1854:1938" ph="{...}" />
-            <marker date="1556875141811" expanded="true" signature="2047:2234" ph="{...}" />
-            <marker date="1556875141811" expanded="true" signature="2339:2660" ph="{...}" />
-            <marker date="1556875141811" expanded="true" signature="2768:3377" ph="{...}" />
-            <marker date="1556875141811" expanded="true" signature="2783:3064" ph="/* Debug.Assert(pID &gt;= 0 &amp;&amp; pID &lt; (int)GameData.Language.TOTAL); ... */" />
-            <marker date="1556875141811" expanded="true" signature="3082:3371" ph="/* Room dialogue is just clicking next, and fetching ... */" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/GameData.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
-          <folding>
-            <marker date="1556875842836" expanded="false" signature="6:78" ph="..." />
-            <marker date="1556875842836" expanded="true" signature="108:892" ph="{...}" />
-            <marker date="1556875842836" expanded="true" signature="292:350" ph="{...}" />
-            <marker date="1556875842836" expanded="true" signature="549:676" ph="{...}" />
-            <marker date="1556875842836" expanded="true" signature="718:759" ph="{...}" />
-            <marker date="1556875842836" expanded="true" signature="805:890" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/__RemoveScript.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding>
-            <marker date="1556875859337" expanded="false" signature="6:78" ph="..." />
-            <marker date="1556875859337" expanded="true" signature="123:479" ph="{...}" />
-            <marker date="1556875859337" expanded="true" signature="195:472" ph="{...}" />
-            <marker date="1556875859337" expanded="true" signature="320:466" ph="/* GameData.SetLanguage(GameData.Language.ENGLISH); ... */" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Resources/Text/Dialogue/English/Room_1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="46" lean-forward="true" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Resources/Text/Dialogue/English/Room_2.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+          <caret line="19" column="50" lean-forward="true" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/DialogueEditor.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
-          <caret line="64" column="56" lean-forward="true" selection-start-line="64" selection-start-column="56" selection-end-line="64" selection-end-column="56" />
+          <caret line="64" column="56" selection-start-line="64" selection-start-column="56" selection-end-line="64" selection-end-column="56" />
           <folding>
             <marker date="1556875309473" expanded="false" signature="6:97" ph="..." />
             <marker date="1556875309473" expanded="true" signature="99:237" ph="/// Helper script for the custom Unity Editor, allowing each object to have specific dialogue assigned to it. ... " />
@@ -688,6 +580,96 @@
             <marker date="1556875309473" expanded="true" signature="1794:1844" ph="{...}" />
             <marker date="1556875309473" expanded="true" signature="2329:2406" ph="{...}" />
             <marker date="1556875309473" expanded="true" signature="2456:2595" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/DialogueObject.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+          <folding>
+            <marker date="1556887431654" expanded="false" signature="6:78" ph="..." />
+            <marker date="1556887431654" expanded="true" signature="180:1587" ph="{...}" />
+            <marker date="1556887431654" expanded="true" signature="277:826" ph="{...}" />
+            <marker date="1556887431654" expanded="true" signature="554:820" ph="{...}" />
+            <marker date="1556887431654" expanded="true" signature="880:951" ph="{...}" />
+            <marker date="1556887431654" expanded="true" signature="991:1229" ph="{...}" />
+            <marker date="1556887431654" expanded="true" signature="1270:1455" ph="{...}" />
+            <marker date="1556887431654" expanded="true" signature="1466:1583" ph="/* public string DialogueText ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="49" column="33" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
+          <folding>
+            <marker date="1556888225120" expanded="false" signature="6:78" ph="..." />
+            <marker date="1556888225120" expanded="true" signature="108:2655" ph="{...}" />
+            <marker date="1556888225120" expanded="true" signature="115:287" ph="/* ---------------------------------------------------------- ... */" />
+            <marker date="1556888225120" expanded="true" signature="1264:1307" ph="{...}" />
+            <marker date="1556888225120" expanded="true" signature="1318:1476" ph="/* ---------------------------------------------------------- ... */" />
+            <marker date="1556888225120" expanded="true" signature="1697:1856" ph="/* ---------------------------------------------------------- ... */" />
+            <marker date="1556888225120" expanded="true" signature="2255:2425" ph="/* ---------------------------------------------------------- ... */" />
+            <marker date="1556888225120" expanded="true" signature="2458:2652" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/GameData.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+          <folding>
+            <marker date="1556875842836" expanded="false" signature="6:78" ph="..." />
+            <marker date="1556875842836" expanded="true" signature="108:892" ph="{...}" />
+            <marker date="1556875842836" expanded="true" signature="292:350" ph="{...}" />
+            <marker date="1556875842836" expanded="true" signature="549:676" ph="{...}" />
+            <marker date="1556875842836" expanded="true" signature="718:759" ph="{...}" />
+            <marker date="1556875842836" expanded="true" signature="805:890" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/DialogueContainer.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+          <folding>
+            <marker date="1556800754010" expanded="false" signature="6:78" ph="..." />
+            <marker date="1556800754010" expanded="true" signature="110:545" ph="{...}" />
+            <marker date="1556800754010" expanded="true" signature="307:351" ph="{...}" />
+            <marker date="1556800754010" expanded="true" signature="410:443" ph="{...}" />
+            <marker date="1556800754010" expanded="true" signature="472:543" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Dialogue.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="95" column="45" lean-forward="true" selection-start-line="95" selection-start-column="45" selection-end-line="95" selection-end-column="45" />
+          <folding>
+            <marker date="1556888265909" expanded="false" signature="7:188" ph="..." />
+            <marker date="1556888265909" expanded="true" signature="190:224" ph="///   ... " />
+            <marker date="1556888265909" expanded="true" signature="254:3711" ph="{...}" />
+            <marker date="1556888265909" expanded="true" signature="362:649" ph="{...}" />
+            <marker date="1556888265909" expanded="true" signature="486:571" ph="{...}" />
+            <marker date="1556888265909" expanded="true" signature="692:883" ph="{...}" />
+            <marker date="1556888265909" expanded="true" signature="796:854" ph="{...}" />
+            <marker date="1556888265909" expanded="true" signature="889:1151" ph="/* private static string[] TrawlArrayForNameProperty&lt;T&gt;(T[] pArray) ... */" />
+            <marker date="1556888265909" expanded="true" signature="1210:1491" ph="{...}" />
+            <marker date="1556888265909" expanded="true" signature="1399:1462" ph="{...}" />
+            <marker date="1556888265909" expanded="true" signature="1562:1967" ph="{...}" />
+            <marker date="1556888265909" expanded="true" signature="1854:1938" ph="{...}" />
+            <marker date="1556888265909" expanded="true" signature="2047:2234" ph="{...}" />
+            <marker date="1556888265909" expanded="true" signature="2339:2549" ph="{...}" />
+            <marker date="1556888265909" expanded="true" signature="2633:2982" ph="{...}" />
+            <marker date="1556888265909" expanded="true" signature="3095:3704" ph="{...}" />
+            <marker date="1556888265909" expanded="true" signature="3110:3391" ph="/* Debug.Assert(pID &gt;= 0 &amp;&amp; pID &lt; (int)GameData.Language.TOTAL); ... */" />
+            <marker date="1556888265909" expanded="true" signature="3409:3698" ph="/* Room dialogue is just clicking next, and fetching ... */" />
           </folding>
         </state>
       </provider>

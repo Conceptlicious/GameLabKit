@@ -7,7 +7,6 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="5.Scripts" t="Include">
-          <e p="__RemoveScript.cs" t="Include" />
           <e p="CameraControl.cs" t="Include" />
           <e p="Dialogue.cs" t="Include" />
           <e p="DialogueContainer.cs" t="Include" />
@@ -35,6 +34,14 @@
           <e p="Mini-Games" t="Include">
             <e p="Room 2" t="Include">
               <e p="HiddenObject.cs" t="Include" />
+            </e>
+            <e p="Room 3" t="Include">
+              <e p="CustomInspectorGrid.cs" t="Include" />
+              <e p="DotPath.cs" t="Include" />
+              <e p="Grid.cs" t="Include" />
+              <e p="GridMapStruct.cs" t="Include" />
+              <e p="Tile.cs" t="Include" />
+              <e p="TileSettings.cs" t="Include" />
             </e>
             <e p="Room 4" t="Include">
               <e p="ConveyorBeltMovement.cs" t="Include" />

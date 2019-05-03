@@ -48,6 +48,7 @@ public static class Settings
     //----------------------------------------------------------
     public const string ERR_ASSERT_DIAG_CONTAINERS_NULL           = "Fetching null dialogue containers that have not been created and filled.";
     public const string ERR_ASSERT_DIAG_CONTAINERS_INVALID_INDEX  = "Trying to fetch dialogue containers with invalid index.";
+    public const string ERR_DIALOGUE_INVALID_INDEX               = "Trying to fetch dialogue with an invalid index.";
     
     //----------------------------------------------------------
     //                    ROOM DATA & VALUES

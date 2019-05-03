@@ -41,6 +41,14 @@ public class DialogueObject : MonoBehaviour
         info.fieldIndex = newIndex;
         return str;
     }
+
+    public string GetTextAt(int pIndex)
+    {
+        string str = Dialogue.GetTextAt(info.fileIndex, info.containerIndex, pIndex);
+        info.dialogueText = str;
+        info.fieldIndex = pIndex;
+        return str;
+    }
     
 
     /*public string DialogueText

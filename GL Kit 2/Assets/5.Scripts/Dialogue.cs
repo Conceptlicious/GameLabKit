@@ -87,12 +87,24 @@ public static class Dialogue
 
     public static string GetNextText(int pFileID, int pContainerID, int pFieldIndex, out int pNewIndex)
     {
-        string text = Settings.STR_DEFAULT_DIALOGUE;
         string[] keyNames = GetKeyNames(pFileID, pContainerID);
+        
         pNewIndex = (pFieldIndex + 1) % keyNames.Length;
-        files[pFileID].GetContainer(pContainerID).GetInfoDictionary().TryGetValue(keyNames[pNewIndex], out text);
+        return GetText(pFileID, pContainerID, keyNames[pNewIndex]);
+    }
+
+    public static string GetTextAt(int pFileID, int pContainerID, int pFieldIndex)
+    {
+
+        string[] keyNames = GetKeyNames(pFileID, pContainerID);
+        pFieldIndex = pFieldIndex >= 0 && pFieldIndex < keyNames.Length ? pFieldIndex : -1;
+        string text = pFieldIndex == -1
+            ? Settings.ERR_DIALOGUE_INVALID_INDEX
+            : GetText(pFileID, pContainerID, keyNames[pFieldIndex]);
         return text;
     }
+
+   
     
 
    
