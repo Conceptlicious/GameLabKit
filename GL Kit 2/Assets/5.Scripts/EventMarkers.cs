@@ -2,11 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CustomEventCallbacks;
-using EventType = CustomEventCallbacks.EventType;
 using GameLab;
+using System;
+
+[Serializable]
+public struct EventMarker
+{
+    public string Marker;
+    [ClassExtends(typeof(GameLabEvent))] public ClassTypeReference EventType;
+}
+
+/************************************************************************/
+/* TODO
+ * -Add the ability to raise events with a type instance in event manager
+ * -Make it so that the correct marker raises its associated event type 
+ * (could be done through a helper method in the struct ;) )
+ * -???
+ * -Profit
+ */
+/************************************************************************/
 
 public class EventMarkers : MonoBehaviour
 {
+    [SerializeField] private List<EventMarker> eventMarkers = new List<EventMarker>();
+
     [Tooltip("No protection is currently enabled.")]
     [SerializeField] private bool enableEventMarking = false;
     
@@ -17,20 +36,13 @@ public class EventMarkers : MonoBehaviour
     [SerializeField] private string[] markers;
     
     [Tooltip("Type of event to be fired when specified marker is detected.")]
-    [SerializeField] private EventType[] events;
+    [SerializeField, ClassExtends(typeof(GameLabEvent))] private ClassTypeReference[] events;
 
-    private Dictionary<string, EventType> markedEvents = new Dictionary<string, EventType>();
+  //  private Dictionary<string, EventType> markedEvents = new Dictionary<string, EventType>();
 
-    // Start is called before the first frame update
     void Start()
     {
         registerAllListeners();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     
     /// <summary>
@@ -51,7 +63,7 @@ public class EventMarkers : MonoBehaviour
             if (enableEventMarking)
             {
                 GenericEvent genericInfo = new GenericEvent(EventSystem.DESC_EVENT_GENERIC);
-                EventSystem.ExecuteEvent(markedEvents[info.marker], genericInfo);
+                //EventSystem.ExecuteEvent(markedEvents[info.marker], genericInfo);
             }
         }
         else
@@ -60,7 +72,7 @@ public class EventMarkers : MonoBehaviour
         }    
         
     }
-    
+    /*
     void OnValidate()
     {
         //Cache marker length
@@ -83,10 +95,10 @@ public class EventMarkers : MonoBehaviour
         if (oldEventsLength != markerLength)
         {
             //Save the event list in a temporary array so we can resize the event list
-            EventType[] temp = events;
+            ClassTypeReference[] temp = events;
             
             //Set the events size to the size of the marker list
-            events = new EventType[markerLength];
+            events = new ClassTypeReference[markerLength];
             
             //Depending on if markers got expanded or contracted
             int loopLength = oldEventsLength > markers.Length ? markers.Length : oldEventsLength;
@@ -101,7 +113,8 @@ public class EventMarkers : MonoBehaviour
             {
                 for (int i = oldEventsLength; i < markerLength - oldEventsLength; i++)
                 {
-                    events[i] = EventType.GENERIC_EVENT;
+                    //events[i] = EventType.GENERIC_EVENT;
+                    //events[i] =
                 }
             }
 
@@ -112,6 +125,6 @@ public class EventMarkers : MonoBehaviour
             }
         }
     }
-    
+    */
     
 }
