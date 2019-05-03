@@ -24,7 +24,8 @@ public static class Dialogue
         {
             files[i] = JsonParser.ParseJSONFile(pLevelNames[i]);
         }
-
+        
+        //Turn into event
         GameData.Initialised = true;
     }
 
@@ -83,6 +84,16 @@ public static class Dialogue
         files[pFileID].GetContainer(pContainerID).GetInfoDictionary().TryGetValue(pField, out text);
         return text;
     }
+
+    public static string GetNextText(int pFileID, int pContainerID, int pFieldIndex, out int pNewIndex)
+    {
+        string text = Settings.STR_DEFAULT_DIALOGUE;
+        string[] keyNames = GetKeyNames(pFileID, pContainerID);
+        pNewIndex = (pFieldIndex + 1) % keyNames.Length;
+        files[pFileID].GetContainer(pContainerID).GetInfoDictionary().TryGetValue(keyNames[pNewIndex], out text);
+        return text;
+    }
+    
 
    
     //when language change event fires, reload dialogue

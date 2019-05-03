@@ -7,25 +7,33 @@ public static class Settings
     //----------------------------------------------------------
     //                    PATHS AND EXTENSIONS
     //----------------------------------------------------------
-    public const string STR_DEFAULT_DIALOGUE                   = "...";
-    public const string STR_EVENT_FIRED                        = "Event Fired on premise: ";
-    public const string STR_WARNING_EVENT_CHAIN_GENERIC_INFO   = "WARNING: Events fired via markers use only generic info.";
-    
-    public const string FLTYPE_TEXT                            = ".txt";
-    public const string FLTYPE_JSON                            = ".json";
-    public const string FLTYPE_JSON_META                       = ".json.meta";
-    
-    public const string PATH_TEXT_FILES                        = "Text/";
-    public const string PATH_DIALOGUE                          = "Dialogue/";
-    public const string PATH_PREFABS                           = "Prefabs/";
-    public const string PATH_ASSETS_RESOURCES                  = "Assets/Resources/";
-    
-    public const string OBJ_NAME_BLANK_GAMEOBJECT              = "BlankGameObject";
+    public const string STR_DEFAULT_DIALOGUE = "...";
+    public const string STR_EVENT_FIRED = "Event Fired on premise: ";
 
-    public const string JSON_DEF_IDENTIFIER_KEYWORDS           = "identifierKeywords";
-    public const string JSON_DEF_DEFINED_ARRAYS                = "definedArrays";
+    public const string STR_WARNING_EVENT_CHAIN_GENERIC_INFO =
+        "WARNING: Events fired via markers use only generic info.";
 
-    public const string DEFAULT_EVENTMARKER_MARKER             = "#";
+    public const string FLTYPE_TEXT = ".txt";
+    public const string FLTYPE_JSON = ".json";
+    public const string FLTYPE_JSON_META = ".json.meta";
+
+    public const string PATH_TEXT_FILES = "Text/";
+    public const string PATH_DIALOGUE = "Dialogue/";
+    public const string PATH_PREFABS = "Prefabs/";
+    public const string PATH_ASSETS_RESOURCES = "Assets/Resources/";
+
+    public const string OBJ_NAME_BLANK_GAMEOBJECT = "BlankGameObject";
+
+    public const string JSON_DEF_IDENTIFIER_KEYWORDS = "identifierKeywords";
+    public const string JSON_DEF_DEFINED_ARRAYS = "definedArrays";
+
+    public const string DEFAULT_EVENTMARKER_MARKER = "#";
+
+    public static readonly string[] LEVEL_NAMES = new string[]
+    {
+        "Room_1", 
+        "Room_2"
+    };
     
     //----------------------------------------------------------
     //                    VALUES

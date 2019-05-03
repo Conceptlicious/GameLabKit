@@ -15,11 +15,14 @@ public static class GameData
         TOTAL
     };
 
-    private static Language gameLanguage = Language.ENGLISH;
+    private static Language gameLanguage = SetLanguage(Language.ENGLISH);
 
-    public static void SetLanguage(Language pLanguage)
+    //Returns itself so an initial set is done at compile time
+    public static Language SetLanguage(Language pLanguage)
     {
         gameLanguage = pLanguage;
+        Dialogue.LoadAllText(Settings.LEVEL_NAMES);
+        return gameLanguage;
     }
 
     public static Language GetLanguage()

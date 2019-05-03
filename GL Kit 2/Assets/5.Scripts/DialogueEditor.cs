@@ -74,11 +74,17 @@ public class DialogueEditor : Editor {
         keyNames = Dialogue.GetKeyNames(fileNameIndex, containerNameIndex);
         keyNameIndex = EditorGUILayout.Popup(keyNameIndex, keyNames);
 
-        dialogueObject.DialogueText = Dialogue.GetText(fileNameIndex, containerNameIndex, keyNames[keyNameIndex]);
+       // DialogueObject.TextInfo ti = new DialogueObject.TextInfo(fileNameIndex, containerNameIndex, keyNames[keyNameIndex], keyNameIndex);
+        dialogueObject.Info = new DialogueObject.TextInfo(fileNameIndex, containerNameIndex, keyNames[keyNameIndex], keyNameIndex);
         
         if(GUILayout.Button("Print Dialogue"))
         {
-            Debug.Log(dialogueObject.DialogueText);
+            Debug.Log(dialogueObject.Info.dialogueText);
+        }
+        if(GUILayout.Button("Progress Dialogue"))
+        {
+            Debug.Log(dialogueObject.GetNextInContainer());
+            keyNameIndex = dialogueObject.Info.fieldIndex;
         }
        
 
