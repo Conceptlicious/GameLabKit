@@ -11,11 +11,12 @@ public class DialogueManager : MonoBehaviour
 
 	[SerializeField]QuestionManager questionManager;
 
-	FileStream fileStream;
-	StreamReader reader;
-	string currentDialogue;
+	private FileStream fileStream;
+	private StreamReader reader;
+	private string currentDialogue;
 	public string CurrentDialogue => currentDialogue;
-	int currentDialogueIndex = -1;
+	private int currentDialogueIndex = -1;
+	private int amountOfDialogues = 13;
 	#endregion
 
 	private void Awake()
@@ -27,7 +28,7 @@ public class DialogueManager : MonoBehaviour
 	{		
 		currentDialogueIndex++;
 
-		if (currentDialogueIndex <= 13 && !questionManager.needsAwnser)
+		if (currentDialogueIndex <= amountOfDialogues && !questionManager.needsAwnser)
 		{
 			fileStream = File.OpenRead(Path.Combine(LoadingPaths.PATH_DIALOGUE, LoadingPaths.FILE_NAME_DIALOGUE) + currentDialogueIndex + LoadingPaths.FILE_TYPE);
 			reader = new StreamReader(fileStream);

@@ -7,10 +7,10 @@ public class ConveyorBeltMovement : MonoBehaviour
 	#region Varibles	
 	[HideInInspector] public int currentPlatformIndex;
 
-	[SerializeField] List<GameObject> platforms = new List<GameObject>();
+	[SerializeField] private List<GameObject> platforms = new List<GameObject>();
 
-	Vector3 beginSwipePosition, endSwipePosition;
-	float minimumHeight = 104f;
+	private Vector3 beginSwipePosition, endSwipePosition;
+	private float minimumHeight = 104f;
 	#endregion
 
 	private void Start()

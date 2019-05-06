@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class QuestionManager : MonoBehaviour
 {
-	#region Varibles
+	#region Variables
 	private const string wrongAwnserMessage = "That is not the right awnser.\nPlease try again.";
 
 	[HideInInspector] public bool needsAwnser = false;
