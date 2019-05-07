@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GameLab;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public enum FunType
 {
@@ -11,30 +11,25 @@ public enum FunType
 	SeriousFun
 };
 
-public class UIHandler : MonoBehaviour
+public class UIHandler : Singleton<UIHandler>
 {
-	public Text typeText = null;
+	private const int otherChildsInHandler = 2;
 
-	[SerializeField] private Transform dropZonesObject = null;
-	[SerializeField] private Transform gearsObject = null;
-	public Transform GearsObject => gearsObject;
-	[SerializeField] private List<GameObject> funTypeTabs = new List<GameObject>();
+	public Transform GearsObject { get; private set; }
+	public Text TypeText { get; set; }
+	private Transform dropZonesObject = null;
+	private List<GameObject> funTypeTabs = new List<GameObject>();
 
 	private void Start()
 	{
-		ButtonManager.Instance.easyFun.onClick.AddListener(() => ChangeFunType(FunType.EasyFun));
-		ButtonManager.Instance.peopleFun.onClick.AddListener(() => ChangeFunType(FunType.PeopleFun));
-		ButtonManager.Instance.hardFun.onClick.AddListener(() => ChangeFunType(FunType.HardFun));
-		ButtonManager.Instance.seriousFun.onClick.AddListener(() => ChangeFunType(FunType.SeriousFun));
-
-		ChangeFunType(FunType.EasyFun);
+		SetVariables();
 	}
 
 	public void StartGearRotation()
 	{
 		if (DropZone.OccupiedPlaces == 3)
 		{
-			foreach (Transform child in gearsObject)
+			foreach (Transform child in GearsObject)
 			{
 				child.GetComponent<GearInformation>().isAbleToRotate = true;
 
@@ -65,47 +60,47 @@ public class UIHandler : MonoBehaviour
 		switch (funType)
 		{
 			case FunType.EasyFun:
-				dropZones[0].NeededType = GearType.Exploration;
-				dropZones[1].NeededType = GearType.Fantasy;
-				dropZones[2].NeededType = GearType.Creativity;
+				dropZones[0].neededType = GearType.Exploration;
+				dropZones[1].neededType = GearType.Fantasy;
+				dropZones[2].neededType = GearType.Creativity;
 
 				DisableTypeTabs();
 				funTypeTabs[0].SetActive(true);
-				gearsObject = funTypeTabs[0].transform;
-				typeText.text = "Easy Fun";
+				GearsObject = funTypeTabs[0].transform;
+				TypeText.text = "Easy Fun";
 				break;
 
 			case FunType.PeopleFun:
-				dropZones[0].NeededType = GearType.Communication;
-				dropZones[1].NeededType = GearType.Cooperation;
-				dropZones[2].NeededType = GearType.Competition;
+				dropZones[0].neededType = GearType.Communication;
+				dropZones[1].neededType = GearType.Cooperation;
+				dropZones[2].neededType = GearType.Competition;
 
 				DisableTypeTabs();
 				funTypeTabs[1].SetActive(true);
-				gearsObject = funTypeTabs[1].transform;
-				typeText.text = "People Fun";
+				GearsObject = funTypeTabs[1].transform;
+				TypeText.text = "People Fun";
 				break;
 
 			case FunType.HardFun:
-				dropZones[0].NeededType = GearType.Goals;
-				dropZones[1].NeededType = GearType.Obstacles;
-				dropZones[2].NeededType = GearType.Stategy;
+				dropZones[0].neededType = GearType.Goals;
+				dropZones[1].neededType = GearType.Obstacles;
+				dropZones[2].neededType = GearType.Stategy;
 
 				DisableTypeTabs();
 				funTypeTabs[2].SetActive(true);
-				gearsObject = funTypeTabs[2].transform;
-				typeText.text = "Hard Fun";
+				GearsObject = funTypeTabs[2].transform;
+				TypeText.text = "Hard Fun";
 				break;
 
 			case FunType.SeriousFun:
-				dropZones[0].NeededType = GearType.Learing;
-				dropZones[1].NeededType = GearType.Rhythm;
-				dropZones[2].NeededType = GearType.Collection;
+				dropZones[0].neededType = GearType.Learing;
+				dropZones[1].neededType = GearType.Rhythm;
+				dropZones[2].neededType = GearType.Collection;
 
 				DisableTypeTabs();
 				funTypeTabs[3].SetActive(true);
-				gearsObject = funTypeTabs[3].transform;
-				typeText.text = "Serious Fun";
+				GearsObject = funTypeTabs[3].transform;
+				TypeText.text = "Serious Fun";
 				break;
 		}
 	}
@@ -116,5 +111,23 @@ public class UIHandler : MonoBehaviour
 		funTypeTabs[1].SetActive(false);
 		funTypeTabs[2].SetActive(false);
 		funTypeTabs[3].SetActive(false);
+	}
+
+	private void SetVariables()
+	{
+		TypeText = GetComponentInChildren<Text>();
+
+		for (int i = 0; i < transform.childCount - otherChildsInHandler; i++)
+		{
+			funTypeTabs.Add(transform.GetChild(i).gameObject);
+		}
+
+		dropZonesObject = transform.Find("DropZones");
+
+		ButtonManager.Instance.EasyFun.onClick.AddListener(() => ChangeFunType(FunType.EasyFun));
+		ButtonManager.Instance.PeopleFun.onClick.AddListener(() => ChangeFunType(FunType.PeopleFun));
+		ButtonManager.Instance.HardFun.onClick.AddListener(() => ChangeFunType(FunType.HardFun));
+		ButtonManager.Instance.SeriousFun.onClick.AddListener(() => ChangeFunType(FunType.SeriousFun));
+		ChangeFunType(FunType.EasyFun);
 	}
 }

@@ -1,18 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GameLab;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DisplayPlatformInformation : MonoBehaviour
+public class DisplayPlatformInformation : Singleton<DisplayPlatformInformation>
 {
-	#region Varibles
-	[SerializeField] Text platformInformationText;
-	[SerializeField] Text platformTypeText;
-	#endregion
+	private Text platformInformationText;
+	private Text platformTypeText;
 
-	public void UpdateInformationText(string pPlatformInformation, string pPlatformType)
+	protected override void Awake()
 	{
-		platformInformationText.text = pPlatformInformation;
-		platformTypeText.text = pPlatformType;
+		base.Awake();
+		platformInformationText = transform.Find("Background_InfoText").GetComponentInChildren<Text>();
+		platformTypeText = transform.Find("Background_TypeText").GetComponentInChildren<Text>();
+	}
+
+	public void UpdateInformationText(string platformInformation, string platformType)
+	{
+		platformInformationText.text = platformInformation;
+		platformTypeText.text = platformType;
 	}
 }

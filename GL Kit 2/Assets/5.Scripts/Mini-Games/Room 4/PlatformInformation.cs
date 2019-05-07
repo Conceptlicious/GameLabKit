@@ -16,11 +16,7 @@ public enum PlatformType
 
 public class PlatformInformation : MonoBehaviour
 {
-	#region Varibles
-	[SerializeField] DisplayPlatformInformation displayPlatformInformation;
-
-	string platformInformation;
-	#endregion
+	private static string platformInformation;
 
 	public void LoadInformation(int pCurrentIndex)
 	{
@@ -35,7 +31,7 @@ public class PlatformInformation : MonoBehaviour
 						platformInformation = textReader.ReadToEnd();
 					}
 				}
-				displayPlatformInformation.UpdateInformationText(platformInformation, "Virtual Reality");
+				DisplayPlatformInformation.Instance.UpdateInformationText(platformInformation, "Virtual Reality");
 				break;
 
 			case (int)PlatformType.AugmentedReality:
@@ -47,7 +43,7 @@ public class PlatformInformation : MonoBehaviour
 						platformInformation = textReader.ReadToEnd();
 					}
 				}
-				displayPlatformInformation.UpdateInformationText(platformInformation, "Augmented Reality");
+				DisplayPlatformInformation.Instance.UpdateInformationText(platformInformation, "Augmented Reality");
 				break;
 
 			case (int)PlatformType.Mobile:
@@ -59,7 +55,7 @@ public class PlatformInformation : MonoBehaviour
 						platformInformation = textReader.ReadToEnd();
 					}
 				}
-				displayPlatformInformation.UpdateInformationText(platformInformation, "Mobile");
+				DisplayPlatformInformation.Instance.UpdateInformationText(platformInformation, "Mobile");
 				break;
 
 			case (int)PlatformType.PC:
@@ -71,7 +67,7 @@ public class PlatformInformation : MonoBehaviour
 						platformInformation = textReader.ReadToEnd();
 					}
 				}
-				displayPlatformInformation.UpdateInformationText(platformInformation, "PC");
+				DisplayPlatformInformation.Instance.UpdateInformationText(platformInformation, "PC");
 				break;
 
 			case (int)PlatformType.Exergames:
@@ -83,7 +79,7 @@ public class PlatformInformation : MonoBehaviour
 						platformInformation = textReader.ReadToEnd();
 					}
 				}
-				displayPlatformInformation.UpdateInformationText(platformInformation, "Exergame");
+				DisplayPlatformInformation.Instance.UpdateInformationText(platformInformation, "Exergame");
 				break;
 
 			case (int)PlatformType.Tabletop:
@@ -95,7 +91,7 @@ public class PlatformInformation : MonoBehaviour
 						platformInformation = textReader.ReadToEnd();
 					}
 				}
-				displayPlatformInformation.UpdateInformationText(platformInformation, "Tabletop");
+				DisplayPlatformInformation.Instance.UpdateInformationText(platformInformation, "Tabletop");
 				break;
 
 			case (int)PlatformType.Console:
@@ -107,7 +103,7 @@ public class PlatformInformation : MonoBehaviour
 						platformInformation = textReader.ReadToEnd();
 					}
 				}
-				displayPlatformInformation.UpdateInformationText(platformInformation, "Console");
+				DisplayPlatformInformation.Instance.UpdateInformationText(platformInformation, "Console");
 				break;
 
 			case (int)PlatformType.Wearables:
@@ -119,7 +115,7 @@ public class PlatformInformation : MonoBehaviour
 						platformInformation = textReader.ReadToEnd();
 					}
 				}
-				displayPlatformInformation.UpdateInformationText(platformInformation, "Wearables");
+				DisplayPlatformInformation.Instance.UpdateInformationText(platformInformation, "Wearables");
 				break;
 
 			case (int)PlatformType.Web:
@@ -131,7 +127,7 @@ public class PlatformInformation : MonoBehaviour
 						platformInformation = textReader.ReadToEnd();
 					}
 				}
-				displayPlatformInformation.UpdateInformationText(platformInformation, "Web");
+				DisplayPlatformInformation.Instance.UpdateInformationText(platformInformation, "Web");
 				break;
 		}
 	}

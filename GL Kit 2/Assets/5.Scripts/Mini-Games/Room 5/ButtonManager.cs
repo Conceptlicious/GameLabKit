@@ -7,21 +7,16 @@ using GameLab;
 
 public class ButtonManager : Singleton<ButtonManager>
 {
-	public Button easyFun;
-	public Button peopleFun;
-	public Button hardFun;
-	public Button seriousFun;
-
-	[SerializeField] private UIHandler uiHandler = null;
-	
+	public Button EasyFun { get; private set; }
+	public Button PeopleFun { get; private set; }
+	public Button HardFun { get; private set; }
+	public Button SeriousFun { get; private set; }
 	private int activeButtonCount = 1;
 
-	private void Start()
+	protected override void Awake()
 	{
-		easyFun.enabled = true;
-		peopleFun.enabled = false;
-		hardFun.enabled = false;
-		seriousFun.enabled = false;
+		base.Awake();
+		SetVariables();	   		
 	}
 
 	public void EnableNextButton()
@@ -30,17 +25,30 @@ public class ButtonManager : Singleton<ButtonManager>
 		switch(activeButtonCount)
 		{
 			case 2:
-				peopleFun.enabled = true;
+				PeopleFun.enabled = true;
 				break;
 			case 3:
-				hardFun.enabled = true;
+				HardFun.enabled = true;
 				break;
 			case 4:
-				seriousFun.enabled = true;
+				SeriousFun.enabled = true;
 				break;
 			case 5:
-				uiHandler.typeText.text = "You won the minigame!";
+				UIHandler.Instance.TypeText.text = "You won the minigame!";
 				break;
 		}
+	}
+
+	private void SetVariables()
+	{
+		EasyFun = transform.Find("EasyFun").GetComponent<Button>();
+		PeopleFun = transform.Find("PeopleFun").GetComponent<Button>();
+		HardFun = transform.Find("HardFun").GetComponent<Button>();
+		SeriousFun = transform.Find("SeriousFun").GetComponent<Button>();
+
+		EasyFun.enabled = true;  
+		PeopleFun.enabled = false;
+		HardFun.enabled = false;
+		SeriousFun.enabled = false;
 	}
 }

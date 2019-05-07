@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public enum GearType
 {
@@ -24,16 +23,24 @@ public enum GearType
 
 public class GearInformation : MonoBehaviour
 {
-	#region Variables
-	[HideInInspector] public bool isAbleToRotate { get; set; } = false;
-
-	[SerializeField] private bool invertRotation = false;
 	[SerializeField] private GearType gearType = default;
 	public GearType GetGearType => gearType;
 
-	private int rotationSpeed = 50;
-	private float timeForRotationToStop = 2f;
-	#endregion
+	[SerializeField] private bool invertRotation = false;
+	[SerializeField] private int rotationSpeed = 50;
+	[SerializeField] private float timeForRotationToStop = 2f;
+	[HideInInspector] public bool isAbleToRotate = false;
+
+	public void StopGearRotationMethod()
+	{
+		StartCoroutine(StopGearRotation());
+	}
+
+	private IEnumerator StopGearRotation()
+	{
+		yield return new WaitForSeconds(timeForRotationToStop);
+		isAbleToRotate = false;
+	}
 
 	private void Update()
 	{
@@ -48,16 +55,5 @@ public class GearInformation : MonoBehaviour
 				transform.Rotate(Vector3.back * (Time.deltaTime * rotationSpeed));
 			}
 		}
-	}
-
-	public void StopGearRotationMethod()
-	{
-		StartCoroutine(StopGearRotation());
-	}
-
-	private IEnumerator StopGearRotation()
-	{		
-		yield return new WaitForSeconds(timeForRotationToStop);
-		isAbleToRotate = false;
 	}
 }

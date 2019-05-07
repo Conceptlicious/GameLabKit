@@ -1,61 +1,61 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GameLab;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
-public class QuestionManager : MonoBehaviour
+public class QuestionManager : Singleton<QuestionManager>
 {
-	#region Variables
 	private const string wrongAwnserMessage = "That is not the right awnser.\nPlease try again.";
+	private const float timeWrongMessageDisplayed = 3f;
 
 	[HideInInspector] public bool needsAwnser = false;
 	[HideInInspector] public int questionIndex = -1;
+	private Dictionary<int, int> rightAwners = new Dictionary<int, int>();
 
-	[SerializeField] DialogueManager dialogueManager;
-	[SerializeField] ConveyorBeltMovement conveyorBeltMovement;
 
-	Dictionary<int, int> rightAwners = new Dictionary<int, int>();
-	float timeWrongMessageDisplayed = 3f;
-	#endregion
 
-	private void Awake()
+	protected override void Awake()
 	{
-		#region Adding the right awnsers to the dictonary.
-		rightAwners.Add(0, 7);
-		rightAwners.Add(1, 3);
-		rightAwners.Add(2, 8);
-		rightAwners.Add(3, 5);
-		rightAwners.Add(4, 1);
-		#endregion
+		base.Awake();
+		SetVariables();
 	}
 
 	public void CheckAwnser()
 	{
 		if (needsAwnser)
-		{			
-
-			int awnser = conveyorBeltMovement.currentPlatformIndex;
+		{
+			int awnser = ConveyorBeltMovement.Instance.CurrentPlatformIndex;
 
 			if (awnser == rightAwners[questionIndex])
 			{
 				needsAwnser = false;
-				dialogueManager.Read();
+				DialogueManager.Instance.Read();
 			}
 			else
 			{
-				StartCoroutine(DisplayWrongAwnserMessage(dialogueManager.CurrentDialogue));
+				StartCoroutine(DisplayWrongAwnserMessage(DialogueManager.Instance.CurrentDialogue));
 			}
 		}
 	}
 
 	private IEnumerator DisplayWrongAwnserMessage(string lastQuestion)
 	{
-		dialogueManager.dialogueText.color = Color.red;
-		dialogueManager.dialogueText.text = wrongAwnserMessage;
+		DialogueManager.Instance.dialogueText.color = Color.red;
+		DialogueManager.Instance.dialogueText.text = wrongAwnserMessage;
 
 		yield return new WaitForSeconds(timeWrongMessageDisplayed);
 
-		dialogueManager.dialogueText.color = Color.cyan;
-		dialogueManager.dialogueText.text = lastQuestion;
+		DialogueManager.Instance.dialogueText.color = Color.cyan;
+		DialogueManager.Instance.dialogueText.text = lastQuestion;
 
+	}
+
+	private void SetVariables()
+	{
+		rightAwners.Add(0, (int)PlatformType.Exergames);
+		rightAwners.Add(1, (int)PlatformType.VirtualReality);
+		rightAwners.Add(2, (int)PlatformType.AugmentedReality);
+		rightAwners.Add(3, (int)PlatformType.Console);
+		rightAwners.Add(4, (int)PlatformType.Wearables);
 	}
 }
