@@ -50,6 +50,14 @@
               <e p="PlatformInformation.cs" t="Include" />
               <e p="QuestionManager.cs" t="Include" />
             </e>
+            <e p="Room 5" t="Include">
+              <e p="ButtonManager.cs" t="Include" />
+              <e p="DragAndDrop.cs" t="Include" />
+              <e p="DropZone.cs" t="Include" />
+              <e p="GearInformation.cs" t="Include" />
+              <e p="GridHandler.cs" t="Include" />
+              <e p="UIHandler.cs" t="Include" />
+            </e>
           </e>
           <e p="OnTouchDown.cs" t="Include" />
           <e p="RoomManager.cs" t="Include" />

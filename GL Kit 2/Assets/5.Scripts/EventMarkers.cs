@@ -22,11 +22,23 @@ public class EventMarkers : Singleton<EventMarkers>
     {
         for (int i = 0; i < couplings.Length; i++)
         {
-            if (pText.Contains(couplings[i].marker))
+            if (pText.Contains(couplings[i].marker) && couplings[i].eventToCall != null)
             {
                 EventManager.Instance.RaiseEvent(  Activator.CreateInstance(couplings[i].eventToCall) as GameLabEvent );
             }
         }
     }
+
+    void OnValidate()
+    {
+        for (int i = 0; i < couplings.Length; i++)
+        {
+            if (String.IsNullOrEmpty(couplings[i].marker))
+            {
+                couplings[i].marker = Settings.STR_DEFAULT_DIALOGUE;
+            }       
+        }
+    }
+    
    
 }
