@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using Newtonsoft.Json.Bson;
 
 namespace GameLab
 {
 	[DisallowMultipleComponent]
 	public class EventManager : Manager<EventManager>
 	{
-		protected Dictionary<Type, List<EventHandler>> evenTypesToHandlers = new Dictionary<Type, List<EventHandler>>();
+		protected Dictionary<Type, List<EventHandler>> eventTypesToHandlers = new Dictionary<Type, List<EventHandler>>();
 
 		/// <summary>
 		/// Raises an event of type <typeparamref name="TEvent"/> with the <paramref name="eventToRaise"/> event information.
@@ -89,12 +90,12 @@ namespace GameLab
 
 		private void AddListenerInternal<TEvent>(EventHandler handler) where TEvent : GameLabEvent
 		{
-			if(!evenTypesToHandlers.ContainsKey(typeof(TEvent)))
+			if(!eventTypesToHandlers.ContainsKey(typeof(TEvent)))
 			{
-				evenTypesToHandlers.Add(typeof(TEvent), new List<EventHandler>());
+				eventTypesToHandlers.Add(typeof(TEvent), new List<EventHandler>());
 			}
 
-			List<EventHandler> handlers = evenTypesToHandlers[typeof(TEvent)];
+			List<EventHandler> handlers = eventTypesToHandlers[typeof(TEvent)];
 			handlers.Add(handler);
 
 			handlers.Sort((firstHandler, secondHandler) => secondHandler.PriorityOrder.CompareTo(firstHandler.PriorityOrder));
@@ -110,7 +111,7 @@ namespace GameLab
 
 		private List<EventHandler> GetEventHandlers<TEvent>() where TEvent : GameLabEvent
 		{
-			if(!evenTypesToHandlers.TryGetValue(typeof(TEvent), out List<EventHandler> handlers))
+			if(!eventTypesToHandlers.TryGetValue(typeof(TEvent), out List<EventHandler> handlers))
 			{
 				return null;
 			}

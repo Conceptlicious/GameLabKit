@@ -79,7 +79,7 @@ public class DialogueEditor : Editor {
         
         if(GUILayout.Button("Print Dialogue"))
         {
-            Debug.Log(dialogueObject.Info.dialogueText);
+            Debug.Log(dialogueObject.Info.DialogueText);
         }
         if(GUILayout.Button("Progress Dialogue"))
         {

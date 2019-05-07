@@ -31,10 +31,18 @@ public static class Dialogue
 
     public static string[] GetFileNames()
     {
-        string[] names = new string[files.Length];
-        for (int i = 0; i < files.Length; i++)
+        string[] names = new string[1];
+        if (files != null)
         {
-            names[i] = files[i].Name;
+            names = new string[files.Length];
+            for (int i = 0; i < files.Length; i++)
+            {
+                names[i] = files[i].Name;
+            }
+        }
+        else
+        {
+            names[0] = Settings.STR_DEFAULT_DIALOGUE;
         }
 
         return names;

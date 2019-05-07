@@ -9,7 +9,7 @@ public class DialogueObject : MonoBehaviour
 
     public struct TextInfo
     {
-        public string dialogueText;
+        private string dialogueText;
         public int fileIndex;
         public int containerIndex;
         public string fieldName;
@@ -22,6 +22,12 @@ public class DialogueObject : MonoBehaviour
             fieldName = pFieldName;
             fieldIndex = pFieldIndex;
             dialogueText = Dialogue.GetText(fileIndex, containerIndex, fieldName);
+        }
+
+        public string DialogueText
+        {
+            get { EventMarkers.Instance.ParseAndCall(dialogueText); return dialogueText; }
+            set { dialogueText = value; }
         }
     }
 
@@ -37,7 +43,7 @@ public class DialogueObject : MonoBehaviour
     {
         int newIndex = 0;
         string str = Dialogue.GetNextText(info.fileIndex, info.containerIndex, info.fieldIndex, out newIndex);
-        info.dialogueText = str;
+        info.DialogueText = str;
         info.fieldIndex = newIndex;
         return str;
     }
@@ -45,7 +51,7 @@ public class DialogueObject : MonoBehaviour
     public string GetTextAt(int pIndex)
     {
         string str = Dialogue.GetTextAt(info.fileIndex, info.containerIndex, pIndex);
-        info.dialogueText = str;
+        info.DialogueText = str;
         info.fieldIndex = pIndex;
         return str;
     }
