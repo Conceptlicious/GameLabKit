@@ -1,37 +1,33 @@
 ﻿using UnityEngine.UI;
+using UnityEngine;
 using GameLab;
 
 public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 {
-	Slider ageSilder = null;
+	Slider ageSilderMin = null;
+	Slider ageSilderMax = null;
 	Text targetAudienceText = null;
-
-
-	private void Start()
-	{
-		SetVariables();
-		UpdateAgeSlider();
-	}
-
+	
 	public void UpdateAgeSlider()
 	{
-		int age = (int)ageSilder.value; 
+		float calculateAverageAge = (ageSilderMin.value + ageSilderMax.value) / 2;
+		int averageAge = Mathf.RoundToInt(calculateAverageAge);
 
-		if (age == 60)
+		if (averageAge == 60)
 		{
-			targetAudienceText.text = $"Eldery\n{ageSilder.value}+";
+			targetAudienceText.text = $"Eldery\n{averageAge}+";
 		}
-		else if (age >= 20)
+		else if (averageAge >= 20)
 		{
-			targetAudienceText.text = $"Adult\n{ageSilder.value}";
+			targetAudienceText.text = $"Adult\n{averageAge}";
 		}
-		else if (age >= 13)
+		else if (averageAge >= 13)
 		{
-			targetAudienceText.text = $"Teenager\n{ageSilder.value}";
+			targetAudienceText.text = $"Teenager\n{averageAge}";
 		}
 		else
 		{
-			targetAudienceText.text = $"Child\n{ageSilder.value}";
+			targetAudienceText.text = $"Child\n{averageAge}";
 		}
 	}
 
@@ -48,9 +44,12 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 		}
 	}
 
-	private void SetVariables()
+	public void SetVariables()
 	{
-		ageSilder = GetComponentInChildren<Slider>();
-		targetAudienceText = ageSilder.GetComponentInChildren<Text>();
+		ageSilderMin = transform.Find("AgeSliders/AgeSliderMin").GetComponent<Slider>();
+		ageSilderMax = transform.Find("AgeSliders/AgeSliderMax").GetComponent<Slider>();
+		targetAudienceText = ageSilderMin.GetComponentInChildren<Text>();
+
+		UpdateAgeSlider();
 	}
 }
