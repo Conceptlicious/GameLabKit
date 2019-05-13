@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine.UI;
-using UnityEngine;
 using GameLab;
 
 public class ToggleManager : Singleton<ToggleManager>
@@ -9,13 +8,13 @@ public class ToggleManager : Singleton<ToggleManager>
 	private List<Toggle> specialNeeds = new List<Toggle>();
 	private int maxOnTogglesPerList = 3;
 
-	public void AddToggleToList(Toggle toggleToAdd, string listName)
+	public void AddToggleToList(Toggle toggleToAdd, ToggleGroup toggleGroup)
 	{
-		if (listName == "Education" && education.Count < maxOnTogglesPerList)
+		if (toggleGroup == ToggleGroup.Education && education.Count < maxOnTogglesPerList)
 		{
 			education.Add(toggleToAdd);
 		}
-		else if (listName == "Special Needs" && specialNeeds.Count < maxOnTogglesPerList)
+		else if (toggleGroup == ToggleGroup.SpecialNeeds && specialNeeds.Count < maxOnTogglesPerList)
 		{
 			specialNeeds.Add(toggleToAdd);
 		}

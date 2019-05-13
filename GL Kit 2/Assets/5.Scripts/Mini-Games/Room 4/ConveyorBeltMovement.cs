@@ -7,15 +7,19 @@ public class ConveyorBeltMovement : Singleton<ConveyorBeltMovement>
 	private Vector3 beginSwipePosition = Vector3.zero;
 	private Vector3 endSwipePosition = Vector3.zero;
 
-	private const float minimumHeight = 104f;
+	private const float minimumHeight = 169f;
 
 	public int CurrentPlatformIndex { get; private set; }
-	[SerializeField] private List<GameObject> platforms = new List<GameObject>();
+	private List<Transform> platforms = new List<Transform>();
 
 	private void Start()
 	{
-		PlatformInformation currentPlatformInformation = platforms[CurrentPlatformIndex].GetComponent<PlatformInformation>();
-		currentPlatformInformation.LoadInformation(CurrentPlatformIndex);
+		foreach(Transform child in transform)
+		{
+			platforms.Add(child);
+		}
+
+		DisplayPlatformInformation.Instance.LoadInformation(CurrentPlatformIndex);		
 	}
 
 	private void Update()
@@ -47,8 +51,7 @@ public class ConveyorBeltMovement : Singleton<ConveyorBeltMovement>
 	{
 		CurrentPlatformIndex = (CurrentPlatformIndex + 1) % platforms.Count;
 
-		PlatformInformation currentPlatformInformation = platforms[CurrentPlatformIndex].GetComponent<PlatformInformation>();
-		currentPlatformInformation.LoadInformation(CurrentPlatformIndex);
+		DisplayPlatformInformation.Instance.LoadInformation(CurrentPlatformIndex);
 	}
 
 	private void Previous()
@@ -62,7 +65,6 @@ public class ConveyorBeltMovement : Singleton<ConveyorBeltMovement>
 			CurrentPlatformIndex = (CurrentPlatformIndex - 1) % platforms.Count;
 		}
 
-		PlatformInformation currentPlatformInformation = platforms[CurrentPlatformIndex].GetComponent<PlatformInformation>();
-		currentPlatformInformation.LoadInformation(CurrentPlatformIndex);
+		DisplayPlatformInformation.Instance.LoadInformation(CurrentPlatformIndex);
 	}
 }

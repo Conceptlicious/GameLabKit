@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 using GameLab;
 
 
@@ -34,7 +31,7 @@ public class ButtonManager : Singleton<ButtonManager>
 				SeriousFun.enabled = true;
 				break;
 			case 5:
-				UIHandler.Instance.TypeText.text = "You won the minigame!";
+				UIHandler.Instance.TypeText.text = "You won the mini game!";
 				break;
 		}
 	}

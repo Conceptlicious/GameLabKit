@@ -4,9 +4,10 @@ using GameLab;
 
 public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 {
-	Slider ageSilderMin = null;
-	Slider ageSilderMax = null;
-	Text targetAudienceText = null;
+	private Slider ageSilderMin = null;
+	private Slider ageSilderMax = null;
+	private Slider AverageAgeSlider = null;
+	private Text targetAudienceText = null;
 	
 	public void UpdateAgeSlider()
 	{
@@ -29,14 +30,16 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 		{
 			targetAudienceText.text = $"Child\n{averageAge}";
 		}
+
+		AverageAgeSlider.value = averageAge;
 	}
 
 	public void TogglePressed(Toggle pressedToggle)
 	{
 		if(pressedToggle.isOn)
 		{
-			string toggleGroup = pressedToggle.GetComponent<ToggleInformation>().ToggleGroup;
-			ToggleManager.Instance.AddToggleToList(pressedToggle, toggleGroup);
+			ToggleInformation currentToggleInformation = pressedToggle.GetComponent<ToggleInformation>();
+			ToggleManager.Instance.AddToggleToList(pressedToggle, currentToggleInformation.toggleGroup);
 		}
 		else
 		{
@@ -48,6 +51,7 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 	{
 		ageSilderMin = transform.Find("AgeSliders/AgeSliderMin").GetComponent<Slider>();
 		ageSilderMax = transform.Find("AgeSliders/AgeSliderMax").GetComponent<Slider>();
+		AverageAgeSlider = transform.Find("AgeSliders/AverageAge").GetComponent<Slider>();
 		targetAudienceText = ageSilderMin.GetComponentInChildren<Text>();
 
 		UpdateAgeSlider();
