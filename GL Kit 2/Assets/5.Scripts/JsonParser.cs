@@ -12,7 +12,7 @@ public static class JsonParser
         string[] directory = new string[] {""};
         //Load our file
         TextAsset jsonObject = Resources.Load<TextAsset>(GetJSONPath(pFileName, out directory));
-
+        Debug.Assert(jsonObject != null, System.String.Format(Settings.ERR_JSON_MISSING_FILE, pFileName));
         //Create the object to be returned.
         DialogueFile dialogueFile = new DialogueFile();
         dialogueFile.Name = pFileName;
@@ -37,6 +37,7 @@ public static class JsonParser
             
             //Get key names since they are not accessible elsewise.
             string[] keys = new string[numberOfFields];
+            Debug.Assert(keys != null && numberOfFields != 0, System.String.Format(Settings.ERR_JSON_FILE_INCORRECT_FORMATTING, pFileName));
             int iterator = 0;
             foreach (KeyValuePair<string, JSONNode> kvp in containerNode)
             {
@@ -48,8 +49,8 @@ public static class JsonParser
             for (int j = 0; j < numberOfFields; j++)
             {
                 dialogueFile.SetContainerInfo(i, arrayNames[i], keys[j], jsonObj[arrayNames[i].Value][j]);
-                Debug.Log("i: " + i + " arrayName[i]: " + arrayNames[i] + " key: " + keys[j] + " val: " +
-                          jsonObj[arrayNames[i].Value][j]);
+                //Debug.Log("i: " + i + " arrayName[i]: " + arrayNames[i] + " key: " + keys[j] + " val: " +
+                          //jsonObj[arrayNames[i].Value][j]);
             }
         }      
 
@@ -94,7 +95,6 @@ public static class JsonParser
             if (fileName_FileTypeSplit[1] != Settings.FLTYPE_JSON_META)
             {
                 areaNames[i] = fileName_FileTypeSplit[0];
-                Debug.Log("AN: " + areaNames[i]);
             }
             
         }

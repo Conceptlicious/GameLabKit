@@ -76,7 +76,6 @@ public class DialogueEditor : Editor {
 
        // DialogueObject.TextInfo ti = new DialogueObject.TextInfo(fileNameIndex, containerNameIndex, keyNames[keyNameIndex], keyNameIndex);
         dialogueObject.Info = new DialogueObject.TextInfo(fileNameIndex, containerNameIndex, keyNames[keyNameIndex], keyNameIndex);
-        
         if(GUILayout.Button("Print Dialogue"))
         {
             Debug.Log(dialogueObject.Info.DialogueText);

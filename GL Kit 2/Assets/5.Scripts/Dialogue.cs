@@ -8,6 +8,7 @@ using SimpleJSON;
 using UnityEditor;
 using System.IO;
 using System.Linq;
+using Random = System.Random;
 
 /// <summary>
 ///  
@@ -48,17 +49,6 @@ public static class Dialogue
         return names;
     }
 
-    /*private static string[] TrawlArrayForNameProperty<T>(T[] pArray)
-    {
-        string[] names = new string[pArray.Length];
-        for (int i = 0; i < pArray.Length; i++)
-        {
-            names[i] = pArray[i].Name;
-        }
-
-        return names;
-    }*/
-
     public static string[] GetContainerNames(int pFileID)
     {  
         DialogueContainer[] containers = files[pFileID].GetContainers();
@@ -73,6 +63,12 @@ public static class Dialogue
 
     public static string[] GetKeyNames(int pFileID, int pContainerID)
     {
+        if (files == null)
+        {
+            Debug.Log("Files null");
+        }
+
+
         DialogueContainer container = files[pFileID].GetContainer(pContainerID);
         Dictionary<string, string> kvp = container.GetInfoDictionary();
         string[] names = new string[kvp.Count];
@@ -96,9 +92,9 @@ public static class Dialogue
     public static string GetNextText(int pFileID, int pContainerID, int pFieldIndex, out int pNewIndex)
     {
         string[] keyNames = GetKeyNames(pFileID, pContainerID);
-        
+        int oldIndex = pFieldIndex;
         pNewIndex = (pFieldIndex + 1) % keyNames.Length;
-        return GetText(pFileID, pContainerID, keyNames[pNewIndex]);
+        return GetText(pFileID, pContainerID, keyNames[oldIndex]);
     }
 
     public static string GetTextAt(int pFileID, int pContainerID, int pFieldIndex)
@@ -109,6 +105,13 @@ public static class Dialogue
         string text = pFieldIndex == -1
             ? Settings.ERR_DIALOGUE_INVALID_INDEX
             : GetText(pFileID, pContainerID, keyNames[pFieldIndex]);
+        return text;
+    }
+
+    public static string GetRandomText(int pFileID, int pContainerID)
+    {
+        string[] keyNames = GetKeyNames(pFileID, pContainerID);       
+        string text = GetTextAt(pFileID, pContainerID, UnityEngine.Random.Range(0, keyNames.Length));
         return text;
     }
 

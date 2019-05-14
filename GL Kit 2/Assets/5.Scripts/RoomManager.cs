@@ -5,21 +5,32 @@ using CustomEventCallbacks;
 using UnityEditorInternal;
 using EventType = CustomEventCallbacks.EventType;
 using GameLab;
+using UnityEngine.SceneManagement;
 
 public class RoomManager : MonoBehaviour
 {
     [Tooltip("The available number of focal points is dictated by the Settings.cs file.")]
-    [SerializeField] private Transform[] roomFocalPoints; 
-    
+    [SerializeField] private Transform[] roomFocalPoints;
 
-    private Vector2Int currentRoom = new Vector2Int(0, 0);
+    [SerializeField] private int whiteRoomID;
 
+    [SerializeField] private bool alwaysReturnToWhiteRoom;
+
+    //[OLD ORIGIN, ORIGIN, TARGET]
+    private Vector3Int currentRoom = new Vector3Int(0, 0, 0);
+
+    void Awake()
+    {
+        GameData.SetLanguage(GameData.Language.ENGLISH);
+    }
+     
     void Start()
     {
+        whiteRoomID = Mathf.Clamp(whiteRoomID, 0, roomFocalPoints.Length);
         registerAllListeners();
         FillFocalsWithBlanks();
     }
-   
+    
     /// <summary>
     /// Registers all event listeners this class needs to care about.
     /// </summary>
@@ -32,11 +43,30 @@ public class RoomManager : MonoBehaviour
 
     private void OnNextRoomCommand(NextRoomEvent pInfo)
     {
-        currentRoom.y = currentRoom.x;
-        currentRoom.x++;
+        //0, 0, 0
+        //0, 0, 3
+        
+        //0, 0, 3
+        //0, 3, 3
+        currentRoom.x = currentRoom.y;
+        currentRoom.y = currentRoom.z;
+        
+        if (alwaysReturnToWhiteRoom)
+        {
+           
+            //If our old target ISN'T the whiteroom, make it the white room. Else make it the id before last room.
+            currentRoom.z = currentRoom.z != whiteRoomID ? whiteRoomID : currentRoom.x + 1;
+        }
+        else
+        {
+            currentRoom.z++;
+        }
+        
+       
         Mathf.Clamp(currentRoom.x, 0, Settings.SYS_VAL_MAX_NUMBER_ROOM_FOCALS);   
         //Focal A is current. Focal B is next. Current[New, Old]
-        CameraTargetSelectEvent newInfo = new CameraTargetSelectEvent(roomFocalPoints[currentRoom.y], roomFocalPoints[currentRoom.x]);
+        //Debug.Log("focus - x: " + currentRoom.x + " | y: " + currentRoom.y);
+        CameraTargetSelectEvent newInfo = new CameraTargetSelectEvent(roomFocalPoints[currentRoom.y], roomFocalPoints[currentRoom.z]);
         EventManager.Instance.RaiseEvent(newInfo);
     }
 
@@ -55,6 +85,7 @@ public class RoomManager : MonoBehaviour
                 {
                     Debug.Log("Cannot instantiate " + Settings.OBJ_NAME_BLANK_GAMEOBJECT);
                 }
+                Debug.Log("Filling " + i + " with a blank GO.");
                 roomFocalPoints[i] = blankGameObjectTransform.transform;
             }
                

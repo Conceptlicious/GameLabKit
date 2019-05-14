@@ -31,6 +31,7 @@
           <e p="GameData.cs" t="Include" />
           <e p="JsonHelper.cs" t="Include" />
           <e p="JsonParser.cs" t="Include" />
+          <e p="LoadingTips.cs" t="Include" />
           <e p="Mini-Games" t="Include">
             <e p="Room 2" t="Include">
               <e p="HiddenObject.cs" t="Include" />

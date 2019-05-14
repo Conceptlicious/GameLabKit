@@ -1,27 +1,71 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using CustomEventCallbacks;
 using EventType = CustomEventCallbacks.EventType;
 using GameLab;
+using UnityEngine.Rendering.PostProcessing;
+using Vector3 = UnityEngine.Vector3;
 
 public class CameraControl : MonoBehaviour
 {
     public delegate void Updateables();
 
+    private enum TargetPoints
+    {
+        ORIGIN,
+        CENTRE,
+        TARGET,
+        
+    };
+    
+    
     private Updateables handler;
     private Camera cam;
+    DepthOfField depthOfField = null;
 
-    private Vector3[] targetList = new Vector3[3];
+    private Transform[] targetList = new Transform[5];
+    private float startTime = 0.0f;
 
     private int currentTargetIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
         registerAllListeners();
+        SetUpCamera();
+        handler += NullUpdate;     
+    }
+
+    private void SetUpCamera()
+    {
         cam = Camera.main;
-        handler += NullUpdate;
-       
+        
+        //Grab post processing profile
+        PostProcessProfile postProfile = null;
+        PostProcessVolume volume = cam.GetComponent<PostProcessVolume>();
+        
+        
+        if (volume != null)
+        {
+            postProfile = volume.profile;
+        }
+        //Create if not found
+        else
+        {
+            volume = cam.gameObject.AddComponent<PostProcessVolume>();
+            PostProcessProfile newProfile = new PostProcessProfile();
+            postProfile = newProfile;
+            volume.profile = postProfile;
+        }
+        
+        //Get the DepthOfField "component" and set initial settings
+        postProfile.TryGetSettings(out depthOfField);
+        if (depthOfField != null)
+        {
+            depthOfField.focusDistance.value = Settings.VAL_CAMERA_BLUR_FOCALDISTANCE;
+            depthOfField.kernelSize.value = KernelSize.VeryLarge;
+        }
     }
     
     
@@ -35,7 +79,7 @@ public class CameraControl : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         handler();
     }
@@ -44,25 +88,37 @@ public class CameraControl : MonoBehaviour
     {
         
     }
+     
 
     private void MoveToTarget()
-    {
-        cam.transform.position = Vector3.MoveTowards(cam.transform.position, targetList[currentTargetIndex], Settings.VAL_CAMERA_MOVEMENT_SPEED);
-        if (cam.transform.position == targetList[currentTargetIndex])
+    {      
+        float fracComplete = (Time.time - startTime) / Settings.VAL_CAMERA_TRANSITION_SECONDS;
+
+        
+        //Lerp backwards using a sine functioning to create zoom
+        //cam.transform.position = Vector3.Lerp(targetList[(int)TargetPoints.ORIGIN].position, targetList[(int)TargetPoints.TARGET].position, fracComplete);
+       
+        float sine = Mathf.Sin(Mathf.PI * fracComplete);
+        cam.transform.position = Vector3.Lerp(targetList[(int)TargetPoints.ORIGIN].position, targetList[(int)TargetPoints.TARGET].position, fracComplete);
+        cam.transform.position += targetList[(int)TargetPoints.CENTRE].position * sine;
+        
+        
+        //Modulate depth of field to simulate blur
+        if (depthOfField != null)
         {
-            if ( currentTargetIndex < targetList.Length - 1)
-            {
-                Debug.Log("reached target " + currentTargetIndex + " and incrementing to " + (currentTargetIndex + 1));
-                currentTargetIndex++;
-            }
-            else
-            {
-                currentTargetIndex = 0;
-                handler -= MoveToTarget;
-            }
+            depthOfField.focalLength.value = (Settings.VAL_CAMERA_BLUR_FOCALLENGTH_MAX * sine);
+        }    
+       
+        
+        if (fracComplete >= 0.999f)
+        {
+            cam.transform.position = targetList[(int) TargetPoints.TARGET].position;
+            handler -= MoveToTarget;
 
-
+            GameObject.Destroy(targetList[(int) TargetPoints.CENTRE].gameObject);
+                    
         }
+        
     }
 
     private void OnTargetSelect(CameraTargetSelectEvent info)
@@ -72,16 +128,20 @@ public class CameraControl : MonoBehaviour
         {
             //If the next and previous points are identical, keep the next but set the previous to the camera's current position
             //Useful on start since the camera has not yet focused a roomset before
-            info.FocalA.position = info.FocalA.position == info.FocalB.position  ? cam.transform.position : info.FocalA.position;
-            Vector3[] list = new Vector3[] { info.FocalA.position, info.FocalB.position, info.FocalB.position };
-        
-            for (int i = 0; i < targetList.Length; i++)
-            {
-                float zoom = i < targetList.Length - 1 ? Settings.VAL_CAMERA_ZOOM_DISTANCE : 0.0f;
-                Debug.Log("Setting zoom for pos " + i + " to: " + zoom);
-                SetTargetList(i, list[i], zoom);
-            }
+            //info.FocalA.position = info.FocalA.position == info.FocalB.position  ? cam.transform.position : info.FocalA.position;
+            
+            GameObject __newEmptyCentre = new GameObject("Transition Centre Point");
+       
+            Vector3 zoomOffset = new Vector3(0.0f, 0.0f, -Settings.VAL_CAMERA_ZOOM_DISTANCE);
 
+            Transform centre = __newEmptyCentre.transform;
+            Vector3 centrePosition = (info.FocalB.position + info.FocalA.position) * 0.5f;
+            centre.position = centrePosition;   
+            centre.Translate(Vector3.back + (zoomOffset));
+          
+            targetList = new Transform[] { info.FocalA, centre, info.FocalB };      
+            
+            startTime = Time.time;
             handler += MoveToTarget;
         }
         else
@@ -91,10 +151,5 @@ public class CameraControl : MonoBehaviour
                 System.String.Format(EventSystem.STR_INCORRECT_EVENT_TYPE_CAST, System.Reflection.MethodBase.GetCurrentMethod().Name, GetType().FullName));
         }
         
-    }
-
-    private void SetTargetList(int pIndex, Vector3 pFocal, float pZoomDistance)
-    {
-        targetList[pIndex] = new Vector3(pFocal.x, pFocal.y, pFocal.z - pZoomDistance);       
     }
 }
