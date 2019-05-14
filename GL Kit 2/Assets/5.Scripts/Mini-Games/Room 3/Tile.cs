@@ -1,172 +1,137 @@
-﻿using System.Collections;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using GameLab;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-/*------------To Do------------
- - Have the tile change based on its parent which will be assigned when getting dragged over
- */
-
-public enum TypeOfTile
+public class Tile
 {
-    StartTube,
-    EndTube,
-    Tube,
-    Accessible,
-    Inaccessible
-}
+	public enum Type
+	{
+		StartPoint,
+		EndPoint,
+		Connection,
+		Obstacle
+	}
 
-namespace Room3
-{
-    [RequireComponent( typeof(Image))]
-    public class Tile : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
-    {
-        public event Action<Tile> OnMouseHoover;
-        public TypeOfTile CurrentTileType;
-        private TypeOfTile initialTileType;
-        public Image image;
-        private Color32 initialColour;
-        public bool North => NorthTile != null;
-        public bool South => SouthTile != null;
-        public bool East => EastTile != null;
-        public bool West => WestTile != null;
-        public Tile NorthTile;
-        public Tile SouthTile;
-        public Tile WestTile;
-        public Tile EastTile;
+	[Serializable]
+	public class Group
+	{
+		public const Group Ungrouped = null;
 
-        [SerializeField] private TileSettings tileSettings;
+		[SerializeField] private Color32 groupColor;
+		public Color32 GroupColor => groupColor;
+	}
 
-        private void Awake()
-        {
-            image = GetComponent<Image>();
-        }
-        private void Start()
-        {
-            initialTileType = CurrentTileType;
-        }
-        public void CheckState()
-        {
-            //this method should be called alongside the check OnInvoke as tubes need to change depending on their adjacent tubes
-            switch (CurrentTileType)
-            {
-                case TypeOfTile.StartTube:
-                    image.sprite = tileSettings.StartPointSprite;
-                    break;
-                case TypeOfTile.EndTube:
-                    image.sprite = tileSettings.EndPointSprite;
-                    break;
-                case TypeOfTile.Tube:
-                    if (West && North)
-                    {
-                        image.sprite = tileSettings.CornerWestToNorthTubeSprite;
-                        break;
-                    }
-                    if (West && South)
-                    {
-                        image.sprite = tileSettings.CornerWestToSouthTubeSprite;
-                        break;
-                    }
-                    if (East && South)
-                    {
-                        image.sprite = tileSettings.CornerEastToSouthTubeSprite;
-                        break;
-                    }
-                    if (East && North)
-                    {
-                        image.sprite = tileSettings.CornerEastToNorthTubeSprite;
-                        break;
-                    }
-                    if (West || East)
-                    {
-                        image.sprite = tileSettings.HorizontalTubeSprite;
-                        break;
-                    }
-                    if (North || South)
-                    {
-                        image.sprite = tileSettings.VerticalTubeSprite;
-                        break;
-                    }
-                    break;
-                case TypeOfTile.Accessible:
-                    image.sprite = tileSettings.AccessibleSprite;
-                    break;
-                case TypeOfTile.Inaccessible:
-                    image.sprite = tileSettings.InAccessibleSprite;
-                    break;
-                default:
-                    image.sprite = tileSettings.InAccessibleSprite;
-                    break;
-            }
-        }
+	[Flags]
+	public enum ConnectionDirection
+	{
+		None	= 0,
+		All		= ~0,
+		North	= 1 << 0,
+		East	= 1 << 1,
+		West	= 1 << 2,
+		South	= 1 << 3
+	}
 
+	public event Action<Tile> OnConnectedToTile;
+	public event Action<Tile> OnDisconnectedFromTile;
 
+	public int Row { get; private set; } = 0;
+	public int Col { get; private set; } = 0;
 
+	public Type TileType { get; set; } = Type.Connection;
+	public Group TileGroup { get; set; } = Group.Ungrouped;
 
-        public void ResetTube()
-        {
-            // Make all the tubes apart from the start and end tube, accessibles. 
-            // if the tube was finished send a message that it is incomplete again
-            if (North)
-            {
-                NorthTile.SouthTile = null;
-                NorthTile = null;
-            }
-            if (East)
-            {
-                EastTile.WestTile = null;
-                EastTile = null;
-            }
-            if (South)
-            {
-                SouthTile.NorthTile = null;
-                SouthTile = null;
-            }
-            if (West)
-            {
-                WestTile.EastTile = null;
-                WestTile = null;
-            }
-            CurrentTileType = initialTileType;
-            image.color = initialColour;
-            CheckState();
-        }
+	public bool CanConnectToOtherTiles => TileType != Type.Obstacle && (TileType != Type.Connection || TileGroup == Group.Ungrouped);
 
+	public Tile NextTile { get; set; } = null;
 
-        public void ChangeState(Color32 color, bool overrideInitialColor = false, bool shouldBecomeTube = true)
-        {
-            image.color = color;
+	public ConnectionDirection AllowedConnectionDirections { get; set; } = ConnectionDirection.All;
 
-            if (shouldBecomeTube)
-            {
-                if (initialTileType != TypeOfTile.StartTube && initialTileType != TypeOfTile.EndTube)
-                {
-                    CurrentTileType = TypeOfTile.Tube;
-                }
-            }
+	public Tile(int row, int col)
+	{
+		Row = row;
+		Col = col;
+	}
 
-            if (overrideInitialColor)
-            {
-                initialColour = color;
-            }
-        }
+	public bool TryConnectTo(Tile tile)
+	{
+		if(!CanConnectToOtherTiles)
+		{
+			return false;
+		}
 
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            if (CurrentTileType == TypeOfTile.StartTube)
-            {
-                OnMouseHoover?.Invoke(this);
-            }
-        }
+		if(!IsNeighborOf(tile))
+		{
+			return false;
+		}
 
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-            if (Input.GetMouseButton(0))
-            {
-                OnMouseHoover?.Invoke(this);
-            }
-        }
-    }
+		if(!IsConnectionDirectionAllowed(tile))
+		{
+			return false;
+		}
+
+		tile.NextTile = this;
+		TileGroup = tile.TileGroup;
+
+		OnConnectedToTile?.Invoke(tile);
+
+		return true;
+	}
+
+	public void RemoveTileConnectionsAfterThis()
+	{
+		if(NextTile == null)
+		{
+			return;
+		}
+
+		Tile tileToDisconnect = NextTile;
+		Tile lastDisconnectedTile = null;
+
+		while(tileToDisconnect.NextTile != null)
+		{
+			lastDisconnectedTile = tileToDisconnect;
+			tileToDisconnect = tileToDisconnect.RemoveTileConnection();
+		}
+
+		// Let listeners know that the last tile is also disconnected. The RemoveTileConnection method does nothing on it because it does not have a next tile, but its previous tile just removed it.
+		tileToDisconnect.OnDisconnectedFromTile?.Invoke(lastDisconnectedTile);
+	}
+
+	private Tile RemoveTileConnection()
+	{
+		if(NextTile == null)
+		{
+			return null;
+		}
+
+		Tile tileToReturn = NextTile;
+
+		NextTile.TileGroup = Group.Ungrouped;
+		NextTile = null;
+
+		OnDisconnectedFromTile?.Invoke(tileToReturn);
+
+		return tileToReturn;
+	}
+
+	private bool IsNeighborOf(Tile tile)
+	{
+		int rowDiffefrence = Mathf.Abs(tile.Row - Row);
+		int colDifference = Mathf.Abs(tile.Col - Col);
+
+		return (rowDiffefrence < 2 && colDifference < 2) && Mathf.Abs(rowDiffefrence - colDifference) == 1;
+	}
+
+	private bool IsConnectionDirectionAllowed(Tile tile)
+	{
+		return  (Col - tile.Col > 0 && AllowedConnectionDirections.HasFlag(ConnectionDirection.East)) ||
+				(Col - tile.Col < 0 && AllowedConnectionDirections.HasFlag(ConnectionDirection.West)) ||
+				(Row - tile.Row > 0 && AllowedConnectionDirections.HasFlag(ConnectionDirection.South)) ||
+				(Row - tile.Row < 0 && AllowedConnectionDirections.HasFlag(ConnectionDirection.North));
+	}
 }

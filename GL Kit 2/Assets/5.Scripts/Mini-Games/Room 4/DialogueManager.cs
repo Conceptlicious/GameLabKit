@@ -1,26 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GameLab;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : Singleton<DialogueManager>
 {
-	#region Varibles
-	public Text dialogueText;
-
-	[SerializeField]QuestionManager questionManager;
-
 	private FileStream fileStream;
 	private StreamReader reader;
-	private string currentDialogue;
-	public string CurrentDialogue => currentDialogue;
-	private int currentDialogueIndex = -1;
-	private int amountOfDialogues = 13;
-	#endregion
 
-	private void Awake()
+	private const int amountOfDialogues = 13;
+
+	public string CurrentDialogue { get; private set; }
+	[HideInInspector] public Text dialogueText;
+	private int currentDialogueIndex = -1;
+	
+
+	protected override void Awake()
 	{
+		base.Awake();
 		Read();
 	}
 
@@ -28,15 +25,16 @@ public class DialogueManager : MonoBehaviour
 	{		
 		currentDialogueIndex++;
 
-		if (currentDialogueIndex <= amountOfDialogues && !questionManager.needsAwnser)
+		if (currentDialogueIndex <= amountOfDialogues && !QuestionManager.Instance.needsAwnser)
 		{
-			fileStream = File.OpenRead(Path.Combine(LoadingPaths.PATH_DIALOGUE, LoadingPaths.FILE_NAME_DIALOGUE) + currentDialogueIndex + LoadingPaths.FILE_TYPE);
+			fileStream = File.OpenRead(Path.Combine(LoadingPaths.PATH_DIALOGUE, LoadingPaths.FILE_NAME_DIALOGUE)
+				+ currentDialogueIndex + LoadingPaths.FILE_TYPE);
 			reader = new StreamReader(fileStream);
 
 			using (fileStream) using (reader)
 			{
-				currentDialogue = reader.ReadToEnd();
-				Write(currentDialogue);
+				CurrentDialogue = reader.ReadToEnd();
+				Write(CurrentDialogue);
 			}
 		}
 		else
@@ -49,9 +47,9 @@ public class DialogueManager : MonoBehaviour
 	{
 		if (displayedDialogue.StartsWith("Q:"))
 		{
-			questionManager.questionIndex++;
+			QuestionManager.Instance.questionIndex++;
 			dialogueText.color = Color.cyan;
-			questionManager.needsAwnser = true;
+			QuestionManager.Instance.needsAwnser = true;
 		}
 		else
 		{

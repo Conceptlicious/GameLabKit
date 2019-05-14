@@ -1,17 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DropZone : MonoBehaviour
 {
-	public GearType NeededType{ get; set; }
 
-	public bool IsOccupied { get; private set; }
+	public static int OccupiedPlaces { get; private set; } = 0;
 	public static bool IsCombinationRight { get; private set; } = true;	
 
+	[HideInInspector] public GearType neededType;
+	public bool IsOccupied { get; private set; }
 	private Transform gear = null;
-	private static int occupiedPlaces = 0;
-	public static int OccupiedPlaces => occupiedPlaces;
+
 	
 	public void Occupy(Transform gear)
 	{
@@ -24,7 +22,7 @@ public class DropZone : MonoBehaviour
 		IsOccupied = true;
 
 		RightSlotCheck(gear);
-		occupiedPlaces++;
+		OccupiedPlaces++;
 	}
 
 	public void Unoccupy()
@@ -37,12 +35,12 @@ public class DropZone : MonoBehaviour
 		gear = null;
 		IsOccupied = false;
 
-		occupiedPlaces--;
+		OccupiedPlaces--;
 	}
 
 	private void RightSlotCheck(Transform gearToCheck)
 	{
-		if (gearToCheck.GetComponent<GearInformation>().GetGearType != NeededType)
+		if (gearToCheck.GetComponent<GearInformation>().GetGearType != neededType)
 		{
 			IsCombinationRight = false;
 		}

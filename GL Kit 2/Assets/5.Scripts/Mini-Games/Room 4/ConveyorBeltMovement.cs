@@ -1,22 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GameLab;
 using UnityEngine;
+using System.Collections.Generic;
 
-public class ConveyorBeltMovement : MonoBehaviour
+public class ConveyorBeltMovement : Singleton<ConveyorBeltMovement>
 {
-	#region Varibles	
-	[HideInInspector] public int currentPlatformIndex;
+	private Vector3 beginSwipePosition = Vector3.zero;
+	private Vector3 endSwipePosition = Vector3.zero;
 
-	[SerializeField] private List<GameObject> platforms = new List<GameObject>();
+	private const float minimumHeight = 169f;
 
-	private Vector3 beginSwipePosition, endSwipePosition;
-	private float minimumHeight = 104f;
-	#endregion
+	public int CurrentPlatformIndex { get; private set; }
+	private List<Transform> platforms = new List<Transform>();
 
 	private void Start()
 	{
-		PlatformInformation currentPlatformInformation = platforms[currentPlatformIndex].GetComponent<PlatformInformation>();
-		currentPlatformInformation.LoadInformation(currentPlatformIndex);
+		foreach(Transform child in transform)
+		{
+			platforms.Add(child);
+		}
+
+		DisplayPlatformInformation.Instance.LoadInformation(CurrentPlatformIndex);		
 	}
 
 	private void Update()
@@ -46,24 +49,22 @@ public class ConveyorBeltMovement : MonoBehaviour
 
 	private void Next()
 	{
-		currentPlatformIndex = (currentPlatformIndex + 1) % platforms.Count;		
+		CurrentPlatformIndex = (CurrentPlatformIndex + 1) % platforms.Count;
 
-		PlatformInformation currentPlatformInformation = platforms[currentPlatformIndex].GetComponent<PlatformInformation>();
-		currentPlatformInformation.LoadInformation(currentPlatformIndex);
+		DisplayPlatformInformation.Instance.LoadInformation(CurrentPlatformIndex);
 	}
 
 	private void Previous()
 	{
-		if (currentPlatformIndex <= 0)
+		if (CurrentPlatformIndex <= 0)
 		{
-			currentPlatformIndex = platforms.Count - 1;
+			CurrentPlatformIndex = platforms.Count - 1;
 		}
 		else
 		{
-			currentPlatformIndex = (currentPlatformIndex - 1) % platforms.Count;
+			CurrentPlatformIndex = (CurrentPlatformIndex - 1) % platforms.Count;
 		}
 
-		PlatformInformation currentPlatformInformation = platforms[currentPlatformIndex].GetComponent<PlatformInformation>();
-		currentPlatformInformation.LoadInformation(currentPlatformIndex);
+		DisplayPlatformInformation.Instance.LoadInformation(CurrentPlatformIndex);
 	}
 }
