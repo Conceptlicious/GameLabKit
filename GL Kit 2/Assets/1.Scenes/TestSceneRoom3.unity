@@ -308,8 +308,8 @@ RectTransform:
   m_Father: {fileID: 868275757}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.1}
-  m_AnchorMax: {x: 1, y: 0.9}
+  m_AnchorMin: {x: 0.15, y: 0}
+  m_AnchorMax: {x: 0.85, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -326,15 +326,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grids:
-  - Map: {fileID: 2800000, guid: 65c07114a159d284b92f576b6a894948, type: 3}
+  - Map: {fileID: 2800000, guid: 76cbdee694acf0f47b1f512c7c7c1d7a, type: 3}
     Groups:
-    - groupColor:
+    - UngrouppedColor:
+        serializedVersion: 2
+        rgba: 0
+      groupColor:
         serializedVersion: 2
         rgba: 4278190335
-    - groupColor:
+    - UngrouppedColor:
+        serializedVersion: 2
+        rgba: 0
+      groupColor:
         serializedVersion: 2
         rgba: 4278255360
-    - groupColor:
+    - UngrouppedColor:
+        serializedVersion: 2
+        rgba: 0
+      groupColor:
         serializedVersion: 2
         rgba: 4294901760
     Inaccessible:

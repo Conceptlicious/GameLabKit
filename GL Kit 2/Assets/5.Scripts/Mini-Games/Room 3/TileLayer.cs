@@ -26,12 +26,14 @@ public class TileLayer
 
 	public void RemoveConnectionsAfterTile(Tile tile)
 	{
-		Tile nextTile = tile.NextTile;
+		tile = tile.NextTile;
 
-		while(nextTile != null)
+		while (tile != null)
 		{
-			tile.RemoveTileConnection();
-			tile = nextTile;
+			if (tile.TileType != Tile.Type.StartPoint || tile.TileType != Tile.Type.EndPoint)
+			{
+				tile = tile.RemoveTileConnection();
+			}
 		}
 	}
 

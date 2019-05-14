@@ -19,7 +19,7 @@ public struct TilePath
 		{
 			Tiles = new List<Tile>();
 		}
-		
 		Tiles.Add(tile);
 	}
+
 }

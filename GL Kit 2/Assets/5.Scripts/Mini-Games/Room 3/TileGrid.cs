@@ -66,6 +66,11 @@ public class TileGrid : BetterMonoBehaviour
 
 			Image tileImageInstance = tileInstance.GetComponent<Image>();
 			tileImageInstance.color = pixels[pixelIndex];
+
+			if (tileControllerInstance.TileData.TileGroup != null)
+			{
+				tileControllerInstance.TileData.TileGroup.UngrouppedColor = grids[gridIndex].Accessible;
+			}
 		}
 	}
 
@@ -76,25 +81,15 @@ public class TileGrid : BetterMonoBehaviour
 			return;
 		}
 
-		if (tile.TileData.TileType == Tile.Type.StartPoint)
-		{
-			lastTile = tile.TileData;
-
-			if (tile.TileData.TileGroup.GroupColor.Compare(lastTile.TileGroup.GroupColor))
-			{
-				mainLayer.RemoveConnectionsAfterTile(tile.TileData);
-			}		
-			return;
-		}
-
 		if(lastTile == null && tile.TileData.TileType == Tile.Type.StartPoint)
 		{
 			lastTile = tile.TileData;
 			return;
 		}
 
-		if (tile.TileData == lastTile)
+		if (tile.TileData.TileGroup != null && tile.TileData.TileGroup == lastTile.TileGroup)
 		{
+			mainLayer.RemoveConnectionsAfterTile(tile.TileData);
 			return;
 		}
 
@@ -102,7 +97,7 @@ public class TileGrid : BetterMonoBehaviour
 		{
 			return;
 		}
-
+		
 		lastTile = tile.TileData;
 	}
 }

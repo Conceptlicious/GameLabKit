@@ -20,6 +20,7 @@ public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointer
 			if(tileData != null)
 			{
 				tileData.OnConnectedToTile -= OnConnectedToTile;
+				tileData.OnDisconnectedFromTile -= OnDisconnectedFromTile;
 			}
 
 			tileData = value;
@@ -27,6 +28,7 @@ public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointer
 			if(tileData != null)
 			{
 				tileData.OnConnectedToTile += OnConnectedToTile;
+				tileData.OnDisconnectedFromTile += OnDisconnectedFromTile;
 			}
 		}
 	}
@@ -51,6 +53,12 @@ public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointer
 
 	private void OnConnectedToTile(Tile tileConnectedTo)
 	{
+
 		Image.color = TileData.TileGroup.GroupColor;
+	}
+
+	private void OnDisconnectedFromTile()
+	{
+		Image.color = new Color32(255,255,255,255); // TODO: Ungroupped color variable
 	}
 }

@@ -20,6 +20,7 @@ public class Tile
 	public class Group
 	{
 		public const Group Ungroupped = null;
+		public Color32 UngrouppedColor;
 
 		[SerializeField] private Color32 groupColor;
 		public Color32 GroupColor => groupColor;
@@ -37,12 +38,15 @@ public class Tile
 	}
 
 	public event Action<Tile> OnConnectedToTile;
+	public event Action OnDisconnectedFromTile;
 
 	public int Row { get; private set; } = 0;
 	public int Col { get; private set; } = 0;
 
 	public Type TileType { get; set; } = Type.Connection;
 	public Group TileGroup { get; set; } = Group.Ungroupped;
+
+
 
 	public bool CanConnectToOtherTiles => TileType != Type.Obstacle && (TileType != Type.Connection || TileGroup == Group.Ungroupped);
 
@@ -81,10 +85,21 @@ public class Tile
 		return true;
 	}
 
-	public void RemoveTileConnection()
+	public Tile RemoveTileConnection()
 	{
+		if(NextTile == null)
+		{
+			return null;
+		}
+
+		Tile tileToReturn = NextTile;
+
 		NextTile.TileGroup = Group.Ungroupped;
 		NextTile = null;
+
+		OnDisconnectedFromTile?.Invoke();
+
+		return tileToReturn;
 	}
 
 	private bool IsNeighborOf(Tile tile)
@@ -92,7 +107,7 @@ public class Tile
 		int rowDiffefrence = Mathf.Abs(tile.Row - Row);
 		int colDifference = Mathf.Abs(tile.Col - Col);
 
-		return (rowDiffefrence < 2 || colDifference < 2) && Mathf.Abs(rowDiffefrence - colDifference) == 1;
+		return (rowDiffefrence < 2 && colDifference < 2) && Mathf.Abs(rowDiffefrence - colDifference) == 1;
 	}
 
 	private bool IsConnectionDirectionAllowed(Tile tile)
