@@ -24,19 +24,6 @@ public class TileLayer
 		}
 	}
 
-	public void RemoveConnectionsAfterTile(Tile tile)
-	{
-		tile = tile.NextTile;
-
-		while (tile != null)
-		{
-			if (tile.TileType != Tile.Type.StartPoint || tile.TileType != Tile.Type.EndPoint)
-			{
-				tile = tile.RemoveTileConnection();
-			}
-		}
-	}
-
 	public TilePath CalculatePathForGroup(Tile.Group tileGroup)
 	{
 		TilePath path = new TilePath();

@@ -69,7 +69,7 @@ public class TileGrid : BetterMonoBehaviour
 
 			if (tileControllerInstance.TileData.TileGroup != null)
 			{
-				tileControllerInstance.TileData.TileGroup.UngrouppedColor = grids[gridIndex].Accessible;
+				//tileControllerInstance.TileData.TileGroup.UngrouppedColor = grids[gridIndex].Accessible;
 			}
 		}
 	}
@@ -89,7 +89,7 @@ public class TileGrid : BetterMonoBehaviour
 
 		if (tile.TileData.TileGroup != null && tile.TileData.TileGroup == lastTile.TileGroup)
 		{
-			mainLayer.RemoveConnectionsAfterTile(tile.TileData);
+			tile.TileData.RemoveTileConnectionsAfterThis();
 			return;
 		}
 

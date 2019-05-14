@@ -36,7 +36,7 @@ public struct GridMapStruct
 			return colorGroup;
 		}
 
-		return Tile.Group.Ungroupped;
+		return Tile.Group.Ungrouped;
 	}
 
 	public Tile.Type GetTypeFromColor(Color32 color)

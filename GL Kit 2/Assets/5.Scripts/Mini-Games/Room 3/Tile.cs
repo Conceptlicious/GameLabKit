@@ -19,8 +19,7 @@ public class Tile
 	[Serializable]
 	public class Group
 	{
-		public const Group Ungroupped = null;
-		public Color32 UngrouppedColor;
+		public const Group Ungrouped = null;
 
 		[SerializeField] private Color32 groupColor;
 		public Color32 GroupColor => groupColor;
@@ -38,17 +37,15 @@ public class Tile
 	}
 
 	public event Action<Tile> OnConnectedToTile;
-	public event Action OnDisconnectedFromTile;
+	public event Action<Tile> OnDisconnectedFromTile;
 
 	public int Row { get; private set; } = 0;
 	public int Col { get; private set; } = 0;
 
 	public Type TileType { get; set; } = Type.Connection;
-	public Group TileGroup { get; set; } = Group.Ungroupped;
+	public Group TileGroup { get; set; } = Group.Ungrouped;
 
-
-
-	public bool CanConnectToOtherTiles => TileType != Type.Obstacle && (TileType != Type.Connection || TileGroup == Group.Ungroupped);
+	public bool CanConnectToOtherTiles => TileType != Type.Obstacle && (TileType != Type.Connection || TileGroup == Group.Ungrouped);
 
 	public Tile NextTile { get; set; } = null;
 
@@ -85,7 +82,27 @@ public class Tile
 		return true;
 	}
 
-	public Tile RemoveTileConnection()
+	public void RemoveTileConnectionsAfterThis()
+	{
+		if(NextTile == null)
+		{
+			return;
+		}
+
+		Tile tileToDisconnect = NextTile;
+		Tile lastDisconnectedTile = null;
+
+		while(tileToDisconnect.NextTile != null)
+		{
+			lastDisconnectedTile = tileToDisconnect;
+			tileToDisconnect = tileToDisconnect.RemoveTileConnection();
+		}
+
+		// Let listeners know that the last tile is also disconnected. The RemoveTileConnection method does nothing on it because it does not have a next tile, but its previous tile just removed it.
+		tileToDisconnect.OnDisconnectedFromTile?.Invoke(lastDisconnectedTile);
+	}
+
+	private Tile RemoveTileConnection()
 	{
 		if(NextTile == null)
 		{
@@ -94,10 +111,10 @@ public class Tile
 
 		Tile tileToReturn = NextTile;
 
-		NextTile.TileGroup = Group.Ungroupped;
+		NextTile.TileGroup = Group.Ungrouped;
 		NextTile = null;
 
-		OnDisconnectedFromTile?.Invoke();
+		OnDisconnectedFromTile?.Invoke(tileToReturn);
 
 		return tileToReturn;
 	}
