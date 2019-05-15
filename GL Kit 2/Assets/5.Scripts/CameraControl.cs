@@ -1,10 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
-using UnityEngine;
-using CustomEventCallbacks;
-using EventType = CustomEventCallbacks.EventType;
+﻿using CustomEventCallbacks;
 using GameLab;
+using UnityEngine;
 //using UnityEngine.Rendering.PostProcessing;
 using Vector3 = UnityEngine.Vector3;
 
@@ -23,7 +19,7 @@ public class CameraControl : MonoBehaviour
     
     private Updateables handler;
     private Camera cam;
-    DepthOfField depthOfField = null;
+    //DepthOfField depthOfField = null;
 
     private Transform[] targetList = new Transform[5];
     private float startTime = 0.0f;
@@ -42,7 +38,7 @@ public class CameraControl : MonoBehaviour
         cam = Camera.main;
         
         //Grab post processing profile
-        PostProcessProfile postProfile = null;
+       /* PostProcessProfile postProfile = null;
         PostProcessVolume volume = cam.GetComponent<PostProcessVolume>();
         
         
@@ -65,7 +61,7 @@ public class CameraControl : MonoBehaviour
         {
             depthOfField.focusDistance.value = Settings.VAL_CAMERA_BLUR_FOCALDISTANCE;
             depthOfField.kernelSize.value = KernelSize.VeryLarge;
-        }
+        }*/
     }
     
     
@@ -104,11 +100,11 @@ public class CameraControl : MonoBehaviour
         
         
         //Modulate depth of field to simulate blur
-        if (depthOfField != null)
+      /*  if (depthOfField != null)
         {
             depthOfField.focalLength.value = (Settings.VAL_CAMERA_BLUR_FOCALLENGTH_MAX * sine);
         }    
-       
+       */
         
         if (fracComplete >= 0.999f)
         {

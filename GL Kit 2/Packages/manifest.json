@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "com.gamelab.core": "https://github.com/Conceptlicious/Core.git",
+    "com.gamelab.event": "https://github.com/Conceptlicious/Event.git",
+    "com.gamelab.json": "https://github.com/Conceptlicious/JsonDotNet.git",
+    "com.gamelab.save": "https://github.com/Conceptlicious/Save.git",
     "com.unity.ads": "2.0.8",
     "com.unity.analytics": "3.2.2",
     "com.unity.collab-proxy": "1.2.15",
