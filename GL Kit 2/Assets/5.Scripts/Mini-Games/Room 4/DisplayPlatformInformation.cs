@@ -1,5 +1,6 @@
 ﻿using GameLab;
 using System.IO;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class DisplayPlatformInformation : Singleton<DisplayPlatformInformation>
@@ -16,124 +17,61 @@ public class DisplayPlatformInformation : Singleton<DisplayPlatformInformation>
 
 	public void LoadInformation(int currentIndex)
 	{
-		string platformInformation;
+		TextAsset loadedText = null;
 
 		switch (currentIndex)
 		{
 
 			case (int)PlatformType.VirtualReality:
-				// Load in VR info from text file.
-				using (FileStream fileStream = File.OpenRead(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_VR) + LoadingPaths.FILE_TYPE))
-				{
-					using (StreamReader textReader = new StreamReader(fileStream))
-					{
-						platformInformation = textReader.ReadToEnd();
-					}
-				}
-				UpdateInformationText(platformInformation, "Virtual Reality");
+				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_VR));
+				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_VR);
 				break;
 
 			case (int)PlatformType.AugmentedReality:
-				// Load in VR info from text file.
-				using (FileStream fileStream = File.OpenRead(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_AR) + LoadingPaths.FILE_TYPE))
-				{
-					using (StreamReader textReader = new StreamReader(fileStream))
-					{
-						platformInformation = textReader.ReadToEnd();
-					}
-				}
-				UpdateInformationText(platformInformation, "Augmented Reality");
+				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_AR));
+				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_AR);
 				break;
 
 			case (int)PlatformType.Mobile:
-				// Load in VR info from text file.
-				using (FileStream fileStream = File.OpenRead(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_MOBILE) + LoadingPaths.FILE_TYPE))
-				{
-					using (StreamReader textReader = new StreamReader(fileStream))
-					{
-						platformInformation = textReader.ReadToEnd();
-					}
-				}
-				UpdateInformationText(platformInformation, "Mobile");
+				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_MOBILE));
+				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_MOBILE);
 				break;
 
 			case (int)PlatformType.PC:
-				// Load in VR info from text file.
-				using (FileStream fileStream = File.OpenRead(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_PC) + LoadingPaths.FILE_TYPE))
-				{
-					using (StreamReader textReader = new StreamReader(fileStream))
-					{
-						platformInformation = textReader.ReadToEnd();
-					}
-				}
-				UpdateInformationText(platformInformation, "PC");
+				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_PC));
+				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_PC);
 				break;
 
 			case (int)PlatformType.Exergames:
-				// Load in VR info from text file.
-				using (FileStream fileStream = File.OpenRead(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_EXERGAME) + LoadingPaths.FILE_TYPE))
-				{
-					using (StreamReader textReader = new StreamReader(fileStream))
-					{
-						platformInformation = textReader.ReadToEnd();
-					}
-				}
-				UpdateInformationText(platformInformation, "Exergame");
+				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_EXERGAME));
+				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_EXERGAME);
 				break;
 
 			case (int)PlatformType.Tabletop:
-				// Load in VR info from text file.
-				using (FileStream fileStream = File.OpenRead(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_TABLETOP) + LoadingPaths.FILE_TYPE))
-				{
-					using (StreamReader textReader = new StreamReader(fileStream))
-					{
-						platformInformation = textReader.ReadToEnd();
-					}
-				}
-				UpdateInformationText(platformInformation, "Tabletop");
+				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_TABLETOP));
+				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_TABLETOP);
 				break;
 
 			case (int)PlatformType.Console:
-				// Load in VR info from text file.
-				using (FileStream fileStream = File.OpenRead(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_CONSOLE) + LoadingPaths.FILE_TYPE))
-				{
-					using (StreamReader textReader = new StreamReader(fileStream))
-					{
-						platformInformation = textReader.ReadToEnd();
-					}
-				}
-				UpdateInformationText(platformInformation, "Console");
+				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_CONSOLE));
+				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_CONSOLE);
 				break;
 
 			case (int)PlatformType.Wearables:
-				// Load in VR info from text file.
-				using (FileStream fileStream = File.OpenRead(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_WEARABLES) + LoadingPaths.FILE_TYPE))
-				{
-					using (StreamReader textReader = new StreamReader(fileStream))
-					{
-						platformInformation = textReader.ReadToEnd();
-					}
-				}
-				UpdateInformationText(platformInformation, "Wearables");
+				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_WEARABLES));
+				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_WEARABLES);
 				break;
 
 			case (int)PlatformType.Web:
-				// Load in VR info from text file.
-				using (FileStream fileStream = File.OpenRead(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_WEB) + LoadingPaths.FILE_TYPE))
-				{
-					using (StreamReader textReader = new StreamReader(fileStream))
-					{
-						platformInformation = textReader.ReadToEnd();
-					}
-				}
-				UpdateInformationText(platformInformation, "Web");
+				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_WEB));
+				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_WEB);
 				break;
 		}
 	}
 
-	public void UpdateInformationText(string platformInformation, string platformType)
+	public void UpdateInformationText(TextAsset loadedText, string platformType)
 	{
-		platformInformationText.text = platformInformation;
+		platformInformationText.text = loadedText.ToString();
 		platformTypeText.text = platformType;
 	}
 }

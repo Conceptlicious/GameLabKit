@@ -1,12 +1,10 @@
 ﻿using GameLab;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 public class ConveyorBeltMovement : Singleton<ConveyorBeltMovement>
-{
-	private Vector3 beginSwipePosition = Vector3.zero;
-	private Vector3 endSwipePosition = Vector3.zero;
-
+{	
 	private const float minimumHeight = 169f;
 
 	public int CurrentPlatformIndex { get; private set; }
@@ -20,41 +18,16 @@ public class ConveyorBeltMovement : Singleton<ConveyorBeltMovement>
 		}
 
 		DisplayPlatformInformation.Instance.LoadInformation(CurrentPlatformIndex);		
-	}
+	}	
 
-	private void Update()
-	{
-		if (Input.GetMouseButtonDown(0))
-		{
-			beginSwipePosition = Input.mousePosition;
-		}
-
-		if (Input.GetMouseButtonUp(0))
-		{
-			endSwipePosition = Input.mousePosition;
-
-			if (endSwipePosition.y > minimumHeight)
-			{
-				if (endSwipePosition.x > beginSwipePosition.x)
-				{
-					Next();
-				}
-				else if (endSwipePosition.x < beginSwipePosition.x)
-				{
-					Previous();
-				}
-			}
-		}
-	}
-
-	private void Next()
+	public void Next()
 	{
 		CurrentPlatformIndex = (CurrentPlatformIndex + 1) % platforms.Count;
 
 		DisplayPlatformInformation.Instance.LoadInformation(CurrentPlatformIndex);
 	}
 
-	private void Previous()
+	public void Previous()
 	{
 		if (CurrentPlatformIndex <= 0)
 		{
@@ -66,5 +39,5 @@ public class ConveyorBeltMovement : Singleton<ConveyorBeltMovement>
 		}
 
 		DisplayPlatformInformation.Instance.LoadInformation(CurrentPlatformIndex);
-	}
+	}	
 }

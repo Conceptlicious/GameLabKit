@@ -1,0 +1,11 @@
+diff a/GL Kit 2/Assets/5.Scripts/Mini-Games/Room 3.meta b/GL Kit 2/Assets/5.Scripts/Mini-Games/Room 3.meta	(rejected hunks)
+@@ -1,5 +1,9 @@
+  fileFormatVersion: 2
+++<<<<<<< HEAD
+ +guid: b3a187531b042c643bf0bebd99f8b51b
+++=======
++ guid: 809bddd9da872a14386612b340e3dfa9
+++>>>>>>> - Made a resources folder and moved the JsonFIles folder in there.
+  folderAsset: yes
+  DefaultImporter:
+    externalObjects: {}

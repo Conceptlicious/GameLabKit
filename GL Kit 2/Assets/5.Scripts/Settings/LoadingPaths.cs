@@ -5,8 +5,8 @@ using UnityEngine;
 
 public static class LoadingPaths
 {
-	public static readonly string PATH_DEFAULT = Path.Combine(Application.dataPath, "JsonFiles");
-	public static readonly string PATH_DIALOGUE = Path.Combine(Application.dataPath, "JsonFiles", "Dialogue");
+	public static readonly string PATH_DEFAULT = Path.Combine( "JsonFiles");
+	public static readonly string PATH_DIALOGUE = Path.Combine("JsonFiles", "DIALOGUE");
 	public const string FILE_TYPE = ".json";
 
 	public const string FILE_NAME_MOBILE = "MOBILE";
@@ -18,6 +18,7 @@ public static class LoadingPaths
 	public const string FILE_NAME_WEB = "WEB";
 	public const string FILE_NAME_EXERGAME = "EXERGAME";
 	public const string FILE_NAME_AR = "AR";
+
 	public const string FILE_NAME_DIALOGUE = "DIALOGUE_";
 
 }

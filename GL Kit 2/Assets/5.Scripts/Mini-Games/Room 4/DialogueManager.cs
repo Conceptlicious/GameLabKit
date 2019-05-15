@@ -5,37 +5,29 @@ using UnityEngine.UI;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
-	private FileStream fileStream;
-	private StreamReader reader;
-
 	private const int amountOfDialogues = 13;
 
 	public string CurrentDialogue { get; private set; }
 	[HideInInspector] public Text dialogueText;
 	private int currentDialogueIndex = -1;
-	
+
 
 	protected override void Awake()
 	{
-		base.Awake();
+		dialogueText = GetComponentInChildren<Text>();
 		Read();
+		base.Awake();
 	}
 
 	public void Read()
-	{		
+	{
 		currentDialogueIndex++;
 
 		if (currentDialogueIndex <= amountOfDialogues && !QuestionManager.Instance.needsAwnser)
 		{
-			fileStream = File.OpenRead(Path.Combine(LoadingPaths.PATH_DIALOGUE, LoadingPaths.FILE_NAME_DIALOGUE)
-				+ currentDialogueIndex + LoadingPaths.FILE_TYPE);
-			reader = new StreamReader(fileStream);
-
-			using (fileStream) using (reader)
-			{
-				CurrentDialogue = reader.ReadToEnd();
-				Write(CurrentDialogue);
-			}
+			TextAsset loadedDialogue = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DIALOGUE,
+				LoadingPaths.FILE_NAME_DIALOGUE) + currentDialogueIndex);
+			Write(loadedDialogue);
 		}
 		else
 		{
@@ -43,9 +35,11 @@ public class DialogueManager : Singleton<DialogueManager>
 		}
 	}
 
-	private void Write(string displayedDialogue)
+	private void Write(TextAsset dialogueToDisplay)
 	{
-		if (displayedDialogue.StartsWith("Q:"))
+		CurrentDialogue = dialogueToDisplay.ToString();
+
+		if (CurrentDialogue.StartsWith("Q:"))
 		{
 			QuestionManager.Instance.questionIndex++;
 			dialogueText.color = Color.cyan;
@@ -56,6 +50,6 @@ public class DialogueManager : Singleton<DialogueManager>
 			dialogueText.color = Color.white;
 		}
 
-		dialogueText.text = displayedDialogue;
+		dialogueText.text = CurrentDialogue;
 	}
 }
