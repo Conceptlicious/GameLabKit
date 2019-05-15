@@ -116,13 +116,12 @@ public class UIHandler : Singleton<UIHandler>
 	private void SetVariables()
 	{
 		TypeText = GetComponentInChildren<Text>();
-
-		for (int i = 0; i < transform.childCount - otherChildsInHandler; i++)
-		{
-			funTypeTabs.Add(transform.GetChild(i).gameObject);
-		}
-
+				
 		dropZonesObject = transform.Find("DropZones");
+		funTypeTabs.Add(transform.Find("EasyFun").gameObject);
+		funTypeTabs.Add(transform.Find("PeopleFun").gameObject);
+		funTypeTabs.Add(transform.Find("HardFun").gameObject);
+		funTypeTabs.Add(transform.Find("SeriousFun").gameObject);
 
 		ButtonManager.Instance.EasyFun.onClick.AddListener(() => ChangeFunType(FunType.EasyFun));
 		ButtonManager.Instance.PeopleFun.onClick.AddListener(() => ChangeFunType(FunType.PeopleFun));

@@ -6,13 +6,15 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	public Vector3 BeginPosition { get; private set; } = Vector3.zero;
 	[HideInInspector] public bool isObjectInGrid = false;
 
+	private void Start()
+	{
+		BeginPosition = transform.position;
+	}
+
 	public void OnBeginDrag(PointerEventData eventData)
 	{
-		if (!isObjectInGrid)
-		{
-			BeginPosition = transform.position;
-		}
-		else
+
+		if (isObjectInGrid)
 		{
 			DropZone dropZone = GridHandler.Instance.GetDropZoneUnder(transform as RectTransform);
 
@@ -25,11 +27,12 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
 	public void OnDrag(PointerEventData eventData)
 	{
-		transform.position = Input.mousePosition;
+		transform.position = eventData.position;
 	}
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
+
 		DropZone dropZone = GridHandler.Instance.GetDropZoneUnder(transform as RectTransform);
 
 		if (dropZone != null)
@@ -40,7 +43,11 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 			}
 			else
 			{
-				transform.position = dropZone.transform.position;
+				float x = dropZone.transform.position.x;
+				float y = dropZone.transform.position.y;
+				float z = BeginPosition.z;
+				transform.position = new Vector3(x, y, z);
+
 				isObjectInGrid = true;
 				dropZone.Occupy(transform);
 			}
