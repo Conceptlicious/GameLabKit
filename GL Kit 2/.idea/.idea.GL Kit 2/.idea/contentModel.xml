@@ -14,7 +14,6 @@
           <e p="DialogueObject.cs" t="Include" />
           <e p="Editor" t="Include">
             <e p="DialogueEditor.cs" t="Include" />
-            <e p="RoomManager.cs" t="Include" />
           </e>
           <e p="EventMarkers.cs" t="Include" />
           <e p="FindObject.cs" t="Include" />
@@ -77,11 +76,15 @@
             </e>
           </e>
           <e p="OnTouchDown.cs" t="Include" />
+          <e p="RoomManager.cs" t="Include" />
           <e p="Settings" t="Include">
             <e p="LoadingPaths.cs" t="Include" />
             <e p="Settings.cs" t="Include" />
           </e>
+          <e p="UIAnimator.cs" t="Include" />
           <e p="UIControl.cs" t="Include" />
+          <e p="UIPopUp.cs" t="Include" />
+          <e p="UISlidingObject.cs" t="Include" />
         </e>
         <e p="Plugins" t="Include">
           <e p="SimpleJSON.cs" t="Include" />

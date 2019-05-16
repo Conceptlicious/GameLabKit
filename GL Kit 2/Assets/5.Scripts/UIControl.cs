@@ -28,4 +28,9 @@ public class UIControl : MonoBehaviour
         EventManager.Instance.RaiseEvent(newInfo);
     }
     
+    public void S()
+    {
+        
+    }
+    
 }

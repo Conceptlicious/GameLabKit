@@ -1,7 +1,7 @@
 ﻿using CustomEventCallbacks;
 using GameLab;
 using UnityEngine;
-//using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering.PostProcessing;
 using Vector3 = UnityEngine.Vector3;
 
 public class CameraControl : MonoBehaviour
@@ -19,7 +19,8 @@ public class CameraControl : MonoBehaviour
     
     private Updateables handler;
     private Camera cam;
-    //DepthOfField depthOfField = null;
+    DepthOfField depthOfField = null;
+    private bool shouldFade = false;
 
     private Transform[] targetList = new Transform[(int)TargetPoints.TOTAL];
     private float startTime = 0.0f;
@@ -38,7 +39,7 @@ public class CameraControl : MonoBehaviour
         cam = Camera.main;
         
         //Grab post processing profile
-       /* PostProcessProfile postProfile = null;
+        PostProcessProfile postProfile = null;
         PostProcessVolume volume = cam.GetComponent<PostProcessVolume>();
         
         
@@ -61,7 +62,7 @@ public class CameraControl : MonoBehaviour
         {
             depthOfField.focusDistance.value = Settings.VAL_CAMERA_BLUR_FOCALDISTANCE;
             depthOfField.kernelSize.value = KernelSize.VeryLarge;
-        }*/
+        }
     }
     
     
@@ -100,11 +101,10 @@ public class CameraControl : MonoBehaviour
         
         
         //Modulate depth of field to simulate blur
-      /*  if (depthOfField != null)
+        if (shouldFade == true && depthOfField != null)
         {
             depthOfField.focalLength.value = (Settings.VAL_CAMERA_BLUR_FOCALLENGTH_MAX * sine);
         }    
-       */
         
         if (fracComplete >= 0.999f)
         {
@@ -116,6 +116,7 @@ public class CameraControl : MonoBehaviour
         }
         
     }
+ 
 
     private void OnTargetSelect(CameraTargetSelectEvent info)
     {
@@ -135,7 +136,8 @@ public class CameraControl : MonoBehaviour
             centre.position = centrePosition;   
             centre.Translate(Vector3.back + (zoomOffset));
           
-            targetList = new Transform[] { info.FocalA, centre, info.FocalB };      
+            targetList = new Transform[] { info.FocalA, centre, info.FocalB };
+            shouldFade = info.shouldFade;
             
             startTime = Time.time;
             handler += MoveToTarget;

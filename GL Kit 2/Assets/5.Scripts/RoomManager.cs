@@ -60,7 +60,7 @@ public class RoomManager : MonoBehaviour
         Mathf.Clamp(currentRoom.x, 0, Settings.SYS_VAL_MAX_NUMBER_ROOM_FOCALS);   
         //Focal A is current. Focal B is next. Current[New, Old]
         //Debug.Log("focus - x: " + currentRoom.x + " | y: " + currentRoom.y);
-        CameraTargetSelectEvent newInfo = new CameraTargetSelectEvent(roomFocalPoints[currentRoom.y], roomFocalPoints[currentRoom.z]);
+        CameraTargetSelectEvent newInfo = new CameraTargetSelectEvent(roomFocalPoints[currentRoom.y], roomFocalPoints[currentRoom.z], true, true);
         EventManager.Instance.RaiseEvent(newInfo);
     }
 

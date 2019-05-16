@@ -17,6 +17,10 @@ public static class Dialogue
 {
     private static DialogueFile[] files = null;
 
+    /// <summary>
+    /// Load all the available dialogue files for the current language.
+    /// </summary>
+    /// <param name="pLevelNames"></param>
     public static void LoadAllText(string[] pLevelNames)
     {
         int size = pLevelNames.Length;
@@ -30,6 +34,10 @@ public static class Dialogue
         GameData.Initialised = true;
     }
 
+    /// <summary>
+    /// Get a string array of the files currently loaded;
+    /// </summary>
+    /// <returns></returns>
     public static string[] GetFileNames()
     {
         string[] names = new string[1];
@@ -49,6 +57,11 @@ public static class Dialogue
         return names;
     }
 
+    /// <summary>
+    /// Get the string names of the arary containers used to wrap different chunks of text inside a single level file.
+    /// </summary>
+    /// <param name="pFileID"></param>
+    /// <returns></returns>
     public static string[] GetContainerNames(int pFileID)
     {  
         DialogueContainer[] containers = files[pFileID].GetContainers();
@@ -61,6 +74,12 @@ public static class Dialogue
         return names;
     }
 
+    /// <summary>
+    /// Get the names of the keys used to preceed the individual lines of text.
+    /// </summary>
+    /// <param name="pFileID"></param>
+    /// <param name="pContainerID"></param>
+    /// <returns></returns>
     public static string[] GetKeyNames(int pFileID, int pContainerID)
     {
         if (files == null)
@@ -82,6 +101,13 @@ public static class Dialogue
         return names;
     }
 
+    /// <summary>
+    /// Get a particular line of text by directly calling the file name and container name.
+    /// </summary>
+    /// <param name="pFileID"></param>
+    /// <param name="pContainerID"></param>
+    /// <param name="pField"></param>
+    /// <returns></returns>
     public static string GetText(int pFileID, int pContainerID, string pField)
     {
         string text = Settings.STR_DEFAULT_DIALOGUE;
@@ -89,6 +115,14 @@ public static class Dialogue
         return text;
     }
 
+    /// <summary>
+    /// Get the next line of text from a container. Iterates and wraps the passed index.
+    /// </summary>
+    /// <param name="pFileID"></param>
+    /// <param name="pContainerID"></param>
+    /// <param name="pFieldIndex"></param>
+    /// <param name="pNewIndex"></param>
+    /// <returns></returns>
     public static string GetNextText(int pFileID, int pContainerID, int pFieldIndex, out int pNewIndex)
     {
         string[] keyNames = GetKeyNames(pFileID, pContainerID);
@@ -97,6 +131,13 @@ public static class Dialogue
         return GetText(pFileID, pContainerID, keyNames[oldIndex]);
     }
 
+    /// <summary>
+    /// Get a line of text from a container using a specific index.
+    /// </summary>
+    /// <param name="pFileID"></param>
+    /// <param name="pContainerID"></param>
+    /// <param name="pFieldIndex"></param>
+    /// <returns></returns>
     public static string GetTextAt(int pFileID, int pContainerID, int pFieldIndex)
     {
 
@@ -108,6 +149,12 @@ public static class Dialogue
         return text;
     }
 
+    /// <summary>
+    /// Get a random line of text from the given container.
+    /// </summary>
+    /// <param name="pFileID"></param>
+    /// <param name="pContainerID"></param>
+    /// <returns></returns>
     public static string GetRandomText(int pFileID, int pContainerID)
     {
         string[] keyNames = GetKeyNames(pFileID, pContainerID);       
@@ -115,10 +162,7 @@ public static class Dialogue
         return text;
     }
 
-   
     
-
-   
     //when language change event fires, reload dialogue
     public static void onLanguageChange()
     {

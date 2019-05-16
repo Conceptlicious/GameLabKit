@@ -1146,6 +1146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 725363249}
+  - component: {fileID: 725363250}
   m_Layer: 0
   m_Name: LoadingTips - Speech Box
   m_TagString: Untagged
@@ -1170,6 +1171,22 @@ Transform:
   m_Father: {fileID: 1354399291}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &725363250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725363248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f67b27f9cb027b249b0211268c0bd151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainObject: {fileID: 1693386650}
+  hiddenPosition: {fileID: 691652984}
+  shownPosition: {fileID: 8506690}
+  inOutPercentages: {x: 0.25, y: 0.75}
 --- !u!1 &757463715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,6 +1196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 757463716}
+  - component: {fileID: 757463717}
   m_Layer: 0
   m_Name: LoadingTips - Dr GameLab
   m_TagString: Untagged
@@ -1203,6 +1221,22 @@ Transform:
   m_Father: {fileID: 1354399291}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &757463717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757463715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f67b27f9cb027b249b0211268c0bd151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainObject: {fileID: 1483960344}
+  hiddenPosition: {fileID: 1554036474}
+  shownPosition: {fileID: 1889058027}
+  inOutPercentages: {x: 0.25, y: 0.75}
 --- !u!1 &891031311
 GameObject:
   m_ObjectHideFlags: 0
@@ -2824,7 +2858,7 @@ MonoBehaviour:
   - marker: '...'
     eventToCall:
       classRef: CameraTargetSelectEvent, Assembly-CSharp
-  - marker: '...'
+  - marker: $
     eventToCall:
       classRef: 
 --- !u!114 &1943482788
@@ -2839,15 +2873,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4cce024a3d2e5042aa3b4bef705bd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slidingObjects:
-  - mainObject: {fileID: 1483960344}
-    hiddenPosition: {fileID: 1554036474}
-    shownPosition: {fileID: 1889058027}
-    inOutPercentages: {x: 0.25, y: 0.75}
-  - mainObject: {fileID: 1693386650}
-    hiddenPosition: {fileID: 691652984}
-    shownPosition: {fileID: 8506690}
-    inOutPercentages: {x: 0.25, y: 0.75}
+  slidingObject:
+  - {fileID: 757463717}
+  - {fileID: 725363250}
   textField: {fileID: 303147112}
   dialogueObject: {fileID: 1848558110}
   tipsAreRandom: 0
