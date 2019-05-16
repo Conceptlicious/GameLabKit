@@ -102,8 +102,11 @@ public class Tile
 			lastDisconnectedTile = tileToDisconnect;
 			tileToDisconnect = tileToDisconnect.RemoveTileConnection();
 		}
-		
-		lastDisconnectedTile.OnDisconnectedFromTile?.Invoke(tileToDisconnect);
+
+		if (lastDisconnectedTile.TileType != Type.StartPoint)
+		{
+			lastDisconnectedTile.OnDisconnectedFromTile?.Invoke(tileToDisconnect);
+		}
 	}
 
 	private Tile RemoveTileConnection()
@@ -115,13 +118,10 @@ public class Tile
 
 		Tile tileToReturn = NextTile;
 
-		if (tileToReturn.TileType != Type.StartPoint)
-		{
 			NextTile.TileGroup = Group.Ungrouped;
 			NextTile = null;
-		}
+			tileToReturn.OnDisconnectedFromTile?.Invoke(this);
 
-		tileToReturn.OnDisconnectedFromTile?.Invoke(this);
 
 		Debug.Log($"Removed connection from tile {tileToReturn.Row}, {tileToReturn.Col}.\n" +
 			$"It is now part of group {(tileToReturn.TileGroup == null ? "Ungrouped" : tileToReturn.TileGroup.GetType().Name)}\n" +
