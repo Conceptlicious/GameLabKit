@@ -7,14 +7,14 @@ using UnityEngine.UI;
 
 public class NodePattern : BetterMonoBehaviour
 {
-	
 
-	[SerializeField] private bool isInteractable = true;
-	[SerializeField] private NodeLayer[] layers;
-	[SerializeField] private int activeLayer;
-	[SerializeField] private int previousLayer;
 	[SerializeField] private Image startDotPrefab;
 	[SerializeField] private NodePattern nextPattern;
+	[SerializeField] private NodeLayer[] layers;
+
+	[SerializeField] private bool isInteractable = true;
+	[SerializeField] private int activeLayer;
+	[SerializeField] private int previousLayer;
 
 	public int ActiveLayer => activeLayer;
 	private Image startDot = null;
