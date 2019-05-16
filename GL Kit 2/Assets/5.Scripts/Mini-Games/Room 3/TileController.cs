@@ -11,6 +11,7 @@ public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointer
 {
 	public event Action<TileController> OnMouseHovered;
 	public Image Image { get; private set; }
+	[SerializeField] private Tile.Type tileType => tileData.TileType;
 	private Tile tileData = null;
 	public Tile TileData
 	{
