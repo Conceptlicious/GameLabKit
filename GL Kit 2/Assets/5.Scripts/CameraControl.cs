@@ -13,7 +13,7 @@ public class CameraControl : MonoBehaviour
         ORIGIN,
         CENTRE,
         TARGET,
-        
+        TOTAL
     };
     
     
@@ -21,7 +21,7 @@ public class CameraControl : MonoBehaviour
     private Camera cam;
     //DepthOfField depthOfField = null;
 
-    private Transform[] targetList = new Transform[5];
+    private Transform[] targetList = new Transform[(int)TargetPoints.TOTAL];
     private float startTime = 0.0f;
 
     private int currentTargetIndex = 0;
