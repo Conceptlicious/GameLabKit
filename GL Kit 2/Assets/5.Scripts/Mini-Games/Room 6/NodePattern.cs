@@ -6,28 +6,35 @@ using UnityEngine.UI;
 
 public class NodePattern : MonoBehaviour
 {
-	public int ActiveLayer => activeLayer;
+	
 
+	[SerializeField] private bool isInteractable = true;
 	[SerializeField] private NodeLayer[] layers;
 	[SerializeField] private int activeLayer;
 	[SerializeField] private int previousLayer;
 	[SerializeField] private Image startDotPrefab;
+	[SerializeField] private NodePattern nextPattern;
 
+	public int ActiveLayer => activeLayer;
 	private Image startDot = null;
-
+	private DrawLines drawLines;
 	private bool isComplete = false;
+	
+
+	public bool IsInteractable => isInteractable;
 
 	private void Start()
 	{
 		ActiveLayerReset();
+		//nextPattern.gameObject.SetActive(false);
 	}
 
 	//When a correct button is pressed, it sets current layer
 	public void SetLayer()
 	{
-		if(isComplete)
+		if(isComplete || !isInteractable)
 		{
-			return;
+			return;			
 		}
 
 		activeLayer++;
@@ -36,10 +43,20 @@ public class NodePattern : MonoBehaviour
 		// Check if pattern is finished
 		if (activeLayer >= layers.Length)
 		{
-			// fill in what you want to do once the pattern is completed
 			isComplete = true;
 
-			// do when complete
+			// Remove other buttons in layer
+			for (int i = 0; i < layers.Length; i++)
+			{
+				layers[i].SetActive(false);
+			}
+
+			if(nextPattern != null)
+				nextPattern.isInteractable = true;
+			// Remove line and dot
+			// Show art
+			// Play Dialogue
+			//Move on to the next pattern
 		}
 		else
 		{

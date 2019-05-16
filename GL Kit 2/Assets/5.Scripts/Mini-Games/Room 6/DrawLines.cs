@@ -10,6 +10,7 @@ public class DrawLines : MonoBehaviour
 	[SerializeField] private Vector3 offset;
 	List<Vector3> positions = new List<Vector3>();
 	List<GameObject> savedButtons = new List<GameObject>();
+	
 
 	public void Start()
 	{

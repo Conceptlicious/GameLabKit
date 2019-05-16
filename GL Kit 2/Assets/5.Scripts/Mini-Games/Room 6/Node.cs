@@ -21,6 +21,11 @@ public class Node : MonoBehaviour, IPointerEnterHandler
 	//Ran when mouse over button
 	public void OnPointerEnter(PointerEventData eventData)
 	{		
+		if(!nodePattern.IsInteractable)
+		{
+			return;
+		}
+
 		if (!fakeCheck)
 		{
 			if (nodePattern.ActiveLayer == 0)
