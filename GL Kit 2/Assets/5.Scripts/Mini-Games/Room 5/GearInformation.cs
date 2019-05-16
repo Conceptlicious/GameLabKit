@@ -48,11 +48,11 @@ public class GearInformation : BetterMonoBehaviour
 		{
 			if (!invertRotation)
 			{
-				transform.Rotate(Vector3.forward * (Time.deltaTime * rotationSpeed));
+				CachedTransform.Rotate(Vector3.forward * (Time.deltaTime * rotationSpeed));
 			}
 			else
 			{
-				transform.Rotate(Vector3.back * (Time.deltaTime * rotationSpeed));
+				CachedTransform.Rotate(Vector3.back * (Time.deltaTime * rotationSpeed));
 			}
 		}
 	}

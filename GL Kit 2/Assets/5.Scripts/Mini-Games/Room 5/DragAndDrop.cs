@@ -9,7 +9,7 @@ public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler,
 
 	private void Start()
 	{
-		BeginPosition = transform.position;
+		BeginPosition = CachedTransform.position;
 	}
 
 	public void OnBeginDrag(PointerEventData eventData)
@@ -17,7 +17,7 @@ public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler,
 
 		if (isObjectInGrid)
 		{
-			DropZone dropZone = GridHandler.Instance.GetDropZoneUnder(transform as RectTransform);
+			DropZone dropZone = GridHandler.Instance.GetDropZoneUnder(CachedTransform as RectTransform);
 
 			if (dropZone != null)
 			{
@@ -28,34 +28,34 @@ public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler,
 
 	public void OnDrag(PointerEventData eventData)
 	{
-		transform.position = eventData.position;
+		CachedTransform.position = eventData.position;
 	}
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
 
-		DropZone dropZone = GridHandler.Instance.GetDropZoneUnder(transform as RectTransform);
+		DropZone dropZone = GridHandler.Instance.GetDropZoneUnder(CachedTransform as RectTransform);
 
 		if (dropZone != null)
 		{
 			if (dropZone.IsOccupied)
 			{
-				transform.position = BeginPosition;
+				CachedTransform.position = BeginPosition;
 			}
 			else
 			{
-				float x = dropZone.transform.position.x;
-				float y = dropZone.transform.position.y;
+				float x = dropZone.CachedTransform.position.x;
+				float y = dropZone.CachedTransform.position.y;
 				float z = BeginPosition.z;
-				transform.position = new Vector3(x, y, z);
+				CachedTransform.position = new Vector3(x, y, z);
 
 				isObjectInGrid = true;
-				dropZone.Occupy(transform);
+				dropZone.Occupy(CachedTransform);
 			}
 		}
 		else
 		{
-			transform.position = BeginPosition;
+			CachedTransform.position = BeginPosition;
 		}
 	}
 }

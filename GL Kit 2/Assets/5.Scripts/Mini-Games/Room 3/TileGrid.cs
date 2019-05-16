@@ -52,7 +52,7 @@ public class TileGrid : Singleton<TileGrid>
 			tileLayer.Tiles[row, col].TileGroup = grids[gridIndex].GetGroupFromColor(pixels[pixelIndex]);
 			tileLayer.Tiles[row, col].TileType = grids[gridIndex].GetTypeFromColor(pixels[pixelIndex]);
 
-			GameObject tileInstance = Instantiate(tilePrefab, new Vector3(0,0,0), Quaternion.identity, this.transform);
+			GameObject tileInstance = Instantiate(tilePrefab, new Vector3(0,0,0), Quaternion.identity, CachedTransform);
 			tileInstance.name = $"Tile {row},{col}"; 
 
 			TileController tileControllerInstance = tileInstance.GetComponent<TileController>();
