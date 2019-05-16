@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="242ae21e-f6fb-49ec-a894-9847d147da7f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/CameraControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/CameraControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/Dialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/Dialogue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/DialogueEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/DialogueEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/JsonParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/JsonParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/RoomManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/RoomManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Text/Dialogue/English/Room_3.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Text/Dialogue/English/Room_3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene One.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene One.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-    </list>
+    <list default="true" id="242ae21e-f6fb-49ec-a894-9847d147da7f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,10 +204,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/CameraControl.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="72" column="12" lean-forward="true" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="12" />
+            <state relative-caret-position="-885">
+              <caret line="1" column="10" lean-forward="true" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
               <folding>
-                <marker date="1557996090142" expanded="false" signature="6:144" ph="..." />
+                <marker date="1557996090142" expanded="true" signature="6:144" ph="..." />
                 <marker date="1557996090142" expanded="true" signature="188:4891" ph="{...}" />
                 <marker date="1557996090142" expanded="true" signature="261:335" ph="{...}" />
                 <marker date="1557996090142" expanded="true" signature="668:771" ph="{...}" />
@@ -406,12 +393,12 @@
       <workItem from="1557479420804" duration="10987000" />
       <workItem from="1557738204457" duration="9807000" />
       <workItem from="1557821380461" duration="9692000" />
-      <workItem from="1557995932642" duration="357000" />
+      <workItem from="1557995932642" duration="1116000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171817000" />
+    <option name="totallyTimeSpent" value="172576000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -743,10 +730,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/CameraControl.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="72" column="12" lean-forward="true" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="12" />
+        <state relative-caret-position="-885">
+          <caret line="1" column="10" lean-forward="true" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
           <folding>
-            <marker date="1557996090142" expanded="false" signature="6:144" ph="..." />
+            <marker date="1557996090142" expanded="true" signature="6:144" ph="..." />
             <marker date="1557996090142" expanded="true" signature="188:4891" ph="{...}" />
             <marker date="1557996090142" expanded="true" signature="261:335" ph="{...}" />
             <marker date="1557996090142" expanded="true" signature="668:771" ph="{...}" />
