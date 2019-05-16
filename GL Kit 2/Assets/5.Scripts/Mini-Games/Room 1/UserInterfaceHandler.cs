@@ -8,9 +8,14 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 	private Slider ageSilderMax = null;
 	private Slider AverageAgeSlider = null;
 	private Text targetAudienceText = null;
+	private Text minAgeText = null;
+	private Text maxAgeText = null;
 	
 	public void UpdateAgeSlider()
 	{
+		minAgeText.text = ageSilderMin.value.ToString();
+		maxAgeText.text = ageSilderMax.value.ToString();
+
 		float calculateAverageAge = (ageSilderMin.value + ageSilderMax.value) / 2;
 		int averageAge = Mathf.RoundToInt(calculateAverageAge);
 
@@ -52,8 +57,10 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 		ageSilderMin = transform.Find("AgeSliders/AgeSliderMin").GetComponent<Slider>();
 		ageSilderMax = transform.Find("AgeSliders/AgeSliderMax").GetComponent<Slider>();
 		AverageAgeSlider = transform.Find("AgeSliders/AverageAge").GetComponent<Slider>();
-		targetAudienceText = ageSilderMin.GetComponentInChildren<Text>();
 
+		targetAudienceText = ageSilderMin.transform.Find("TargetAudicence").GetComponent<Text>();
+		minAgeText = ageSilderMin.transform.Find("Handle Slide Area/Handle/Text").GetComponent<Text>();
+		maxAgeText = ageSilderMax.transform.Find("Handle Slide Area/Handle/Text").GetComponent<Text>();
 		UpdateAgeSlider();
 	}
 }
