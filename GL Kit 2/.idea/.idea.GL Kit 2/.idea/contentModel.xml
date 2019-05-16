@@ -10,46 +10,56 @@
           <e p="CameraControl.cs" t="Include" />
           <e p="Dialogue.cs" t="Include" />
           <e p="DialogueContainer.cs" t="Include" />
-          <e p="DialogueEditor.cs" t="Include" />
           <e p="DialogueFile.cs" t="Include" />
           <e p="DialogueObject.cs" t="Include" />
-          <e p="EventMarkers.cs" t="Include" />
-          <e p="EventMessaging" t="Include">
-            <e p="CameraTargetSelectedEvent.cs" t="Include" />
-            <e p="DetectedMarkerEvent.cs" t="Include" />
-            <e p="DialogFetchNextEvent.cs" t="Include" />
-            <e p="DialogProgressEvent.cs" t="Include" />
-            <e p="EventInfo.cs" t="Include" />
-            <e p="EventSystem.cs" t="Include" />
-            <e p="EventTypes.cs" t="Include" />
-            <e p="GenericEvent.cs" t="Include" />
-            <e p="ICustomMessageTarget.cs" t="Include" />
-            <e p="NextRoomEvent.cs" t="Include" />
-            <e p="ObjectFoundEvent.cs" t="Include" />
+          <e p="Editor" t="Include">
+            <e p="DialogueEditor.cs" t="Include" />
+            <e p="RoomManager.cs" t="Include" />
           </e>
+          <e p="EventMarkers.cs" t="Include" />
           <e p="FindObject.cs" t="Include" />
           <e p="GameData.cs" t="Include" />
           <e p="JsonHelper.cs" t="Include" />
           <e p="JsonParser.cs" t="Include" />
           <e p="LoadingTips.cs" t="Include" />
           <e p="Mini-Games" t="Include">
+            <e p="EventMessaging" t="Include">
+              <e p="CameraTargetSelectedEvent.cs" t="Include" />
+              <e p="DetectedMarkerEvent.cs" t="Include" />
+              <e p="DialogFetchNextEvent.cs" t="Include" />
+              <e p="DialogProgressEvent.cs" t="Include" />
+              <e p="EventInfo.cs" t="Include" />
+              <e p="EventSystem.cs" t="Include" />
+              <e p="EventTypes.cs" t="Include" />
+              <e p="GenericEvent.cs" t="Include" />
+              <e p="ICustomMessageTarget.cs" t="Include" />
+              <e p="NextRoomEvent.cs" t="Include" />
+              <e p="ObjectFoundEvent.cs" t="Include" />
+            </e>
+            <e p="Room 1" t="Include">
+              <e p="ToggleInformation.cs" t="Include" />
+              <e p="ToggleManager.cs" t="Include" />
+              <e p="UserInterfaceHandler.cs" t="Include" />
+            </e>
             <e p="Room 2" t="Include">
               <e p="HiddenObject.cs" t="Include" />
             </e>
             <e p="Room 3" t="Include">
-              <e p="CustomInspectorGrid.cs" t="Include" />
-              <e p="DotPath.cs" t="Include" />
-              <e p="Grid.cs" t="Include" />
               <e p="GridMapStruct.cs" t="Include" />
               <e p="Tile.cs" t="Include" />
-              <e p="TileSettings.cs" t="Include" />
+              <e p="TileController.cs" t="Include" />
+              <e p="TileGrid.cs" t="Include" />
+              <e p="TileLayer.cs" t="Include" />
+              <e p="TilePath.cs" t="Include" />
             </e>
             <e p="Room 4" t="Include">
               <e p="ConveyorBeltMovement.cs" t="Include" />
               <e p="DialogueManager.cs" t="Include" />
               <e p="DisplayPlatformInformation.cs" t="Include" />
-              <e p="PlatformInformation.cs" t="Include" />
+              <e p="PlatformType.cs" t="Include" />
               <e p="QuestionManager.cs" t="Include" />
+              <e p="SwipeInput.cs" t="Include" />
+              <e p="uGUITools.cs" t="Include" />
             </e>
             <e p="Room 5" t="Include">
               <e p="ButtonManager.cs" t="Include" />
@@ -59,97 +69,19 @@
               <e p="GridHandler.cs" t="Include" />
               <e p="UIHandler.cs" t="Include" />
             </e>
+            <e p="Room 6" t="Include">
+              <e p="DrawLines.cs" t="Include" />
+              <e p="Node.cs" t="Include" />
+              <e p="NodeLayer.cs" t="Include" />
+              <e p="NodePattern.cs" t="Include" />
+            </e>
           </e>
           <e p="OnTouchDown.cs" t="Include" />
-          <e p="RoomManager.cs" t="Include" />
           <e p="Settings" t="Include">
             <e p="LoadingPaths.cs" t="Include" />
             <e p="Settings.cs" t="Include" />
           </e>
           <e p="UIControl.cs" t="Include" />
-        </e>
-        <e p="GameLabFramework" t="Include">
-          <e p="Core" t="Include">
-            <e p="Scripts" t="Include">
-              <e p="Core" t="Include">
-                <e p="BetterMonoBehaviour.cs" t="Include" />
-                <e p="IManager.cs" t="Include" />
-                <e p="Manager.cs" t="Include" />
-                <e p="Singleton.cs" t="Include" />
-              </e>
-              <e p="Editor" t="Include">
-                <e p="PropertyDrawers" t="Include">
-                  <e p="ClassTypeReferencePropertyDrawer.cs" t="Include" />
-                  <e p="LayerAttributePropertyDrawer.cs" t="Include" />
-                  <e p="ScenePickerDrawer.cs" t="Include" />
-                </e>
-                <e p="TemplatesInstaller" t="Include">
-                  <e p="CustomScriptTemplates" t="Include">
-                    <e p="81-C# Manager Script-NewManagerScript.cs.txt" t="Include" />
-                    <e p="81-C# Script-NewBehaviourScript.cs.txt" t="Include" />
-                  </e>
-                  <e p="InstallScriptTemplates.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Extensions" t="Include">
-                <e p="BoundsExtensions.cs" t="Include" />
-                <e p="Color32Extensions.cs" t="Include" />
-                <e p="FileInfoExtensions.cs" t="Include" />
-                <e p="GameObjectExtensions.cs" t="Include" />
-                <e p="HashtableExtensions.cs" t="Include" />
-                <e p="ObjectExtensions.cs" t="Include" />
-              </e>
-              <e p="Gameplay" t="Include">
-                <e p="Player.cs" t="Include" />
-              </e>
-              <e p="Managers" t="Include">
-                <e p="GameManager.cs" t="Include" />
-              </e>
-              <e p="Utilities" t="Include">
-                <e p="ClassTypeConstraintAttribute.cs" t="Include" />
-                <e p="ClassTypeReference.cs" t="Include" />
-                <e p="LayerAttribute.cs" t="Include" />
-                <e p="ScenePickerAttribute.cs" t="Include" />
-              </e>
-            </e>
-          </e>
-          <e p="Event" t="Include">
-            <e p="Scripts" t="Include">
-              <e p="Core" t="Include">
-                <e p="Event.cs" t="Include" />
-                <e p="EventHandler.cs" t="Include" />
-                <e p="ParameterlessEventHandler.cs" t="Include" />
-              </e>
-              <e p="Managers" t="Include">
-                <e p="EventManager.cs" t="Include" />
-              </e>
-            </e>
-          </e>
-          <e p="Save" t="Include">
-            <e p="Scripts" t="Include">
-              <e p="Core" t="Include">
-                <e p="IManager.cs" t="Include" />
-                <e p="Manager.cs" t="Include" />
-                <e p="SaveSlot.cs" t="Include" />
-              </e>
-              <e p="CustomScriptTemplates" t="Include">
-                <e p="82-C# Save Data Struct-NewSaveData.cs.txt" t="Include" />
-              </e>
-              <e p="Gameplay" t="Include">
-                <e p="PlayerSaveData.cs" t="Include" />
-                <e p="ScriptableObjectSaveData.cs" t="Include" />
-              </e>
-              <e p="Managers" t="Include">
-                <e p="SaveManager.cs" t="Include" />
-              </e>
-              <e p="Utils" t="Include">
-                <e p="ScriptableObjectConverter.cs" t="Include" />
-              </e>
-            </e>
-          </e>
-        </e>
-        <e p="JsonDotNet" t="Include">
-          <e p="link.xml" t="Include" />
         </e>
         <e p="Plugins" t="Include">
           <e p="SimpleJSON.cs" t="Include" />
