@@ -59,17 +59,22 @@ public class Tile
 
 	public bool TryConnectTo(Tile tile)
 	{
+		if(tile == null)
+		{
+			return false;
+		}
+
 		if(!CanConnectToOtherTiles)
 		{
 			return false;
 		}
 
-		if(!IsNeighborOf(tile))
+		if(!IsConnectionDirectionAllowed(tile))
 		{
 			return false;
 		}
 
-		if(!IsConnectionDirectionAllowed(tile))
+		if(!IsNeighborOf(tile))
 		{
 			return false;
 		}
@@ -89,7 +94,7 @@ public class Tile
 			return;
 		}
 
-		Tile tileToDisconnect = NextTile;
+		Tile tileToDisconnect = this;
 		Tile lastDisconnectedTile = null;
 
 		while(tileToDisconnect.NextTile != null)
@@ -97,9 +102,8 @@ public class Tile
 			lastDisconnectedTile = tileToDisconnect;
 			tileToDisconnect = tileToDisconnect.RemoveTileConnection();
 		}
-
-		// Let listeners know that the last tile is also disconnected. The RemoveTileConnection method does nothing on it because it does not have a next tile, but its previous tile just removed it.
-		tileToDisconnect.OnDisconnectedFromTile?.Invoke(lastDisconnectedTile);
+		
+		lastDisconnectedTile.OnDisconnectedFromTile?.Invoke(tileToDisconnect);
 	}
 
 	private Tile RemoveTileConnection()
@@ -111,10 +115,17 @@ public class Tile
 
 		Tile tileToReturn = NextTile;
 
-		NextTile.TileGroup = Group.Ungrouped;
-		NextTile = null;
+		if (tileToReturn.TileType != Type.StartPoint)
+		{
+			NextTile.TileGroup = Group.Ungrouped;
+			NextTile = null;
+		}
 
-		OnDisconnectedFromTile?.Invoke(tileToReturn);
+		tileToReturn.OnDisconnectedFromTile?.Invoke(this);
+
+		Debug.Log($"Removed connection from tile {tileToReturn.Row}, {tileToReturn.Col}.\n" +
+			$"It is now part of group {(tileToReturn.TileGroup == null ? "Ungrouped" : tileToReturn.TileGroup.GetType().Name)}\n" +
+   $"We are tile {Row}, {Col}, and we are part of group {(TileGroup == null ? "Ungrouped" : TileGroup.GetType().Name)}");
 
 		return tileToReturn;
 	}

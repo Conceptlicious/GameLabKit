@@ -328,22 +328,13 @@ MonoBehaviour:
   grids:
   - Map: {fileID: 2800000, guid: 76cbdee694acf0f47b1f512c7c7c1d7a, type: 3}
     Groups:
-    - UngrouppedColor:
-        serializedVersion: 2
-        rgba: 0
-      groupColor:
+    - groupColor:
         serializedVersion: 2
         rgba: 4278190335
-    - UngrouppedColor:
-        serializedVersion: 2
-        rgba: 0
-      groupColor:
+    - groupColor:
         serializedVersion: 2
         rgba: 4278255360
-    - UngrouppedColor:
-        serializedVersion: 2
-        rgba: 0
-      groupColor:
+    - groupColor:
         serializedVersion: 2
         rgba: 4294901760
     Inaccessible:
@@ -358,6 +349,9 @@ MonoBehaviour:
     AlphaCutoff: 190
   tilePrefab: {fileID: 303039571543164378, guid: c146e3a6ca537ca47bcf17c0f5c59122,
     type: 3}
+  DefaultTileColour:
+    serializedVersion: 2
+    rgba: 4288387995
 --- !u!1 &1455482038
 GameObject:
   m_ObjectHideFlags: 0

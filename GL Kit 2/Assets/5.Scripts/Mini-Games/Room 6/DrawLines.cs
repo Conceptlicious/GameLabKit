@@ -1,10 +1,11 @@
 ﻿using System.Collections;
+using GameLab;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class DrawLines : MonoBehaviour
+public class DrawLines : BetterMonoBehaviour
 {	
 	private LineRenderer lineBetweenNodes;
 	[SerializeField] private Vector3 offset;

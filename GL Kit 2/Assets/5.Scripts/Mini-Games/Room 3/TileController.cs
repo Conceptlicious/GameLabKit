@@ -53,12 +53,11 @@ public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointer
 
 	private void OnConnectedToTile(Tile tileConnectedTo)
 	{
-
 		Image.color = TileData.TileGroup.GroupColor;
 	}
 
 	private void OnDisconnectedFromTile(Tile tileDisconnectedFrom)
 	{
-		Image.color = new Color32(255,255,255,255); // TODO: Ungroupped color variable
+		Image.color = TileGrid.Instance.DefaultTileColour;
 	}
 }

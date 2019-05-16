@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using GameLab;
 using UnityEngine.EventSystems;
 
-public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 	public Vector3 BeginPosition { get; private set; } = Vector3.zero;
 	[HideInInspector] public bool isObjectInGrid = false;

@@ -1,9 +1,9 @@
 {
   "dependencies": {
-    "com.gamelab.core": "https://github.com/Conceptlicious/Core.git",
-    "com.gamelab.event": "https://github.com/Conceptlicious/Event.git",
-    "com.gamelab.json": "https://github.com/Conceptlicious/JsonDotNet.git",
-    "com.gamelab.save": "https://github.com/Conceptlicious/Save.git",
+    "com.gamelab.core": "https://123099:Et1gafrlc3l@github.com/Conceptlicious/Core.git",
+    "com.gamelab.event": "https://123099:Et1gafrlc3l@github.com/Conceptlicious/Event.git",
+    "com.gamelab.json": "https://123099:Et1gafrlc3l@github.com/Conceptlicious/JsonDotNet.git",
+    "com.gamelab.save": "https://123099:Et1gafrlc3l@github.com/Conceptlicious/Save.git",
     "com.unity.ads": "2.0.8",
     "com.unity.analytics": "3.2.2",
     "com.unity.collab-proxy": "1.2.15",
@@ -41,5 +41,23 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.gamelab.core": {
+      "hash": "5abc320667e520e4215ae7ec93f6d32d3212325c",
+      "revision": "HEAD"
+    },
+    "com.gamelab.event": {
+      "hash": "67b3fd48ec0fd3f79db0a5533996bd23448d86d8",
+      "revision": "HEAD"
+    },
+    "com.gamelab.json": {
+      "hash": "4c54667cbce5e6282060a36c233969641b927029",
+      "revision": "HEAD"
+    },
+    "com.gamelab.save": {
+      "hash": "3ab62c6af76b5601ad20f23e86dc066d5bafa700",
+      "revision": "HEAD"
+    }
   }
 }

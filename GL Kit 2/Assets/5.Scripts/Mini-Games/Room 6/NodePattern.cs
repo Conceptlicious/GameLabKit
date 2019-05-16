@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameLab;
 using UnityEngine.UI;
 // Dot at the start
 
-public class NodePattern : MonoBehaviour
+public class NodePattern : BetterMonoBehaviour
 {
 	
 

@@ -5,21 +5,10 @@ using CustomEventCallbacks;
 using EventType = CustomEventCallbacks.EventType;
 using GameLab;
 
-public class HiddenObject : MonoBehaviour
+public class HiddenObject : BetterMonoBehaviour
 {
     [SerializeField]
     private Settings.R2_ObjectsToFind objectsToFind;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void CheckObject(ObjectFoundEvent objectFoundEventInfo)
     {

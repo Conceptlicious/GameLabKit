@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using GameLab;
 
-public class DropZone : MonoBehaviour
+public class DropZone : BetterMonoBehaviour
 {
 
 	public static int OccupiedPlaces { get; private set; } = 0;

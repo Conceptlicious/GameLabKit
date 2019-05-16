@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using GameLab;
 
 public enum GearType
 {
@@ -20,7 +21,7 @@ public enum GearType
 	Collection
 };
 
-public class GearInformation : MonoBehaviour
+public class GearInformation : BetterMonoBehaviour
 {
 	[SerializeField] private GearType gearType = default;
 	public GearType GetGearType => gearType;

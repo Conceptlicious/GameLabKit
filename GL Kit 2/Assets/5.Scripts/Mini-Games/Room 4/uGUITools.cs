@@ -1,10 +1,11 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
+using GameLab;
 using UnityEngine;
 
 //source jari 
 
-public class uGUITools : MonoBehaviour {
+public class uGUITools : BetterMonoBehaviour {
 	[MenuItem("uGUI/Anchors to Corners %[")]
 	static void AnchorsToCorners(){
 		foreach(Transform transform in Selection.transforms){

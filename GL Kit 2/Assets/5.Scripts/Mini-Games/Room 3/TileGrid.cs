@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using GameLab;
 using System.IO;
 
-public class TileGrid : BetterMonoBehaviour
+public class TileGrid : Singleton<TileGrid>
 {
 
 	[SerializeField] private GridMapStruct[] grids;
@@ -15,6 +15,8 @@ public class TileGrid : BetterMonoBehaviour
 	private List<TilePath> paths = new List<TilePath>();
 	private TileLayer bridgeLayer = null;
 	private TileLayer mainLayer = null;
+	public Color32 DefaultTileColour;
+
 
 	protected override void Awake()
 	{
@@ -24,9 +26,10 @@ public class TileGrid : BetterMonoBehaviour
 
 	private void CreateGrid(int gridIndex)
 	{
+
 		Texture2D map = grids[gridIndex].Map;
 		Color32[] pixels = map.GetPixels32();
-
+		DefaultTileColour = grids[gridIndex].Accessible;
 		mainLayer = new TileLayer(map.height, map.width);
 		bridgeLayer = new TileLayer(map.height, map.width, Tile.Type.Obstacle);
 
@@ -50,6 +53,7 @@ public class TileGrid : BetterMonoBehaviour
 			tileLayer.Tiles[row, col].TileType = grids[gridIndex].GetTypeFromColor(pixels[pixelIndex]);
 
 			GameObject tileInstance = Instantiate(tilePrefab, new Vector3(0,0,0), Quaternion.identity, this.transform);
+			tileInstance.name = $"Tile {row},{col}"; 
 
 			TileController tileControllerInstance = tileInstance.GetComponent<TileController>();
 			tileControllerInstance.TileData = tileLayer.Tiles[row, col];
@@ -67,15 +71,13 @@ public class TileGrid : BetterMonoBehaviour
 			Image tileImageInstance = tileInstance.GetComponent<Image>();
 			tileImageInstance.color = pixels[pixelIndex];
 
-			if (tileControllerInstance.TileData.TileGroup != null)
-			{
-				//tileControllerInstance.TileData.TileGroup.UngrouppedColor = grids[gridIndex].Accessible;
-			}
+			//tileControllerInstance.TileData.DefaultColour = pixels[pixelIndex];
 		}
 	}
 
 	private void OnTileHovered(TileController tile)
 	{
+
 		if(tile.TileData == null)
 		{
 			return;
@@ -87,13 +89,14 @@ public class TileGrid : BetterMonoBehaviour
 			return;
 		}
 
-		if (tile.TileData.TileGroup != null && tile.TileData.TileGroup == lastTile.TileGroup)
+		if (tile.TileData.TileGroup != null && lastTile != null && tile.TileData.TileGroup == lastTile.TileGroup)
 		{
+			lastTile = null;
 			tile.TileData.RemoveTileConnectionsAfterThis();
 			return;
 		}
 
-		if(!tile.TileData.TryConnectTo(lastTile))
+		if (lastTile != null && lastTile.TileGroup != null && !tile.TileData.TryConnectTo(lastTile))
 		{
 			return;
 		}

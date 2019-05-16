@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using GameLab;
 
 public enum ToggleGroup
 {
@@ -6,7 +7,7 @@ public enum ToggleGroup
 	SpecialNeeds
 };
 
-public class ToggleInformation : MonoBehaviour
+public class ToggleInformation : BetterMonoBehaviour
 {
 	public ToggleGroup toggleGroup;
 }

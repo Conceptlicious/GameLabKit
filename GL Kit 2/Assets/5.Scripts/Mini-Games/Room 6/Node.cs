@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GameLab;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class Node : MonoBehaviour, IPointerEnterHandler
+public class Node : BetterMonoBehaviour, IPointerEnterHandler
 {
 	[SerializeField] private bool fakeCheck;
 	[SerializeField] private DrawLines drawLines = null;

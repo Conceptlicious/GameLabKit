@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GameLab;
 using UnityEngine;
 
-public class NodeLayer : MonoBehaviour
+public class NodeLayer : BetterMonoBehaviour
 {
 	[SerializeField] private Node[] nodes;
 
