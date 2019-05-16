@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using GameLab;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
 public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 {
-	public event Action<TileController> OnMouseHovered;
+	public event Action<TileController> OnInteractedWith;
+
 	public Image Image { get; private set; }
-	[SerializeField] private Tile.Type tileType => tileData.TileType;
+
 	private Tile tileData = null;
 	public Tile TileData
 	{
@@ -33,22 +32,24 @@ public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointer
 			}
 		}
 	}
+
 	protected override void Awake()
 	{
 		base.Awake();
 		
 		Image = GetComponent<Image>();
 	}
+
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		OnMouseHovered?.Invoke(this);
+		OnInteractedWith?.Invoke(this);
 	}
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		if (Input.GetMouseButton(0))
 		{
-			OnMouseHovered?.Invoke(this);
+			OnInteractedWith?.Invoke(this);
 		}
 	}
 
@@ -59,6 +60,6 @@ public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointer
 
 	private void OnDisconnectedFromTile(Tile tileDisconnectedFrom)
 	{
-		Image.color = TileGrid.Instance.DefaultTileColour;
+		Image.color = TileGrid.Instance.CurrentLevelSettings.NormalTileColor;
 	}
 }

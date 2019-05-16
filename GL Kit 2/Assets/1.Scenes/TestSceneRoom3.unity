@@ -308,8 +308,8 @@ RectTransform:
   m_Father: {fileID: 868275757}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.15, y: 0}
-  m_AnchorMax: {x: 0.85, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -325,9 +325,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1478679c052db4face7d6ce24da9b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grids:
-  - Map: {fileID: 2800000, guid: 76cbdee694acf0f47b1f512c7c7c1d7a, type: 3}
-    Groups:
+  tileControllerPrefab: {fileID: 4359349084004071809, guid: c146e3a6ca537ca47bcf17c0f5c59122,
+    type: 3}
+  defaultLevelSettings:
+    DefaultTileColor:
+      serializedVersion: 2
+      rgba: 4286545791
+    NormalTileColor:
+      serializedVersion: 2
+      rgba: 4288387995
+    ObstacleTileColor:
+      serializedVersion: 2
+      rgba: 4278190080
+    BridgeTileColor:
+      serializedVersion: 2
+      rgba: 4278190080
+    StartPointAlphaThreshold: 126
+    TubeGroups:
     - groupColor:
         serializedVersion: 2
         rgba: 4278190335
@@ -337,21 +351,9 @@ MonoBehaviour:
     - groupColor:
         serializedVersion: 2
         rgba: 4294901760
-    Inaccessible:
-      serializedVersion: 2
-      rgba: 4278190080
-    Accessible:
-      serializedVersion: 2
-      rgba: 4288387995
-    BridgeColor:
-      serializedVersion: 2
-      rgba: 4278255615
-    AlphaCutoff: 190
-  tilePrefab: {fileID: 303039571543164378, guid: c146e3a6ca537ca47bcf17c0f5c59122,
-    type: 3}
-  DefaultTileColour:
-    serializedVersion: 2
-    rgba: 4288387995
+  levels:
+  - {fileID: 11400000, guid: eb35806477ac4624ba20224e5e4b8b93, type: 2}
+  - {fileID: 11400000, guid: 6917ed6b12006fc41964b8463d036c23, type: 2}
 --- !u!1 &1455482038
 GameObject:
   m_ObjectHideFlags: 0

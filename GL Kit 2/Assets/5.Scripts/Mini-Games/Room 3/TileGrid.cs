@@ -1,119 +1,162 @@
-﻿using System.Collections;
-using System;
-using System.Collections.Generic;
+﻿using GameLab;
 using UnityEngine;
-using UnityEngine.UI;
-using GameLab;
-using System.IO;
 
 public class TileGrid : Singleton<TileGrid>
 {
+	public bool HasStartedDrawingPath => lastInteractedWithTile != null;
 
-	[SerializeField] private GridMapStruct[] grids;
-	[SerializeField] private GameObject tilePrefab;
-	private Tile lastTile = null;
-	private List<TilePath> paths = new List<TilePath>();
-	private TileLayer bridgeLayer = null;
-	private TileLayer mainLayer = null;
-	public Color32 DefaultTileColour;
+	public LevelData.ColorSettings CurrentLevelSettings => currentLevel != null && currentLevel.HasCustomColorSettings ? currentLevel.CustomColorSettings : defaultLevelSettings;
 
+	[SerializeField] private TileController tileControllerPrefab = null;
+
+	[SerializeField] private LevelData.ColorSettings defaultLevelSettings = LevelData.ColorSettings.Default;
+	[SerializeField] private LevelData[] levels = new LevelData[0];
+
+	private LevelData currentLevel = null;
+
+	private TileLayer mainLayer		= null;
+	private TileLayer bridgeLayer	= null;
+
+	private TileController lastInteractedWithTile = null;
 
 	protected override void Awake()
 	{
 		base.Awake();
-		CreateGrid(0);
+
+		if(levels.Length == 0)
+		{
+			Debug.LogWarning("There are no levels set up in Room 3!");
+			return;
+		}
+
+		SpawnLevel(levels[0]);
 	}
 
-	private void CreateGrid(int gridIndex)
+	private void SpawnLevel(LevelData level)
 	{
+		currentLevel = level;
 
-		Texture2D map = grids[gridIndex].Map;
-		Color32[] pixels = map.GetPixels32();
-		DefaultTileColour = grids[gridIndex].Accessible;
-		mainLayer = new TileLayer(map.height, map.width);
-		bridgeLayer = new TileLayer(map.height, map.width, Tile.Type.Obstacle);
+		mainLayer = new TileLayer(level.Rows, level.Cols);
+		bridgeLayer = new TileLayer(level.Rows, level.Cols, Tile.Type.Obstacle);
 
+		LevelData.ColorSettings levelColorSettings = CurrentLevelSettings;
+		Color32[] levelPixelData = level.LevelTexture.GetPixels32();
 
-		for(int pixelIndex = 0; pixelIndex < pixels.Length; ++pixelIndex)
+		float anchorStepPerColumn = 1.0f / level.Cols;
+		float anchorStepPerRow = 1.0f / level.Rows;
+
+		for(int i = 0; i < levelPixelData.Length; ++i)
 		{
-			TileLayer tileLayer = null;
+			Color32 pixel = levelPixelData[i];
+			int row = i / level.Rows;
+			int col = i % level.Cols;
 
-			if (pixels[pixelIndex].Compare(grids[gridIndex].BridgeColor))
-			{
-				tileLayer = bridgeLayer;
-			}
-			else
-			{
-				tileLayer = mainLayer;
-			}
-			int row = pixelIndex / map.width;
-			int col = pixelIndex % map.width;
+			TileLayer tileLayer = pixel.CompareRGB(levelColorSettings.BridgeTileColor) ? bridgeLayer : mainLayer;
 
-			tileLayer.Tiles[row, col].TileGroup = grids[gridIndex].GetGroupFromColor(pixels[pixelIndex]);
-			tileLayer.Tiles[row, col].TileType = grids[gridIndex].GetTypeFromColor(pixels[pixelIndex]);
+			Tile tileData = tileLayer.Tiles[row, col];
 
-			GameObject tileInstance = Instantiate(tilePrefab, new Vector3(0,0,0), Quaternion.identity, CachedTransform);
-			tileInstance.name = $"Tile {row},{col}"; 
+			tileData.TileGroup = levelColorSettings.GetTileGroupFromColor(pixel);
+			tileData.TileType = levelColorSettings.GetTileTypeFromColor(pixel);
 
-			TileController tileControllerInstance = tileInstance.GetComponent<TileController>();
-			tileControllerInstance.TileData = tileLayer.Tiles[row, col];
-			tileControllerInstance.OnMouseHovered += OnTileHovered;
-			RectTransform rectTransformInstance = tileInstance.GetComponent<RectTransform>();
-
-			rectTransformInstance.anchorMin =
-				new Vector2((col * (1.0f / map.width)), 
-				row * (1.0f / map.height));
-			rectTransformInstance.anchorMax =
-				new Vector2(((col + 1) * (1.0f / map.width)), 
-				(row + 1) * (1.0f / map.height));
-			rectTransformInstance.offsetMin = rectTransformInstance.offsetMax = Vector2.zero;
-
-			Image tileImageInstance = tileInstance.GetComponent<Image>();
-			tileImageInstance.color = pixels[pixelIndex];
-
-			//tileControllerInstance.TileData.DefaultColour = pixels[pixelIndex];
+			TileController tileController = SpawnTileController(tileData, anchorStepPerColumn, anchorStepPerRow);
+			tileController.Image.color = pixel;
 		}
 	}
 
-	private void OnTileHovered(TileController tile)
+	private TileController SpawnTileController(Tile tileData, float anchorStepPerColumn, float anchorStepPerRow)
 	{
+		TileController tileController = Instantiate(tileControllerPrefab, Vector3.zero, Quaternion.identity, CachedTransform);
+		tileController.name = $"Tile {tileData.Row}, {tileData.Col}";
 
-		if(tile.TileData == null)
+		tileController.TileData = tileData;
+		tileController.OnInteractedWith += OnTileInteractedWith;
+
+		tileController.CachedRectTransform.anchorMin = new Vector2(tileData.Col * anchorStepPerColumn, tileData.Row * anchorStepPerRow);
+		tileController.CachedRectTransform.anchorMax = new Vector2((tileData.Col + 1) * anchorStepPerColumn, (tileData.Row + 1) * anchorStepPerRow);
+
+		tileController.CachedRectTransform.offsetMin = tileController.CachedRectTransform.offsetMax = Vector2.zero;
+
+		return tileController;
+	}
+
+	private void OnTileInteractedWith(TileController tile)
+	{
+		if(tile == lastInteractedWithTile)
 		{
 			return;
 		}
 
-		if(lastTile == null && tile.TileData.TileType == Tile.Type.StartPoint)
+		Tile tileData = tile.TileData;
+
+		if(!HasStartedDrawingPath)
 		{
-			lastTile = tile.TileData;
+			TryStartNewPath(tile);
 			return;
 		}
 
-		if (tile.TileData.TileGroup != null && lastTile != null && tile.TileData.TileGroup == lastTile.TileGroup)
+		if(TryRemoveTileConnectionsAfter(tile))
 		{
-			lastTile = null;
-			tile.TileData.RemoveTileConnectionsAfterThis();
 			return;
 		}
 
-		if (lastTile != null && lastTile.TileGroup != null && !tile.TileData.TryConnectTo(lastTile))
+		if(!tileData.TryConnectTo(lastInteractedWithTile.TileData))
 		{
+			print(lastInteractedWithTile.name + " failed to connect with " + tile.name);
 			return;
+		}
+
+		if(tileData.TileType == Tile.Type.EndPoint)
+		{
+			print("Victory!");
+		}
+
+		lastInteractedWithTile = tile;
+		print(lastInteractedWithTile.name + " connected with " + tile.name);
+	}
+
+	private bool TryStartNewPath(TileController tile)
+	{
+		if(HasStartedDrawingPath)
+		{
+			return false;
+		}
+
+		if(tile.TileData.TileGroup == Tile.Group.Ungrouped)
+		{
+			return false;
+		}
+
+		if(tile.TileData.TileType != Tile.Type.StartPoint)
+		{
+			return false;
 		}
 		
-		lastTile = tile.TileData;
-	}
-}
+		print("New path");
 
-public static class Color32Extensions
-{
-	public static bool Compare(this Color32 thisColor, Color32 other)
-	{
-		return thisColor.r == other.r && thisColor.g == other.g && thisColor.b == other.b && thisColor.a == other.a;
+		lastInteractedWithTile = tile;
+		return true;
 	}
 
-	public static bool CompareIgnoreAlpha(this Color32 thisColor, Color32 other)
+	private bool TryRemoveTileConnectionsAfter(TileController tile)
 	{
-		return thisColor.r == other.r && thisColor.g == other.g && thisColor.b == other.b;
+		if(tile.TileData.TileGroup == Tile.Group.Ungrouped)
+		{
+			return false;
+		}
+
+		TilePath interactedTileGroupPath = mainLayer.CalculatePathForGroup(tile.TileData.TileGroup);
+
+		int interactedTilePathIndex = interactedTileGroupPath.Tiles.IndexOf(tile.TileData);
+		int lastInteractedWithTilePathIndex = interactedTileGroupPath.Tiles.IndexOf(lastInteractedWithTile.TileData);
+
+		if(interactedTilePathIndex < 0 || interactedTilePathIndex >= lastInteractedWithTilePathIndex)
+		{
+			return false;
+		}
+		
+		tile.TileData.RemoveTileConnectionsAfterThis();
+		lastInteractedWithTile = tile;
+
+		return true;
 	}
 }

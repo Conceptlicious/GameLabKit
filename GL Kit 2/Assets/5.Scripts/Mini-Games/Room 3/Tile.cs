@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GameLab;
 using UnityEngine;
 
+[Serializable]
 public class Tile
 {
 	public enum Type
@@ -21,8 +17,11 @@ public class Tile
 	{
 		public const Group Ungrouped = null;
 
-		[SerializeField] private Color32 groupColor;
+		[SerializeField] private Color32 groupColor = Color.black;
 		public Color32 GroupColor => groupColor;
+
+		public Group() {}
+		public Group(Color32 groupColor) => this.groupColor = groupColor;
 	}
 
 	[Flags]
@@ -69,6 +68,11 @@ public class Tile
 			return false;
 		}
 
+		if(TileGroup != Group.Ungrouped && TileGroup != tile.TileGroup)
+		{
+			return false;
+		}
+
 		if(!IsConnectionDirectionAllowed(tile))
 		{
 			return false;
@@ -94,40 +98,14 @@ public class Tile
 			return;
 		}
 
-		Tile tileToDisconnect = this;
-		Tile lastDisconnectedTile = null;
+		Tile disconnectedTile = NextTile;
 
-		while(tileToDisconnect.NextTile != null)
-		{
-			lastDisconnectedTile = tileToDisconnect;
-			tileToDisconnect = tileToDisconnect.RemoveTileConnection();
-		}
+		NextTile.TileGroup = Group.Ungrouped;
+		NextTile = null;
 
-		if (lastDisconnectedTile.TileType != Type.StartPoint)
-		{
-			lastDisconnectedTile.OnDisconnectedFromTile?.Invoke(tileToDisconnect);
-		}
-	}
+		disconnectedTile.OnDisconnectedFromTile(this);
 
-	private Tile RemoveTileConnection()
-	{
-		if(NextTile == null)
-		{
-			return null;
-		}
-
-		Tile tileToReturn = NextTile;
-
-			NextTile.TileGroup = Group.Ungrouped;
-			NextTile = null;
-			tileToReturn.OnDisconnectedFromTile?.Invoke(this);
-
-
-		Debug.Log($"Removed connection from tile {tileToReturn.Row}, {tileToReturn.Col}.\n" +
-			$"It is now part of group {(tileToReturn.TileGroup == null ? "Ungrouped" : tileToReturn.TileGroup.GetType().Name)}\n" +
-   $"We are tile {Row}, {Col}, and we are part of group {(TileGroup == null ? "Ungrouped" : TileGroup.GetType().Name)}");
-
-		return tileToReturn;
+		disconnectedTile.RemoveTileConnectionsAfterThis();
 	}
 
 	private bool IsNeighborOf(Tile tile)
