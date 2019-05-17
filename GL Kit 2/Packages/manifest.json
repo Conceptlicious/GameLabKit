@@ -44,7 +44,7 @@
   },
   "lock": {
     "com.gamelab.core": {
-      "hash": "7c85cba2fd452d5d78783fe4219d607f4664d3ef",
+      "hash": "905301db5bfc555805ecd3fdc0603d47551d6ca6",
       "revision": "HEAD"
     },
     "com.gamelab.event": {
