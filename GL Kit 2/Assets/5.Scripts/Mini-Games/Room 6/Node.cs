@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using GameLab;
 using UnityEngine;
@@ -8,6 +9,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class Node : BetterMonoBehaviour, IPointerEnterHandler
 {
+	//public event Action<Node> OnInteract;
 	[SerializeField] private bool fakeCheck;
 	[SerializeField] private DrawLines drawLines = null;
 	[SerializeField] private NodePattern nodePattern = null;
@@ -21,7 +23,10 @@ public class Node : BetterMonoBehaviour, IPointerEnterHandler
 
 	//Ran when mouse over button
 	public void OnPointerEnter(PointerEventData eventData)
-	{		
+	{
+		// Raise event
+		//OnInteract.Invoke(this);
+
 		if(!nodePattern.IsInteractable)
 		{
 			return;

@@ -36,9 +36,8 @@ public class DrawLines : BetterMonoBehaviour
 		{
 			savedButtons[i].SetActive(true);
 		}
-
 		positions.Clear();
-		lineBetweenNodes.positionCount = positions.Count;
-		lineBetweenNodes.SetPositions(positions.ToArray());
+		lineBetweenNodes.positionCount = 0;
+		//lineBetweenNodes.SetPositions(positions.ToArray());
 	}
 }
