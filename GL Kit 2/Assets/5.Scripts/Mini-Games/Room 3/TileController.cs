@@ -5,9 +5,10 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
-public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointerEnterHandler
+public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerUpHandler
 {
 	public event Action<TileController> OnInteractedWith;
+	public event Action<TileController> OnFinishedInteractingAt;
 
 	public Image Image { get; private set; }
 
@@ -61,5 +62,10 @@ public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointer
 	private void OnDisconnectedFromTile(Tile tileDisconnectedFrom)
 	{
 		Image.color = TileGrid.Instance.CurrentLevelSettings.NormalTileColor;
+	}
+
+	public void OnPointerUp(PointerEventData eventData)
+	{
+		OnFinishedInteractingAt?.Invoke(this);
 	}
 }

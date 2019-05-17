@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TileGrid : Singleton<TileGrid>
 {
-	public bool HasStartedDrawingPath => lastInteractedWithTile != null;
+	public bool HasInteractedWithTile => lastInteractedWithTile != null;
 
 	public LevelData.ColorSettings CurrentLevelSettings => currentLevel != null && currentLevel.HasCustomColorSettings ? currentLevel.CustomColorSettings : defaultLevelSettings;
 
@@ -70,6 +70,7 @@ public class TileGrid : Singleton<TileGrid>
 
 		tileController.TileData = tileData;
 		tileController.OnInteractedWith += OnTileInteractedWith;
+		tileController.OnFinishedInteractingAt += OnFinishedInteractingAtTile;
 
 		tileController.CachedRectTransform.anchorMin = new Vector2(tileData.Col * anchorStepPerColumn, tileData.Row * anchorStepPerRow);
 		tileController.CachedRectTransform.anchorMax = new Vector2((tileData.Col + 1) * anchorStepPerColumn, (tileData.Row + 1) * anchorStepPerRow);
@@ -88,9 +89,9 @@ public class TileGrid : Singleton<TileGrid>
 
 		Tile tileData = tile.TileData;
 
-		if(!HasStartedDrawingPath)
+		if(!HasInteractedWithTile)
 		{
-			TryStartNewPath(tile);
+			TryResumePath(tile);
 			return;
 		}
 
@@ -114,9 +115,14 @@ public class TileGrid : Singleton<TileGrid>
 		print(lastInteractedWithTile.name + " connected with " + tile.name);
 	}
 
-	private bool TryStartNewPath(TileController tile)
+	private void OnFinishedInteractingAtTile(TileController tile)
 	{
-		if(HasStartedDrawingPath)
+		lastInteractedWithTile = null;
+	}
+
+	private bool TryResumePath(TileController tile)
+	{
+		if(HasInteractedWithTile)
 		{
 			return false;
 		}
@@ -126,14 +132,16 @@ public class TileGrid : Singleton<TileGrid>
 			return false;
 		}
 
-		if(tile.TileData.TileType != Tile.Type.StartPoint)
+		if(tile.TileData.TileType == Tile.Type.EndPoint)
 		{
 			return false;
 		}
 		
-		print("New path");
+		print("Resuming path");
 
+		tile.TileData.RemoveTileConnectionsAfterThis();
 		lastInteractedWithTile = tile;
+
 		return true;
 	}
 
