@@ -1,23 +1,34 @@
-﻿using GameLab;
+﻿using System;
+using System.Collections.Generic;
+using GameLab;
 using UnityEngine;
 
 public class TileGrid : Singleton<TileGrid>
 {
 	public bool HasInteractedWithTile => lastInteractedWithTile != null;
 
-	public LevelData.ColorSettings CurrentLevelSettings => currentLevel != null && currentLevel.HasCustomColorSettings ? currentLevel.CustomColorSettings : defaultLevelSettings;
+	// TODO: CLeanup current level management
+	public LevelData CurrentLevel
+	{
+		get => levels[currentLevelIndex];
+		set => currentLevelIndex = value != null ? Array.IndexOf(levels, value) : -1;
+	}
+
+	public LevelData.ColorSettings CurrentLevelSettings => CurrentLevel != null && CurrentLevel.HasCustomColorSettings ? CurrentLevel.CustomColorSettings : defaultLevelSettings;
 
 	[SerializeField] private TileController tileControllerPrefab = null;
 
 	[SerializeField] private LevelData.ColorSettings defaultLevelSettings = LevelData.ColorSettings.Default;
 	[SerializeField] private LevelData[] levels = new LevelData[0];
 
-	private LevelData currentLevel = null;
+	private int currentLevelIndex = -1;
 
 	private TileLayer mainLayer		= null;
 	private TileLayer bridgeLayer	= null;
 
 	private TileController lastInteractedWithTile = null;
+
+	private HashSet<Tile.Group> finishedGroups = new HashSet<Tile.Group>();
 
 	protected override void Awake()
 	{
@@ -29,12 +40,38 @@ public class TileGrid : Singleton<TileGrid>
 			return;
 		}
 
-		SpawnLevel(levels[0]);
+		//SpawnLevel(levels[0]);
+		NextLevel();
+	}
+
+	private void NextLevel()
+	{
+		if(currentLevelIndex == levels.Length - 1)
+		{
+			print("No more levels");
+			return;
+		}
+
+		++currentLevelIndex;
+		print(currentLevelIndex);
+		SpawnLevel(levels[currentLevelIndex]);
+	}
+
+	private void PreviousLevel()
+	{
+		if(currentLevelIndex == 0)
+		{
+			print("No previous levels");
+		}
+
+		--currentLevelIndex;
+
+		SpawnLevel(levels[currentLevelIndex]);
 	}
 
 	private void SpawnLevel(LevelData level)
 	{
-		currentLevel = level;
+		DestroySpawnedLevel();
 
 		mainLayer = new TileLayer(level.Rows, level.Cols);
 		bridgeLayer = new TileLayer(level.Rows, level.Cols, Tile.Type.Obstacle);
@@ -80,6 +117,21 @@ public class TileGrid : Singleton<TileGrid>
 		return tileController;
 	}
 
+	private void DestroySpawnedLevel()
+	{
+		foreach(Transform spawnedTile in CachedTransform)
+		{
+			Destroy(spawnedTile.gameObject);
+		}
+
+		//CurrentLevel = null;
+		mainLayer = null;
+		bridgeLayer = null;
+
+		lastInteractedWithTile = null;
+		finishedGroups.Clear();
+	}
+
 	private void OnTileInteractedWith(TileController tile)
 	{
 		if(tile == lastInteractedWithTile)
@@ -91,7 +143,7 @@ public class TileGrid : Singleton<TileGrid>
 
 		if(!HasInteractedWithTile)
 		{
-			TryResumePath(tile);
+			TryResumePathFrom(tile);
 			return;
 		}
 
@@ -100,19 +152,19 @@ public class TileGrid : Singleton<TileGrid>
 			return;
 		}
 
-		if(!tileData.TryConnectTo(lastInteractedWithTile.TileData))
+		if(finishedGroups.Contains(lastInteractedWithTile.TileData.TileGroup))
 		{
-			print(lastInteractedWithTile.name + " failed to connect with " + tile.name);
 			return;
 		}
 
-		if(tileData.TileType == Tile.Type.EndPoint)
+		if(!tileData.TryConnectTo(lastInteractedWithTile.TileData))
 		{
-			print("Victory!");
+			return;
 		}
 
 		lastInteractedWithTile = tile;
-		print(lastInteractedWithTile.name + " connected with " + tile.name);
+
+		UpdateWinStatus();
 	}
 
 	private void OnFinishedInteractingAtTile(TileController tile)
@@ -120,7 +172,7 @@ public class TileGrid : Singleton<TileGrid>
 		lastInteractedWithTile = null;
 	}
 
-	private bool TryResumePath(TileController tile)
+	private bool TryResumePathFrom(TileController tile)
 	{
 		if(HasInteractedWithTile)
 		{
@@ -136,11 +188,8 @@ public class TileGrid : Singleton<TileGrid>
 		{
 			return false;
 		}
-		
-		print("Resuming path");
 
-		tile.TileData.RemoveTileConnectionsAfterThis();
-		lastInteractedWithTile = tile;
+		RemoveTileConnectionsAfter(tile);
 
 		return true;
 	}
@@ -161,10 +210,40 @@ public class TileGrid : Singleton<TileGrid>
 		{
 			return false;
 		}
-		
-		tile.TileData.RemoveTileConnectionsAfterThis();
-		lastInteractedWithTile = tile;
+
+		RemoveTileConnectionsAfter(tile);
 
 		return true;
+	}
+
+	private void RemoveTileConnectionsAfter(TileController tile)
+	{
+		tile.TileData.RemoveTileConnectionsAfterThis();
+		finishedGroups.Remove(tile.TileData.TileGroup);
+
+		lastInteractedWithTile = tile;
+	}
+
+	private void UpdateWinStatus()
+	{
+		Tile tileData = lastInteractedWithTile.TileData;
+
+		if(tileData.TileType != Tile.Type.EndPoint)
+		{
+			return;
+		}
+
+		finishedGroups.Add(tileData.TileGroup);
+
+		foreach(Tile.Group tileGroup in CurrentLevelSettings.TileGroups)
+		{
+			if(!finishedGroups.Contains(tileGroup))
+			{
+				return;
+			}
+		}
+
+		NextLevel();
+		Debug.Log("Level complete!");
 	}
 }

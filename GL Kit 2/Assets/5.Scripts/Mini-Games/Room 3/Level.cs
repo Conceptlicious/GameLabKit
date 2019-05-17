@@ -15,7 +15,7 @@ public class LevelData : ScriptableObject
 			ObstacleTileColor = Color.black,
 			BridgeTileColor = Color.black,
 			StartPointAlphaThreshold = 126,
-			TubeGroups = new Tile.Group[3]
+			TileGroups = new Tile.Group[3]
 			{
 				new Tile.Group(Color.red),
 				new Tile.Group(Color.green),
@@ -30,11 +30,11 @@ public class LevelData : ScriptableObject
 		[Tooltip("The alpha value at or after which a tile is considered a start point and before which a tile is considered an end point")]
 		[Range(0, 255)] public byte StartPointAlphaThreshold;
 
-		public Tile.Group[] TubeGroups;
+		public Tile.Group[] TileGroups;
 
 		public Tile.Group GetTileGroupFromColor(Color32 color)
 		{
-			foreach(Tile.Group tubeGroup in TubeGroups)
+			foreach(Tile.Group tubeGroup in TileGroups)
 			{
 				if(!tubeGroup.GroupColor.CompareRGB(color))
 				{
@@ -59,7 +59,7 @@ public class LevelData : ScriptableObject
 				return Tile.Type.Obstacle;
 			}
 
-			if(TubeGroups.Any(tubeGroup => tubeGroup.GroupColor.CompareRGB(color)))
+			if(TileGroups.Any(tubeGroup => tubeGroup.GroupColor.CompareRGB(color)))
 			{
 				if(color.a >= StartPointAlphaThreshold)
 				{

@@ -34,6 +34,8 @@ public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointer
 		}
 	}
 
+	private Color? originalTileColor = null;
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -56,12 +58,17 @@ public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointer
 
 	private void OnConnectedToTile(Tile tileConnectedTo)
 	{
+		if(!originalTileColor.HasValue)
+		{
+			originalTileColor = Image.color;
+		}
+
 		Image.color = TileData.TileGroup.GroupColor;
 	}
 
 	private void OnDisconnectedFromTile(Tile tileDisconnectedFrom)
 	{
-		Image.color = TileGrid.Instance.CurrentLevelSettings.NormalTileColor;
+		Image.color = originalTileColor.GetValueOrDefault(TileGrid.Instance.CurrentLevelSettings.NormalTileColor);
 	}
 
 	public void OnPointerUp(PointerEventData eventData)
