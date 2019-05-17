@@ -26,25 +26,45 @@ public class NodePattern : BetterMonoBehaviour
 
 	private void Start()
 	{
-		ActiveLayerReset();
-		//nextPattern.gameObject.SetActive(false);
-
-		
+		ActiveLayerReset();		
 	}
 
 	private void OnEnable()
 	{
 		// register to node events
-
+		foreach(NodeLayer layer in layers)
+		{
+			layer.OnInteracted += OnInteracted;
+		}
 	}
 
 	private void OnDisable()
 	{
 		// unregister from node events	
+		foreach (NodeLayer layer in layers)
+		{
+			layer.OnInteracted -= OnInteracted;
+		}
 	}
 
-	// listen to node events
-	// AddPosition, ResetLine, SetLayer,ActiveLayerReset
+	private void OnInteracted(NodeLayer nodeLayer, Node node)
+	{
+		if(!node.FakeCheck)
+		{
+			if (nodeLayer == layers[0] && ActiveLayer == 0)
+			{
+				SpawnStartDot(node.CachedTransform.parent, node.CachedRectTransform.anchoredPosition);
+			}
+
+			drawLines.AddPosition(node.gameObject);
+			SetLayer();
+		}
+		else
+		{			
+			drawLines.ResetLine();
+			ActiveLayerReset();
+		}
+	}
 
 	//When a correct button is pressed, it sets current layer
 	public void SetLayer()

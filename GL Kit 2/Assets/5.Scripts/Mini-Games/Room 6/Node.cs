@@ -9,8 +9,11 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class Node : BetterMonoBehaviour, IPointerEnterHandler
 {
-	//public event Action<Node> OnInteract;
+	public event Action<Node> OnInteract;
+
 	[SerializeField] private bool fakeCheck;
+	public bool FakeCheck => fakeCheck;
+
 	[SerializeField] private DrawLines drawLines = null;
 	[SerializeField] private NodePattern nodePattern = null;
 
@@ -25,7 +28,7 @@ public class Node : BetterMonoBehaviour, IPointerEnterHandler
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		// Raise event
-		//OnInteract.Invoke(this);
+		OnInteract?.Invoke(this);
 
 		if(!nodePattern.IsInteractable)
 		{
@@ -38,14 +41,6 @@ public class Node : BetterMonoBehaviour, IPointerEnterHandler
 			{
 				nodePattern.SpawnStartDot(transform.parent, (transform as RectTransform).anchoredPosition);
 			}
-
-			drawLines.AddPosition(gameObject);
-			nodePattern.SetLayer();
-		}
-		else
-		{
-			drawLines.ResetLine();
-			nodePattern.ActiveLayerReset();
 		}
 	}
 }
