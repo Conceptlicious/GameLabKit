@@ -44,6 +44,9 @@ TagManager:
   - name: Line
     uniqueID: 3230104139
     locked: 0
+  - name: Logo
+    uniqueID: 3252693997
+    locked: 0
   - name: Background
     uniqueID: 1200530059
     locked: 0
