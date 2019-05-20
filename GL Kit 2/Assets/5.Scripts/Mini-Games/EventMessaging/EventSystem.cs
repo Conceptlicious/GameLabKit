@@ -7,12 +7,12 @@ namespace CustomEventCallbacks
 {
 	public static class EventSystem
 	{
-		public delegate void EventListener(EventInfo e);
 		private static Dictionary<EventType, List<EventListener>> eventListeners = new Dictionary<EventType, List<EventListener>>();
+		public delegate void EventListener(EventInfo e);
 
 		public static void RegisterListener(EventType eventType, EventListener listener)
-		{
-			if (eventListeners.ContainsKey(eventType) == false)
+		{        
+			if (!eventListeners.ContainsKey(eventType))
 			{
 				eventListeners.Add(eventType, new List<EventListener>());
 			}
@@ -38,20 +38,20 @@ namespace CustomEventCallbacks
 		{
 			//Debug.Log("Trying to execute event: " + eventType.ToString() + ", with desc: " + eventInfo.eventDescription);			
 	
-			if (eventListeners.ContainsKey(eventType) == false || 
+			if (!eventListeners.ContainsKey(eventType) || 
 			    eventListeners == null ||
 			    eventListeners[eventType] == null || 
 			    eventListeners[eventType].Count < 1)
 			{
-				//No one's listening, return.
+				// No one's listening, return.
 				Debug.Log("No one is listening to " + eventInfo.eventDescription);
 				return;
 			}
 
 	
-			foreach (EventListener evLi in eventListeners[eventType])
+			foreach (EventListener eventListener in eventListeners[eventType])
 			{
-				evLi(eventInfo);
+				eventListener(eventInfo);
 			}
 		}
 

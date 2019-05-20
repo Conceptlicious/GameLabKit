@@ -3,11 +3,11 @@ using GameLab;
 
 public class DropZone : BetterMonoBehaviour
 {
+	[HideInInspector] public GearType neededType;
 
 	public static int OccupiedPlaces { get; private set; } = 0;
 	public static bool IsCombinationRight { get; private set; } = true;	
 
-	[HideInInspector] public GearType neededType;
 	public bool IsOccupied { get; private set; }
 	private Transform gear = null;
 

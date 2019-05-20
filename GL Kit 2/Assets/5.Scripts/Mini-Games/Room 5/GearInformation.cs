@@ -26,9 +26,9 @@ public class GearInformation : BetterMonoBehaviour
 	[SerializeField] private GearType gearType = default;
 	public GearType GetGearType => gearType;
 
-	[SerializeField] private bool invertRotation = false;
-	[SerializeField] private int rotationSpeed = 50;
 	[SerializeField] private float timeForRotationToStop = 2f;
+	[SerializeField] private int rotationSpeed = 50;
+	[SerializeField] private bool invertRotation = false;
 	[HideInInspector] public bool isAbleToRotate = false;
 
 	public void StopGearRotationMethod()

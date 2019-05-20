@@ -36,22 +36,15 @@ public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler,
 
 		DropZone dropZone = GridHandler.Instance.GetDropZoneUnder(CachedTransform as RectTransform);
 
-		if (dropZone != null)
+		if (dropZone != null && !dropZone.IsOccupied)
 		{
-			if (dropZone.IsOccupied)
-			{
-				CachedTransform.position = BeginPosition;
-			}
-			else
-			{
-				float x = dropZone.CachedTransform.position.x;
-				float y = dropZone.CachedTransform.position.y;
-				float z = BeginPosition.z;
-				CachedTransform.position = new Vector3(x, y, z);
+			float x = dropZone.CachedTransform.position.x;
+			float y = dropZone.CachedTransform.position.y;
+			float z = BeginPosition.z;
+			CachedTransform.position = new Vector3(x, y, z);
 
-				isObjectInGrid = true;
-				dropZone.Occupy(CachedTransform);
-			}
+			isObjectInGrid = true;
+			dropZone.Occupy(CachedTransform);
 		}
 		else
 		{

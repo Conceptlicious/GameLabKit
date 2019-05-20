@@ -3,19 +3,20 @@ using UnityEngine;
 using GameLab;
 
 public class CameraTargetSelectEvent : GameLabEvent
-{   
-    public Transform FocalA;
-    public Transform FocalB;
-    public bool shouldFade = false;
-    public bool showTips = false;
-    
-    public CameraTargetSelectEvent(Transform pFocalA, Transform pFocalB, bool pShouldFade, bool pShowTips)
-    {
-        FocalA = pFocalA;
-        FocalB = pFocalB;
+{
+	//FocalA and FocalB have to be focalA and FocalB
+	public Transform FocalA = null;
+	public Transform FocalB = null;
+	public bool shouldFade = false;
+	public bool showTips = false;
+	
+	public CameraTargetSelectEvent(Transform focalA, Transform focalB, bool shouldFade, bool showTips)
+	{
+		this.FocalA = focalA;
+		this.FocalB = focalB;
 
-        shouldFade = pShouldFade;
-        showTips = pShowTips;       
-    } 
+		this.shouldFade = shouldFade;
+		this.showTips = showTips;       
+	} 
 }
 
