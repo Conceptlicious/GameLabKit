@@ -97,12 +97,12 @@ public class TileGrid : Singleton<TileGrid>
 			tileData.TileGroup = levelColorSettings.GetTileGroupFromColor(pixel);
 			tileData.TileType = levelColorSettings.GetTileTypeFromColor(pixel);
 
-			TileController tileController = SpawnTileController(tileData, anchorStepPerColumn, anchorStepPerRow, tileSpriteSettings);
+			TileController tileController = SpawnTileController(tileData, anchorStepPerColumn, anchorStepPerRow, tileSpriteSettings, tileLayer);
 			tileController.Image.color = pixel;
 		}
 	}
 
-	private TileController SpawnTileController(Tile tileData, float anchorStepPerColumn, float anchorStepPerRow, TileSpriteSettings tileSprites)
+	private TileController SpawnTileController(Tile tileData, float anchorStepPerColumn, float anchorStepPerRow, TileSpriteSettings tileSprites, TileLayer layer)
 	{
 		TileController tileController = Instantiate(tileControllerPrefab, Vector3.zero, Quaternion.identity, CachedTransform);
 		tileController.name = $"Tile {tileData.Row}, {tileData.Col}";
@@ -117,7 +117,7 @@ public class TileGrid : Singleton<TileGrid>
 		tileController.CachedRectTransform.offsetMin = tileController.CachedRectTransform.offsetMax = Vector2.zero;
 
 		tileController.TileData.SpriteSettings = tileSprites;
-
+		tileController.TileData.TileLayer = layer;
 		return tileController;
 	}
 
@@ -185,7 +185,7 @@ public class TileGrid : Singleton<TileGrid>
 	private void ValidatePath(TileController currentTile, TileController lastTile)
 	{
 	  
-		TilePath path = mainLayer.CalculatePathForGroup(lastTile.TileData.TileGroup);
+		TilePath path = lastTile.TileData.TileLayer.CalculatePathForGroup(lastTile.TileData.TileGroup);
 
 		if (!path.Tiles.Contains(currentTile.TileData) || !path.Tiles.Contains(lastTile.TileData))
 		{
@@ -204,107 +204,79 @@ public class TileGrid : Singleton<TileGrid>
 		Tile lastTileTileData = lastTile.TileData;
 
 		// current ptl have both different x and y values 
-		int xDiff = currentTileTileData.Col - previousToLastTile.Col;
-		int yDiff = currentTileTileData.Row - previousToLastTile.Row;
+		bool currentXSmallerThanPTL = (currentTileTileData.Col < previousToLastTile.Col);
+		bool currentYSmallerThanPTL = (currentTileTileData.Row < previousToLastTile.Row);
 
-		if (xDiff != 0 && yDiff != 0)
-		{
+		bool currentOnSameRowAsL = (currentTileTileData.Row == lastTileTileData.Row);
 
-			if (xDiff > 0)
-			{
-				if (yDiff > 0)
-				{
-					if (lastTileTileData.Col == previousToLastTile.Col)
-					{
-						lastTile.ChangeSprite(tileSpriteSettings.TubeEastToSouth);
-					}
-					else
-					{
-						lastTile.ChangeSprite(tileSpriteSettings.TubeWestToNorth);
-					}
-					
-					if(currentTileTileData.Row == lastTileTileData.Row)
-					{
-						currentTile.ChangeSprite(tileSpriteSettings.TubeWestToEast);
-					}
-					else
-					{
-						currentTile.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
-					}
-					return;
-				}
-				if (yDiff < 0)
-				{
-
-					if (lastTileTileData.Col == previousToLastTile.Col)
-					{
-						lastTile.ChangeSprite(tileSpriteSettings.TubeEastToNorth);						
-					}
-					else
-					{
-						lastTile.ChangeSprite(tileSpriteSettings.TubeWestToSouth);						
-					}
-					if (currentTileTileData.Row == lastTileTileData.Row)
-					{
-						currentTile.ChangeSprite(tileSpriteSettings.TubeWestToEast);
-					}
-					else
-					{
-						currentTile.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
-					}
-					return;
-				}
-			}
-			if(xDiff < 0)
-			{
-				if (yDiff > 0)
-				{
-					lastTile.ChangeSprite(tileSpriteSettings.TubeEastToNorth);
-					if (currentTileTileData.Row == lastTileTileData.Row)
-					{
-						currentTile.ChangeSprite(tileSpriteSettings.TubeWestToEast);
-					}
-					else
-					{
-						currentTile.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
-					}
-					return;
-				}
-				if (yDiff < 0)
-				{
-					if (lastTileTileData.Row == previousToLastTile.Row)
-					{
-						lastTile.ChangeSprite(tileSpriteSettings.TubeEastToSouth);						
-					}
-					else
-					{
-						lastTile.ChangeSprite(tileSpriteSettings.TubeWestToNorth);						
-					}
-					if (currentTileTileData.Row == lastTileTileData.Row)
-					{
-						currentTile.ChangeSprite(tileSpriteSettings.TubeWestToEast);
-					}
-					else
-					{
-						currentTile.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
-					}
-					return;
-				}
-			}
-		}
-		if(xDiff != 0)
+		if (lastTileTileData.Row == currentTileTileData.Row && lastTileTileData.Row == previousToLastTile.Row && lastTileTileData.Col != currentTileTileData.Row)
 		{
 			// there is an X difference but no Y difference
 			lastTile.ChangeSprite(tileSpriteSettings.TubeWestToEast);
 			currentTile.ChangeSprite(tileSpriteSettings.TubeWestToEast);
 			return;
 		}
-		if(yDiff != 0)
+		if(lastTileTileData.Col == currentTileTileData.Col && lastTileTileData.Col == previousToLastTile.Col &&  lastTileTileData.Row != currentTileTileData.Row)
 		{
 			// there is an X difference but no Y difference
 			lastTile.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
 			currentTile.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
 			return;
+		}
+
+		if (currentTileTileData.Col != previousToLastTile.Col && currentTileTileData.Row != previousToLastTile.Row)
+		{
+			if (currentXSmallerThanPTL && currentYSmallerThanPTL)
+			{
+				if (currentOnSameRowAsL)
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeWestToNorth);
+				}
+				else
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeEastToSouth);
+				}
+				return;
+			}
+
+			if (currentXSmallerThanPTL && !currentYSmallerThanPTL)
+			{
+				if (currentOnSameRowAsL)
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeWestToSouth);
+				}
+				else
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeEastToNorth);
+				}
+				return;
+			}
+
+			if (!currentXSmallerThanPTL && currentYSmallerThanPTL)
+			{
+				if (currentOnSameRowAsL)
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeEastToNorth);
+				}
+				else
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeWestToSouth);
+				}
+				return;
+			}
+
+			if (!currentXSmallerThanPTL && !currentYSmallerThanPTL)
+			{
+				if (currentOnSameRowAsL)
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeEastToSouth);
+				}
+				else
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeWestToNorth);
+				}
+				return;
+			}
 		}
 	}
 

@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: Room 3 Level 3
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelTexture: {fileID: 2800000, guid: e0012eb8abaa9614b87c1536dcc488f7, type: 3}
-  overrideDefaultColorSettings: 0
+  overrideDefaultColorSettings: 1
   customColorSettings:
     NormalTileColor:
       serializedVersion: 2
-      rgba: 4286545791
+      rgba: 4288387995
     ObstacleTileColor:
       serializedVersion: 2
       rgba: 4278190080
     BridgeTileColor:
       serializedVersion: 2
       rgba: 4278255615
-    StartPointAlphaThreshold: 126
+    StartPointAlphaThreshold: 132
     TileGroups:
     - groupColor:
         serializedVersion: 2
@@ -32,6 +32,3 @@ MonoBehaviour:
     - groupColor:
         serializedVersion: 2
         rgba: 4278255360
-    - groupColor:
-        serializedVersion: 2
-        rgba: 4294901760

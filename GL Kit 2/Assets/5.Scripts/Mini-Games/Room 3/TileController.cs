@@ -36,15 +36,17 @@ public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointer
 
 	private Color? originalTileColor = null;
 
-	protected override void Awake()
+	private void Awake()
 	{
-		base.Awake();
 		Image = GetComponent<Image>();
 	}
 
 	public void ChangeSprite(Sprite spritetoChange)
 	{
-		Image.sprite = spritetoChange;
+		if(tileData.TileType != Tile.Type.EndPoint)
+		{
+			Image.sprite = spritetoChange;
+		}
 	}
 
 	public void OnPointerDown(PointerEventData eventData)
