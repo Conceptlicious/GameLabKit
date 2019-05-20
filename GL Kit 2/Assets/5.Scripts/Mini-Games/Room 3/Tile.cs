@@ -47,6 +47,7 @@ public class Tile
 	public bool CanConnectToOtherTiles => TileType != Type.Obstacle && (TileType != Type.Connection || TileGroup == Group.Ungrouped);
 
 	public Tile NextTile { get; set; } = null;
+	public TileSpriteSettings SpriteSettings { get; set; }
 
 	public ConnectionDirection AllowedConnectionDirections { get; set; } = ConnectionDirection.All;
 
@@ -123,4 +124,5 @@ public class Tile
 				(Row - tile.Row > 0 && AllowedConnectionDirections.HasFlag(ConnectionDirection.South)) ||
 				(Row - tile.Row < 0 && AllowedConnectionDirections.HasFlag(ConnectionDirection.North));
 	}
+
 }

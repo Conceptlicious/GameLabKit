@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Room 3 Level 1
+  m_Name: Room 3 Level 3
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  levelTexture: {fileID: 2800000, guid: 76cbdee694acf0f47b1f512c7c7c1d7a, type: 3}
+  levelTexture: {fileID: 2800000, guid: e0012eb8abaa9614b87c1536dcc488f7, type: 3}
   overrideDefaultColorSettings: 0
   customColorSettings:
     NormalTileColor:
       serializedVersion: 2
-      rgba: 4278190080
+      rgba: 4286545791
     ObstacleTileColor:
       serializedVersion: 2
       rgba: 4278190080
     BridgeTileColor:
       serializedVersion: 2
-      rgba: 4278190080
+      rgba: 4278255615
     StartPointAlphaThreshold: 126
     TileGroups:
     - groupColor:
