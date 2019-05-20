@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class NodePattern : BetterMonoBehaviour
 {
-
+	[SerializeField] private Image logoImage;
 	[SerializeField] private Image startDotPrefab;
 	[SerializeField] private NodePattern nextPattern;
 	[SerializeField] private NodeLayer[] layers;
@@ -18,7 +18,7 @@ public class NodePattern : BetterMonoBehaviour
 
 	public int ActiveLayer => activeLayer;
 	private Image startDot = null;
-	private DrawLines drawLines;
+	[SerializeField] private DrawLines drawLines;
 	private bool isComplete = false;
 	
 
@@ -26,15 +26,52 @@ public class NodePattern : BetterMonoBehaviour
 
 	private void Start()
 	{
-		ActiveLayerReset();
-		//nextPattern.gameObject.SetActive(false);
+		ActiveLayerReset();		
+	}
+
+	private void OnEnable()
+	{
+		// register to node events
+		foreach(NodeLayer layer in layers)
+		{
+			layer.OnInteracted += OnInteracted;
+		}
+	}
+
+	private void OnDisable()
+	{
+		// unregister from node events	
+		foreach (NodeLayer layer in layers)
+		{
+			layer.OnInteracted -= OnInteracted;
+		}
+	}
+
+	private void OnInteracted(NodeLayer nodeLayer, Node node)
+	{
+		if(!node.FakeCheck)
+		{
+			if (nodeLayer == layers[0] && ActiveLayer == 0)
+			{
+				SpawnStartDot(node.CachedTransform.parent, node.CachedRectTransform.anchoredPosition);
+			}
+
+			drawLines.AddPosition(node.gameObject);
+			SetLayer();
+		}
+		else
+		{			
+			drawLines.ResetLine();
+			ActiveLayerReset();
+		}
 	}
 
 	//When a correct button is pressed, it sets current layer
 	public void SetLayer()
 	{
+
 		if(isComplete || !isInteractable)
-		{
+		{			
 			return;			
 		}
 
@@ -46,18 +83,22 @@ public class NodePattern : BetterMonoBehaviour
 		{
 			isComplete = true;
 
+			if (nextPattern != null)
+			{
+				nextPattern.isInteractable = true;				
+			}
+
+			drawLines.ResetLine();
+
 			// Remove other buttons in layer
 			for (int i = 0; i < layers.Length; i++)
 			{
 				layers[i].SetActive(false);
-			}
+				logoImage.gameObject.SetActive(true);
+			}			
 
-			if(nextPattern != null)
-				nextPattern.isInteractable = true;
-			// Remove line and dot
-			// Show art
-			// Play Dialogue
-			//Move on to the next pattern
+			Destroy(startDot.gameObject);
+
 		}
 		else
 		{
@@ -75,6 +116,7 @@ public class NodePattern : BetterMonoBehaviour
 	//When an incorrect button is pressed, reset layers
 	public void ActiveLayerReset()
 	{
+
 		activeLayer = 0;
 		for (int i = 1; i < layers.Length; i++)
 		{
