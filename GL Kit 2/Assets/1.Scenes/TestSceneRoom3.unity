@@ -325,12 +325,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1478679c052db4face7d6ce24da9b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileSpriteSettings: {fileID: 11400000, guid: 93a97d49b4af2264da843c579494639e, type: 2}
   tileControllerPrefab: {fileID: 4359349084004071809, guid: c146e3a6ca537ca47bcf17c0f5c59122,
     type: 3}
   defaultLevelSettings:
-    DefaultTileColor:
-      serializedVersion: 2
-      rgba: 4286545791
     NormalTileColor:
       serializedVersion: 2
       rgba: 4288387995
@@ -341,7 +339,7 @@ MonoBehaviour:
       serializedVersion: 2
       rgba: 4278190080
     StartPointAlphaThreshold: 126
-    TubeGroups:
+    TileGroups:
     - groupColor:
         serializedVersion: 2
         rgba: 4278190335
@@ -354,6 +352,7 @@ MonoBehaviour:
   levels:
   - {fileID: 11400000, guid: eb35806477ac4624ba20224e5e4b8b93, type: 2}
   - {fileID: 11400000, guid: 6917ed6b12006fc41964b8463d036c23, type: 2}
+  - {fileID: 11400000, guid: ffa1df064e5e56a4488a358f1298f99a, type: 2}
 --- !u!1 &1455482038
 GameObject:
   m_ObjectHideFlags: 0

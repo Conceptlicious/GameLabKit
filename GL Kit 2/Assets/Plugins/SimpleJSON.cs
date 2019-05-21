@@ -717,7 +717,7 @@ namespace SimpleJSON
                                         string s = aJSON.Substring(i + 1, 4);
                                         Token.Append((char)int.Parse(
                                             s,
-                                            System.Globalization.NumberStyles.AllowHexSpecifier));
+											NumberStyles.AllowHexSpecifier));
                                         i += 4;
                                         break;
                                     }
@@ -1214,7 +1214,7 @@ namespace SimpleJSON
 
         public override bool Equals(object obj)
         {
-            if (object.ReferenceEquals(this, obj))
+            if (ReferenceEquals(this, obj))
                 return true;
             return (obj is JSONNull);
         }
@@ -1285,7 +1285,7 @@ namespace SimpleJSON
         {
             if (b == null)
                 return true;
-            return System.Object.ReferenceEquals(a, b);
+            return object.ReferenceEquals(a, b);
         }
 
         public static bool operator !=(JSONLazyCreator a, object b)
@@ -1297,7 +1297,7 @@ namespace SimpleJSON
         {
             if (obj == null)
                 return true;
-            return System.Object.ReferenceEquals(this, obj);
+            return object.ReferenceEquals(this, obj);
         }
 
         public override int GetHashCode()

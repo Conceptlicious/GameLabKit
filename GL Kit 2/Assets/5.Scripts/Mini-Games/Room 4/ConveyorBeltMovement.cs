@@ -1,6 +1,5 @@
 ﻿using GameLab;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 public class ConveyorBeltMovement : Singleton<ConveyorBeltMovement>
@@ -23,7 +22,6 @@ public class ConveyorBeltMovement : Singleton<ConveyorBeltMovement>
 	public void Next()
 	{
 		CurrentPlatformIndex = (CurrentPlatformIndex + 1) % platforms.Count;
-
 		DisplayPlatformInformation.Instance.LoadInformation(CurrentPlatformIndex);
 	}
 

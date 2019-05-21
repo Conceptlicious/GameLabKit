@@ -2,9 +2,9 @@ using System;
 
 public class GenericEvent : EventInfo
 {
-    public GenericEvent(string pDescription)
+    public GenericEvent(string description)
     {
-        eventDescription = pDescription;
+        eventDescription = description;
     }
 }
 

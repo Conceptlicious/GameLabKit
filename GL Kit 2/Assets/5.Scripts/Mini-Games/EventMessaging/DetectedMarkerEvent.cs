@@ -3,10 +3,10 @@ using GameLab;
 
 public class DetectedMarkerEvent : GameLabEvent
 {
-    public string marker;
-    public DetectedMarkerEvent(string pMarker)
+    public string marker = string.Empty;
+    public DetectedMarkerEvent(string marker)
     {
-        marker = pMarker;
+        this.marker = marker;
     } 
 }
 

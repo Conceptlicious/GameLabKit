@@ -9,29 +9,29 @@ using UnityEngine.UI;
 
 public class LoadingTips : MonoBehaviour
 {
-    [SerializeField] private UISlidingObject[] slidingObject;
-    [SerializeField] private Text textField;    
-    [SerializeField] private DialogueObject dialogueObject;
-    [SerializeField] private bool tipsAreRandom;
+	[SerializeField] private UISlidingObject[] slidingObject;
+	[SerializeField] private Text textField = null;
+	[SerializeField] private DialogueObject dialogueObject = null;
+	[SerializeField] private bool tipsAreRandom = false;
 
-    private int tipsIndex = 0;
-    
-    private delegate void Updateables();
-    private Updateables handler;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        registerAllListeners();     
-    }
-    
-    /// <summary>
-    /// Registers all event listeners this class needs to care about.
-    /// </summary>
-    private void registerAllListeners()
-    {
-        EventManager.Instance.AddListener<CameraTargetSelectEvent>(OnTransition);
-    }
+	private int tipsIndex = 0;
+	
+	private delegate void Updateables();
+	private Updateables handler;
+	
+	// Start is called before the first frame update
+	void Start()
+	{
+		registerAllListeners();     
+	}
+	
+	/// <summary>
+	/// Registers all event listeners this class needs to care about.
+	/// </summary>
+	private void registerAllListeners()
+	{
+		EventManager.Instance.AddListener<CameraTargetSelectEvent>(OnTransition);
+	}
 
     private void OnTransition(CameraTargetSelectEvent info)
     {

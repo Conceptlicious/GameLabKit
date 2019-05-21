@@ -31,15 +31,16 @@ public class SwipeInput : Singleton<SwipeInput>, IBeginDragHandler, IDragHandler
 	{
 		endSwipePosition = transform.position;
 
-		if (endSwipePosition.x > beginSwipePosition.x + deadZone)
+		if (endSwipePosition.x > (beginSwipePosition.x + deadZone))
 		{
 			ConveyorBeltMovement.Instance.Next();
 		}
-		else if (endSwipePosition.x < beginSwipePosition.x - deadZone)
+		else if (endSwipePosition.x < (beginSwipePosition.x - deadZone))
 		{
 			ConveyorBeltMovement.Instance.Previous();
 		}
 
 		transform.position = beginSwipePosition;
+		endSwipePosition = Vector3.zero;
 	}
 }

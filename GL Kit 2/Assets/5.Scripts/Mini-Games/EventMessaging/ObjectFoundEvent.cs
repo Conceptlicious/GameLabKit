@@ -5,10 +5,10 @@ public class ObjectFoundEvent : GameLabEvent
 {
     public bool correct;
     public Settings.R2_ObjectsToFind objectFound;
-    public ObjectFoundEvent(bool pCorrect, Settings.R2_ObjectsToFind pObjectFound)
+    public ObjectFoundEvent(bool correct, Settings.R2_ObjectsToFind objectFound)
     {
-        correct = pCorrect;
-        objectFound = pObjectFound;
+        this.correct = correct;
+        this.objectFound = objectFound;
     } 
 }
 

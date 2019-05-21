@@ -7,7 +7,7 @@ public static class JsonHelper
 {
     public static T[] FromJson<T>(string jsonString)
     {
-        Wrapper<T> wrapper = UnityEngine.JsonUtility.FromJson<Wrapper<T>>(jsonString);
+        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(jsonString);
         return wrapper.rooms;
     }
     

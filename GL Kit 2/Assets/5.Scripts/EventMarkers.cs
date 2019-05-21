@@ -8,15 +8,15 @@ using System;
 [Serializable]
 public struct MarkedEvents
 {
-    [Tooltip("Char markers found in the dialogue file, used to call events.")]
-    public string marker;
-    [Tooltip("Type of event to be fired when specified marker is detected.")]
-    [ClassExtends(typeof(GameLabEvent))] public ClassTypeReference eventToCall;
+	[Tooltip("Char markers found in the dialogue file, used to call events.")]
+	public string marker;
+	[Tooltip("Type of event to be fired when specified marker is detected.")]
+	[ClassExtends(typeof(GameLabEvent))] public ClassTypeReference eventToCall;
 }
 
 public class EventMarkers : Singleton<EventMarkers>
 {
-    [SerializeField] private MarkedEvents[] couplings;
+	[SerializeField] private MarkedEvents[] couplings;
 
     public string ParseAndCall(string pText)
     {

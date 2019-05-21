@@ -4,9 +4,10 @@ using GameLab;
 
 public class ToggleManager : Singleton<ToggleManager>
 {
+	private const int maxOnTogglesPerList = 3;
+
 	private List<Toggle> education = new List<Toggle>();
 	private List<Toggle> specialNeeds = new List<Toggle>();
-	private int maxOnTogglesPerList = 3;
 
 	public void AddToggleToList(Toggle toggleToAdd, ToggleGroup toggleGroup)
 	{

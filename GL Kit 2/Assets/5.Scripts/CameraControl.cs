@@ -103,7 +103,7 @@ public class CameraControl : MonoBehaviour
             cam.transform.position = targetList[(int) TargetPoints.TARGET].position;
             handler -= MoveToTarget;
 
-            GameObject.Destroy(targetList[(int) TargetPoints.CENTRE].gameObject);
+			Destroy(targetList[(int) TargetPoints.CENTRE].gameObject);
                     
         }
         

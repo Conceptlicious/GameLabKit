@@ -19,7 +19,7 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 		float calculateAverageAge = (ageSilderMin.value + ageSilderMax.value) / 2;
 		int averageAge = Mathf.RoundToInt(calculateAverageAge);
 
-		if (averageAge == 60)
+		if (averageAge >= 60)
 		{
 			targetAudienceText.text = $"Eldery\n{averageAge}+";
 		}
