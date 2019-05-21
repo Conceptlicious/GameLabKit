@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public struct GridMapStruct
+public struct GridMap
 {
 	[Tooltip("The grid itself, make sure you that the start points and endpoints are the same colour with different alphas and that the colours match the colours in the list below")]
 	public Texture2D Map;

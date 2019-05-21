@@ -44,11 +44,12 @@ public class Tile
 	public Type TileType { get; set; } = Type.Connection;
 	public Group TileGroup { get; set; } = Group.Ungrouped;
 
-	public TileLayer TileLayer = null;
+	public TileLayer Layer = null;
 
 	public bool CanConnectToOtherTiles => TileType != Type.Obstacle && (TileType != Type.Connection || TileGroup == Group.Ungrouped);
 
 	public Tile NextTile { get; set; } = null;
+	public TileController controller = null;
 	public TileSpriteSettings SpriteSettings { get; set; }
 
 	public ConnectionDirection AllowedConnectionDirections { get; set; } = ConnectionDirection.All;
