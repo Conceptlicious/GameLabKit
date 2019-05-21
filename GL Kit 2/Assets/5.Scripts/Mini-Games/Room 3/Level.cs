@@ -13,7 +13,7 @@ public class LevelData : ScriptableObject
 		{
 			NormalTileColor = Color.gray,
 			ObstacleTileColor = Color.black,
-			BridgeTileColor = Color.black,
+			BridgeTileColor = Color.yellow,
 			StartPointAlphaThreshold = 126,
 			TileGroups = new Tile.Group[3]
 			{
@@ -49,7 +49,7 @@ public class LevelData : ScriptableObject
 
 		public Tile.Type GetTileTypeFromColor(Color32 color)
 		{
-			if(color.CompareRGBA(NormalTileColor))
+			if(color.CompareRGBA(NormalTileColor) || color.CompareRGBA(BridgeTileColor))
 			{
 				return Tile.Type.Connection;
 			}

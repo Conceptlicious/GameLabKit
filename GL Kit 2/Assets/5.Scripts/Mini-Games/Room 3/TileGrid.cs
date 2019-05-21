@@ -19,6 +19,7 @@ public class TileGrid : Singleton<TileGrid>
 	[SerializeField] private TileSpriteSettings tileSpriteSettings;
 
 	[SerializeField] private TileController tileControllerPrefab = null;
+	[SerializeField] private BridgeTileController bridgeTileControllerPrefab = null;
 
 	[SerializeField] private LevelData.ColorSettings defaultLevelSettings = LevelData.ColorSettings.Default;
 	[SerializeField] private LevelData[] levels = new LevelData[0];
@@ -51,6 +52,8 @@ public class TileGrid : Singleton<TileGrid>
 		if (currentLevelIndex == levels.Length - 1)
 		{
 			print("No more levels");
+			NextRoomEvent newInfo = new NextRoomEvent();
+			EventManager.Instance.RaiseEvent(newInfo);
 			return;
 		}
 
@@ -92,22 +95,42 @@ public class TileGrid : Singleton<TileGrid>
 
 			TileLayer tileLayer = pixel.CompareRGB(levelColorSettings.BridgeTileColor) ? bridgeLayer : mainLayer;
 
+			if(tileLayer == bridgeLayer)
+			{
+				mainLayer.Tiles[row, col].AllowedConnectionDirections = Tile.ConnectionDirection.East | Tile.ConnectionDirection.West;
+				bridgeLayer.Tiles[row, col].AllowedConnectionDirections = Tile.ConnectionDirection.North | Tile.ConnectionDirection.South;
+			}
+
 			Tile tileData = tileLayer.Tiles[row, col];
 
 			tileData.TileGroup = levelColorSettings.GetTileGroupFromColor(pixel);
 			tileData.TileType = levelColorSettings.GetTileTypeFromColor(pixel);
+			TileController tileControllerMain = SpawnTileController(tileData, anchorStepPerColumn, anchorStepPerRow, tileSpriteSettings, mainLayer);
+			tileControllerMain.Image.color = pixel;
 
-			TileController tileController = SpawnTileController(tileData, anchorStepPerColumn, anchorStepPerRow, tileSpriteSettings, tileLayer);
-			tileController.Image.color = pixel;
+			if (pixel.CompareRGB(levelColorSettings.BridgeTileColor))
+			{
+				TileController tileControllerBridge = SpawnTileController(tileData, anchorStepPerColumn, anchorStepPerRow, tileSpriteSettings, bridgeLayer);
+				tileControllerBridge.Image.color = pixel;
+			}
 		}
 	}
 
 	private TileController SpawnTileController(Tile tileData, float anchorStepPerColumn, float anchorStepPerRow, TileSpriteSettings tileSprites, TileLayer layer)
 	{
-		TileController tileController = Instantiate(tileControllerPrefab, Vector3.zero, Quaternion.identity, CachedTransform);
+		TileController tileController = null;
+
+		if(layer == bridgeLayer)
+		{
+			tileController = Instantiate(bridgeTileControllerPrefab, Vector3.zero, Quaternion.identity, CachedTransform);
+			(tileController as BridgeTileController).MainLayerTileData = mainLayer.Tiles[tileData.Row, tileData.Col];
+		}
+		
 		tileController.name = $"Tile {tileData.Row}, {tileData.Col}";
 
 		tileController.TileData = tileData;
+		tileController.TileData.SpriteSettings = tileSprites;
+
 		tileController.OnInteractedWith += OnTileInteractedWith;
 		tileController.OnFinishedInteractingAt += OnFinishedInteractingAtTile;
 
@@ -116,8 +139,6 @@ public class TileGrid : Singleton<TileGrid>
 
 		tileController.CachedRectTransform.offsetMin = tileController.CachedRectTransform.offsetMax = Vector2.zero;
 
-		tileController.TileData.SpriteSettings = tileSprites;
-		tileController.TileData.TileLayer = layer;
 		return tileController;
 	}
 
@@ -167,7 +188,7 @@ public class TileGrid : Singleton<TileGrid>
 		}
 
 		ValidatePath(tile, lastInteractedWithTile);
-		
+
 		if (tile.TileData.Row == lastInteractedWithTile.TileData.Row)
 		{
 			tile.ChangeSprite(tileSpriteSettings.TubeWestToEast);
@@ -185,7 +206,7 @@ public class TileGrid : Singleton<TileGrid>
 	private void ValidatePath(TileController currentTile, TileController lastTile)
 	{
 	  
-		TilePath path = lastTile.TileData.TileLayer.CalculatePathForGroup(lastTile.TileData.TileGroup);
+		TilePath path = mainLayer.CalculatePathForGroup(lastTile.TileData.TileGroup);
 
 		if (!path.Tiles.Contains(currentTile.TileData) || !path.Tiles.Contains(lastTile.TileData))
 		{
