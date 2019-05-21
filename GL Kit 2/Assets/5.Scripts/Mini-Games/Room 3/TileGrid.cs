@@ -16,6 +16,8 @@ public class TileGrid : Singleton<TileGrid>
 
 	public LevelData.ColorSettings CurrentLevelSettings => CurrentLevel != null && CurrentLevel.HasCustomColorSettings ? CurrentLevel.CustomColorSettings : defaultLevelSettings;
 
+	[SerializeField] private TileSpriteSettings tileSpriteSettings;
+
 	[SerializeField] private TileController tileControllerPrefab = null;
 
 	[SerializeField] private LevelData.ColorSettings defaultLevelSettings = LevelData.ColorSettings.Default;
@@ -23,8 +25,8 @@ public class TileGrid : Singleton<TileGrid>
 
 	private int currentLevelIndex = -1;
 
-	private TileLayer mainLayer		= null;
-	private TileLayer bridgeLayer	= null;
+	private TileLayer mainLayer = null;
+	private TileLayer bridgeLayer = null;
 
 	private TileController lastInteractedWithTile = null;
 
@@ -34,7 +36,7 @@ public class TileGrid : Singleton<TileGrid>
 	{
 		base.Awake();
 
-		if(levels.Length == 0)
+		if (levels.Length == 0)
 		{
 			Debug.LogWarning("There are no levels set up in Room 3!");
 			return;
@@ -46,7 +48,7 @@ public class TileGrid : Singleton<TileGrid>
 
 	private void NextLevel()
 	{
-		if(currentLevelIndex == levels.Length - 1)
+		if (currentLevelIndex == levels.Length - 1)
 		{
 			print("No more levels");
 			return;
@@ -59,7 +61,7 @@ public class TileGrid : Singleton<TileGrid>
 
 	private void PreviousLevel()
 	{
-		if(currentLevelIndex == 0)
+		if (currentLevelIndex == 0)
 		{
 			print("No previous levels");
 		}
@@ -82,7 +84,7 @@ public class TileGrid : Singleton<TileGrid>
 		float anchorStepPerColumn = 1.0f / level.Cols;
 		float anchorStepPerRow = 1.0f / level.Rows;
 
-		for(int i = 0; i < levelPixelData.Length; ++i)
+		for (int i = 0; i < levelPixelData.Length; ++i)
 		{
 			Color32 pixel = levelPixelData[i];
 			int row = i / level.Rows;
@@ -95,12 +97,12 @@ public class TileGrid : Singleton<TileGrid>
 			tileData.TileGroup = levelColorSettings.GetTileGroupFromColor(pixel);
 			tileData.TileType = levelColorSettings.GetTileTypeFromColor(pixel);
 
-			TileController tileController = SpawnTileController(tileData, anchorStepPerColumn, anchorStepPerRow);
+			TileController tileController = SpawnTileController(tileData, anchorStepPerColumn, anchorStepPerRow, tileSpriteSettings, tileLayer);
 			tileController.Image.color = pixel;
 		}
 	}
 
-	private TileController SpawnTileController(Tile tileData, float anchorStepPerColumn, float anchorStepPerRow)
+	private TileController SpawnTileController(Tile tileData, float anchorStepPerColumn, float anchorStepPerRow, TileSpriteSettings tileSprites, TileLayer layer)
 	{
 		TileController tileController = Instantiate(tileControllerPrefab, Vector3.zero, Quaternion.identity, CachedTransform);
 		tileController.name = $"Tile {tileData.Row}, {tileData.Col}";
@@ -114,12 +116,14 @@ public class TileGrid : Singleton<TileGrid>
 
 		tileController.CachedRectTransform.offsetMin = tileController.CachedRectTransform.offsetMax = Vector2.zero;
 
+		tileController.TileData.SpriteSettings = tileSprites;
+		tileController.TileData.TileLayer = layer;
 		return tileController;
 	}
 
 	private void DestroySpawnedLevel()
 	{
-		foreach(Transform spawnedTile in CachedTransform)
+		foreach (Transform spawnedTile in CachedTransform)
 		{
 			Destroy(spawnedTile.gameObject);
 		}
@@ -134,37 +138,146 @@ public class TileGrid : Singleton<TileGrid>
 
 	private void OnTileInteractedWith(TileController tile)
 	{
-		if(tile == lastInteractedWithTile)
+		if (tile == lastInteractedWithTile)
 		{
 			return;
 		}
 
 		Tile tileData = tile.TileData;
 
-		if(!HasInteractedWithTile)
+		if (!HasInteractedWithTile)
 		{
 			TryResumePathFrom(tile);
 			return;
 		}
 
-		if(TryRemoveTileConnectionsAfter(tile))
+		if (TryRemoveTileConnectionsAfter(tile))
 		{
 			return;
 		}
 
-		if(finishedGroups.Contains(lastInteractedWithTile.TileData.TileGroup))
+		if (finishedGroups.Contains(lastInteractedWithTile.TileData.TileGroup))
 		{
 			return;
 		}
 
-		if(!tileData.TryConnectTo(lastInteractedWithTile.TileData))
+		if (!tileData.TryConnectTo(lastInteractedWithTile.TileData))
 		{
 			return;
 		}
 
+		ValidatePath(tile, lastInteractedWithTile);
+		
+		if (tile.TileData.Row == lastInteractedWithTile.TileData.Row)
+		{
+			tile.ChangeSprite(tileSpriteSettings.TubeWestToEast);
+		}
+		else
+		{
+			tile.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
+		}
 		lastInteractedWithTile = tile;
 
 		UpdateWinStatus();
+	}
+
+
+	private void ValidatePath(TileController currentTile, TileController lastTile)
+	{
+	  
+		TilePath path = lastTile.TileData.TileLayer.CalculatePathForGroup(lastTile.TileData.TileGroup);
+
+		if (!path.Tiles.Contains(currentTile.TileData) || !path.Tiles.Contains(lastTile.TileData))
+		{
+			return;
+		}
+		if (path.Tiles.IndexOf(lastTile.TileData) > 0)
+		{
+			Tile previousToLastTile = path.Tiles[path.Tiles.IndexOf(lastTile.TileData) - 1];
+			CheckForCorners(currentTile, lastTile, previousToLastTile);
+		}
+	}
+
+	private void CheckForCorners(TileController currentTile, TileController lastTile, Tile previousToLastTile)
+	{
+		Tile currentTileTileData = currentTile.TileData;
+		Tile lastTileTileData = lastTile.TileData;
+
+		// current ptl have both different x and y values 
+		bool currentXSmallerThanPTL = (currentTileTileData.Col < previousToLastTile.Col);
+		bool currentYSmallerThanPTL = (currentTileTileData.Row < previousToLastTile.Row);
+
+		bool currentOnSameRowAsL = (currentTileTileData.Row == lastTileTileData.Row);
+
+		if (lastTileTileData.Row == currentTileTileData.Row && lastTileTileData.Row == previousToLastTile.Row && lastTileTileData.Col != currentTileTileData.Row)
+		{
+			// there is an X difference but no Y difference
+			lastTile.ChangeSprite(tileSpriteSettings.TubeWestToEast);
+			currentTile.ChangeSprite(tileSpriteSettings.TubeWestToEast);
+			return;
+		}
+		if(lastTileTileData.Col == currentTileTileData.Col && lastTileTileData.Col == previousToLastTile.Col &&  lastTileTileData.Row != currentTileTileData.Row)
+		{
+			// there is an X difference but no Y difference
+			lastTile.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
+			currentTile.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
+			return;
+		}
+
+		if (currentTileTileData.Col != previousToLastTile.Col && currentTileTileData.Row != previousToLastTile.Row)
+		{
+			if (currentXSmallerThanPTL && currentYSmallerThanPTL)
+			{
+				if (currentOnSameRowAsL)
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeWestToNorth);
+				}
+				else
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeEastToSouth);
+				}
+				return;
+			}
+
+			if (currentXSmallerThanPTL && !currentYSmallerThanPTL)
+			{
+				if (currentOnSameRowAsL)
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeWestToSouth);
+				}
+				else
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeEastToNorth);
+				}
+				return;
+			}
+
+			if (!currentXSmallerThanPTL && currentYSmallerThanPTL)
+			{
+				if (currentOnSameRowAsL)
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeEastToNorth);
+				}
+				else
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeWestToSouth);
+				}
+				return;
+			}
+
+			if (!currentXSmallerThanPTL && !currentYSmallerThanPTL)
+			{
+				if (currentOnSameRowAsL)
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeEastToSouth);
+				}
+				else
+				{
+					lastTile.ChangeSprite(tileSpriteSettings.TubeWestToNorth);
+				}
+				return;
+			}
+		}
 	}
 
 	private void OnFinishedInteractingAtTile(TileController tile)
@@ -174,29 +287,30 @@ public class TileGrid : Singleton<TileGrid>
 
 	private bool TryResumePathFrom(TileController tile)
 	{
-		if(HasInteractedWithTile)
+		if (HasInteractedWithTile)
 		{
 			return false;
 		}
 
-		if(tile.TileData.TileGroup == Tile.Group.Ungrouped)
+		if (tile.TileData.TileGroup == Tile.Group.Ungrouped)
 		{
 			return false;
 		}
 
-		if(tile.TileData.TileType == Tile.Type.EndPoint)
+		if (tile.TileData.TileType == Tile.Type.EndPoint)
 		{
 			return false;
 		}
 
 		RemoveTileConnectionsAfter(tile);
-
 		return true;
 	}
 
+
+
 	private bool TryRemoveTileConnectionsAfter(TileController tile)
 	{
-		if(tile.TileData.TileGroup == Tile.Group.Ungrouped)
+		if (tile.TileData.TileGroup == Tile.Group.Ungrouped)
 		{
 			return false;
 		}
@@ -206,7 +320,7 @@ public class TileGrid : Singleton<TileGrid>
 		int interactedTilePathIndex = interactedTileGroupPath.Tiles.IndexOf(tile.TileData);
 		int lastInteractedWithTilePathIndex = interactedTileGroupPath.Tiles.IndexOf(lastInteractedWithTile.TileData);
 
-		if(interactedTilePathIndex < 0 || interactedTilePathIndex >= lastInteractedWithTilePathIndex)
+		if (interactedTilePathIndex < 0 || interactedTilePathIndex >= lastInteractedWithTilePathIndex)
 		{
 			return false;
 		}
@@ -228,16 +342,16 @@ public class TileGrid : Singleton<TileGrid>
 	{
 		Tile tileData = lastInteractedWithTile.TileData;
 
-		if(tileData.TileType != Tile.Type.EndPoint)
+		if (tileData.TileType != Tile.Type.EndPoint)
 		{
 			return;
 		}
 
 		finishedGroups.Add(tileData.TileGroup);
 
-		foreach(Tile.Group tileGroup in CurrentLevelSettings.TileGroups)
+		foreach (Tile.Group tileGroup in CurrentLevelSettings.TileGroups)
 		{
-			if(!finishedGroups.Contains(tileGroup))
+			if (!finishedGroups.Contains(tileGroup))
 			{
 				return;
 			}

@@ -36,11 +36,17 @@ public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointer
 
 	private Color? originalTileColor = null;
 
-	protected override void Awake()
+	private void Awake()
 	{
-		base.Awake();
-		
 		Image = GetComponent<Image>();
+	}
+
+	public void ChangeSprite(Sprite spritetoChange)
+	{
+		if(tileData.TileType != Tile.Type.EndPoint)
+		{
+			Image.sprite = spritetoChange;
+		}
 	}
 
 	public void OnPointerDown(PointerEventData eventData)
@@ -69,6 +75,7 @@ public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointer
 	private void OnDisconnectedFromTile(Tile tileDisconnectedFrom)
 	{
 		Image.color = originalTileColor.GetValueOrDefault(TileGrid.Instance.CurrentLevelSettings.NormalTileColor);
+		Image.sprite = null;
 	}
 
 	public void OnPointerUp(PointerEventData eventData)
