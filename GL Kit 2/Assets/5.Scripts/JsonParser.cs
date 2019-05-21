@@ -7,15 +7,15 @@ using System.IO;
 public static class JsonParser 
 {
 
-    public static DialogueFile ParseJSONFile(string pFileName)
+    public static DialogueFile ParseJSONFile(string fileName)
     {
-        string[] directory = new string[] {""};
+        string[] directory = new string[] {string.Empty};
         // Load our file
-        TextAsset jsonObject = Resources.Load<TextAsset>(GetJSONPath(pFileName, out directory));
-        Debug.Assert(jsonObject != null, System.String.Format(Settings.ERR_JSON_MISSING_FILE, pFileName));
+        TextAsset jsonObject = Resources.Load<TextAsset>(GetJSONPath(fileName, out directory));
+        Debug.Assert(jsonObject != null, System.String.Format(Settings.ERR_JSON_MISSING_FILE, fileName));
         //Create the object to be returned.
         DialogueFile dialogueFile = new DialogueFile();
-        dialogueFile.Name = pFileName;
+        dialogueFile.Name = fileName;
 
         // Load a JSONNode from the file.
         JSONNode jsonObj = JSON.Parse(jsonObject.text);
@@ -37,7 +37,7 @@ public static class JsonParser
             
             //Get key names since they are not accessible else wise.
             string[] keys = new string[numberOfFields];
-            Debug.Assert(keys != null && numberOfFields != 0, System.String.Format(Settings.ERR_JSON_FILE_INCORRECT_FORMATTING, pFileName));
+            Debug.Assert(keys != null && numberOfFields != 0, System.String.Format(Settings.ERR_JSON_FILE_INCORRECT_FORMATTING, fileName));
             int iterator = 0;
             foreach (KeyValuePair<string, JSONNode> kvp in containerNode)
             {
@@ -60,7 +60,7 @@ public static class JsonParser
     /// <summary>
     /// Takes in a simple level file name and returns the correct path to the JSON file.
     /// </summary>
-    /// <param name="pLevel"></param>
+    /// <param name="level"></param>
     /// <returns></returns>
     public static string GetJSONPath(string level, out string[] fileNames)
     {
@@ -78,7 +78,7 @@ public static class JsonParser
     /// <summary>
     /// Returns a list of the names of each file in our dialogue folder
     /// </summary>
-    /// <param name="pDirectory"></param>
+    /// <param name="directory"></param>
     /// <returns></returns>
     private static string[] GetFileList(string directory)
     {
