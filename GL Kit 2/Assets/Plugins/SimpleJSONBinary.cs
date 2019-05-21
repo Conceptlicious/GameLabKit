@@ -116,7 +116,7 @@ namespace SimpleJSON
             {
                 SaveToBinaryStream(stream);
                 stream.Position = 0;
-                return System.Convert.ToBase64String(stream.ToArray());
+                return Convert.ToBase64String(stream.ToArray());
             }
         }
 
@@ -223,7 +223,7 @@ namespace SimpleJSON
 
         public static JSONNode LoadFromBinaryBase64(string aBase64)
         {
-            var tmp = System.Convert.FromBase64String(aBase64);
+            var tmp = Convert.FromBase64String(aBase64);
             var stream = new System.IO.MemoryStream(tmp);
             stream.Position = 0;
             return LoadFromBinaryStream(stream);

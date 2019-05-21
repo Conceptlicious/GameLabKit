@@ -10,24 +10,24 @@ public static class JsonParser
     public static DialogueFile ParseJSONFile(string pFileName)
     {
         string[] directory = new string[] {""};
-        //Load our file
+        // Load our file
         TextAsset jsonObject = Resources.Load<TextAsset>(GetJSONPath(pFileName, out directory));
         Debug.Assert(jsonObject != null, System.String.Format(Settings.ERR_JSON_MISSING_FILE, pFileName));
         //Create the object to be returned.
         DialogueFile dialogueFile = new DialogueFile();
         dialogueFile.Name = pFileName;
 
-        //Load a JSONNode from the file.
+        // Load a JSONNode from the file.
         JSONNode jsonObj = JSON.Parse(jsonObject.text);
 
-        //Create an array from only the designer-spesified arrays within that JSON file.
+        // Create an array from only the designer-specified arrays within that JSON file.
         JSONArray arrayNames = jsonObj[Settings.JSON_DEF_DEFINED_ARRAYS].AsArray;
         int numberOfContainers = arrayNames.Count;
         
-        //Create the DialogueContainers the DialogueFile will own.
+        // Create the DialogueContainers the DialogueFile will own.
         dialogueFile.CreateContainers(numberOfContainers);
         
-        //Go through each array in the file
+        // Go through each array in the file
         for (int i = 0; i < numberOfContainers; i++)
         {
             int numberOfFields = jsonObj[arrayNames[i].Value].Count;
@@ -35,7 +35,7 @@ public static class JsonParser
             //Fetch keys
             JSONNode containerNode = jsonObj[arrayNames[i].Value].AsObject;
             
-            //Get key names since they are not accessible elsewise.
+            //Get key names since they are not accessible else wise.
             string[] keys = new string[numberOfFields];
             Debug.Assert(keys != null && numberOfFields != 0, System.String.Format(Settings.ERR_JSON_FILE_INCORRECT_FORMATTING, pFileName));
             int iterator = 0;
@@ -62,16 +62,16 @@ public static class JsonParser
     /// </summary>
     /// <param name="pLevel"></param>
     /// <returns></returns>
-    public static string GetJSONPath(string pLevel, out string[] oFileNames)
+    public static string GetJSONPath(string level, out string[] fileNames)
     {
         string language = GameData.GetLanguage().ToString();
         string directory = Settings.PATH_TEXT_FILES + Settings.PATH_DIALOGUE + language.Substring(0, 1).ToUpper() +
                      language.Substring(1).ToLower();
-        string path = directory + "/" + pLevel;
+        string path = directory + "/" + level;
         directory = Settings.PATH_ASSETS_RESOURCES + directory;
 
         Debug.Log("path:" + path + " | dir: " + directory);
-        oFileNames = GetFileList(directory);
+        fileNames = GetFileList(directory);
         return path;
     }
 
@@ -80,9 +80,9 @@ public static class JsonParser
     /// </summary>
     /// <param name="pDirectory"></param>
     /// <returns></returns>
-    private static string[] GetFileList(string pDirectory)
+    private static string[] GetFileList(string directory)
     {
-        string[] rawFileNames = Directory.GetFiles(pDirectory);    
+        string[] rawFileNames = Directory.GetFiles(directory);    
         int numberOfFiles = rawFileNames.Length;
        
         //Names of our "levels"
