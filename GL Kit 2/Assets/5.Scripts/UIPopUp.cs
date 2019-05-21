@@ -6,16 +6,17 @@ using UnityEngine.UI;
 
 public class UIPopUp : MonoBehaviour
 {
-    [SerializeField] private GameObject window;
-    [SerializeField] private FieldDialogueCoupling title;
-    [SerializeField] private FieldDialogueCoupling[] buttons;
-    [SerializeField] private FieldDialogueCoupling mainText;
-
+    [SerializeField] private PopupFields popupFields; 
+    
     [Serializable]
-    private struct FieldDialogueCoupling
+    public struct PopupFields
     {
-        public Text textField;
-        public DialogueObject dialogueObject;
+        public Text title;
+        public Text body;
+        public InputField inputField;
+        public Button button;
+        public Transform buttonAnchorPoint;
+        public int buttonPadding;
     }
     
     // Start is called before the first frame update
@@ -28,5 +29,11 @@ public class UIPopUp : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public PopupFields PopupFieldsData
+    {
+        get { return popupFields; }
+    
     }
 }

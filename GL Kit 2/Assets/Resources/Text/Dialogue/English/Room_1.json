@@ -3,8 +3,8 @@
 
   "RM 1 pop ups":
   {
-    "RM 1 help": "RM1 This window gives you helping dialogue as a pop-up form.",
-    "RM 1 confirmation": "RM1 This window confirms your choice."
+    "RM 1 hello": "RM1 This window gives you helping dialogue as a pop-up form.",
+    "RM 1 thing": "RM1 This window confirms your choice."
   },
 
   "RM 1 objects":

@@ -39,7 +39,8 @@ public class LoadingTips : MonoBehaviour
         {
             textField.text = tipsAreRandom == true
                 ? Dialogue.GetRandomText(dialogueObject.Info.fileIndex, dialogueObject.Info.containerIndex)
-                : Dialogue.GetNextText(dialogueObject.Info.fileIndex, dialogueObject.Info.containerIndex, tipsIndex, out tipsIndex);
+                : /*Dialogue.GetNextText(dialogueObject.Info.fileIndex, dialogueObject.Info.containerIndex, tipsIndex, out tipsIndex);*/
+                dialogueObject.GetTextAndIterate();
         
             UIAnimator.Instance.AnimateObjects(slidingObject, Settings.VAL_CAMERA_TRANSITION_SECONDS);
         }            

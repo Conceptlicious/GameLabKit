@@ -14,6 +14,7 @@
           <e p="DialogueObject.cs" t="Include" />
           <e p="Editor" t="Include">
             <e p="DialogueEditor.cs" t="Include" />
+            <e p="uGUITools.cs" t="Include" />
           </e>
           <e p="EventMarkers.cs" t="Include" />
           <e p="FindObject.cs" t="Include" />
@@ -45,6 +46,7 @@
             </e>
             <e p="Room 3" t="Include">
               <e p="GridMapStruct.cs" t="Include" />
+              <e p="Level.cs" t="Include" />
               <e p="Tile.cs" t="Include" />
               <e p="TileController.cs" t="Include" />
               <e p="TileGrid.cs" t="Include" />
@@ -58,7 +60,6 @@
               <e p="PlatformType.cs" t="Include" />
               <e p="QuestionManager.cs" t="Include" />
               <e p="SwipeInput.cs" t="Include" />
-              <e p="uGUITools.cs" t="Include" />
             </e>
             <e p="Room 5" t="Include">
               <e p="ButtonManager.cs" t="Include" />
@@ -84,6 +85,8 @@
           <e p="UIAnimator.cs" t="Include" />
           <e p="UIControl.cs" t="Include" />
           <e p="UIPopUp.cs" t="Include" />
+          <e p="UIPopUpContents.cs" t="Include" />
+          <e p="UIPopUpManager.cs" t="Include" />
           <e p="UISlidingObject.cs" t="Include" />
         </e>
         <e p="Plugins" t="Include">

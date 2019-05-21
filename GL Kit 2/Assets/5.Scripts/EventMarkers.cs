@@ -18,15 +18,50 @@ public class EventMarkers : Singleton<EventMarkers>
 {
     [SerializeField] private MarkedEvents[] couplings;
 
-    public void ParseAndCall(string pText)
+    public string ParseAndCall(string pText)
     {
+        string output = pText;
+        Debug.Log("Parsing");
+       
         for (int i = 0; i < couplings.Length; i++)
         {
-            if (pText.Contains(couplings[i].marker) && couplings[i].eventToCall != null)
+            if (AnalyseText(couplings[i].marker, output, out output) && couplings[i].eventToCall != null)
             {
                 EventManager.Instance.RaiseEvent(  Activator.CreateInstance(couplings[i].eventToCall) as GameLabEvent );
             }
         }
+
+        return output;
+    }
+    
+    /// <summary>
+    /// Checks whether the text contains the given symbol, and outs a cleaned version of that string sans symbol.
+    /// </summary>
+    /// <param name="pMarker"></param>
+    /// <param name="pText"></param>
+    /// <param name="pOutText"></param>
+    /// <returns></returns>
+    private bool AnalyseText(string pMarker, string pText, out string pOutText)
+    {
+        bool output;
+        pOutText = pText;
+        if(pOutText.Contains(pMarker) == false)
+        {
+           
+            output = false;
+        }
+        else
+        {          
+            output = true;
+            string[] parts = pOutText.Split(pMarker.ToCharArray());
+            pOutText = "";
+            for (int i = 0; i < parts.Length; i++)
+            {
+                pOutText += parts[i];
+            }
+        }
+
+        return output;
     }
 
     void OnValidate()

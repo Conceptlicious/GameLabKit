@@ -82,7 +82,7 @@ public class DialogueEditor : Editor {
         }
         if(GUILayout.Button("Progress Dialogue"))
         {
-            Debug.Log(dialogueObject.GetNextInContainer());
+            Debug.Log(dialogueObject.GetTextAndIterate());
             keyNameIndex = dialogueObject.Info.fieldIndex;
         }
        

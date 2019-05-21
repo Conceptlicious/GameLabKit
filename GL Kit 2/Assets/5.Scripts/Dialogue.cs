@@ -123,7 +123,7 @@ public static class Dialogue
     /// <param name="pFieldIndex"></param>
     /// <param name="pNewIndex"></param>
     /// <returns></returns>
-    public static string GetNextText(int pFileID, int pContainerID, int pFieldIndex, out int pNewIndex)
+    public static string GetTextAndIterate(int pFileID, int pContainerID, int pFieldIndex, out int pNewIndex)
     {
         string[] keyNames = GetKeyNames(pFileID, pContainerID);
         int oldIndex = pFieldIndex;

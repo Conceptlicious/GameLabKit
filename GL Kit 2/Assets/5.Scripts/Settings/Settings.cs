@@ -22,6 +22,7 @@ public static class Settings
     public const string PATH_ASSETS_RESOURCES                     = "Assets/Resources/";
 
     public const string OBJ_NAME_BLANK_GAMEOBJECT                 = "BlankGameObject";
+    public const string OBJ_NAME_UI_POPUP                         = "Popup Canvas";
 
     public const string JSON_DEF_IDENTIFIER_KEYWORDS              = "identifierKeywords";
     public const string JSON_DEF_DEFINED_ARRAYS                   = "definedArrays";
@@ -32,8 +33,10 @@ public static class Settings
     {
        
         "Loading_Tips", 
+        "Popups",
+        "Room_1",
         "Room_2",
-        "Room_3"
+        "Room_3",
     };
     
     //----------------------------------------------------------
@@ -55,6 +58,8 @@ public static class Settings
     public const string ERR_DIALOGUE_INVALID_INDEX                = "Trying to fetch dialogue with an invalid index.";
     public const string ERR_JSON_FILE_INCORRECT_FORMATTING        = "Fields and arrays cannot be read from the JSON file. Please check file '{0}''s formatting.";
     public const string ERR_JSON_MISSING_FILE                     = "Trying to read dialogue from file '{0}' which is missing or doesn't exist.";
+
+    public const string ERR_ASSERT_UI_POPUP_MISSING_COMPONENT            = "Instantiated UI Popup window lacks the required script. Please attach and configure this in the Unity Editor.";
     
     //----------------------------------------------------------
     //                    ROOM DATA & VALUES

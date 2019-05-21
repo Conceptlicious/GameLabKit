@@ -1,0 +1,27 @@
+{
+  "definedArrays": ["Username", "Problem", "Target Audience"],
+
+  "Username":
+  {
+    "Title": "Name",
+    "Body": "My name is:",
+    "Textfield": "true",
+    "Buttons": "Back Next"
+  },
+
+  "Problem":
+  {
+    "Title": "Problem",
+    "Body": "I want to find a solution for:",
+    "Textfield": "true",
+    "Buttons": "Back Next"
+  },
+
+  "Target Audience":
+  {
+    "Title": "Target Audience",
+    "Body": "Visualise your target audience through choosing gender, age and possible qualities the target audience could possess. Choose elements which best represent your target audience.\nClick on 'Back' to relisten to the explanation from Dr Gamelab.",
+    "Textfield": "false",
+    "Buttons": "Back Start"
+  }
+}

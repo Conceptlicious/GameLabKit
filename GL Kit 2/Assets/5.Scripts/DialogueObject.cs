@@ -26,7 +26,7 @@ public class DialogueObject : MonoBehaviour
 
         public string DialogueText
         {
-            get { EventMarkers.Instance.ParseAndCall(dialogueText); return dialogueText; }
+            get { dialogueText = EventMarkers.Instance.ParseAndCall(dialogueText); return dialogueText; }
             set { dialogueText = value; }
         }
     }
@@ -39,10 +39,10 @@ public class DialogueObject : MonoBehaviour
         set { info = value; }
     }
 
-    public string GetNextInContainer()
+    public string GetTextAndIterate()
     {
         int newIndex = 0;
-        string str = Dialogue.GetNextText(info.fileIndex, info.containerIndex, info.fieldIndex, out newIndex);
+        string str = Dialogue.GetTextAndIterate(info.fileIndex, info.containerIndex, info.fieldIndex, out newIndex);
         info.DialogueText = str;
         info.fieldIndex = newIndex;
         return str;
@@ -54,6 +54,13 @@ public class DialogueObject : MonoBehaviour
         info.DialogueText = str;
         info.fieldIndex = pIndex;
         return str;
+    }
+
+    public string GetRandomText()
+    {
+        string str = Dialogue.GetRandomText(info.fileIndex, info.containerIndex);
+        info.DialogueText = str;
+        return info.DialogueText;
     }
     
 

@@ -30,8 +30,7 @@ public class CameraControl : MonoBehaviour
     void Start()
     {
         registerAllListeners();
-        SetUpCamera();
-        handler += NullUpdate;     
+        SetUpCamera();  
     }
 
     private void SetUpCamera()
@@ -72,20 +71,13 @@ public class CameraControl : MonoBehaviour
     private void registerAllListeners()
     {
         EventManager.Instance.AddListener<CameraTargetSelectEvent>(OnTargetSelect);
-
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        handler();
+        handler?.Invoke();
     }
-
-    private void NullUpdate()
-    {
-        
-    }
-     
 
     private void MoveToTarget()
     {      
