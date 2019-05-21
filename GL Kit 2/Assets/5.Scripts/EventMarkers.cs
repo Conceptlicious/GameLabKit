@@ -27,7 +27,9 @@ public class EventMarkers : Singleton<EventMarkers>
         {
             if (AnalyseText(couplings[i].marker, output, out output) && couplings[i].eventToCall != null)
             {
-                EventManager.Instance.RaiseEvent(  Activator.CreateInstance(couplings[i].eventToCall) as GameLabEvent );
+                Debug.Log("Enter call, calling " + couplings[i].eventToCall.ToString());
+                
+                EventManager.Instance.RaiseEvent(  Activator.CreateInstance(couplings[i].eventToCall).GetType() );
             }
         }
 
@@ -60,7 +62,7 @@ public class EventMarkers : Singleton<EventMarkers>
                 pOutText += parts[i];
             }
         }
-
+        Debug.Log("Output: " + output);
         return output;
     }
 
@@ -70,7 +72,7 @@ public class EventMarkers : Singleton<EventMarkers>
         {
             if (String.IsNullOrEmpty(couplings[i].marker))
             {
-                couplings[i].marker = Settings.STR_DEFAULT_DIALOGUE;
+                couplings[i].marker = Settings.DEFAULT_EVENTMARKER_MARKER;
             }       
         }
     }

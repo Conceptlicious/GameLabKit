@@ -22,7 +22,7 @@ public static class Settings
     public const string PATH_ASSETS_RESOURCES                     = "Assets/Resources/";
 
     public const string OBJ_NAME_BLANK_GAMEOBJECT                 = "BlankGameObject";
-    public const string OBJ_NAME_UI_POPUP                         = "Popup Canvas";
+    public const string OBJ_NAME_UI_POPUP                         = "PopupCanvas";
 
     public const string JSON_DEF_IDENTIFIER_KEYWORDS              = "identifierKeywords";
     public const string JSON_DEF_DEFINED_ARRAYS                   = "definedArrays";

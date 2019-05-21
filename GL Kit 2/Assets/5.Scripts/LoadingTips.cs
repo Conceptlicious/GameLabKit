@@ -38,7 +38,7 @@ public class LoadingTips : MonoBehaviour
         if (info != null & info.showTips == true)
         {
             textField.text = tipsAreRandom == true
-                ? Dialogue.GetRandomText(dialogueObject.Info.fileIndex, dialogueObject.Info.containerIndex)
+                ? dialogueObject.GetRandomText()
                 : /*Dialogue.GetNextText(dialogueObject.Info.fileIndex, dialogueObject.Info.containerIndex, tipsIndex, out tipsIndex);*/
                 dialogueObject.GetTextAndIterate();
         

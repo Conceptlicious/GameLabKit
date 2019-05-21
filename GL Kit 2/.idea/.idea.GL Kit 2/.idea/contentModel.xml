@@ -25,6 +25,7 @@
           <e p="Mini-Games" t="Include">
             <e p="EventMessaging" t="Include">
               <e p="CameraTargetSelectedEvent.cs" t="Include" />
+              <e p="CreatePopUpEvent.cs" t="Include" />
               <e p="DetectedMarkerEvent.cs" t="Include" />
               <e p="DialogFetchNextEvent.cs" t="Include" />
               <e p="DialogProgressEvent.cs" t="Include" />
@@ -52,6 +53,7 @@
               <e p="TileGrid.cs" t="Include" />
               <e p="TileLayer.cs" t="Include" />
               <e p="TilePath.cs" t="Include" />
+              <e p="TileSpriteSettings.cs" t="Include" />
             </e>
             <e p="Room 4" t="Include">
               <e p="ConveyorBeltMovement.cs" t="Include" />
@@ -85,7 +87,6 @@
           <e p="UIAnimator.cs" t="Include" />
           <e p="UIControl.cs" t="Include" />
           <e p="UIPopUp.cs" t="Include" />
-          <e p="UIPopUpContents.cs" t="Include" />
           <e p="UIPopUpManager.cs" t="Include" />
           <e p="UISlidingObject.cs" t="Include" />
         </e>

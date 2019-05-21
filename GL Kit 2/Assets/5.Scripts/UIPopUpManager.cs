@@ -2,26 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using GameLab;
 
 public class UIPopUpManager : MonoBehaviour
 {
     [SerializeField] private DialogueObject dialogueObject;
-    // Start is called before the first frame update
-    void Start()
+
+    public void Start()
     {
-        
+        registerAllListeners();
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Registers all event listeners this class needs to care about.
+    /// </summary>
+    private void registerAllListeners()
     {
-        
+        //EventSystem.RegisterListener(EventType.UI_NEXT_ROOM, OnNextRoomCommand);
+        EventManager.Instance.AddListener<CreatePopUpEvent>(OnEventMarkerCall);
     }
     
     public void CreatePopUp()
     {
+        Debug.Log("DETECT");
         //layout visible
-        Canvas UICanvas = Resources.Load<Canvas>(Settings.PATH_ASSETS_RESOURCES + Settings.PATH_PREFABS + Settings.OBJ_NAME_UI_POPUP);
+        string path = Settings.PATH_PREFABS + Settings.OBJ_NAME_UI_POPUP;
+        Debug.Log(path);
+        Canvas UICanvas = Resources.Load<Canvas>(path);
         UIPopUp popup = UICanvas.GetComponent<UIPopUp>();
         Debug.Assert(popup != null, Settings.ERR_ASSERT_UI_POPUP_MISSING_COMPONENT);
         UIPopUp.PopupFields data = popup.PopupFieldsData;
@@ -43,8 +50,7 @@ public class UIPopUpManager : MonoBehaviour
     }
 
     public void OnEventMarkerCall()
-    {
-        //iterate container index
-        CreatePopUp();
+    {    //Don't uncomment this until a bug is fixed
+        //CreatePopUp();
     }
 }

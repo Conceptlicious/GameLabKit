@@ -100,7 +100,7 @@ MonoBehaviour:
       classRef: CameraTargetSelectEvent, Assembly-CSharp
   - marker: '#'
     eventToCall:
-      classRef: 
+      classRef: CreatePopUpEvent, Assembly-CSharp
 --- !u!114 &6100448372103171779
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,20 +35,10 @@ public class DialogueEditor : Editor
 			PopulateOptions();
 		}
 
-
+		
 	}
 
-       // DialogueObject.TextInfo ti = new DialogueObject.TextInfo(fileNameIndex, containerNameIndex, keyNames[keyNameIndex], keyNameIndex);
-        dialogueObject.Info = new DialogueObject.TextInfo(fileNameIndex, containerNameIndex, keyNames[keyNameIndex], keyNameIndex);
-        if(GUILayout.Button("Print Dialogue"))
-        {
-            Debug.Log(dialogueObject.Info.DialogueText);
-        }
-        if(GUILayout.Button("Progress Dialogue"))
-        {
-            Debug.Log(dialogueObject.GetTextAndIterate());
-            keyNameIndex = dialogueObject.Info.fieldIndex;
-        }
+      
        
 
 	private void PopulateOptions()
@@ -87,7 +77,7 @@ public class DialogueEditor : Editor
 		}
 		if (GUILayout.Button("Progress Dialogue"))
 		{
-			Debug.Log(dialogueObject.GetNextInContainer());
+			Debug.Log(dialogueObject.GetTextAndIterate());
 			keyNameIndex = dialogueObject.Info.fieldIndex;
 		}
 
