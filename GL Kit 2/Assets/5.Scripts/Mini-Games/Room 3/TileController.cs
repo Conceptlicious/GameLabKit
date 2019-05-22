@@ -53,7 +53,6 @@ namespace Room3
 
 		public void OnPointerDown(PointerEventData eventData)
 		{
-			print("Pressed");
 			OnInteractedWith?.Invoke(this);
 		}
 
