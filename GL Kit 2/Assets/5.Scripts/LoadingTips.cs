@@ -15,16 +15,16 @@ public class LoadingTips : MonoBehaviour
 	[SerializeField] private bool tipsAreRandom = false;
 
 	private int tipsIndex = 0;
-	
+
 	private delegate void Updateables();
 	private Updateables handler;
-	
+
 	// Start is called before the first frame update
 	void Start()
 	{
-		RegisterAllListeners();     
+		RegisterAllListeners();
 	}
-	
+
 	/// <summary>
 	/// Registers all event listeners this class needs to care about.
 	/// </summary>
@@ -35,21 +35,13 @@ public class LoadingTips : MonoBehaviour
 
 	private void OnTransition(CameraTargetSelectEvent info)
 	{
-		if (info != null & info.showTips)
+		if (info != null & info.showTips == true)
 		{
-
-			if(tipsAreRandom)
-			{
-				textField.text = Dialogue.GetRandomText(dialogueObject.Info.fileIndex,
-					dialogueObject.Info.containerIndex);
-			}
-			else
-			{
-				textField.text = Dialogue.GetNextText(dialogueObject.Info.fileIndex,
-					dialogueObject.Info.containerIndex, tipsIndex, out tipsIndex);
-			}
+			textField.text = tipsAreRandom == true
+				? dialogueObject.GetRandomText()
+				: dialogueObject.GetTextAndIterate();
 
 			UIAnimator.Instance.AnimateObjects(slidingObject, Settings.VAL_CAMERA_TRANSITION_SECONDS);
-		}            
+		}
 	}
 }
