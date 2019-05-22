@@ -23,7 +23,6 @@ namespace Room3
 		[SerializeField] private TileSpriteSettings tileSpriteSettings;
 
 		[SerializeField] private TileController tileControllerPrefab = null;
-		[SerializeField] private BridgeTileController bridgeTileControllerPrefab = null;
 
 		[SerializeField] private LevelData.ColorSettings defaultLevelSettings = LevelData.ColorSettings.Default;
 		[SerializeField] private LevelData[] levels = new LevelData[0];
@@ -122,13 +121,7 @@ namespace Room3
 
 		private TileController SpawnTileController(Tile tileData, float anchorStepPerColumn, float anchorStepPerRow, TileSpriteSettings tileSprites, TileLayer layer)
 		{
-			TileController tileController = null;
-
-			if (layer == bridgeLayer)
-			{
-				tileController = Instantiate(bridgeTileControllerPrefab, Vector3.zero, Quaternion.identity, CachedTransform);
-				(tileController as BridgeTileController).MainLayerTileData = mainLayer.Tiles[tileData.Row, tileData.Col];
-			}
+			TileController tileController = Instantiate(tileControllerPrefab, Vector3.zero, Quaternion.identity, CachedTransform);
 
 			tileController.name = $"Tile {tileData.Row}, {tileData.Col}";
 

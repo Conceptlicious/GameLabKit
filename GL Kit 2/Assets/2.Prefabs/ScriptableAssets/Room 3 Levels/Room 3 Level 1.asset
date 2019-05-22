@@ -17,13 +17,13 @@ MonoBehaviour:
   customColorSettings:
     NormalTileColor:
       serializedVersion: 2
-      rgba: 4278190080
+      rgba: 4286545791
     ObstacleTileColor:
       serializedVersion: 2
       rgba: 4278190080
     BridgeTileColor:
       serializedVersion: 2
-      rgba: 4278255615
+      rgba: 4278512639
     StartPointAlphaThreshold: 126
     TileGroups:
     - groupColor:
