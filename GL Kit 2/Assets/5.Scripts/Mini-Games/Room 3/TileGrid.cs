@@ -29,6 +29,8 @@ namespace Room3
 
 		private int currentLevelIndex = -1;
 
+		private bool canBeInteractedWith = false;
+
 		private TileLayer mainLayer = null;
 		private TileLayer bridgeLayer = null;
 
@@ -50,6 +52,11 @@ namespace Room3
 			NextLevel();
 		}
 
+		public void SetGridInteractable(bool canInteractedWith)
+		{
+			canBeInteractedWith = canInteractedWith;
+		}
+
 		private void NextLevel()
 		{
 			if (currentLevelIndex == levels.Length - 1)
@@ -62,6 +69,7 @@ namespace Room3
 
 			++currentLevelIndex;
 			print(currentLevelIndex);
+			SetGridInteractable(false);
 			SpawnLevel(levels[currentLevelIndex]);
 		}
 
@@ -156,6 +164,12 @@ namespace Room3
 
 		private void OnTileInteractedWith(TileController tile)
 		{
+
+			if (!canBeInteractedWith)
+			{
+				return;
+			}
+
 			if (tile == lastInteractedWithTile)
 			{
 				return;
