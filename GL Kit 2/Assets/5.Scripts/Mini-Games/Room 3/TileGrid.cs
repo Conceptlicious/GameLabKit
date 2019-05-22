@@ -52,7 +52,7 @@ namespace Room3
 			NextLevel();
 		}
 
-		public void SetInteractedWith(bool canInteractedWith)
+		public void SetGridInteractable(bool canInteractedWith)
 		{
 			canBeInteractedWith = canInteractedWith;
 		}
@@ -69,6 +69,7 @@ namespace Room3
 
 			++currentLevelIndex;
 			print(currentLevelIndex);
+			SetGridInteractable(false);
 			SpawnLevel(levels[currentLevelIndex]);
 		}
 

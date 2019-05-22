@@ -9,7 +9,7 @@ public class Lever : BetterMonoBehaviour
 	
 	public void OnButtonPressed()
 	{
-		TileGrid.Instance.SetInteractedWith(true);
+		TileGrid.Instance.SetGridInteractable(true);
 	}
 
 }
