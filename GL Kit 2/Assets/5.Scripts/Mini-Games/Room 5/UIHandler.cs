@@ -129,4 +129,9 @@ public class UIHandler : Singleton<UIHandler>
 		ButtonManager.Instance.SeriousFun.onClick.AddListener(() => ChangeFunType(FunType.SeriousFun));
 		ChangeFunType(FunType.EasyFun);
 	}
+
+	private void WonMiniGame()
+	{
+
+	}
 }

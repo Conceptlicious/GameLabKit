@@ -22,27 +22,34 @@ public class LoadingTips : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		registerAllListeners();     
+		RegisterAllListeners();     
 	}
 	
 	/// <summary>
 	/// Registers all event listeners this class needs to care about.
 	/// </summary>
-	private void registerAllListeners()
+	private void RegisterAllListeners()
 	{
 		EventManager.Instance.AddListener<CameraTargetSelectEvent>(OnTransition);
 	}
 
-    private void OnTransition(CameraTargetSelectEvent info)
-    {
-        if (info != null & info.showTips == true)
-        {
-            textField.text = tipsAreRandom == true
-                ? dialogueObject.GetRandomText()
-                : /*Dialogue.GetNextText(dialogueObject.Info.fileIndex, dialogueObject.Info.containerIndex, tipsIndex, out tipsIndex);*/
-                dialogueObject.GetTextAndIterate();
-        
-            UIAnimator.Instance.AnimateObjects(slidingObject, Settings.VAL_CAMERA_TRANSITION_SECONDS);
-        }            
-    }
+	private void OnTransition(CameraTargetSelectEvent info)
+	{
+		if (info != null & info.showTips)
+		{
+
+			if(tipsAreRandom)
+			{
+				textField.text = Dialogue.GetRandomText(dialogueObject.Info.fileIndex,
+					dialogueObject.Info.containerIndex);
+			}
+			else
+			{
+				textField.text = Dialogue.GetNextText(dialogueObject.Info.fileIndex,
+					dialogueObject.Info.containerIndex, tipsIndex, out tipsIndex);
+			}
+
+			UIAnimator.Instance.AnimateObjects(slidingObject, Settings.VAL_CAMERA_TRANSITION_SECONDS);
+		}            
+	}
 }

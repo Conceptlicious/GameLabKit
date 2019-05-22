@@ -63,4 +63,10 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 		maxAgeText = ageSilderMax.transform.Find("Handle Slide Area/Handle/Text").GetComponent<Text>();
 		UpdateAgeSlider();
 	}
+
+	public void DoneButton()
+	{
+		NextRoomEvent nextRoomEvent = new NextRoomEvent();
+		EventManager.Instance.RaiseEvent(nextRoomEvent);
+	}
 }

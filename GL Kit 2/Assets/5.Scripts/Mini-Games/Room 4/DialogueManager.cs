@@ -9,7 +9,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
 	public string CurrentDialogue { get; private set; }
 	[HideInInspector] public Text dialogueText;
-	private int currentDialogueIndex = -1;
+	private int currentDialogueIndex = 0;
 
 
 	protected override void Awake()
@@ -21,18 +21,22 @@ public class DialogueManager : Singleton<DialogueManager>
 
 	public void Read()
 	{
-		currentDialogueIndex++;
-
 		if (currentDialogueIndex <= amountOfDialogues && !QuestionManager.Instance.needsAwnser)
 		{
 			TextAsset loadedDialogue = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DIALOGUE,
 				LoadingPaths.FILE_NAME_DIALOGUE) + currentDialogueIndex);
 			Write(loadedDialogue);
 		}
+		else if(currentDialogueIndex > amountOfDialogues)
+		{
+			WonMiniGame();
+		}
 		else
 		{
 			Debug.LogWarning("Dialogue can not be loaded.");
 		}
+
+		currentDialogueIndex++;
 	}
 
 	private void Write(TextAsset dialogueToDisplay)
@@ -51,5 +55,10 @@ public class DialogueManager : Singleton<DialogueManager>
 		}
 
 		dialogueText.text = CurrentDialogue;
+	}
+
+	private void WonMiniGame()
+	{
+		// Put in camera transition
 	}
 }
