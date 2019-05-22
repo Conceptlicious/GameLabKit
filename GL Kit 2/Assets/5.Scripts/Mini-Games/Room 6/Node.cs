@@ -14,7 +14,6 @@ public class Node : BetterMonoBehaviour, IPointerEnterHandler
 	[SerializeField] private bool fakeCheck;
 	public bool FakeCheck => fakeCheck;
 
-	[SerializeField] private DrawLines drawLines = null;
 	[SerializeField] private NodePattern nodePattern = null;
 
 	private Image startDotInstance = null;
@@ -24,23 +23,13 @@ public class Node : BetterMonoBehaviour, IPointerEnterHandler
 		gameObject.SetActive(pState);
 	}
 
-	//Ran when mouse over button
 	public void OnPointerEnter(PointerEventData eventData)
 	{
-		// Raise event
-		OnInteract?.Invoke(this);
-
-		if(!nodePattern.IsInteractable)
+		if (!nodePattern.IsInteractable)
 		{
 			return;
 		}
 
-		if (!fakeCheck)
-		{
-			if (nodePattern.ActiveLayer == 0)
-			{
-				nodePattern.SpawnStartDot(transform.parent, (transform as RectTransform).anchoredPosition);
-			}
-		}
+		OnInteract?.Invoke(this);		
 	}
 }
