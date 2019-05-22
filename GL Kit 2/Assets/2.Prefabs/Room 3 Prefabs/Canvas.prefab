@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileSpriteSettings: {fileID: 11400000, guid: 93a97d49b4af2264da843c579494639e, type: 2}
-  tileControllerPrefab: {fileID: 1148973381981835779, guid: b4d26f84034245e49ae171225d5520da,
+  tileControllerPrefab: {fileID: 1148973381981835779, guid: ab4032fdcea19734dae63557fd434f40,
     type: 3}
   defaultLevelSettings:
     NormalTileColor:
@@ -152,8 +152,8 @@ MonoBehaviour:
         serializedVersion: 2
         rgba: 4294901760
   levels:
-  - {fileID: 11400000, guid: 3fc95fdde52f81849935eb58098d941b, type: 2}
-  - {fileID: 11400000, guid: 2d806aa8615a4354a908fb46491867af, type: 2}
+  - {fileID: 11400000, guid: 7864bf713e1d5c64c8fcf178c8bd0622, type: 2}
+  - {fileID: 11400000, guid: e99329fba8f45da4994649e0bd91c72c, type: 2}
 --- !u!1 &2147928139908285067
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +182,7 @@ RectTransform:
   m_GameObject: {fileID: 2147928139908285067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.009749574, y: 0.009749574, z: 0.009749574}
   m_Children:
   - {fileID: 2147928138940705982}
   - {fileID: 2147928140489095598}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 2147928140489095585}
   - component: {fileID: 2147928140489095584}
   - component: {fileID: 2147928140489095599}
-  - component: {fileID: 2147928140489095586}
+  - component: {fileID: 484505518}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -291,7 +291,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.12, y: 0.28}
   m_AnchorMax: {x: 0.23, y: 0.72}
-  m_AnchoredPosition: {x: -0.3048788, y: -0.570992}
+  m_AnchoredPosition: {x: -0.3048706, y: -0.5709915}
   m_SizeDelta: {x: 0.49078065, y: 1.9934821}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2147928140489095585
@@ -371,7 +371,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2147928140489095586}
+      - m_Target: {fileID: 484505518}
         m_MethodName: OnButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -384,7 +384,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &2147928140489095586
+--- !u!114 &484505518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -393,6 +393,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2147928140489095597}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88a610db0642b6d42b3d47b353f9ac7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 13024f0169847a74db83463e6321c52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
