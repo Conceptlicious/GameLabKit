@@ -27,10 +27,6 @@ public class DialogueManager : Singleton<DialogueManager>
 				LoadingPaths.FILE_NAME_DIALOGUE) + currentDialogueIndex);
 			Write(loadedDialogue);
 		}
-		else if(currentDialogueIndex > amountOfDialogues)
-		{
-			WonMiniGame();
-		}
 		else
 		{
 			Debug.LogWarning("Dialogue can not be loaded.");
@@ -57,8 +53,12 @@ public class DialogueManager : Singleton<DialogueManager>
 		dialogueText.text = CurrentDialogue;
 	}
 
-	private void WonMiniGame()
+	public void WonMiniGame()
 	{
-		// Put in camera transition
+		if (currentDialogueIndex >= amountOfDialogues)
+		{
+			NextRoomEvent nextRoomEvent = new NextRoomEvent();
+			EventManager.Instance.RaiseEvent(nextRoomEvent);
+		}
 	}
 }
