@@ -6,12 +6,12 @@ public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler,
 {
 	public Vector3 BeginPosition { get; private set; } = Vector3.zero;
 	[HideInInspector] public bool isObjectInGrid = false;
-	private static GameObject canvas;
+	private static Canvas canvas;
 
 	private void Start()
 	{
 		BeginPosition = CachedTransform.position;
-		canvas = FindObjectOfType<Canvas>().gameObject;
+		canvas = GameObject.FindGameObjectWithTag("DragAndDropCanvas").GetComponent<Canvas>();
 	}
 
 	public void OnBeginDrag(PointerEventData eventData)
@@ -31,8 +31,10 @@ public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler,
 	public void OnDrag(PointerEventData eventData)
 	{
 		//CachedTransform.position = eventData.position;
-		Ray ray = Camera.main.ScreenPointToRay(eventData.position);
-		transform.position = new Vector3(ray.origin.x, ray.origin.y, BeginPosition.z);
+		Vector2 pos;
+		RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,
+			eventData.position, canvas.worldCamera, out pos);
+		transform.position = canvas.transform.TransformPoint(pos);
 	}
 
 	public void OnEndDrag(PointerEventData eventData)

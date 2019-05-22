@@ -20,4 +20,9 @@ public class HiddenObject : BetterMonoBehaviour
 		objectDescription = hiddenObjectTemplate.description;
 		CurrentSprite.sprite = hiddenObjectTemplate.notFoundSprite;
 	}
+
+	private void ObjectFound()
+	{
+
+	}
 }
