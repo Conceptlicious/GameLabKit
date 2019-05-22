@@ -142,8 +142,8 @@ namespace Room3
 			tileController.CachedRectTransform.anchorMin = new Vector2(tileData.Col * anchorStepPerColumn, tileData.Row * anchorStepPerRow);
 			tileController.CachedRectTransform.anchorMax = new Vector2((tileData.Col + 1) * anchorStepPerColumn, (tileData.Row + 1) * anchorStepPerRow);
 
-			tileController.CachedRectTransform.offsetMin = tileController.CachedRectTransform.offsetMax = Vector2.zero;
-
+			tileController.CachedRectTransform.offsetMin = tileController.CachedRectTransform.offsetMax = Vector3.zero;
+			
 			return tileController;
 		}
 
