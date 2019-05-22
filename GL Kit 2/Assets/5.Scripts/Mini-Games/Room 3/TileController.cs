@@ -4,82 +4,85 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Image))]
-public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerUpHandler
+namespace Room3
 {
-	public event Action<TileController> OnInteractedWith;
-	public event Action<TileController> OnFinishedInteractingAt;
-
-	public Image Image { get; private set; }
-
-	private Tile tileData = null;
-	public Tile TileData
+	[RequireComponent(typeof(Image))]
+	public class TileController : BetterMonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerUpHandler
 	{
-		get => tileData;
-		set
+		public event Action<TileController> OnInteractedWith;
+		public event Action<TileController> OnFinishedInteractingAt;
+
+		public Image Image { get; private set; }
+
+		private Tile tileData = null;
+		public Tile TileData
 		{
-			if(tileData != null)
+			get => tileData;
+			set
 			{
-				tileData.OnConnectedToTile -= OnConnectedToTile;
-				tileData.OnDisconnectedFromTile -= OnDisconnectedFromTile;
-			}
+				if (tileData != null)
+				{
+					tileData.OnConnectedToTile -= OnConnectedToTile;
+					tileData.OnDisconnectedFromTile -= OnDisconnectedFromTile;
+				}
 
-			tileData = value;
+				tileData = value;
 
-			if(tileData != null)
-			{
-				tileData.OnConnectedToTile += OnConnectedToTile;
-				tileData.OnDisconnectedFromTile += OnDisconnectedFromTile;
+				if (tileData != null)
+				{
+					tileData.OnConnectedToTile += OnConnectedToTile;
+					tileData.OnDisconnectedFromTile += OnDisconnectedFromTile;
+				}
 			}
 		}
-	}
 
-	private Color? originalTileColor = null;
+		private Color? originalTileColor = null;
 
-	private void Awake()
-	{
-		Image = GetComponent<Image>();
-	}
-
-	public void ChangeSprite(Sprite spritetoChange)
-	{
-		if(tileData.TileType != Tile.Type.EndPoint)
+		private void Awake()
 		{
-			Image.sprite = spritetoChange;
+			Image = GetComponent<Image>();
 		}
-	}
 
-	public void OnPointerDown(PointerEventData eventData)
-	{
-		OnInteractedWith?.Invoke(this);
-	}
+		public void ChangeSprite(Sprite spritetoChange)
+		{
+			if (tileData.TileType != Tile.Type.EndPoint)
+			{
+				Image.sprite = spritetoChange;
+			}
+		}
 
-	public void OnPointerEnter(PointerEventData eventData)
-	{
-		if (Input.GetMouseButton(0))
+		public void OnPointerDown(PointerEventData eventData)
 		{
 			OnInteractedWith?.Invoke(this);
 		}
-	}
 
-	private void OnConnectedToTile(Tile tileConnectedTo)
-	{
-		if(!originalTileColor.HasValue)
+		public void OnPointerEnter(PointerEventData eventData)
 		{
-			originalTileColor = Image.color;
+			if (Input.GetMouseButton(0))
+			{
+				OnInteractedWith?.Invoke(this);
+			}
 		}
 
-		Image.color = TileData.TileGroup.GroupColor;
-	}
+		private void OnConnectedToTile(Tile tileConnectedTo)
+		{
+			if (!originalTileColor.HasValue)
+			{
+				originalTileColor = Image.color;
+			}
 
-	private void OnDisconnectedFromTile(Tile tileDisconnectedFrom)
-	{
-		Image.color = originalTileColor.GetValueOrDefault(TileGrid.Instance.CurrentLevelSettings.NormalTileColor);
-		Image.sprite = null;
-	}
+			Image.color = TileData.TileGroup.GroupColor;
+		}
 
-	public void OnPointerUp(PointerEventData eventData)
-	{
-		OnFinishedInteractingAt?.Invoke(this);
+		private void OnDisconnectedFromTile(Tile tileDisconnectedFrom)
+		{
+			Image.color = originalTileColor.GetValueOrDefault(TileGrid.Instance.CurrentLevelSettings.NormalTileColor);
+			Image.sprite = null;
+		}
+
+		public void OnPointerUp(PointerEventData eventData)
+		{
+			OnFinishedInteractingAt?.Invoke(this);
+		}
 	}
 }

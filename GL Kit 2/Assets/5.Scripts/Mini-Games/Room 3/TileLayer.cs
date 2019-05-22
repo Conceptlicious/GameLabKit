@@ -6,67 +6,70 @@ using System.Threading.Tasks;
 using GameLab;
 using UnityEngine;
 
-public class TileLayer
+namespace Room3
 {
-	public Tile[,] Tiles { get; private set; } = null;
-
-	public TileLayer(int rows, int cols, Tile.Type defaultTileType = Tile.Type.Connection)
+	public class TileLayer
 	{
-		Tiles = new Tile[rows, cols];
+		public Tile[,] Tiles { get; private set; } = null;
 
-		for(int row = 0; row < rows; ++row)
+		public TileLayer(int rows, int cols, Tile.Type defaultTileType = Tile.Type.Connection)
 		{
-			for(int col = 0; col < cols; ++col)
+			Tiles = new Tile[rows, cols];
+
+			for (int row = 0; row < rows; ++row)
 			{
-				Tiles[row, col] = new Tile(row, col);
-				Tiles[row, col].TileType = defaultTileType;
-				Tiles[row, col].Layer = this;
+				for (int col = 0; col < cols; ++col)
+				{
+					Tiles[row, col] = new Tile(row, col);
+					Tiles[row, col].TileType = defaultTileType;
+					Tiles[row, col].Layer = this;
+				}
 			}
 		}
-	}
 
-	public TilePath CalculatePathForGroup(Tile.Group tileGroup)
-	{
-		TilePath path = new TilePath();
-
-		Tile currentTile = GetStartTileForGroup(tileGroup);
-
-		if(currentTile == null)
+		public TilePath CalculatePathForGroup(Tile.Group tileGroup)
 		{
+			TilePath path = new TilePath();
+
+			Tile currentTile = GetStartTileForGroup(tileGroup);
+
+			if (currentTile == null)
+			{
+				return path;
+			}
+
+			do
+			{
+				path.AddTileToPath(currentTile);
+				currentTile = currentTile.NextTile;
+			} while (currentTile != null);
+
 			return path;
 		}
 
-		do
+		private Tile GetStartTileForGroup(Tile.Group tileGroup)
 		{
-			path.AddTileToPath(currentTile);
-			currentTile = currentTile.NextTile;
-		} while(currentTile != null);
-
-		return path;
-	}
-
-	private Tile GetStartTileForGroup(Tile.Group tileGroup)
-	{
-		for(int row = 0; row < Tiles.GetLength(0); ++row)
-		{
-			for(int col = 0; col < Tiles.GetLength(1); ++col)
+			for (int row = 0; row < Tiles.GetLength(0); ++row)
 			{
-				Tile tile = Tiles[row, col];
-
-				if(tile.TileGroup != tileGroup)
+				for (int col = 0; col < Tiles.GetLength(1); ++col)
 				{
-					continue;
-				}
+					Tile tile = Tiles[row, col];
 
-				if(tile.TileType != Tile.Type.StartPoint)
-				{
-					continue;
-				}
+					if (tile.TileGroup != tileGroup)
+					{
+						continue;
+					}
 
-				return tile;
+					if (tile.TileType != Tile.Type.StartPoint)
+					{
+						continue;
+					}
+
+					return tile;
+				}
 			}
-		}
 
-		return null;
+			return null;
+		}
 	}
 }
