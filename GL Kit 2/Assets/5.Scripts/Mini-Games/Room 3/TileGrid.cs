@@ -29,6 +29,8 @@ namespace Room3
 
 		private int currentLevelIndex = -1;
 
+		private bool canBeInteractedWith = false;
+
 		private TileLayer mainLayer = null;
 		private TileLayer bridgeLayer = null;
 
@@ -48,6 +50,11 @@ namespace Room3
 
 			//SpawnLevel(levels[0]);
 			NextLevel();
+		}
+
+		public void SetInteractedWith(bool canInteractedWith)
+		{
+			canBeInteractedWith = canInteractedWith;
 		}
 
 		private void NextLevel()
@@ -156,6 +163,12 @@ namespace Room3
 
 		private void OnTileInteractedWith(TileController tile)
 		{
+
+			if (!canBeInteractedWith)
+			{
+				return;
+			}
+
 			if (tile == lastInteractedWithTile)
 			{
 				return;
