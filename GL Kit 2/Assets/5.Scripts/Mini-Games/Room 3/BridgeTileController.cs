@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BridgeTileController : TileController
+namespace Room3
 {
-	public Tile MainLayerTileData { get; set; }
+	public class BridgeTileController : TileController
+	{
+		public Tile MainLayerTileData { get; set; }
+	}
 }
