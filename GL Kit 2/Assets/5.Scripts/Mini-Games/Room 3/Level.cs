@@ -12,7 +12,7 @@ public class LevelData : ScriptableObject
 	{
 		public static readonly ColorSettings Default = new ColorSettings()
 		{
-			NormalTileColor = Color.gray,
+			NormalTileColor = new Color32(155,155,155,255),
 			ObstacleTileColor = Color.black,
 			BridgeTileColor = Color.yellow,
 			StartPointAlphaThreshold = 126,

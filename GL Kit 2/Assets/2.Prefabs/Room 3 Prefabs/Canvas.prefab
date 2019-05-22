@@ -31,7 +31,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1067496324944219095}
+<<<<<<< Updated upstream
   - {fileID: 2487271588685084301}
+=======
+>>>>>>> Stashed changes
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -178,6 +181,7 @@ MonoBehaviour:
   levels:
   - {fileID: 11400000, guid: 50a3b283985c7eb4ab1ec6e39eeb8cfe, type: 2}
   - {fileID: 11400000, guid: 6917ed6b12006fc41964b8463d036c23, type: 2}
+<<<<<<< Updated upstream
 --- !u!1 &1944152593152077306
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a610db0642b6d42b3d47b353f9ac7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &6786945630095412452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -406,6 +412,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1067496323533014991}
     m_Modifications:
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 5827817720949753650, guid: d38da9b6d7bab3640baa5c0fa70ae90d,
+        type: 3}
+      propertyPath: m_Name
+      value: Grid
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 5827817720949753651, guid: d38da9b6d7bab3640baa5c0fa70ae90d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -511,10 +525,13 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     - target: {fileID: 5827817720949753650, guid: d38da9b6d7bab3640baa5c0fa70ae90d,
         type: 3}
       propertyPath: m_Name
       value: Grid
       objectReference: {fileID: 0}
+=======
+>>>>>>> Stashed changes
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d38da9b6d7bab3640baa5c0fa70ae90d, type: 3}
