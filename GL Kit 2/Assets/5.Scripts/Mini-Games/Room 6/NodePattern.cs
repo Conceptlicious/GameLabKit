@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameLab;
 using UnityEngine.UI;
-// Dot at the start
 
 public class NodePattern : BetterMonoBehaviour
 {
@@ -11,22 +10,31 @@ public class NodePattern : BetterMonoBehaviour
 	[SerializeField] private Image startDotPrefab;
 	[SerializeField] private NodePattern nextPattern;
 	[SerializeField] private NodeLayer[] layers;
-
+	
 	[SerializeField] private bool isInteractable = true;
 	[SerializeField] private int activeLayer;
 	[SerializeField] private int previousLayer;
 
+	private IEnumerator coroutine;
+	[SerializeField] GameObject tubeSprite;
+	[SerializeField] Sprite normalTubeSprite;
+	[SerializeField] Sprite wrongInputSprite;
+	private float wrongInputTimer;
+	private bool fakeNodePressed;
+
+
 	public int ActiveLayer => activeLayer;
 	private Image startDot = null;
-	[SerializeField] private DrawLines drawLines;
+	private DrawLines drawLines;
 	private bool isComplete = false;
 	
-
 	public bool IsInteractable => isInteractable;
 
 	private void Start()
 	{
-		ActiveLayerReset();		
+		drawLines = gameObject.GetComponent<DrawLines>();
+		Debug.Assert(drawLines != null, "No drawlines component detected");
+		ActiveLayerReset();	
 	}
 
 	private void OnEnable()
@@ -49,8 +57,8 @@ public class NodePattern : BetterMonoBehaviour
 
 	private void OnInteracted(NodeLayer nodeLayer, Node node)
 	{
-		if(!node.FakeCheck)
-		{
+		if(!node.FakeCheck && !fakeNodePressed)
+		{			
 			if (nodeLayer == layers[0] && ActiveLayer == 0)
 			{
 				SpawnStartDot(node.CachedTransform.parent, node.CachedRectTransform.anchoredPosition);
@@ -59,11 +67,26 @@ public class NodePattern : BetterMonoBehaviour
 			drawLines.AddPosition(node.gameObject);
 			SetLayer();
 		}
-		else
-		{			
-			drawLines.ResetLine();
-			ActiveLayerReset();
+		else if (coroutine == null)
+		{
+			coroutine = WrongInputSpriteSwap(2.0f);
+			StartCoroutine(coroutine);		
 		}
+	}
+
+	public IEnumerator WrongInputSpriteSwap(float pWaitTime)
+	{
+		
+		Image currentImage = tubeSprite.GetComponent<Image>();
+		currentImage.sprite = wrongInputSprite;
+		fakeNodePressed = true;
+		yield return new WaitForSeconds(pWaitTime);
+		
+		drawLines.ResetLine();
+		ActiveLayerReset();
+		currentImage.sprite = normalTubeSprite;
+		coroutine = null;
+		fakeNodePressed = false;
 	}
 
 	//When a correct button is pressed, it sets current layer
@@ -71,32 +94,35 @@ public class NodePattern : BetterMonoBehaviour
 	{
 
 		if(isComplete || !isInteractable)
-		{			
+		{
 			return;			
 		}
 
 		activeLayer++;
 		previousLayer = activeLayer - 1;
 
-		// Check if pattern is finished
 		if (activeLayer >= layers.Length)
 		{
 			isComplete = true;
 
 			if (nextPattern != null)
 			{
-				nextPattern.isInteractable = true;				
+				nextPattern.isInteractable = true;
+			}
+			else if(nextPattern == null && isComplete)
+			{
+				Debug.Log("To The White Room");
+				NextRoomEvent info = new NextRoomEvent();
+				EventManager.Instance.RaiseEvent(info);
 			}
 
 			drawLines.ResetLine();
 
-			// Remove other buttons in layer
 			for (int i = 0; i < layers.Length; i++)
 			{
 				layers[i].SetActive(false);
-				logoImage.gameObject.SetActive(true);
-			}			
-
+				logoImage.gameObject.SetActive(true);				
+			}
 			Destroy(startDot.gameObject);
 
 		}
