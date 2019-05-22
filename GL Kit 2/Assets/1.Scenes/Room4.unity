@@ -412,5 +412,47 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 24.099976
       objectReference: {fileID: 0}
+    - target: {fileID: 8673766250250116946, guid: 97f913b69b88cb7469d0502f541ac6f0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673766250250116946, guid: 97f913b69b88cb7469d0502f541ac6f0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673766250250116946, guid: 97f913b69b88cb7469d0502f541ac6f0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673766250250116946, guid: 97f913b69b88cb7469d0502f541ac6f0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8673766249059559200}
+    - target: {fileID: 8673766250250116946, guid: 97f913b69b88cb7469d0502f541ac6f0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: WonMiniGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673766250250116946, guid: 97f913b69b88cb7469d0502f541ac6f0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97f913b69b88cb7469d0502f541ac6f0, type: 3}
+--- !u!114 &8673766249059559200 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8673766249014475656, guid: 97f913b69b88cb7469d0502f541ac6f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8673766249059559199}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533cff6e2f2ea894dad2db279c9804c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
