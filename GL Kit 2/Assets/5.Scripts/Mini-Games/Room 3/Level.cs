@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using GameLab;
+using Room3;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Room 3 Level", menuName = "Room 3/Level")]
