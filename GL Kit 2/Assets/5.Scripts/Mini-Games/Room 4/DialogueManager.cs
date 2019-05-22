@@ -53,7 +53,7 @@ public class DialogueManager : Singleton<DialogueManager>
 		dialogueText.text = CurrentDialogue;
 	}
 
-	private void WonMiniGame()
+	public void WonMiniGame()
 	{
 		if (currentDialogueIndex >= amountOfDialogues)
 		{
