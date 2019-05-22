@@ -101,7 +101,6 @@ public class NodePattern : BetterMonoBehaviour
 		activeLayer++;
 		previousLayer = activeLayer - 1;
 
-		// Check if pattern is finished
 		if (activeLayer >= layers.Length)
 		{
 			isComplete = true;
@@ -110,22 +109,20 @@ public class NodePattern : BetterMonoBehaviour
 			{
 				nextPattern.isInteractable = true;
 			}
+			else if(nextPattern == null && isComplete)
+			{
+				Debug.Log("To The White Room");
+				NextRoomEvent info = new NextRoomEvent();
+				EventManager.Instance.RaiseEvent(info);
+			}
 
 			drawLines.ResetLine();
 
-			// Remove other buttons in layer
 			for (int i = 0; i < layers.Length; i++)
 			{
 				layers[i].SetActive(false);
 				logoImage.gameObject.SetActive(true);				
 			}
-
-		/*	if (isComplete)
-			{
-				CameraTargetSelectEvent newInfo = new CameraTargetSelectEvent(gameObject.GetComponent<RectTransform>().transform, nextPattern.gameObject.GetComponent<RectTransform>().transform, false, false);
-				EventManager.Instance.RaiseEvent(newInfo);
-			}*/
-
 			Destroy(startDot.gameObject);
 
 		}
