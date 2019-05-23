@@ -241,8 +241,9 @@ GameObject:
   - component: {fileID: 1693605137}
   - component: {fileID: 1693605139}
   - component: {fileID: 1693605138}
+  - component: {fileID: 1693605140}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Awareness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,6 +305,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693605136}
   m_CullTransparentMesh: 0
+--- !u!114 &1693605140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693605136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea72a08fffb9794396623c06e470226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hiddenObjectTemplate: {fileID: 11400000, guid: e5ec2903d8f0ff1409a9fcc685fca5e0,
+    type: 2}
 --- !u!1 &1719185801
 GameObject:
   m_ObjectHideFlags: 0

@@ -55,7 +55,8 @@ public class UIHandler : Singleton<UIHandler>
 		foreach (Transform dropZone in dropZonesObject)
 		{
 			dropZones.Add(dropZone.GetComponent<DropZone>());
-		}
+			dropZone.GetComponent<DropZone>().Unoccupy();
+		}			
 
 		switch (funType)
 		{

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bde96e94fcfa44805f6476ced0d45, type: 3}
+  m_Name: Health & Well-being
+  m_EditorClassIdentifier: 
+  goalType: 2
+  description: "A game that is designed to help the player heal or improve their well-being.
+    It can help\r people cope with disabilities or encourage people to exercise. In
+    addition, these games\r can be used in mental healthcare, for example as a therapeutic
+    tool. These games are called health games."
+  notFoundSprite: {fileID: 0}
+  foundSprite: {fileID: 0}

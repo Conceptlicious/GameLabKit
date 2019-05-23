@@ -23,6 +23,7 @@ public class HiddenObject : BetterMonoBehaviour
 
 	private void ObjectFound()
 	{
-
+		// Call IEnumerator to display text for an X amount of time.
+		CurrentSprite.sprite = hiddenObjectTemplate.foundSprite;
 	}
 }
