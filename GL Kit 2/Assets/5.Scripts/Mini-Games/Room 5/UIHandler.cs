@@ -105,6 +105,12 @@ public class UIHandler : Singleton<UIHandler>
 		}
 	}
 
+	public void WonMiniGame()
+	{
+		NextRoomEvent nextRoomEvent = new NextRoomEvent();
+		EventManager.Instance.RaiseEvent(nextRoomEvent);
+	}
+
 	private void DisableTypeTabs()
 	{
 		funTypeTabs[0].SetActive(false);
@@ -128,10 +134,5 @@ public class UIHandler : Singleton<UIHandler>
 		ButtonManager.Instance.HardFun.onClick.AddListener(() => ChangeFunType(FunType.HardFun));
 		ButtonManager.Instance.SeriousFun.onClick.AddListener(() => ChangeFunType(FunType.SeriousFun));
 		ChangeFunType(FunType.EasyFun);
-	}
-
-	private void WonMiniGame()
-	{
-
 	}
 }
