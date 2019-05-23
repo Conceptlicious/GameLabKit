@@ -404,7 +404,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e2343a214d0b81340ba33bedfa730cbc, type: 2}
+  - {fileID: 2100000, guid: 59f377446b2f34543b526901ed9d391d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1280,6 +1280,46 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 534669904}
+    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.6316636
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 125.1814
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.4863989
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 123.64236
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 178.9157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.6837973
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.2813455
+      objectReference: {fileID: 0}
     - target: {fileID: 2147928140489095598, guid: 5e89894ff5a7252458680b5389b6e81b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1339,46 +1379,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.6316636
-      objectReference: {fileID: 0}
-    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 125.1814
-      objectReference: {fileID: 0}
-    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 1.4863989
-      objectReference: {fileID: 0}
-    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 123.64236
-      objectReference: {fileID: 0}
-    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 178.9157
-      objectReference: {fileID: 0}
-    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.6837973
-      objectReference: {fileID: 0}
-    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.2813455
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e89894ff5a7252458680b5389b6e81b, type: 3}
@@ -4189,7 +4189,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fc457981e551ab24bac113f3711618fa, type: 2}
+  - {fileID: 2100000, guid: 63d440dd029dcd842b8c1b50dddfabb0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
