@@ -42,6 +42,10 @@ public class UIHandler : Singleton<UIHandler>
 			if (DropZone.IsCombinationRight)
 			{
 				ButtonManager.Instance.EnableNextButton();
+				foreach(Transform child in GearsObject)
+				{
+					child.GetComponent<DragAndDrop>().isAbleToMove = false;
+				}
 			}
 
 			GridHandler.Instance.EmptyDropZones();
