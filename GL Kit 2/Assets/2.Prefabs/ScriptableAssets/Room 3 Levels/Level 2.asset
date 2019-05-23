@@ -17,7 +17,7 @@ MonoBehaviour:
   customColorSettings:
     NormalTileColor:
       serializedVersion: 2
-      rgba: 4286545791
+      rgba: 4288387995
     ObstacleTileColor:
       serializedVersion: 2
       rgba: 4278190080

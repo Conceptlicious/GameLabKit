@@ -44,11 +44,13 @@
             </e>
             <e p="Room 2" t="Include">
               <e p="HiddenObject.cs" t="Include" />
+              <e p="HiddenObjectTemplate.cs" t="Include" />
             </e>
             <e p="Room 3" t="Include">
               <e p="BridgeTileController.cs" t="Include" />
               <e p="GridMap.cs" t="Include" />
               <e p="Level.cs" t="Include" />
+              <e p="Lever.cs" t="Include" />
               <e p="Tile.cs" t="Include" />
               <e p="TileController.cs" t="Include" />
               <e p="TileGrid.cs" t="Include" />
