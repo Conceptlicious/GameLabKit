@@ -40,6 +40,7 @@ public class ButtonManager : Singleton<ButtonManager>
 				break;
 			case 5:
 				UIHandler.Instance.TypeText.text = "You won the mini game!";
+				UIHandler.Instance.WonMiniGame();
 				break;
 		}
 	}

@@ -5,8 +5,6 @@ using System.Collections.Generic;
 
 public class GridHandler : Singleton<GridHandler>
 {
-	private const int resetGearsDelay = 3;
-
 	private List<DropZone> dropZones = new List<DropZone>();
 
 	private void Start()
@@ -32,19 +30,6 @@ public class GridHandler : Singleton<GridHandler>
 		foreach (DropZone dropZone in dropZones)
 		{
 			dropZone.Unoccupy();
-		}
-
-		StartCoroutine(ResetGearsPosition());
-	}
-
-	private IEnumerator ResetGearsPosition()
-	{
-		yield return new WaitForSeconds(resetGearsDelay);
-
-		foreach (Transform child in UIHandler.Instance.GearsObject)
-		{
-			child.position = child.GetComponent<DragAndDrop>().BeginPosition;
-			child.GetComponent<GearInformation>().isAbleToRotate = false;
 		}
 	}
 
