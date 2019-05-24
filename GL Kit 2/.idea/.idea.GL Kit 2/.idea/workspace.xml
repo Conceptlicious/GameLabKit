@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="242ae21e-f6fb-49ec-a894-9847d147da7f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Prefabs/Room 1, 4 and 5/Room 4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Prefabs/Room 1, 4 and 5/Room 4.prefab" afterDir="false" />
-    </list>
+    <list default="true" id="242ae21e-f6fb-49ec-a894-9847d147da7f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +41,7 @@
     <session id="-1611792072">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="18" />
+          <entry key="project.closed" value="19" />
           <entry key="project.open.time.101" value="1" />
           <entry key="project.open.time.102" value="2" />
           <entry key="project.open.time.135" value="1" />
@@ -98,11 +95,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/Room 4/DisplayPlatformInformation.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-587">
-              <caret line="13" column="37" lean-forward="true" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+            <state relative-caret-position="149">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
               <folding>
                 <marker date="1557995786997" expanded="false" signature="6:72" ph="..." />
                 <marker date="1557995786997" expanded="true" signature="153:2866" ph="{...}" />
@@ -115,7 +112,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/Room 4/ConveyorBeltMovement.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
@@ -494,12 +491,12 @@
       <workItem from="1558340022525" duration="13314000" />
       <workItem from="1558438097787" duration="12044000" />
       <workItem from="1558602258651" duration="366000" />
-      <workItem from="1558620294139" duration="1472000" />
+      <workItem from="1558620294139" duration="2153000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221198000" />
+    <option name="totallyTimeSpent" value="221879000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -512,7 +509,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="33" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.06442953" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -889,21 +885,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/Room 4/DisplayPlatformInformation.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-587">
-          <caret line="13" column="37" lean-forward="true" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-          <folding>
-            <marker date="1557995786997" expanded="false" signature="6:72" ph="..." />
-            <marker date="1557995786997" expanded="true" signature="153:2866" ph="{...}" />
-            <marker date="1557995786997" expanded="true" signature="260:471" ph="{...}" />
-            <marker date="1557995786997" expanded="true" signature="519:2683" ph="{...}" />
-            <marker date="1557995786997" expanded="true" signature="578:2680" ph="{...}" />
-            <marker date="1557995786997" expanded="true" signature="2762:2864" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/Room 4/ConveyorBeltMovement.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -917,6 +898,21 @@
             <marker date="1558441285683" expanded="true" signature="681:940" ph="{...}" />
             <marker date="1558441285683" expanded="true" signature="717:772" ph="{...}" />
             <marker date="1558441285683" expanded="true" signature="779:859" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/Room 4/DisplayPlatformInformation.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <marker date="1557995786997" expanded="false" signature="6:72" ph="..." />
+            <marker date="1557995786997" expanded="true" signature="153:2866" ph="{...}" />
+            <marker date="1557995786997" expanded="true" signature="260:471" ph="{...}" />
+            <marker date="1557995786997" expanded="true" signature="519:2683" ph="{...}" />
+            <marker date="1557995786997" expanded="true" signature="578:2680" ph="{...}" />
+            <marker date="1557995786997" expanded="true" signature="2762:2864" ph="{...}" />
           </folding>
         </state>
       </provider>
