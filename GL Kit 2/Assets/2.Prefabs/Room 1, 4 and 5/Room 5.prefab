@@ -1,5 +1,79 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2475585502167005353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5729052268571787920}
+  - component: {fileID: 5593509965368662656}
+  - component: {fileID: 5178620962778871997}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5729052268571787920
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475585502167005353}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7385619711615419543}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5593509965368662656
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475585502167005353}
+  m_CullTransparentMesh: 0
+--- !u!114 &5178620962778871997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475585502167005353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 89a4a307fa5a24d499a7973934834fab, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
 --- !u!1 &7385619710611144928
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,6 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObjectInGrid: 0
+  isAbleToMove: 1
 --- !u!114 &7385619710807904990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,6 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObjectInGrid: 0
+  isAbleToMove: 1
 --- !u!114 &7385619710861121106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,6 +623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObjectInGrid: 0
+  isAbleToMove: 1
 --- !u!114 &7385619711104318583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,6 +809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObjectInGrid: 0
+  isAbleToMove: 1
 --- !u!114 &7385619711114137196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,6 +1083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObjectInGrid: 0
+  isAbleToMove: 1
 --- !u!114 &7385619711366248111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1240,6 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObjectInGrid: 0
+  isAbleToMove: 1
 --- !u!114 &7385619711436959112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1404,6 +1484,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 5729052268571787920}
   - {fileID: 7385619712473557254}
   - {fileID: 7385619712647554432}
   m_Father: {fileID: 0}
@@ -1563,6 +1644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObjectInGrid: 0
+  isAbleToMove: 1
 --- !u!114 &7385619711725725288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1786,6 +1868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObjectInGrid: 0
+  isAbleToMove: 1
 --- !u!114 &7385619712136596932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2068,6 +2151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObjectInGrid: 0
+  isAbleToMove: 1
 --- !u!114 &7385619712356280531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2174,6 +2258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObjectInGrid: 0
+  isAbleToMove: 1
 --- !u!114 &7385619712405826109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2280,6 +2365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObjectInGrid: 0
+  isAbleToMove: 1
 --- !u!114 &7385619712450866492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2411,7 +2497,7 @@ RectTransform:
   - {fileID: 7385619711971409542}
   - {fileID: 7385619711110962152}
   m_Father: {fileID: 7385619711615419543}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4375, y: 0.3888889}
   m_AnchorMax: {x: 0.5625, y: 0.6111111}
@@ -2519,6 +2605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObjectInGrid: 0
+  isAbleToMove: 1
 --- !u!114 &7385619712560599181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2788,7 +2875,7 @@ RectTransform:
   - {fileID: 7385619712685031271}
   - {fileID: 7385619712657696060}
   m_Father: {fileID: 7385619711615419543}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4375, y: 0.3888889}
   m_AnchorMax: {x: 0.5625, y: 0.6111111}
