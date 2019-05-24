@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Level 1
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  levelTexture: {fileID: 2800000, guid: 76cbdee694acf0f47b1f512c7c7c1d7a, type: 3}
+  levelTexture: {fileID: 2800000, guid: 65c07114a159d284b92f576b6a894948, type: 3}
   overrideDefaultColorSettings: 0
   customColorSettings:
     NormalTileColor:
