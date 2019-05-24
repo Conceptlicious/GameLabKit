@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="242ae21e-f6fb-49ec-a894-9847d147da7f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/CameraControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/CameraControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/RoomManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/RoomManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/Complete Build 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/Complete Build 1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Prefabs/Room 6 Prefabs/Room 6.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Prefabs/Room 6 Prefabs/Room 6.prefab" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -464,12 +462,12 @@
       <workItem from="1558438097787" duration="12044000" />
       <workItem from="1558602258651" duration="366000" />
       <workItem from="1558620294139" duration="2153000" />
-      <workItem from="1558700174453" duration="1641000" />
+      <workItem from="1558700174453" duration="2242000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="223520000" />
+    <option name="totallyTimeSpent" value="224121000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
