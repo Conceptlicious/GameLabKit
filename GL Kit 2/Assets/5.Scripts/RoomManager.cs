@@ -9,6 +9,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private int whiteRoomID;
 
     [SerializeField] private bool alwaysReturnToWhiteRoom;
+    [SerializeField] private bool alignFocals;
 
     //[OLD ORIGIN, ORIGIN, TARGET]
     private Vector3Int currentRoom = new Vector3Int(0, 0, 0);
@@ -23,6 +24,29 @@ public class RoomManager : MonoBehaviour
         whiteRoomID = Mathf.Clamp(whiteRoomID, 0, roomFocalPoints.Length);
         registerAllListeners();
         FillFocalsWithBlanks();
+        if (alignFocals)
+        {
+            AlignFocalPoints();
+        }
+        SnapFocusRoom(0);
+    }
+
+    private void AlignFocalPoints()
+    {
+        for (int i = 0; i < roomFocalPoints.Length; i++)
+        {
+            Vector3 position = roomFocalPoints[i].localPosition;
+            position.z = Settings.VAL_CAMERA_FOCAL_Z_ALIGNMENT;
+            roomFocalPoints[i].localPosition = position;
+        }
+    }
+    
+     
+    private void SnapFocusRoom(int pID)
+    {
+        pID = pID % roomFocalPoints.Length;
+        CameraSnapEvent newInfo = new CameraSnapEvent(roomFocalPoints[pID]);
+        EventManager.Instance.RaiseEvent(newInfo);
     }
     
     /// <summary>

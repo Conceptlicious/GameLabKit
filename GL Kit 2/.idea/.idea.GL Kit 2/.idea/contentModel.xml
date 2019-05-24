@@ -24,6 +24,7 @@
           <e p="LoadingTips.cs" t="Include" />
           <e p="Mini-Games" t="Include">
             <e p="EventMessaging" t="Include">
+              <e p="CameraSnapEvent.cs" t="Include" />
               <e p="CameraTargetSelectedEvent.cs" t="Include" />
               <e p="CreatePopUpEvent.cs" t="Include" />
               <e p="DetectedMarkerEvent.cs" t="Include" />

@@ -71,6 +71,7 @@ public class CameraControl : MonoBehaviour
     private void registerAllListeners()
     {
         EventManager.Instance.AddListener<CameraTargetSelectEvent>(OnTargetSelect);
+        EventManager.Instance.AddListener<CameraSnapEvent>(OnCameraSnap);
     }
 
     // Update is called once per frame
@@ -107,6 +108,11 @@ public class CameraControl : MonoBehaviour
                     
         }
         
+    }
+    
+    private void OnCameraSnap(CameraSnapEvent info)
+    {
+        cam.transform.position = info.focalPoint.position;
     }
  
 

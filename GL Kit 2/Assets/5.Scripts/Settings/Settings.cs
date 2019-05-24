@@ -48,6 +48,8 @@ public static class Settings
     public const float VAL_CAMERA_BLUR_FOCALDISTANCE              = 0.1f;
     public const float VAL_CAMERA_BLUR_FOCALLENGTH_MAX            = 20.0f;
 
+    public const float VAL_CAMERA_FOCAL_Z_ALIGNMENT               = -3.5f;
+
     public const int SYS_VAL_MAX_NUMBER_ROOM_FOCALS               = 7;
     
     //----------------------------------------------------------
