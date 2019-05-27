@@ -10,25 +10,31 @@ public class HiddenObjectHandler : BetterMonoBehaviour
 	private const string objectAlreadyFoundMessage = "You have already found this object";
 	private const string wonMiniGameMessage = "You won the mini-game!";
 	private const int amountOfHiddenObjects = 8;
-	private static List<GameObject> foundObjects = new List<GameObject>();
+
+	[SerializeField] private GameObject nextMinigameButton = null;
+	private List<GameObject> foundObjects = new List<GameObject>();
+
+	private void Start()
+	{
+		nextMinigameButton.SetActive(false);
+	}
 
 	public void ObjectFound(GameObject foundObject)
 	{
 		HiddenObject currentHiddenObject = foundObject.GetComponent<HiddenObject>();
 
-		if (foundObjects.Count == amountOfHiddenObjects)
-		{
-			WonMiniGame();
-		}
-		else if (!foundObjects.Contains(foundObject))
+		if (!foundObjects.Contains(foundObject))
 		{
 			foundObject.SetActive(true);
 			foundObjects.Add(foundObject);
 
-			Debug.Log(foundObjects.Count);
-
 			TextUpdater.Instance.CallUpdateTextCoroutine(foundObject.name,
 				currentHiddenObject.Description);
+
+			if (foundObjects.Count >= amountOfHiddenObjects)
+			{
+				nextMinigameButton.SetActive(true);
+			}
 		}
 		else
 		{
@@ -36,7 +42,7 @@ public class HiddenObjectHandler : BetterMonoBehaviour
 		}
 	}
 
-	private void WonMiniGame()
+	public void WonMiniGame()
 	{
 		TextUpdater.Instance.CallUpdateTextCoroutine(wonMiniGameMessage, string.Empty);
 

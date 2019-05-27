@@ -2,7 +2,7 @@
 using UnityEngine;
 using GameLab;
 
-public class SwipeInput : Singleton<SwipeInput>, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class SwipeInput : Singleton<SwipeInput>, IDragHandler, IEndDragHandler
 {
 	[SerializeField] private Canvas canvasRoom4;
 	private Vector3 beginSwipePosition = Vector3.zero;
@@ -12,20 +12,20 @@ public class SwipeInput : Singleton<SwipeInput>, IBeginDragHandler, IDragHandler
 	private void Start()
 	{
 		deadZone = Screen.width * 0.1f;
-	}
-
-	public void OnBeginDrag(PointerEventData eventData)
-	{
 		beginSwipePosition = transform.position;
 	}
-
+	
 	public void OnDrag(PointerEventData eventData)
 	{
 		Vector2 swipePosition;
 		RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRoom4.transform as RectTransform,
 			eventData.position, canvasRoom4.worldCamera, out swipePosition);
 
-		transform.position = swipePosition;
+		float x = swipePosition.x;
+		float y = beginSwipePosition.y;
+		float z = beginSwipePosition.z;
+
+		transform.position = new Vector3(x, y, z);
 	}
 
 	public void OnEndDrag(PointerEventData eventData)

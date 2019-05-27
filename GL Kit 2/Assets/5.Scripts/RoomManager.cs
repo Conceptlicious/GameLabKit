@@ -26,7 +26,7 @@ public class RoomManager : MonoBehaviour
     void Start()
     {
         whiteRoomID = Mathf.Clamp(whiteRoomID, 0, roomFocalPoints.Length);
-        registerAllListeners();
+        //registerAllListeners();
         FillFocalsWithBlanks();
         if (alignFocals)
         {
@@ -44,9 +44,16 @@ public class RoomManager : MonoBehaviour
             roomFocalPoints[i].localPosition = position;
         }
     }
-    
-     
-    private void SnapFocusRoom(int pID)
+
+	private void Update()
+	{
+		if(Input.touchSupported && Input.GetMouseButtonDown(0))
+		{
+			registerAllListeners();
+		}
+	}
+
+	private void SnapFocusRoom(int pID)
     {
         pID = pID % roomFocalPoints.Length;
         CameraSnapEvent newInfo = new CameraSnapEvent(roomFocalPoints[pID]);
