@@ -25,6 +25,13 @@ public class UIPopUpManager : MonoBehaviour
     
     public void CreatePopUp()
     {
+        if (dialogueObject.GetFileName() != Settings.LEVEL_NAMES[Settings.LEVEL_ID_FOR_POPUP_FILE])
+        {
+            Debug.Log(Settings.ERR_ASSERT_POPUP_ASSIGNED_INCORRECT_FILE);
+            return;
+        }
+       
+
         Debug.Log("DETECT");
         //layout visible
         string path = Settings.PATH_PREFABS + Settings.OBJ_NAME_UI_POPUP;
@@ -44,17 +51,20 @@ public class UIPopUpManager : MonoBehaviour
         data.title.text = dialogueObject.GetTextAndIterate();
         data.body.text = dialogueObject.GetTextAndIterate();
 
-        data.inputField.enabled = !dialogueObject.GetTextAndIterate().IsNullOrEmpty();
-         
-       /* string[] buttonNames = dialogueObject.GetTextAndIterate().Split(' ');
-        for (int i = 0; i < buttonNames.Length; i++)
-        {
-            GameObject newButton = GameObject.Instantiate(data.button.gameObject, UICanvas.transform);
-            Vector3 newPosition = data.buttonAnchorPoint.position;
-            newPosition.x += (newButton.GetComponent<RectTransform>().rect.width + data.buttonPadding * i);
-            newButton.transform.position = newPosition;
-            newButton.GetComponentInChildren<Text>().text = buttonNames[i];
-        }*/
+        string textFieldEnabled = dialogueObject.GetTextAndIterate();
+        bool t = (textFieldEnabled.IsNullOrEmpty() || textFieldEnabled.ToLower() == "false") == true ? false : true;
+        Debug.Log("Input Field is: " + t);
+        data.inputField.gameObject.SetActive(t);
+
+        string[] buttonNames = dialogueObject.GetTextAndIterate().Split(' ');
+         for (int i = 0; i < buttonNames.Length; i++)
+         {
+             GameObject newButton = GameObject.Instantiate(data.button.gameObject, UICanvas.transform);
+             Vector3 newPosition = data.buttonAnchorPoint.position;
+             newPosition.x += ((newButton.GetComponent<RectTransform>().rect.width * i) + data.buttonPadding);
+             newButton.transform.position = newPosition;
+             newButton.GetComponentInChildren<Text>().text = buttonNames[i];
+         }
     }
 
     public void OnEventMarkerCall()

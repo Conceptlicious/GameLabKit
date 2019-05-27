@@ -73,6 +73,11 @@ public class DialogueObject : MonoBehaviour
 			info.DialogueText = str;
 			return info.DialogueText;
 		}
+
+	public string GetFileName()
+	{
+		return Dialogue.GetFileNames()[info.fileIndex];
+	}
 	
     }
 	

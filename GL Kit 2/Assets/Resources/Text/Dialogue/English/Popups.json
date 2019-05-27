@@ -5,7 +5,7 @@
   {
     "Title": "Name",
     "Body": "My name is:",
-    "Textfield": "true",
+    "Textfield": "false",
     "Buttons": "Back Next"
   },
 
