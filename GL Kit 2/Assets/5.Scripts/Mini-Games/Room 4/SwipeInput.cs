@@ -4,6 +4,7 @@ using GameLab;
 
 public class SwipeInput : Singleton<SwipeInput>, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+	[SerializeField] private Canvas canvasRoom4;
 	private Vector3 beginSwipePosition = Vector3.zero;
 	private Vector3 endSwipePosition = Vector3.zero;
 	private float deadZone = 0f;
@@ -20,11 +21,11 @@ public class SwipeInput : Singleton<SwipeInput>, IBeginDragHandler, IDragHandler
 
 	public void OnDrag(PointerEventData eventData)
 	{
-		float x = eventData.position.x;
-		float y = beginSwipePosition.y;
-		float z = beginSwipePosition.z;
+		Vector2 swipePosition;
+		RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRoom4.transform as RectTransform,
+			eventData.position, canvasRoom4.worldCamera, out swipePosition);
 
-		transform.position = new Vector3 (x, y, z);
+		transform.position = swipePosition;
 	}
 
 	public void OnEndDrag(PointerEventData eventData)
