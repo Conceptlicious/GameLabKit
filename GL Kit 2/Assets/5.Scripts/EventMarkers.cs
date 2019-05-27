@@ -21,7 +21,7 @@ public class EventMarkers : Singleton<EventMarkers>
     public string ParseAndCall(string pText)
     {
         string output = pText;
-        Debug.Log("Parsing");
+        //Debug.Log("Parsing");
        
         for (int i = 0; i < couplings.Length; i++)
         {
@@ -62,7 +62,7 @@ public class EventMarkers : Singleton<EventMarkers>
                 pOutText += parts[i];
             }
         }
-        Debug.Log("Output: " + output);
+        //Debug.Log("Output: " + output);
         return output;
     }
 

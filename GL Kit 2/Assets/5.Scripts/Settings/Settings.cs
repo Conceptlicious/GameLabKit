@@ -29,6 +29,7 @@ public static class Settings
 
     public const string DEFAULT_EVENTMARKER_MARKER                = "#";
 
+    public const int LEVEL_ID_FOR_POPUP_FILE                      = 1;
     public static readonly string[] LEVEL_NAMES                   = new string[]
     {
        
@@ -62,6 +63,9 @@ public static class Settings
     public const string ERR_JSON_MISSING_FILE                     = "Trying to read dialogue from file '{0}' which is missing or doesn't exist.";
 
     public const string ERR_ASSERT_UI_POPUP_MISSING_COMPONENT            = "Instantiated UI Popup window lacks the required script. Please attach and configure this in the Unity Editor.";
+
+    public const string ERR_ASSERT_POPUP_ASSIGNED_INCORRECT_FILE =
+        "Popups are trying to be created with the incorrect file assigned. Please check the Dialogue Object in Editor, or the PopUp ID in Settings.cs";
     
     //----------------------------------------------------------
     //                    ROOM DATA & VALUES
