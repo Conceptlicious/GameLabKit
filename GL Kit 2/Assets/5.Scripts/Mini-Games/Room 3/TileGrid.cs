@@ -212,7 +212,7 @@ namespace Room3
 
 		private void InteractWithBridge(Tile bridge)
 		{
-			if (bridge == lastInteractedWithTile)
+			if (bridge == lastInteractedWithTile.TileData)
 			{
 				return;
 			}
