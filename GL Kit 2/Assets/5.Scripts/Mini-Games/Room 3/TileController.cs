@@ -79,7 +79,7 @@ namespace Room3
 			Image.color = originalTileColor.GetValueOrDefault(TileGrid.Instance.CurrentLevelSettings.NormalTileColor);
 			Image.sprite = null;
 		}
-
+		
 		public void OnPointerUp(PointerEventData eventData)
 		{
 			OnFinishedInteractingAt?.Invoke(this);

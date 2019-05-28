@@ -46,8 +46,6 @@ namespace Room3
 		public Type TileType { get; set; } = Type.Connection;
 		public Group TileGroup { get; set; } = Group.Ungrouped;
 
-		public TileLayer Layer = null;
-
 		public bool CanConnectToOtherTiles => TileType != Type.Obstacle && (TileType != Type.Connection || TileGroup == Group.Ungrouped);
 
 		public Tile NextTile { get; set; } = null;
@@ -89,6 +87,7 @@ namespace Room3
 				return false;
 			}
 
+			
 			tile.NextTile = this;
 			TileGroup = tile.TileGroup;
 

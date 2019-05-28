@@ -12,20 +12,20 @@ namespace Room3
 		public bool HasInteractedWithTile => lastInteractedWithTile != null;
 
 		// TODO: CLeanup current level management
-		public LevelData CurrentLevel
+		public Level CurrentLevel
 		{
 			get => levels[currentLevelIndex];
 			set => currentLevelIndex = value != null ? Array.IndexOf(levels, value) : -1;
 		}
 
-		public LevelData.ColorSettings CurrentLevelSettings => CurrentLevel != null && CurrentLevel.HasCustomColorSettings ? CurrentLevel.CustomColorSettings : defaultLevelSettings;
+		public Level.ColorSettings CurrentLevelSettings => CurrentLevel != null && CurrentLevel.HasCustomColorSettings ? CurrentLevel.CustomColorSettings : defaultLevelSettings;
 
 		[SerializeField] private TileSpriteSettings tileSpriteSettings;
 
 		[SerializeField] private TileController tileControllerPrefab = null;
 
-		[SerializeField] private LevelData.ColorSettings defaultLevelSettings = LevelData.ColorSettings.Default;
-		[SerializeField] private LevelData[] levels = new LevelData[0];
+		[SerializeField] private Level.ColorSettings defaultLevelSettings = Level.ColorSettings.Default;
+		[SerializeField] private Level[] levels = new Level[0];
 
 		private int currentLevelIndex = -1;
 
@@ -85,14 +85,13 @@ namespace Room3
 			SpawnLevel(levels[currentLevelIndex]);
 		}
 
-		private void SpawnLevel(LevelData level)
+		private void SpawnLevel(Level level)
 		{
 			DestroySpawnedLevel();
 
 			mainLayer = new TileLayer(level.Rows, level.Cols);
-			bridgeLayer = new TileLayer(level.Rows, level.Cols, Tile.Type.Obstacle);
-
-			LevelData.ColorSettings levelColorSettings = CurrentLevelSettings;
+			bridgeLayer = new TileLayer(level.Rows, level.Cols);
+			Level.ColorSettings levelColorSettings = CurrentLevelSettings;
 			Color32[] levelPixelData = level.LevelTexture.GetPixels32();
 
 			float anchorStepPerColumn = 1.0f / level.Cols;
@@ -104,30 +103,25 @@ namespace Room3
 				int row = i / level.Rows;
 				int col = i % level.Cols;
 
-				TileLayer tileLayer = pixel.CompareRGB(levelColorSettings.BridgeTileColor) ? bridgeLayer : mainLayer;
-
-				if (tileLayer == bridgeLayer)
+				if (pixel.CompareRGB(levelColorSettings.BridgeTileColor))
 				{
 					mainLayer.Tiles[row, col].AllowedConnectionDirections = Tile.ConnectionDirection.East | Tile.ConnectionDirection.West;
 					bridgeLayer.Tiles[row, col].AllowedConnectionDirections = Tile.ConnectionDirection.North | Tile.ConnectionDirection.South;
 				}
 
-				Tile tileData = tileLayer.Tiles[row, col];
+				Tile tileData = mainLayer.Tiles[row, col];
+				Tile bridgeLayerTileData = bridgeLayer.Tiles[row, col];
 
+				bridgeLayerTileData.TileGroup = levelColorSettings.GetTileGroupFromColor(pixel);
+				bridgeLayerTileData.TileType = levelColorSettings.GetTileTypeFromColor(pixel);
 				tileData.TileGroup = levelColorSettings.GetTileGroupFromColor(pixel);
 				tileData.TileType = levelColorSettings.GetTileTypeFromColor(pixel);
-				TileController tileControllerMain = SpawnTileController(tileData, anchorStepPerColumn, anchorStepPerRow, tileSpriteSettings, mainLayer);
-				tileControllerMain.Image.color = pixel;
-
-				if (pixel.CompareRGB(levelColorSettings.BridgeTileColor))
-				{
-					TileController tileControllerBridge = SpawnTileController(tileData, anchorStepPerColumn, anchorStepPerRow, tileSpriteSettings, bridgeLayer);
-					tileControllerBridge.Image.color = pixel;
-				}
+				TileController tileController = SpawnTileController(tileData, anchorStepPerColumn, anchorStepPerRow, tileSpriteSettings);
+				tileController.Image.color = pixel;
 			}
 		}
 
-		private TileController SpawnTileController(Tile tileData, float anchorStepPerColumn, float anchorStepPerRow, TileSpriteSettings tileSprites, TileLayer layer)
+		private TileController SpawnTileController(Tile tileData, float anchorStepPerColumn, float anchorStepPerRow, TileSpriteSettings tileSprites)
 		{
 			TileController tileController = Instantiate(tileControllerPrefab, Vector3.zero, Quaternion.identity, CachedTransform);
 
@@ -164,7 +158,6 @@ namespace Room3
 
 		private void OnTileInteractedWith(TileController tile)
 		{
-
 			if (!canBeInteractedWith)
 			{
 				return;
@@ -176,7 +169,7 @@ namespace Room3
 			}
 
 			Tile tileData = tile.TileData;
-
+		
 			if (!HasInteractedWithTile)
 			{
 				TryResumePathFrom(tile);
@@ -195,6 +188,10 @@ namespace Room3
 
 			if (!tileData.TryConnectTo(lastInteractedWithTile.TileData))
 			{
+				if (bridgeLayer.Tiles[tileData.Row, tileData.Col].TileType == Tile.Type.Connection)
+				{
+					InteractWithBridge(bridgeLayer.Tiles[tileData.Row, tileData.Col]);
+				}
 				return;
 			}
 
@@ -213,13 +210,20 @@ namespace Room3
 			UpdateWinStatus();
 		}
 
+		private void InteractWithBridge(Tile bridge)
+		{
+			if (bridge == lastInteractedWithTile)
+			{
+				return;
+			}
+		}
 
 		private void ValidatePath(TileController currentTile, TileController lastTile)
 		{
 
 			TilePath path = mainLayer.CalculatePathForGroup(lastTile.TileData.TileGroup);
-
-			if (!path.Tiles.Contains(currentTile.TileData) || !path.Tiles.Contains(lastTile.TileData))
+			TilePath bridgeLayerPath = bridgeLayer.CalculatePathForGroup(lastTile.TileData.TileGroup);
+			if ((!path.Tiles.Contains(currentTile.TileData) || !path.Tiles.Contains(lastTile.TileData)))
 			{
 				return;
 			}

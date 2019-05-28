@@ -152,8 +152,8 @@ MonoBehaviour:
         serializedVersion: 2
         rgba: 4294901760
   levels:
-  - {fileID: 11400000, guid: 7864bf713e1d5c64c8fcf178c8bd0622, type: 2}
-  - {fileID: 11400000, guid: e99329fba8f45da4994649e0bd91c72c, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2147928139908285067
 GameObject:
   m_ObjectHideFlags: 0
