@@ -33,13 +33,13 @@ public class UIHandler : Singleton<UIHandler>
 			{
 				child.GetComponent<GearInformation>().isAbleToRotate = true;
 
-				if (!DropZone.IsCombinationRight)
+				if (!DropZone.isCombinationRight)
 				{
-					child.GetComponent<GearInformation>().StopGearRotationMethod();
+					child.GetComponent<GearInformation>().StopGearRotationMethod(true);
 				}
 			}
 
-			if (DropZone.IsCombinationRight)
+			if (DropZone.isCombinationRight)
 			{
 				ButtonManager.Instance.EnableNextButton();
 				foreach(Transform child in GearsObject)

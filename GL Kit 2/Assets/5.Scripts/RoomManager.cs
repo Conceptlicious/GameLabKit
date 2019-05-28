@@ -5,11 +5,14 @@ public class RoomManager : MonoBehaviour
 {
     [Tooltip("The available number of focal points is dictated by the Settings.cs file.")]
     [SerializeField] private Transform[] roomFocalPoints;
+    [SerializeField] private Transform focalParent;
 
     [SerializeField] private int whiteRoomID;
 
     [SerializeField] private bool alwaysReturnToWhiteRoom;
     [SerializeField] private bool alignFocals;
+
+    private GameObject blankFocal = null;
 
     //[OLD ORIGIN, ORIGIN, TARGET]
     private Vector3Int currentRoom = new Vector3Int(0, 0, 0);
@@ -17,12 +20,13 @@ public class RoomManager : MonoBehaviour
     void Awake()
     {
         GameData.SetLanguage(GameData.Language.ENGLISH);
+        GameData.Initialised = true;
     }
      
     void Start()
     {
         whiteRoomID = Mathf.Clamp(whiteRoomID, 0, roomFocalPoints.Length);
-        registerAllListeners();
+        //registerAllListeners();
         FillFocalsWithBlanks();
         if (alignFocals)
         {
@@ -40,9 +44,16 @@ public class RoomManager : MonoBehaviour
             roomFocalPoints[i].localPosition = position;
         }
     }
-    
-     
-    private void SnapFocusRoom(int pID)
+
+	private void Update()
+	{
+		if(Input.touchSupported && Input.GetMouseButtonDown(0))
+		{
+			registerAllListeners();
+		}
+	}
+
+	private void SnapFocusRoom(int pID)
     {
         pID = pID % roomFocalPoints.Length;
         CameraSnapEvent newInfo = new CameraSnapEvent(roomFocalPoints[pID]);
@@ -91,23 +102,37 @@ public class RoomManager : MonoBehaviour
     private void FillFocalsWithBlanks()
     {
         for (int i = 0; i < roomFocalPoints.Length; i++)
-        {
+        {        
             //Debug.Log("Room focal " + i + ": " + roomFocalPoints[i].position);
             if (roomFocalPoints[i] == null)
             {
-                string path =
-                     Settings.PATH_PREFABS + Settings.OBJ_NAME_BLANK_GAMEOBJECT;
-                Debug.Log(path);
-                GameObject blankGameObjectTransform = Resources.Load<GameObject>(path);
-                if (blankGameObjectTransform == null)
-                {
-                    Debug.Log("Cannot instantiate " + Settings.OBJ_NAME_BLANK_GAMEOBJECT);
-                }
+               
                 Debug.Log("Filling " + i + " with a blank GO.");
-                roomFocalPoints[i] = blankGameObjectTransform.transform;
+                roomFocalPoints[i] = CreateBlankFocal().transform;
             }
                
         }
+    }
+
+    private GameObject CreateBlankFocal()
+    {
+        if (blankFocal != null)
+        {
+            return blankFocal;
+        }
+        else
+        {
+            string path =
+                Settings.PATH_PREFABS + Settings.OBJ_NAME_BLANK_GAMEOBJECT;
+            Debug.Log(path);
+            blankFocal = GameObject.Instantiate(Resources.Load<GameObject>(path), focalParent);
+            if (blankFocal == null)
+            {
+                Debug.Log("Cannot instantiate " + Settings.OBJ_NAME_BLANK_GAMEOBJECT);
+            }
+        }
+
+        return blankFocal;
     }
     
     void OnValidate()

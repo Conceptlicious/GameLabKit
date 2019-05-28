@@ -31,15 +31,27 @@ public class GearInformation : BetterMonoBehaviour
 	[SerializeField] private bool invertRotation = false;
 	[HideInInspector] public bool isAbleToRotate = false;
 
-	public void StopGearRotationMethod()
+	public void StopGearRotationMethod(bool resetPosition)
 	{
-		StartCoroutine(StopGearRotation());
+		StartCoroutine(StopGearRotation(resetPosition));
 	}
 
-	private IEnumerator StopGearRotation()
+	private IEnumerator StopGearRotation(bool resetPosition)
 	{
 		yield return new WaitForSeconds(timeForRotationToStop);
 		isAbleToRotate = false;
+
+		if (resetPosition)
+		{
+			transform.position = GetComponent<DragAndDrop>().BeginPosition;
+			DropZone.isCombinationRight = true;
+
+			foreach (DropZone dropZone in GridHandler.Instance.DropZones)
+			{
+				dropZone.Unoccupy();
+			}
+		}
+		
 	}
 
 	private void Update()
