@@ -22,7 +22,6 @@ namespace Room3
 				{
 					Tiles[row, col] = new Tile(row, col);
 					Tiles[row, col].TileType = defaultTileType;
-					Tiles[row, col].Layer = this;
 				}
 			}
 		}

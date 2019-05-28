@@ -5,7 +5,7 @@ using Room3;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Room 3 Level", menuName = "Room 3/Level")]
-public class LevelData : ScriptableObject
+public class Level : ScriptableObject
 {
 	[Serializable]
 	public struct ColorSettings
