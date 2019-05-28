@@ -11,7 +11,6 @@ public class DisplayPlatformInformation : Singleton<DisplayPlatformInformation>
 	protected override void Awake()
 	{
 		base.Awake();
-		print(name);
 	}
 
 	public void LoadInformation(int currentIndex)

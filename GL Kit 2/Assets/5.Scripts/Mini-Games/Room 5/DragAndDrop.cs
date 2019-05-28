@@ -7,13 +7,13 @@ public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler,
 	public Vector3 BeginPosition { get; private set; } = Vector3.zero;
 	[HideInInspector] public bool isObjectInGrid = false;
 	[HideInInspector] public bool isAbleToMove = true; 
-	private static Canvas canvas;
+	private static Canvas canvasRoom5;
 
 	private void Start()
 	{
 		BeginPosition = CachedTransform.position;
 		isAbleToMove = true;
-		canvas = GameObject.FindGameObjectWithTag("DragAndDropCanvas").GetComponent<Canvas>();
+		canvasRoom5 = GameObject.FindGameObjectWithTag("DragAndDropCanvas").GetComponent<Canvas>();
 	}
 
 	public void OnBeginDrag(PointerEventData eventData)
@@ -36,9 +36,9 @@ public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler,
 		{
 			Vector2 gearPosition;
 
-			RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,
-				eventData.position, canvas.worldCamera, out gearPosition);
-			transform.position = canvas.transform.TransformPoint(gearPosition);
+			RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRoom5.transform as RectTransform,
+				eventData.position, canvasRoom5.worldCamera, out gearPosition);
+			transform.position = canvasRoom5.transform.TransformPoint(gearPosition);
 		}
 	}
 

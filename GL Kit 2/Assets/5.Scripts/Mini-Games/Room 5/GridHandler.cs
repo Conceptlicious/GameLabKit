@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class GridHandler : Singleton<GridHandler>
 {
-	private List<DropZone> dropZones = new List<DropZone>();
+	public List<DropZone> DropZones { get; } = new List<DropZone>();
 
 	private void Start()
 	{
@@ -14,7 +14,7 @@ public class GridHandler : Singleton<GridHandler>
 
 	public DropZone GetDropZoneUnder(RectTransform rectTransform)
 	{
-		foreach (DropZone dropZone in dropZones)
+		foreach (DropZone dropZone in DropZones)
 		{
 			if (RectTransformUtility.RectangleContainsScreenPoint(dropZone.transform as RectTransform, rectTransform.position))
 			{
@@ -27,7 +27,7 @@ public class GridHandler : Singleton<GridHandler>
 
 	public void EmptyDropZones()
 	{
-		foreach (DropZone dropZone in dropZones)
+		foreach (DropZone dropZone in DropZones)
 		{
 			dropZone.Unoccupy();
 		}
@@ -37,7 +37,7 @@ public class GridHandler : Singleton<GridHandler>
 	{		
 		foreach (Transform child in transform)
 		{
-			dropZones.Add(child.GetComponent<DropZone>());
+			DropZones.Add(child.GetComponent<DropZone>());
 		}
 	}
 }

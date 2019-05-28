@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Level 1v2
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  levelTexture: {fileID: 2800000, guid: 97dd7384ba4439c47bcec6968da35146, type: 3}
+  overrideDefaultColorSettings: 1
+  customColorSettings:
+    NormalTileColor:
+      serializedVersion: 2
+      rgba: 4287927444
+    ObstacleTileColor:
+      serializedVersion: 2
+      rgba: 4292467161
+    BridgeTileColor:
+      serializedVersion: 2
+      rgba: 4281479730
+    StartPointAlphaThreshold: 126
+    TileGroups:
+    - groupColor:
+        serializedVersion: 2
+        rgba: 4280942847
+    - groupColor:
+        serializedVersion: 2
+        rgba: 4286906112
+    - groupColor:
+        serializedVersion: 2
+        rgba: 4278255611
