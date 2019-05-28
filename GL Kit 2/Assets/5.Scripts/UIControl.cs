@@ -32,5 +32,11 @@ public class UIControl : MonoBehaviour
     {
         
     }
+
+    public void PopUpWithParam(DialogueObject pDialogueObject)
+    {
+        CreateSpesifiedPopUpEvent newInfo = new CreateSpesifiedPopUpEvent(pDialogueObject);
+        
+    }
     
 }

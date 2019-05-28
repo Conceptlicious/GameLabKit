@@ -43,11 +43,11 @@ public static class Settings
     //----------------------------------------------------------
     //                    VALUES
     //----------------------------------------------------------
-    public const float VAL_CAMERA_ZOOM_DISTANCE                   = 15.0f;
+    public const float VAL_CAMERA_ZOOM_DISTANCE                   = 25.0f;
     public const float VAL_CAMERA_MOVEMENT_SPEED                  = 0.1f;
     public const float VAL_CAMERA_TRANSITION_SECONDS              = 5.0f;
     public const float VAL_CAMERA_BLUR_FOCALDISTANCE              = 0.1f;
-    public const float VAL_CAMERA_BLUR_FOCALLENGTH_MAX            = 20.0f;
+    public const float VAL_CAMERA_BLUR_FOCALLENGTH_MAX            = 15.0f;
 
     public const float VAL_CAMERA_FOCAL_Z_ALIGNMENT               = -3.5f;
 

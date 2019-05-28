@@ -27,6 +27,7 @@
               <e p="CameraSnapEvent.cs" t="Include" />
               <e p="CameraTargetSelectedEvent.cs" t="Include" />
               <e p="CreatePopUpEvent.cs" t="Include" />
+              <e p="CreateSpesifiedPopUpEvent.cs" t="Include" />
               <e p="DetectedMarkerEvent.cs" t="Include" />
               <e p="DialogFetchNextEvent.cs" t="Include" />
               <e p="DialogProgressEvent.cs" t="Include" />

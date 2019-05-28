@@ -19,7 +19,7 @@ public class RoomManager : MonoBehaviour
 
     void Awake()
     {
-        GameData.SetLanguage(GameData.Language.ENGLISH);
+        //GameData.SetLanguage(GameData.Language.ENGLISH);
         GameData.Initialised = true;
     }
      
@@ -109,6 +109,7 @@ public class RoomManager : MonoBehaviour
 
     private GameObject CreateBlankFocal()
     {
+        
         if (blankFocal != null)
         {
             return blankFocal;

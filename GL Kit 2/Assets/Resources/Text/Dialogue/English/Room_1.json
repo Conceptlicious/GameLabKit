@@ -1,22 +1,16 @@
 {
-  "definedArrays": ["RM 1 pop ups", "RM 1 objects", "RM 1 dialogue"],
+  "definedArrays": ["Objects", "Dialogue"],
 
-  "RM 1 pop ups":
+  "Objects":
   {
-    "RM 1 hello": "RM1 This window gives you helping dialogue as a pop-up form.",
-    "RM 1 thing": "RM1 This window confirms your choice."
+    "Book": "I am a book, I teach people about knowledge.",
+    "Compass": "I am a compass."
   },
 
-  "RM 1 objects":
+  "Dialogue":
   {
-    "RM 1 book": "RM1 I am a book, I teach people about knowledge",
-    "RM 1 compass": "RM1 I am a compass."
-  },
-
-  "RM 1 dialogue":
-  {
-    "RM 1 dialogue step 1": "RM1 This is paragraph one's text. Next I shall show you paragraph two.",
-    "RM 1 dialogue step 2": "RM1 Welcome to paragraph two. I can talk in multiple stages."
+    "Step 1": "This is paragraph one's text. Next I shall show you paragraph two.",
+    "Step 2": "Welcome to paragraph two. I can talk in multiple stages."
 
   }
 }

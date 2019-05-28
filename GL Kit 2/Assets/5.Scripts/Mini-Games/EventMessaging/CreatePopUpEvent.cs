@@ -7,5 +7,6 @@ public class CreatePopUpEvent : GameLabEvent
 {
     public CreatePopUpEvent()
     {
+   
     }
 }
