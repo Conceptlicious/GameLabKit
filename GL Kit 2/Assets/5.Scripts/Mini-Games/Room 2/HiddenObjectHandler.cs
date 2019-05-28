@@ -16,7 +16,7 @@ public class HiddenObjectHandler : BetterMonoBehaviour
 
 	private void Start()
 	{
-		nextMinigameButton.SetActive(false);
+		SetVariables();
 	}
 
 	public void ObjectFound(GameObject foundObject)
@@ -48,5 +48,15 @@ public class HiddenObjectHandler : BetterMonoBehaviour
 
 		NextRoomEvent nextRoomEvent = new NextRoomEvent();
 		EventManager.Instance.RaiseEvent(nextRoomEvent);
+	}
+
+	private void SetVariables()
+	{
+		nextMinigameButton.SetActive(false);
+
+		foreach(Transform child in transform)
+		{
+			child.gameObject.SetActive(false);
+		}
 	}
 }
