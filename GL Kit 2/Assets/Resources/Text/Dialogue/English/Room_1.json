@@ -1,6 +1,6 @@
 {
   "definedArrays": ["Objects", "Dialogue"],
-
+  
   "Objects":
   {
     "Book": "I am a book, I teach people about knowledge.",

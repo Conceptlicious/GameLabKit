@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class DialogueObject : MonoBehaviour
 {
 	//private string dialogueText = Settings.STR_DEFAULT_DIALOGUE;
 
+	[Serializable]
 	public struct TextInfo
 	{
 		private string dialogueText;
@@ -15,6 +17,7 @@ public class DialogueObject : MonoBehaviour
 		public string fieldName;
 		public int fieldIndex;
 
+		
 		public TextInfo(int pFileIndex, int pContainerIndex, string pFieldName, int pFieldIndex)
 		{
 			fileIndex = pFileIndex;
@@ -43,7 +46,7 @@ public class DialogueObject : MonoBehaviour
 	
 	
 
-
+		[SerializeField, HideInInspector]
 		private TextInfo info;
 
 		public TextInfo Info
@@ -59,6 +62,11 @@ public class DialogueObject : MonoBehaviour
 			info.fieldIndex = newIndex;
 			return info.DialogueText;
 		}
+
+	public string GetText()
+	{
+		return info.DialogueText;
+	}
 
 		public string GetTextAt(int pIndex)
 		{

@@ -46,7 +46,7 @@ public class GearInformation : BetterMonoBehaviour
 			transform.position = GetComponent<DragAndDrop>().BeginPosition;
 			DropZone.isCombinationRight = true;
 
-			foreach (DropZone dropZone in GridHandler.Instance.DropZones)
+			foreach (DropZone dropZone in UIHandler.Instance.DropZones)
 			{
 				dropZone.Unoccupy();
 			}

@@ -13,6 +13,11 @@ public static class JsonParser
         // Load our file
         TextAsset jsonObject = Resources.Load<TextAsset>(GetJSONPath(fileName, out directory));
         Debug.Assert(jsonObject != null, System.String.Format(Settings.ERR_JSON_MISSING_FILE, fileName));
+        //unnesscary extra safety return
+        if (jsonObject == null)
+        {
+            return null;
+        }
         //Create the object to be returned.
         DialogueFile dialogueFile = new DialogueFile();
         dialogueFile.Name = fileName;

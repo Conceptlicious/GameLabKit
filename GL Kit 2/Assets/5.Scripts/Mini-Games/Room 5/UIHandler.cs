@@ -13,12 +13,11 @@ public enum FunType
 
 public class UIHandler : Singleton<UIHandler>
 {
-	private const int otherChildsInHandler = 2;
-
 	public Transform GearsObject { get; private set; }
 	public Text TypeText { get; set; }
+	public List<DropZone> DropZones { get; } = new List<DropZone>();
 	private Transform dropZonesObject = null;
-	private List<GameObject> funTypeTabs = new List<GameObject>();
+	private readonly List<GameObject> funTypeTabs = new List<GameObject>();
 
 	private void Start()
 	{
@@ -42,7 +41,8 @@ public class UIHandler : Singleton<UIHandler>
 			if (DropZone.isCombinationRight)
 			{
 				ButtonManager.Instance.EnableNextButton();
-				foreach(Transform child in GearsObject)
+
+				foreach (Transform child in GearsObject)
 				{
 					child.GetComponent<DragAndDrop>().isAbleToMove = false;
 				}
@@ -54,60 +54,100 @@ public class UIHandler : Singleton<UIHandler>
 
 	public void ChangeFunType(FunType funType)
 	{
-		List<DropZone> dropZones = new List<DropZone>();
-
-		foreach (Transform dropZone in dropZonesObject)
-		{
-			dropZones.Add(dropZone.GetComponent<DropZone>());
-			dropZone.GetComponent<DropZone>().Unoccupy();
-		}			
+		DropZones.Clear();
 
 		switch (funType)
 		{
 			case FunType.EasyFun:
-				dropZones[0].neededType = GearType.Exploration;
-				dropZones[1].neededType = GearType.Fantasy;
-				dropZones[2].neededType = GearType.Creativity;
+				GearsObject = funTypeTabs[0].transform;
+
+				foreach (Transform child in GearsObject)
+				{
+					DropZone currentDropZone = child.GetComponent<DropZone>();
+					if (currentDropZone != null)
+					{
+						DropZones.Add(child.GetComponent<DropZone>());
+						child.GetComponent<DropZone>().Unoccupy();
+					}
+				}
+
+				DropZones[0].neededType = GearType.Exploration;
+				DropZones[1].neededType = GearType.Fantasy;
+				DropZones[2].neededType = GearType.Creativity;
 
 				DisableTypeTabs();
 				funTypeTabs[0].SetActive(true);
-				GearsObject = funTypeTabs[0].transform;
 				TypeText.text = "Easy Fun";
 				break;
 
 			case FunType.PeopleFun:
-				dropZones[0].neededType = GearType.Communication;
-				dropZones[1].neededType = GearType.Cooperation;
-				dropZones[2].neededType = GearType.Competition;
+				GearsObject = funTypeTabs[1].transform;
+
+				foreach (Transform child in GearsObject)
+				{
+					DropZone currentDropZone = child.GetComponent<DropZone>();
+					if (currentDropZone != null)
+					{
+						DropZones.Add(child.GetComponent<DropZone>());
+						child.GetComponent<DropZone>().Unoccupy();
+					}
+				}
+
+				DropZones[0].neededType = GearType.Communication;
+				DropZones[1].neededType = GearType.Cooperation;
+				DropZones[2].neededType = GearType.Competition;
 
 				DisableTypeTabs();
 				funTypeTabs[1].SetActive(true);
-				GearsObject = funTypeTabs[1].transform;
 				TypeText.text = "People Fun";
 				break;
 
 			case FunType.HardFun:
-				dropZones[0].neededType = GearType.Goals;
-				dropZones[1].neededType = GearType.Obstacles;
-				dropZones[2].neededType = GearType.Stategy;
+				GearsObject = funTypeTabs[2].transform;
+
+				foreach (Transform child in GearsObject)
+				{
+					DropZone currentDropZone = child.GetComponent<DropZone>();
+					if (currentDropZone != null)
+					{
+						DropZones.Add(child.GetComponent<DropZone>());
+						child.GetComponent<DropZone>().Unoccupy();
+					}
+				}
+
+				DropZones[0].neededType = GearType.Goals;
+				DropZones[1].neededType = GearType.Obstacles;
+				DropZones[2].neededType = GearType.Stategy;
 
 				DisableTypeTabs();
 				funTypeTabs[2].SetActive(true);
-				GearsObject = funTypeTabs[2].transform;
 				TypeText.text = "Hard Fun";
 				break;
 
 			case FunType.SeriousFun:
-				dropZones[0].neededType = GearType.Learing;
-				dropZones[1].neededType = GearType.Rhythm;
-				dropZones[2].neededType = GearType.Collection;
+				GearsObject = funTypeTabs[3].transform;
+
+				foreach (Transform child in GearsObject)
+				{
+					DropZone currentDropZone = child.GetComponent<DropZone>();
+					if (currentDropZone != null)
+					{
+						DropZones.Add(child.GetComponent<DropZone>());
+						child.GetComponent<DropZone>().Unoccupy();
+					}
+				}
+
+				DropZones[0].neededType = GearType.Learing;
+				DropZones[1].neededType = GearType.Rhythm;
+				DropZones[2].neededType = GearType.Collection;
 
 				DisableTypeTabs();
 				funTypeTabs[3].SetActive(true);
-				GearsObject = funTypeTabs[3].transform;
 				TypeText.text = "Serious Fun";
 				break;
 		}
+
+
 	}
 
 	public void WonMiniGame()
@@ -127,8 +167,7 @@ public class UIHandler : Singleton<UIHandler>
 	private void SetVariables()
 	{
 		TypeText = GetComponentInChildren<Text>();
-				
-		dropZonesObject = transform.Find("DropZones");
+
 		funTypeTabs.Add(transform.Find("EasyFun").gameObject);
 		funTypeTabs.Add(transform.Find("PeopleFun").gameObject);
 		funTypeTabs.Add(transform.Find("HardFun").gameObject);
@@ -138,6 +177,7 @@ public class UIHandler : Singleton<UIHandler>
 		ButtonManager.Instance.PeopleFun.onClick.AddListener(() => ChangeFunType(FunType.PeopleFun));
 		ButtonManager.Instance.HardFun.onClick.AddListener(() => ChangeFunType(FunType.HardFun));
 		ButtonManager.Instance.SeriousFun.onClick.AddListener(() => ChangeFunType(FunType.SeriousFun));
+
 		ChangeFunType(FunType.EasyFun);
 	}
 }

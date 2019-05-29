@@ -6,7 +6,7 @@ public static class GameData
 {
     public static string INFO_VERSION_STATE = "Pre-Alpha";
     public static int INFO_VERSION_BUILD_NUMBER = 0;
-    public static bool initialised = false;
+    private static bool initialised = false;
     
     public static bool Initialised 
     { 
@@ -21,14 +21,14 @@ public static class GameData
         TOTAL
     };
 
-    private static Language gameLanguage = SetLanguage(Language.ENGLISH); 
+    private static Language gameLanguage = Language.ENGLISH;
 
     //Returns itself so an initial set is done at compile time
-    public static Language SetLanguage(Language language)
+    public static void SetLanguage(Language language)
     {
         gameLanguage = language;
-        Dialogue.LoadAllText(Settings.LEVEL_NAMES);
-        return gameLanguage;
+        Dialogue.LoadAllText();
+        
     }
 
     public static Language GetLanguage()

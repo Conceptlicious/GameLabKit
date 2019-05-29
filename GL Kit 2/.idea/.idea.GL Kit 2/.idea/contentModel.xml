@@ -36,6 +36,7 @@
               <e p="EventTypes.cs" t="Include" />
               <e p="GenericEvent.cs" t="Include" />
               <e p="ICustomMessageTarget.cs" t="Include" />
+              <e p="LevelProgressEvent.cs" t="Include" />
               <e p="NextRoomEvent.cs" t="Include" />
               <e p="ObjectFoundEvent.cs" t="Include" />
             </e>
@@ -45,8 +46,10 @@
               <e p="UserInterfaceHandler.cs" t="Include" />
             </e>
             <e p="Room 2" t="Include">
+              <e p="ChangeColor.cs" t="Include" />
               <e p="HiddenObject.cs" t="Include" />
-              <e p="HiddenObjectTemplate.cs" t="Include" />
+              <e p="HiddenObjectHandler.cs" t="Include" />
+              <e p="TextUpdater.cs" t="Include" />
             </e>
             <e p="Room 3" t="Include">
               <e p="BridgeTileController.cs" t="Include" />
