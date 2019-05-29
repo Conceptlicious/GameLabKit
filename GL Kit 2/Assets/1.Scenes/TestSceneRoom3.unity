@@ -466,11 +466,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.38
       objectReference: {fileID: 0}
+    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.2700043
+      objectReference: {fileID: 0}
     - target: {fileID: 2147928138940705983, guid: 5e89894ff5a7252458680b5389b6e81b,
         type: 3}
       propertyPath: levels.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: a2a169cbdcd2e034e835b7232792ba43,
+      objectReference: {fileID: 11400000, guid: 0229b81d78988334d8c81b45188d2605,
         type: 2}
     - target: {fileID: 2147928138940705983, guid: 5e89894ff5a7252458680b5389b6e81b,
         type: 3}
@@ -487,6 +492,23 @@ PrefabInstance:
         type: 3}
       propertyPath: defaultLevelSettings.StartPointAlphaThreshold
       value: 137
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269148429929540473, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: levels.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0229b81d78988334d8c81b45188d2605,
+        type: 2}
+    - target: {fileID: 1269148429929540473, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: levels.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c381ab884091c314da92c1f948ea98cd,
+        type: 2}
+    - target: {fileID: 1269148429929540473, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: defaultLevelSettings.BridgeTileColor.rgba
+      value: 4278255615
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e89894ff5a7252458680b5389b6e81b, type: 3}

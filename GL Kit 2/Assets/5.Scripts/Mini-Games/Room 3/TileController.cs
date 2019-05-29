@@ -13,6 +13,7 @@ namespace Room3
 		public event Action<TileController> OnFinishedInteractingAt;
 
 		public Image Image { get; private set; }
+		public TileGrid TileGrid = null;
 
 		private Tile tileData = null;
 		public Tile TileData
@@ -76,7 +77,7 @@ namespace Room3
 
 		private void OnDisconnectedFromTile(Tile tileDisconnectedFrom)
 		{
-			Image.color = originalTileColor.GetValueOrDefault(TileGrid.Instance.CurrentLevelSettings.NormalTileColor);
+			Image.color = originalTileColor.GetValueOrDefault(TileGrid.CurrentLevelSettings.NormalTileColor);
 			Image.sprite = null;
 		}
 		

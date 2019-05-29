@@ -131,7 +131,8 @@ namespace Room3
 
 			tileController.TileData = tileData;
 			tileController.TileData.SpriteSettings = tileSprites;
-
+			tileData.controller = tileController;
+			tileController.TileGrid = this;
 			tileController.OnInteractedWith += OnTileInteractedWith;
 			tileController.OnFinishedInteractingAt += OnFinishedInteractingAtTile;
 
@@ -214,12 +215,12 @@ namespace Room3
 
 		private void InteractWithBridge(Tile bridge)
 		{
-			if (bridge == lastInteractedWithTile.TileData)
+			if (bridge == bridgeLayer.Tiles[lastInteractedWithTile.TileData.Row, lastInteractedWithTile.TileData.Col])
 			{
 				return;
 			}
 
-			if (finishedGroups.Contains(lastInteractedWithTile.TileData.TileGroup))
+			if (finishedGroups.Contains(bridgeLayer.Tiles[lastInteractedWithTile.TileData.Row, lastInteractedWithTile.TileData.Col].TileGroup))
 			{
 				return;
 			}
@@ -228,7 +229,6 @@ namespace Room3
 			{
 				return;
 			}
-
 			UpdateWinStatus();
 		}
 
