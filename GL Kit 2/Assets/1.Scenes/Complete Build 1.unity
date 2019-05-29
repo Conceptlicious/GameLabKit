@@ -2055,42 +2055,42 @@ PrefabInstance:
     - target: {fileID: 7385619711378022738, guid: 9597691b3dfb70841a60232e70cf7974,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -4.1689453
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 7385619711378022738, guid: 9597691b3dfb70841a60232e70cf7974,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: -4.4313703
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7385619711378022738, guid: 9597691b3dfb70841a60232e70cf7974,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -22.662327
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7385619711378022738, guid: 9597691b3dfb70841a60232e70cf7974,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: -1.2650001
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7385619711378022738, guid: 9597691b3dfb70841a60232e70cf7974,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1.8962402
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7385619711378022738, guid: 9597691b3dfb70841a60232e70cf7974,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -177.68047
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7385619711378022738, guid: 9597691b3dfb70841a60232e70cf7974,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 2.223
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7385619711378022738, guid: 9597691b3dfb70841a60232e70cf7974,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: -3.8617837
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7385619712600132753, guid: 9597691b3dfb70841a60232e70cf7974,
         type: 3}
@@ -3193,6 +3193,76 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 67.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7385619712473557255, guid: 9597691b3dfb70841a60232e70cf7974,
+        type: 3}
+      propertyPath: gearsObject
+      value: 
+      objectReference: {fileID: 959111634}
+    - target: {fileID: 7385619712473557255, guid: 9597691b3dfb70841a60232e70cf7974,
+        type: 3}
+      propertyPath: interactableGearsObject
+      value: 
+      objectReference: {fileID: 959111634}
+    - target: {fileID: 4614846877484856311, guid: 9597691b3dfb70841a60232e70cf7974,
+        type: 3}
+      propertyPath: m_Name
+      value: InteractibleGearSockets H
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409817129669199282, guid: 9597691b3dfb70841a60232e70cf7974,
+        type: 3}
+      propertyPath: m_Name
+      value: InteractibleGearSocket E
+      objectReference: {fileID: 0}
+    - target: {fileID: 310712543807405624, guid: 9597691b3dfb70841a60232e70cf7974,
+        type: 3}
+      propertyPath: m_Name
+      value: InteractibleGearSocket P
+      objectReference: {fileID: 0}
+    - target: {fileID: 5561981995419118565, guid: 9597691b3dfb70841a60232e70cf7974,
+        type: 3}
+      propertyPath: m_Name
+      value: InteractibleGearSocket E
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378264456913294030, guid: 9597691b3dfb70841a60232e70cf7974,
+        type: 3}
+      propertyPath: m_Name
+      value: InteractibleGearSockets H
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017734528988623203, guid: 9597691b3dfb70841a60232e70cf7974,
+        type: 3}
+      propertyPath: m_Name
+      value: InteractibleGearSockets S
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933302897432497838, guid: 9597691b3dfb70841a60232e70cf7974,
+        type: 3}
+      propertyPath: m_Name
+      value: InteractibleGearSockets S
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835035015218346741, guid: 9597691b3dfb70841a60232e70cf7974,
+        type: 3}
+      propertyPath: m_Name
+      value: InteractibleGearSockets S
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210918233755318792, guid: 9597691b3dfb70841a60232e70cf7974,
+        type: 3}
+      propertyPath: m_Name
+      value: InteractibleGearSocket P
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633945678141684129, guid: 9597691b3dfb70841a60232e70cf7974,
+        type: 3}
+      propertyPath: m_Name
+      value: InteractibleGearSockets H
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421381653346077747, guid: 9597691b3dfb70841a60232e70cf7974,
+        type: 3}
+      propertyPath: m_Name
+      value: InteractibleGearSocket P
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968921965981798470, guid: 9597691b3dfb70841a60232e70cf7974,
+        type: 3}
+      propertyPath: m_Name
+      value: InteractibleGearSocket E
+      objectReference: {fileID: 0}
     - target: {fileID: 7385619712568373930, guid: 9597691b3dfb70841a60232e70cf7974,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -3833,6 +3903,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945469107}
   m_CullTransparentMesh: 0
+--- !u!224 &959111634 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 337631382, guid: 9597691b3dfb70841a60232e70cf7974,
+    type: 3}
+  m_PrefabInstance: {fileID: 834691627}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1051509706
 PrefabInstance:
   m_ObjectHideFlags: 0
