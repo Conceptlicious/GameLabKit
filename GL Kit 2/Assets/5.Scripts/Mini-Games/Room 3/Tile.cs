@@ -48,6 +48,8 @@ namespace Room3
 
 		public bool CanConnectToOtherTiles => TileType != Type.Obstacle && (TileType != Type.Connection || TileGroup == Group.Ungrouped);
 
+		public bool OnBridgeLayer = false;
+
 		public Tile NextTile { get; set; } = null;
 		public TileController controller = null;
 		public TileSpriteSettings SpriteSettings { get; set; }
@@ -108,8 +110,10 @@ namespace Room3
 			NextTile.TileGroup = Group.Ungrouped;
 			NextTile = null;
 
-			disconnectedTile.OnDisconnectedFromTile(this);
-
+			if (!disconnectedTile.OnBridgeLayer)
+			{
+				disconnectedTile.OnDisconnectedFromTile(this);
+			}
 			disconnectedTile.RemoveTileConnectionsAfterThis();
 		}
 

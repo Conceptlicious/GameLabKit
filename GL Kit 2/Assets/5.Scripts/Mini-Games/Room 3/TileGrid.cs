@@ -106,7 +106,9 @@ namespace Room3
 				if (pixel.CompareRGB(levelColorSettings.BridgeTileColor))
 				{
 					mainLayer.Tiles[row, col].AllowedConnectionDirections = Tile.ConnectionDirection.East | Tile.ConnectionDirection.West;
+					mainLayer.Tiles[row, col].OnBridgeLayer = false;
 					bridgeLayer.Tiles[row, col].AllowedConnectionDirections = Tile.ConnectionDirection.North | Tile.ConnectionDirection.South;
+					bridgeLayer.Tiles[row, col].OnBridgeLayer = true;
 				}
 
 				Tile tileData = mainLayer.Tiles[row, col];
@@ -205,8 +207,8 @@ namespace Room3
 			{
 				tile.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
 			}
-			lastInteractedWithTile = tile;
 
+			lastInteractedWithTile = tile;
 			UpdateWinStatus();
 		}
 
@@ -216,6 +218,18 @@ namespace Room3
 			{
 				return;
 			}
+
+			if (finishedGroups.Contains(lastInteractedWithTile.TileData.TileGroup))
+			{
+				return;
+			}
+
+			if (!bridge.TryConnectTo(lastInteractedWithTile.TileData))
+			{
+				return;
+			}
+
+			UpdateWinStatus();
 		}
 
 		private void ValidatePath(TileController currentTile, TileController lastTile)

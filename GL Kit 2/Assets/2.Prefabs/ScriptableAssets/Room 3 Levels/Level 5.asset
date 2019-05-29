@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Level 3v2
-  m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  levelTexture: {fileID: 2800000, guid: 7f9e899032089a944b276f5be7fe2990, type: 3}
-  overrideDefaultColorSettings: 1
+  m_Script: {fileID: 11500000, guid: f8b782b811b950644a4c869d48fd99f8, type: 3}
+  m_Name: Level 5
+  m_EditorClassIdentifier: 
+  levelTexture: {fileID: 2800000, guid: 103444f36da7c21438467ae100da3350, type: 3}
+  overrideDefaultColorSettings: 0
   customColorSettings:
     NormalTileColor:
       serializedVersion: 2
@@ -28,10 +28,10 @@ MonoBehaviour:
     TileGroups:
     - groupColor:
         serializedVersion: 2
+        rgba: 4278255611
+    - groupColor:
+        serializedVersion: 2
         rgba: 4280942847
     - groupColor:
         serializedVersion: 2
         rgba: 4286906112
-    - groupColor:
-        serializedVersion: 2
-        rgba: 4278255611
