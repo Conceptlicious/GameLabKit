@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1277,6 +1277,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: faa48c3e2033d974d817788e647384b0,
         type: 3}
+    - target: {fileID: 2147928138940705983, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: levels.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c381ab884091c314da92c1f948ea98cd,
+        type: 2}
+    - target: {fileID: 2147928138940705983, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: levels.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: ee78e5ab71a785a4f9618b5bcd93f19b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e89894ff5a7252458680b5389b6e81b, type: 3}
 --- !u!224 &586854598 stripped
@@ -1605,6 +1617,7 @@ Transform:
   m_Children:
   - {fileID: 1848558111}
   - {fileID: 1186878944}
+  - {fileID: 1826951753}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2384,6 +2397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea72a08fffb9794396623c06e470226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextMinigameButton: {fileID: 0}
 --- !u!114 &945469110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3274,6 +3288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea72a08fffb9794396623c06e470226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextMinigameButton: {fileID: 0}
 --- !u!114 &1492117835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3777,6 +3792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea72a08fffb9794396623c06e470226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextMinigameButton: {fileID: 0}
 --- !u!114 &1584991118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4227,6 +4243,49 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747174943}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1826951752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1826951753}
+  - component: {fileID: 1826951754}
+  m_Layer: 0
+  m_Name: Room 1 Popups
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1826951753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826951752}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 740206788}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1826951754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826951752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 815a15e7bea46164ebedf33da96247cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1848558109
 GameObject:
   m_ObjectHideFlags: 0
@@ -5112,6 +5171,11 @@ PrefabInstance:
       objectReference: {fileID: 1848558110}
     - target: {fileID: 6100448372103171778, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
+      propertyPath: levelPopupDialogueObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100448372103171778, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
       propertyPath: dialogueObject
       value: 
       objectReference: {fileID: 1186878945}
@@ -5120,6 +5184,11 @@ PrefabInstance:
       propertyPath: parentCanvas
       value: 
       objectReference: {fileID: 1354399290}
+    - target: {fileID: 6100448372103171778, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: levelPopupDialogueObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1826951754}
     - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: couplings.Array.size

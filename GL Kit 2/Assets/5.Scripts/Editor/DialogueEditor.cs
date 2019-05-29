@@ -30,10 +30,10 @@ public class DialogueEditor : Editor
 
 		}
 
-		if (GameData.Initialised)
-		{
+		//if (GameData.Initialised)
+		//{
 			PopulateOptions();
-		}
+		//}
 
 		
 	}
@@ -45,6 +45,12 @@ public class DialogueEditor : Editor
 	{
 		DialogueObject dialogueObject = (DialogueObject)target;
 
+		if (GameData.Initialised == false)
+		{
+			Dialogue.LoadAllText();
+			GameData.Initialised = true;
+		}
+		
 		fileNames = Dialogue.GetFileNames();
 		fileNameIndexPrevious = fileNameIndex;
 		fileNameIndex = EditorGUILayout.Popup(fileNameIndex, fileNames);
@@ -52,6 +58,7 @@ public class DialogueEditor : Editor
 		//Reset indices if options change.
 		if (fileNameIndexPrevious != fileNameIndex)
 		{
+			Debug.Log("Resetting");
 			containerNameIndex = 0;
 			keyNameIndex = 0;
 		}
@@ -63,6 +70,7 @@ public class DialogueEditor : Editor
 		//Reset indices if options change.
 		if (containerNameIndexPrevious != containerNameIndex)
 		{
+			Debug.Log("Resetting key index");
 			keyNameIndex = 0;
 		}
 
@@ -81,8 +89,8 @@ public class DialogueEditor : Editor
 			keyNameIndex = dialogueObject.Info.fieldIndex;
 		}
 
-
-
+		
+		serializedObject.ApplyModifiedProperties();
 		EditorUtility.SetDirty(target);
 	}
 }

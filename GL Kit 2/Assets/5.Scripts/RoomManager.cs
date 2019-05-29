@@ -20,13 +20,13 @@ public class RoomManager : MonoBehaviour
     void Awake()
     {
         //GameData.SetLanguage(GameData.Language.ENGLISH);
-        GameData.Initialised = true;
+        //GameData.Initialised = true;
     }
      
     void Start()
     {
         whiteRoomID = Mathf.Clamp(whiteRoomID, 0, roomFocalPoints.Length);
-        //registerAllListeners();
+        registerAllListeners();
         FillFocalsWithBlanks();
         if (alignFocals)
         {
@@ -69,9 +69,12 @@ public class RoomManager : MonoBehaviour
         EventManager.Instance.AddListener<NextRoomEvent>(OnNextRoomCommand);
     }
 
+    
 
     private void OnNextRoomCommand(NextRoomEvent pInfo)
     {
+        
+        Debug.Log("heard");
         //0, 0, 0
         //0, 0, 3
         
@@ -95,8 +98,13 @@ public class RoomManager : MonoBehaviour
         Mathf.Clamp(currentRoom.x, 0, Settings.SYS_VAL_MAX_NUMBER_ROOM_FOCALS);   
         //Focal A is current. Focal B is next. Current[New, Old]
         //Debug.Log("focus - x: " + currentRoom.x + " | y: " + currentRoom.y);
+        
+        LevelProgressEvent newLevelInfo = new LevelProgressEvent(currentRoom.z);
+        EventManager.Instance.RaiseEvent(newLevelInfo);
+        
         CameraTargetSelectEvent newInfo = new CameraTargetSelectEvent(roomFocalPoints[currentRoom.y], roomFocalPoints[currentRoom.z], true, true);
         EventManager.Instance.RaiseEvent(newInfo);
+        
     }
 
     private void FillFocalsWithBlanks()

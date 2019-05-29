@@ -21,17 +21,17 @@ public static class Dialogue
     /// Load all the available dialogue files for the current language.
     /// </summary>
     /// <param name="pLevelNames"></param>
-    public static void LoadAllText(string[] pLevelNames)
+    public static void LoadAllText()
     {
-        int size = pLevelNames.Length;
+        int size = Settings.LEVEL_NAMES.Length;
         files = new DialogueFile[size];
         for (int i = 0; i < size; i++)
         {
-            files[i] = JsonParser.ParseJSONFile(pLevelNames[i]);
+            files[i] = JsonParser.ParseJSONFile(Settings.LEVEL_NAMES[i]);
         }
         
         //Turn into event
-        GameData.Initialised = true;
+        //GameData.Initialised = true;
     }
 
     /// <summary>
