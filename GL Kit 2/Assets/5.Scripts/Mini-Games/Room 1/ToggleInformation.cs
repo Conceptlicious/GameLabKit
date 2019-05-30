@@ -10,4 +10,5 @@ public enum ToggleGroup
 public class ToggleInformation : BetterMonoBehaviour
 {
 	public ToggleGroup toggleGroup;
+	public Disabilities disabilities;
 }
