@@ -3,15 +3,15 @@ using GameLab;
 
 public class DropZone : BetterMonoBehaviour
 {
-	[HideInInspector] public GearType neededType;
+	[SerializeField] private GearType neededType;
 
 	public static int OccupiedPlaces { get; private set; } = 0;
-	[HideInInspector] public static bool isCombinationRight = true;	
+	[HideInInspector] public static bool isCombinationRight = true;
 
 	public bool IsOccupied { get; private set; }
 	private Transform gear = null;
 
-	
+
 	public void Occupy(Transform gear)
 	{
 		if (IsOccupied)
@@ -30,6 +30,10 @@ public class DropZone : BetterMonoBehaviour
 	{
 		if (!IsOccupied)
 		{
+			if (OccupiedPlaces != 0)
+			{
+				OccupiedPlaces = 0;
+			}
 			return;
 		}
 

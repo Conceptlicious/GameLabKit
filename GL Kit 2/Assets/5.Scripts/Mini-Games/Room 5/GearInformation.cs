@@ -23,42 +23,43 @@ public enum GearType
 
 public class GearInformation : BetterMonoBehaviour
 {
+	[HideInInspector] public static bool isAbleToRotate = false;
+
 	[SerializeField] private GearType gearType = default;
 	public GearType GetGearType => gearType;
 
 	[SerializeField] private float timeForRotationToStop = 2f;
 	[SerializeField] private int rotationSpeed = 50;
-	[SerializeField] private bool invertRotation = false;
-	[HideInInspector] public bool isAbleToRotate = false;
+	[SerializeField] private bool rotatingLeft = false;
 
-	public void StopGearRotationMethod(bool resetPosition)
+	public void StopGearRotationMethod(GameObject objectToCheck)
 	{
-		StartCoroutine(StopGearRotation(resetPosition));
+		if (objectToCheck.activeInHierarchy)
+		{
+			StartCoroutine(StopGearRotation());
+		}
 	}
 
-	private IEnumerator StopGearRotation(bool resetPosition)
+	private IEnumerator StopGearRotation()
 	{
 		yield return new WaitForSeconds(timeForRotationToStop);
 		isAbleToRotate = false;
 
-		if (resetPosition)
-		{
-			transform.position = GetComponent<DragAndDrop>().BeginPosition;
-			DropZone.isCombinationRight = true;
+		transform.position = GetComponent<DragAndDrop>().BeginPosition;
+		DropZone.isCombinationRight = true;
 
-			foreach (DropZone dropZone in UIHandler.Instance.DropZones)
-			{
-				dropZone.Unoccupy();
-			}
+		foreach (DropZone dropZone in UIHandler.Instance.DropZones)
+		{
+			dropZone.Unoccupy();
 		}
-		
+
 	}
 
 	private void Update()
 	{
 		if (isAbleToRotate)
 		{
-			if (!invertRotation)
+			if (!rotatingLeft)
 			{
 				CachedTransform.Rotate(Vector3.forward * (Time.deltaTime * rotationSpeed));
 			}
