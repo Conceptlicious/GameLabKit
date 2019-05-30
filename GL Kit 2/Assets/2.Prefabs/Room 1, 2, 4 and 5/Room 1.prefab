@@ -356,6 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 0
+  disabilities: 0
 --- !u!1 &3735685551861608952
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 1
+  disabilities: 0
 --- !u!1 &3735685551938708298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,6 +1036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 0
+  disabilities: 0
 --- !u!1 &3735685551982319247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,6 +1374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 1
+  disabilities: 0
 --- !u!1 &3735685552100246794
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,6 +1484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 0
+  disabilities: 0
 --- !u!1 &3735685552111743706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2281,6 +2286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 1
+  disabilities: 0
 --- !u!1 &3735685552309004641
 GameObject:
   m_ObjectHideFlags: 0
@@ -3036,6 +3042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 0
+  disabilities: 0
 --- !u!1 &3735685552466487636
 GameObject:
   m_ObjectHideFlags: 0
@@ -3433,6 +3440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 0
+  disabilities: 0
 --- !u!1 &3735685552610950136
 GameObject:
   m_ObjectHideFlags: 0
@@ -4708,6 +4716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 0
+  disabilities: 0
 --- !u!1 &3735685552919373543
 GameObject:
   m_ObjectHideFlags: 0
@@ -4967,6 +4976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 0
+  disabilities: 0
 --- !u!1 &3735685553021663480
 GameObject:
   m_ObjectHideFlags: 0
@@ -5303,6 +5313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 1
+  disabilities: 0
 --- !u!1 &3735685553142178996
 GameObject:
   m_ObjectHideFlags: 0
@@ -5719,6 +5730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 1
+  disabilities: 0
 --- !u!1 &3735685553212819879
 GameObject:
   m_ObjectHideFlags: 0
@@ -6393,6 +6405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 0
+  disabilities: 0
 --- !u!1 &3735685553347498969
 GameObject:
   m_ObjectHideFlags: 0
@@ -7186,6 +7199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 0
+  disabilities: 0
 --- !u!1 &3735685553693126624
 GameObject:
   m_ObjectHideFlags: 0
@@ -7708,6 +7722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 0
+  disabilities: 0
 --- !u!1 &3735685553793810270
 GameObject:
   m_ObjectHideFlags: 0
@@ -7896,6 +7911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 1
+  disabilities: 0
 --- !u!1 &3735685553825558666
 GameObject:
   m_ObjectHideFlags: 0
@@ -8155,6 +8171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: 1
+  disabilities: 0
 --- !u!1 &3735685553875907087
 GameObject:
   m_ObjectHideFlags: 0
