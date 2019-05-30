@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GameLab;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,31 +16,26 @@ namespace Room3
 
 		public Image Image { get; private set; }
 
-		private Dictionary<TileLayer, Tile> tileData = null;
-		public Dictionary<TileLayer, Tile> TileData
+		private Tile tileData = null;
+		public Tile TileData
 		{
 			get => tileData;
 			set
-			{
-				foreach (KeyValuePair<TileLayer, Tile> tileData in TileData)
-				{
-					if(tileData.Value != null)
+			{		
+					if(tileData != null)
 					{
-						tileData.Value.OnConnectedToTile -= OnConnectedToTile;
-						tileData.Value.OnDisconnectedFromTile -= OnDisconnectedFromTile;
+						tileData.OnConnectedToTile -= OnConnectedToTile;
+						tileData.OnDisconnectedFromTile -= OnDisconnectedFromTile;
 					}
-				}
 
-				tileData = value;
 
-				foreach (KeyValuePair<TileLayer, Tile> tileData in TileData)
-				{
-					if (tileData.Value != null)
+					tileData = value;
+
+					if (tileData != null)
 					{
-						tileData.Value.OnConnectedToTile += OnConnectedToTile;
-						tileData.Value.OnDisconnectedFromTile += OnDisconnectedFromTile;
+						tileData.OnConnectedToTile += OnConnectedToTile;
+						tileData.OnDisconnectedFromTile += OnDisconnectedFromTile;
 					}
-				}
 			}
 		}
 
@@ -53,7 +49,8 @@ namespace Room3
 
 		public void ChangeSprite(Sprite spritetoChange)
 		{
-			if (tileData.TileType != Tile.Type.EndPoint)
+			
+			if ( tileData.TileType != Tile.Type.EndPoint)
 			{
 				Image.sprite = spritetoChange;
 			}
