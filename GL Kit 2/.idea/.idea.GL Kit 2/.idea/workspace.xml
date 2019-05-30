@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="242ae21e-f6fb-49ec-a894-9847d147da7f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/Complete Build 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/Complete Build 1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Prefabs/Room 1, 2, 4 and 5/Room 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Prefabs/Room 1, 2, 4 and 5/Room 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Prefabs/Room 6 Prefabs/Room 6.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Prefabs/Room 6 Prefabs/Room 6.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/CameraControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/CameraControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/EventMessaging/CameraTargetSelectedEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/EventMessaging/CameraTargetSelectedEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/Room 6/NodePattern.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/Room 6/NodePattern.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/RoomManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/RoomManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,26 +74,26 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cs" value="35146" />
-          <entry key="json" value="1515" />
+          <entry key="json" value="1712" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="C#" value="35146" />
-          <entry key="JSON" value="1515" />
+          <entry key="JSON" value="1712" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="cs" value="115" />
-          <entry key="json" value="18" />
+          <entry key="json" value="21" />
           <entry key="shader" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="C#" value="115" />
-          <entry key="JSON" value="18" />
+          <entry key="JSON" value="21" />
           <entry key="ShaderLab" value="1" />
         </counts>
       </usages-collector>
@@ -110,11 +101,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="49" column="69" lean-forward="true" selection-start-line="49" selection-start-column="69" selection-end-line="49" selection-end-column="69" />
+            <state relative-caret-position="170">
+              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
               <folding>
                 <marker date="1559221575423" expanded="false" signature="6:78" ph="..." />
                 <marker date="1559221575423" expanded="true" signature="108:4726" ph="{...}" />
@@ -189,7 +180,7 @@
         <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/Room 6/NodePattern.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="350">
-              <caret line="113" column="21" lean-forward="true" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="21" />
+              <caret line="113" column="21" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="21" />
               <folding>
                 <marker date="1559220765877" expanded="false" signature="6:115" ph="..." />
                 <marker date="1559220765877" expanded="true" signature="163:3760" ph="{...}" />
@@ -219,11 +210,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/CameraControl.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="126" column="56" lean-forward="true" selection-start-line="126" selection-start-column="56" selection-end-line="126" selection-end-column="56" />
+            <state relative-caret-position="305">
+              <caret line="134" column="71" lean-forward="true" selection-start-line="134" selection-start-column="71" selection-end-line="134" selection-end-column="71" />
               <folding>
                 <marker date="1559220684020" expanded="false" signature="6:142" ph="..." />
                 <marker date="1559220684020" expanded="true" signature="186:4635" ph="{...}" />
@@ -338,59 +329,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Dialogue.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="46" column="38" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
-              <folding>
-                <marker date="1559126971066" expanded="false" signature="7:218" ph="..." />
-                <marker date="1559126971066" expanded="true" signature="220:254" ph="///   ... " />
-                <marker date="1559126971066" expanded="true" signature="284:5836" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="340:487" ph="/// Load all the available dialogue files for the current language. ... " />
-                <marker date="1559126971066" expanded="true" signature="524:831" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="657:751" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="769:825" ph="/* Turn into event ... */" />
-                <marker date="1559126971066" expanded="true" signature="837:955" ph="/// Get a string array of the files currently loaded; ... " />
-                <marker date="1559126971066" expanded="true" signature="997:1373" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="1070:1257" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="1177:1247" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="1270:1344" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="1379:1597" ph="/// Get the string names of the arary containers used to wrap different chunks of text inside a single level file ... " />
-                <marker date="1559126971066" expanded="true" signature="1655:1936" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="1844:1907" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="1942:2165" ph="/// Get the names of the keys used to preceed the individual lines of text. ... " />
-                <marker date="1559126971066" expanded="true" signature="2235:2726" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="2268:2325" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="2613:2697" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="2732:3005" ph="/// Get a particular line of text by directly calling the file name and container name. ... " />
-                <marker date="1559126971066" expanded="true" signature="3084:3271" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="3277:3593" ph="/// Get the next line of text from a container. Iterates and wraps the passed index. ... " />
-                <marker date="1559126971066" expanded="true" signature="3703:3939" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="3945:4199" ph="/// Get a line of text from a container using a specific index. ... " />
-                <marker date="1559126971066" expanded="true" signature="4282:4631" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="4637:4840" ph="/// Get a random line of text from the given container. ... " />
-                <marker date="1559126971066" expanded="true" signature="4910:5116" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="5220:5829" ph="{...}" />
-                <marker date="1559126971066" expanded="true" signature="5235:5516" ph="/* Debug.Assert(pID &gt;= 0 &amp;&amp; pID &lt; (int)GameData.Language.TOTAL); ... */" />
-                <marker date="1559126971066" expanded="true" signature="5534:5823" ph="/* Room dialogue is just clicking next, and fetching ... */" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/DialogueObject.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Editor/DialogueEditor.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
+            <state relative-caret-position="373">
               <caret line="64" selection-start-line="64" selection-end-line="64" />
               <folding>
                 <marker date="1559129009708" expanded="false" signature="6:97" ph="..." />
@@ -407,6 +348,24 @@
                 <marker date="1559129009708" expanded="true" signature="2106:2162" ph="{...}" />
                 <marker date="1559129009708" expanded="true" signature="2207:2315" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Resources/Text/Dialogue/Dutch/Room_1Dutch.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="113" selection-start-line="5" selection-start-column="113" selection-end-line="5" selection-end-column="113" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Resources/Text/Dialogue/Dutch/Room_2Dutch.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="95" selection-start-line="15" selection-start-column="95" selection-end-line="15" selection-end-column="95" />
             </state>
           </provider>
         </entry>
@@ -436,7 +395,13 @@
       <find>resources.load</find>
       <find>=&gt;</find>
       <find>nextroomevent</find>
+      <find>f\f</find>
+      <find>&quot;</find>
+      <find>“</find>
     </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -481,9 +446,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Project Files/Scripts/UIControl.cs" />
-        <option value="$PROJECT_DIR$/Assets/Project Files/Scripts/CameraControl.cs" />
-        <option value="$PROJECT_DIR$/Assets/Project Files/Scripts/EventChain.cs" />
         <option value="$PROJECT_DIR$/Assets/Project Files/Scripts/Settings.cs" />
         <option value="$PROJECT_DIR$/Assets/Project Files/Scripts/EventMarkers.cs" />
         <option value="$PROJECT_DIR$/Assets/Project Files/Scripts/RoomManager.cs" />
@@ -532,6 +494,9 @@
         <option value="$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/Room 6/NodePattern.cs" />
         <option value="$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs" />
         <option value="$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/EventMessaging/CameraTargetSelectedEvent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Resources/Text/Dialogue/Dutch/Room_ontwerpDutch.json" />
+        <option value="$PROJECT_DIR$/Assets/Resources/Text/Dialogue/Dutch/Room_1Dutch.json" />
+        <option value="$PROJECT_DIR$/Assets/Resources/Text/Dialogue/Dutch/Room_2Dutch.json" />
       </list>
     </option>
   </component>
@@ -633,12 +598,12 @@
       <workItem from="1558948120276" duration="15549000" />
       <workItem from="1559030517187" duration="12613000" />
       <workItem from="1559116763014" duration="9076000" />
-      <workItem from="1559208312967" duration="4823000" />
+      <workItem from="1559208312967" duration="8644000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="267102000" />
+    <option name="totallyTimeSpent" value="270923000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -653,32 +618,6 @@
     <frame x="-7" y="33" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.06778523" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32907802" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Unity" order="10" />
-      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Unit Tests" order="12" />
-      <window_info anchor="bottom" id="Terminal" order="13" />
-      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Errors In Solution" order="3" weight="0.12348993" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Unit Tests Coverage" order="5" weight="0.05838926" />
-    </layout>
-    <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.06778523" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -703,7 +642,7 @@
       <window_info anchor="right" id="Errors In Solution" order="3" weight="0.12348993" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Unit Tests Coverage" order="5" weight="0.05838926" />
-    </layout-to-restore>
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -737,9 +676,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Assets/Project Files/Scripts/Mini-Games/Room 2/HiddenObject.cs" />
-    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/DialogueContents.cs" />
-    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/DialogueFileParser.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/DialogueFile.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="455">
@@ -1015,28 +951,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Editor/DialogueEditor.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
-          <folding>
-            <marker date="1559129009708" expanded="false" signature="6:97" ph="..." />
-            <marker date="1559129009708" expanded="true" signature="99:237" ph="/// Helper script for the custom Unity Editor, allowing each object to have specific dialogue assigned to it. ... " />
-            <marker date="1559129009708" expanded="true" signature="313:2404" ph="{...}" />
-            <marker date="1559129009708" expanded="true" signature="634:778" ph="{...}" />
-            <marker date="1559129009708" expanded="true" signature="667:706" ph="{...}" />
-            <marker date="1559129009708" expanded="true" signature="675:701" ph="/* if is auto ... */" />
-            <marker date="1559129009708" expanded="true" signature="710:743" ph="/* if (GameData.Initialised) ... */" />
-            <marker date="1559129009708" expanded="true" signature="827:2402" ph="{...}" />
-            <marker date="1559129009708" expanded="true" signature="926:993" ph="{...}" />
-            <marker date="1559129009708" expanded="true" signature="1227:1310" ph="{...}" />
-            <marker date="1559129009708" expanded="true" signature="1600:1666" ph="{...}" />
-            <marker date="1559129009708" expanded="true" signature="2106:2162" ph="{...}" />
-            <marker date="1559129009708" expanded="true" signature="2207:2315" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/Room 3/TileGrid.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1163,7 +1077,7 @@
     <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/Room 6/NodePattern.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
-          <caret line="113" column="21" lean-forward="true" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="21" />
+          <caret line="113" column="21" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="21" />
           <folding>
             <marker date="1559220765877" expanded="false" signature="6:115" ph="..." />
             <marker date="1559220765877" expanded="true" signature="163:3760" ph="{...}" />
@@ -1192,23 +1106,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="49" column="69" lean-forward="true" selection-start-line="49" selection-start-column="69" selection-end-line="49" selection-end-column="69" />
-          <folding>
-            <marker date="1559221575423" expanded="false" signature="6:78" ph="..." />
-            <marker date="1559221575423" expanded="true" signature="108:4726" ph="{...}" />
-            <marker date="1559221575423" expanded="true" signature="115:287" ph="/* ---------------------------------------------------------- ... */" />
-            <marker date="1559221575423" expanded="true" signature="1883:2028" ph="{...}" />
-            <marker date="1559221575423" expanded="true" signature="2039:2197" ph="/* ---------------------------------------------------------- ... */" />
-            <marker date="1559221575423" expanded="true" signature="2801:2960" ph="/* ---------------------------------------------------------- ... */" />
-            <marker date="1559221575423" expanded="true" signature="4326:4496" ph="/* ---------------------------------------------------------- ... */" />
-            <marker date="1559221575423" expanded="true" signature="4529:4723" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/EventMessaging/CameraTargetSelectedEvent.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1223,8 +1120,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/CameraControl.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="126" column="56" lean-forward="true" selection-start-line="126" selection-start-column="56" selection-end-line="126" selection-end-column="56" />
+        <state relative-caret-position="305">
+          <caret line="134" column="71" lean-forward="true" selection-start-line="134" selection-start-column="71" selection-end-line="134" selection-end-column="71" />
           <folding>
             <marker date="1559220684020" expanded="false" signature="6:142" ph="..." />
             <marker date="1559220684020" expanded="true" signature="186:4635" ph="{...}" />
@@ -1246,6 +1143,66 @@
             <marker date="1559220684020" expanded="true" signature="3413:4282" ph="{...}" />
             <marker date="1559220684020" expanded="true" signature="3421:3735" ph="/* If the next and previous points are identical, keep the next but set the previous to the camera's current posi ... */" />
             <marker date="1559220684020" expanded="true" signature="4289:4627" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Resources/Text/Dialogue/Dutch/Room_ontwerpDutch.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Editor/DialogueEditor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <marker date="1559129009708" expanded="false" signature="6:97" ph="..." />
+            <marker date="1559129009708" expanded="true" signature="99:237" ph="/// Helper script for the custom Unity Editor, allowing each object to have specific dialogue assigned to it. ... " />
+            <marker date="1559129009708" expanded="true" signature="313:2404" ph="{...}" />
+            <marker date="1559129009708" expanded="true" signature="634:778" ph="{...}" />
+            <marker date="1559129009708" expanded="true" signature="667:706" ph="{...}" />
+            <marker date="1559129009708" expanded="true" signature="675:701" ph="/* if is auto ... */" />
+            <marker date="1559129009708" expanded="true" signature="710:743" ph="/* if (GameData.Initialised) ... */" />
+            <marker date="1559129009708" expanded="true" signature="827:2402" ph="{...}" />
+            <marker date="1559129009708" expanded="true" signature="926:993" ph="{...}" />
+            <marker date="1559129009708" expanded="true" signature="1227:1310" ph="{...}" />
+            <marker date="1559129009708" expanded="true" signature="1600:1666" ph="{...}" />
+            <marker date="1559129009708" expanded="true" signature="2106:2162" ph="{...}" />
+            <marker date="1559129009708" expanded="true" signature="2207:2315" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Resources/Text/Dialogue/Dutch/Room_1Dutch.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="113" selection-start-line="5" selection-start-column="113" selection-end-line="5" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Resources/Text/Dialogue/Dutch/Room_2Dutch.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="95" selection-start-line="15" selection-start-column="95" selection-end-line="15" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+          <folding>
+            <marker date="1559221575423" expanded="false" signature="6:78" ph="..." />
+            <marker date="1559221575423" expanded="true" signature="108:4726" ph="{...}" />
+            <marker date="1559221575423" expanded="true" signature="115:287" ph="/* ---------------------------------------------------------- ... */" />
+            <marker date="1559221575423" expanded="true" signature="1883:2028" ph="{...}" />
+            <marker date="1559221575423" expanded="true" signature="2039:2197" ph="/* ---------------------------------------------------------- ... */" />
+            <marker date="1559221575423" expanded="true" signature="2801:2960" ph="/* ---------------------------------------------------------- ... */" />
+            <marker date="1559221575423" expanded="true" signature="4326:4496" ph="/* ---------------------------------------------------------- ... */" />
+            <marker date="1559221575423" expanded="true" signature="4529:4723" ph="{...}" />
           </folding>
         </state>
       </provider>

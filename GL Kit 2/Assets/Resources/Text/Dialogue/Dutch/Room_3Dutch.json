@@ -1,0 +1,36 @@
+{
+  "definedArrays": ["RM 2 pop ups", "RM 2 objects", "RM 2 dialogue"],
+
+  "RM 2 pop ups":
+  {
+    "RM 3 help": "RM2 This window gives you helping dialogue as a pop-up form.",
+    "RM 3 confirmation": "RM2 This window confirms your choice."
+  },
+
+  "RM 3 objects":
+  {
+    "RM 3 book": "RM2 book text",
+    "RM 3 compass": "RM2 compass text"
+  },
+
+  "RM 3 dialogue":
+  {
+	“Dialogue step 1": "Nu we meer weten over het doel en de doelgroep van uw game, kunnen we gaan nadenken over een bijpassend genre.",
+    	“Dialogue step 2": "Alle game genres bestaan uit een aantal kenmerken die samen de speelstijl van een game vormen. Game genres zijn vergelijkbaar met film genres. Een film behoort tot de genre ‘romantiek’ doordat er romantische elementen aan de verhaallijn zijn toegevoegd. Dit principe geldt ook bij game genres.",
+	“Dialogue step 3": “Oké! Laten we een genre gaan maken!”,
+	“Dialogue step 4”: "Kunt u voor mij de hendel van de machine aan de linkerkant overhalen?",
+	“Dialogue step 5”: "Super!",
+	“Dialogue step 6”: "Oh néé...! De buizen zijn niet meer verbonden met de trechters. We moeten ze opnieuw verbinden, zodat de vloeistof in de trechter kan lopen. Teken een lijn tussen de buizen en de trechters om ze opnieuw te verbinden.",
+	“Dialogue step 7”: "Goed gedaan, u heeft het genre ‘sport’ gecreëerd!",
+	“Dialogue step 8”: "Bent u klaar om erachter te komen wat de andere genres zijn? Haal de hendel opnieuw over en verbind wederom de buizen met de trechters.",
+	“Dialogue step 9”: "Top! U heeft het genre actie gecreëerd, laten we ontdekken wat het volgende genre is.",
+	“Dialogue step 10”: "Perfect! U heeft het genre avontuur gecreëerd, laten we naar de volgende gaan!",
+	“Dialogue step 11”: "Top! U heeft het genre simulatie gecreëerd, laten we naar de volgende gaan!",
+	“Dialogue step 12”: "Geweldig! U heeft het genre role playing games gecreëerd, laten we naar de volgende gaan!",
+	“Dialogue step 13”: "Super! U heeft het genre strategie gecreëerd, dit was het laatste genre.",
+	“Dialogue step 14”: "Geweldig! U heeft alle bekerglazen gevuld met een genre! U kunt nu een genre kiezen die passend is voor uw game. Houdt hierbij uw doelgroep en het doel van de game in gedachten.",
+	“Dialogue step 14”: "Geweldig! U heeft het genre [genre] gekozen voor uw serious game. Bent u tevreden met uw keuze?",
+	
+
+  }
+}
