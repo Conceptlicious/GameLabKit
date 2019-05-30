@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using GameLab;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,27 +15,34 @@ namespace Room3
 
 		public Image Image { get; private set; }
 
-		private Tile tileData = null;
-		public Tile TileData
+		private Dictionary<TileLayer, Tile> tileData = null;
+		public Dictionary<TileLayer, Tile> TileData
 		{
 			get => tileData;
 			set
 			{
-				if (tileData != null)
+				foreach (KeyValuePair<TileLayer, Tile> tileData in TileData)
 				{
-					tileData.OnConnectedToTile -= OnConnectedToTile;
-					tileData.OnDisconnectedFromTile -= OnDisconnectedFromTile;
+					if(tileData.Value != null)
+					{
+						tileData.Value.OnConnectedToTile -= OnConnectedToTile;
+						tileData.Value.OnDisconnectedFromTile -= OnDisconnectedFromTile;
+					}
 				}
 
 				tileData = value;
 
-				if (tileData != null)
+				foreach (KeyValuePair<TileLayer, Tile> tileData in TileData)
 				{
-					tileData.OnConnectedToTile += OnConnectedToTile;
-					tileData.OnDisconnectedFromTile += OnDisconnectedFromTile;
+					if (tileData.Value != null)
+					{
+						tileData.Value.OnConnectedToTile += OnConnectedToTile;
+						tileData.Value.OnDisconnectedFromTile += OnDisconnectedFromTile;
+					}
 				}
 			}
 		}
+
 
 		private Color? originalTileColor = null;
 
