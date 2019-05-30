@@ -8,6 +8,8 @@ public class CameraControl : MonoBehaviour
 {
 	public delegate void Updateables();
 
+	[SerializeField] private bool fade;
+
 	private enum TargetPoints
 	{
 		ORIGIN,
@@ -94,9 +96,9 @@ public class CameraControl : MonoBehaviour
 		
 		
 		//Modulate depth of field to simulate blur
-		if (shouldFade == true && depthOfField != null)
+		if (shouldFade == true && depthOfField != null && fade == true)
 		{
-			//depthOfField.focalLength.value = (Settings.VAL_CAMERA_BLUR_FOCALLENGTH_MAX * sine);
+			depthOfField.focalLength.value = (Settings.VAL_CAMERA_BLUR_FOCALLENGTH_MAX * sine);
 		}    
 		
 		if (fracComplete >= 0.999f)
@@ -127,7 +129,7 @@ public class CameraControl : MonoBehaviour
 			
 			GameObject __newEmptyCentre = new GameObject("Transition Centre Point");
 	   
-			Vector3 zoomOffset = new Vector3(0.0f, 0.0f, -Settings.VAL_CAMERA_ZOOM_DISTANCE);
+			Vector3 zoomOffset = new Vector3(0.0f, 0.0f, -info.zoomDistance);
 
 			Transform centre = __newEmptyCentre.transform;
 			Vector3 centrePosition = (info.FocalB.position + info.FocalA.position) * 0.5f;

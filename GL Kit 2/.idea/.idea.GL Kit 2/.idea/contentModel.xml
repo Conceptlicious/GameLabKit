@@ -75,6 +75,7 @@
               <e p="ButtonManager.cs" t="Include" />
               <e p="DragAndDrop.cs" t="Include" />
               <e p="DropZone.cs" t="Include" />
+              <e p="EnviourmentGearRotation.cs" t="Include" />
               <e p="GearInformation.cs" t="Include" />
               <e p="GridHandler.cs" t="Include" />
               <e p="UIHandler.cs" t="Include" />

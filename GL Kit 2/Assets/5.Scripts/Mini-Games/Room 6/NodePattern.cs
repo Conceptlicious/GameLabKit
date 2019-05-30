@@ -10,6 +10,8 @@ public class NodePattern : BetterMonoBehaviour
 	[SerializeField] private Image startDotPrefab;
 	[SerializeField] private NodePattern nextPattern;
 	[SerializeField] private NodeLayer[] layers;
+	[SerializeField] private Transform currentTube;
+	[SerializeField] private Transform nextTube;
 	
 	[SerializeField] private bool isInteractable = true;
 	[SerializeField] private int activeLayer;
@@ -101,12 +103,18 @@ public class NodePattern : BetterMonoBehaviour
 		activeLayer++;
 		previousLayer = activeLayer - 1;
 
+		
+
 		if (activeLayer >= layers.Length)
 		{
 			isComplete = true;
 
 			if (nextPattern != null)
-			{
+			{	
+				/////
+				CameraTargetSelectEvent newInfo = new CameraTargetSelectEvent(currentTube, nextTube, Settings.VAL_CAMERA_MINOR_ZOOM_DISTANCE, false, false);
+				EventManager.Instance.RaiseEvent(newInfo);
+				
 				nextPattern.isInteractable = true;
 			}
 			else if(nextPattern == null && isComplete)
