@@ -13,7 +13,7 @@ public enum FunType
 
 public class UIHandler : Singleton<UIHandler>
 {
-	public Transform GearsObject { get; private set; }
+	public Transform FunTypeTab { get; private set; }
 	public Text TypeText { get; set; }
 	public List<DropZone> DropZones { get; } = new List<DropZone>();
 	private Transform dropZonesObject = null;
@@ -28,52 +28,55 @@ public class UIHandler : Singleton<UIHandler>
 	{
 		if (DropZone.OccupiedPlaces == 3)
 		{
-			foreach (Transform child in GearsObject)
-			{
-				child.GetComponent<GearInformation>().isAbleToRotate = true;
-
-				if (!DropZone.isCombinationRight)
-				{
-					child.GetComponent<GearInformation>().StopGearRotationMethod(true);
-				}
-			}
+			GearInformation.isAbleToRotate = true;
 
 			if (DropZone.isCombinationRight)
 			{
 				ButtonManager.Instance.EnableNextButton();
 
-				foreach (Transform child in GearsObject)
+				foreach (Transform child in FunTypeTab)
 				{
-					child.GetComponent<DragAndDrop>().isAbleToMove = false;
+					DragAndDrop currentDragAndDrop = child.GetComponent<DragAndDrop>();
+					if (currentDragAndDrop != null)
+					{
+						currentDragAndDrop.isAbleToMove = false;
+					}
 				}
 			}
-
-			GridHandler.Instance.EmptyDropZones();
+			else
+			{
+				foreach (Transform child in FunTypeTab)
+				{
+					GearInformation currentGearInformation = child.GetComponent<GearInformation>();
+					if (currentGearInformation != null)
+					{
+						currentGearInformation.StopGearRotationMethod(child.gameObject);
+					}
+				}
+			}
 		}
 	}
 
 	public void ChangeFunType(FunType funType)
 	{
 		DropZones.Clear();
+		GearInformation.isAbleToRotate = false;
 
 		switch (funType)
 		{
 			case FunType.EasyFun:
-				GearsObject = funTypeTabs[0].transform;
+				FunTypeTab = funTypeTabs[0].transform;
 
-				foreach (Transform child in GearsObject)
+				foreach (Transform child in FunTypeTab)
 				{
 					DropZone currentDropZone = child.GetComponent<DropZone>();
+
 					if (currentDropZone != null)
 					{
-						DropZones.Add(child.GetComponent<DropZone>());
-						child.GetComponent<DropZone>().Unoccupy();
+						currentDropZone.Unoccupy();
+						DropZones.Add(currentDropZone);
 					}
 				}
-
-				DropZones[0].neededType = GearType.Exploration;
-				DropZones[1].neededType = GearType.Fantasy;
-				DropZones[2].neededType = GearType.Creativity;
 
 				DisableTypeTabs();
 				funTypeTabs[0].SetActive(true);
@@ -81,21 +84,18 @@ public class UIHandler : Singleton<UIHandler>
 				break;
 
 			case FunType.PeopleFun:
-				GearsObject = funTypeTabs[1].transform;
+				FunTypeTab = funTypeTabs[1].transform;
 
-				foreach (Transform child in GearsObject)
+				foreach (Transform child in FunTypeTab)
 				{
 					DropZone currentDropZone = child.GetComponent<DropZone>();
+
 					if (currentDropZone != null)
 					{
-						DropZones.Add(child.GetComponent<DropZone>());
-						child.GetComponent<DropZone>().Unoccupy();
+						currentDropZone.Unoccupy();
+						DropZones.Add(currentDropZone);
 					}
 				}
-
-				DropZones[0].neededType = GearType.Communication;
-				DropZones[1].neededType = GearType.Cooperation;
-				DropZones[2].neededType = GearType.Competition;
 
 				DisableTypeTabs();
 				funTypeTabs[1].SetActive(true);
@@ -103,21 +103,19 @@ public class UIHandler : Singleton<UIHandler>
 				break;
 
 			case FunType.HardFun:
-				GearsObject = funTypeTabs[2].transform;
+				FunTypeTab = funTypeTabs[2].transform;
 
-				foreach (Transform child in GearsObject)
+				foreach (Transform child in FunTypeTab)
 				{
+
 					DropZone currentDropZone = child.GetComponent<DropZone>();
+
 					if (currentDropZone != null)
 					{
-						DropZones.Add(child.GetComponent<DropZone>());
-						child.GetComponent<DropZone>().Unoccupy();
+						currentDropZone.Unoccupy();
+						DropZones.Add(currentDropZone);
 					}
 				}
-
-				DropZones[0].neededType = GearType.Goals;
-				DropZones[1].neededType = GearType.Obstacles;
-				DropZones[2].neededType = GearType.Stategy;
 
 				DisableTypeTabs();
 				funTypeTabs[2].SetActive(true);
@@ -125,21 +123,18 @@ public class UIHandler : Singleton<UIHandler>
 				break;
 
 			case FunType.SeriousFun:
-				GearsObject = funTypeTabs[3].transform;
+				FunTypeTab = funTypeTabs[3].transform;
 
-				foreach (Transform child in GearsObject)
+				foreach (Transform child in FunTypeTab)
 				{
 					DropZone currentDropZone = child.GetComponent<DropZone>();
+
 					if (currentDropZone != null)
 					{
-						DropZones.Add(child.GetComponent<DropZone>());
-						child.GetComponent<DropZone>().Unoccupy();
+						currentDropZone.Unoccupy();
+						DropZones.Add(currentDropZone);
 					}
 				}
-
-				DropZones[0].neededType = GearType.Learing;
-				DropZones[1].neededType = GearType.Rhythm;
-				DropZones[2].neededType = GearType.Collection;
 
 				DisableTypeTabs();
 				funTypeTabs[3].SetActive(true);
