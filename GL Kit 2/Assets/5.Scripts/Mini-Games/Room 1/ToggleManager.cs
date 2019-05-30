@@ -9,7 +9,7 @@ public class ToggleManager : Singleton<ToggleManager>
 	private List<Toggle> education = new List<Toggle>();
 	private List<Toggle> specialNeeds = new List<Toggle>();
 
-	public void AddToggleToList(Toggle toggleToAdd, ToggleGroup toggleGroup)
+	public void AddToggleToList(Toggle toggleToAdd, ToggleGroup toggleGroup, Disabilities disabilities)
 	{
 		if (toggleGroup == ToggleGroup.Education && education.Count < maxOnTogglesPerList)
 		{
@@ -18,6 +18,7 @@ public class ToggleManager : Singleton<ToggleManager>
 		else if (toggleGroup == ToggleGroup.SpecialNeeds && specialNeeds.Count < maxOnTogglesPerList)
 		{
 			specialNeeds.Add(toggleToAdd);
+			UserInterfaceHandler.Instance.SetPersonaDisabilities(disabilities);
 		}
 		else
 		{
@@ -35,5 +36,5 @@ public class ToggleManager : Singleton<ToggleManager>
 		{
 			specialNeeds.Remove(toggleToRemove);
 		}
-	}
+	}	
 }
