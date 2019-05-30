@@ -84,6 +84,7 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 	public void SetPersonaDisabilities(Disabilities disabilities)
 	{
 		persona.Disability = disabilities;
+		OnPersonaChanged?.Invoke(persona);
 	}
 
 	public void SetVariables()
