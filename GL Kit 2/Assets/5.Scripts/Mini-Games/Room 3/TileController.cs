@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using GameLab;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,29 +15,30 @@ namespace Room3
 		public event Action<TileController> OnFinishedInteractingAt;
 
 		public Image Image { get; private set; }
-		public TileGrid TileGrid = null;
 
 		private Tile tileData = null;
 		public Tile TileData
 		{
 			get => tileData;
 			set
-			{
-				if (tileData != null)
-				{
-					tileData.OnConnectedToTile -= OnConnectedToTile;
-					tileData.OnDisconnectedFromTile -= OnDisconnectedFromTile;
-				}
+			{		
+					if(tileData != null)
+					{
+						tileData.OnConnectedToTile -= OnConnectedToTile;
+						tileData.OnDisconnectedFromTile -= OnDisconnectedFromTile;
+					}
 
-				tileData = value;
 
-				if (tileData != null)
-				{
-					tileData.OnConnectedToTile += OnConnectedToTile;
-					tileData.OnDisconnectedFromTile += OnDisconnectedFromTile;
-				}
+					tileData = value;
+
+					if (tileData != null)
+					{
+						tileData.OnConnectedToTile += OnConnectedToTile;
+						tileData.OnDisconnectedFromTile += OnDisconnectedFromTile;
+					}
 			}
 		}
+
 
 		private Color? originalTileColor = null;
 
@@ -46,7 +49,8 @@ namespace Room3
 
 		public void ChangeSprite(Sprite spritetoChange)
 		{
-			if (tileData.TileType != Tile.Type.EndPoint)
+			
+			if ( tileData.TileType != Tile.Type.EndPoint)
 			{
 				Image.sprite = spritetoChange;
 			}
@@ -77,7 +81,7 @@ namespace Room3
 
 		private void OnDisconnectedFromTile(Tile tileDisconnectedFrom)
 		{
-			Image.color = originalTileColor.GetValueOrDefault(TileGrid.CurrentLevelSettings.NormalTileColor);
+			Image.color = originalTileColor.GetValueOrDefault(TileGrid.Instance.CurrentLevelSettings.NormalTileColor);
 			Image.sprite = null;
 		}
 		
