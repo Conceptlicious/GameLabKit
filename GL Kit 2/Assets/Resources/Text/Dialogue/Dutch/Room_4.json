@@ -1,0 +1,20 @@
+{
+  "definedArrays": ["Dialogue"],
+
+  "Dialogue":
+  {
+    "Step 1": "We hebben al veel werk verricht vandaag! We zijn erachter gekomen wie de doelgroep van uw serious game is, wat u met uw game wil bereiken en we hebben een genre gekozen. In deze kamer gaat u nadenken over welk medium het meest geschikt is om uw game op te spelen.",
+	"Step 2": "Het ‘medium’ bevat een platform, het apparaat waarop de game gespeeld gaat worden  en eventuele randapparatuur die nodig zijn om de game op te spelen.",
+	"Step 3": "Bent u er klaar voor om een paar vragen te beantwoorden? Laten we beginnen!",
+	"Step 4": "Welk medium kan alleen gebruikt worden in combinatie met een headset die wordt geplaatst op het hoofd van de speler?",
+	"Step 5": "Geweldig! Virtual Reality kan alleen gebruikt worden met een headset!",
+	"Step 6": "Welk medium voegt extra informatie in digitale vorm toe aan de werkelijke omgeving?",
+	"Step 7": "Dat klopt! Augmented Reality voegt extra informatie in digitale vorm toe aan de werkelijke omgeving.",
+	"Step 8": "Welk medium stimuleert de hand-oog coördinatie het meest?",
+	"Step 9": "Dat is correct! Console games stimuleren de hand-oog coördinatie het meest. We gaan naar de laatste vraag.",
+	"Step 10": "Welk medium houdt fysiologische gegevens bij?",
+	"Step 11": "Top! Wearables verzamelen fysiologische gegevens",
+	"Step 12": "Had u verwacht dat er zoveel verschillende mediums zouden zijn? Nu u meer weet over elk medium, kunt u gaan nadenken welk medium het meest geschikt is voor uw game. Sleep het medium dat u wilt voor uw game onder de microscoop en klik daarna op ‘selecteer platform’!",
+	"Step 13": "U heeft voor [medium] gekozen. Bent u tevreden met uw keuze?"
+  }
+}
