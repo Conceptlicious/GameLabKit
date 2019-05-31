@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44566ac9124cb384ea85d64de1bd7b2e, type: 3}
+  m_Name: Child
+  m_EditorClassIdentifier: 
+  Male: {fileID: 21300000, guid: 718f619bf586d404793b1885207c6052, type: 3}
+  MBlind: {fileID: 21300000, guid: 8fdc1ceccd94f284c8551c2937a3834a, type: 3}
+  MBlindDeaf: {fileID: 21300000, guid: 89268577334c7944fb131d01be92a41d, type: 3}
+  MBlindDeafDepressed: {fileID: 21300000, guid: 9294a17d1cdaefd4cb01a05aab8d4b3f,
+    type: 3}
+  MBlindDepressed: {fileID: 21300000, guid: d8014588ec0c6c94680a3d66a71be4f8, type: 3}
+  MBlindDisabled: {fileID: 21300000, guid: b1fe16ac9ada72440b34ede7b8fab1eb, type: 3}
+  MBlindDisabledDeaf: {fileID: 21300000, guid: a05f42e62be15a942b17f614f5ee5a08, type: 3}
+  MBlindDisabledDeafDepressed: {fileID: 21300000, guid: 61e4a29e0d4035041bf242637436f9fd,
+    type: 3}
+  MDeaf: {fileID: 21300000, guid: 25e073ca2ff754a409536d1aaa7fee9a, type: 3}
+  MDeafDepressed: {fileID: 21300000, guid: 61c05e55385d83446ab74748475878c4, type: 3}
+  MDepressed: {fileID: 21300000, guid: 031369dfdd4f8ef4b8f8d6ad5c9f63fe, type: 3}
+  MDisabled: {fileID: 21300000, guid: 3e8a1d10ca6d2244299cd2cd32b8640b, type: 3}
+  MDisabledDeaf: {fileID: 21300000, guid: 8688fd53aa5b3c54fb7fa877baf97828, type: 3}
+  MDisabledDeafDepressed: {fileID: 21300000, guid: 6657b3bc5202f4b41bcfd24b547d1a00,
+    type: 3}
+  MDisabledDepressed: {fileID: 21300000, guid: b4d7397d4d7ec49459e5c56e5924ce47, type: 3}
+  Female: {fileID: 21300000, guid: 6c61ac23a878feb4ba59ed99fa925539, type: 3}
+  FBlind: {fileID: 21300000, guid: d3be18b9d0542f84bafc838cb3530205, type: 3}
+  FBlindDeaf: {fileID: 21300000, guid: 75b055dc2af4beb4fa4ab74f3a7ce9f3, type: 3}
+  FBlindDeafDepressed: {fileID: 21300000, guid: 0c81aab3f19d5c941838681b036faa6e,
+    type: 3}
+  FBlindDepressed: {fileID: 21300000, guid: 0c81aab3f19d5c941838681b036faa6e, type: 3}
+  FBlindDisabled: {fileID: 21300000, guid: cfb88f1012b00a54dafe87f11001de34, type: 3}
+  FBlindDisabledDeaf: {fileID: 21300000, guid: 9c1d39acd7f46aa4485b60b46959ca92, type: 3}
+  FBlindDisabledDeafDepressed: {fileID: 21300000, guid: cfb88f1012b00a54dafe87f11001de34,
+    type: 3}
+  FDeaf: {fileID: 21300000, guid: ee2d85aff7963dd4091eba2d51bad085, type: 3}
+  FDeafDepressed: {fileID: 21300000, guid: bdcb19d879b61764dbf041aaf6fa48d4, type: 3}
+  FDepressed: {fileID: 21300000, guid: c631d7432529ada4887894cfa193bdc1, type: 3}
+  FDisabled: {fileID: 21300000, guid: 85f7e3a2db3c85a41aae2f13a13f62d1, type: 3}
+  FDisabledDeaf: {fileID: 21300000, guid: 0bda9b3f3a6c81740b719ec0dbf900d5, type: 3}
+  FDisabledDeafDepressed: {fileID: 21300000, guid: 18c894262bb911845aef7ee80a071585,
+    type: 3}
+  FDisabledDepressed: {fileID: 21300000, guid: 4bbb9fc0e7a50fa4cb5fca5b0f81b6d2, type: 3}
