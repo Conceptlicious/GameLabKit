@@ -21,6 +21,7 @@ using System;
 
 	[Flags]	public enum Disabilities
 	{
+		None,
 		LowVision,
 		ScreenReaders,
 		Anxiety,

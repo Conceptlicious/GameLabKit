@@ -4358,6 +4358,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3735685552100246793, guid: 407fe366cf3e2364191b9d679c3ef99c,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GenderTogglePressed
+      objectReference: {fileID: 0}
     - target: {fileID: 3735685553079800710, guid: 407fe366cf3e2364191b9d679c3ef99c,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -4392,6 +4397,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735685553325401180, guid: 407fe366cf3e2364191b9d679c3ef99c,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GenderTogglePressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735685553684935629, guid: 407fe366cf3e2364191b9d679c3ef99c,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GenderTogglePressed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 407fe366cf3e2364191b9d679c3ef99c, type: 3}
