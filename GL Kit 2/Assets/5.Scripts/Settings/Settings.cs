@@ -40,7 +40,11 @@ public static class Settings
         "Room_1",
         "Room_2",
         "Room_3",
-        "Room_1_Popups"
+        "Room_4",
+        "Room_5",
+        "Room_6",
+        "Room_1_Popups",
+        "White_Room"
     };
     
     //----------------------------------------------------------

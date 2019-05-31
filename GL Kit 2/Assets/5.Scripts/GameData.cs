@@ -21,7 +21,7 @@ public static class GameData
         TOTAL
     };
 
-    private static Language gameLanguage = Language.ENGLISH;
+    private static Language gameLanguage = Language.DUTCH;
 
     //Returns itself so an initial set is done at compile time
     public static void SetLanguage(Language language)
