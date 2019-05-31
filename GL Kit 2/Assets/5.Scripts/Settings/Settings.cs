@@ -40,7 +40,11 @@ public static class Settings
         "Room_1",
         "Room_2",
         "Room_3",
-        "Room_1_Popups"
+        "Room_4",
+        "Room_5",
+        "Room_6",
+        "Room_1_Popups",
+        "White_Room"
     };
     
     //----------------------------------------------------------
@@ -48,6 +52,7 @@ public static class Settings
     //----------------------------------------------------------
     public const float VAL_CAMERA_ZOOM_DISTANCE                   = 50.0f;
     public const float VAL_CAMERA_MINOR_ZOOM_DISTANCE             = 1.0f;
+    
     public const float VAL_CAMERA_MOVEMENT_SPEED                  = 0.1f;
     public const float VAL_CAMERA_TRANSITION_SECONDS              = 2.5f;
     public const float VAL_CAMERA_BLUR_FOCALDISTANCE              = 0.1f;

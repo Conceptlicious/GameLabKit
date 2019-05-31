@@ -13,6 +13,10 @@ public class UIPopUpManager : MonoBehaviour
     public void Start()
     {
         registerAllListeners();
+        if (GameData.Initialised == false)
+        {
+            Dialogue.LoadAllText();
+        }
     }
 
     /// <summary>
@@ -33,37 +37,31 @@ public class UIPopUpManager : MonoBehaviour
 
     public void CreatePopUp(DialogueObject pDiagObj)
     {
-        /*if (dialogueObject.GetFileName() != Settings.LEVEL_NAMES[Settings.LEVEL_ID_FOR_POPUP_FILE])
-        {
-            Debug.Log(Settings.ERR_ASSERT_POPUP_ASSIGNED_INCORRECT_FILE);
-            return;
-        }*/
-
+        //Make sure the info inside the container is actually popup-styled info
         if (pDiagObj.Info.fieldName != Settings.JSON_POPUP_IDENTIFIER_KEY &&
             pDiagObj.GetTextAndIterate() != Settings.JSON_POPUP_IDENTIFIER_VALUE)
         {
             Debug.Log(Settings.ERR_DIAG_OBJ_POPUP_INCORRECT);
             return;
         }
+        
+        //Need to iterate once to 
+        pDiagObj.GetTextAndIterate();
 
-
-
-        Debug.Log("DETECT");
-        //layout visible
         string path = Settings.PATH_PREFABS + Settings.OBJ_NAME_UI_POPUP;
         Debug.Log(path);
         Canvas UICanvas = GameObject.Instantiate(Resources.Load<Canvas>(path));
-        //GameObject.Instantiate(UICanvas);
+     
         if (UICanvas == null)
         {
             Debug.Log("UICanvas is null");
         }
 
-        UICanvas.name = "hello";
+        UICanvas.name = "Popup: " + pDiagObj.GetContainerName();
 
         UIPopUp popup = UICanvas.GetComponent<UIPopUp>();
         Debug.Assert(popup != null, Settings.ERR_ASSERT_UI_POPUP_MISSING_COMPONENT);
-        UIPopUp.PopupFields data = popup.PopupFieldsData;
+        UIPopUp.PopupFields data = popup.PopupFieldsData;      
 
         data.title.text = pDiagObj.GetTextAndIterate();
         data.body.text = pDiagObj.GetTextAndIterate();
@@ -82,6 +80,9 @@ public class UIPopUpManager : MonoBehaviour
             newButton.transform.position = newPosition;
             newButton.GetComponentInChildren<Text>().text = buttonNames[i];
         }
+        
+        //Disable original button to clone
+        data.button.gameObject.SetActive(false); 
     }
 
     public void OnLevelProgess(LevelProgressEvent info)

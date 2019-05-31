@@ -1,24 +1,22 @@
 {
-  "definedStrings": ["roomName", "intro", "task", "idle"],
-  "definedArrays": ["objects"],
+  "definedArrays": ["Dialogue"],
 
-  "roomName": "Kamer 3 - Genre",
-  "intro": "Hallo, welkom naar de Genre kamer",
-  "task": "Jouw is te",
-  "idle": "Druk [] om te",
-
-  "objects": [
-    {
-      "name": "Ding 1",
-      "hintText": "dit ding doet iets"
-    },
-    {
-      "name": "Ding 2",
-      "hintText": "dit ding doet iets anders"
-    },
-    {
-      "name": "Ding 3",
-      "hintText": "dit ding doet nog iets anders"
-    }
-  ]
+  "Dialogue":
+  {
+	"Step 1": "Nu we meer weten over het doel en de doelgroep van uw game, kunnen we gaan nadenken over een bijpassend genre.",
+    "Step 2": "Alle game genres bestaan uit een aantal kenmerken die samen de speelstijl van een game vormen. Game genres zijn vergelijkbaar met film genres. Een film behoort tot de genre ‘romantiek’ doordat er romantische elementen aan de verhaallijn zijn toegevoegd. Dit principe geldt ook bij game genres.",
+	"Step 3": "Oké! Laten we een genre gaan maken!",
+	"Step 4": "Kunt u voor mij de hendel van de machine aan de linkerkant overhalen?",
+	"Step 5": "Super!",
+	"Step 6": "Oh néé...! De buizen zijn niet meer verbonden met de trechters. We moeten ze opnieuw verbinden, zodat de vloeistof in de trechter kan lopen. Teken een lijn tussen de buizen en de trechters om ze opnieuw te verbinden.",
+	"Step 7": "Goed gedaan, u heeft het genre ‘sport’ gecreëerd!",
+	"Step 8": "Bent u klaar om erachter te komen wat de andere genres zijn? Haal de hendel opnieuw over en verbind wederom de buizen met de trechters.",
+	"Step 9": "Top! U heeft het genre actie gecreëerd, laten we ontdekken wat het volgende genre is.",
+	"Step 10": "Perfect! U heeft het genre avontuur gecreëerd, laten we naar de volgende gaan!",
+	"Step 11": "Top! U heeft het genre simulatie gecreëerd, laten we naar de volgende gaan!",
+	"Step 12": "Geweldig! U heeft het genre role playing games gecreëerd, laten we naar de volgende gaan!",
+	"Step 13": "Super! U heeft het genre strategie gecreëerd, dit was het laatste genre.",
+	"Step 14": "Geweldig! U heeft alle bekerglazen gevuld met een genre! U kunt nu een genre kiezen die passend is voor uw game. Houdt hierbij uw doelgroep en het doel van de game in gedachten.",
+	"Step 15": "Geweldig! U heeft het genre [genre] gekozen voor uw serious game. Bent u tevreden met uw keuze?"
+  }
 }
