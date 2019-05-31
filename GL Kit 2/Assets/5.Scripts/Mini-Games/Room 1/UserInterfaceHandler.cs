@@ -92,15 +92,11 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 
 	public void SetPersonaDisabilities(List<Disabilities> disabilitiesList)
 	{
-
-		foreach(Disabilities disabilities in disabilitiesList)
-		{
 			foreach(Disabilities disability in disabilitiesList)
 			{
 				persona.Disability = persona.Disability | disability;
 			}
 			OnPersonaChanged?.Invoke(persona);
-		}		
 	}
 
 	public void SetVariables()

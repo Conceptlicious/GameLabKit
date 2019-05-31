@@ -49,6 +49,7 @@ public class SpriteHandler : BetterMonoBehaviour
 			{
 				image.sprite = characterOptions.FBlindDisabledDeafDepressed;
 			}
+			return;
 		}
 
 		if (blind && deaf && disabled)
@@ -61,6 +62,7 @@ public class SpriteHandler : BetterMonoBehaviour
 			{
 				image.sprite = characterOptions.FBlindDisabledDeaf;
 			}
+			return;
 		}
 
 		if(blind && deaf && depressed)
@@ -73,6 +75,7 @@ public class SpriteHandler : BetterMonoBehaviour
 			{
 				image.sprite = characterOptions.FBlindDeafDepressed;
 			}
+			return;
 		}
 
 		if(disabled && deaf && depressed)
@@ -85,6 +88,7 @@ public class SpriteHandler : BetterMonoBehaviour
 			{
 				image.sprite = characterOptions.FDisabledDeafDepressed;
 			}
+			return;
 		}
 
 		if(blind && deaf)
@@ -97,6 +101,7 @@ public class SpriteHandler : BetterMonoBehaviour
 			{
 				image.sprite = characterOptions.FBlindDeaf;
 			}
+			return;
 		}
 
 		if (blind && disabled)
@@ -109,6 +114,7 @@ public class SpriteHandler : BetterMonoBehaviour
 			{
 				image.sprite = characterOptions.FBlindDisabled;
 			}
+			return;
 		}
 
 		if (blind && depressed)
@@ -121,6 +127,7 @@ public class SpriteHandler : BetterMonoBehaviour
 			{
 				image.sprite = characterOptions.FBlindDepressed;
 			}
+			return;
 		}
 		if (disabled && deaf)
 		{
@@ -132,6 +139,7 @@ public class SpriteHandler : BetterMonoBehaviour
 			{
 				image.sprite = characterOptions.FDisabledDeaf;
 			}
+			return;
 		}
 		if (depressed && deaf)
 		{
@@ -143,6 +151,7 @@ public class SpriteHandler : BetterMonoBehaviour
 			{
 				image.sprite = characterOptions.FDeafDepressed;
 			}
+			return;
 		}
 		if (disabled && depressed)
 		{
@@ -154,6 +163,7 @@ public class SpriteHandler : BetterMonoBehaviour
 			{
 				image.sprite = characterOptions.FDisabledDepressed;
 			}
+			return;
 		}
 
 		if (blind)
@@ -166,6 +176,7 @@ public class SpriteHandler : BetterMonoBehaviour
 			{
 				image.sprite = characterOptions.FBlind;
 			}
+			return;
 		}
 		if (deaf)
 		{
@@ -177,6 +188,7 @@ public class SpriteHandler : BetterMonoBehaviour
 			{
 				image.sprite = characterOptions.FDeaf;
 			}
+			return;
 		}
 		if (disabled)
 		{
@@ -188,6 +200,7 @@ public class SpriteHandler : BetterMonoBehaviour
 			{
 				image.sprite = characterOptions.FDisabled;
 			}
+			return;
 		}
 		if (depressed)
 		{
@@ -199,6 +212,7 @@ public class SpriteHandler : BetterMonoBehaviour
 			{
 				image.sprite = characterOptions.FDepressed;
 			}
+				return;
 		}
 		if (isMaleOrUnspecified)
 		{

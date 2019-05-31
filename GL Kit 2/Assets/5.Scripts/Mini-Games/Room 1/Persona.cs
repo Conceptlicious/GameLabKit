@@ -21,14 +21,15 @@ using System;
 
 	[Flags]	public enum Disabilities
 	{
-		None,
-		LowVision,
-		ScreenReaders,
-		Anxiety,
-		Dyslectia,
-		PhysicalDisabileties,
-		Autism,
-		Deaf
+		None = 0,
+		LowVision = 1,
+		ScreenReaders = 2,
+		Anxiety = 4,
+		Dyslectia = 8,
+		PhysicalDisabileties = 16,
+		Autism = 32,
+		Deaf = 64,
+		All = ~0,
 	};
 
 [Serializable]
