@@ -41,6 +41,7 @@ public class SpriteHandler : BetterMonoBehaviour
 		}
 
 		currentPersona = newPersona;
+		image.color = new Color32(0, 0, 0, 255);
 
 		if (blind && deaf && disabled && depressed)
 		{
