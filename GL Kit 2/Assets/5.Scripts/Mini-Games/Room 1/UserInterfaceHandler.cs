@@ -1,4 +1,5 @@
-﻿using UnityEngine.UI;
+﻿using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using GameLab;
 using System;
@@ -84,14 +85,18 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 		}
 		else
 		{
-			ToggleManager.Instance.RemoveToggleFromList(pressedToggle);
+			ToggleInformation currentToggleInformation = pressedToggle.GetComponent<ToggleInformation>();
+			ToggleManager.Instance.RemoveToggleFromList(pressedToggle, currentToggleInformation.disabilities);
 		}
 	}
 
-	public void SetPersonaDisabilities(Disabilities disabilities)
+	public void SetPersonaDisabilities(List<Disabilities> disabilitiesList)
 	{
-		persona.Disability = disabilities;
-		OnPersonaChanged?.Invoke(persona);
+			foreach(Disabilities disability in disabilitiesList)
+			{
+				persona.Disability = persona.Disability | disability;
+			}
+			OnPersonaChanged?.Invoke(persona);
 	}
 
 	public void SetVariables()
