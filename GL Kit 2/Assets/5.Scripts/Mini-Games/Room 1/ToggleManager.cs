@@ -8,6 +8,7 @@ public class ToggleManager : Singleton<ToggleManager>
 
 	private List<Toggle> education = new List<Toggle>();
 	private List<Toggle> specialNeeds = new List<Toggle>();
+	private List<Disabilities> disabilitiesList = new List<Disabilities>();
 
 	public void AddToggleToList(Toggle toggleToAdd, ToggleGroup toggleGroup, Disabilities disabilities)
 	{
@@ -18,7 +19,8 @@ public class ToggleManager : Singleton<ToggleManager>
 		else if (toggleGroup == ToggleGroup.SpecialNeeds && specialNeeds.Count < maxOnTogglesPerList)
 		{
 			specialNeeds.Add(toggleToAdd);
-			UserInterfaceHandler.Instance.SetPersonaDisabilities(disabilities);
+			disabilitiesList.Add(disabilities);
+			UserInterfaceHandler.Instance.SetPersonaDisabilities(disabilitiesList);
 		}
 		else
 		{
@@ -26,7 +28,7 @@ public class ToggleManager : Singleton<ToggleManager>
 		}
 	}
 
-	public void RemoveToggleFromList(Toggle toggleToRemove)
+	public void RemoveToggleFromList(Toggle toggleToRemove, Disabilities disabilitiesToRemove)
 	{
 		if (education.Contains(toggleToRemove))
 		{
@@ -35,6 +37,8 @@ public class ToggleManager : Singleton<ToggleManager>
 		else
 		{
 			specialNeeds.Remove(toggleToRemove);
+			disabilitiesList.Remove(disabilitiesToRemove);
+			UserInterfaceHandler.Instance.SetPersonaDisabilities(disabilitiesList);
 		}
 	}	
 }

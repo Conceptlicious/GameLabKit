@@ -31,13 +31,13 @@ public class SpriteHandler : BetterMonoBehaviour
 		if (age != newPersona.Age)
 		{
 			image.sprite = null;
-			image.color = new Color32(0, 0, 0, 0);
+			image.color = new Color32(255, 255, 255, 0);
 			currentPersona = newPersona;
 			return;
 		}
 
 		currentPersona = newPersona;
-		image.color = new Color32(0, 0, 0, 255);
+		image.color = new Color32(255, 255, 255, 255);
 
 		if (blind && deaf && disabled && depressed)
 		{
@@ -199,6 +199,14 @@ public class SpriteHandler : BetterMonoBehaviour
 			{
 				image.sprite = characterOptions.FDepressed;
 			}
+		}
+		if (isMaleOrUnspecified)
+		{
+			image.sprite = characterOptions.Male;
+		}
+		else
+		{
+			image.sprite = characterOptions.Female;
 		}
 	}
 
