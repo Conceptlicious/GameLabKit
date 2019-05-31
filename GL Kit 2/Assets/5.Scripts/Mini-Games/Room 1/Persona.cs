@@ -12,7 +12,7 @@ using System;
 		Elderly
 	};
 
-	public enum Gender
+	public enum Genders
 	{
 		Unspecified,
 		Female,
@@ -29,10 +29,31 @@ using System;
 		Autism,
 		Deaf
 	};
+
+[Serializable]
 public struct Persona
 {
 	public Disabilities Disability;
 	public AgeGroup Age;
-	public Gender Gender;
+	public Genders Gender;
 
+	public bool ComparePersonas(Persona other)
+	{
+		return other.Disability == Disability && other.Age == Age && other.Gender == Gender;
+	}
+
+	public bool ComparePersonasAge(Persona other)
+	{
+		return other.Age == Age;
+	}
+
+	public bool ComparePersonasGender(Persona other)
+	{
+		return other.Gender == Gender;
+	}
+
+	public bool ComparePersonasDisablity(Persona other)
+	{
+		return other.Disability == Disability;
+	}
 }
