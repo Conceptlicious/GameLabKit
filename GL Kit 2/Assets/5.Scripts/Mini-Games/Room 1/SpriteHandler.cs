@@ -16,23 +16,19 @@ public class SpriteHandler : BetterMonoBehaviour
 	{
 		image = GetComponent<Image>();
 		UserInterfaceHandler.Instance.OnPersonaChanged += OnPersonaChange;
-
 	}
 
 	private void OnPersonaChange(Persona newPersona)
 	{
+		
 		bool isMaleOrUnspecified = (newPersona.Gender == Genders.Male || newPersona.Gender == Genders.Unspecified);
 		bool blind = (newPersona.Disability.HasFlag(Disabilities.LowVision));
 		bool deaf = (newPersona.Disability.HasFlag(Disabilities.Deaf));
 		bool disabled = (newPersona.Disability.HasFlag(Disabilities.PhysicalDisabileties));
 		bool depressed = (newPersona.Disability.HasFlag(Disabilities.Anxiety));
 
-		if (currentPersona.ComparePersonas(newPersona))
-		{
-			return;
-		}
-
-		if (!currentPersona.ComparePersonasAge(newPersona))
+		Debug.Log("event called");
+		if (age != newPersona.Age)
 		{
 			image.sprite = null;
 			image.color = new Color32(0, 0, 0, 0);
