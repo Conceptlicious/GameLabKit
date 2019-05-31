@@ -29,9 +29,11 @@ public static class Dialogue
         {
             files[i] = JsonParser.ParseJSONFile(Settings.LEVEL_NAMES[i]);
         }
-        
+
+        Debug.Log("Reloading all files.");
+
         //Turn into event
-        //GameData.Initialised = true;
+        GameData.Initialised = true;
     }
 
     /// <summary>

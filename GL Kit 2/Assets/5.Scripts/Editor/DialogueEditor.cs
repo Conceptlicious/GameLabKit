@@ -38,12 +38,18 @@ public class DialogueEditor : Editor
 		
 	}
 
-      
-       
+
+	private void LoadExistingValues(DialogueObject pObject)
+	{
+		fileNameIndex = pObject.Info.fileIndex;
+		containerNameIndex = pObject.Info.containerIndex;
+		keyNameIndex = pObject.Info.fieldIndex;
+	}
 
 	private void PopulateOptions()
 	{
 		DialogueObject dialogueObject = (DialogueObject)target;
+		LoadExistingValues(dialogueObject);
 
 		if (GameData.Initialised == false)
 		{

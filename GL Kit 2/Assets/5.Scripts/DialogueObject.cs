@@ -86,6 +86,12 @@ public class DialogueObject : MonoBehaviour
 	{
 		return Dialogue.GetFileNames()[info.fileIndex];
 	}
+
+	public string GetContainerName()
+	{
+		string[] strArr = Dialogue.GetContainerNames(info.fileIndex);
+		return strArr[info.containerIndex];
+	}
 	
     }
 	

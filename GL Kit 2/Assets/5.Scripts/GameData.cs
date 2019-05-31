@@ -28,7 +28,7 @@ public static class GameData
     {
         gameLanguage = language;
         Dialogue.LoadAllText();
-        
+        initialised = true;
     }
 
     public static Language GetLanguage()

@@ -41,6 +41,7 @@
               <e p="ObjectFoundEvent.cs" t="Include" />
             </e>
             <e p="Room 1" t="Include">
+              <e p="Persona.cs" t="Include" />
               <e p="ToggleInformation.cs" t="Include" />
               <e p="ToggleManager.cs" t="Include" />
               <e p="UserInterfaceHandler.cs" t="Include" />
