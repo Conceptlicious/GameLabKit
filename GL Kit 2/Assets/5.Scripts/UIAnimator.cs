@@ -15,6 +15,15 @@ public class UIAnimator : Singleton<UIAnimator>
 
     private UISlidingObject[] slidingObject = null;
     private float lengthOfAnimation = 0.0f;
+
+    public enum MoveType
+    {
+        ARC,
+        TRANSITION,
+        TOTAL
+    };
+
+    private MoveType moveType;
    
 
     // Start is called before the first frame update
@@ -44,8 +53,16 @@ public class UIAnimator : Singleton<UIAnimator>
 
             for (int i = 0; i < slidingObject.Length; i++)
             {
-                float sineCapped = fracComplete >=  slidingObject[i].InOutPercentages.x && fracComplete <= slidingObject[i].InOutPercentages.y ? 1.0f : Mathf.Abs(Mathf.Sin(FREQUENCY_CHANGE * (Mathf.PI * fracComplete)));
-                slidingObject[i].MainObject.transform.position = Vector3.Lerp(slidingObject[i].HiddenPosition.position, slidingObject[i].ShownPosition.position, sineCapped);
+                switch (moveType)
+                {
+                       case MoveType.ARC:
+                           MoveOverArc(i, fracComplete);
+                           break;
+                       
+                       case MoveType.TRANSITION:
+                           MoveBetweenPoints(i, fracComplete);
+                           break;
+                }
             }
         
             //textBox.transform.position = 
@@ -58,12 +75,30 @@ public class UIAnimator : Singleton<UIAnimator>
         
     }
 
-    public void AnimateObjects(UISlidingObject[] pSlidingObject, float pLengthOfAnimation)
+    private void MoveOverArc(int pIndex, float pFracComplete)
+    {
+        float sineCapped = pFracComplete >=  slidingObject[pIndex].InOutPercentages.x && pFracComplete <= slidingObject[pIndex].InOutPercentages.y ? 1.0f : Mathf.Abs(Mathf.Sin(FREQUENCY_CHANGE * (Mathf.PI * pFracComplete)));
+        slidingObject[pIndex].MainObject.transform.position = Vector3.Lerp(slidingObject[pIndex].HiddenPosition.position, slidingObject[pIndex].ShownPosition.position, sineCapped);
+    }
+
+    private void MoveBetweenPoints(int pIndex, float pFracComplete)
+    {
+        slidingObject[pIndex].MainObject.transform.position = Vector3.Lerp(slidingObject[pIndex].HiddenPosition.position, slidingObject[pIndex].ShownPosition.position, pFracComplete);
+        Vector3 temporary = new Vector3();
+
+        //flip the locations
+        temporary = slidingObject[pIndex].HiddenPosition.position;
+        slidingObject[pIndex].HiddenPosition.position = slidingObject[pIndex].ShownPosition.position;
+        slidingObject[pIndex].ShownPosition.position = temporary;
+    }
+
+    public void AnimateObjects(UISlidingObject[] pSlidingObject, float pLengthOfAnimation, MoveType pMoveType)
     {
         startTime = Time.time;
         lengthOfAnimation = pLengthOfAnimation;
         slidingObject = pSlidingObject;
         handler += MoveObjects;
+        moveType = pMoveType;
     }
     
  }

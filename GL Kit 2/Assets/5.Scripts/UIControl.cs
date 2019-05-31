@@ -33,6 +33,15 @@ public class UIControl : MonoBehaviour
         
     }
 
+    public void ProgressDialogue()
+    {
+        if (SpeechBubble.Instance.DiagObject != null)
+        {
+            SpeechBubble.Instance.DiagObject.GetTextAndIterate();
+        }
+       
+    }
+
     public void PopUpWithParam(DialogueObject pDialogueObject)
     {
         CreateSpesifiedPopUpEvent newInfo = new CreateSpesifiedPopUpEvent(pDialogueObject);

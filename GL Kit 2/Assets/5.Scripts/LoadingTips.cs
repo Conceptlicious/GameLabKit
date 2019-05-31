@@ -9,8 +9,6 @@ using UnityEngine.UI;
 
 public class LoadingTips : MonoBehaviour
 {
-	[SerializeField] private UISlidingObject[] slidingObject;
-	[SerializeField] private Text textField = null;
 	[SerializeField] private DialogueObject dialogueObject = null;
 	[SerializeField] private bool tipsAreRandom = false;
 
@@ -35,13 +33,17 @@ public class LoadingTips : MonoBehaviour
 
 	private void OnTransition(CameraTargetSelectEvent info)
 	{
+		SpeechBubble.FillTextMethod method;
 		if (info != null & info.showTips == true)
 		{
-			textField.text = tipsAreRandom == true
-				? dialogueObject.GetRandomText()
-				: dialogueObject.GetTextAndIterate();
+			method = tipsAreRandom == true
+				? SpeechBubble.FillTextMethod.RANDOM
+				: SpeechBubble.FillTextMethod.ITERATE;
 
-			UIAnimator.Instance.AnimateObjects(slidingObject, Settings.VAL_CAMERA_TRANSITION_SECONDS);
+			//UIAnimator.Instance.AnimateObjects(slidingObject, Settings.VAL_CAMERA_TRANSITION_SECONDS, UIAnimator.MoveType.ARC);
+			
+			FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(dialogueObject, Settings.VAL_CAMERA_TRANSITION_SECONDS, UIAnimator.MoveType.ARC, method, true);
+			EventManager.Instance.RaiseEvent(newInfo);
 		}
 	}
 }

@@ -34,6 +34,7 @@
               <e p="EventInfo.cs" t="Include" />
               <e p="EventSystem.cs" t="Include" />
               <e p="EventTypes.cs" t="Include" />
+              <e p="FillSpeechBubbleEvent.cs" t="Include" />
               <e p="GenericEvent.cs" t="Include" />
               <e p="ICustomMessageTarget.cs" t="Include" />
               <e p="LevelProgressEvent.cs" t="Include" />
@@ -96,6 +97,7 @@
             <e p="LoadingPaths.cs" t="Include" />
             <e p="Settings.cs" t="Include" />
           </e>
+          <e p="SpeechBubble.cs" t="Include" />
           <e p="UIAnimator.cs" t="Include" />
           <e p="UIControl.cs" t="Include" />
           <e p="UIPopUp.cs" t="Include" />
