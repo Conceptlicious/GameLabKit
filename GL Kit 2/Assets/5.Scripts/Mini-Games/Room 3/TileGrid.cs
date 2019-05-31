@@ -132,7 +132,7 @@ namespace Room3
 			tileController.TileData = tileData;
 			tileController.TileData.SpriteSettings = tileSprites;
 			tileData.controller = tileController;
-			tileController.TileGrid = this;
+
 			tileController.OnInteractedWith += OnTileInteractedWith;
 			tileController.OnFinishedInteractingAt += OnFinishedInteractingAtTile;
 
