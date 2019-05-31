@@ -47,7 +47,7 @@ public class DialogueManager : Singleton<DialogueManager>
 		}
 		else
 		{
-			dialogueText.color = Color.white;
+			dialogueText.color = Color.gray;
 		}
 
 		dialogueText.text = CurrentDialogue;

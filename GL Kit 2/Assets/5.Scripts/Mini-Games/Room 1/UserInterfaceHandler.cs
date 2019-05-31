@@ -15,13 +15,16 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 	private Text targetAudienceText = null;
 	private Text minAgeText = null;
 	private Text maxAgeText = null;
-	
+
+	private void Start()
+	{
+		SetVariables();
+	}
+
 	public void UpdateAgeSlider()
 	{
-		minAgeText.text = ageSilderMin.value.ToString();
-		maxAgeText.text = ageSilderMax.value.ToString();
-
 		float calculateAverageAge = (ageSilderMin.value + ageSilderMax.value) / 2;
+
 		int averageAge = Mathf.RoundToInt(calculateAverageAge);
 
 		if (averageAge >= 60)
@@ -44,6 +47,10 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 			targetAudienceText.text = $"Child\n{averageAge}";
 			persona.Age = AgeGroup.Child;
 		}
+
+
+		minAgeText.text = ageSilderMin.value.ToString();
+		maxAgeText.text = ageSilderMax.value.ToString();
 
 		AverageAgeSlider.value = averageAge;
 		OnPersonaChanged?.Invoke(persona);
@@ -89,13 +96,19 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 
 	public void SetVariables()
 	{
-		ageSilderMin = transform.Find("AgeSliders/AgeSliderMin").GetComponent<Slider>();
-		ageSilderMax = transform.Find("AgeSliders/AgeSliderMax").GetComponent<Slider>();
-		AverageAgeSlider = transform.Find("AgeSliders/AverageAge").GetComponent<Slider>();
+		Transform ageSliders = transform.Find("AgeSliders");
+
+		ageSilderMin = ageSliders.Find("AgeSliderMin").GetComponent<Slider>();
+		ageSilderMax = ageSliders.Find("AgeSliderMax").GetComponent<Slider>();
+		AverageAgeSlider = ageSliders.Find("AverageAge").GetComponent<Slider>();
+
+		ageSilderMax.onValueChanged.AddListener((_) => UpdateAgeSlider());
+		ageSilderMin.onValueChanged.AddListener((_) => UpdateAgeSlider());
 
 		targetAudienceText = ageSilderMin.transform.Find("TargetAudicence").GetComponent<Text>();
 		minAgeText = ageSilderMin.transform.Find("Handle Slide Area/Handle/Text").GetComponent<Text>();
 		maxAgeText = ageSilderMax.transform.Find("Handle Slide Area/Handle/Text").GetComponent<Text>();
+
 		UpdateAgeSlider();
 	}
 

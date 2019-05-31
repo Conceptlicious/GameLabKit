@@ -73,8 +73,6 @@ public class RoomManager : MonoBehaviour
 
     private void OnNextRoomCommand(NextRoomEvent pInfo)
     {
-        
-        Debug.Log("heard");
         //0, 0, 0
         //0, 0, 3
         
