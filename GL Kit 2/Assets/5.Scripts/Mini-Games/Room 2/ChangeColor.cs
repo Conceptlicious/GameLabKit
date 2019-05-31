@@ -7,11 +7,11 @@ public class ChangeColor
 {
 	public static Color NewColor(float red, float green, float blue, float alpha)
 	{
+		Color.RGBToHSV(new Color(red, green, blue, alpha),
+			out float H, out float S, out float V);
+
 		Color newColor = Color.white;
-		newColor.r = red;
-		newColor.g = green;
-		newColor.b = blue;
-		newColor.a = alpha;
+
 
 		return newColor;
 	}
