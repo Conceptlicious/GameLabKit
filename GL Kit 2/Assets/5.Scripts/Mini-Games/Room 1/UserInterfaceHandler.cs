@@ -53,15 +53,15 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 	{
 		if(pressedToggle.name == "Unspecified")
 		{
-			persona.Gender = Gender.Unspecified;
+			persona.Gender = Genders.Unspecified;
 		}
 		if (pressedToggle.name == "Female")
 		{
-			persona.Gender = Gender.Female;
+			persona.Gender = Genders.Female;
 		}
 		if (pressedToggle.name == "Male")
 		{
-			persona.Gender = Gender.Male;
+			persona.Gender = Genders.Male;
 		}
 
 		OnPersonaChanged?.Invoke(persona);
