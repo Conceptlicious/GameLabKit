@@ -6,8 +6,10 @@ using UnityEngine;
 public class CameraSnapEvent : GameLabEvent
 {
     public Transform focalPoint;
-    public CameraSnapEvent(Transform pFocalPoint)
+    public bool considerAsTransition;
+    public CameraSnapEvent(Transform pFocalPoint, bool pConsiderAsTranstion)
     {
         focalPoint = pFocalPoint;
+        considerAsTransition = pConsiderAsTranstion;
     }
 }

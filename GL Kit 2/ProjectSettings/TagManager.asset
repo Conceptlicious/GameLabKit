@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DragAndDropCanvas
   - InteractibleGearSocket
+  - 'Dialogue: BlankGameObject'
   layers:
   - Default
   - TransparentFX

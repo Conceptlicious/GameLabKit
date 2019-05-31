@@ -107,7 +107,12 @@ public class CameraControl : MonoBehaviour
 			handler -= MoveToTarget;
 
 			Destroy(targetList[(int) TargetPoints.CENTRE].gameObject);
-                    
+
+			if (RoomManager.Instance.GetRoomIDs().y != RoomManager.Instance.GetRoomIDs().z)
+			{
+				FinishedRoomTransition newInfo = new FinishedRoomTransition();
+				EventManager.Instance.RaiseEvent(newInfo);
+			}
         }
         
     }
@@ -115,6 +120,11 @@ public class CameraControl : MonoBehaviour
     private void OnCameraSnap(CameraSnapEvent info)
     {
         cam.transform.position = info.focalPoint.position;
+	    if (info.considerAsTransition == true)
+	    {
+		    FinishedRoomTransition newInfo = new FinishedRoomTransition();
+		    EventManager.Instance.RaiseEvent(newInfo);
+	    }
     }
  
 

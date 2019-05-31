@@ -26,22 +26,10 @@ public class UIAnimator : Singleton<UIAnimator>
     private MoveType moveType;
    
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        handler += NullUpdate; 
-    }
-
-
     // Update is called once per frame
     void FixedUpdate()
     {
-        handler();
-    }
-
-    private void NullUpdate()
-    {
-        
+        handler?.Invoke();
     }
     
     private void MoveObjects()
@@ -69,10 +57,28 @@ public class UIAnimator : Singleton<UIAnimator>
         
             if(fracComplete >= 0.999f)
             {       
+                
+                if (moveType == MoveType.TRANSITION)
+                {
+                    FlipPositions();
+                }
                 handler -= MoveObjects;
             }
         }
         
+    }
+
+    private void FlipPositions()
+    {
+        for (int i = 0; i < slidingObject.Length; i++)
+        {
+            Vector3 temporary = new Vector3();
+
+            //flip the locations
+            temporary = slidingObject[i].HiddenPosition.position;
+            slidingObject[i].HiddenPosition.position = slidingObject[i].ShownPosition.position;
+            slidingObject[i].ShownPosition.position = temporary;
+        }
     }
 
     private void MoveOverArc(int pIndex, float pFracComplete)
@@ -84,21 +90,26 @@ public class UIAnimator : Singleton<UIAnimator>
     private void MoveBetweenPoints(int pIndex, float pFracComplete)
     {
         slidingObject[pIndex].MainObject.transform.position = Vector3.Lerp(slidingObject[pIndex].HiddenPosition.position, slidingObject[pIndex].ShownPosition.position, pFracComplete);
-        Vector3 temporary = new Vector3();
-
-        //flip the locations
-        temporary = slidingObject[pIndex].HiddenPosition.position;
-        slidingObject[pIndex].HiddenPosition.position = slidingObject[pIndex].ShownPosition.position;
-        slidingObject[pIndex].ShownPosition.position = temporary;
+       
     }
 
     public void AnimateObjects(UISlidingObject[] pSlidingObject, float pLengthOfAnimation, MoveType pMoveType)
     {
+        Debug.Log("Begin");
         startTime = Time.time;
         lengthOfAnimation = pLengthOfAnimation;
         slidingObject = pSlidingObject;
+        ResetPositions();
         handler += MoveObjects;
         moveType = pMoveType;
+    }
+
+    private void ResetPositions()
+    {
+        for (int i = 0; i < slidingObject.Length; i++)
+        {
+            slidingObject[i].MainObject.transform.position = slidingObject[i].HiddenPosition.position;
+        }
     }
     
  }

@@ -10,12 +10,13 @@ public class FillSpeechBubbleEvent : GameLabEvent
 	public UIAnimator.MoveType moveType;
 	public SpeechBubble.FillTextMethod method;
 	public bool shouldAnimate;
+	
 	public FillSpeechBubbleEvent(DialogueObject pDialogueObject, float pTime, UIAnimator.MoveType pMoveType, SpeechBubble.FillTextMethod pFillTextMethod, bool pShouldAnimate)
 	{
 		dialogueObject = pDialogueObject;
 		time = pTime;
 		moveType = pMoveType;
 		method = pFillTextMethod;
-		shouldAnimate = pShouldAnimate;
+		shouldAnimate = pShouldAnimate;		
 	}
 }

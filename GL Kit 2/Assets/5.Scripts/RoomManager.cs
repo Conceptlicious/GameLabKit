@@ -1,7 +1,7 @@
 ﻿using GameLab;
 using UnityEngine;
 
-public class RoomManager : MonoBehaviour
+public class RoomManager : Singleton<RoomManager>
 {
     [Tooltip("The available number of focal points is dictated by the Settings.cs file.")]
     [SerializeField] private Transform[] roomFocalPoints;
@@ -15,7 +15,7 @@ public class RoomManager : MonoBehaviour
     private GameObject blankFocal = null;
 
     //[OLD ORIGIN, ORIGIN, TARGET]
-    private Vector3Int currentRoom = new Vector3Int(0, 0, 0);
+    private Vector3Int currentRoom = new Vector3Int(-1, 0, 0);
 
     void Awake()
     {
@@ -53,10 +53,19 @@ public class RoomManager : MonoBehaviour
 		}
 	}
 
+    /// <summary>
+    /// Returns a Vector3 describing the (OLD ORIGIN, ORIGIN, TARGET) room IDs.
+    /// </summary>
+    /// <returns></returns>
+    public Vector3Int GetRoomIDs()
+    {
+        return currentRoom;
+    }
+
 	private void SnapFocusRoom(int pID)
     {
         pID = pID % roomFocalPoints.Length;
-        CameraSnapEvent newInfo = new CameraSnapEvent(roomFocalPoints[pID]);
+        CameraSnapEvent newInfo = new CameraSnapEvent(roomFocalPoints[pID], true);
         EventManager.Instance.RaiseEvent(newInfo);
     }
     
