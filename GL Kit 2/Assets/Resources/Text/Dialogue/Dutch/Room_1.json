@@ -1,31 +1,11 @@
-{ 
-  "definedStrings": ["roomName", "intro", "task", "idle", "pressed", "quick"],
-  "definedArrays": ["objects"],
-  
-  "roomName": "Kamer 1 - Doelgroep",
-  "intro": "Hallo, welkom naar de Doelgroep kamer",
-  "task": "Jouw taak is te...",
-  "idle": "Druk [] om te...",
-  "quick": "dsuu",
-  "pressed": "U heb een knopje ingedrukd.",
-  
-  "objects": [
-    {
-      "name": "Book",
-      "hintText": "dit ding doet iets",
-      "colour": "dit ding is groen"
-    },
-    {
-      "name": "Binoculars",
-      "hintText": "Binoculars reprensnsdnnfd"
-    },
-    {
-      "name": "Ding 3",
-      "hintText": "dit ding doet nog iets anders"
-    }
-  ]
-  
-  
-  
-  
+{
+  "definedArrays": ["Dialogue"],
+
+  "Dialogue":
+  {
+	"Step 1": "Welkom in de eerste kamer. In deze kamer zoomen we in op de doelgroep die u met uw game wil bereiken.",
+	"Step 2": "Als we het hebben over de doelgroep bedoelen we de mensen die uw game gaan spelen en hiervan profiteren. Het is belangrijk om te weten wie u met uw game wil bereiken. Laten we beginnen!",
+	"Step 3": "Goed gedaan! U heeft de doelgroep voor uw game gevisualiseerd! Bent u blij met de keuzes die u heeft gemaakt?",
+	"Step 4": "Mijn complimenten! Nu weten we wie uw doelgroep is en hoe deze eruitziet. Elke keer als we een kamer voltooien ontvangt u een element die u in de ontwerp ruimte kan plaatsen. In deze kamer ziet u de vormgeving van uw game. Laten we er naar toe gaan om te zien wat we allemaal nog moeten doen."
+  }
 }
