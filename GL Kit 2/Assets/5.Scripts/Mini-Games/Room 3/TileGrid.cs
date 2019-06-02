@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using GameLab;
-using Room3;
 using UnityEngine;
 
 namespace Room3
 {
 	public class TileGrid : Singleton<TileGrid>
 	{
-		public bool HasInteractedWithTile => lastInteractedWithTile != null;
+		public bool HasInteractedWithTile => lastInteractedWithTileController != null;
 
 		// TODO: CLeanup current level management
 		public Level CurrentLevel
@@ -34,7 +32,7 @@ namespace Room3
 		private TileLayer mainLayer = null;
 		private TileLayer bridgeLayer = null;
 
-		private TileController lastInteractedWithTile = null;
+		private TileController lastInteractedWithTileController = null;
 
 		private HashSet<Tile.Group> finishedGroups = new HashSet<Tile.Group>();
 
@@ -90,7 +88,8 @@ namespace Room3
 			DestroySpawnedLevel();
 
 			mainLayer = new TileLayer(level.Rows, level.Cols);
-			bridgeLayer = new TileLayer(level.Rows, level.Cols);
+			bridgeLayer = new TileLayer(level.Rows, level.Cols, Tile.Type.Obstacle);
+
 			Level.ColorSettings levelColorSettings = CurrentLevelSettings;
 			Color32[] levelPixelData = level.LevelTexture.GetPixels32();
 
@@ -106,41 +105,37 @@ namespace Room3
 				if (pixel.CompareRGB(levelColorSettings.BridgeTileColor))
 				{
 					mainLayer.Tiles[row, col].AllowedConnectionDirections = Tile.ConnectionDirection.East | Tile.ConnectionDirection.West;
-					mainLayer.Tiles[row, col].OnBridgeLayer = false;
 					bridgeLayer.Tiles[row, col].AllowedConnectionDirections = Tile.ConnectionDirection.North | Tile.ConnectionDirection.South;
-					bridgeLayer.Tiles[row, col].OnBridgeLayer = true;
+					bridgeLayer.Tiles[row, col].TileType = Tile.Type.Connection;
 				}
 
 				Tile tileData = mainLayer.Tiles[row, col];
-				Tile bridgeLayerTileData = bridgeLayer.Tiles[row, col];
 
-				bridgeLayerTileData.TileGroup = levelColorSettings.GetTileGroupFromColor(pixel);
-				bridgeLayerTileData.TileType = levelColorSettings.GetTileTypeFromColor(pixel);
 				tileData.TileGroup = levelColorSettings.GetTileGroupFromColor(pixel);
 				tileData.TileType = levelColorSettings.GetTileTypeFromColor(pixel);
-				TileController tileController = SpawnTileController(tileData, anchorStepPerColumn, anchorStepPerRow, tileSpriteSettings);
+
+				TileController tileController = SpawnTileController(row, col, anchorStepPerColumn, anchorStepPerRow);
+
+				tileController.AddTilesToControl(mainLayer.Tiles[row, col], bridgeLayer.Tiles[row, col]);
 				tileController.Image.color = pixel;
+
+				tileController.Interacted += OnTileInteractedWith;
+				tileController.OnFinishedInteractingAt += OnFinishedInteractingAtTile;
 			}
 		}
 
-		private TileController SpawnTileController(Tile tileData, float anchorStepPerColumn, float anchorStepPerRow, TileSpriteSettings tileSprites)
+		private TileController SpawnTileController(int row, int col, float anchorStepPerColumn, float anchorStepPerRow)
 		{
 			TileController tileController = Instantiate(tileControllerPrefab, Vector3.zero, Quaternion.identity, CachedTransform);
 
-			tileController.name = $"Tile {tileData.Row}, {tileData.Col}";
+			tileController.name = $"Tile {row}, {col}";
 
-			tileController.TileData = tileData;
-			tileController.TileData.SpriteSettings = tileSprites;
-			tileData.controller = tileController;
-
-			tileController.OnInteractedWith += OnTileInteractedWith;
-			tileController.OnFinishedInteractingAt += OnFinishedInteractingAtTile;
-
-			tileController.CachedRectTransform.anchorMin = new Vector2(tileData.Col * anchorStepPerColumn, tileData.Row * anchorStepPerRow);
-			tileController.CachedRectTransform.anchorMax = new Vector2((tileData.Col + 1) * anchorStepPerColumn, (tileData.Row + 1) * anchorStepPerRow);
+			tileController.CachedRectTransform.anchorMin = new Vector2(col * anchorStepPerColumn, row * anchorStepPerRow);
+			tileController.CachedRectTransform.anchorMax = new Vector2((col + 1) * anchorStepPerColumn, (row + 1) * anchorStepPerRow);
 
 			tileController.CachedRectTransform.offsetMin = tileController.CachedRectTransform.offsetMax = Vector3.zero;
 			tileController.CachedRectTransform.localPosition = new Vector3(tileController.CachedRectTransform.localPosition.x, tileController.CachedRectTransform.localPosition.y, 0.0f);
+
 			return tileController;
 		}
 
@@ -155,103 +150,108 @@ namespace Room3
 			mainLayer = null;
 			bridgeLayer = null;
 
-			lastInteractedWithTile = null;
+			lastInteractedWithTileController = null;
 			finishedGroups.Clear();
 		}
 
-		private void OnTileInteractedWith(TileController tile)
+		private void OnTileInteractedWith(TileController tileController)
 		{
 			if (!canBeInteractedWith)
 			{
 				return;
 			}
 
-			if (tile == lastInteractedWithTile)
+			if (tileController == lastInteractedWithTileController)
 			{
 				return;
 			}
 
-			Tile tileData = tile.TileData;
-		
 			if (!HasInteractedWithTile)
 			{
-				TryResumePathFrom(tile);
+				TryResumePathFrom(tileController);
 				return;
 			}
 
-			if (TryRemoveTileConnectionsAfter(tile))
+			if (TryRemoveTileConnectionsAfter(tileController))
 			{
 				return;
 			}
 
-			if (finishedGroups.Contains(lastInteractedWithTile.TileData.TileGroup))
+			if(IsTilePartOfFinishedGroups(tileController))
 			{
 				return;
 			}
 
-			if (!tileData.TryConnectTo(lastInteractedWithTile.TileData))
+			if(!tileController.TryConnectTo(lastInteractedWithTileController))
 			{
-				if (bridgeLayer.Tiles[tileData.Row, tileData.Col].TileType == Tile.Type.Connection)
-				{
-					InteractWithBridge(bridgeLayer.Tiles[tileData.Row, tileData.Col]);
-				}
 				return;
 			}
 
-			ValidatePath(tile, lastInteractedWithTile);
+			ValidatePath(tileController, lastInteractedWithTileController);
 
-			if (tile.TileData.Row == lastInteractedWithTile.TileData.Row)
+			if (tileController.Row == lastInteractedWithTileController.Row)
 			{
-				tile.ChangeSprite(tileSpriteSettings.TubeWestToEast);
+				tileController.ChangeSprite(tileSpriteSettings.TubeWestToEast);
 			}
 			else
 			{
-				tile.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
+				tileController.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
 			}
 
-			lastInteractedWithTile = tile;
+			lastInteractedWithTileController = tileController;
+
 			UpdateWinStatus();
 		}
-
-		private void InteractWithBridge(Tile bridge)
+		
+		private bool IsTilePartOfFinishedGroups(TileController tileController)
 		{
-			if (bridge == bridgeLayer.Tiles[lastInteractedWithTile.TileData.Row, lastInteractedWithTile.TileData.Col])
+			foreach(Tile controlledTile in tileController.ControlledTiles)
 			{
-				return;
+				if(controlledTile.TileType == Tile.Type.Obstacle)
+				{
+					continue;
+				}
+
+				if(!finishedGroups.Contains(controlledTile.TileGroup))
+				{
+					return false;
+				}
 			}
 
-			if (finishedGroups.Contains(bridgeLayer.Tiles[lastInteractedWithTile.TileData.Row, lastInteractedWithTile.TileData.Col].TileGroup))
-			{
-				return;
-			}
-
-			if (!bridge.TryConnectTo(lastInteractedWithTile.TileData))
-			{
-				return;
-			}
-			UpdateWinStatus();
+			return true;
 		}
 
-		private void ValidatePath(TileController currentTile, TileController lastTile)
+		private void ValidatePath(TileController currentTileController, TileController lastTileController)
 		{
-
-			TilePath path = mainLayer.CalculatePathForGroup(lastTile.TileData.TileGroup);
-			TilePath bridgeLayerPath = bridgeLayer.CalculatePathForGroup(lastTile.TileData.TileGroup);
-			if ((!path.Tiles.Contains(currentTile.TileData) || !path.Tiles.Contains(lastTile.TileData)))
+			if(lastTileController.TileGroup == Tile.Group.Ungrouped)
 			{
 				return;
 			}
-			if (path.Tiles.IndexOf(lastTile.TileData) > 0)
+
+			TilePath path = mainLayer.CalculatePathForGroup(lastTileController.TileGroup);
+			
+			if (!path.Tiles.Contains(currentTileController.ConnectedControlledTile))
 			{
-				Tile previousToLastTile = path.Tiles[path.Tiles.IndexOf(lastTile.TileData) - 1];
-				CheckForCorners(currentTile, lastTile, previousToLastTile);
+				return;
 			}
+
+			int lastTileControllerConnectedTileIndexInPath = path.Tiles.IndexOf(lastTileController.ConnectedControlledTile);
+
+			// If the tile was not found or is the very first tile in the path, there is nothing before that, so we cannot do corner logic.
+			if(lastTileControllerConnectedTileIndexInPath <= 0)
+			{
+				return;
+			}
+
+			Tile previousToLastTile = path.Tiles[lastTileControllerConnectedTileIndexInPath - 1];
+
+			CheckForCorners(currentTileController, lastTileController, previousToLastTile);
 		}
 
-		private void CheckForCorners(TileController currentTile, TileController lastTile, Tile previousToLastTile)
+		private void CheckForCorners(TileController currentTileController, TileController lastTileController, Tile previousToLastTile)
 		{
-			Tile currentTileTileData = currentTile.TileData;
-			Tile lastTileTileData = lastTile.TileData;
+			Tile currentTileTileData = currentTileController.ConnectedControlledTile;
+			Tile lastTileTileData = lastTileController.ConnectedControlledTile;
 
 			// current ptl have both different x and y values 
 			bool currentXSmallerThanPTL = (currentTileTileData.Col < previousToLastTile.Col);
@@ -262,15 +262,15 @@ namespace Room3
 			if (lastTileTileData.Row == currentTileTileData.Row && lastTileTileData.Row == previousToLastTile.Row && lastTileTileData.Col != currentTileTileData.Row)
 			{
 				// there is an X difference but no Y difference
-				lastTile.ChangeSprite(tileSpriteSettings.TubeWestToEast);
-				currentTile.ChangeSprite(tileSpriteSettings.TubeWestToEast);
+				lastTileController.ChangeSprite(tileSpriteSettings.TubeWestToEast);
+				currentTileController.ChangeSprite(tileSpriteSettings.TubeWestToEast);
 				return;
 			}
 			if (lastTileTileData.Col == currentTileTileData.Col && lastTileTileData.Col == previousToLastTile.Col && lastTileTileData.Row != currentTileTileData.Row)
 			{
 				// there is an X difference but no Y difference
-				lastTile.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
-				currentTile.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
+				lastTileController.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
+				currentTileController.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
 				return;
 			}
 
@@ -280,11 +280,11 @@ namespace Room3
 				{
 					if (currentOnSameRowAsL)
 					{
-						lastTile.ChangeSprite(tileSpriteSettings.TubeWestToNorth);
+						lastTileController.ChangeSprite(tileSpriteSettings.TubeWestToNorth);
 					}
 					else
 					{
-						lastTile.ChangeSprite(tileSpriteSettings.TubeEastToSouth);
+						lastTileController.ChangeSprite(tileSpriteSettings.TubeEastToSouth);
 					}
 					return;
 				}
@@ -293,11 +293,11 @@ namespace Room3
 				{
 					if (currentOnSameRowAsL)
 					{
-						lastTile.ChangeSprite(tileSpriteSettings.TubeWestToSouth);
+						lastTileController.ChangeSprite(tileSpriteSettings.TubeWestToSouth);
 					}
 					else
 					{
-						lastTile.ChangeSprite(tileSpriteSettings.TubeEastToNorth);
+						lastTileController.ChangeSprite(tileSpriteSettings.TubeEastToNorth);
 					}
 					return;
 				}
@@ -306,11 +306,11 @@ namespace Room3
 				{
 					if (currentOnSameRowAsL)
 					{
-						lastTile.ChangeSprite(tileSpriteSettings.TubeEastToNorth);
+						lastTileController.ChangeSprite(tileSpriteSettings.TubeEastToNorth);
 					}
 					else
 					{
-						lastTile.ChangeSprite(tileSpriteSettings.TubeWestToSouth);
+						lastTileController.ChangeSprite(tileSpriteSettings.TubeWestToSouth);
 					}
 					return;
 				}
@@ -319,11 +319,11 @@ namespace Room3
 				{
 					if (currentOnSameRowAsL)
 					{
-						lastTile.ChangeSprite(tileSpriteSettings.TubeEastToSouth);
+						lastTileController.ChangeSprite(tileSpriteSettings.TubeEastToSouth);
 					}
 					else
 					{
-						lastTile.ChangeSprite(tileSpriteSettings.TubeWestToNorth);
+						lastTileController.ChangeSprite(tileSpriteSettings.TubeWestToNorth);
 					}
 					return;
 				}
@@ -332,7 +332,7 @@ namespace Room3
 
 		private void OnFinishedInteractingAtTile(TileController tile)
 		{
-			lastInteractedWithTile = null;
+			lastInteractedWithTileController = null;
 		}
 
 		private bool TryResumePathFrom(TileController tile)
@@ -342,12 +342,12 @@ namespace Room3
 				return false;
 			}
 
-			if (tile.TileData.TileGroup == Tile.Group.Ungrouped)
+			if (tile.TileGroup == Tile.Group.Ungrouped)
 			{
 				return false;
 			}
 
-			if (tile.TileData.TileType == Tile.Type.EndPoint)
+			if (!tile.IsMainTileSet || tile.MainTile.TileType == Tile.Type.EndPoint)
 			{
 				return false;
 			}
@@ -356,19 +356,17 @@ namespace Room3
 			return true;
 		}
 
-
-
 		private bool TryRemoveTileConnectionsAfter(TileController tile)
 		{
-			if (tile.TileData.TileGroup == Tile.Group.Ungrouped)
+			if (tile.TileGroup == Tile.Group.Ungrouped)
 			{
 				return false;
 			}
 
-			TilePath interactedTileGroupPath = mainLayer.CalculatePathForGroup(tile.TileData.TileGroup);
+			TilePath interactedTileGroupPath = mainLayer.CalculatePathForGroup(tile.TileGroup);
 
-			int interactedTilePathIndex = interactedTileGroupPath.Tiles.IndexOf(tile.TileData);
-			int lastInteractedWithTilePathIndex = interactedTileGroupPath.Tiles.IndexOf(lastInteractedWithTile.TileData);
+			int interactedTilePathIndex = interactedTileGroupPath.Tiles.IndexOf(tile.ConnectedControlledTile);
+			int lastInteractedWithTilePathIndex = interactedTileGroupPath.Tiles.IndexOf(lastInteractedWithTileController.ConnectedControlledTile);
 
 			if (interactedTilePathIndex < 0 || interactedTilePathIndex >= lastInteractedWithTilePathIndex)
 			{
@@ -382,15 +380,15 @@ namespace Room3
 
 		private void RemoveTileConnectionsAfter(TileController tile)
 		{
-			tile.TileData.RemoveTileConnectionsAfterThis();
-			finishedGroups.Remove(tile.TileData.TileGroup);
+			tile.ConnectedControlledTile.RemoveTileConnectionsAfterThis();
+			finishedGroups.Remove(tile.TileGroup);
 
-			lastInteractedWithTile = tile;
+			lastInteractedWithTileController = tile;
 		}
 
 		private void UpdateWinStatus()
 		{
-			Tile tileData = lastInteractedWithTile.TileData;
+			Tile tileData = lastInteractedWithTileController.ConnectedControlledTile;
 
 			if (tileData.TileType != Tile.Type.EndPoint)
 			{
