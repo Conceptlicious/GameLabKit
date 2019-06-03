@@ -42,7 +42,7 @@ public class UIControl : MonoBehaviour
             
             
             //If we have looped back to the start after an iteration
-            if (SpeechBubble.Instance.DiagObject.Info.fieldIndex != 0)
+            if (SpeechBubble.Instance.DiagObject.Info.fieldIndex == 0)
             {
                 FillSpeechBubbleEvent repeatInfo = new FillSpeechBubbleEvent(null, Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, SpeechBubble.FillTextMethod.NONE, true);
                 EventManager.Instance.RaiseEvent(repeatInfo);

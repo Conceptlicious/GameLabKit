@@ -112,8 +112,8 @@ public class NodePattern : BetterMonoBehaviour
 			if (nextPattern != null)
 			{	
 				/////
-				CameraTargetSelectEvent newInfo = new CameraTargetSelectEvent(currentTube, nextTube, Settings.VAL_CAMERA_MINOR_ZOOM_DISTANCE, false, false);
-				EventManager.Instance.RaiseEvent(newInfo);
+				/*CameraTargetSelectEvent newInfo = new CameraTargetSelectEvent(currentTube, nextTube, Settings.VAL_CAMERA_MINOR_ZOOM_DISTANCE, false, false);
+				EventManager.Instance.RaiseEvent(newInfo);*/
 				
 				nextPattern.isInteractable = true;
 			}
