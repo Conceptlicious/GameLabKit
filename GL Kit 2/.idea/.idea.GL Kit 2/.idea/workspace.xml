@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="242ae21e-f6fb-49ec-a894-9847d147da7f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1.Scenes/Complete Build 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1.Scenes/Complete Build 1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/CameraControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/CameraControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/EventMessaging/CameraSnapEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/EventMessaging/CameraSnapEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/EventMessaging/FillSpeechBubbleEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/EventMessaging/FillSpeechBubbleEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/RoomManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/RoomManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/Settings/Settings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/SpeechBubble.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/SpeechBubble.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/UIAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/UIAnimator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/UIControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/UIControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-    </list>
+    <list default="true" id="242ae21e-f6fb-49ec-a894-9847d147da7f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +41,7 @@
     <session id="-1611792072">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="22" />
+          <entry key="project.closed" value="23" />
           <entry key="project.open.time.101" value="1" />
           <entry key="project.open.time.102" value="2" />
           <entry key="project.open.time.135" value="1" />
@@ -603,12 +590,12 @@
       <workItem from="1559116763014" duration="9076000" />
       <workItem from="1559208312967" duration="8644000" />
       <workItem from="1559291725740" duration="8242000" />
-      <workItem from="1559334839149" duration="4946000" />
+      <workItem from="1559334839149" duration="5393000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="288562000" />
+    <option name="totallyTimeSpent" value="289009000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -621,7 +608,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="33" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.069127515" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
