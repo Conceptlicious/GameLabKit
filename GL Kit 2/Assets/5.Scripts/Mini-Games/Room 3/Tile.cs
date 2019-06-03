@@ -37,8 +37,8 @@ namespace Room3
 			South = 1 << 3
 		}
 
-		public event Action<Tile> OnConnectedToTile;
-		public event Action<Tile> OnDisconnectedFromTile;
+		public event Action<Tile> Connected;
+		public event Action<Tile> Disconnected;
 
 		public int Row { get; private set; } = 0;
 		public int Col { get; private set; } = 0;
@@ -46,22 +46,28 @@ namespace Room3
 		public Type TileType { get; set; } = Type.Connection;
 		public Group TileGroup { get; set; } = Group.Ungrouped;
 
+		public TileLayer Layer { get; set; } = null;
+
 		public bool CanConnectToOtherTiles => TileType != Type.Obstacle && (TileType != Type.Connection || TileGroup == Group.Ungrouped);
 
-		public bool OnBridgeLayer = false;
-
 		public Tile NextTile { get; set; } = null;
-		public TileController controller = null;
+
 		public TileSpriteSettings SpriteSettings { get; set; }
 
 		public ConnectionDirection AllowedConnectionDirections { get; set; } = ConnectionDirection.All;
 
-		public Tile(int row, int col)
+		public Tile(int row, int col, TileLayer layer)
 		{
 			Row = row;
 			Col = col;
+			Layer = layer;
 		}
 
+		/// <summary>
+		/// Tries to connect to the provided tile. This does not consider layers and allows for tiles of different layers to be connected to each other
+		/// </summary>
+		/// <param name="tile">The tile to try to connect to</param>
+		/// <returns>If connected successfully</returns>
 		public bool TryConnectTo(Tile tile)
 		{
 			if (tile == null)
@@ -79,7 +85,7 @@ namespace Room3
 				return false;
 			}
 
-			if (!IsConnectionDirectionAllowed(tile))
+			if (!IsConnectionDirectionAllowed(tile) || !tile.IsConnectionDirectionAllowed(this))
 			{
 				return false;
 			}
@@ -89,11 +95,10 @@ namespace Room3
 				return false;
 			}
 
-			
 			tile.NextTile = this;
 			TileGroup = tile.TileGroup;
 
-			OnConnectedToTile?.Invoke(tile);
+			Connected?.Invoke(tile);
 
 			return true;
 		}
@@ -110,11 +115,9 @@ namespace Room3
 			NextTile.TileGroup = Group.Ungrouped;
 			NextTile = null;
 
-			if (!disconnectedTile.OnBridgeLayer)
-			{
-				disconnectedTile.OnDisconnectedFromTile(this);
-			}
 			disconnectedTile.RemoveTileConnectionsAfterThis();
+
+			disconnectedTile?.Disconnected(this);
 		}
 
 		private bool IsNeighborOf(Tile tile)
@@ -127,7 +130,7 @@ namespace Room3
 
 		private bool IsConnectionDirectionAllowed(Tile tile)
 		{
-			return (Col - tile.Col > 0 && AllowedConnectionDirections.HasFlag(ConnectionDirection.East)) ||
+			return  (Col - tile.Col > 0 && AllowedConnectionDirections.HasFlag(ConnectionDirection.East)) ||
 					(Col - tile.Col < 0 && AllowedConnectionDirections.HasFlag(ConnectionDirection.West)) ||
 					(Row - tile.Row > 0 && AllowedConnectionDirections.HasFlag(ConnectionDirection.South)) ||
 					(Row - tile.Row < 0 && AllowedConnectionDirections.HasFlag(ConnectionDirection.North));

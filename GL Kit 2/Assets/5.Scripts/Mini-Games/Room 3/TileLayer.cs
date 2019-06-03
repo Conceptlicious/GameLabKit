@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GameLab;
-using UnityEngine;
-
-namespace Room3
+﻿namespace Room3
 {
 	public class TileLayer
 	{
@@ -20,7 +12,7 @@ namespace Room3
 			{
 				for (int col = 0; col < cols; ++col)
 				{
-					Tiles[row, col] = new Tile(row, col);
+					Tiles[row, col] = new Tile(row, col, this);
 					Tiles[row, col].TileType = defaultTileType;
 				}
 			}
