@@ -11,6 +11,7 @@ public class LoadingTips : MonoBehaviour
 {
 	[SerializeField] private DialogueObject dialogueObject = null;
 	[SerializeField] private bool tipsAreRandom = false;
+	[SerializeField] private bool displayLoadingTips = true;
 
 	private int tipsIndex = 0;
 
@@ -41,9 +42,14 @@ public class LoadingTips : MonoBehaviour
 				: SpeechBubble.FillTextMethod.ITERATE;
 
 			//UIAnimator.Instance.AnimateObjects(slidingObject, Settings.VAL_CAMERA_TRANSITION_SECONDS, UIAnimator.MoveType.ARC);
+
+			Debug.Log("Create loading tup");
+			if (displayLoadingTips == true)
+			{
+				FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(dialogueObject, Settings.VAL_CAMERA_TRANSITION_SECONDS, UIAnimator.MoveType.ARC, method, true);
+				EventManager.Instance.RaiseEvent(newInfo);
+			}
 			
-			FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(dialogueObject, Settings.VAL_CAMERA_TRANSITION_SECONDS, UIAnimator.MoveType.ARC, method, true);
-			EventManager.Instance.RaiseEvent(newInfo);
 		}
 	}
 }

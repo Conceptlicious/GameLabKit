@@ -35,31 +35,49 @@ public class SpeechBubble : Singleton<SpeechBubble>
 
 	private void OnBubbleFill(FillSpeechBubbleEvent info)
 	{
+		fillTextMethod = info.method;
+		//Only overwrite if required, otherwise utalise the last assigned dialogue object
 		if (info.dialogueObject != null)
 		{
 			dialogueObject = info.dialogueObject;
-			
+		}
+		else
+		{
+			Debug.Log("Passed dialogue object is null.");
+		}
+
+		//Our internal dialogue object
+		if (dialogueObject != null)
+		{
+			Debug.Log("Reading from" + dialogueObject.GetFileName());
 			switch (fillTextMethod)
 			{
 				case FillTextMethod.RANDOM:
-					textField.text = info.dialogueObject.GetRandomText();
+					textField.text = dialogueObject.GetRandomText();
 					break;
+				
 				case FillTextMethod.ITERATE:
-					textField.text = info.dialogueObject.GetTextAndIterate();
+					textField.text = dialogueObject.GetTextAndIterate();
 					break;
 				case FillTextMethod.NONE:
 	
 					break;
 			
-			}
+			}		
 		}
-		
+		else
+		{
+			Debug.Log("Assigned dialogue object has been nullifed, or has not been assigned!");
+		}
 
 			
 
 		
+		if(info.shouldAnimate)
+		{
+		    UIAnimator.Instance.AnimateObjects(slidingObject, info.time, info.moveType);
+		}
 		
-		UIAnimator.Instance.AnimateObjects(slidingObject, info.time, info.moveType);
 		
 	}
 	 

@@ -664,7 +664,7 @@ GameObject:
   - component: {fileID: 260212961}
   - component: {fileID: 260212962}
   m_Layer: 0
-  m_Name: Room 2 Dialogue
+  m_Name: Room 2 Popups
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -697,9 +697,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
-    fileIndex: 0
+    fileIndex: 1
     containerIndex: 0
-    fieldName: 
+    fieldName: Title
     fieldIndex: 0
 --- !u!1 &354021338
 GameObject:
@@ -777,9 +777,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
-    fileIndex: 0
+    fileIndex: 4
     containerIndex: 0
-    fieldName: 
+    fieldName: Step 1
     fieldIndex: 0
 --- !u!1 &411087592
 GameObject:
@@ -1195,7 +1195,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 2000
+  far clip plane: 6000
   field of view: 60
   orthographic: 0
   orthographic size: 1
@@ -2682,7 +2682,7 @@ MonoBehaviour:
   info:
     fileIndex: 0
     containerIndex: 0
-    fieldName: Fact 1
+    fieldName: 
     fieldIndex: 0
 --- !u!1 &1186878943
 GameObject:
@@ -3829,9 +3829,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
-    fileIndex: 0
+    fileIndex: 7
     containerIndex: 0
-    fieldName: 
+    fieldName: Step 1
     fieldIndex: 0
 --- !u!1 &1643501072
 GameObject:
@@ -4065,6 +4065,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5312019807430084519, guid: 193454b02a7d0694b94184fc3b97c0ab,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 537
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312019807430084519, guid: 193454b02a7d0694b94184fc3b97c0ab,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 51.995686
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 193454b02a7d0694b94184fc3b97c0ab, type: 3}
 --- !u!4 &1697832733 stripped
@@ -4220,9 +4230,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
-    fileIndex: 0
-    containerIndex: 0
-    fieldName: About
+    fileIndex: 8
+    containerIndex: 2
+    fieldName: Type
     fieldIndex: 0
 --- !u!1 &1848558109
 GameObject:
@@ -4256,7 +4266,7 @@ MonoBehaviour:
   info:
     fileIndex: 0
     containerIndex: 0
-    fieldName: 
+    fieldName: Fact 1
     fieldIndex: 0
 --- !u!4 &1848558111
 Transform:
@@ -4316,9 +4326,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
-    fileIndex: 0
+    fileIndex: 5
     containerIndex: 0
-    fieldName: 
+    fieldName: Step 1
     fieldIndex: 0
 --- !u!1001 &1907541451
 PrefabInstance:
@@ -4421,6 +4431,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585186772196208285, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 253.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585186772196208285, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1161
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585186772196208285, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585186772196208285, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585186772196208285, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585186772196208285, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52ade7103fed6c2408a38cf70c37f539, type: 3}
@@ -4712,6 +4752,36 @@ PrefabInstance:
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GenderTogglePressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776069977046351186, guid: 407fe366cf3e2364191b9d679c3ef99c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776069977046351186, guid: 407fe366cf3e2364191b9d679c3ef99c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776069977046351186, guid: 407fe366cf3e2364191b9d679c3ef99c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776069977046351186, guid: 407fe366cf3e2364191b9d679c3ef99c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776069977046351186, guid: 407fe366cf3e2364191b9d679c3ef99c,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776069977046351186, guid: 407fe366cf3e2364191b9d679c3ef99c,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 407fe366cf3e2364191b9d679c3ef99c, type: 3}
@@ -5089,9 +5159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
-    fileIndex: 0
+    fileIndex: 6
     containerIndex: 0
-    fieldName: 
+    fieldName: Step 1
     fieldIndex: 0
 --- !u!224 &4934541786980325442 stripped
 RectTransform:
@@ -5360,6 +5430,11 @@ PrefabInstance:
       propertyPath: dialogueObject
       value: 
       objectReference: {fileID: 1848558110}
+    - target: {fileID: 6100448372103171779, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: displayLoadingTips
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6100448372103171778, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: levelPopupDialogueObjects.Array.size
@@ -5394,6 +5469,11 @@ PrefabInstance:
         type: 3}
       propertyPath: couplings.Array.data[0].eventToCall.classRef
       value: CreatePopUpEvent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: couplings.Array.data[1].marker
+      value: '@'
       objectReference: {fileID: 0}
     - target: {fileID: 6100448372103171781, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
@@ -5439,9 +5519,10 @@ MonoBehaviour:
   dialogueObjects:
   - {fileID: 2121484497}
   - {fileID: 1395894338}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 396871949}
+  - {fileID: 1892417834}
+  - {fileID: 2123002305}
+  - {fileID: 1624125900}
   - {fileID: 1440448512}
   dialogueObjectParent: {fileID: 740206787}
+  displaySpeechBubbles: 0

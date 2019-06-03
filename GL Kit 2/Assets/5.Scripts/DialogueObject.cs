@@ -60,6 +60,7 @@ public class DialogueObject : MonoBehaviour
 			int newIndex = 0;
 			info.DialogueText = Dialogue.GetTextAndIterate(info.fileIndex, info.containerIndex, info.fieldIndex, out newIndex);
 			info.fieldIndex = newIndex;
+			Debug.Log("New Field Index: " + info.fieldIndex);
 			return info.DialogueText;
 		}
 
@@ -77,14 +78,20 @@ public class DialogueObject : MonoBehaviour
 
 		public string GetRandomText()
 		{
-			string str = Dialogue.GetRandomText(info.fileIndex, info.containerIndex);
+			/*string str = Dialogue.GetRandomText(info.fileIndex, info.containerIndex);
 			info.DialogueText = str;
-			return info.DialogueText;
+			return info.DialogueText;*/
+			return "";
 		}
 
 	public string GetFileName()
 	{
 		return Dialogue.GetFileNames()[info.fileIndex];
+	}
+
+	public int GetMaxFieldIndices()
+	{
+		return Dialogue.GetMaxFieldIndices(info.fileIndex, info.containerIndex);
 	}
 
 	public string GetContainerName()

@@ -130,6 +130,7 @@ public static class Dialogue
         string[] keyNames = GetKeyNames(pFileID, pContainerID);
         int oldIndex = pFieldIndex;
         pNewIndex = (pFieldIndex + 1) % keyNames.Length;
+        Debug.Log("New index is " + pNewIndex);
         return GetText(pFileID, pContainerID, keyNames[oldIndex]);
     }
 
@@ -162,6 +163,14 @@ public static class Dialogue
         string[] keyNames = GetKeyNames(pFileID, pContainerID);       
         string text = GetTextAt(pFileID, pContainerID, UnityEngine.Random.Range(0, keyNames.Length));
         return text;
+    }
+
+
+
+    public static int GetMaxFieldIndices(int pFileID, int pContainerID)
+    {
+        string[] keyNames = GetKeyNames(pFileID, pContainerID);       
+        return keyNames.Length;
     }
 
     

@@ -7,6 +7,7 @@ public class SpeechManager : BetterMonoBehaviour
 {
 	[SerializeField] private DialogueObject[] dialogueObjects;
 	[SerializeField] private GameObject dialogueObjectParent;
+	[SerializeField] private bool displaySpeechBubbles = true;
 	void Awake()
 	{
 		RegisterAllListeners();
@@ -22,9 +23,13 @@ public class SpeechManager : BetterMonoBehaviour
 
 	private void OnFinishRoomTransition(FinishedRoomTransition info)
 	{
-		Debug.Log("Just focused Room " + RoomManager.Instance.GetRoomIDs().z);
-		FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(dialogueObjects[RoomManager.Instance.GetRoomIDs().z], Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, SpeechBubble.FillTextMethod.ITERATE, true);
-		EventManager.Instance.RaiseEvent(newInfo);
+		if (displaySpeechBubbles)
+		{
+			Debug.Log("Just focused Room " + RoomManager.Instance.GetRoomIDs().z);
+			FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(dialogueObjects[RoomManager.Instance.GetRoomIDs().z], Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, SpeechBubble.FillTextMethod.ITERATE, true);
+			EventManager.Instance.RaiseEvent(newInfo);
+		}
+		
 	}
 
 	private void FillWithBlanks()

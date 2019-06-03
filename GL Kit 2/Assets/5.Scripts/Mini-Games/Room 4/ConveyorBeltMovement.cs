@@ -16,7 +16,7 @@ public class ConveyorBeltMovement : Singleton<ConveyorBeltMovement>
 			platforms.Add(child);
 		}
 
-		Debug.Log(platforms.Count);
+		//Debug.Log(platforms.Count);
 
 		DisplayPlatformInformation.Instance.LoadInformation(CurrentPlatformIndex);		
 	}	

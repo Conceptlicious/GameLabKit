@@ -24,7 +24,7 @@
     "Type": "Popup",
     "Title": "Target Audience",
     "Body": "Visualise your target audience through choosing gender, age and possible qualities the target audience could possess. Choose elements which best represent your target audience.\nClick on 'Back' to relisten to the explanation from Dr Gamelab.",
-    "Textfield": "false",
+    "Textfield": "true",
     "Buttons": "Back Start"
   }
 }

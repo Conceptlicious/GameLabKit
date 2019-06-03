@@ -27,7 +27,7 @@ public class SpriteHandler : BetterMonoBehaviour
 		bool disabled = (newPersona.Disability.HasFlag(Disabilities.PhysicalDisabileties));
 		bool depressed = (newPersona.Disability.HasFlag(Disabilities.Anxiety));
 
-		Debug.Log("event called");
+		//Debug.Log("event called");
 		if (age != newPersona.Age)
 		{
 			image.sprite = null;

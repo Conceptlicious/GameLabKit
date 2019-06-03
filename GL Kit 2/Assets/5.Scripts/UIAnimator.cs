@@ -60,7 +60,7 @@ public class UIAnimator : Singleton<UIAnimator>
                 
                 if (moveType == MoveType.TRANSITION)
                 {
-                    FlipPositions();
+                   FlipPositions();
                 }
                 handler -= MoveObjects;
             }
@@ -99,7 +99,7 @@ public class UIAnimator : Singleton<UIAnimator>
         startTime = Time.time;
         lengthOfAnimation = pLengthOfAnimation;
         slidingObject = pSlidingObject;
-        ResetPositions();
+       // ResetPositions();
         handler += MoveObjects;
         moveType = pMoveType;
     }
