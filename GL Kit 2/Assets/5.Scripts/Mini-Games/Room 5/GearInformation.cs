@@ -46,7 +46,7 @@ public class GearInformation : BetterMonoBehaviour
 		isAbleToRotate = false;
 
 		transform.position = GetComponent<DragAndDrop>().BeginPosition;
-		DropZone.isCombinationRight = true;
+		DropZone.combinationIsRight = true;
 
 		foreach (DropZone dropZone in UIHandler.Instance.DropZones)
 		{

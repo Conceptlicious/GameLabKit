@@ -6,7 +6,7 @@ public class DropZone : BetterMonoBehaviour
 	[SerializeField] private GearType neededType;
 
 	public static int OccupiedPlaces { get; private set; } = 0;
-	[HideInInspector] public static bool isCombinationRight = true;
+	[HideInInspector] public static bool combinationIsRight = true;
 
 	public bool IsOccupied { get; private set; }
 	private Transform gear = null;
@@ -47,7 +47,7 @@ public class DropZone : BetterMonoBehaviour
 	{
 		if (gearToCheck.GetComponent<GearInformation>().GetGearType != neededType)
 		{
-			isCombinationRight = false;
+			combinationIsRight = false;
 		}
 	}
 }

@@ -9,11 +9,17 @@ public class DrawLines : BetterMonoBehaviour
 {	
 	private LineRenderer lineBetweenNodes;
 	[SerializeField] private Vector3 offset;
-	List<Vector3> positions = new List<Vector3>();
-	List<GameObject> savedButtons = new List<GameObject>();
-	
 
-	public void Start()
+	/*
+	 * Always put a access modifiers in front of a variable. (private, public etc.)
+	 * List<Vector3> positions = new List<Vector3>();
+	 * List<GameObject> savedButtons = new List<GameObject>();
+	*/
+	private List<Vector3> positions = new List<Vector3>();
+	private List<GameObject> savedButtons = new List<GameObject>();
+
+	//Why is start public?
+	private void Start()
 	{
 		lineBetweenNodes = GetComponent<LineRenderer>();
 		lineBetweenNodes.positionCount = 0;

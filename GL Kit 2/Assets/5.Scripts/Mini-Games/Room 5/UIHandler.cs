@@ -30,7 +30,7 @@ public class UIHandler : Singleton<UIHandler>
 		{
 			GearInformation.isAbleToRotate = true;
 
-			if (DropZone.isCombinationRight)
+			if (DropZone.combinationIsRight)
 			{
 				ButtonManager.Instance.EnableNextButton();
 
