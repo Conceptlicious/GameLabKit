@@ -80,8 +80,7 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 		if(pressedToggle.isOn)
 		{
 			ToggleInformation currentToggleInformation = pressedToggle.GetComponent<ToggleInformation>();
-			ToggleManager.Instance.AddToggleToList(pressedToggle, 
-				currentToggleInformation.toggleGroup, currentToggleInformation.disabilities);
+			ToggleManager.Instance.AddToggleToList(pressedToggle, currentToggleInformation.toggleGroup, currentToggleInformation.disabilities);
 		}
 		else
 		{

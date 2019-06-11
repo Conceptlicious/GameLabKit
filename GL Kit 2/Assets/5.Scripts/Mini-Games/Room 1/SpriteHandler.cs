@@ -8,6 +8,7 @@ using GameLab;
 public class SpriteHandler : BetterMonoBehaviour
 {
 	[SerializeField] private Character characterOptions;
+	[SerializeField] private UIControl uIControl;
 	private Persona currentPersona;
 	[SerializeField] private AgeGroup age;
 	private Image image;
@@ -15,7 +16,7 @@ public class SpriteHandler : BetterMonoBehaviour
 	private void Awake()
 	{
 		image = GetComponent<Image>();
-		UserInterfaceHandler.Instance.OnPersonaChanged += OnPersonaChange;
+		uIControl.OnPersonaChanged += OnPersonaChange;
 	}
 
 	private void OnPersonaChange(Persona newPersona)
