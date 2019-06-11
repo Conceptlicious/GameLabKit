@@ -20,6 +20,7 @@ public class SpeechBubble : Singleton<SpeechBubble>
 
 	private FillTextMethod fillTextMethod;
 	public DialogueObject DiagObject => dialogueObject;
+
 	void Awake()
 	{
 		RegisterAllListeners();
@@ -75,7 +76,7 @@ public class SpeechBubble : Singleton<SpeechBubble>
 		
 		if(info.shouldAnimate)
 		{
-		    UIAnimator.Instance.AnimateObjects(slidingObject, info.time, info.moveType);
+		    UIAnimatorManager.Instance.AnimateObjects(slidingObject, info.time, info.moveType, info.blurType);
 		}
 		
 		

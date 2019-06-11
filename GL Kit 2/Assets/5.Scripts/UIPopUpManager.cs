@@ -67,7 +67,7 @@ public class UIPopUpManager : MonoBehaviour
         data.body.text = pDiagObj.GetTextAndIterate();
 
         string textFieldEnabled = pDiagObj.GetTextAndIterate();
-        bool t = (textFieldEnabled.IsNullOrEmpty() || textFieldEnabled.ToLower() == "false") == true ? false : true;
+        bool t = (System.String.IsNullOrEmpty(textFieldEnabled) || textFieldEnabled.ToLower() == "false") == true ? false : true;
         Debug.Log("Input Field is: " + t);
         data.inputField.gameObject.SetActive(t);
 

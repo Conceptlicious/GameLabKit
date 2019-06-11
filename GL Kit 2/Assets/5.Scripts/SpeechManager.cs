@@ -26,7 +26,7 @@ public class SpeechManager : BetterMonoBehaviour
 		if (displaySpeechBubbles)
 		{
 			Debug.Log("Just focused Room " + RoomManager.Instance.GetRoomIDs().z);
-			FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(dialogueObjects[RoomManager.Instance.GetRoomIDs().z], Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, SpeechBubble.FillTextMethod.ITERATE, true);
+			FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(dialogueObjects[RoomManager.Instance.GetRoomIDs().z], Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, UIAnimator.BlurType.IN, SpeechBubble.FillTextMethod.ITERATE, true);
 			EventManager.Instance.RaiseEvent(newInfo);
 		}
 		
