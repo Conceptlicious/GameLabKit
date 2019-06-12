@@ -28,10 +28,35 @@ public class UIControl : MonoBehaviour
 	[SerializeField] private int teenCutOff = 13;
 	[SerializeField] private int adultCutOff = 20 ;
 	[SerializeField] private int elderlyCutOff = 60;
+	
+	private bool isTransitioning = false;
+
+	
+
+	private void OnTransitionStart()
+	{
+		isTransitioning = true;
+	}
+
+	private void OnTransitionEnd()
+	{
+		isTransitioning = false;
+	}
+
 
 	private void Start()
 	{
+		RegisterAllListeners();
 		SetVariables();
+	}
+	
+	/// <summary>
+	/// Registers all event listeners this class needs to care about.
+	/// </summary>
+	private void RegisterAllListeners()
+	{
+		EventManager.Instance.AddListener<NextRoomEvent>(OnTransitionStart);
+		EventManager.Instance.AddListener<FinishedRoomTransition>(OnTransitionEnd);
 	}
 
 	public void AddToggleToList(Toggle toggleToAdd, ToggleGroup toggleGroup, Disabilities disabilities)
@@ -180,7 +205,7 @@ public class UIControl : MonoBehaviour
 	public void ProgressDialogue()
 	{
 		Debug.Log("Touch");
-		if (SpeechBubble.Instance.DiagObject != null)
+		if (SpeechBubble.Instance.DiagObject != null && isTransitioning == false)
 		{
 		   
 			
@@ -188,12 +213,12 @@ public class UIControl : MonoBehaviour
 			//If we have looped back to the start after an iteration
 			if (SpeechBubble.Instance.DiagObject.Info.fieldIndex == 0)
 			{
-				FillSpeechBubbleEvent repeatInfo = new FillSpeechBubbleEvent(null, Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, SpeechBubble.FillTextMethod.NONE, true);
+				FillSpeechBubbleEvent repeatInfo = new FillSpeechBubbleEvent(null, Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, UIAnimator.BlurType.OUT, SpeechBubble.FillTextMethod.NONE, true);
 				EventManager.Instance.RaiseEvent(repeatInfo);
 			}
 			else
 			{
-				FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(null, Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, SpeechBubble.FillTextMethod.ITERATE, false);
+				FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(null, Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, UIAnimator.BlurType.NONE, SpeechBubble.FillTextMethod.ITERATE, false);
 				EventManager.Instance.RaiseEvent(newInfo);
 			
 				Debug.Log("Field Index: " + SpeechBubble.Instance.DiagObject.Info.fieldIndex);

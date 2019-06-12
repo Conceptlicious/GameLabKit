@@ -9,7 +9,7 @@ public class SpeechBubble : Singleton<SpeechBubble>
 	[SerializeField] private UISlidingObject[] slidingObject;
 	[SerializeField] private Text textField = null;
 	private DialogueObject dialogueObject = null;
-	private string 
+
 
 	public enum FillTextMethod
 	{
