@@ -9,6 +9,7 @@ public class SpeechBubble : Singleton<SpeechBubble>
 	[SerializeField] private UISlidingObject[] slidingObject;
 	[SerializeField] private Text textField = null;
 	private DialogueObject dialogueObject = null;
+	private string 
 
 	public enum FillTextMethod
 	{
@@ -81,6 +82,34 @@ public class SpeechBubble : Singleton<SpeechBubble>
 		
 		
 	}
+
+
+	private void SubText(string pText)
+	{
+		if (pText.Length <= Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE)
+		{
+			return;
+		}
+
+		//
+		float timesIn = pText.Length / Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE;
+		
+		int remainingCharacters =
+			pText.Length - (Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE * Mathf.RoundToInt(timesIn));
+		
+		
+		string[] parts = new string[Mathf.CeilToInt(timesIn)];
+		
+		for (int i = 0; i < parts.Length; i++)
+		{
+			//Use the full length if we're not at the end, else use the remaining characters
+			int length = i != parts.Length ? Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE : remainingCharacters;
+			
+			parts[i] = pText.Substring(i * Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE,
+				length);
+		}
+	}
+	
 	 
 }
 

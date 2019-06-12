@@ -63,6 +63,8 @@ public static class Settings
     public const int SYS_VAL_MAX_NUMBER_ROOM_FOCALS               = 7;
 
     public const float VAL_SPEECH_BUBBLE_TRANSITION_SECONDS       = 2.0f;
+
+    public const int VAL_CHARACTERS_PER_SPEECH_BUBBLE             = 200;
         
     //----------------------------------------------------------
     //                    OUTPUTS
