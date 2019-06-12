@@ -27,10 +27,6 @@ public class DialogueManager : Singleton<DialogueManager>
 				LoadingPaths.FILE_NAME_DIALOGUE) + currentDialogueIndex);
 			Write(loadedDialogue);
 		}
-		else
-		{
-			Debug.LogWarning("Dialogue can not be loaded.");
-		}
 
 		currentDialogueIndex++;
 	}
