@@ -30,7 +30,7 @@ public class UIHandler : Singleton<UIHandler>
 		{
 			GearInformation.isAbleToRotate = true;
 
-			if (DropZone.isCombinationRight)
+			if (DropZone.combinationIsRight)
 			{
 				ButtonManager.Instance.EnableNextButton();
 
@@ -147,6 +147,9 @@ public class UIHandler : Singleton<UIHandler>
 
 	public void WonMiniGame()
 	{
+		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Dynamics, this);
+		EventManager.Instance.RaiseEvent(saveItemEvent);
+
 		NextRoomEvent nextRoomEvent = new NextRoomEvent();
 		EventManager.Instance.RaiseEvent(nextRoomEvent);
 	}

@@ -6,7 +6,7 @@ public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler,
 {
 	public Vector3 BeginPosition { get; private set; } = Vector3.zero;
 	[HideInInspector] public bool isObjectInGrid = false;
-	[HideInInspector] public bool isAbleToMove = true; 
+	[HideInInspector] public bool isAbleToMove = true;
 	private static Canvas canvasRoom5;
 
 	private void Start()
@@ -20,6 +20,7 @@ public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler,
 	{
 		if (isObjectInGrid)
 		{
+			DropZone.combinationIsRight = true;
 			DropZone dropZone = GridHandler.Instance.GetDropZoneUnder(CachedTransform as RectTransform);
 
 			if (dropZone != null)

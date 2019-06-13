@@ -5,12 +5,13 @@ using UnityEngine.UI;
 using UnityEngine;
 using GameLab;
 
-public class HiddenObjectHandler : BetterMonoBehaviour
+public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 {
-	private const string objectAlreadyFoundMessage = "You have already found this object";
-	private const string wonMiniGameMessage = "You won the mini-game!";
-	private const int amountOfHiddenObjects = 8;
+	private const string OBJECT_ALREADY_FOUND_MESSAGE = "You have already found this object";
+	private const string WON_MINIGAME_MESSAGE = "You won the mini-game!";
+	private const int HIDDENOBJECTS_AMOUNT = 8;
 
+	public Sprite lastSelectedObjectSprite { get; private set; }
 	[SerializeField] private GameObject nextMinigameButton = null;
 	private List<GameObject> foundObjects = new List<GameObject>();
 
@@ -22,6 +23,7 @@ public class HiddenObjectHandler : BetterMonoBehaviour
 	public void ObjectFound(GameObject foundObject)
 	{
 		HiddenObject currentHiddenObject = foundObject.GetComponent<HiddenObject>();
+		lastSelectedObjectSprite = currentHiddenObject.HiddenObjectSprite;
 
 		if (!foundObjects.Contains(foundObject))
 		{
@@ -31,20 +33,23 @@ public class HiddenObjectHandler : BetterMonoBehaviour
 			TextUpdater.Instance.CallUpdateTextCoroutine(foundObject.name,
 				currentHiddenObject.Description);
 
-			if (foundObjects.Count >= amountOfHiddenObjects)
+			if (foundObjects.Count >= HIDDENOBJECTS_AMOUNT)
 			{
 				nextMinigameButton.SetActive(true);
 			}
 		}
 		else
 		{
-			TextUpdater.Instance.CallUpdateTextCoroutine(objectAlreadyFoundMessage, string.Empty);
+			TextUpdater.Instance.CallUpdateTextCoroutine(foundObject.name, OBJECT_ALREADY_FOUND_MESSAGE);
 		}
 	}
 
 	public void WonMiniGame()
 	{
-		TextUpdater.Instance.CallUpdateTextCoroutine(wonMiniGameMessage, string.Empty);
+		TextUpdater.Instance.CallUpdateTextCoroutine(WON_MINIGAME_MESSAGE, string.Empty);
+
+		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Goals);
+		EventManager.Instance.RaiseEvent(saveItemEvent);
 
 		NextRoomEvent nextRoomEvent = new NextRoomEvent();
 		EventManager.Instance.RaiseEvent(nextRoomEvent);

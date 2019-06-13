@@ -93,7 +93,7 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 	{
 			foreach(Disabilities disability in disabilitiesList)
 			{
-				persona.Disability = persona.Disability | disability;
+				persona.Disability |= disability;
 			}
 			OnPersonaChanged?.Invoke(persona);
 	}

@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class DisplayPlatformInformation : Singleton<DisplayPlatformInformation>
 {
+	public Sprite currentSelectedSprite { get; private set; }
 	[SerializeField] private Text platformInformationText;
-	[SerializeField] private Text platformTypeText;
+	[SerializeField] private Image platformImage;
+	[SerializeField] private Sprite[] platformSprites;
 
 	protected override void Awake()
 	{
@@ -15,61 +17,61 @@ public class DisplayPlatformInformation : Singleton<DisplayPlatformInformation>
 
 	public void LoadInformation(int currentIndex)
 	{
-		TextAsset loadedText = null;
+		TextAsset loadedText;
 
 		switch (currentIndex)
 		{
-
 			case (int)PlatformType.VirtualReality:
 				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_VR));
-				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_VR);
+				UpdateInformation(loadedText, platformSprites[(int)PlatformType.VirtualReality]);
 				break;
 
 			case (int)PlatformType.AugmentedReality:
 				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_AR));
-				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_AR);
+				UpdateInformation(loadedText, platformSprites[(int)PlatformType.AugmentedReality]);
 				break;
 
 			case (int)PlatformType.Mobile:
 				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_MOBILE));
-				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_MOBILE);
+				UpdateInformation(loadedText, platformSprites[(int)PlatformType.Mobile]);
 				break;
 
 			case (int)PlatformType.PC:
 				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_PC));
-				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_PC);
+				UpdateInformation(loadedText, platformSprites[(int)PlatformType.PC]);
 				break;
 
 			case (int)PlatformType.Exergames:
 				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_EXERGAME));
-				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_EXERGAME);
+				UpdateInformation(loadedText, platformSprites[(int)PlatformType.Exergames]);
 				break;
 
 			case (int)PlatformType.Tabletop:
 				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_TABLETOP));
-				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_TABLETOP);
+				UpdateInformation(loadedText, platformSprites[(int)PlatformType.Tabletop]);
 				break;
 
 			case (int)PlatformType.Console:
 				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_CONSOLE));
-				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_CONSOLE);
+				UpdateInformation(loadedText, platformSprites[(int)PlatformType.Console]);
 				break;
 
 			case (int)PlatformType.Wearables:
 				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_WEARABLES));
-				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_WEARABLES);
+				UpdateInformation(loadedText, platformSprites[(int)PlatformType.Wearables]);
 				break;
 
 			case (int)PlatformType.Web:
 				loadedText = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DEFAULT, LoadingPaths.FILE_NAME_WEB));
-				UpdateInformationText(loadedText, LoadingPaths.FILE_NAME_WEB);
+				UpdateInformation(loadedText, platformSprites[(int)PlatformType.Web]);
 				break;
 		}
 	}
 
-	public void UpdateInformationText(TextAsset loadedText, string platformType)
+	public void UpdateInformation(TextAsset loadedText, Sprite platformSprite)
 	{
 		platformInformationText.text = loadedText.ToString();
-		platformTypeText.text = platformType;
+		platformImage.sprite = platformSprite;
+		currentSelectedSprite = platformSprite;
 	}
 }

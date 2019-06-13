@@ -10,17 +10,17 @@ using UnityEngine.UI;
 public class Node : BetterMonoBehaviour, IPointerEnterHandler
 {
 	public event Action<Node> OnInteract;
+	[SerializeField] private NodePattern nodePattern = null;
 
 	[SerializeField] private bool fakeCheck;
 	public bool FakeCheck => fakeCheck;
-
-	[SerializeField] private NodePattern nodePattern = null;
-
 	private Image startDotInstance = null;
 
-	public void Show(bool pState)
+	/* Don't use Hungarian notation, pState = state.
+	 * public void Show(bool pState) */
+	public void Show(bool state)
 	{
-		gameObject.SetActive(pState);
+		gameObject.SetActive(state);
 	}
 
 	public void OnPointerEnter(PointerEventData eventData)

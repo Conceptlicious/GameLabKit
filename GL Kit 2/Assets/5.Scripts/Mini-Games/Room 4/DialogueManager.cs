@@ -21,14 +21,17 @@ public class DialogueManager : Singleton<DialogueManager>
 
 	public void Read()
 	{
-		if (currentDialogueIndex <= amountOfDialogues && !QuestionManager.Instance.needsAwnser)
+		if (!QuestionManager.Instance.needsAwnser)
 		{
-			TextAsset loadedDialogue = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DIALOGUE,
-				LoadingPaths.FILE_NAME_DIALOGUE) + currentDialogueIndex);
-			Write(loadedDialogue);
-		}
+			if (currentDialogueIndex <= amountOfDialogues)
+			{
+				TextAsset loadedDialogue = Resources.Load<TextAsset>(Path.Combine(LoadingPaths.PATH_DIALOGUE,
+					LoadingPaths.FILE_NAME_DIALOGUE) + currentDialogueIndex);
+				Write(loadedDialogue);
+			}
 
-		currentDialogueIndex++;
+			currentDialogueIndex++;
+		}
 	}
 
 	private void Write(TextAsset dialogueToDisplay)
@@ -38,12 +41,12 @@ public class DialogueManager : Singleton<DialogueManager>
 		if (CurrentDialogue.StartsWith("Q:"))
 		{
 			QuestionManager.Instance.questionIndex++;
-			dialogueText.color = Color.cyan;
+			dialogueText.color = ChangeColor.NewColor(48, 178, 156, 255);
 			QuestionManager.Instance.needsAwnser = true;
 		}
 		else
 		{
-			dialogueText.color = Color.gray;
+			dialogueText.color = ChangeColor.NewColor(40, 40, 40, 255);
 		}
 
 		dialogueText.text = CurrentDialogue;
@@ -53,6 +56,9 @@ public class DialogueManager : Singleton<DialogueManager>
 	{
 		if (currentDialogueIndex >= amountOfDialogues)
 		{
+			SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Medium);
+			EventManager.Instance.RaiseEvent(saveItemEvent);
+
 			NextRoomEvent nextRoomEvent = new NextRoomEvent();
 			EventManager.Instance.RaiseEvent(nextRoomEvent);
 		}

@@ -2,28 +2,43 @@
 using UnityEngine;
 using GameLab;
 
-public class SwipeInput : Singleton<SwipeInput>, IDragHandler, IEndDragHandler
+public class SwipeInput : Singleton<SwipeInput>, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+	private const float BEGIN_Y_POSITION = 394.1201f;
+	private const float BEGIN_Z_POSITION = -.1f;
+
 	[SerializeField] private Canvas canvasRoom4;
+	private Vector3 snapPosition = Vector3.zero;
 	private Vector3 beginSwipePosition = Vector3.zero;
 	private Vector3 endSwipePosition = Vector3.zero;
 	private float deadZone = 0f;
 
 	private void Start()
 	{
+		snapPosition = transform.position;
 		deadZone = Screen.width * 0.1f;
-		beginSwipePosition = transform.position;
 	}
-	
-	public void OnDrag(PointerEventData eventData)
+
+	public void OnBeginDrag(PointerEventData eventData)
 	{
-		Vector2 swipePosition;
 		RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRoom4.transform as RectTransform,
-			eventData.position, canvasRoom4.worldCamera, out swipePosition);
+			eventData.position, canvasRoom4.worldCamera, out Vector2 swipePosition);
 
 		float x = swipePosition.x;
-		float y = beginSwipePosition.y;
-		float z = beginSwipePosition.z;
+		float y = BEGIN_Y_POSITION;
+		float z = BEGIN_Z_POSITION;
+
+		beginSwipePosition = new Vector3(x, y, z);
+	}
+
+	public void OnDrag(PointerEventData eventData)
+	{
+		RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRoom4.transform as RectTransform,
+			eventData.position, canvasRoom4.worldCamera, out Vector2 swipePosition);
+
+		float x = swipePosition.x;
+		float y = BEGIN_Y_POSITION;
+		float z = BEGIN_Z_POSITION;
 
 		transform.position = new Vector3(x, y, z);
 	}
@@ -41,7 +56,7 @@ public class SwipeInput : Singleton<SwipeInput>, IDragHandler, IEndDragHandler
 			ConveyorBeltMovement.Instance.Previous();
 		}
 
-		transform.position = beginSwipePosition;
+		transform.position = snapPosition;
 		endSwipePosition = Vector3.zero;
 	}
 }

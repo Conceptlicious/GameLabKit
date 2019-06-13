@@ -60,6 +60,10 @@ namespace Room3
 			if (currentLevelIndex == levels.Length - 1)
 			{
 				print("No more levels");
+
+				SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Genre);
+				EventManager.Instance.RaiseEvent(saveItemEvent);
+
 				NextRoomEvent newInfo = new NextRoomEvent();
 				EventManager.Instance.RaiseEvent(newInfo);
 				return;
