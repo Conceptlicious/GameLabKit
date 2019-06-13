@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,26 +8,28 @@ using GameLab;
 
 public class UIControl : MonoBehaviour
 {
-	public event Action<Persona> OnPersonaChanged;
-
 	private Persona persona = new Persona();
 
+	private const int ENABLED_TOGGLES_PER_LIST_MAX = 3;
+	public event Action<Persona> OnPersonaChanged;
+
+	[SerializeField] private int teenCutOff = 13;
+	[SerializeField] private int adultCutOff = 20;
+	[SerializeField] private int elderlyCutOff = 60;
+	[SerializeField] private Transform ageSliders = null;
+	[SerializeField] private Transform genderToggles = null;
 	private Slider ageSilderMin = null;
 	private Slider ageSilderMax = null;
 	private Slider AverageAgeSlider = null;
 	private Text targetAudienceText = null;
 	private Text minAgeText = null;
 	private Text maxAgeText = null;
-
-	private const int maxOnTogglesPerList = 3;
-
-	private List<Toggle> education = new List<Toggle>();
-	private List<Toggle> specialNeeds = new List<Toggle>();
+	private Toggle unspecified = null;
+	private Toggle female = null;
+	private Toggle male = null;
+	private List<Toggle> activeEducationToggles = new List<Toggle>();
+	private List<Toggle> activeSpecialNeedToggles = new List<Toggle>();
 	private List<Disabilities> disabilitiesList = new List<Disabilities>();
-
-	[SerializeField] private int teenCutOff = 13;
-	[SerializeField] private int adultCutOff = 20 ;
-	[SerializeField] private int elderlyCutOff = 60;
 
 	private void Start()
 	{
@@ -36,13 +38,13 @@ public class UIControl : MonoBehaviour
 
 	public void AddToggleToList(Toggle toggleToAdd, ToggleGroup toggleGroup, Disabilities disabilities)
 	{
-		if (toggleGroup == ToggleGroup.Education && education.Count < maxOnTogglesPerList)
+		if (toggleGroup == ToggleGroup.Education && activeEducationToggles.Count < ENABLED_TOGGLES_PER_LIST_MAX)
 		{
-			education.Add(toggleToAdd);
+			activeEducationToggles.Add(toggleToAdd);
 		}
-		else if (toggleGroup == ToggleGroup.SpecialNeeds && specialNeeds.Count < maxOnTogglesPerList)
+		else if (toggleGroup == ToggleGroup.SpecialNeeds && activeSpecialNeedToggles.Count < ENABLED_TOGGLES_PER_LIST_MAX)
 		{
-			specialNeeds.Add(toggleToAdd);
+			activeSpecialNeedToggles.Add(toggleToAdd);
 			disabilitiesList.Add(disabilities);
 			SetPersonaDisabilities(disabilitiesList);
 		}
@@ -54,13 +56,13 @@ public class UIControl : MonoBehaviour
 
 	public void RemoveToggleFromList(Toggle toggleToRemove, Disabilities disabilitiesToRemove)
 	{
-		if (education.Contains(toggleToRemove))
+		if (activeEducationToggles.Contains(toggleToRemove))
 		{
-			education.Remove(toggleToRemove);
+			activeEducationToggles.Remove(toggleToRemove);
 		}
 		else
 		{
-			specialNeeds.Remove(toggleToRemove);
+			activeSpecialNeedToggles.Remove(toggleToRemove);
 			disabilitiesList.Remove(disabilitiesToRemove);
 			SetPersonaDisabilities(disabilitiesList);
 		}
@@ -101,19 +103,11 @@ public class UIControl : MonoBehaviour
 		OnPersonaChanged?.Invoke(persona);
 	}
 
-	public void GenderTogglePressed(Toggle pressedToggle)
+	public void GenderTogglePressed(Genders gender, bool isEnabled)
 	{
-		if (pressedToggle.name == "Unspecified")
+		if (isEnabled)
 		{
-			persona.Gender = Genders.Unspecified;
-		}
-		if (pressedToggle.name == "Female")
-		{
-			persona.Gender = Genders.Female;
-		}
-		if (pressedToggle.name == "Male")
-		{
-			persona.Gender = Genders.Male;
+			persona.Gender = gender;
 		}
 
 		OnPersonaChanged?.Invoke(persona);
@@ -137,15 +131,13 @@ public class UIControl : MonoBehaviour
 	{
 		foreach (Disabilities disability in disabilitiesList)
 		{
-			persona.Disability = persona.Disability | disability;
+			persona.Disability |= disability;
 		}
 		OnPersonaChanged?.Invoke(persona);
 	}
 
 	public void SetVariables()
 	{
-		Transform ageSliders = transform.Find("AgeSliders");
-
 		ageSilderMin = ageSliders.Find("AgeSliderMin").GetComponent<Slider>();
 		ageSilderMax = ageSliders.Find("AgeSliderMax").GetComponent<Slider>();
 		AverageAgeSlider = ageSliders.Find("AverageAge").GetComponent<Slider>();
@@ -158,23 +150,32 @@ public class UIControl : MonoBehaviour
 		maxAgeText = ageSilderMax.transform.Find("Handle Slide Area/Handle/Text").GetComponent<Text>();
 
 		UpdateAgeSlider();
+
+		unspecified = genderToggles.Find("Unspecified").GetComponent<Toggle>();
+		female = genderToggles.Find("Female").GetComponent<Toggle>();
+		male = genderToggles.Find("Male").GetComponent<Toggle>();
+
+		unspecified.onValueChanged.AddListener((isEnabled) => GenderTogglePressed(Genders.Unspecified,
+			isEnabled));
+		female.onValueChanged.AddListener((isEnabled) => GenderTogglePressed(Genders.Female, 
+			isEnabled));
+		male.onValueChanged.AddListener((isEnabled) => GenderTogglePressed(Genders.Male, isEnabled));
 	}
 
 	public void DoneButton()
 	{
+		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.TargetAudience, this);
+		EventManager.Instance.RaiseEvent(saveItemEvent);
+
 		NextRoomEvent nextRoomEvent = new NextRoomEvent();
 		EventManager.Instance.RaiseEvent(nextRoomEvent);
 	}
+
 	public void FocusNextRoom()
 	{
 		NextRoomEvent newInfo = new NextRoomEvent();
 		//EventSystem.ExecuteEvent(EventType.UI_NEXT_ROOM, newInfo);
 		EventManager.Instance.RaiseEvent(newInfo);
-	}
-	
-	public void S()
-	{
-		
 	}
 
 	public void ProgressDialogue()
@@ -182,9 +183,6 @@ public class UIControl : MonoBehaviour
 		Debug.Log("Touch");
 		if (SpeechBubble.Instance.DiagObject != null)
 		{
-		   
-			
-			
 			//If we have looped back to the start after an iteration
 			if (SpeechBubble.Instance.DiagObject.Info.fieldIndex == 0)
 			{
@@ -195,17 +193,17 @@ public class UIControl : MonoBehaviour
 			{
 				FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(null, Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, SpeechBubble.FillTextMethod.ITERATE, false);
 				EventManager.Instance.RaiseEvent(newInfo);
-			
+
 				Debug.Log("Field Index: " + SpeechBubble.Instance.DiagObject.Info.fieldIndex);
 			}
 		}
-	   
+
 	}
 
 	public void PopUpWithParam(DialogueObject pDialogueObject)
 	{
 		CreateSpesifiedPopUpEvent newInfo = new CreateSpesifiedPopUpEvent(pDialogueObject);
-		
+
 	}
-	
+
 }
