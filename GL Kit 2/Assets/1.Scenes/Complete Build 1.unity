@@ -5433,7 +5433,7 @@ PrefabInstance:
     - target: {fileID: 6100448372103171779, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: displayLoadingTips
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6100448372103171778, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
@@ -5525,4 +5525,4 @@ MonoBehaviour:
   - {fileID: 1624125900}
   - {fileID: 1440448512}
   dialogueObjectParent: {fileID: 740206787}
-  displaySpeechBubbles: 0
+  displaySpeechBubbles: 1

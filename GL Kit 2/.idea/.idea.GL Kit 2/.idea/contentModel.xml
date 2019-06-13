@@ -35,6 +35,7 @@
               <e p="EventSystem.cs" t="Include" />
               <e p="EventTypes.cs" t="Include" />
               <e p="FillSpeechBubbleEvent.cs" t="Include" />
+              <e p="FinishedAnimatingUIEvent.cs" t="Include" />
               <e p="FinishedRoomTransition.cs" t="Include" />
               <e p="GenericEvent.cs" t="Include" />
               <e p="ICustomMessageTarget.cs" t="Include" />
@@ -93,6 +94,7 @@
             </e>
           </e>
           <e p="OnTouchDown.cs" t="Include" />
+          <e p="PostProcessControl.cs" t="Include" />
           <e p="RoomManager.cs" t="Include" />
           <e p="Settings" t="Include">
             <e p="LoadingPaths.cs" t="Include" />
@@ -101,6 +103,7 @@
           <e p="SpeechBubble.cs" t="Include" />
           <e p="SpeechManager.cs" t="Include" />
           <e p="UIAnimator.cs" t="Include" />
+          <e p="UIAnimatorManager.cs" t="Include" />
           <e p="UIControl.cs" t="Include" />
           <e p="UIPopUp.cs" t="Include" />
           <e p="UIPopUpManager.cs" t="Include" />

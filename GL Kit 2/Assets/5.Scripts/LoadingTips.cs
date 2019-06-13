@@ -46,7 +46,7 @@ public class LoadingTips : MonoBehaviour
 			Debug.Log("Create loading tup");
 			if (displayLoadingTips == true)
 			{
-				FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(dialogueObject, Settings.VAL_CAMERA_TRANSITION_SECONDS, UIAnimator.MoveType.ARC, method, true);
+				FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(dialogueObject, Settings.VAL_CAMERA_TRANSITION_SECONDS, UIAnimator.MoveType.ARC, UIAnimator.BlurType.NONE, method, true);
 				EventManager.Instance.RaiseEvent(newInfo);
 			}
 			

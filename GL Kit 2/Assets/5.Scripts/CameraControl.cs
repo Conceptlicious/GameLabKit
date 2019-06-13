@@ -98,7 +98,8 @@ public class CameraControl : MonoBehaviour
 		//Modulate depth of field to simulate blur
 		if (shouldFade == true && depthOfField != null && fade == true)
 		{
-			depthOfField.focalLength.value = (Settings.VAL_CAMERA_BLUR_FOCALLENGTH_MAX * sine);
+			PostProcessControl.Instance.SetDepthOfFieldFocal(Settings.VAL_CAMERA_BLUR_FOCALLENGTH_MAX * sine);
+			//depthOfField.focalLength.value = (Settings.VAL_CAMERA_BLUR_FOCALLENGTH_MAX * sine);
 		}    
 		
 		if (fracComplete >= 0.999f)
