@@ -11,17 +11,25 @@ public class SpriteHandler : BetterMonoBehaviour
 	[SerializeField] private UIControl uIControl;
 	private Persona currentPersona;
 	[SerializeField] private AgeGroup age;
-	private Image image;
+	private Image personaImage;
+	public static Sprite personaSprite;
 
 	private void Awake()
 	{
-		image = GetComponent<Image>();
+		personaImage = GetComponent<Image>();
 		uIControl.OnPersonaChanged += OnPersonaChange;
 	}
 
 	private void OnPersonaChange(Persona newPersona)
 	{
-		
+		if (ReturnPersonaSprite(newPersona) != null)
+		{
+			personaSprite = ReturnPersonaSprite(newPersona);
+		}
+	}
+
+	private Sprite ReturnPersonaSprite(Persona newPersona)
+	{
 		bool isMaleOrUnspecified = (newPersona.Gender == Genders.Male || newPersona.Gender == Genders.Unspecified);
 		bool blind = (newPersona.Disability.HasFlag(Disabilities.LowVision));
 		bool deaf = (newPersona.Disability.HasFlag(Disabilities.Deaf));
@@ -31,198 +39,206 @@ public class SpriteHandler : BetterMonoBehaviour
 		//Debug.Log("event called");
 		if (age != newPersona.Age)
 		{
-			image.sprite = null;
-			image.color = new Color32(255, 255, 255, 0);
+			personaImage.sprite = null;
+			personaImage.color = new Color32(255, 255, 255, 0);
 			currentPersona = newPersona;
-			return;
+			return personaImage.sprite;
 		}
 
 		currentPersona = newPersona;
-		image.color = new Color32(255, 255, 255, 255);
+		personaImage.color = new Color32(255, 255, 255, 255);
 
 		if (blind && deaf && disabled && depressed)
 		{
 			if (isMaleOrUnspecified)
 			{
-				image.sprite = characterOptions.MBlindDisabledDeafDepressed;
+				personaImage.sprite = characterOptions.MBlindDisabledDeafDepressed;
 			}
 			else
 			{
-				image.sprite = characterOptions.FBlindDisabledDeafDepressed;
+				personaImage.sprite = characterOptions.FBlindDisabledDeafDepressed;
 			}
-			return;
+			return personaImage.sprite;
 		}
 
 		if (blind && deaf && disabled)
 		{
 			if (isMaleOrUnspecified)
 			{
-				image.sprite = characterOptions.MBlindDisabledDeaf;
+				personaImage.sprite = characterOptions.MBlindDisabledDeaf;
 			}
 			else
 			{
-				image.sprite = characterOptions.FBlindDisabledDeaf;
+				personaImage.sprite = characterOptions.FBlindDisabledDeaf;
 			}
-			return;
+			return personaImage.sprite;
 		}
 
-		if(blind && deaf && depressed)
+		if (blind && deaf && depressed)
 		{
 			if (isMaleOrUnspecified)
 			{
-				image.sprite = characterOptions.MBlindDeafDepressed;
+				personaImage.sprite = characterOptions.MBlindDeafDepressed;
 			}
 			else
 			{
-				image.sprite = characterOptions.FBlindDeafDepressed;
+				personaImage.sprite = characterOptions.FBlindDeafDepressed;
 			}
-			return;
+			return personaImage.sprite;
 		}
 
-		if(disabled && deaf && depressed)
+		if (disabled && deaf && depressed)
 		{
 			if (isMaleOrUnspecified)
 			{
-				image.sprite = characterOptions.MDisabledDeafDepressed;
+				personaImage.sprite = characterOptions.MDisabledDeafDepressed;
 			}
 			else
 			{
-				image.sprite = characterOptions.FDisabledDeafDepressed;
+				personaImage.sprite = characterOptions.FDisabledDeafDepressed;
 			}
-			return;
+			return personaImage.sprite;
 		}
 
-		if(blind && deaf)
+		if (blind && deaf)
 		{
 			if (isMaleOrUnspecified)
 			{
-				image.sprite = characterOptions.MBlindDeaf;
+				personaImage.sprite = characterOptions.MBlindDeaf;
 			}
 			else
 			{
-				image.sprite = characterOptions.FBlindDeaf;
+				personaImage.sprite = characterOptions.FBlindDeaf;
 			}
-			return;
+			return personaImage.sprite;
 		}
 
 		if (blind && disabled)
 		{
 			if (isMaleOrUnspecified)
 			{
-				image.sprite = characterOptions.MBlindDisabled;
+				personaImage.sprite = characterOptions.MBlindDisabled;
 			}
 			else
 			{
-				image.sprite = characterOptions.FBlindDisabled;
+				personaImage.sprite = characterOptions.FBlindDisabled;
 			}
-			return;
+			return personaImage.sprite;
 		}
 
 		if (blind && depressed)
 		{
 			if (isMaleOrUnspecified)
 			{
-				image.sprite = characterOptions.MBlindDepressed;
+				personaImage.sprite = characterOptions.MBlindDepressed;
 			}
 			else
 			{
-				image.sprite = characterOptions.FBlindDepressed;
+				personaImage.sprite = characterOptions.FBlindDepressed;
 			}
-			return;
+			return personaImage.sprite;
 		}
+
 		if (disabled && deaf)
 		{
 			if (isMaleOrUnspecified)
 			{
-				image.sprite = characterOptions.MDisabledDeaf;
+				personaImage.sprite = characterOptions.MDisabledDeaf;
 			}
 			else
 			{
-				image.sprite = characterOptions.FDisabledDeaf;
+				personaImage.sprite = characterOptions.FDisabledDeaf;
 			}
-			return;
+			return personaImage.sprite;
 		}
+
 		if (depressed && deaf)
 		{
 			if (isMaleOrUnspecified)
 			{
-				image.sprite = characterOptions.MDeafDepressed;
+				personaImage.sprite = characterOptions.MDeafDepressed;
 			}
 			else
 			{
-				image.sprite = characterOptions.FDeafDepressed;
+				personaImage.sprite = characterOptions.FDeafDepressed;
 			}
-			return;
+			return personaImage.sprite;
 		}
+
 		if (disabled && depressed)
 		{
 			if (isMaleOrUnspecified)
 			{
-				image.sprite = characterOptions.MDisabledDepressed;
+				personaImage.sprite = characterOptions.MDisabledDepressed;
 			}
 			else
 			{
-				image.sprite = characterOptions.FDisabledDepressed;
+				personaImage.sprite = characterOptions.FDisabledDepressed;
 			}
-			return;
+			return personaImage.sprite;
 		}
 
 		if (blind)
 		{
 			if (isMaleOrUnspecified)
 			{
-				image.sprite = characterOptions.MBlind;
+				personaImage.sprite = characterOptions.MBlind;
 			}
 			else
 			{
-				image.sprite = characterOptions.FBlind;
+				personaImage.sprite = characterOptions.FBlind;
 			}
-			return;
+			return personaImage.sprite;
 		}
+
 		if (deaf)
 		{
 			if (isMaleOrUnspecified)
 			{
-				image.sprite = characterOptions.MDeaf;
+				personaImage.sprite = characterOptions.MDeaf;
 			}
 			else
 			{
-				image.sprite = characterOptions.FDeaf;
+				personaImage.sprite = characterOptions.FDeaf;
 			}
-			return;
+			return personaImage.sprite;
 		}
+
 		if (disabled)
 		{
 			if (isMaleOrUnspecified)
 			{
-				image.sprite = characterOptions.MDisabled;
+				personaImage.sprite = characterOptions.MDisabled;
 			}
 			else
 			{
-				image.sprite = characterOptions.FDisabled;
+				personaImage.sprite = characterOptions.FDisabled;
 			}
-			return;
+			return personaImage.sprite;
 		}
+
 		if (depressed)
 		{
 			if (isMaleOrUnspecified)
 			{
-				image.sprite = characterOptions.MDepressed;
+				personaImage.sprite = characterOptions.MDepressed;
 			}
 			else
 			{
-				image.sprite = characterOptions.FDepressed;
+				personaImage.sprite = characterOptions.FDepressed;
 			}
-				return;
+			return personaImage.sprite;
 		}
+
 		if (isMaleOrUnspecified)
 		{
-			image.sprite = characterOptions.Male;
+			personaImage.sprite = characterOptions.Male;
 		}
 		else
 		{
-			image.sprite = characterOptions.Female;
+			personaImage.sprite = characterOptions.Female;
 		}
-	}
 
+		return personaImage.sprite;
+	}
 }
