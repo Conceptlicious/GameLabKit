@@ -44,19 +44,19 @@
   },
   "lock": {
     "com.gamelab.core": {
-      "hash": "a0c048b813b982a08146088b3f7d8ec36a6b1678",
+      "hash": "fc47caf99fbacf185b60e3b70e0672a5bea819bd",
       "revision": "HEAD"
     },
     "com.gamelab.event": {
-      "hash": "67b3fd48ec0fd3f79db0a5533996bd23448d86d8",
+      "hash": "6fd4326e61deac232b0b6b735d835eaddc404dd6",
       "revision": "HEAD"
     },
     "com.gamelab.json": {
-      "hash": "be697633e3e93f2896ec550189926f7fb5feaba5",
+      "hash": "46093642538585b9a0dbbda63adedfe1fa0f9072",
       "revision": "HEAD"
     },
     "com.gamelab.save": {
-      "hash": "867b84017dc1fd4fe71b351e1a25cfed4fa8d00e",
+      "hash": "d7c07e99e3d16a87a9a37657a6977a91e4e75f3b",
       "revision": "HEAD"
     }
   }

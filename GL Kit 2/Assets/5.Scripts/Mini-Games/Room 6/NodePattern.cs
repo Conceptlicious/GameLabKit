@@ -135,7 +135,7 @@ public class NodePattern : BetterMonoBehaviour
 			 * else if (nextPattern == null && isComplete)*/
 			else
 			{
-				SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.ArtStyle, this);
+				SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.ArtStyle);
 				EventManager.Instance.RaiseEvent(saveItemEvent);
 
 				NextRoomEvent info = new NextRoomEvent();

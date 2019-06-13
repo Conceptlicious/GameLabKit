@@ -48,7 +48,7 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 	{
 		TextUpdater.Instance.CallUpdateTextCoroutine(WON_MINIGAME_MESSAGE, string.Empty);
 
-		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Goals, this);
+		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Goals);
 		EventManager.Instance.RaiseEvent(saveItemEvent);
 
 		NextRoomEvent nextRoomEvent = new NextRoomEvent();

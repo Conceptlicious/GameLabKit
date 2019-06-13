@@ -16,11 +16,9 @@ public enum RoomType
 public class SaveItemEvent : GameLabEvent
 {
 	public RoomType CurrentRoomType { get; private set; }
-	public Component CurrentInvoker { get; private set; }
 
-	public SaveItemEvent(RoomType newRoomType, Component newInvoker)
+	public SaveItemEvent(RoomType newRoomType)
 	{
 		CurrentRoomType = newRoomType;
-		CurrentInvoker = newInvoker;
 	}
 }

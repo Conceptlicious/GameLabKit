@@ -61,7 +61,7 @@ namespace Room3
 			{
 				print("No more levels");
 
-				SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Genre, this);
+				SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Genre);
 				EventManager.Instance.RaiseEvent(saveItemEvent);
 
 				NextRoomEvent newInfo = new NextRoomEvent();

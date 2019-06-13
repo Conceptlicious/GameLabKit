@@ -56,7 +56,7 @@ public class DialogueManager : Singleton<DialogueManager>
 	{
 		if (currentDialogueIndex >= amountOfDialogues)
 		{
-			SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Medium, this);
+			SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Medium);
 			EventManager.Instance.RaiseEvent(saveItemEvent);
 
 			NextRoomEvent nextRoomEvent = new NextRoomEvent();

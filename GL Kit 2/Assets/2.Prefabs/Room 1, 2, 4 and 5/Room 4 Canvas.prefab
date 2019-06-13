@@ -1414,13 +1414,13 @@ MonoBehaviour:
   platformSprites:
   - {fileID: 21300000, guid: 71fd525b7607e5a498758c662b514af0, type: 3}
   - {fileID: 21300000, guid: 478a3fe0e8763a642ab2a31c7d37a214, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: fc2b10223b338f543bb6037cfa474118, type: 3}
+  - {fileID: 21300000, guid: 126745948d355bf4f9dc981a575056e1, type: 3}
+  - {fileID: 21300000, guid: fab0359b02274924599fbce49ae30787, type: 3}
+  - {fileID: 21300000, guid: ce1afbf01477f6c4f8443171433aadc7, type: 3}
+  - {fileID: 21300000, guid: 4f38188357bdb3f468a5b6088390eaf9, type: 3}
+  - {fileID: 21300000, guid: f6a043151f2d3b14bb30318d5a3fc198, type: 3}
+  - {fileID: 21300000, guid: 6b0cb6674cb89ea448d243b507c81d05, type: 3}
 --- !u!1 &8198716885664048534
 GameObject:
   m_ObjectHideFlags: 0

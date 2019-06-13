@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 6100448372103171780}
   - component: {fileID: 6100448372103171779}
   - component: {fileID: 6100448372103171778}
+  - component: {fileID: 6100448373985705833}
+  - component: {fileID: 6100448373985705834}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -53,11 +55,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 1099689827538701570, guid: 7b732002bfde74746991df45eb3b2eba, type: 3}
-  - {fileID: 1099689827538701570, guid: 7b732002bfde74746991df45eb3b2eba, type: 3}
-  - {fileID: 1099689827538701570, guid: 7b732002bfde74746991df45eb3b2eba, type: 3}
-  whiteRoomID: 3
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  focalParent: {fileID: 0}
+  whiteRoomID: 6
   alwaysReturnToWhiteRoom: 1
+  alignFocals: 1
 --- !u!114 &6100448372103171832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,6 +74,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335fdcc09e57a424e8c663cb355814fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teenCutOff: 13
+  adultCutOff: 20
+  elderlyCutOff: 60
+  ageSliders: {fileID: 0}
+  genderToggles: {fileID: 0}
 --- !u!114 &6100448372103171781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90547b46e91d2104ca1741dee69dc57f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fade: 1
 --- !u!114 &6100448372103171780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,9 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   couplings:
-  - marker: '...'
-    eventToCall:
-      classRef: CameraTargetSelectEvent, Assembly-CSharp
   - marker: '#'
     eventToCall:
       classRef: CreatePopUpEvent, Assembly-CSharp
@@ -113,12 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4cce024a3d2e5042aa3b4bef705bd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slidingObject:
-  - {fileID: 0}
-  - {fileID: 0}
-  textField: {fileID: 0}
   dialogueObject: {fileID: 0}
   tipsAreRandom: 0
+  displayLoadingTips: 1
 --- !u!114 &6100448372103171778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,4 +135,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de7df04026d2f94eaa35cc801cbf08d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 0}
+  levelPopupDialogueObjects:
+  - {fileID: 0}
+  parentCanvas: {fileID: 0}
+--- !u!114 &6100448373985705833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6100448372103171833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935b5db85fea76b458cdeef57b4b3cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slidingObject:
+  - {fileID: 0}
+  - {fileID: 0}
+  textField: {fileID: 0}
+--- !u!114 &6100448373985705834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6100448372103171833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea11b8ccd55fa8b4f91b93ec200639b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  dialogueObjectParent: {fileID: 0}
+  displaySpeechBubbles: 1
