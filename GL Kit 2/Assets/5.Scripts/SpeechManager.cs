@@ -8,6 +8,7 @@ public class SpeechManager : BetterMonoBehaviour
 	[SerializeField] private DialogueObject[] dialogueObjects;
 	[SerializeField] private GameObject dialogueObjectParent;
 	[SerializeField] private bool displaySpeechBubbles = true;
+	
 	void Awake()
 	{
 		RegisterAllListeners();

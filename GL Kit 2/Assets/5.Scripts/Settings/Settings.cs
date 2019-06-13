@@ -64,7 +64,7 @@ public static class Settings
 
     public const float VAL_SPEECH_BUBBLE_TRANSITION_SECONDS       = 2.0f;
 
-    public const int VAL_CHARACTERS_PER_SPEECH_BUBBLE             = 200;
+    public const int VAL_CHARACTERS_PER_SPEECH_BUBBLE             = 75;
         
     //----------------------------------------------------------
     //                    OUTPUTS

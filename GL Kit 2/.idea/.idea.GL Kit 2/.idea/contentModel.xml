@@ -102,6 +102,7 @@
           </e>
           <e p="SpeechBubble.cs" t="Include" />
           <e p="SpeechManager.cs" t="Include" />
+          <e p="SpriteControl.cs" t="Include" />
           <e p="UIAnimator.cs" t="Include" />
           <e p="UIAnimatorManager.cs" t="Include" />
           <e p="UIControl.cs" t="Include" />
