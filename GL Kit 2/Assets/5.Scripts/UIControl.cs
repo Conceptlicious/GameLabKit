@@ -190,7 +190,7 @@ public class UIControl : MonoBehaviour
 
 	public void DoneButton()
 	{
-		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.TargetAudience, this);
+		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.TargetAudience);
 		EventManager.Instance.RaiseEvent(saveItemEvent);
 
 		NextRoomEvent nextRoomEvent = new NextRoomEvent();

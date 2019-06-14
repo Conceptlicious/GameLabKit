@@ -147,7 +147,7 @@ public class UIHandler : Singleton<UIHandler>
 
 	public void WonMiniGame()
 	{
-		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Dynamics, this);
+		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Dynamics);
 		EventManager.Instance.RaiseEvent(saveItemEvent);
 
 		NextRoomEvent nextRoomEvent = new NextRoomEvent();

@@ -51,8 +51,8 @@ public class TrophyHandler : BetterMonoBehaviour
 
 			case RoomType.Dynamics:
 				trophySprites[(int)RoomType.Dynamics].gameObject.SetActive(true);
-				trophySprites[(int)RoomType.Dynamics].sprite =
-					ButtonManager.Instance.LastSelectedFunTypeSprite;
+				//trophySprites[(int)RoomType.Dynamics].sprite =
+				//	ButtonManager.Instance.LastSelectedFunTypeSprite;
 				break;
 
 			case RoomType.ArtStyle:
