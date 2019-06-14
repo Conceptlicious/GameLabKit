@@ -130,7 +130,7 @@ public static class Dialogue
         string[] keyNames = GetKeyNames(pFileID, pContainerID);
         int oldIndex = pFieldIndex;
         pNewIndex = (pFieldIndex + 1) % keyNames.Length;
-        Debug.Log("New index is " + pNewIndex);
+       // Debug.Log("New index is " + pNewIndex);
         return GetText(pFileID, pContainerID, keyNames[oldIndex]);
     }
 

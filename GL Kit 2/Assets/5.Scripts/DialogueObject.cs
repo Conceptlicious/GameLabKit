@@ -60,7 +60,7 @@ public class DialogueObject : MonoBehaviour
 			int newIndex = 0;
 			info.DialogueText = Dialogue.GetTextAndIterate(info.fileIndex, info.containerIndex, info.fieldIndex, out newIndex);
 			info.fieldIndex = newIndex;
-			Debug.Log("New Field Index: " + info.fieldIndex);
+			//Debug.Log("New Field Index: " + info.fieldIndex);
 			return info.DialogueText;
 		}
 

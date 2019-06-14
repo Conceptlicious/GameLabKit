@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GameLab;
@@ -9,7 +10,10 @@ public class SpeechBubble : Singleton<SpeechBubble>
 	[SerializeField] private UISlidingObject[] slidingObject;
 	[SerializeField] private Text textField = null;
 	private DialogueObject dialogueObject = null;
-
+	private string bubbleText = "";
+	private int subdivisionIndex = 0;
+	private int lastOffset = 0;
+	private bool completeReading = false;
 
 	public enum FillTextMethod
 	{
@@ -21,7 +25,8 @@ public class SpeechBubble : Singleton<SpeechBubble>
 
 	private FillTextMethod fillTextMethod;
 	public DialogueObject DiagObject => dialogueObject;
-
+	public bool Complete => completeReading;
+	
 	void Awake()
 	{
 		RegisterAllListeners();
@@ -48,6 +53,8 @@ public class SpeechBubble : Singleton<SpeechBubble>
 			Debug.Log("Passed dialogue object is null.");
 		}
 
+		textField.text = GetSubdividedText();
+		/*
 		//Our internal dialogue object
 		if (dialogueObject != null)
 		{
@@ -59,7 +66,7 @@ public class SpeechBubble : Singleton<SpeechBubble>
 					break;
 				
 				case FillTextMethod.ITERATE:
-					textField.text = dialogueObject.GetTextAndIterate();
+					textField.text = GetSubdividedText();//dialogueObject.GetTextAndIterate();
 					break;
 				case FillTextMethod.NONE:
 	
@@ -70,7 +77,7 @@ public class SpeechBubble : Singleton<SpeechBubble>
 		else
 		{
 			Debug.Log("Assigned dialogue object has been nullifed, or has not been assigned!");
-		}
+		}*/
 
 			
 
@@ -83,9 +90,95 @@ public class SpeechBubble : Singleton<SpeechBubble>
 		
 	}
 
-
-	private void SubText(string pText)
+	private string GetTextFromDialogueObject()
 	{
+		string output = Settings.STR_DEFAULT_DIALOGUE;
+		//Our internal dialogue object
+		if (dialogueObject != null)
+		{
+			Debug.Log("Reading from" + dialogueObject.GetFileName());
+			switch (fillTextMethod)
+			{
+				case FillTextMethod.RANDOM:
+					output = dialogueObject.GetRandomText();
+					break;
+				
+				case FillTextMethod.ITERATE:
+					output = dialogueObject.GetTextAndIterate();
+					break;
+				case FillTextMethod.NONE:
+	
+					break;
+			
+			}		
+		}
+		else
+		{
+			Debug.Log("Assigned dialogue object has been nullifed, or has not been assigned!");
+		}
+
+		return output;
+	}
+
+
+	private string GetSubdividedText()
+	{
+		
+		if (subdivisionIndex == 0)
+		{
+			bubbleText = GetTextFromDialogueObject();
+		}
+		
+		
+		
+		if (bubbleText.Length <= Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE)
+		{
+			return bubbleText;
+		}
+		
+		//450  200  2.25
+		float timesIn = bubbleText.Length / Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE;
+		int ceilTimesIn = Mathf.CeilToInt(timesIn);
+		int remainingCharacters =
+			bubbleText.Length - (Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE * Mathf.RoundToInt(timesIn));
+		
+		Debug.Log("Subdiv: " + subdivisionIndex + " | Length: " + bubbleText.Length + " | Remaining chars: " + remainingCharacters + " | Times In Int: " + ceilTimesIn + " | BubbleText: " + bubbleText);
+		
+		int length = subdivisionIndex == ceilTimesIn 
+			? remainingCharacters
+			: Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE;
+
+		int accountedOffset = subdivisionIndex == ceilTimesIn ? 0 : (subdivisionIndex * Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE) - lastOffset;
+		string subdivision = bubbleText.Substring((subdivisionIndex * Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE) - accountedOffset,
+			length);
+		lastOffset = subdivision.LastIndexOf(' ');
+		if (subdivisionIndex != ceilTimesIn)
+		{
+			subdivision = subdivision.Substring(0, lastOffset);
+		}
+		
+		
+		
+		
+		
+	    subdivisionIndex++;
+		
+		if (subdivisionIndex > ceilTimesIn)
+		{
+			subdivisionIndex = 0;
+			lastOffset = 0;
+			if (dialogueObject.Info.fieldIndex == 0)
+			{
+				Debug.Log("Fully read");
+				completeReading = true;
+			}
+		}
+
+		
+
+		return subdivision.Trim(' ');
+		/*
+		
 		if (pText.Length <= Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE)
 		{
 			return;
@@ -107,7 +200,7 @@ public class SpeechBubble : Singleton<SpeechBubble>
 			
 			parts[i] = pText.Substring(i * Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE,
 				length);
-		}
+		}*/
 	}
 	
 	 
