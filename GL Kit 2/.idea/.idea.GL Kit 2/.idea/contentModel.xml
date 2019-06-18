@@ -31,6 +31,7 @@
               <e p="DetectedMarkerEvent.cs" t="Include" />
               <e p="DialogFetchNextEvent.cs" t="Include" />
               <e p="DialogProgressEvent.cs" t="Include" />
+              <e p="DismissSpeechBubbleEvent.cs" t="Include" />
               <e p="EventInfo.cs" t="Include" />
               <e p="EventSystem.cs" t="Include" />
               <e p="EventTypes.cs" t="Include" />
