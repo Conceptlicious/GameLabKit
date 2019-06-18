@@ -204,6 +204,13 @@ public class UIControl : MonoBehaviour
 		EventManager.Instance.RaiseEvent(newInfo);
 	}
 
+	public void ChangeLanguage(int pLanguage)
+	{
+		int languageOption = Mathf.Clamp(pLanguage, 0, (int)GameData.Language.TOTAL);
+		GameData.SetLanguage((GameData.Language)languageOption);
+	}
+
+
 	public void ProgressDialogue()
 	{
 		Debug.Log("Touch");
