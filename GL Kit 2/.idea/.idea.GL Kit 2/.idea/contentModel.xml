@@ -42,6 +42,7 @@
               <e p="LevelProgressEvent.cs" t="Include" />
               <e p="NextRoomEvent.cs" t="Include" />
               <e p="ObjectFoundEvent.cs" t="Include" />
+              <e p="SaveItemEvent.cs" t="Include" />
             </e>
             <e p="Room 1" t="Include">
               <e p="Character.cs" t="Include" />
@@ -91,6 +92,9 @@
               <e p="Node.cs" t="Include" />
               <e p="NodeLayer.cs" t="Include" />
               <e p="NodePattern.cs" t="Include" />
+            </e>
+            <e p="WhiteRoom" t="Include">
+              <e p="TrophyHandler.cs" t="Include" />
             </e>
           </e>
           <e p="OnTouchDown.cs" t="Include" />

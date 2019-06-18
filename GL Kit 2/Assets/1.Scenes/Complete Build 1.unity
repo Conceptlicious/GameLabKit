@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1547,6 +1547,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 834691627}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &852445174 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8585186772815400845, guid: 52ade7103fed6c2408a38cf70c37f539,
+    type: 3}
+  m_PrefabInstance: {fileID: 1907541451}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &891031311
 GameObject:
   m_ObjectHideFlags: 0
@@ -5053,17 +5065,62 @@ PrefabInstance:
     - target: {fileID: 6100448373985705833, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: slidingObject.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6100448373985705833, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: slidingObject.Array.data[0]
       value: 
-      objectReference: {fileID: 1697832734}
+      objectReference: {fileID: 1907541455}
     - target: {fileID: 6100448373985705833, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: slidingObject.Array.data[1]
       value: 
-      objectReference: {fileID: 1907541455}
+      objectReference: {fileID: 1697832734}
+    - target: {fileID: 6100448373985705833, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: textField
+      value: 
+      objectReference: {fileID: 852445174}
+    - target: {fileID: 6100448373985705834, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: dialogueObjectParent
+      value: 
+      objectReference: {fileID: 740206787}
+    - target: {fileID: 6100448373985705834, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: dialogueObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 2121484497}
+    - target: {fileID: 6100448373985705834, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: dialogueObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1395894338}
+    - target: {fileID: 6100448373985705834, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: dialogueObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 396871949}
+    - target: {fileID: 6100448373985705834, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: dialogueObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 1892417834}
+    - target: {fileID: 6100448373985705834, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: dialogueObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 2123002305}
+    - target: {fileID: 6100448373985705834, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: dialogueObjects.Array.data[5]
+      value: 
+      objectReference: {fileID: 1624125900}
+    - target: {fileID: 6100448373985705834, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: dialogueObjects.Array.data[6]
+      value: 
+      objectReference: {fileID: 1440448512}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9918d00f141af441848f74c51b2d5f0, type: 3}
