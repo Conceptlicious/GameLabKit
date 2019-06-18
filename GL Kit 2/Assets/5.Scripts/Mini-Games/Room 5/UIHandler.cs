@@ -1,6 +1,7 @@
 ﻿using GameLab;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 
 public enum FunType
@@ -16,6 +17,7 @@ public class UIHandler : Singleton<UIHandler>
 	public Transform FunTypeTab { get; private set; }
 	public Text TypeText { get; set; }
 	public List<DropZone> DropZones { get; } = new List<DropZone>();
+	[HideInInspector] public bool wonMinigame = false;
 	private Transform dropZonesObject = null;
 	private readonly List<GameObject> funTypeTabs = new List<GameObject>();
 
@@ -147,12 +149,17 @@ public class UIHandler : Singleton<UIHandler>
 
 	public void WonMiniGame()
 	{
-		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Dynamics);
-		EventManager.Instance.RaiseEvent(saveItemEvent);
+		if (wonMinigame)
+		{
+			SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Dynamics);
+			EventManager.Instance.RaiseEvent(saveItemEvent);
 
-		NextRoomEvent nextRoomEvent = new NextRoomEvent();
-		EventManager.Instance.RaiseEvent(nextRoomEvent);
+			NextRoomEvent nextRoomEvent = new NextRoomEvent();
+			EventManager.Instance.RaiseEvent(nextRoomEvent);
+		}
 	}
+
+	
 
 	private void DisableTypeTabs()
 	{
