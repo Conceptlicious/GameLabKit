@@ -142,19 +142,30 @@ public class SpeechBubble : Singleton<SpeechBubble>
 		int remainingCharacters =
 			bubbleText.Length - (Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE * Mathf.RoundToInt(timesIn));
 		
-		Debug.Log("Subdiv: " + subdivisionIndex + " | Length: " + bubbleText.Length + " | Remaining chars: " + remainingCharacters + " | Times In Int: " + ceilTimesIn + " | BubbleText: " + bubbleText);
+		
+		
+		
+
+		
+		
+		int accountedOffset = /*subdivisionIndex == ceilTimesIn ? 0 : */ (subdivisionIndex * Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE) - (lastOffset * subdivisionIndex);
+		
 		
 		int length = subdivisionIndex == ceilTimesIn 
-			? remainingCharacters
+			? remainingCharacters + accountedOffset
 			: Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE;
-
-		int accountedOffset = subdivisionIndex == ceilTimesIn ? 0 : (subdivisionIndex * Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE) - lastOffset;
+		
+		Debug.Log("Subdiv: " + subdivisionIndex + " | Length: " + bubbleText.Length + " | Length of chars: " +  length + " | last offset: " + lastOffset + " | accounted offset: "  + accountedOffset + " | Remaining chars: " + remainingCharacters  + " | Times In Int: " + ceilTimesIn + " | BubbleText: " + bubbleText);
+		
 		string subdivision = bubbleText.Substring((subdivisionIndex * Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE) - accountedOffset,
 			length);
+		Debug.Log("Subbing from " + ((subdivisionIndex * Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE) - accountedOffset) +
+		          " for " + length + " chars.");
 		lastOffset = subdivision.LastIndexOf(' ');
-		if (subdivisionIndex != ceilTimesIn)
+		if (subdivisionIndex < ceilTimesIn)
 		{
 			subdivision = subdivision.Substring(0, lastOffset);
+			Debug.Log("Will sub the existing sub for " + lastOffset + " chars");
 		}
 		
 		
