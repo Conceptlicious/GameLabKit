@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using UnityEngine.EventSystems;
+using UnityEngine;
 using GameLab;
-using UnityEngine.EventSystems;
 
 public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -8,12 +8,18 @@ public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler,
 	[HideInInspector] public bool isObjectInGrid = false;
 	[HideInInspector] public bool isAbleToMove = true;
 	private static Canvas canvasRoom5;
+	private static Plane planeRoom5;
 
 	private void Start()
 	{
 		BeginPosition = CachedTransform.position;
 		isAbleToMove = true;
 		canvasRoom5 = GameObject.FindGameObjectWithTag("DragAndDropCanvas").GetComponent<Canvas>();
+		planeRoom5 = new Plane();
+		planeRoom5.Set3Points
+			(canvasRoom5.transform.TransformPoint(new Vector3(0, 0)),
+			canvasRoom5.transform.TransformPoint(new Vector3(0, 1)),
+			canvasRoom5.transform.TransformPoint(new Vector3(1, 0)));
 	}
 
 	public void OnBeginDrag(PointerEventData eventData)
@@ -35,17 +41,17 @@ public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler,
 		//CachedTransform.position = eventData.position;
 		if (isAbleToMove)
 		{
-			Vector2 gearPosition;
+			Ray ray = canvasRoom5.worldCamera.ScreenPointToRay(eventData.position);
 
-			RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRoom5.transform as RectTransform,
-				eventData.position, canvasRoom5.worldCamera, out gearPosition);
-			transform.position = canvasRoom5.transform.TransformPoint(gearPosition);
+			if(planeRoom5.Raycast(ray, out float hitDistance))
+			{
+				transform.position = ray.GetPoint(hitDistance);
+			}
 		}
 	}
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
-
 		DropZone dropZone = GridHandler.Instance.GetDropZoneUnder(CachedTransform as RectTransform);
 
 		if (dropZone != null && !dropZone.IsOccupied)
