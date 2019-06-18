@@ -212,8 +212,8 @@ public class UIControl : MonoBehaviour
 			//If we have looped back to the start after an iteration
 			if (SpeechBubble.Instance.Complete == true)
 			{
-				FillSpeechBubbleEvent repeatInfo = new FillSpeechBubbleEvent(null, Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, UIAnimator.BlurType.OUT, SpeechBubble.FillTextMethod.NONE, true);
-				EventManager.Instance.RaiseEvent(repeatInfo);
+				DismissSpeechBubbleEvent dismissInfo = new DismissSpeechBubbleEvent();
+				EventManager.Instance.RaiseEvent(dismissInfo);
 			}
 			else
 			{
