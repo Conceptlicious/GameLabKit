@@ -15,4 +15,16 @@ public class ChangeColor
 
 		return newColor;
 	}
+
+	public static Color ColorByHex(string htmlString)
+	{
+		Color newColor = Color.white;
+
+		if(ColorUtility.TryParseHtmlString(htmlString, out Color parsedColor))
+		{
+			newColor = parsedColor;
+		}
+
+		return newColor;
+	}
 }

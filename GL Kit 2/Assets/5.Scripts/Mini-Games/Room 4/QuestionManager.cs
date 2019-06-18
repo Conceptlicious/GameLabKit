@@ -45,7 +45,7 @@ public class QuestionManager : Singleton<QuestionManager>
 
 		yield return new WaitForSeconds(timeWrongMessageDisplayed);
 
-		DialogueManager.Instance.dialogueText.color = Color.cyan;
+		DialogueManager.Instance.dialogueText.color = ChangeColor.NewColor(48, 178, 156, 255);
 		DialogueManager.Instance.dialogueText.text = lastQuestion;
 
 	}
