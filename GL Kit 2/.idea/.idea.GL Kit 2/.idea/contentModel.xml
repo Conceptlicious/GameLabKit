@@ -87,6 +87,7 @@
               <e p="GearInformation.cs" t="Include" />
               <e p="GridHandler.cs" t="Include" />
               <e p="UIHandler.cs" t="Include" />
+              <e p="VectorExtentions.cs" t="Include" />
             </e>
             <e p="Room 6" t="Include">
               <e p="DrawLines.cs" t="Include" />

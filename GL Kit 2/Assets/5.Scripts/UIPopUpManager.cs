@@ -26,6 +26,7 @@ public class UIPopUpManager : MonoBehaviour
     {
         //EventSystem.RegisterListener(EventType.UI_NEXT_ROOM, OnNextRoomCommand);
         EventManager.Instance.AddListener<CreatePopUpEvent>(OnEventMarkerCall);
+        EventManager.Instance.AddListener<CreateSpesifiedPopUpEvent>(OnCreateSpesifiedPopup);
         EventManager.Instance.AddListener<LevelProgressEvent>(OnLevelProgess);
     }
 
