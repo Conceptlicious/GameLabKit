@@ -57,6 +57,8 @@ public class TrophyHandler : BetterMonoBehaviour
 
 			case RoomType.ArtStyle:
 				trophySprites[(int)RoomType.ArtStyle].gameObject.SetActive(true);
+				trophySprites[(int)RoomType.ArtStyle].sprite =
+					SendSpriteRoom6.Instance.LastSelectedTubeSprite;
 				break;
 
 		}
