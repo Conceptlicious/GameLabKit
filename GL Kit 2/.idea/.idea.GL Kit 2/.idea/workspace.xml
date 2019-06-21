@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="242ae21e-f6fb-49ec-a894-9847d147da7f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GL Kit 2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/EventMessaging/DismissSpeechBubbleEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/Mini-Games/EventMessaging/DismissSpeechBubbleEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/SpeechManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/SpeechManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/5.Scripts/UIPopUpManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/5.Scripts/UIPopUpManager.cs" afterDir="false" />
-    </list>
+    <list default="true" id="242ae21e-f6fb-49ec-a894-9847d147da7f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +41,7 @@
     <session id="-1611792072">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="29" />
+          <entry key="project.closed" value="30" />
           <entry key="project.open.time.101" value="1" />
           <entry key="project.open.time.102" value="2" />
           <entry key="project.open.time.113" value="1" />
@@ -172,8 +166,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/UIPopUpManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1395">
-              <caret line="97" column="38" lean-forward="true" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="38" />
+            <state relative-caret-position="225">
+              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
               <folding>
                 <marker date="1561023361534" expanded="false" signature="6:115" ph="..." />
                 <marker date="1561023361534" expanded="true" signature="160:3690" ph="{...}" />
@@ -598,12 +592,12 @@
       <workItem from="1560412299910" duration="8585000" />
       <workItem from="1560502365956" duration="11690000" />
       <workItem from="1560850419223" duration="4140000" />
-      <workItem from="1561022169949" duration="3398000" />
+      <workItem from="1561022169949" duration="4625000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="360734000" />
+    <option name="totallyTimeSpent" value="361961000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -616,7 +610,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="33" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07449664" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1149,8 +1142,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/5.Scripts/UIPopUpManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="97" column="38" lean-forward="true" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="38" />
+        <state relative-caret-position="225">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
           <folding>
             <marker date="1561023361534" expanded="false" signature="6:115" ph="..." />
             <marker date="1561023361534" expanded="true" signature="160:3690" ph="{...}" />
