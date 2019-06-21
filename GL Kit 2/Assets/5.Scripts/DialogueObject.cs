@@ -100,5 +100,5 @@ public class DialogueObject : MonoBehaviour
 		return strArr[info.containerIndex];
 	}
 	
-    }
+	}
 	

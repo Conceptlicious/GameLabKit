@@ -135,11 +135,7 @@ public class NodePattern : BetterMonoBehaviour
 			 * else if (nextPattern == null && isComplete)*/
 			else
 			{
-				SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.ArtStyle);
-				EventManager.Instance.RaiseEvent(saveItemEvent);
-
-				NextRoomEvent info = new NextRoomEvent();
-				EventManager.Instance.RaiseEvent(info);
+				SendSpriteRoom6.Instance.WonMinigame();
 			}
 
 			drawLines.ResetLine();

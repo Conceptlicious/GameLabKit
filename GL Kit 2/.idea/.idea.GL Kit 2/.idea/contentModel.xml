@@ -43,6 +43,7 @@
               <e p="LevelProgressEvent.cs" t="Include" />
               <e p="NextRoomEvent.cs" t="Include" />
               <e p="ObjectFoundEvent.cs" t="Include" />
+              <e p="ProceduralButtonCreation.cs" t="Include" />
               <e p="SaveItemEvent.cs" t="Include" />
             </e>
             <e p="Room 1" t="Include">
@@ -87,12 +88,14 @@
               <e p="GearInformation.cs" t="Include" />
               <e p="GridHandler.cs" t="Include" />
               <e p="UIHandler.cs" t="Include" />
+              <e p="VectorExtentions.cs" t="Include" />
             </e>
             <e p="Room 6" t="Include">
               <e p="DrawLines.cs" t="Include" />
               <e p="Node.cs" t="Include" />
               <e p="NodeLayer.cs" t="Include" />
               <e p="NodePattern.cs" t="Include" />
+              <e p="SendSpriteRoom6.cs" t="Include" />
             </e>
             <e p="WhiteRoom" t="Include">
               <e p="TrophyHandler.cs" t="Include" />

@@ -20,6 +20,7 @@ public class SpeechManager : BetterMonoBehaviour
 	private void RegisterAllListeners()
 	{
 		EventManager.Instance.AddListener<FinishedRoomTransition>(OnFinishRoomTransition);
+		EventManager.Instance.AddListener<DismissSpeechBubbleEvent>(OnDismissCall);
 	}
 
 	private void OnFinishRoomTransition(FinishedRoomTransition info)
@@ -32,6 +33,12 @@ public class SpeechManager : BetterMonoBehaviour
 			EventManager.Instance.RaiseEvent(newInfo);
 		}
 		
+	}
+
+	private void OnDismissCall()
+	{
+		FillSpeechBubbleEvent info = new FillSpeechBubbleEvent(null, Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, UIAnimator.BlurType.OUT, SpeechBubble.FillTextMethod.NONE, true);
+		EventManager.Instance.RaiseEvent(info);
 	}
 
 	private void FillWithBlanks()
