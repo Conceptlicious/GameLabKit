@@ -30,11 +30,9 @@ public class UIControl : MonoBehaviour
 	private List<Toggle> activeEducationToggles = new List<Toggle>();
 	private List<Toggle> activeSpecialNeedToggles = new List<Toggle>();
 	private List<Disabilities> disabilitiesList = new List<Disabilities>();
-
+	private Dictionary<string, UnityEngine.Events.UnityAction> events = new Dictionary<string, UnityEngine.Events.UnityAction>();
 	
 	private bool isTransitioning = false;
-
-	
 
 	private void OnTransitionStart()
 	{
@@ -51,8 +49,18 @@ public class UIControl : MonoBehaviour
 	{
 		RegisterAllListeners();
 		SetVariables();
+		
 	}
 	
+	private void SetEventsDictionary()
+	{
+		events.Add("Next", OnNextButton);
+		events.Add("Back", OnBackButton);
+		events.Add("Confirm", OnConfirmButton);
+		events.Add("Start", OnStartButton);
+		events.Add("Redo", OnRedoButton);
+	}
+
 	/// <summary>
 	/// Registers all event listeners this class needs to care about.
 	/// </summary>
@@ -60,6 +68,7 @@ public class UIControl : MonoBehaviour
 	{
 		EventManager.Instance.AddListener<NextRoomEvent>(OnTransitionStart);
 		EventManager.Instance.AddListener<FinishedRoomTransition>(OnTransitionEnd);
+		EventManager.Instance.AddListener<ProceduralButtonCreation>(OnButtonCreate);
 	}
 
 	public void AddToggleToList(Toggle toggleToAdd, ToggleGroup toggleGroup, Disabilities disabilities)
@@ -78,6 +87,37 @@ public class UIControl : MonoBehaviour
 		{
 			toggleToAdd.isOn = false;
 		}
+	}
+
+	public void OnNextButton()
+	{
+		Debug.Log("Next button Pressed");
+	}
+
+	public void OnStartButton()
+	{
+		Debug.Log("Start button Pressed");
+	}
+
+	public void OnBackButton()
+	{
+		Debug.Log("Back button Pressed");
+	}
+
+	public void OnConfirmButton()
+	{
+		Debug.Log("Confirm button Pressed");
+	}
+
+	public void OnRedoButton()
+	{
+		Debug.Log("Redo button pressed");
+	}
+
+	private void OnButtonCreate(ProceduralButtonCreation info)
+	{
+		Debug.Log(info.ButtonName);
+		info.Button.onClick.AddListener(events[info.ButtonName]);
 	}
 
 	public void RemoveToggleFromList(Toggle toggleToRemove, Disabilities disabilitiesToRemove)
@@ -164,6 +204,7 @@ public class UIControl : MonoBehaviour
 
 	public void SetVariables()
 	{
+		SetEventsDictionary();
 		ageSilderMin = ageSliders.Find("AgeSliderMin").GetComponent<Slider>();
 		ageSilderMax = ageSliders.Find("AgeSliderMax").GetComponent<Slider>();
 		AverageAgeSlider = ageSliders.Find("AverageAge").GetComponent<Slider>();

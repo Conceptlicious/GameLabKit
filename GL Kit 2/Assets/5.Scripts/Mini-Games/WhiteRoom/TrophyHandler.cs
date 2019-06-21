@@ -46,17 +46,19 @@ public class TrophyHandler : BetterMonoBehaviour
 			case RoomType.Medium:
 				trophySprites[(int)RoomType.Medium].gameObject.SetActive(true);
 				trophySprites[(int)RoomType.Medium].sprite =
-					DisplayPlatformInformation.Instance.currentSelectedSprite;
+					DisplayPlatformInformation.Instance.CurrentSelectedSprite;
 				break;
 
 			case RoomType.Dynamics:
 				trophySprites[(int)RoomType.Dynamics].gameObject.SetActive(true);
-				//trophySprites[(int)RoomType.Dynamics].sprite =
-				//	ButtonManager.Instance.LastSelectedFunTypeSprite;
+				trophySprites[(int)RoomType.Dynamics].sprite = 
+					ButtonManager.Instance.LastClickedButtonSprite;
 				break;
 
 			case RoomType.ArtStyle:
 				trophySprites[(int)RoomType.ArtStyle].gameObject.SetActive(true);
+				trophySprites[(int)RoomType.ArtStyle].sprite =
+					SendSpriteRoom6.Instance.LastSelectedTubeSprite;
 				break;
 
 		}

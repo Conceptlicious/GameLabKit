@@ -1,19 +1,24 @@
-﻿using UnityEngine.UI;
+﻿using System.Collections;
+using UnityEngine.UI;
 using UnityEngine;
 using GameLab;
 
 
 public class ButtonManager : Singleton<ButtonManager>
 {
+	private const float WON_MINIGAME_DELAY = 0.1f;
+
 	public Button EasyFun { get; private set; }
 	public Button PeopleFun { get; private set; }
 	public Button HardFun { get; private set; }
 	public Button SeriousFun { get; private set; }
+	public Sprite LastClickedButtonSprite { get; private set; }
 	private int activeButtonCount = 1;
-	private Text easyFunText = null;
-	private Text peopleFunText = null;
-	private Text hardFunText = null;
-	private Text seriousFunText = null;
+	private Image easyFunImage = null;
+	private Image peopleFunImage = null;
+	private Image hardFunImage = null;
+	private Image seriousFunImage = null;
+	private Text startButtonText = null;
 
 	protected override void Awake()
 	{
@@ -27,44 +32,55 @@ public class ButtonManager : Singleton<ButtonManager>
 		switch(activeButtonCount)
 		{		
 			case 2:
-				PeopleFun.enabled = true;
-				peopleFunText.color = Color.green;
+				PeopleFun.interactable = true;
 				break;
 			case 3:
-				HardFun.enabled = true;
-				hardFunText.color = Color.green;
+				HardFun.interactable = true;
 				break;
 			case 4:
-				SeriousFun.enabled = true;
-				seriousFunText.color = Color.green;
+				SeriousFun.interactable = true;
 				break;
 			case 5:
 				UIHandler.Instance.TypeText.text = "You won the mini game!";
-				UIHandler.Instance.WonMiniGame();
+				startButtonText.text = "Confirm";
+				StartCoroutine(WonMinigameDelay());
 				break;
 		}
+	}
+
+	private IEnumerator WonMinigameDelay()
+	{
+		yield return new WaitForSeconds(WON_MINIGAME_DELAY);
+		UIHandler.Instance.wonMinigame = true;
+	}
+
+	private void SetLastClickedButton(Sprite lastClikedButtonSprite)
+	{
+		LastClickedButtonSprite = lastClikedButtonSprite;
 	}
 
 	private void SetVariables()
 	{
 		EasyFun = transform.Find("EasyFun").GetComponent<Button>();
-		easyFunText = EasyFun.GetComponentInChildren<Text>();
-		EasyFun.enabled = true;
-		easyFunText.color = Color.green;
+		easyFunImage = EasyFun.transform.Find("Sprite").GetComponent<Image>();
+		EasyFun.onClick.AddListener(() => SetLastClickedButton(easyFunImage.sprite));
+		EasyFun.interactable = true;
 
 		PeopleFun = transform.Find("PeopleFun").GetComponent<Button>();
-		peopleFunText = PeopleFun.GetComponentInChildren<Text>();
-		PeopleFun.enabled = false;
-		peopleFunText.color = Color.red;
+		peopleFunImage = PeopleFun.transform.Find("Sprite").GetComponent<Image>();
+		PeopleFun.onClick.AddListener(() => SetLastClickedButton(peopleFunImage.sprite));
+		PeopleFun.interactable = false;
 
 		HardFun = transform.Find("HardFun").GetComponent<Button>();
-		hardFunText = HardFun.GetComponentInChildren<Text>();
-		HardFun.enabled = false;
-		hardFunText.color = Color.red;
+		hardFunImage = HardFun.transform.Find("Sprite").GetComponent<Image>();
+		HardFun.onClick.AddListener(() => SetLastClickedButton(hardFunImage.sprite));
+		HardFun.interactable = false;
 
 		SeriousFun = transform.Find("SeriousFun").GetComponent<Button>();
-		seriousFunText = SeriousFun.GetComponentInChildren<Text>();
-		SeriousFun.enabled = false;
-		seriousFunText.color = Color.red;
+		seriousFunImage = SeriousFun.transform.Find("Sprite").GetComponent<Image>();
+		SeriousFun.onClick.AddListener(() => SetLastClickedButton(seriousFunImage.sprite));
+		SeriousFun.interactable = false;
+
+		startButtonText = transform.Find("StartRotation").GetComponentInChildren<Text>();
 	}
 }

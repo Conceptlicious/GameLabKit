@@ -1,5 +1,6 @@
 ﻿using GameLab;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class ConveyorBeltMovement : Singleton<ConveyorBeltMovement>
@@ -7,6 +8,7 @@ public class ConveyorBeltMovement : Singleton<ConveyorBeltMovement>
 	private const float minimumHeight = 169f;
 
 	public int CurrentPlatformIndex { get; private set; }
+	[HideInInspector] public List<Image> platformImages = new List<Image>();
 	private List<Transform> platforms = new List<Transform>();
 
 	private void Start()
@@ -14,6 +16,7 @@ public class ConveyorBeltMovement : Singleton<ConveyorBeltMovement>
 		foreach(Transform child in transform)
 		{
 			platforms.Add(child);
+			platformImages.Add(child.GetComponent<Image>());
 		}
 
 		//Debug.Log(platforms.Count);
