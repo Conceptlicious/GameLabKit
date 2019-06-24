@@ -5,6 +5,13 @@ using GameLab;
 using UnityEngine.UI;
 using System;
 
+//--------------------------------------------------
+//Produced by: Josh van Asten
+//Overview: This script allows for a number of sprites to be assigned to an image, and have the game cycle or pick 
+//between them.
+//Usage: Used for UI.
+//--------------------------------------------------
+
 
 public class SpriteControl : BetterMonoBehaviour
 {

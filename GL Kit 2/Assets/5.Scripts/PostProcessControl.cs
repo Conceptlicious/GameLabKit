@@ -4,6 +4,13 @@ using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
 using GameLab;
 
+//--------------------------------------------------
+//Produced by: Josh van Asten
+//Overview: This script can be used to modulate the post processing profile and volumes. It can be greatly expanded and 
+//currently only is used to control the DepthOfField in order to simulate blur.
+//Usage: Used currently as part of the scene transitioning.
+//--------------------------------------------------
+
 public class PostProcessControl : Singleton<PostProcessControl>
 {
 	private Camera cam;

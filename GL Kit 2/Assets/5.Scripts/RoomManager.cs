@@ -1,6 +1,14 @@
 ﻿using GameLab;
 using UnityEngine;
 
+//--------------------------------------------------
+//Produced by: Josh van Asten
+//Overview: This static holds the locations of target objects which the camera will focus when panning around the scene
+//as well as the IDs of the current, previous and target locations which it sends to other scripts.
+//Usage: Used for camera control and scene transition.
+//--------------------------------------------------
+
+
 public class RoomManager : Singleton<RoomManager>
 {
     [Tooltip("The available number of focal points is dictated by the Settings.cs file.")]
@@ -35,6 +43,9 @@ public class RoomManager : Singleton<RoomManager>
         SnapFocusRoom(0);
     }
 
+    /// <summary>
+    /// Ensure all rooms share the same Z position.
+    /// </summary>
     private void AlignFocalPoints()
     {
         for (int i = 0; i < roomFocalPoints.Length; i++)
@@ -45,14 +56,6 @@ public class RoomManager : Singleton<RoomManager>
         }
     }
 
-	private void Update()
-	{
-		if(Input.touchSupported && Input.GetMouseButtonDown(0))
-		{
-			registerAllListeners();
-		}
-	}
-
     /// <summary>
     /// Returns a Vector3 describing the (OLD ORIGIN, ORIGIN, TARGET) room IDs.
     /// </summary>
@@ -62,6 +65,10 @@ public class RoomManager : Singleton<RoomManager>
         return currentRoom;
     }
 
+    /// <summary>
+    /// Focuses the camera onto a room sans transition
+    /// </summary>
+    /// <param name="pID"></param>
 	private void SnapFocusRoom(int pID)
     {
         pID = pID % roomFocalPoints.Length;
@@ -77,34 +84,24 @@ public class RoomManager : Singleton<RoomManager>
         //EventSystem.RegisterListener(EventType.UI_NEXT_ROOM, OnNextRoomCommand);
         EventManager.Instance.AddListener<NextRoomEvent>(OnNextRoomCommand);
     }
-
-    
+ 
 
     private void OnNextRoomCommand(NextRoomEvent pInfo)
     {
-        //0, 0, 0
-        //0, 0, 3
-        
-        //0, 0, 3
-        //0, 3, 3
         currentRoom.x = currentRoom.y;
         currentRoom.y = currentRoom.z;
         
         if (alwaysReturnToWhiteRoom)
         {
-           
-            //If our old target ISN'T the whiteroom, make it the white room. Else make it the id before last room.
+            //If our old target ISN'T the white room, make it the white room. Else make it the id before last room.
             currentRoom.z = currentRoom.z != whiteRoomID ? whiteRoomID : currentRoom.x + 1;
         }
         else
         {
             currentRoom.z++;
-        }
-        
+        }      
        
         Mathf.Clamp(currentRoom.x, 0, Settings.SYS_VAL_MAX_NUMBER_ROOM_FOCALS);   
-        //Focal A is current. Focal B is next. Current[New, Old]
-        //Debug.Log("focus - x: " + currentRoom.x + " | y: " + currentRoom.y);
         
         LevelProgressEvent newLevelInfo = new LevelProgressEvent(currentRoom.z);
         EventManager.Instance.RaiseEvent(newLevelInfo);
@@ -114,11 +111,14 @@ public class RoomManager : Singleton<RoomManager>
         
     }
 
+    /// <summary>
+    /// If a designer has left blank spaces where target objects should be, fill them with empty GOs for safety.
+    /// </summary>
     private void FillFocalsWithBlanks()
     {
         for (int i = 0; i < roomFocalPoints.Length; i++)
         {        
-            //Debug.Log("Room focal " + i + ": " + roomFocalPoints[i].position);
+            
             if (roomFocalPoints[i] == null)
             {
                

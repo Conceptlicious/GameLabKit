@@ -7,6 +7,13 @@ using GameLab;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
+//--------------------------------------------------
+//Produced by: Josh van Asten
+//Overview: This script interfaces with the UIAnimator and SpeechBubble in order to create similar events, but
+//used during scene transition to provide tips to the player.
+//Usage: Used on scene transition.
+//--------------------------------------------------
+
 public class LoadingTips : MonoBehaviour
 {
 	[SerializeField] private DialogueObject dialogueObject = null;
@@ -40,8 +47,6 @@ public class LoadingTips : MonoBehaviour
 			method = tipsAreRandom == true
 				? SpeechBubble.FillTextMethod.RANDOM
 				: SpeechBubble.FillTextMethod.ITERATE;
-
-			//UIAnimator.Instance.AnimateObjects(slidingObject, Settings.VAL_CAMERA_TRANSITION_SECONDS, UIAnimator.MoveType.ARC);
 
 			Debug.Log("Create loading tup");
 			if (displayLoadingTips == true)

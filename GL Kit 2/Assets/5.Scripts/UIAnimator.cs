@@ -6,6 +6,12 @@ using GameLab;
 using System;
 using UnityEngine.UI;
 
+//--------------------------------------------------
+//Produced by: Josh van Asten
+//Overview: This script can be used to animate UI objects in a few ways.
+//Usage: Used on scene transition and spesified dialogue events.
+//--------------------------------------------------
+
 public class UIAnimator 
 {
     private const float FREQUENCY_CHANGE = 2.0f;
@@ -17,6 +23,7 @@ public class UIAnimator
     private UISlidingObject[] slidingObject = null;
     private float lengthOfAnimation = 0.0f;
 
+    //Arc animations end at their beginning positions while Transitions do not.
     public enum MoveType
     {
         ARC,
@@ -24,6 +31,7 @@ public class UIAnimator
         TOTAL
     };
 
+    //Can be used to either blur the scene in or out
     public enum BlurType
     {
         IN,
@@ -55,7 +63,7 @@ public class UIAnimator
         if (slidingObject != null && slidingObject.Length > 0)
         {
             float fracComplete = (Time.time - startTime) / lengthOfAnimation;
-            //On the starting and ending quarters of the wave, use the ramp of the curve  
+            
             
             for (int i = 0; i < slidingObject.Length; i++)
             {
@@ -71,6 +79,7 @@ public class UIAnimator
                 }
             }
 
+            //If blur is requested, interface with the PostProcessControl
             switch (blurType)
             {
                     case BlurType.IN:
@@ -82,8 +91,6 @@ public class UIAnimator
                     case BlurType.NONE:
                         break;
             }
-        
-            //textBox.transform.position = 
         
             if(fracComplete >= 0.999f)
             {       
@@ -99,6 +106,7 @@ public class UIAnimator
         
     }
 
+    //Exchange start and end locations
     private void FlipPositions()
     {
         for (int i = 0; i < slidingObject.Length; i++)
@@ -112,57 +120,23 @@ public class UIAnimator
         }
     }
 
+    //For ARC style animations
     private void MoveOverArc(int pIndex, float pFracComplete)
     {
+        //On the starting and ending quarters of the wave, use the ramp of the curve
         float sineCapped = pFracComplete >=  slidingObject[pIndex].InOutPercentages.x && pFracComplete <= slidingObject[pIndex].InOutPercentages.y ? 1.0f : Mathf.Abs(Mathf.Sin(FREQUENCY_CHANGE * (Mathf.PI * pFracComplete)));
+        
+        //Lerp the objects
         slidingObject[pIndex].MainObject.transform.position = Vector3.Lerp(slidingObject[pIndex].HiddenPosition.position, slidingObject[pIndex].ShownPosition.position, sineCapped);
     }
 
+    //For TRANSITION style animations
     private void MoveBetweenPoints(int pIndex, float pFracComplete)
     {
-        slidingObject[pIndex].MainObject.transform.position = Vector3.Lerp(slidingObject[pIndex].HiddenPosition.position, slidingObject[pIndex].ShownPosition.position, pFracComplete);
-       
+        //Simple lerp
+        slidingObject[pIndex].MainObject.transform.position = Vector3.Lerp(slidingObject[pIndex].HiddenPosition.position, slidingObject[pIndex].ShownPosition.position, pFracComplete);      
     }
 
-    /*public void AnimateObjects(UISlidingObject[] pSlidingObject, float pLengthOfAnimation, MoveType pMoveType)
-    {
-        Debug.Log("Begin");
-        startTime = Time.time;
-        lengthOfAnimation = pLengthOfAnimation;
-        
-       // AddNewAnimateables(pSlidingObject);
-        
-        slidingObject = pSlidingObject;
-        //ResetPositions();
-        moveType = pMoveType;
-        handler += MoveObjects;
-    }*/
-
-   /* private void AddNewAnimateables(UISlidingObject[] pSlidingObject)
-    {
-        bool[] duplicates = new bool[pSlidingObject.Length];
-        for (int i = 0; i < slidingObject.Count; i++)
-        {
-            for (int j = 0; j < pSlidingObject.Length; j++)
-            {
-                if (slidingObject[i] == pSlidingObject[j])
-                {
-                    duplicates[j] = true;
-                    
-                }
-            }   
-            
-        }
-
-        for (int i = 0; i < pSlidingObject.Length; i++)
-        {
-            if (duplicates[i] == false)
-            {
-                slidingObject.Add(pSlidingObject[i]);
-            }
-        }
-       
-    }*/
     
     private void ResetPositions()
     {

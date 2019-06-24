@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//--------------------------------------------------
+//Produced by: Josh van Asten
+//Overview: This static script is meant to hold all values that refer to the game itself, including the versioning
+//and current language options.
+//Usage: Used globally.
+//--------------------------------------------------
+
+
 public static class GameData
 {
     public static string INFO_VERSION_STATE = "Pre-Alpha";

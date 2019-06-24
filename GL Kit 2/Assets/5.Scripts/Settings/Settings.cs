@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//--------------------------------------------------
+//Produced by: Josh van Asten
+//Overview: This static script is meant to hold all values that need to be tweaked and want to be scene-independent 
+//and therefore not lost with editor or scene changes.
+//Usage: Used globally.
+//--------------------------------------------------
+
 public static class Settings
 {
     //----------------------------------------------------------

@@ -5,6 +5,14 @@ using UnityEngine.UI;
 using EventType = CustomEventCallbacks.EventType;
 using GameLab;
 
+//--------------------------------------------------
+//Produced by: Josh van Asten, expanded by Noah and Matthias.
+//Overview: This script is the single interface point for UI-to-script communication. It should be attached on a single
+//manager object in-game and each button or UI object which needs to call a method, should use this script to do so.
+//There were once separate scripts made by each programmer to do this same job, which were later consolidated into one. 
+//As such the quality and consistency of this script is debateable.
+//Usage: Used globally.
+//--------------------------------------------------
 
 public class UIControl : MonoBehaviour
 {
@@ -52,6 +60,10 @@ public class UIControl : MonoBehaviour
 		
 	}
 	
+	//NOTE: Please rename, Noah
+	/// <summary>
+	/// Holds the fuction procedural buttons should receive based on their name.
+	/// </summary>
 	private void SetEventsDictionary()
 	{
 		events.Add("Next", OnNextButton);
@@ -169,6 +181,12 @@ public class UIControl : MonoBehaviour
 		OnPersonaChanged?.Invoke(persona);
 	}
 
+	
+	/// <summary>
+	/// Used in Room 1 for character creation.
+	/// </summary>
+	/// <param name="gender"></param>
+	/// <param name="isEnabled"></param>
 	public void GenderTogglePressed(Genders gender, bool isEnabled)
 	{
 		if (isEnabled)
@@ -193,6 +211,10 @@ public class UIControl : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Used in Room 1 for character creation.
+	/// </summary>
+	/// <param name="disabilitiesList"></param>
 	public void SetPersonaDisabilities(List<Disabilities> disabilitiesList)
 	{
 		foreach (Disabilities disability in disabilitiesList)
@@ -202,6 +224,9 @@ public class UIControl : MonoBehaviour
 		OnPersonaChanged?.Invoke(persona);
 	}
 
+	/// <summary>
+	/// Used in Room 1 for character creation.
+	/// </summary>
 	public void SetVariables()
 	{
 		SetEventsDictionary();
@@ -238,6 +263,9 @@ public class UIControl : MonoBehaviour
 		EventManager.Instance.RaiseEvent(nextRoomEvent);
 	}
 
+	/// <summary>
+	/// Used to force a room transition
+	/// </summary>
 	public void FocusNextRoom()
 	{
 		NextRoomEvent newInfo = new NextRoomEvent();
@@ -245,13 +273,19 @@ public class UIControl : MonoBehaviour
 		EventManager.Instance.RaiseEvent(newInfo);
 	}
 
+	/// <summary>
+	/// Used in the settings menu to change languages
+	/// </summary>
+	/// <param name="pLanguage"></param>
 	public void ChangeLanguage(int pLanguage)
 	{
 		int languageOption = Mathf.Clamp(pLanguage, 0, (int)GameData.Language.TOTAL);
 		GameData.SetLanguage((GameData.Language)languageOption);
 	}
 
-
+	/// <summary>
+	/// Used when clicking on speech bubbles to progress dialogue.
+	/// </summary>
 	public void ProgressDialogue()
 	{
 		Debug.Log("Touch");
@@ -274,6 +308,10 @@ public class UIControl : MonoBehaviour
 
 	}
 
+	/// <summary>
+	/// Used for creating a popup on button press.
+	/// </summary>
+	/// <param name="pDialogueObject"></param>
 	public void PopUpWithParam(DialogueObject pDialogueObject)
 	{
 		CreateSpesifiedPopUpEvent newInfo = new CreateSpesifiedPopUpEvent(pDialogueObject);

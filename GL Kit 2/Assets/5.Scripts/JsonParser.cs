@@ -4,20 +4,29 @@ using UnityEngine;
 using SimpleJSON;
 using System.IO;
 
+//--------------------------------------------------
+//Produced by: Josh van Asten
+//Overview: This parses a given json file and stores it's info in our DialogueFile objects.
+//Usage: Used as part of the dialogue system.
+//--------------------------------------------------
+
 public static class JsonParser 
 {
 
     public static DialogueFile ParseJSONFile(string fileName)
     {
         string[] directory = new string[] {string.Empty};
+        
         // Load our file
         TextAsset jsonObject = Resources.Load<TextAsset>(GetJSONPath(fileName, out directory));
         Debug.Assert(jsonObject != null, System.String.Format(Settings.ERR_JSON_MISSING_FILE, fileName));
+        
         //unnesscary extra safety return
         if (jsonObject == null)
         {
             return null;
         }
+        
         //Create the object to be returned.
         DialogueFile dialogueFile = new DialogueFile();
         dialogueFile.Name = fileName;

@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameLab;
 
+//--------------------------------------------------
+//Produced by: Josh van Asten
+//Overview: This script is the publicly accessable point for using UIAnimators. It's a singleton to allow for access
+//whereas each UIAnimator needs to exists independantly so their animations can play out and overlap.
+//It creates, removes and handles those animators.
+//Usage: Used with the UI system.
+//--------------------------------------------------
+
 public class UIAnimatorManager : Singleton<UIAnimatorManager>
 {
 	private List<UIAnimator> animators = new List<UIAnimator>();
@@ -16,7 +24,6 @@ public class UIAnimatorManager : Singleton<UIAnimatorManager>
 	{
 		EventManager.Instance.AddListener<FinishedAnimatingUIEvent>(RemoveAnimatorFromList);
 	} 
-	
 	
 	public void AnimateObjects(UISlidingObject[] pSlidingObject, float pLengthOfAnimation, UIAnimator.MoveType pMoveType, UIAnimator.BlurType pBlurType)
 	{

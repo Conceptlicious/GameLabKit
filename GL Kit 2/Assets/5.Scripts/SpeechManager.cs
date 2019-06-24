@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameLab;
 
+//--------------------------------------------------
+//Produced by: Josh van Asten
+//Overview: This script handles the progression of dialogue displayed by Dr GameLab. It mostly listens to and broadcasts
+//events from other scripts.
+//Usage: Used with UI and dialogue systems.
+//--------------------------------------------------
+
+
 public class SpeechManager : BetterMonoBehaviour
 {
 	[SerializeField] private DialogueObject[] dialogueObjects;
@@ -23,6 +31,8 @@ public class SpeechManager : BetterMonoBehaviour
 		EventManager.Instance.AddListener<DismissSpeechBubbleEvent>(OnDismissCall);
 	}
 
+	
+	//Display after transition
 	private void OnFinishRoomTransition(FinishedRoomTransition info)
 	{
 		if (displaySpeechBubbles)
@@ -35,6 +45,7 @@ public class SpeechManager : BetterMonoBehaviour
 		
 	}
 
+	//Dismiss the UI
 	private void OnDismissCall()
 	{
 		FillSpeechBubbleEvent info = new FillSpeechBubbleEvent(null, Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, UIAnimator.BlurType.OUT, SpeechBubble.FillTextMethod.NONE, true);

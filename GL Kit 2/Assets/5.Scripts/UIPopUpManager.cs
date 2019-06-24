@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using GameLab;
 
+//--------------------------------------------------
+//Produced by: Josh van Asten
+//Overview: This script creates and instantiates pop ups. It does so in a less than perfect way, by pulling a specially
+//parsed version of a dialogue file and loading that data into a data container class and then using those fields to 
+//fill out the pop up.
+//Usage: Used on event call.
+//--------------------------------------------------
+
 public class UIPopUpManager : MonoBehaviour
 {
 	[SerializeField] private DialogueObject[] levelPopupDialogueObjects;
@@ -46,7 +54,7 @@ public class UIPopUpManager : MonoBehaviour
 			return;
 		}
 		
-		//Need to iterate once to 
+		//Need to iterate once to align with the right field
 		pDiagObj.GetTextAndIterate();
 
 		string path = Settings.PATH_PREFABS + Settings.OBJ_NAME_UI_POPUP;
@@ -58,28 +66,39 @@ public class UIPopUpManager : MonoBehaviour
 			Debug.Log("UICanvas is null");
 		}
 
+		//Name the object for simplicity
 		UICanvas.name = "Popup: " + pDiagObj.GetContainerName();
 
+		//Create
 		UIPopUp popup = UICanvas.GetComponent<UIPopUp>();
 		Debug.Assert(popup != null, Settings.ERR_ASSERT_UI_POPUP_MISSING_COMPONENT);
+		
+		//Get the data from the data holder
 		UIPopUp.PopupFields data = popup.PopupFieldsData;      
 
 		data.title.text = pDiagObj.GetTextAndIterate();
 		data.body.text = pDiagObj.GetTextAndIterate();
-
+		
+		//Create our popup with a text field depending on whether that's spesified
 		string textFieldEnabled = pDiagObj.GetTextAndIterate();
 		bool t = (System.String.IsNullOrEmpty(textFieldEnabled) || textFieldEnabled.ToLower() == "false") == true ? false : true;
 		Debug.Log("Input Field is: " + t);
 		data.inputField.gameObject.SetActive(t);
 
+		//Get the names of the buttons, position them and then assign their functions using an event
 		string[] buttonNames = pDiagObj.GetTextAndIterate().Split(' ');
 		for (int i = 0; i < buttonNames.Length; i++)
 		{
+			//Craete
 			GameObject newButton = GameObject.Instantiate(data.button.gameObject, UICanvas.transform);
+			
+			//Position
 			Vector3 newPosition = data.buttonAnchorPoint.position;
 			newPosition.x += ((newButton.GetComponent<RectTransform>().rect.width * i) + data.buttonPadding);
 			newButton.transform.position = newPosition;
 			newButton.GetComponentInChildren<Text>().text = buttonNames[i];
+			
+			//Assign functions
 			EventManager.Instance.RaiseEvent<ProceduralButtonCreation>(buttonNames[i], newButton.GetComponent<Button>());
 		}
 		//Disable original button to clone

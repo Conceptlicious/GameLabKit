@@ -5,6 +5,13 @@ using UnityEngine;
 using GameLab;
 using UnityEngine.UI;
 
+//--------------------------------------------------
+//Produced by: Josh van Asten
+//Overview: This script fills the speech bubbles that apper along Dr GameLab.
+//Usage: Used along with scene transitions, UI and the dialogue system.
+//--------------------------------------------------
+
+
 public class SpeechBubble : Singleton<SpeechBubble>
 {
 	[SerializeField] private UISlidingObject[] slidingObject;
@@ -64,6 +71,10 @@ public class SpeechBubble : Singleton<SpeechBubble>
 		
 	}
 
+	/// <summary>
+	/// Fetch more dialogue from our file.
+	/// </summary>
+	/// <returns></returns>
 	private string GetTextFromDialogueObject()
 	{
 		string output = Settings.STR_DEFAULT_DIALOGUE;
@@ -125,10 +136,6 @@ public class SpeechBubble : Singleton<SpeechBubble>
 			bubbleText.Length - (Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE * Mathf.RoundToInt(timesIn));
 		
 		
-		
-		
-
-		
 		//A number that represents an offset for our starting point when using substring. If we left a few characters in the previous bubble, our start point
 		//needs to be pushed back this amount for the current bubble.
 		int accountedOffset = /*subdivisionIndex == ceilTimesIn ? 0 : */ (subdivisionIndex * Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE) - (lastOffset * subdivisionIndex);
@@ -158,8 +165,7 @@ public class SpeechBubble : Singleton<SpeechBubble>
 			subdivision = subdivision.Substring(0, lastOffset);
 			Debug.Log("Will sub the existing sub for " + lastOffset + " chars");
 		}
-		
-		
+			
 		
 		//Increment
 	    subdivisionIndex++;

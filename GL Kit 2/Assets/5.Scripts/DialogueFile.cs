@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
 
+//--------------------------------------------------
+//Produced by: Josh van Asten
+//Overview: This script is the highest level of information for each file of dialogue that is read and parsed. 
+//It's used to create and store the containers.
+//Usage: Used as part of the dialogue system.
+//--------------------------------------------------
+
+
 public class DialogueFile
 {
 	public string Name { get; set; } = Settings.STR_DEFAULT_DIALOGUE;

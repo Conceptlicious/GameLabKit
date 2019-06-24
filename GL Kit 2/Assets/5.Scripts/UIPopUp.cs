@@ -4,6 +4,12 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
+//--------------------------------------------------
+//Produced by: Josh van Asten
+//Overview: This script holds data about the fields and values used to create our procedural popups.
+//Usage: Used to hold data from dialogue object for UIPopUpManager
+//--------------------------------------------------
+
 public class UIPopUp : MonoBehaviour
 {
     [SerializeField] private PopupFields popupFields; 
