@@ -9,6 +9,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class Node : BetterMonoBehaviour, IPointerEnterHandler
 {
+	/*
+	Script for every node which sends information to other scripts
+	*/
 	public event Action<Node> OnInteract;
 	[SerializeField] private NodePattern nodePattern = null;
 

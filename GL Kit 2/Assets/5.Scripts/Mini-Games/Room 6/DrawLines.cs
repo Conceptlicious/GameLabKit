@@ -7,6 +7,11 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class DrawLines : BetterMonoBehaviour
 {	
+	/*
+	Just a simple line renderer that renders line inbetween nodes
+	by adding their positions.
+	*/
+
 	private LineRenderer lineBetweenNodes;
 	[SerializeField] private Vector3 offset;
 

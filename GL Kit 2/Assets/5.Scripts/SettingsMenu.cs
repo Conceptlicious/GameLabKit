@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class SettingsMenu : BetterMonoBehaviour
 {
+	/*
+	Just a simple script to help buttons toggle the settings menu on and off
+	*/
 	[SerializeField] private Canvas settingsCanvas;
 	private bool menuToggled = false;
 
