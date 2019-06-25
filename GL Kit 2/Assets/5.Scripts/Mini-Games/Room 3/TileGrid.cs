@@ -77,6 +77,7 @@ namespace Room3
 
 		private void PreviousLevel()
 		{
+			//set the level to the previous level
 			if (currentLevelIndex == 0)
 			{
 				print("No previous levels");
@@ -89,8 +90,9 @@ namespace Room3
 
 		private void SpawnLevel(Level level)
 		{
+			//first remove the currentlevel
 			DestroySpawnedLevel();
-
+			//Set the layers
 			mainLayer = new TileLayer(level.Rows, level.Cols);
 			bridgeLayer = new TileLayer(level.Rows, level.Cols, Tile.Type.Obstacle);
 
@@ -99,30 +101,30 @@ namespace Room3
 
 			float anchorStepPerColumn = 1.0f / level.Cols;
 			float anchorStepPerRow = 1.0f / level.Rows;
-
+			//Go through every pixel of the levelData
 			for (int i = 0; i < levelPixelData.Length; ++i)
 			{
 				Color32 pixel = levelPixelData[i];
 				int row = i / level.Rows;
 				int col = i % level.Cols;
-
+				//If the pixel has the bridge tile colour make an extra tile  with different allowed connection directions
 				if (pixel.CompareRGB(levelColorSettings.BridgeTileColor))
 				{
 					mainLayer.Tiles[row, col].AllowedConnectionDirections = Tile.ConnectionDirection.East | Tile.ConnectionDirection.West;
 					bridgeLayer.Tiles[row, col].AllowedConnectionDirections = Tile.ConnectionDirection.North | Tile.ConnectionDirection.South;
 					bridgeLayer.Tiles[row, col].TileType = Tile.Type.Connection;
 				}
-
+				// Get the tileData at the right coordinates
 				Tile tileData = mainLayer.Tiles[row, col];
-
+				//Get the groups and types of the data based on the colour
 				tileData.TileGroup = levelColorSettings.GetTileGroupFromColor(pixel);
 				tileData.TileType = levelColorSettings.GetTileTypeFromColor(pixel);
-
+				// Spawn in a game object for the tile
 				TileController tileController = SpawnTileController(row, col, anchorStepPerColumn, anchorStepPerRow);
-
+				
 				tileController.AddTilesToControl(mainLayer.Tiles[row, col], bridgeLayer.Tiles[row, col]);
 				tileController.Image.color = pixel;
-
+				// add listeners 
 				tileController.Interacted += OnTileInteractedWith;
 				tileController.OnFinishedInteractingAt += OnFinishedInteractingAtTile;
 			}
@@ -130,67 +132,69 @@ namespace Room3
 
 		private TileController SpawnTileController(int row, int col, float anchorStepPerColumn, float anchorStepPerRow)
 		{
+			//Instantiate a tile
 			TileController tileController = Instantiate(tileControllerPrefab, Vector3.zero, Quaternion.identity, CachedTransform);
-
+			// Give him a name with the coordinates (for clarities)
 			tileController.name = $"Tile {row}, {col}";
-
+			//Set the anchors
 			tileController.CachedRectTransform.anchorMin = new Vector2(col * anchorStepPerColumn, row * anchorStepPerRow);
 			tileController.CachedRectTransform.anchorMax = new Vector2((col + 1) * anchorStepPerColumn, (row + 1) * anchorStepPerRow);
-
+			//Set the position on the position
 			tileController.CachedRectTransform.offsetMin = tileController.CachedRectTransform.offsetMax = Vector3.zero;
 			tileController.CachedRectTransform.localPosition = new Vector3(tileController.CachedRectTransform.localPosition.x, tileController.CachedRectTransform.localPosition.y, 0.0f);
-
+			//Return the tileController
 			return tileController;
 		}
 
 		private void DestroySpawnedLevel()
 		{
+			//Remove each game object in the cachedtransform
 			foreach (Transform spawnedTile in CachedTransform)
 			{
 				Destroy(spawnedTile.gameObject);
 			}
-
-			//CurrentLevel = null;
+			//Remove the Layers
 			mainLayer = null;
 			bridgeLayer = null;
-
+			//Set the lastineractedtilecontroller to null and remove the finishedGroups
 			lastInteractedWithTileController = null;
 			finishedGroups.Clear();
 		}
 
 		private void OnTileInteractedWith(TileController tileController)
 		{
+			//If it cant be interacted with then just return
 			if (!canBeInteractedWith)
 			{
 				return;
 			}
-
+			//If the tilecontroller is the last tile that has been interacted with return
 			if (tileController == lastInteractedWithTileController)
 			{
 				return;
 			}
-
+			//If it has already been interacted with try to resume the path from that tile and return
 			if (!HasInteractedWithTile)
 			{
 				TryResumePathFrom(tileController);
 				return;
 			}
-
+			//If you can removetileconnections after the tile then do so and return
 			if (TryRemoveTileConnectionsAfter(tileController))
 			{
 				return;
 			}
-
+			//If the tile is already part of a finished group return
 			if(IsTilePartOfFinishedGroups(tileController))
 			{
 				return;
 			}
-
+			// Return if it cant connect to the lastinteracted with tile
 			if(!tileController.TryConnectTo(lastInteractedWithTileController))
 			{
 				return;
 			}
-
+			//Validate the path between tilecontroller and the tilecontroller and set the spite correctly
 			ValidatePath(tileController, lastInteractedWithTileController);
 
 			if (tileController.Row == lastInteractedWithTileController.Row)
@@ -201,7 +205,7 @@ namespace Room3
 			{
 				tileController.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
 			}
-
+			//Set the lastinteractedwithtilecontroller to the current tilecontroller
 			lastInteractedWithTileController = tileController;
 
 			UpdateWinStatus();
@@ -211,11 +215,12 @@ namespace Room3
 		{
 			foreach(Tile controlledTile in tileController.ControlledTiles)
 			{
+				//if the tiletype is an obstacle just continue
 				if(controlledTile.TileType == Tile.Type.Obstacle)
 				{
 					continue;
 				}
-
+				//If the finished groups dont contain the controlledtiles their group just return false
 				if(!finishedGroups.Contains(controlledTile.TileGroup))
 				{
 					return false;
@@ -227,18 +232,19 @@ namespace Room3
 
 		private void ValidatePath(TileController currentTileController, TileController lastTileController)
 		{
+			//If the last tile isnt ungrouped
 			if(lastTileController.TileGroup == Tile.Group.Ungrouped)
 			{
 				return;
 			}
-
+			//calculate the patch of lasttile on the mainlayer
 			TilePath path = mainLayer.CalculatePathForGroup(lastTileController.TileGroup);
-			
+			// if the path doesnt contain the currenttilecontroller
 			if (!path.Tiles.Contains(currentTileController.ConnectedControlledTile))
 			{
 				return;
 			}
-
+			// Get the index of the lasttilecontroller
 			int lastTileControllerConnectedTileIndexInPath = path.Tiles.IndexOf(lastTileController.ConnectedControlledTile);
 
 			// If the tile was not found or is the very first tile in the path, there is nothing before that, so we cannot do corner logic.
@@ -246,9 +252,9 @@ namespace Room3
 			{
 				return;
 			}
-
+			// get the tile before the last tile
 			Tile previousToLastTile = path.Tiles[lastTileControllerConnectedTileIndexInPath - 1];
-
+			//see if they have corners
 			CheckForCorners(currentTileController, lastTileController, previousToLastTile);
 		}
 
@@ -336,42 +342,45 @@ namespace Room3
 
 		private void OnFinishedInteractingAtTile(TileController tile)
 		{
+			//reset the lastinteractedwithtile
 			lastInteractedWithTileController = null;
 		}
 
 		private bool TryResumePathFrom(TileController tile)
 		{
+			//if the tile has been interacted with return false
 			if (HasInteractedWithTile)
 			{
 				return false;
 			}
-
+			//if the tile is ungroupped return false
 			if (tile.TileGroup == Tile.Group.Ungrouped)
 			{
 				return false;
 			}
-
+			//if the tile doesnt have a main tile set or the maintiletype is endpoint return false
 			if (!tile.IsMainTileSet || tile.MainTile.TileType == Tile.Type.EndPoint)
 			{
 				return false;
 			}
-
+			//otherwise remove tile connections after the tile and return true
 			RemoveTileConnectionsAfter(tile);
 			return true;
 		}
 
 		private bool TryRemoveTileConnectionsAfter(TileController tile)
 		{
+			// if the tileGroup to ungrouped return false
 			if (tile.TileGroup == Tile.Group.Ungrouped)
 			{
 				return false;
 			}
-
+			// calculate the path for the tiles tilegroup
 			TilePath interactedTileGroupPath = mainLayer.CalculatePathForGroup(tile.TileGroup);
-
+			//Get the index of both the tile and the last tile
 			int interactedTilePathIndex = interactedTileGroupPath.Tiles.IndexOf(tile.ConnectedControlledTile);
 			int lastInteractedWithTilePathIndex = interactedTileGroupPath.Tiles.IndexOf(lastInteractedWithTileController.ConnectedControlledTile);
-
+			
 			if (interactedTilePathIndex < 0 || interactedTilePathIndex >= lastInteractedWithTilePathIndex)
 			{
 				return false;
@@ -384,31 +393,34 @@ namespace Room3
 
 		private void RemoveTileConnectionsAfter(TileController tile)
 		{
+			// call removetileconnecitonsafter this on the tile and remove the tilegroup form finished groups
 			tile.ConnectedControlledTile.RemoveTileConnectionsAfterThis();
 			finishedGroups.Remove(tile.TileGroup);
-
+			//set lastinteractedwithtilecontroller to the tile
 			lastInteractedWithTileController = tile;
 		}
 
 		private void UpdateWinStatus()
 		{
+			//get the tiledata with the lastineractedwithtilecontroller
 			Tile tileData = lastInteractedWithTileController.ConnectedControlledTile;
-
+			// if isnt an endpoint just return
 			if (tileData.TileType != Tile.Type.EndPoint)
 			{
 				return;
 			}
-
+			// otherwise add the tilegroup
 			finishedGroups.Add(tileData.TileGroup);
-
+			// go through all tilegroups
 			foreach (Tile.Group tileGroup in CurrentLevelSettings.TileGroups)
 			{
+				//return if the group isnt in finishedgroups
 				if (!finishedGroups.Contains(tileGroup))
 				{
 					return;
 				}
 			}
-
+			//otherwise go to the next level as this one is complete
 			NextLevel();
 			Debug.Log("Level complete!");
 		}

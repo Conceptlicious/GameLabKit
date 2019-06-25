@@ -21,14 +21,14 @@
 		public TilePath CalculatePathForGroup(Tile.Group tileGroup)
 		{
 			TilePath path = new TilePath();
-
+			//Get the startTile
 			Tile currentTile = GetStartTileForGroup(tileGroup);
-
+			//return the path if you cant get a start tile
 			if (currentTile == null)
 			{
 				return path;
 			}
-
+			//Addtiles to the path aslong as current tile isn't null
 			do
 			{
 				path.AddTileToPath(currentTile);
@@ -40,6 +40,7 @@
 
 		private Tile GetStartTileForGroup(Tile.Group tileGroup)
 		{
+			//Go through the grid and look for startpoints and return them whenever
 			for (int row = 0; row < Tiles.GetLength(0); ++row)
 			{
 				for (int col = 0; col < Tiles.GetLength(1); ++col)
