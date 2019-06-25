@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class NodeLayer : BetterMonoBehaviour
 {
+	/*
+	Manages what layer in the pattern is active or should be shown
+	*/
+
 	[SerializeField] private Node[] nodes = null;
 	public event Action<NodeLayer, Node> OnInteracted;
 

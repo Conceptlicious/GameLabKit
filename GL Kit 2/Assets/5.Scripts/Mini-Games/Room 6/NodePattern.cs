@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class NodePattern : BetterMonoBehaviour
 {
+	/*
+	NodePattern manages all nodes 
+	*/
+
 	[SerializeField] private NodePattern nextPattern;
 	private IEnumerator coroutine;
 	private DrawLines drawLines;
