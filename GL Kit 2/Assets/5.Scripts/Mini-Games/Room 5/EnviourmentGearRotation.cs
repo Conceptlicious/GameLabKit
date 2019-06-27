@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameLab;
 
+//--------------------------------------------------
+//Produced by Mathias
+//Overview: This script is used to rotate the EnviourmentGear. In the inspector you can set which direction
+//you want them to spin and how fast.
+//Usage: On every EnviourmentGear.
+//--------------------------------------------------
+
 public class EnviourmentGearRotation : BetterMonoBehaviour
 {
 	[SerializeField] float gearRotationSpeed = 3f;

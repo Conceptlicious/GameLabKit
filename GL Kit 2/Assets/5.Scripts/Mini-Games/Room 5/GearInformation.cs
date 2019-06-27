@@ -21,6 +21,13 @@ public enum GearType
 	Collection
 };
 
+//--------------------------------------------------
+//Produced by Mathias
+//Overview: This script is used for knowing what the gear should do visually and what type of gear it is.
+//The type, speed and direction are set in the inspector.
+//Usage: This script is on every Intractable gear.
+//--------------------------------------------------
+
 public class GearInformation : BetterMonoBehaviour
 {
 	[HideInInspector] public static bool isAbleToRotate = false;

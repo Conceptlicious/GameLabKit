@@ -3,16 +3,21 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+//--------------------------------------------------
+//Produced by Mathias
+//Overview: This script handles the Questions and the answers that are given. It is called from the Dialogue-
+//Manager when a question is in the dialogue.
+//Usage: Once in room 4 on the Dialogue/QuestionManager Object.
+//--------------------------------------------------
+
 public class QuestionManager : Singleton<QuestionManager>
 {
-	private const string wrongAwnserMessage = "That is not the right awnser.\nPlease try again.";
-	private const float timeWrongMessageDisplayed = 3f;
+	private const string WRONG_ANSWER_MESSAGE = "That is not the right awnser.\nPlease try again.";
+	private const float TIME_WRONG_MESSAGE_DISPLAYED = 3f;
 
 	[HideInInspector] public bool needsAwnser = false;
 	[HideInInspector] public int questionIndex = -1;
 	private Dictionary<int, int> rightAwners = new Dictionary<int, int>();
-
-
 
 	protected override void Awake()
 	{
@@ -41,11 +46,11 @@ public class QuestionManager : Singleton<QuestionManager>
 	private IEnumerator DisplayWrongAwnserMessage(string lastQuestion)
 	{
 		DialogueManager.Instance.dialogueText.color = Color.red;
-		DialogueManager.Instance.dialogueText.text = wrongAwnserMessage;
+		DialogueManager.Instance.dialogueText.text = WRONG_ANSWER_MESSAGE;
 
-		yield return new WaitForSeconds(timeWrongMessageDisplayed);
+		yield return new WaitForSeconds(TIME_WRONG_MESSAGE_DISPLAYED);
 
-		DialogueManager.Instance.dialogueText.color = ChangeColor.NewColor(48, 178, 156, 255);
+		DialogueManager.Instance.dialogueText.color = new Color32(48, 178, 156, 255);
 		DialogueManager.Instance.dialogueText.text = lastQuestion;
 
 	}

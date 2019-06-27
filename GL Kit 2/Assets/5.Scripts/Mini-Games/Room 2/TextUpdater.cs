@@ -4,6 +4,13 @@ using UnityEngine.UI;
 using UnityEngine;
 using GameLab;
 
+//--------------------------------------------------
+//Produced by Mathias
+//Overview: This script is used in the second room, it gets called in the HiddenObjectHandler. 
+//It sets the text of the clicked object.
+//Usage: Once in room two on the UI object.
+//--------------------------------------------------
+
 public class TextUpdater : Singleton<TextUpdater>
 {
 	private Text foundObjectNameText = null;

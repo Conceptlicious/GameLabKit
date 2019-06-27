@@ -12,6 +12,12 @@ public enum FunType
 	SeriousFun
 };
 
+//--------------------------------------------------
+//Produced by Mathias
+//Overview: This is script is used to handle all the UI and visuals, except for the buttons.
+//Usage: Once on the "UI Handler" Object
+//--------------------------------------------------
+
 public class UIHandler : Singleton<UIHandler>
 {
 	public Transform FunTypeTab { get; private set; }

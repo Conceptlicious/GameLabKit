@@ -3,6 +3,11 @@ using UnityEngine.UI;
 using UnityEngine;
 using GameLab;
 
+//--------------------------------------------------
+//Produced by Mathias
+//Overview: This script is used to handle all the buttons in room 5, it is called from the UIHandler.
+//Usage: Once on the Buttons object.
+//--------------------------------------------------
 
 public class ButtonManager : Singleton<ButtonManager>
 {
@@ -18,7 +23,7 @@ public class ButtonManager : Singleton<ButtonManager>
 	private Image peopleFunImage = null;
 	private Image hardFunImage = null;
 	private Image seriousFunImage = null;
-	private Text startButtonText = null;
+	private Text startRotationButtonText = null;
 
 	protected override void Awake()
 	{
@@ -42,7 +47,7 @@ public class ButtonManager : Singleton<ButtonManager>
 				break;
 			case 5:
 				UIHandler.Instance.TypeText.text = "You won the mini game!";
-				startButtonText.text = "Confirm";
+				startRotationButtonText.text = "Confirm";
 				StartCoroutine(WonMinigameDelay());
 				break;
 		}
@@ -81,6 +86,6 @@ public class ButtonManager : Singleton<ButtonManager>
 		SeriousFun.onClick.AddListener(() => SetLastClickedButton(seriousFunImage.sprite));
 		SeriousFun.interactable = false;
 
-		startButtonText = transform.Find("StartRotation").GetComponentInChildren<Text>();
+		startRotationButtonText = transform.Find("StartRotation").GetComponentInChildren<Text>();
 	}
 }

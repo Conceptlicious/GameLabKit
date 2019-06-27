@@ -2,6 +2,12 @@
 using UnityEngine;
 using GameLab;
 
+//--------------------------------------------------
+//Produced by Mathias
+//Overview: This script is used in room four, it handles the swipe input on the conveyor belt.
+//Usage: It is used once on the swipeObject in room 4.
+//--------------------------------------------------
+
 public class SwipeInput : Singleton<SwipeInput>, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 	private const float BEGIN_Y_POSITION = 394.1201f;

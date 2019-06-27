@@ -3,10 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+//--------------------------------------------------
+//Produced by Mathias
+//Overview: This script for the calculation of the items on the conveyor-belt. It gets called from the SwipeInout script.
+//Usage: Once on the "ConveyorBelt" Object.
+//--------------------------------------------------
+
 public class ConveyorBeltMovement : Singleton<ConveyorBeltMovement>
 {	
-	private const float minimumHeight = 169f;
-
 	public int CurrentPlatformIndex { get; private set; }
 	[HideInInspector] public List<Image> platformImages = new List<Image>();
 	private List<Transform> platforms = new List<Transform>();
@@ -18,8 +22,6 @@ public class ConveyorBeltMovement : Singleton<ConveyorBeltMovement>
 			platforms.Add(child);
 			platformImages.Add(child.GetComponent<Image>());
 		}
-
-		//Debug.Log(platforms.Count);
 
 		DisplayPlatformInformation.Instance.LoadInformation(CurrentPlatformIndex);		
 	}	

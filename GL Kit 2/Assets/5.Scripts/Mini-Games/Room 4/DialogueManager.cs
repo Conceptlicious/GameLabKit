@@ -3,6 +3,13 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
+//--------------------------------------------------
+//Produced by Mathias
+//Overview: This script is used for loading in the Dialogue of room 4. When the loaded in text start with a "Q",
+//then it calls the QuestionManager. 
+//Usage:
+//--------------------------------------------------
+
 public class DialogueManager : Singleton<DialogueManager>
 {
 	private const int amountOfDialogues = 13;
@@ -41,12 +48,12 @@ public class DialogueManager : Singleton<DialogueManager>
 		if (CurrentDialogue.StartsWith("Q:"))
 		{
 			QuestionManager.Instance.questionIndex++;
-			dialogueText.color = ChangeColor.NewColor(48, 178, 156, 255);
+			dialogueText.color = new Color32(48, 178, 156, 255);
 			QuestionManager.Instance.needsAwnser = true;
 		}
 		else
 		{
-			dialogueText.color = ChangeColor.NewColor(40, 40, 40, 255);
+			dialogueText.color = new Color32(40, 40, 40, 255);
 		}
 
 		dialogueText.text = CurrentDialogue;

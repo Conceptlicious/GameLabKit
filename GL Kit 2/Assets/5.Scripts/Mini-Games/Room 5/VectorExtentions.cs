@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameLab;
 
+//--------------------------------------------------
+//Produced by Mathias
+//Overview: This script is used for comparing Vectors because unity won't let you.
+//Usage: It was used for testing.
+//--------------------------------------------------
+
 public class VectorExtentions
 {
 	public static bool CompareVector3(Vector3 vectorA, Vector3 vectorB)

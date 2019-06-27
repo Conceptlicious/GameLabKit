@@ -2,6 +2,13 @@
 using UnityEngine;
 using GameLab;
 
+//--------------------------------------------------
+//Produced by Mathias
+//Overview: This is used for dragging and dropping the gears in room 5, it calls the DropZone script so
+//when you start or stop dragging the right dropzones are (un)occupied.
+//Usage: On every IneractibleGear.
+//--------------------------------------------------
+
 public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 	public Vector3 BeginPosition { get; private set; } = Vector3.zero;
@@ -14,7 +21,9 @@ public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler,
 	{
 		BeginPosition = CachedTransform.position;
 		isAbleToMove = true;
+
 		canvasRoom5 = GameObject.FindGameObjectWithTag("DragAndDropCanvas").GetComponent<Canvas>();
+
 		planeRoom5 = new Plane();
 		planeRoom5.Set3Points
 			(canvasRoom5.transform.TransformPoint(new Vector3(0, 0)),

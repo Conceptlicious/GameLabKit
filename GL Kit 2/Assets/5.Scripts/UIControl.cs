@@ -6,7 +6,7 @@ using EventType = CustomEventCallbacks.EventType;
 using GameLab;
 
 //--------------------------------------------------
-//Produced by: Josh van Asten, expanded by Noah and Matthias.
+//Produced by: Josh van Asten, expanded by Noah and Mathias.
 //Overview: This script is the single interface point for UI-to-script communication. It should be attached on a single
 //manager object in-game and each button or UI object which needs to call a method, should use this script to do so.
 //There were once separate scripts made by each programmer to do this same job, which were later consolidated into one. 

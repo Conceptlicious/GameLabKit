@@ -5,6 +5,13 @@ using UnityEngine.UI;
 using UnityEngine;
 using GameLab;
 
+//--------------------------------------------------
+//Produced by Mathias
+//Overview: This script is the core of room 2, It keeps track of which objects are found,
+//and which message should be send to the TextUpdater.
+//Usage: Once on the CollectedHiddenObjectBar.
+//--------------------------------------------------
+
 public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 {
 	private const string OBJECT_ALREADY_FOUND_MESSAGE = "You have already found this object";
@@ -35,6 +42,7 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 
 			if (foundObjects.Count >= HIDDENOBJECTS_AMOUNT)
 			{
+				TextUpdater.Instance.CallUpdateTextCoroutine(WON_MINIGAME_MESSAGE, string.Empty);
 				nextMinigameButton.SetActive(true);
 			}
 		}
@@ -46,20 +54,15 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 
 	public void WonMiniGame()
 	{
-		TextUpdater.Instance.CallUpdateTextCoroutine(WON_MINIGAME_MESSAGE, string.Empty);
-
-		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Goals);
-		EventManager.Instance.RaiseEvent(saveItemEvent);
-
-		NextRoomEvent nextRoomEvent = new NextRoomEvent();
-		EventManager.Instance.RaiseEvent(nextRoomEvent);
+		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Goals));
+		EventManager.Instance.RaiseEvent(new NextRoomEvent());
 	}
 
 	private void SetVariables()
 	{
 		nextMinigameButton.SetActive(false);
 
-		foreach(Transform child in transform)
+		foreach (Transform child in transform)
 		{
 			child.gameObject.SetActive(false);
 		}

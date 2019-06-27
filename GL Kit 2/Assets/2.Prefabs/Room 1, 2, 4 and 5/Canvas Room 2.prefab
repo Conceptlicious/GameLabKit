@@ -2573,7 +2573,7 @@ GameObject:
   - component: {fileID: 4934541787154099900}
   - component: {fileID: 4934541787154099902}
   m_Layer: 5
-  m_Name: Collected Hidden Objects Bar
+  m_Name: CollectedHiddenObjectBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
