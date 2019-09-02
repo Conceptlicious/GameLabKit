@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using GameLab;
 
+//--------------------------------------------------
+//Produced by Alex and some additions from Mathias
+//Overview: This script is used to know if a dropzone is occupied or not. When a gear is dropped it gets occupied
+//and when it's dragged out it gets unoccupied.
+//Usage: it is on every interactable slot.
+//--------------------------------------------------
+
 public class DropZone : BetterMonoBehaviour
 {
 	[SerializeField] private GearType neededType;

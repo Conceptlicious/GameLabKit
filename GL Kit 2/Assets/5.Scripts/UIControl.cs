@@ -57,7 +57,6 @@ public class UIControl : MonoBehaviour
 	{
 		RegisterAllListeners();
 		SetVariables();
-		
 	}
 	
 	//NOTE: Please rename, Noah
@@ -102,7 +101,7 @@ public class UIControl : MonoBehaviour
 	}
 
 	public void OnNextButton()
-	{
+	{  
 		Debug.Log("Next button Pressed");
 	}
 
