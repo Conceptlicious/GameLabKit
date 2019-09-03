@@ -790,6 +790,18 @@ Transform:
   m_Father: {fileID: 157469635}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &446564870 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1773150166502892658, guid: a37665fefb432f3478f46c12c321f0c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3029815233373201042}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d700098bb87bdd499b32133d0a173a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &451611828
 GameObject:
   m_ObjectHideFlags: 0
@@ -2224,6 +2236,18 @@ MonoBehaviour:
     containerIndex: 0
     fieldName: Fact 1
     fieldIndex: 0
+--- !u!114 &1248137244 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 767127339, guid: 7b51f6a6d70f7b94194f502369945926,
+    type: 3}
+  m_PrefabInstance: {fileID: 1480841014}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1291133739
 GameObject:
   m_ObjectHideFlags: 0
@@ -5110,6 +5134,26 @@ PrefabInstance:
       propertyPath: nextPattern
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3029815233602065258, guid: a37665fefb432f3478f46c12c321f0c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ConfirmSelection
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029815233602065258, guid: a37665fefb432f3478f46c12c321f0c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029815233602065258, guid: a37665fefb432f3478f46c12c321f0c8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 446564870}
+    - target: {fileID: 1773150166502892658, guid: a37665fefb432f3478f46c12c321f0c8,
+        type: 3}
+      propertyPath: trophy
+      value: 
+      objectReference: {fileID: 1248137244}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37665fefb432f3478f46c12c321f0c8, type: 3}
 --- !u!224 &4934541786980325442 stripped
