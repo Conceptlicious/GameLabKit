@@ -34,7 +34,7 @@ public class SendSpriteRoom6 : Singleton<SendSpriteRoom6>
 
 	private void SetVariables()
 	{
-		sendSpriteOverlay = transform.Find("SendingSprite").gameObject;
+		sendSpriteOverlay = gameObject;
 
 		sendSpriteOverlay.transform.Find("ConfirmButton")
 			.GetComponent<Button>().onClick.AddListener(() => ConfirmButton());

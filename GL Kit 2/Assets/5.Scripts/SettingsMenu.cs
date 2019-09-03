@@ -10,20 +10,20 @@ public class SettingsMenu : BetterMonoBehaviour
 	/*
 	Just a simple script to help buttons toggle the settings menu on and off
 	*/
-	[SerializeField] private Canvas settingsCanvas;
-	private bool menuToggled = false;
+	[SerializeField] private GameObject toggledGameObject;
+	private bool gameObjectToggled = false;
 
 	public void MenuToggle()
 	{
-		if (menuToggled)
-		{			
-			settingsCanvas.gameObject.SetActive(false);
-			menuToggled = false;
+		if (gameObjectToggled)
+		{
+			toggledGameObject.gameObject.SetActive(false);
+			gameObjectToggled = false;
 		}
 		else
 		{
-			settingsCanvas.gameObject.SetActive(true);
-			menuToggled = true;
+			toggledGameObject.gameObject.SetActive(true);
+			gameObjectToggled = true;
 		}
 	}
 }
