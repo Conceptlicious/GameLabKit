@@ -217,9 +217,16 @@ public class UIControl : MonoBehaviour
 	/// <param name="disabilitiesList"></param>
 	public void SetPersonaDisabilities(List<Disabilities> disabilitiesList)
 	{
-		foreach (Disabilities disability in disabilitiesList)
+		if(disabilitiesList.Count != 0)
 		{
-			persona.Disability |= disability;
+			foreach (Disabilities disability in disabilitiesList)
+			{
+				persona.Disability |= disability;
+			}
+		}
+		else
+		{
+			persona.Disability = new Disabilities();
 		}
 		OnPersonaChanged?.Invoke(persona);
 	}
