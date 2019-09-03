@@ -4,6 +4,8 @@ using GameLab;
 
 public enum GearType
 {
+	NONE,
+
 	Exploration,
 	Fantasy,
 	Creativity,

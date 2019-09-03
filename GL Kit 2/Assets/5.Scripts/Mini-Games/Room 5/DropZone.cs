@@ -8,9 +8,11 @@ using GameLab;
 //Usage: it is on every interactable slot.
 //--------------------------------------------------
 
+
 public class DropZone : BetterMonoBehaviour
 {
-	[SerializeField] private GearType neededType;
+	[SerializeField] private GearType neededType;	
+	[SerializeField] private GearType secondNeededType;
 
 	public static int OccupiedPlaces { get; private set; } = 0;
 	[HideInInspector] public static bool combinationIsRight = true;
@@ -52,7 +54,8 @@ public class DropZone : BetterMonoBehaviour
 
 	private void RightSlotCheck(Transform gearToCheck)
 	{
-		if (gearToCheck.GetComponent<GearInformation>().GetGearType != neededType)
+		if (gearToCheck.GetComponent<GearInformation>().GetGearType != neededType &&
+			gearToCheck.GetComponent<GearInformation>().GetGearType != secondNeededType)
 		{
 			combinationIsRight = false;
 		}
