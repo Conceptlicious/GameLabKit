@@ -2174,7 +2174,7 @@ MonoBehaviour:
   info:
     fileIndex: 0
     containerIndex: 0
-    fieldName: 
+    fieldName: Fact 1
     fieldIndex: 0
 --- !u!1 &1186878943
 GameObject:
@@ -2222,7 +2222,7 @@ MonoBehaviour:
   info:
     fileIndex: 0
     containerIndex: 0
-    fieldName: 
+    fieldName: Fact 1
     fieldIndex: 0
 --- !u!1 &1291133739
 GameObject:
@@ -5370,6 +5370,16 @@ PrefabInstance:
       propertyPath: dialogueObject
       value: 
       objectReference: {fileID: 1848558110}
+    - target: {fileID: 6100448372103171779, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100448372103171779, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: displayLoadingTips
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6100448372103171778, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: levelPopupDialogueObjects.Array.data[0]
@@ -5440,6 +5450,11 @@ PrefabInstance:
       propertyPath: dialogueObjects.Array.data[6]
       value: 
       objectReference: {fileID: 1440448512}
+    - target: {fileID: 6100448373985705834, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: displaySpeechBubbles
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: couplings.Array.size
@@ -5454,6 +5469,11 @@ PrefabInstance:
         type: 3}
       propertyPath: couplings.Array.data[1].eventToCall.classRef
       value: DismissSpeechBubbleEvent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100448372103171781, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: fade
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9918d00f141af441848f74c51b2d5f0, type: 3}
