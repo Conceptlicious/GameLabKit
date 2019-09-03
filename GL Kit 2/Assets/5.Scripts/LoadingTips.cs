@@ -48,7 +48,7 @@ public class LoadingTips : MonoBehaviour
 				? SpeechBubble.FillTextMethod.RANDOM
 				: SpeechBubble.FillTextMethod.ITERATE;
 
-			Debug.Log("Create loading tup");
+			Debug.Log("Create loading tip");
 			if (displayLoadingTips == true)
 			{
 				FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(dialogueObject, Settings.VAL_CAMERA_TRANSITION_SECONDS, UIAnimator.MoveType.ARC, UIAnimator.BlurType.NONE, method, true);
