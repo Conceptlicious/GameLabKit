@@ -14,11 +14,11 @@ using GameLab;
 
 public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 {
-	private const string OBJECT_ALREADY_FOUND_MESSAGE = "You have already found this object";
-	private const string WON_MINIGAME_MESSAGE = "You won the mini-game!";
+	private const string OBJECT_ALREADY_FOUND_MESSAGE = "You have already found this object";	
 	private const int HIDDENOBJECTS_AMOUNT = 8;
 
-	public Sprite lastSelectedObjectSprite { get; private set; }
+	public Sprite LastSelectedObjectSprite { get; private set; }
+	public bool MinigameIsWon { get; private set; } = false;
 	[SerializeField] private GameObject nextMinigameButton = null;
 	private List<GameObject> foundObjects = new List<GameObject>();
 
@@ -30,7 +30,7 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 	public void ObjectFound(GameObject foundObject)
 	{
 		HiddenObject currentHiddenObject = foundObject.GetComponent<HiddenObject>();
-		lastSelectedObjectSprite = currentHiddenObject.HiddenObjectSprite;
+		LastSelectedObjectSprite = currentHiddenObject.HiddenObjectSprite;
 
 		if (!foundObjects.Contains(foundObject))
 		{
@@ -38,17 +38,24 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 			foundObjects.Add(foundObject);
 
 			TextUpdater.Instance.CallUpdateTextCoroutine(foundObject.name,
-				currentHiddenObject.Description);
+				currentHiddenObject.Description, false);
 
 			if (foundObjects.Count >= HIDDENOBJECTS_AMOUNT)
 			{
-				TextUpdater.Instance.CallUpdateTextCoroutine(WON_MINIGAME_MESSAGE, string.Empty);
 				nextMinigameButton.SetActive(true);
+				TextUpdater.Instance.CallUpdateTextCoroutine(foundObject.name, currentHiddenObject.Description, true);
+				MinigameIsWon = true;
 			}
 		}
 		else
 		{
-			TextUpdater.Instance.CallUpdateTextCoroutine(foundObject.name, OBJECT_ALREADY_FOUND_MESSAGE);
+			if(MinigameIsWon)
+			{
+				TextUpdater.Instance.CallUpdateTextCoroutine(foundObject.name, currentHiddenObject.Description, false);
+				return;
+			}
+
+			TextUpdater.Instance.CallUpdateTextCoroutine(foundObject.name, OBJECT_ALREADY_FOUND_MESSAGE, false);
 		}
 	}
 
