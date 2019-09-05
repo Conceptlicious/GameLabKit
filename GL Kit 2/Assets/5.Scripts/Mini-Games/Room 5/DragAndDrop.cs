@@ -54,7 +54,7 @@ public class DragAndDrop : BetterMonoBehaviour, IBeginDragHandler, IDragHandler,
 
 			if(planeRoom5.Raycast(ray, out float hitDistance))
 			{
-				transform.position = ray.GetPoint(hitDistance);
+				CachedTransform.position = ray.GetPoint(hitDistance);
 			}
 		}
 	}

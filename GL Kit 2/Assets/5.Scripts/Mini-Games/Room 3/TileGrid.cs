@@ -105,7 +105,7 @@ namespace Room3
 			for (int i = 0; i < levelPixelData.Length; ++i)
 			{
 				Color32 pixel = levelPixelData[i];
-				int row = i / level.Rows;
+				int row = i / level.Cols;
 				int col = i % level.Cols;
 				//If the pixel has the bridge tile colour make an extra tile  with different allowed connection directions
 				if (pixel.CompareRGB(levelColorSettings.BridgeTileColor))

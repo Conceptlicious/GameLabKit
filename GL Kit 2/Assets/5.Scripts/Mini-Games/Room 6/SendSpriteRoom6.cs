@@ -20,10 +20,9 @@ public class SendSpriteRoom6 : Singleton<SendSpriteRoom6>
 		sendSpriteOverlay.SetActive(true);
 	}
 
-
-	public void TubeSeleced(Image selectedTubeImage)
+	public void TubeSeleced(Sprite selectedTubeImage)
 	{
-		LastSelectedTubeSprite = selectedTubeImage.sprite;
+		LastSelectedTubeSprite = selectedTubeImage;
 	}
 
 	private void ConfirmButton()
