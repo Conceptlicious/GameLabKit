@@ -24,6 +24,8 @@ public class TrophySocket : BetterMonoBehaviour
 			isOccupied = true;
 			SnapToSocket(trophy.GetComponent<Image>().sprite);
 			Destroy(trophy.gameObject);
+
+			StartCoroutine(NextRoomDelay());
 			return;
 		}
 	}
@@ -47,5 +49,13 @@ public class TrophySocket : BetterMonoBehaviour
 
 		socketImage.sprite = trophySprite;
 		socketImage.color = new Color32(255, 255, 255, 255);
+	}
+
+	private IEnumerator NextRoomDelay()
+	{
+		yield return new WaitForSeconds(TrophyGridManager.Instance.NextRoomDelaySeconds);
+
+		NextRoomEvent nextRoomEvent = new NextRoomEvent();
+		EventManager.Instance.RaiseEvent(nextRoomEvent);
 	}
 }
