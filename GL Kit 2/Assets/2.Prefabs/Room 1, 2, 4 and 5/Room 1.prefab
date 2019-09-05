@@ -136,8 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterOptions: {fileID: 11400000, guid: 5bbe33326256a6b4394fc12eb3ef99a1, type: 2}
-  uIControl: {fileID: 6100448372103171832, guid: c9918d00f141af441848f74c51b2d5f0,
-    type: 3}
+  uIControl: {fileID: 0}
   age: 0
 --- !u!1 &1960023608810532339
 GameObject:
@@ -227,8 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterOptions: {fileID: 11400000, guid: df6d000ea1570ae409a17bcdcbb23fe6, type: 2}
-  uIControl: {fileID: 6100448372103171832, guid: c9918d00f141af441848f74c51b2d5f0,
-    type: 3}
+  uIControl: {fileID: 0}
   age: 3
 --- !u!1 &3143142077656369950
 GameObject:
@@ -8472,8 +8470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterOptions: {fileID: 11400000, guid: f20a5a66e45b87345b59cceae670683d, type: 2}
-  uIControl: {fileID: 6100448372103171832, guid: c9918d00f141af441848f74c51b2d5f0,
-    type: 3}
+  uIControl: {fileID: 0}
   age: 1
 --- !u!1 &6341797709146983218
 GameObject:
@@ -8563,6 +8560,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterOptions: {fileID: 11400000, guid: 6f1f8d60f70a9a74087c2eaf59af60af, type: 2}
-  uIControl: {fileID: 6100448372103171832, guid: c9918d00f141af441848f74c51b2d5f0,
-    type: 3}
+  uIControl: {fileID: 0}
   age: 2
