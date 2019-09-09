@@ -12,7 +12,6 @@ public class Room6TrophySelect : BetterMonoBehaviour
 
 	public void ConfirmSelection()
 	{
-		Debug.Log("Confirmed Succesfully");
 		trophy.overrideSprite = selectedStyle.sprite;
 		//trophy.color = new Color32(255, 0, 0, 255);
 	}

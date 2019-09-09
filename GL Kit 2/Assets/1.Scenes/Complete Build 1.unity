@@ -1430,6 +1430,11 @@ PrefabInstance:
       propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1269148429929540473, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: defaultLevelSettings.BridgeTileColor.rgba
+      value: 4278255360
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e89894ff5a7252458680b5389b6e81b, type: 3}
 --- !u!224 &586854598 stripped

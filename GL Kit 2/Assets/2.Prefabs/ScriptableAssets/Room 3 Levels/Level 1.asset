@@ -12,26 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b782b811b950644a4c869d48fd99f8, type: 3}
   m_Name: Level 1
   m_EditorClassIdentifier: 
-  levelTexture: {fileID: 2800000, guid: 99baca97ad9bed441a834a889d6fec83, type: 3}
+  levelTexture: {fileID: 2800000, guid: 381e62979d2bcd44da5d43a9b9812fb4, type: 3}
   overrideDefaultColorSettings: 1
   customColorSettings:
     NormalTileColor:
       serializedVersion: 2
-      rgba: 4287927444
+      rgba: 4288387995
     ObstacleTileColor:
       serializedVersion: 2
-      rgba: 4292467161
+      rgba: 4278190080
     BridgeTileColor:
       serializedVersion: 2
-      rgba: 4281479730
+      rgba: 4278517504
     StartPointAlphaThreshold: 126
     TileGroups:
     - groupColor:
         serializedVersion: 2
-        rgba: 4278255611
+        rgba: 4278255615
     - groupColor:
         serializedVersion: 2
-        rgba: 4280942847
+        rgba: 4278190335
     - groupColor:
         serializedVersion: 2
-        rgba: 4286906112
+        rgba: 4285792000
