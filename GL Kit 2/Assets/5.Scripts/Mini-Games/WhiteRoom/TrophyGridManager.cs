@@ -6,7 +6,8 @@ using GameLab;
 [DisallowMultipleComponent]
 public class TrophyGridManager : Manager<TrophyGridManager>
 {
-	public float NextRoomDelaySeconds {get; private set;} = .5f;
+	[SerializeField] float nextRoomDelay;
+	public float NextRoomDelaySeconds => nextRoomDelay;
 
 	private List<TrophySocket> trophySockets = new List<TrophySocket>();
 
