@@ -62,7 +62,7 @@ public static class Dialogue
 	}
 
 	/// <summary>
-	/// Get the string names of the arary containers used to wrap different chunks of text inside a single level file.
+	/// Get the string names of the array containers used to wrap different chunks of text inside a single level file.
 	/// </summary>
 	/// <param name="pFileID"></param>
 	/// <returns></returns>
@@ -80,7 +80,7 @@ public static class Dialogue
 	}
 
 	/// <summary>
-	/// Get the names of the keys used to preceed the individual lines of text.
+	/// Get the names of the keys used to proceed the individual lines of text.
 	/// </summary>
 	/// <param name="pFileID"></param>
 	/// <param name="pContainerID"></param>
@@ -114,8 +114,7 @@ public static class Dialogue
 	/// <param name="pField"></param>
 	/// <returns></returns>
 	public static string GetText(int pFileID, int pContainerID, string pField)
-	{
-		
+	{	
 		string text = Settings.STR_DEFAULT_DIALOGUE;
 		files[pFileID].GetContainer(pContainerID).GetInfoDictionary().TryGetValue(pField, out text);
 		return text;
@@ -130,8 +129,7 @@ public static class Dialogue
 	/// <param name="pNewIndex"></param>
 	/// <returns></returns>
 	public static string GetTextAndIterate(int pFileID, int pContainerID, int pFieldIndex, out int pNewIndex)
-	{
-		
+	{	
 		string[] keyNames = GetKeyNames(pFileID, pContainerID);
 		int oldIndex = pFieldIndex;
 		pNewIndex = (pFieldIndex + 1) % keyNames.Length;
@@ -147,8 +145,7 @@ public static class Dialogue
 	/// <param name="pFieldIndex"></param>
 	/// <returns></returns>
 	public static string GetTextAt(int pFileID, int pContainerID, int pFieldIndex)
-	{
-		
+	{		
 		string[] keyNames = GetKeyNames(pFileID, pContainerID);
 		pFieldIndex = pFieldIndex >= 0 && pFieldIndex < keyNames.Length ? pFieldIndex : -1;
 		string text = pFieldIndex == -1
@@ -164,8 +161,7 @@ public static class Dialogue
 	/// <param name="pContainerID"></param>
 	/// <returns></returns>
 	public static string GetRandomText(int pFileID, int pContainerID)
-	{
-		
+	{		
 		string[] keyNames = GetKeyNames(pFileID, pContainerID);       
 		string text = GetTextAt(pFileID, pContainerID, UnityEngine.Random.Range(0, keyNames.Length));
 		return text;
@@ -173,9 +169,8 @@ public static class Dialogue
 
 
 
-	public static int GetMaxFieldIndices(int pFileID, int pContainerID)
-	{
-		
+	public static int GetMaxFieldIndices(int pFileID, int pContainerID) 
+	{		
 		string[] keyNames = GetKeyNames(pFileID, pContainerID);       
 		return keyNames.Length;
 	}
@@ -196,7 +191,7 @@ public static class Dialogue
 
 Can break with newlines
 
-Each in-scene object has script, use dropdowns to select "dialogue"
+Each in-scene object has script, use drop downs to select "dialogue"
 
 White room JSON file has array with name of each object, and dialogue GameLab would say if you chose that
 
