@@ -8,23 +8,34 @@ using GameLab;
 public class MediumButton : BetterMonoBehaviour
 {
 	[SerializeField] private MediumTemplate mediumInformation;
+	[SerializeField] private GameObject mediumPuzzle;
 
-	private string mediumDescription = string.Empty;
 	private Sprite mediumSprite = null;
 	private Button mediumButton = null;
 
 	private void Start()
 	{
 		mediumButton = GetComponent<Button>();
-		mediumDescription = mediumInformation.description;
 		mediumSprite = mediumInformation.icon;
-
-		mediumButton.onClick.AddListener(() => DisplayMediumInformationManager.Instance.SetDisplayText(mediumDescription));
+				
 		mediumButton.onClick.AddListener(() => SelectSprite(mediumSprite));
+		mediumButton.onClick.AddListener(() => ShowNewPuzzle(mediumPuzzle));
 	}
 
 	private void SelectSprite(Sprite newSprite)
 	{
-		SendSpriteRoom4.Instance.LastSelectedSprite = newSprite;
+		//Select a sprite that can be stand to the trophyHandler
+	}
+
+	public void ShowNewPuzzle(GameObject currentPuzzle)
+	{
+		foreach(GameObject puzzle in PuzzleManager.Instance.Puzzles)
+		{
+			puzzle.SetActive(false);
+		}
+		currentPuzzle.SetActive(true);
+
+
+		PuzzleManager.Instance.SetupNewPuzzle();
 	}
 }

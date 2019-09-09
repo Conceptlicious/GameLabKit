@@ -8,6 +8,7 @@ TagManager:
   - InteractibleGearSocket
   - 'Dialogue: BlankGameObject'
   - WhiteRoomCanvas
+  - Room 4 Canvas
   layers:
   - Default
   - TransparentFX
