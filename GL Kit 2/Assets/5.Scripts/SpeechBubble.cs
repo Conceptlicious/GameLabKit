@@ -34,8 +34,10 @@ public class SpeechBubble : Singleton<SpeechBubble>
 	public DialogueObject DiagObject => dialogueObject;
 	public bool Complete => completeReading;
 	
-	void Awake()
+	protected override void Awake()
 	{
+		base.Awake();
+
 		RegisterAllListeners();
 	}
 	
