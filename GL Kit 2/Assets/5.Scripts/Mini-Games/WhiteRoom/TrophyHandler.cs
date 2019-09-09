@@ -45,8 +45,7 @@ public class TrophyHandler : BetterMonoBehaviour
 
 			case RoomType.Medium:
 				trophySprites[(int)RoomType.Medium].gameObject.SetActive(true);
-				trophySprites[(int)RoomType.Medium].sprite =
-					SendSpriteRoom4.Instance.LastSelectedSprite;
+				trophySprites[(int)RoomType.Medium].sprite = null;
 				break;
 
 			case RoomType.Dynamics:

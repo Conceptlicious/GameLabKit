@@ -73,6 +73,11 @@ public class NodePattern : BetterMonoBehaviour
 
 	private void OnInteracted(NodeLayer nodeLayer, Node node)
 	{
+		if (!ActivePatternManager.Instance.IsActivePattern(this))
+		{
+			return;
+		}
+
 		if (!node.FakeCheck && !fakeNodePressed)
 		{
 			if (nodeLayer == layers[0] && activeLayer == 0)
@@ -131,7 +136,7 @@ public class NodePattern : BetterMonoBehaviour
 			{
 				/*CameraTargetSelectEvent newInfo = new CameraTargetSelectEvent(currentTube, nextTube, Settings.VAL_CAMERA_MINOR_ZOOM_DISTANCE, false, false);
 				EventManager.Instance.RaiseEvent(newInfo);*/
-
+				ActivePatternManager.Instance.NextActivePattern(nextPattern);
 				nextPattern.IsInteractable = true;
 			}
 			/* Why the check for the "isComplete", it is set to true above.
