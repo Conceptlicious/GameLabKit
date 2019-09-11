@@ -36,6 +36,6 @@ public class MediumButton : BetterMonoBehaviour
 		currentPuzzle.SetActive(true);
 
 
-		PuzzleManager.Instance.SetupNewPuzzle();
+		PuzzleManager.Instance.SetupNewPuzzle(currentPuzzle);
 	}
 }
