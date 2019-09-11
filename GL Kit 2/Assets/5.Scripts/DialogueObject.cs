@@ -78,9 +78,9 @@ public class DialogueObject : MonoBehaviour
 
 		public string GetRandomText()
 		{
-			/*string str = Dialogue.GetRandomText(info.fileIndex, info.containerIndex);
+			string str = Dialogue.GetRandomText(info.fileIndex, info.containerIndex);
 			info.DialogueText = str;
-			return info.DialogueText;*/
+			return info.DialogueText;
 			return "";
 		}
 
