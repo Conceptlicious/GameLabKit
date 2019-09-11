@@ -51,6 +51,7 @@ public class LoadingTips : MonoBehaviour
 			Debug.Log("Create loading tip");
 			if (displayLoadingTips == true)
 			{
+				//Make button interactable false
 				FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(dialogueObject, Settings.VAL_CAMERA_TRANSITION_SECONDS, UIAnimator.MoveType.ARC, UIAnimator.BlurType.NONE, method, true);
 				EventManager.Instance.RaiseEvent(newInfo);
 			}

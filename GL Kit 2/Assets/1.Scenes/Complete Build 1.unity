@@ -1967,6 +1967,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 891031311}
   m_CullTransparentMesh: 0
+--- !u!114 &891040146 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
+    type: 3}
+  m_PrefabInstance: {fileID: 1907541451}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &898690767 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5312019807357780293, guid: 193454b02a7d0694b94184fc3b97c0ab,
@@ -3827,6 +3839,11 @@ PrefabInstance:
       propertyPath: m_PreserveAspect
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5312019806599302136, guid: 193454b02a7d0694b94184fc3b97c0ab,
+        type: 3}
+      propertyPath: speechBoxButton
+      value: 
+      objectReference: {fileID: 891040146}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 193454b02a7d0694b94184fc3b97c0ab, type: 3}
 --- !u!4 &1697832733 stripped
@@ -4212,6 +4229,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8585186772196208285, guid: 52ade7103fed6c2408a38cf70c37f539,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -4323,6 +4345,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 97.79
       objectReference: {fileID: 0}
+    - target: {fileID: 8585186772162891223, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: speechBoxButton
+      value: 
+      objectReference: {fileID: 891040146}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52ade7103fed6c2408a38cf70c37f539, type: 3}
 --- !u!4 &1907541452 stripped
@@ -5465,6 +5492,11 @@ PrefabInstance:
       propertyPath: genderToggles
       value: 
       objectReference: {fileID: 143767838}
+    - target: {fileID: 6100448372103171832, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: speechBoxButton
+      value: 
+      objectReference: {fileID: 891040146}
     - target: {fileID: 6100448372103171782, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5573,7 +5605,7 @@ PrefabInstance:
     - target: {fileID: 6100448372103171779, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: displayLoadingTips
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6100448372103171779, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
@@ -5653,7 +5685,7 @@ PrefabInstance:
     - target: {fileID: 6100448373985705834, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: displaySpeechBubbles
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
