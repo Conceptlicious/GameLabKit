@@ -115,7 +115,10 @@ namespace Room3
 			//set the disconnected tile to next tile
 			Tile disconnectedTile = NextTile;
 			// set the next tiles group to ungrouped and remove them from this tile
-			NextTile.TileGroup = Group.Ungrouped;
+			if (NextTile.TileType != Type.EndPoint && NextTile.TileType != Type.StartPoint)
+			{
+				NextTile.TileGroup = Group.Ungrouped;
+			}
 			NextTile = null;
 			//make the disconnected tile remove the connections after this
 			disconnectedTile.RemoveTileConnectionsAfterThis();
