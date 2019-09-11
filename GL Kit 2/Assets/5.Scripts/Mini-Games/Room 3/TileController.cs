@@ -143,7 +143,7 @@ namespace Room3
 		public void OnPointerEnter(PointerEventData eventData)
 		{
 			//if the LMB is being held down and you enter their image invoke the interacted event
-			if (Input.GetMouseButton(0))
+			if (Input.GetMouseButton(0) && controlledTiles[0].TileType != Tile.Type.StartPoint) 
 			{
 				Interacted?.Invoke(this);
 			}
