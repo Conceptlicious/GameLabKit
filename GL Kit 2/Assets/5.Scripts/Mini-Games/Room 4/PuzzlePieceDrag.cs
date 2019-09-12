@@ -87,7 +87,6 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 
 	public void Deselect()
 	{
-		Debug.Log($"Deselected {name}");
 		CachedRectTransform.localScale = Vector3.one;
 
 		if (!isInSocket)
