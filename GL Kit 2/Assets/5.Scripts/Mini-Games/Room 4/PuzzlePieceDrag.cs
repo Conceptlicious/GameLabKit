@@ -16,7 +16,7 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 	[HideInInspector] public bool isInSocket = false;
 	private bool isSelected = false;
 	private float beginRotationZ = 0f;
-	private int positionZ = -20;
+	private int positionZ = 0;
 
 	private void Start()
 	{
@@ -55,19 +55,21 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 	{
 		PuzzlePieceSocket puzzlePieceSocket = PuzzleManager.Instance.GetPuzzlePieceSocketUnder(CachedTransform as RectTransform);
 
-		if(puzzlePieceSocket != null)
+		if (puzzlePieceSocket != null)
 		{
-			Debug.Log($"Occupying {puzzlePieceSocket.name}...");
 			puzzlePieceSocket.Occupy(CachedTransform);
 		}
-
-		Debug.LogWarning("No puzzle piece socket found!");
 		Deselect();
 	}
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
-		Select();
+		//Is called when letting go of mouse button.
+
+		if (!isSelected)
+		{
+			Select();
+		}
 	}
 
 	private void Select()
@@ -85,10 +87,11 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 
 	public void Deselect()
 	{
+		Debug.Log($"Deselected {name}");
 		CachedRectTransform.localScale = Vector3.one;
 
 		if (!isInSocket)
-		{		
+		{
 			CachedRectTransform.eulerAngles = new Vector3(0, 0, beginRotationZ);
 			CachedTransform.position = BeginPosition;
 		}
