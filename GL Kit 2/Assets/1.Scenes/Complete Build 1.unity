@@ -5408,7 +5408,7 @@ PrefabInstance:
     - target: {fileID: 6100448372103171779, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: displayLoadingTips
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6100448372103171779, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
@@ -5488,7 +5488,7 @@ PrefabInstance:
     - target: {fileID: 6100448373985705834, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: displaySpeechBubbles
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
