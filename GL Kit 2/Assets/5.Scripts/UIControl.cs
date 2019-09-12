@@ -95,8 +95,8 @@ public class UIControl : MonoBehaviour
 		else if (toggleGroup == ToggleGroup.SpecialNeeds && activeSpecialNeedToggles.Count < ENABLED_TOGGLES_PER_LIST_MAX)
 		{
 			activeSpecialNeedToggles.Add(toggleToAdd);
-			disabilitiesList.Add(disabilities);
-			SetPersonaDisabilities(disabilitiesList);
+			persona.Disability |= disabilities;
+			OnPersonaChanged.Invoke(persona);
 		}
 		else
 		{
@@ -144,8 +144,8 @@ public class UIControl : MonoBehaviour
 		else
 		{
 			activeSpecialNeedToggles.Remove(toggleToRemove);
-			disabilitiesList.Remove(disabilitiesToRemove);
-			SetPersonaDisabilities(disabilitiesList);
+			persona.Disability ^= disabilitiesToRemove;
+			OnPersonaChanged.Invoke(persona);
 		}
 	}
 
@@ -217,12 +217,12 @@ public class UIControl : MonoBehaviour
 	/// <summary>
 	/// Used in Room 1 for character creation.
 	/// </summary>
-	/// <param name="disabilitiesList"></param>
-	public void SetPersonaDisabilities(List<Disabilities> disabilitiesList)
+	/// <param name="newDisabilities"></param>
+	public void SetPersonaDisabilities(Disabilities newDisabilities)
 	{
-		if(disabilitiesList.Count != 0)
+	/*	if(newDisabilities.Count != 0)
 		{
-			foreach (Disabilities disability in disabilitiesList)
+			foreach (Disabilities disability in newDisabilities)
 			{
 				persona.Disability |= disability;
 			}
@@ -230,7 +230,7 @@ public class UIControl : MonoBehaviour
 		else
 		{
 			persona.Disability = new Disabilities();
-		}
+		}*/
 		OnPersonaChanged?.Invoke(persona);
 	}
 

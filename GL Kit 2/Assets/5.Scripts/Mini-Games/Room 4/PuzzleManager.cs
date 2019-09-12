@@ -40,6 +40,7 @@ public class PuzzleManager : Manager<PuzzleManager>
 	{
 		foreach(PuzzlePieceSocket puzzlePieceSocket in PuzzlePieceSockets)
 		{
+
 			if(RectTransformUtility.RectangleContainsScreenPoint(puzzlePieceSocket.transform as RectTransform, rectTransform.position))
 			{
 				return puzzlePieceSocket;
