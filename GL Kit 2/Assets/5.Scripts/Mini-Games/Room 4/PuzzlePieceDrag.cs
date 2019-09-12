@@ -16,7 +16,6 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 	[HideInInspector] public bool isInSocket = false;
 	private bool isSelected = false;
 	private float beginRotationZ = 0f;
-	private int positionZ = 0;
 
 	private void Start()
 	{
@@ -44,7 +43,7 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 			{
 				float x = ray.GetPoint(hitDistance).x;
 				float y = ray.GetPoint(hitDistance).y;
-				float z = positionZ;
+				float z = BeginPosition.z;
 
 				CachedTransform.position = new Vector3(x, y, z);
 			}
@@ -53,12 +52,15 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
-		PuzzlePieceSocket puzzlePieceSocket = PuzzleManager.Instance.GetPuzzlePieceSocketUnder(CachedTransform as RectTransform);
-
-		if (puzzlePieceSocket != null)
+		foreach(PuzzlePieceSocket puzzlePieceSocket in 
+			PuzzleManager.Instance.GetPuzzlePieceSocketsUnder(CachedRectTransform as RectTransform))
 		{
-			puzzlePieceSocket.Occupy(CachedTransform);
+			if(puzzlePieceSocket.transform.position.z == CachedTransform.position.z)
+			{
+				puzzlePieceSocket.Occupy(CachedTransform);
+			}
 		}
+
 		Deselect();
 	}
 

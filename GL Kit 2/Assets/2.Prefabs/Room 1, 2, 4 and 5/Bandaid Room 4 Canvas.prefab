@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3639500908271483828}
   - component: {fileID: 7355096939019447230}
   - component: {fileID: 392013101605376509}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: GreenSocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2557689428907843500}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 1264299462986805059}
   - component: {fileID: 2619985869059223987}
   - component: {fileID: 7710434584212493629}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: RedSocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2557689428907843500}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -193,7 +193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2557689428907843500
 RectTransform:
   m_ObjectHideFlags: 0
@@ -205,8 +205,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4126424667101327998}
   - {fileID: 2983728574076220707}
+  - {fileID: 4126424667101327998}
   - {fileID: 8222647592654991181}
   - {fileID: 7643593137387917236}
   - {fileID: 8881691198919942066}
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 6378537775427699668}
   - component: {fileID: 2584642005825681045}
   - component: {fileID: 5003130003097870931}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: YellowSocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: 6935008337348478579}
   - component: {fileID: 8736730624304907227}
   - component: {fileID: 2930644727695958863}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: BlueSocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
