@@ -65,7 +65,7 @@ public class SpeechManager : BetterMonoBehaviour
 			//Debug.Log("Room focal " + i + ": " + roomFocalPoints[i].position);
 			if (dialogueObjects[i] == null)
 			{
-               
+			   
 				Debug.Log("Filling " + i + " with a blank GO.");
 				string path =
 					Settings.PATH_PREFABS + Settings.OBJ_NAME_BLANK_GAMEOBJECT;
@@ -75,7 +75,7 @@ public class SpeechManager : BetterMonoBehaviour
 				DialogueObject diagObj = blankGameObject.AddComponent<DialogueObject>();
 				dialogueObjects[i] = diagObj;
 			}
-               
+			   
 		}
 	}
 
@@ -85,7 +85,7 @@ public class SpeechManager : BetterMonoBehaviour
 		int oldLength = dialogueObjects.Length;
 		if (oldLength != Settings.SYS_VAL_MAX_NUMBER_ROOM_FOCALS)
 		{
-            
+			
 			DialogueObject[] temp = dialogueObjects;
 			dialogueObjects = new DialogueObject[Settings.SYS_VAL_MAX_NUMBER_ROOM_FOCALS];
 			for (int i = 0; i < oldLength; i++)
@@ -94,7 +94,7 @@ public class SpeechManager : BetterMonoBehaviour
 			}
 
 			FillWithBlanks();
-            
+			
 		}
 	}
 }

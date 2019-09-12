@@ -304,11 +304,13 @@ public class UIControl : MonoBehaviour
 			//If we have looped back to the start after an iteration
 			if (SpeechBubble.Instance.Complete == true)
 			{
+				speechBoxButton.GetComponent<Button>().enabled = false;
 				DismissSpeechBubbleEvent dismissInfo = new DismissSpeechBubbleEvent();
 				EventManager.Instance.RaiseEvent(dismissInfo);
 			}
 			else
 			{
+				speechBoxButton.GetComponent<Button>().enabled = true;
 				FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(null, Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, UIAnimator.BlurType.NONE, SpeechBubble.FillTextMethod.ITERATE, false);
 				EventManager.Instance.RaiseEvent(newInfo);
 
