@@ -41,15 +41,19 @@ public class UIControl : MonoBehaviour
 	private Dictionary<string, UnityEngine.Events.UnityAction> events = new Dictionary<string, UnityEngine.Events.UnityAction>();
 	
 	private bool isTransitioning = false;
+	public Button speechBoxButton;
 
 	private void OnTransitionStart()
 	{
 		isTransitioning = true;
+		speechBoxButton.GetComponent<Button>().enabled = false;
+		
 	}
 
 	private void OnTransitionEnd()
 	{
 		isTransitioning = false;
+		speechBoxButton.GetComponent<Button>().enabled = true;
 	}
 
 

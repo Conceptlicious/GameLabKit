@@ -6,18 +6,22 @@ using GameLab;
 
 public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
+	public PuzzlePieceType puzzlePieceType;
+
 	private static Canvas Room4Canvas;
 	private static Plane Room4Plane;
 
 	[SerializeField] private float rightRotationZ;
 	public Vector3 BeginPosition { get; private set; }
+	[HideInInspector] public bool isInSocket = false;
 	private bool isSelected = false;
-	private bool isInSocket = false;
 	private float beginRotationZ = 0f;
+	private int positionZ = 0;
 
 	private void Start()
 	{
-		beginRotationZ = transform.eulerAngles.z;
+		beginRotationZ = CachedTransform.eulerAngles.z;
+		BeginPosition = CachedTransform.position;
 
 		Room4Canvas = GameObject.FindWithTag("Room 4 Canvas").GetComponent<Canvas>();
 
@@ -38,20 +42,34 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 
 			if (Room4Plane.Raycast(ray, out float hitDistance))
 			{
-				CachedTransform.position = ray.GetPoint(hitDistance);
+				float x = ray.GetPoint(hitDistance).x;
+				float y = ray.GetPoint(hitDistance).y;
+				float z = positionZ;
+
+				CachedTransform.position = new Vector3(x, y, z);
 			}
 		}
 	}
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
-		// Dropzone check
+		PuzzlePieceSocket puzzlePieceSocket = PuzzleManager.Instance.GetPuzzlePieceSocketUnder(CachedTransform as RectTransform);
+
+		if (puzzlePieceSocket != null)
+		{
+			puzzlePieceSocket.Occupy(CachedTransform);
+		}
 		Deselect();
 	}
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
-		Select();
+		//Is called when letting go of mouse button.
+
+		if (!isSelected)
+		{
+			Select();
+		}
 	}
 
 	private void Select()
@@ -72,8 +90,9 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 		CachedRectTransform.localScale = Vector3.one;
 
 		if (!isInSocket)
-		{		
+		{
 			CachedRectTransform.eulerAngles = new Vector3(0, 0, beginRotationZ);
+			CachedTransform.position = BeginPosition;
 		}
 
 		isSelected = false;

@@ -9,7 +9,7 @@ public class PuzzleManager : Manager<PuzzleManager>
 {
 	public List<GameObject> Puzzles { get; private set; } = new List<GameObject>();
 	public List<PuzzlePieceDrag> PuzzlePieces { get; private set; } = new List<PuzzlePieceDrag>();
-	public List<GameObject> PuzzlePieceSockets { get; private set; } = new List<GameObject>();
+	public List<PuzzlePieceSocket> PuzzlePieceSockets { get; private set; } = new List<PuzzlePieceSocket>();
 	private GameObject activePuzzle = null;
 
 	private void Start()
@@ -20,33 +20,33 @@ public class PuzzleManager : Manager<PuzzleManager>
 		}
 	}
 
-	public void SetupNewPuzzle()
+	public void SetupNewPuzzle(GameObject puzzleToSetup)
 	{
 		PuzzlePieces.Clear();
+		PuzzlePieceSockets.Clear();
 
-		foreach(PuzzlePieceDrag puzzlePieceDrag in gameObject.GetComponentsInChildren<PuzzlePieceDrag>())
+		foreach(PuzzlePieceDrag puzzlePieceDrag in puzzleToSetup.GetComponentsInChildren<PuzzlePieceDrag>())
 		{
 			PuzzlePieces.Add(puzzlePieceDrag);
 		}
 
-		// Remove all the old puzzle pieces and puzzle piece sockets.
-
-		// Add all the new puzzle pieces and puzzle piece sockets
-
-		/*
-		foreach(Transform child in transform)
+		foreach(PuzzlePieceSocket puzzlePieceSocket in puzzleToSetup.GetComponentsInChildren<PuzzlePieceSocket>())
 		{
-			PuzzlePieceDrag puzzlePieceDrag = child.GetComponentInChildren<PuzzlePieceDrag>();
-
-			if(puzzlePieceDrag != null)
-			{
-				Debug.Log($"{puzzlePieceDrag.name} is added to puzzle pieces.");
-				PuzzlePieces.Add(puzzlePieceDrag.gameObject);
-				continue;
-			}
-
-			Debug.Log($"{puzzlePieceDrag.name} is not added to puzzle pieces.");
+			PuzzlePieceSockets.Add(puzzlePieceSocket);
 		}
-		*/
+	}
+
+	public PuzzlePieceSocket GetPuzzlePieceSocketUnder(RectTransform rectTransform)
+	{
+		foreach(PuzzlePieceSocket puzzlePieceSocket in PuzzlePieceSockets)
+		{
+
+			if(RectTransformUtility.RectangleContainsScreenPoint(puzzlePieceSocket.transform as RectTransform, rectTransform.position))
+			{
+				return puzzlePieceSocket;
+			}
+		}
+
+		return null;
 	}
 }
