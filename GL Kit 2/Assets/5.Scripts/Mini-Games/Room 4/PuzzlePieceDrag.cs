@@ -19,7 +19,9 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 
 	private void Start()
 	{
-		beginRotationZ = CachedTransform.eulerAngles.z;
+		beginRotationZ = Random.Range(0, 360);
+		CachedRectTransform.eulerAngles = new Vector3(0, 0, beginRotationZ);
+
 		BeginPosition = CachedTransform.position;
 
 		Room4Canvas = GameObject.FindWithTag("Room 4 Canvas").GetComponent<Canvas>();
@@ -55,7 +57,7 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 		foreach(PuzzlePieceSocket puzzlePieceSocket in 
 			PuzzleManager.Instance.GetPuzzlePieceSocketsUnder(CachedRectTransform as RectTransform))
 		{
-			if(puzzlePieceSocket.transform.position.z == CachedTransform.position.z)
+			if(puzzlePieceSocket.NeededPuzzlePieceType ==  puzzlePieceType)
 			{
 				puzzlePieceSocket.Occupy(CachedTransform);
 			}
