@@ -8,7 +8,7 @@ namespace Room3
 	public class TileGrid : Singleton<TileGrid>
 	{
 		public bool HasInteractedWithTile => lastInteractedWithTileController != null;
-
+		
 		// TODO: CLeanup current level management
 		public Level CurrentLevel
 		{
@@ -24,6 +24,8 @@ namespace Room3
 
 		[SerializeField] private Level.ColorSettings defaultLevelSettings = Level.ColorSettings.Default;
 		[SerializeField] private Level[] levels = new Level[0];
+
+		[SerializeField] private Lever lever;
 
 		[SerializeField] private GameObject flasks;
 
@@ -71,6 +73,7 @@ namespace Room3
 			++currentLevelIndex;
 			print(currentLevelIndex);
 			SetGridInteractable(false);
+			lever.SwitchSprites();
 			SpawnLevel(levels[currentLevelIndex]);
 		}
 

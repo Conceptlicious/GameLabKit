@@ -12,9 +12,14 @@ public class Lever : BetterMonoBehaviour
 	[SerializeField] private Sprite downSprite;
 
 	public void OnButtonPressed()
+	{		
+		TileGrid.Instance.SetGridInteractable(true);
+		SwitchSprites();
+	}
+
+	public void SwitchSprites()
 	{
 		Image image = GetComponent<Image>();
-		TileGrid.Instance.SetGridInteractable(true);
 		if (image.sprite == upSprite)
 		{
 			image.sprite = downSprite;
@@ -25,4 +30,5 @@ public class Lever : BetterMonoBehaviour
 		}
 
 	}
+
 }

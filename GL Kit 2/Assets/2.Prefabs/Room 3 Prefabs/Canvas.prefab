@@ -256,7 +256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.06674194, y: 0.42221588}
   m_AnchorMax: {x: 0.55718607, y: 0.897379}
-  m_AnchoredPosition: {x: -0.0000076293945, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1269148429929540473
@@ -286,7 +286,7 @@ MonoBehaviour:
       rgba: 4278190080
     BridgeTileColor:
       serializedVersion: 2
-      rgba: 4278517504
+      rgba: 4278255360
     StartPointAlphaThreshold: 136
     TileGroups:
     - groupColor:
@@ -308,6 +308,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2b30bfc0e5c3d8e48a7443f87ad104e3, type: 2}
   - {fileID: 11400000, guid: f44e88761e950184a8961dd8ca4f0fdd, type: 2}
   - {fileID: 11400000, guid: e5492f942b6be7b4eaee40c058aa5c7d, type: 2}
+  lever: {fileID: 4429096918904817213}
   flasks: {fileID: 4573894471019198899}
 --- !u!1 &2147928139908285067
 GameObject:
@@ -425,7 +426,7 @@ GameObject:
   - component: {fileID: 2147928140489095599}
   - component: {fileID: 4429096918904817213}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -479,7 +480,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a20e14112e22c144a8e7a612468e0d7d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 563bf29ecbb772b44886c6a4bfe60c39, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
