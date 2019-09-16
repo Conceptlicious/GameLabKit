@@ -5,7 +5,8 @@ using GameLab;
 
 public class PuzzlePieceSocket : BetterMonoBehaviour
 {
-	[SerializeField] PuzzlePieceType puzzlePieceType;
+	[SerializeField] private PuzzlePieceType neededPuzzlePieceType;
+	public PuzzlePieceType NeededPuzzlePieceType => neededPuzzlePieceType;
 
 	private bool isOccupied = false;
 
@@ -18,21 +19,9 @@ public class PuzzlePieceSocket : BetterMonoBehaviour
 			return;
 		}
 
-		if (IsRightPuzzlePiece(puzzlePieceDrag))
-		{
-			puzzlePiece.position = CachedTransform.position;
+		isOccupied = true;
 
-			puzzlePieceDrag.isInSocket = true;
-		}
-	}
-
-	private bool IsRightPuzzlePiece(PuzzlePieceDrag puzzlePieceDrag)
-	{
-		if (puzzlePieceDrag.puzzlePieceType != puzzlePieceType)
-		{
-			return false;
-		}
-
-		return true;
+		puzzlePiece.position = CachedTransform.position;
+		puzzlePieceDrag.isInSocket = true;
 	}
 }

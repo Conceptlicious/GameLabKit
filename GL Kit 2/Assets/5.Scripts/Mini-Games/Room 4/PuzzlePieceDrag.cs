@@ -16,11 +16,12 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 	[HideInInspector] public bool isInSocket = false;
 	private bool isSelected = false;
 	private float beginRotationZ = 0f;
-	private int positionZ = 0;
 
 	private void Start()
 	{
-		beginRotationZ = CachedTransform.eulerAngles.z;
+		beginRotationZ = Random.Range(0, 360);
+		CachedRectTransform.eulerAngles = new Vector3(0, 0, beginRotationZ);
+
 		BeginPosition = CachedTransform.position;
 
 		Room4Canvas = GameObject.FindWithTag("Room 4 Canvas").GetComponent<Canvas>();
@@ -44,7 +45,7 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 			{
 				float x = ray.GetPoint(hitDistance).x;
 				float y = ray.GetPoint(hitDistance).y;
-				float z = positionZ;
+				float z = BeginPosition.z;
 
 				CachedTransform.position = new Vector3(x, y, z);
 			}
@@ -53,12 +54,15 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
-		PuzzlePieceSocket puzzlePieceSocket = PuzzleManager.Instance.GetPuzzlePieceSocketUnder(CachedTransform as RectTransform);
-
-		if (puzzlePieceSocket != null)
+		foreach(PuzzlePieceSocket puzzlePieceSocket in 
+			PuzzleManager.Instance.GetPuzzlePieceSocketsUnder(CachedRectTransform as RectTransform))
 		{
-			puzzlePieceSocket.Occupy(CachedTransform);
+			if(puzzlePieceSocket.NeededPuzzlePieceType ==  puzzlePieceType)
+			{
+				puzzlePieceSocket.Occupy(CachedTransform);
+			}
 		}
+
 		Deselect();
 	}
 
