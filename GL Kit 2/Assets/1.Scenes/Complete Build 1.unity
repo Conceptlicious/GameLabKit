@@ -507,6 +507,26 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 534669904}
+    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0000076293945
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147928138940705982, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e89894ff5a7252458680b5389b6e81b, type: 3}
 --- !u!224 &223630091 stripped
@@ -5337,7 +5357,7 @@ PrefabInstance:
     - target: {fileID: 6100448372103171779, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: displayLoadingTips
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6100448372103171779, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
@@ -5417,7 +5437,7 @@ PrefabInstance:
     - target: {fileID: 6100448373985705834, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: displaySpeechBubbles
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
