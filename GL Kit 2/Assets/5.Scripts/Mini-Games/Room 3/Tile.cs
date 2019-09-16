@@ -25,6 +25,7 @@ namespace Room3
 
 			public Group() { }
 			public Group(Color32 groupColor) => this.groupColor = groupColor;
+			public int SpriteIndex = 0;
 		}
 
 		[Flags]
