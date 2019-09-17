@@ -25,8 +25,10 @@ public class RoomManager : Singleton<RoomManager>
     //[OLD ORIGIN, ORIGIN, TARGET]
     private Vector3Int currentRoom = new Vector3Int(-1, 0, 0);
 
-    void Awake()
+    protected override void Awake()
     {
+		base.Awake();
+
         //GameData.SetLanguage(GameData.Language.ENGLISH);
         //GameData.Initialised = true;
     }

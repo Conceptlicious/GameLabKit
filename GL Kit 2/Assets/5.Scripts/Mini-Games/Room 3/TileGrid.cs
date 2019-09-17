@@ -8,7 +8,7 @@ namespace Room3
 	public class TileGrid : Singleton<TileGrid>
 	{
 		public bool HasInteractedWithTile => lastInteractedWithTileController != null;
-
+		
 		// TODO: CLeanup current level management
 		public Level CurrentLevel
 		{
@@ -18,12 +18,16 @@ namespace Room3
 
 		public Level.ColorSettings CurrentLevelSettings => CurrentLevel != null && CurrentLevel.HasCustomColorSettings ? CurrentLevel.CustomColorSettings : defaultLevelSettings;
 
-		[SerializeField] private TileSpriteSettings tileSpriteSettings;
+		[SerializeField] private TileSpriteSettings[] tileSpriteSettings;
 
 		[SerializeField] private TileController tileControllerPrefab = null;
 
 		[SerializeField] private Level.ColorSettings defaultLevelSettings = Level.ColorSettings.Default;
 		[SerializeField] private Level[] levels = new Level[0];
+
+		[SerializeField] private Lever lever;
+
+		[SerializeField] private GameObject flasks;
 
 		private int currentLevelIndex = -1;
 
@@ -35,6 +39,7 @@ namespace Room3
 		private TileController lastInteractedWithTileController = null;
 
 		private HashSet<Tile.Group> finishedGroups = new HashSet<Tile.Group>();
+
 
 		protected override void Awake()
 		{
@@ -60,18 +65,15 @@ namespace Room3
 			if (currentLevelIndex == levels.Length - 1)
 			{
 				print("No more levels");
-
-				SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Genre);
-				EventManager.Instance.RaiseEvent(saveItemEvent);
-
-				NextRoomEvent newInfo = new NextRoomEvent();
-				EventManager.Instance.RaiseEvent(newInfo);
+				DestroySpawnedLevel();
+				flasks.SetActive(true);
 				return;
 			}
 
 			++currentLevelIndex;
 			print(currentLevelIndex);
 			SetGridInteractable(false);
+			lever.SwitchSprites();
 			SpawnLevel(levels[currentLevelIndex]);
 		}
 
@@ -199,11 +201,12 @@ namespace Room3
 
 			if (tileController.Row == lastInteractedWithTileController.Row)
 			{
-				tileController.ChangeSprite(tileSpriteSettings.TubeWestToEast);
+				
+				tileController.ChangeSprite(tileSpriteSettings[tileController.TileGroup.SpriteIndex].TubeWestToEast);
 			}
 			else
 			{
-				tileController.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
+				tileController.ChangeSprite(tileSpriteSettings[tileController.TileGroup.SpriteIndex].TubeNorthToSouth);
 			}
 			//Set the lastinteractedwithtilecontroller to the current tilecontroller
 			lastInteractedWithTileController = tileController;
@@ -272,15 +275,15 @@ namespace Room3
 			if (lastTileTileData.Row == currentTileTileData.Row && lastTileTileData.Row == previousToLastTile.Row && lastTileTileData.Col != currentTileTileData.Row)
 			{
 				// there is an X difference but no Y difference
-				lastTileController.ChangeSprite(tileSpriteSettings.TubeWestToEast);
-				currentTileController.ChangeSprite(tileSpriteSettings.TubeWestToEast);
+				lastTileController.ChangeSprite(tileSpriteSettings[lastTileController.TileGroup.SpriteIndex].TubeWestToEast);
+				currentTileController.ChangeSprite(tileSpriteSettings[currentTileController.TileGroup.SpriteIndex].TubeWestToEast);
 				return;
 			}
 			if (lastTileTileData.Col == currentTileTileData.Col && lastTileTileData.Col == previousToLastTile.Col && lastTileTileData.Row != currentTileTileData.Row)
 			{
 				// there is an X difference but no Y difference
-				lastTileController.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
-				currentTileController.ChangeSprite(tileSpriteSettings.TubeNorthToSouth);
+				lastTileController.ChangeSprite(tileSpriteSettings[lastTileController.TileGroup.SpriteIndex].TubeNorthToSouth);
+				currentTileController.ChangeSprite(tileSpriteSettings[currentTileController.TileGroup.SpriteIndex].TubeNorthToSouth);
 				return;
 			}
 
@@ -290,11 +293,11 @@ namespace Room3
 				{
 					if (currentOnSameRowAsL)
 					{
-						lastTileController.ChangeSprite(tileSpriteSettings.TubeWestToNorth);
+						lastTileController.ChangeSprite(tileSpriteSettings[lastTileController.TileGroup.SpriteIndex].TubeWestToNorth);
 					}
 					else
 					{
-						lastTileController.ChangeSprite(tileSpriteSettings.TubeEastToSouth);
+						lastTileController.ChangeSprite(tileSpriteSettings[lastTileController.TileGroup.SpriteIndex].TubeEastToSouth);
 					}
 					return;
 				}
@@ -303,11 +306,11 @@ namespace Room3
 				{
 					if (currentOnSameRowAsL)
 					{
-						lastTileController.ChangeSprite(tileSpriteSettings.TubeWestToSouth);
+						lastTileController.ChangeSprite(tileSpriteSettings[lastTileController.TileGroup.SpriteIndex].TubeWestToSouth);
 					}
 					else
 					{
-						lastTileController.ChangeSprite(tileSpriteSettings.TubeEastToNorth);
+						lastTileController.ChangeSprite(tileSpriteSettings[lastTileController.TileGroup.SpriteIndex].TubeEastToNorth);
 					}
 					return;
 				}
@@ -316,11 +319,11 @@ namespace Room3
 				{
 					if (currentOnSameRowAsL)
 					{
-						lastTileController.ChangeSprite(tileSpriteSettings.TubeEastToNorth);
+						lastTileController.ChangeSprite(tileSpriteSettings[lastTileController.TileGroup.SpriteIndex].TubeEastToNorth);
 					}
 					else
 					{
-						lastTileController.ChangeSprite(tileSpriteSettings.TubeWestToSouth);
+						lastTileController.ChangeSprite(tileSpriteSettings[lastTileController.TileGroup.SpriteIndex].TubeWestToSouth);
 					}
 					return;
 				}
@@ -329,11 +332,11 @@ namespace Room3
 				{
 					if (currentOnSameRowAsL)
 					{
-						lastTileController.ChangeSprite(tileSpriteSettings.TubeEastToSouth);
+						lastTileController.ChangeSprite(tileSpriteSettings[lastTileController.TileGroup.SpriteIndex].TubeEastToSouth);
 					}
 					else
 					{
-						lastTileController.ChangeSprite(tileSpriteSettings.TubeWestToNorth);
+						lastTileController.ChangeSprite(tileSpriteSettings[lastTileController.TileGroup.SpriteIndex].TubeWestToNorth);
 					}
 					return;
 				}

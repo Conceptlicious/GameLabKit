@@ -16,6 +16,7 @@ public class DialogueObject : MonoBehaviour
 		public int containerIndex;
 		public string fieldName;
 		public int fieldIndex;
+		public bool completeReading;
 
 		
 		public TextInfo(int pFileIndex, int pContainerIndex, string pFieldName, int pFieldIndex)
@@ -25,6 +26,7 @@ public class DialogueObject : MonoBehaviour
 			fieldName = pFieldName;
 			fieldIndex = pFieldIndex;
 			dialogueText = Dialogue.GetText(fileIndex, containerIndex, fieldName);
+			completeReading = false;
 		}
 		
 		public string DialogueText
@@ -41,48 +43,42 @@ public class DialogueObject : MonoBehaviour
 		}
 	}
 
+	[SerializeField, HideInInspector]
+	private TextInfo info;
 
-	
-	
-	
+	public TextInfo Info
+	{
+		get => info;
+		set => info = value;
+	}
 
-		[SerializeField, HideInInspector]
-		private TextInfo info;
-
-		public TextInfo Info
-		{
-			get => info;
-			set { info = value; }
-		}
-
-		public string GetTextAndIterate()
-		{
-			int newIndex = 0;
-			info.DialogueText = Dialogue.GetTextAndIterate(info.fileIndex, info.containerIndex, info.fieldIndex, out newIndex);
-			info.fieldIndex = newIndex;
-			//Debug.Log("New Field Index: " + info.fieldIndex);
-			return info.DialogueText;
-		}
+	public string GetTextAndIterate()
+	{
+		info.DialogueText = Dialogue.GetTextAndIterate(info.fileIndex, info.containerIndex, info.fieldIndex, out int newIndex, out bool completeReading);
+		info.fieldIndex = newIndex;
+		info.completeReading = completeReading;
+		Debug.Log("New Field Index: " + info.fieldIndex);
+		return info.DialogueText;
+	}
 
 	public string GetText()
 	{
 		return info.DialogueText;
 	}
 
-		public string GetTextAt(int pIndex)
-		{
-			info.DialogueText = Dialogue.GetTextAt(info.fileIndex, info.containerIndex, pIndex);
-			info.fieldIndex = pIndex;
-			return info.DialogueText;
-		}
+	public string GetTextAt(int pIndex)
+	{
+		info.DialogueText = Dialogue.GetTextAt(info.fileIndex, info.containerIndex, pIndex);
+		info.fieldIndex = pIndex;
+		return info.DialogueText;
+	}
 
-		public string GetRandomText()
-		{
-			string str = Dialogue.GetRandomText(info.fileIndex, info.containerIndex);
-			info.DialogueText = str;
-			return info.DialogueText;
-			return "";
-		}
+	public string GetRandomText()
+	{
+		string str = Dialogue.GetRandomText(info.fileIndex, info.containerIndex);
+		info.DialogueText = str;
+		return info.DialogueText;
+	}
 
 	public string GetFileName()
 	{
