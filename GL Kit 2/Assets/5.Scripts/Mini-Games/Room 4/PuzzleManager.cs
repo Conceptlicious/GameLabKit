@@ -40,13 +40,27 @@ public class PuzzleManager : Manager<PuzzleManager>
 	{
 		foreach(PuzzlePieceSocket puzzlePieceSocket in PuzzlePieceSockets)
 		{
-
 			if(RectTransformUtility.RectangleContainsScreenPoint(puzzlePieceSocket.transform as RectTransform, rectTransform.position))
-			{
+			{	
 				return puzzlePieceSocket;
 			}
 		}
 
 		return null;
+	}
+
+	public List<PuzzlePieceSocket> GetPuzzlePieceSocketsUnder(RectTransform rectTransform)
+	{
+		List<PuzzlePieceSocket> puzzlePieceSocketsUnder = new List<PuzzlePieceSocket>();
+
+		foreach(PuzzlePieceSocket puzzlePieceSocket in PuzzlePieceSockets)
+		{
+			if(RectTransformUtility.RectangleContainsScreenPoint(puzzlePieceSocket.transform as RectTransform, rectTransform.position))
+			{
+				puzzlePieceSocketsUnder.Add(puzzlePieceSocket);
+			}
+		}
+
+		return puzzlePieceSocketsUnder;
 	}
 }
