@@ -24,7 +24,7 @@ public class TrophyGridManager : Manager<TrophyGridManager>
 		}
 	}
 
-	public TrophySocket GetThrophySocketUnder(RectTransform rectTransform)
+	public TrophySocket GetTrophySocketUnder(RectTransform rectTransform)
 	{
 		foreach(TrophySocket trophySocket in trophySockets)
 		{

@@ -512,6 +512,7 @@ MonoBehaviour:
     containerIndex: 0
     fieldName: Title
     fieldIndex: 0
+    completeReading: 0
 --- !u!1 &354021338
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +593,7 @@ MonoBehaviour:
     containerIndex: 0
     fieldName: Step 1
     fieldIndex: 0
+    completeReading: 0
 --- !u!1 &411087592
 GameObject:
   m_ObjectHideFlags: 0
@@ -2161,6 +2163,7 @@ MonoBehaviour:
     containerIndex: 0
     fieldName: Fact 1
     fieldIndex: 0
+    completeReading: 0
 --- !u!1 &1174985910 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3029815231562130384, guid: a37665fefb432f3478f46c12c321f0c8,
@@ -2227,6 +2230,7 @@ MonoBehaviour:
     containerIndex: 0
     fieldName: Fact 1
     fieldIndex: 0
+    completeReading: 0
 --- !u!1 &1291133739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,6 +2679,7 @@ MonoBehaviour:
     containerIndex: 0
     fieldName: Step 1
     fieldIndex: 0
+    completeReading: 0
 --- !u!1 &1440448510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2723,6 +2728,7 @@ MonoBehaviour:
     containerIndex: 0
     fieldName: Step 1
     fieldIndex: 0
+    completeReading: 0
 --- !u!1001 &1480841014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3375,6 +3381,7 @@ MonoBehaviour:
     containerIndex: 0
     fieldName: Fact 1
     fieldIndex: 0
+    completeReading: 0
 --- !u!1 &1624125898
 GameObject:
   m_ObjectHideFlags: 0
@@ -3423,6 +3430,7 @@ MonoBehaviour:
     containerIndex: 0
     fieldName: Step 1
     fieldIndex: 0
+    completeReading: 0
 --- !u!1 &1679826546
 GameObject:
   m_ObjectHideFlags: 0
@@ -3806,6 +3814,7 @@ MonoBehaviour:
     containerIndex: 2
     fieldName: Type
     fieldIndex: 0
+    completeReading: 0
 --- !u!1 &1830594360 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3029815232767976098, guid: a37665fefb432f3478f46c12c321f0c8,
@@ -3858,6 +3867,7 @@ MonoBehaviour:
     containerIndex: 0
     fieldName: Fact 1
     fieldIndex: 0
+    completeReading: 0
 --- !u!4 &1848558111
 Transform:
   m_ObjectHideFlags: 0
@@ -3920,6 +3930,7 @@ MonoBehaviour:
     containerIndex: 0
     fieldName: Step 1
     fieldIndex: 0
+    completeReading: 0
 --- !u!1001 &1907541451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3941,6 +3952,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 1907541454}
+    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1943482783}
+    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ProgressDialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8585186772162891220, guid: 52ade7103fed6c2408a38cf70c37f539,
         type: 3}
@@ -3996,46 +4047,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
-        type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 1907541454}
-    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1943482783}
-    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ProgressDialogue
-      objectReference: {fileID: 0}
-    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6098016077574053850, guid: 52ade7103fed6c2408a38cf70c37f539,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8585186772196208285, guid: 52ade7103fed6c2408a38cf70c37f539,
         type: 3}
@@ -4735,6 +4746,7 @@ MonoBehaviour:
     containerIndex: 0
     fieldName: Step 1
     fieldIndex: 0
+    completeReading: 0
 --- !u!1 &2123002303
 GameObject:
   m_ObjectHideFlags: 0
@@ -4783,6 +4795,7 @@ MonoBehaviour:
     containerIndex: 0
     fieldName: Step 1
     fieldIndex: 0
+    completeReading: 0
 --- !u!1001 &3029815233373201042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5408,7 +5421,7 @@ PrefabInstance:
     - target: {fileID: 6100448372103171779, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: displayLoadingTips
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6100448372103171779, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
@@ -5488,7 +5501,7 @@ PrefabInstance:
     - target: {fileID: 6100448373985705834, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: displaySpeechBubbles
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
