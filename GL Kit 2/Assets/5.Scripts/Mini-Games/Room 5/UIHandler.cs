@@ -40,7 +40,7 @@ public class UIHandler : Singleton<UIHandler>
 
 			if (DropZone.combinationIsRight)
 			{
-				ButtonManager.Instance.EnableNextButton();
+				ButtonManager.Instance.EnableNextButton();				
 
 				foreach (Transform child in FunTypeTab)
 				{
@@ -48,6 +48,12 @@ public class UIHandler : Singleton<UIHandler>
 					if (currentDragAndDrop != null)
 					{
 						currentDragAndDrop.isAbleToMove = false;
+					}
+
+					DropZone currentDropZone = child.GetComponent<DropZone>();
+					if (currentDropZone != null)
+					{
+						currentDropZone.Unoccupy();
 					}
 				}
 			}

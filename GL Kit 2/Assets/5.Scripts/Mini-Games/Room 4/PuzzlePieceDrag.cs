@@ -11,7 +11,6 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 	private static Canvas Room4Canvas;
 	private static Plane Room4Plane;
 
-	[SerializeField] private float rightRotationZ;
 	public Vector3 BeginPosition { get; private set; }
 	[HideInInspector] public bool isInSocket = false;
 	private bool isSelected = false;
@@ -84,7 +83,7 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 		}
 
 		CachedRectTransform.localScale = Vector3.one * 1.1f;
-		CachedRectTransform.eulerAngles = new Vector3(0, 0, rightRotationZ);
+		CachedRectTransform.eulerAngles = Vector3.zero;
 
 		isSelected = true;
 	}
