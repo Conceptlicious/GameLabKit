@@ -67,7 +67,7 @@ public class UIControl : MonoBehaviour
 	/// <summary>
 	/// Holds the fuction procedural buttons should receive based on their name.
 	/// </summary>
-	private void SetEventsDictionary()
+	private void ThatMethodJoshToldMeToRename()
 	{
 		events.Add("Next", OnNextButton);
 		events.Add("Back", OnBackButton);
@@ -196,8 +196,8 @@ public class UIControl : MonoBehaviour
 		{
 			persona.Gender = gender;
 		}
-
 		OnPersonaChanged?.Invoke(persona);
+
 	}
 
 	public void TogglePressed(Toggle pressedToggle)
@@ -239,7 +239,7 @@ public class UIControl : MonoBehaviour
 	/// </summary>
 	public void SetVariables()
 	{
-		SetEventsDictionary();
+		ThatMethodJoshToldMeToRename();
 		ageSilderMin = ageSliders.Find("AgeSliderMin").GetComponent<Slider>();
 		ageSilderMax = ageSliders.Find("AgeSliderMax").GetComponent<Slider>();
 		AverageAgeSlider = ageSliders.Find("AverageAge").GetComponent<Slider>();
