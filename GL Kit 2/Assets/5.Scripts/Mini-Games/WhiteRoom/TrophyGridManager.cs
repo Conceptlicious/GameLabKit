@@ -35,5 +35,6 @@ public class TrophyGridManager : Manager<TrophyGridManager>
 		}
 
 		return null;
+
 	}
 }
