@@ -13,6 +13,7 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 
 	public Vector3 BeginPosition { get; private set; }
 	[HideInInspector] public bool isInSocket = false;
+	[HideInInspector] public bool canBeSelected = true;
 	private bool isSelected = false;
 	private float beginRotationZ = 0f;
 
@@ -36,6 +37,9 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 
 	public void OnDrag(PointerEventData eventData)
 	{
+		Debug.Assert(PuzzleManager.Instance.PuzzlePieceSockets.Count > 0, "Socket list is empty");
+		Debug.Assert(PuzzleManager.Instance.PuzzlePieces.Count > 0, "Piece list is empty");
+
 		if (isSelected && !isInSocket)
 		{
 			Ray ray = Room4Canvas.worldCamera.ScreenPointToRay(eventData.position);
@@ -67,9 +71,7 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
-		//Is called when letting go of mouse button.
-
-		if (!isSelected)
+		if (!isSelected && canBeSelected)
 		{
 			Select();
 		}

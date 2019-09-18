@@ -23,5 +23,6 @@ public class PuzzlePieceSocket : BetterMonoBehaviour
 
 		puzzlePiece.position = CachedTransform.position;
 		puzzlePieceDrag.isInSocket = true;
+		puzzlePieceDrag.canBeSelected = false;
 	}
 }
