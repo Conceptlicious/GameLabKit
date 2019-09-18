@@ -43,12 +43,15 @@ public class TrophyDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandler
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
-		TrophySocket trophySocket = TrophyGridManager.Instance.GetThrophySocketUnder(CachedTransform as RectTransform);
+		TrophySocket trophySocket = TrophyGridManager.Instance.GetTrophySocketUnder(CachedTransform as RectTransform);
 
 		if (trophySocket != null)
 		{
 			trophySocket.Occupy(CachedTransform);
 			return;
 		}
+
+		CachedTransform.position = BeginPosition;
+
 	}
 }

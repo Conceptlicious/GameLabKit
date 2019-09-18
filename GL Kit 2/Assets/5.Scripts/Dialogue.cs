@@ -9,13 +9,14 @@ using UnityEditor;
 using System.IO;
 using System.Linq;
 using Random = System.Random;
+using Newtonsoft.Json;
 
 /// <summary>
 ///  
 /// </summary>
 public static class Dialogue 
 {
-	private static DialogueFile[] files = null;
+	private static DialogueFile[] dialogueFiles = new DialogueFile[0];
 
 	/// <summary>
 	/// Load all the available dialogue files for the current language.
@@ -23,13 +24,7 @@ public static class Dialogue
 	/// <param name="pLevelNames"></param>
 	public static void LoadAllText()
 	{
-		
-		int size = Settings.LEVEL_NAMES.Length;
-		files = new DialogueFile[size];
-		for (int i = 0; i < size; i++)
-		{
-			files[i] = JsonParser.ParseJSONFile(Settings.LEVEL_NAMES[i]);
-		}
+		dialogueFiles = Array.ConvertAll(Settings.LEVEL_NAMES, levelName => JsonParser.ParseJSONFile(levelName));
 
 		Debug.Log("Reloading all files.");
 
@@ -38,46 +33,17 @@ public static class Dialogue
 	}
 
 	/// <summary>
-	/// Get a string array of the files currently loaded;
+	/// Get a string array of the files currently loaded
 	/// </summary>
 	/// <returns></returns>
-	public static string[] GetFileNames()
-	{
-		
-		string[] names = new string[1];
-		if (files != null)
-		{
-			names = new string[files.Length];
-			for (int i = 0; i < files.Length; i++)
-			{
-				names[i] = files[i].Name;
-			}
-		}
-		else
-		{
-			names[0] = Settings.STR_DEFAULT_DIALOGUE;
-		}
-
-		return names;
-	}
+	public static string[] GetFileNames() => Array.ConvertAll(dialogueFiles, dialogueFile => dialogueFile.Name);
 
 	/// <summary>
 	/// Get the string names of the array containers used to wrap different chunks of text inside a single level file.
 	/// </summary>
 	/// <param name="pFileID"></param>
 	/// <returns></returns>
-	public static string[] GetContainerNames(int pFileID)
-	{
-		
-		DialogueContainer[] containers = files[pFileID].GetContainers();
-		string[] names = new string[containers.Length];
-		for (int i = 0; i < containers.Length; i++)
-		{
-			names[i] = containers[i].Name;
-		}
-
-		return names;
-	}
+	public static string[] GetContainerNames(int pFileID) => Array.ConvertAll(dialogueFiles[pFileID].GetContainers(), container => container.Name);
 
 	/// <summary>
 	/// Get the names of the keys used to proceed the individual lines of text.
@@ -87,13 +53,12 @@ public static class Dialogue
 	/// <returns></returns>
 	public static string[] GetKeyNames(int pFileID, int pContainerID)
 	{
-		if (files == null)
+		if (dialogueFiles == null)
 		{
 			Debug.Log("Files null");
 		}
-
 		
-		DialogueContainer container = files[pFileID].GetContainer(pContainerID);
+		DialogueContainer container = dialogueFiles[pFileID].GetContainer(pContainerID);
 		Dictionary<string, string> kvp = container.GetInfoDictionary();
 		string[] names = new string[kvp.Count];
 		int iterator = 0;
@@ -116,7 +81,7 @@ public static class Dialogue
 	public static string GetText(int pFileID, int pContainerID, string pField)
 	{	
 		string text = Settings.STR_DEFAULT_DIALOGUE;
-		files[pFileID].GetContainer(pContainerID).GetInfoDictionary().TryGetValue(pField, out text);
+		dialogueFiles[pFileID].GetContainer(pContainerID).GetInfoDictionary().TryGetValue(pField, out text);
 		return text;
 	}
 
@@ -128,11 +93,20 @@ public static class Dialogue
 	/// <param name="pFieldIndex"></param>
 	/// <param name="pNewIndex"></param>
 	/// <returns></returns>
-	public static string GetTextAndIterate(int pFileID, int pContainerID, int pFieldIndex, out int pNewIndex)
+	public static string GetTextAndIterate(int pFileID, int pContainerID, int pFieldIndex, out int pNewIndex, out bool completeReading)
 	{	
 		string[] keyNames = GetKeyNames(pFileID, pContainerID);
 		int oldIndex = pFieldIndex;
-		pNewIndex = (pFieldIndex + 1) % keyNames.Length;
+
+		// Up the new index to the next one
+		pNewIndex = ++pFieldIndex;
+
+		// Check whether we have reached the key limit, at which point we have completed reading the file
+		completeReading = pNewIndex >= keyNames.Length;
+
+		// Wrap the index to make sure it doesn't go out of bounds next time the dialogue object is used
+		pNewIndex %= keyNames.Length;
+
 	   // Debug.Log("New index is " + pNewIndex);
 		return GetText(pFileID, pContainerID, keyNames[oldIndex]);
 	}

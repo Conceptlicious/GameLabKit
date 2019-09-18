@@ -45,10 +45,12 @@ public class TrophySocket : BetterMonoBehaviour
 
 	private void SnapToSocket(Sprite trophySprite)
 	{
+		gameObject.GetComponentInChildren<Text>().enabled = false;
 		Image socketImage = GetComponent<Image>();
 
 		socketImage.sprite = trophySprite;
 		socketImage.color = new Color32(255, 255, 255, 255);
+
 	}
 
 	private IEnumerator NextRoomDelay()

@@ -10,6 +10,7 @@ public class PuzzleManager : Manager<PuzzleManager>
 	public List<GameObject> Puzzles { get; private set; } = new List<GameObject>();
 	public List<PuzzlePieceDrag> PuzzlePieces { get; private set; } = new List<PuzzlePieceDrag>();
 	public List<PuzzlePieceSocket> PuzzlePieceSockets { get; private set; } = new List<PuzzlePieceSocket>();
+	public int NumberOfPuzzlePiecesNeeded { get; private set; } = 0;
 	private GameObject activePuzzle = null;
 
 	private void Start()
@@ -33,20 +34,8 @@ public class PuzzleManager : Manager<PuzzleManager>
 		foreach(PuzzlePieceSocket puzzlePieceSocket in puzzleToSetup.GetComponentsInChildren<PuzzlePieceSocket>())
 		{
 			PuzzlePieceSockets.Add(puzzlePieceSocket);
+			++NumberOfPuzzlePiecesNeeded;
 		}
-	}
-
-	public PuzzlePieceSocket GetPuzzlePieceSocketUnder(RectTransform rectTransform)
-	{
-		foreach(PuzzlePieceSocket puzzlePieceSocket in PuzzlePieceSockets)
-		{
-			if(RectTransformUtility.RectangleContainsScreenPoint(puzzlePieceSocket.transform as RectTransform, rectTransform.position))
-			{	
-				return puzzlePieceSocket;
-			}
-		}
-
-		return null;
 	}
 
 	public List<PuzzlePieceSocket> GetPuzzlePieceSocketsUnder(RectTransform rectTransform)

@@ -7,12 +7,12 @@ using UnityEngine.UI;
 
 //--------------------------------------------------
 //Produced by: Josh van Asten
-//Overview: This script fills the speech bubbles that apper along Dr GameLab.
+//Overview: This script fills the speech bubbles that appear along Dr GameLab.
 //Usage: Used along with scene transitions, UI and the dialogue system.
 //--------------------------------------------------
 
 
-public class SpeechBubble : Singleton<SpeechBubble>
+public class SpeechBubble : Singleton<SpeechBubble>		
 {
 	[SerializeField] private UISlidingObject[] slidingObject;
 	[SerializeField] private Text textField = null;
@@ -20,7 +20,7 @@ public class SpeechBubble : Singleton<SpeechBubble>
 	private string bubbleText = "";
 	private int subdivisionIndex = 0;
 	private int lastOffset = 0;
-	private bool completeReading = false;
+	public bool completeReading = false;
 
 	public enum FillTextMethod
 	{
@@ -32,7 +32,7 @@ public class SpeechBubble : Singleton<SpeechBubble>
 
 	private FillTextMethod fillTextMethod;
 	public DialogueObject DiagObject => dialogueObject;
-	public bool Complete => completeReading;
+	//public bool Complete => completeReading;
 	
 	protected override void Awake()
 	{
@@ -56,21 +56,17 @@ public class SpeechBubble : Singleton<SpeechBubble>
 		if (info.dialogueObject != null)
 		{
 			dialogueObject = info.dialogueObject;
+			textField.text = GetSubdividedText();			
 		}
 		else
 		{
-			Debug.Log("Passed dialogue object is null.");
+			Debug.Log("Passed dialogue object is null. Dismissing the bubble?");
 		}
-
-		textField.text = GetSubdividedText();			
-
 		
 		if(info.shouldAnimate)
 		{
-		    UIAnimatorManager.Instance.AnimateObjects(slidingObject, info.time, info.moveType, info.blurType);
+			UIAnimatorManager.Instance.AnimateObjects(slidingObject, info.time, info.moveType, info.blurType);
 		}
-		
-		
 	}
 
 	/// <summary>
@@ -107,10 +103,10 @@ public class SpeechBubble : Singleton<SpeechBubble>
 		return output;
 	}
 
-    /// <summary>
-    /// Get a version of our text that fit the length that can be displayed in a single bubble, and accounting for formatting and word-cutting.
-    /// </summary>
-    /// <returns></returns>
+	/// <summary>
+	/// Get a version of our text that fit the length that can be displayed in a single bubble, and accounting for formatting and word-cutting.
+	/// </summary>
+	/// <returns></returns>
 	private string GetSubdividedText()
 	{
 		//If we are beginning our subdivision, grab the dialogue and load it into the bubbleText string
@@ -154,10 +150,9 @@ public class SpeechBubble : Singleton<SpeechBubble>
 		string subdivision = bubbleText.Substring((subdivisionIndex * Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE) - accountedOffset,
 			length);
 			
-	    //Debugging
-		Debug.Log("Subbing from " + ((subdivisionIndex * Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE) - accountedOffset) +
-		          " for " + length + " chars.");
-		          
+		//Debugging
+		Debug.Log("Subbing from " + ((subdivisionIndex * Settings.VAL_CHARACTERS_PER_SPEECH_BUBBLE) - accountedOffset) + " for " + length + " chars.");
+			  
 		//The position of the last space, used so that the final word is not cut off mid-way
 		lastOffset = subdivision.LastIndexOf(' ');
 		
@@ -168,31 +163,29 @@ public class SpeechBubble : Singleton<SpeechBubble>
 			Debug.Log("Will sub the existing sub for " + lastOffset + " chars");
 		}
 			
-		
 		//Increment
-	    subdivisionIndex++;
+		subdivisionIndex++;
 		
 		//If we are done
 		if (subdivisionIndex > ceilTimesIn)
 		{
-		    //Reset our values
+			//Reset our values
 			subdivisionIndex = 0;
 			lastOffset = 0;
 			
 			//Ideally, an event should be called here to broadcast the full text is read, but that's for later
-			if (dialogueObject.Info.fieldIndex == 0)
+			if (dialogueObject.Info.completeReading)
 			{
 				Debug.Log("Fully read");
 				completeReading = true;
+				DialogueObject.TextInfo info = dialogueObject.Info;
+				info.completeReading = false;
+				dialogueObject.Info = info;
 			}
 		}
-
-		
 		//Get rid of an extra spaces that might be left in
 		return subdivision.Trim(' ');
-	}
-	
-	 
+	}	 
 }
 
 

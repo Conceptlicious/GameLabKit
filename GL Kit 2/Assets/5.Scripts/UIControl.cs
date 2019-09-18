@@ -299,11 +299,13 @@ public class UIControl : MonoBehaviour
 	public void ProgressDialogue()
 	{
 		Debug.Log("Touch");
+		
 		if (SpeechBubble.Instance.DiagObject != null && isTransitioning == false)
 		{
 			//If we have looped back to the start after an iteration
-			if (SpeechBubble.Instance.Complete == true)
+			if (SpeechBubble.Instance.completeReading == true)
 			{
+				SpeechBubble.Instance.completeReading = false;
 				speechBoxButton.GetComponent<Button>().enabled = false;
 				DismissSpeechBubbleEvent dismissInfo = new DismissSpeechBubbleEvent();
 				EventManager.Instance.RaiseEvent(dismissInfo);
@@ -311,11 +313,10 @@ public class UIControl : MonoBehaviour
 			else
 			{
 				speechBoxButton.GetComponent<Button>().enabled = true;
-				FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(null, Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, UIAnimator.BlurType.NONE, SpeechBubble.FillTextMethod.ITERATE, false);
-				EventManager.Instance.RaiseEvent(newInfo);
-
+				FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(SpeechBubble.Instance.DiagObject, Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, UIAnimator.BlurType.NONE, SpeechBubble.FillTextMethod.ITERATE, false);
+				EventManager.Instance.RaiseEvent(newInfo);				
 				Debug.Log("Field Index: " + SpeechBubble.Instance.DiagObject.Info.fieldIndex);
-			}
+			}		
 		}
 
 	}

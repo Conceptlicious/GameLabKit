@@ -27,16 +27,16 @@ public class UIPopUpManager : MonoBehaviour
 		}
 	}
 
-    /// <summary>
-    /// Registers all event listeners this class needs to care about.
-    /// </summary>
-    private void registerAllListeners()
-    {
-        //EventSystem.RegisterListener(EventType.UI_NEXT_ROOM, OnNextRoomCommand);
-        EventManager.Instance.AddListener<CreatePopUpEvent>(OnEventMarkerCall);
-        EventManager.Instance.AddListener<CreateSpesifiedPopUpEvent>(OnCreateSpesifiedPopup);
-        EventManager.Instance.AddListener<LevelProgressEvent>(OnLevelProgess);
-    }
+	/// <summary>
+	/// Registers all event listeners this class needs to care about.
+	/// </summary>
+	private void registerAllListeners()
+	{
+		//EventSystem.RegisterListener(EventType.UI_NEXT_ROOM, OnNextRoomCommand);
+		EventManager.Instance.AddListener<CreatePopUpEvent>(OnEventMarkerCall);
+		EventManager.Instance.AddListener<CreateSpesifiedPopUpEvent>(OnCreateSpesifiedPopup);
+		EventManager.Instance.AddListener<LevelProgressEvent>(OnLevelProgess);
+	}
 
 	public void Thing()
 	{
@@ -89,7 +89,7 @@ public class UIPopUpManager : MonoBehaviour
 		string[] buttonNames = pDiagObj.GetTextAndIterate().Split(' ');
 		for (int i = 0; i < buttonNames.Length; i++)
 		{
-			//Craete
+			//Create
 			GameObject newButton = GameObject.Instantiate(data.button.gameObject, UICanvas.transform);
 			
 			//Position
