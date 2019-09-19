@@ -29,10 +29,11 @@ public class MediumButton : BetterMonoBehaviour
 
 	public void ShowNewPuzzle(GameObject currentPuzzle)
 	{
-		foreach(GameObject puzzle in PuzzleManager.Instance.Puzzles)
+		foreach(GameObject puzzle in MediumButtonManager.Instance.Puzzles)
 		{
 			puzzle.SetActive(false);
 		}
+
 		currentPuzzle.SetActive(true);
 
 

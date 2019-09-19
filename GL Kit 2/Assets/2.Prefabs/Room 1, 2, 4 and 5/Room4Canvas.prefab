@@ -179,6 +179,85 @@ MonoBehaviour:
   pieceInformation: Development licenses
   isInSocket: 0
   canBeSelected: 1
+--- !u!1 &687819214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 687819215}
+  - component: {fileID: 687819217}
+  - component: {fileID: 687819216}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &687819215
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687819214}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1486860170}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &687819217
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687819214}
+  m_CullTransparentMesh: 0
+--- !u!114 &687819216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687819214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: SkipLevel
 --- !u!1 &890104082
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +789,138 @@ MonoBehaviour:
   pieceInformation: Low maintenance
   isInSocket: 0
   canBeSelected: 1
+--- !u!1 &1486860169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1486860170}
+  - component: {fileID: 1486860173}
+  - component: {fileID: 1486860172}
+  - component: {fileID: 1486860171}
+  m_Layer: 0
+  m_Name: SkipLevel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1486860170
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486860169}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 687819215}
+  m_Father: {fileID: 5913281549712387073}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 200, y: 449}
+  m_SizeDelta: {x: 320, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1486860173
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486860169}
+  m_CullTransparentMesh: 0
+--- !u!114 &1486860172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486860169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!114 &1486860171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486860169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1486860172}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2715772208013817018}
+        m_MethodName: EnableNextButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1921402116
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +1097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 2
-  pieceInformation: 
+  pieceInformation: Limited features
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &156144110894720369
@@ -1602,7 +1813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 1
-  pieceInformation: 
+  pieceInformation: Expensive
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &829827718146976525
@@ -4777,7 +4988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 5
-  pieceInformation: 
+  pieceInformation: Easy development
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &3304275458662253872
@@ -5133,7 +5344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 6
-  pieceInformation: 
+  pieceInformation: Accesible
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &3546826989780555362
@@ -5312,7 +5523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 3
-  pieceInformation: 
+  pieceInformation: Niche market
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &3944555381478774180
@@ -5858,6 +6069,39 @@ MonoBehaviour:
   pieceInformation: 
   isInSocket: 0
   canBeSelected: 1
+--- !u!1 &4649553750862602867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5913281549712387073}
+  m_Layer: 0
+  m_Name: OtherUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5913281549712387073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4649553750862602867}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 9165525739758897695}
+  - {fileID: 4995287625438773295}
+  - {fileID: 1486860170}
+  m_Father: {fileID: 9165525738167237441}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4750954460176269843
 GameObject:
   m_ObjectHideFlags: 0
@@ -5946,7 +6190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 5
-  pieceInformation: 
+  pieceInformation: Real life interaction
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &4760833203396906265
@@ -6128,7 +6372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 2
-  pieceInformation: 
+  pieceInformation: Hard to develop
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &5256309079403188690
@@ -6742,7 +6986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 3
-  pieceInformation: 
+  pieceInformation: Costs
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &5998504289179603711
@@ -6995,7 +7239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 6
-  pieceInformation: 
+  pieceInformation: Less motion sickness than VR
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &6242266058013222016
@@ -7629,7 +7873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 1
-  pieceInformation: 
+  pieceInformation: Requires internet
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &6777257969039371023
@@ -7902,7 +8146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 7
-  pieceInformation: 
+  pieceInformation: High end potential
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &7060256636744989436
@@ -8081,6 +8325,85 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neededPuzzlePieceType: 5
+--- !u!1 &7439926561219478796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1508566150042493944}
+  - component: {fileID: 3260537112395047668}
+  - component: {fileID: 7010068248668751324}
+  m_Layer: 2
+  m_Name: text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1508566150042493944
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7439926561219478796}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4995287625438773295}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3260537112395047668
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7439926561219478796}
+  m_CullTransparentMesh: 0
+--- !u!114 &7010068248668751324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7439926561219478796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 60
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 61
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Medium Information
 --- !u!1 &7579829241616624143
 GameObject:
   m_ObjectHideFlags: 0
@@ -8169,7 +8492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 2
-  pieceInformation: 
+  pieceInformation: Big system
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &7587826164720654858
@@ -8351,6 +8674,81 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neededPuzzlePieceType: 6
+--- !u!1 &7775641993357663073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4995287625438773295}
+  - component: {fileID: 4566951327290489879}
+  - component: {fileID: 4808131747951764889}
+  m_Layer: 0
+  m_Name: MediumInfoText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4995287625438773295
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7775641993357663073}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1508566150042493944}
+  m_Father: {fileID: 5913281549712387073}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -493.3, y: -281}
+  m_SizeDelta: {x: 795.9, y: 491.9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4566951327290489879
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7775641993357663073}
+  m_CullTransparentMesh: 0
+--- !u!114 &4808131747951764889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7775641993357663073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 25fbaf726bf463b4ab966828f668efb3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
 --- !u!1 &7853187965528558109
 GameObject:
   m_ObjectHideFlags: 0
@@ -8708,7 +9106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 5
-  pieceInformation: 
+  pieceInformation: No install required
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &8129001534891669895
@@ -9154,7 +9552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 7
-  pieceInformation: 
+  pieceInformation: Easy on the processor
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &8412261799119488712
@@ -9245,7 +9643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 1
-  pieceInformation: 
+  pieceInformation: Maintenance
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &8486974297599460939
@@ -9285,7 +9683,7 @@ RectTransform:
   - {fileID: 8218913173385003298}
   - {fileID: 1980034862932775409}
   m_Father: {fileID: 9165525738167237441}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -9304,7 +9702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6f0b947cf338b4aa5d0386013b47d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pieceText: {fileID: 0}
+  pieceText: {fileID: 7010068248668751324}
 --- !u!1 &8778761511159167632
 GameObject:
   m_ObjectHideFlags: 0
@@ -9657,7 +10055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 6
-  pieceInformation: 
+  pieceInformation: Laptop portability
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &9165525737999545577
@@ -9764,8 +10162,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9165525738681391457}
-  - {fileID: 9165525739758897695}
   - {fileID: 6897407095508397871}
+  - {fileID: 5913281549712387073}
   m_Father: {fileID: 9165525739613722134}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10214,6 +10612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeButtons: 0
+  Puzzles: []
 --- !u!1 &9165525738700049060
 GameObject:
   m_ObjectHideFlags: 0
@@ -11320,17 +11719,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9165525739758897688}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9165525738700049083}
-  m_Father: {fileID: 9165525738167237441}
-  m_RootOrder: 1
+  m_Father: {fileID: 5913281549712387073}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 50}
+  m_AnchoredPosition: {x: 190, y: -490}
   m_SizeDelta: {x: 300, y: 56.25}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &9165525739758897692

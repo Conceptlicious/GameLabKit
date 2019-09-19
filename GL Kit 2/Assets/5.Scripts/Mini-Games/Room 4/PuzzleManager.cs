@@ -7,19 +7,22 @@ using GameLab;
 [DisallowMultipleComponent]
 public class PuzzleManager : Manager<PuzzleManager>
 {
-    [SerializeField] private Text pieceText;
-    [HideInInspector] public int piecesInSocket = 0;
-    public List<GameObject> Puzzles { get; private set; } = new List<GameObject>();
+    private const string COMPLETED_PUZZLE_MESSAGE = "Congratulations you unlocked the next puzzle!";
+
     public List<PuzzlePieceDrag> PuzzlePieces { get; private set; } = new List<PuzzlePieceDrag>();
     public List<PuzzlePieceSocket> PuzzlePieceSockets { get; private set; } = new List<PuzzlePieceSocket>();
     public int PiecesInSocketNeeded { get; private set; } = 0;
+    [SerializeField] private Text pieceText;
+    private int piecesInSocket = 0;
     private GameObject activePuzzle = null;
 
     private void Start()
     {
+        DisplayPieceText();
+
         foreach (Transform child in transform)
         {
-            Puzzles.Add(child.gameObject);
+           MediumButtonManager.Instance.Puzzles.Add(child.gameObject);
         }
     }
 
@@ -35,7 +38,7 @@ public class PuzzleManager : Manager<PuzzleManager>
 
         foreach (PuzzlePieceSocket puzzlePieceSocket in puzzleToSetup.GetComponentsInChildren<PuzzlePieceSocket>())
         {
-            PuzzlePieceSockets.Add(puzzlePieceSocket);            
+            PuzzlePieceSockets.Add(puzzlePieceSocket);
         }
 
         PiecesInSocketNeeded = PuzzlePieceSockets.Count;
@@ -57,14 +60,26 @@ public class PuzzleManager : Manager<PuzzleManager>
         return puzzlePieceSocketsUnder;
     }
 
-    public void DisplayPieceText(string pieceString, bool textNeedsToBeEmpty = false)
+    public void DisplayPieceText(Color textColor, string textToDisplay = null)
     {
-        if(textNeedsToBeEmpty)
-        {
-            pieceText.text = string.Empty;
-            return;
-        }
+        pieceText.color = textColor;
+        pieceText.text = textToDisplay;
+    }
 
-        pieceText.text = pieceString;
+    public void DisplayPieceText(string textToDisplay = null)
+    {
+        pieceText.color = Color.black;
+        pieceText.text = textToDisplay;
+    }
+
+    public void NewPuzzlePieceInSocket()
+    {
+        ++piecesInSocket;
+
+        if (piecesInSocket == PiecesInSocketNeeded)
+        {
+            DisplayPieceText(Color.green, COMPLETED_PUZZLE_MESSAGE);
+            MediumButtonManager.Instance.EnableNextButton();
+        }
     }
 }
