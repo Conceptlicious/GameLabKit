@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21409a5c2ae44d643be505fac0b5496a, type: 3}
   m_Name: Wearable
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 0d655075370919a4fb007274636dbf0d, type: 3}
+  icon: {fileID: 21300000, guid: f2c96b4d91a009f4c9cf7d2e2740e360, type: 3}
   description: 'Pros
 
     - Medical data
