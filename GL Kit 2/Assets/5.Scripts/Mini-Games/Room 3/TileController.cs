@@ -158,7 +158,8 @@ namespace Room3
 				originalTileColor = Image.color;
 			}
 			// change the colour to the group color
-			Image.color = tileConnectedTo.TileGroup.GroupColor;
+			//Image.color = tileConnectedTo.TileGroup.GroupColor;
+			Image.color = Color.white;
 		}
 
 		private void OnDisconnectedFromTile(Tile tileDisconnectedFrom)

@@ -19,6 +19,10 @@ public class SelectButton : BetterMonoBehaviour
 
 	private void SelectSprite(Sprite selectedSprite)
 	{
-		SendSpriteRoom6.Instance.TubeSeleced(selectedSprite);
+		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.ArtStyle);
+		EventManager.Instance.RaiseEvent(saveItemEvent);
+
+		NextRoomEvent newInfo = new NextRoomEvent();
+		EventManager.Instance.RaiseEvent(newInfo);
 	}
 }
