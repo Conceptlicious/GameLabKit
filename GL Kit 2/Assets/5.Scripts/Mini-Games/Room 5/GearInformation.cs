@@ -68,7 +68,7 @@ public class GearInformation : BetterMonoBehaviour
 	{
 		if (isAbleToRotate)
 		{
-			if (!rotatingLeft)
+			if (rotatingLeft)
 			{
 				CachedTransform.Rotate(Vector3.forward * (Time.deltaTime * rotationSpeed));
 			}

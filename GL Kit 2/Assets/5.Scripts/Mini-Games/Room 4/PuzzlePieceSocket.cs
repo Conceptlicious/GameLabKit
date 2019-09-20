@@ -22,7 +22,10 @@ public class PuzzlePieceSocket : BetterMonoBehaviour
 		isOccupied = true;
 
 		puzzlePiece.position = CachedTransform.position;
+
 		puzzlePieceDrag.isInSocket = true;
 		puzzlePieceDrag.canBeSelected = false;
+
+		PuzzleManager.Instance.NewPuzzlePieceInSocket();
 	}
 }
