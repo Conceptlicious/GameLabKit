@@ -10343,6 +10343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f98cd2ea6c1a004f940a59151004138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mediumSprite: {fileID: 0}
   mediumInformation: {fileID: 11400000, guid: 521a49111baf57748ae7b38aa2142347, type: 2}
   mediumPuzzle: {fileID: 2021020464985209036}
 --- !u!1 &9165525738576886591
@@ -10553,6 +10554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f98cd2ea6c1a004f940a59151004138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mediumSprite: {fileID: 0}
   mediumInformation: {fileID: 11400000, guid: c3fe94d2a30ce0f4ea9575c006fcc20f, type: 2}
   mediumPuzzle: {fileID: 3304275458662253872}
 --- !u!1 &9165525738681391458
@@ -10612,6 +10614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeButtons: 0
+  selectedMediumSprite: {fileID: 0}
   Puzzles: []
 --- !u!1 &9165525738700049060
 GameObject:
@@ -10900,6 +10903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f98cd2ea6c1a004f940a59151004138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mediumSprite: {fileID: 0}
   mediumInformation: {fileID: 11400000, guid: 7be04d669298f8945a64c562fb3094c7, type: 2}
   mediumPuzzle: {fileID: 2052539413283742189}
 --- !u!1 &9165525739326985229
@@ -11036,6 +11040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f98cd2ea6c1a004f940a59151004138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mediumSprite: {fileID: 0}
   mediumInformation: {fileID: 11400000, guid: e7e5c022029751d45a75e4adacb3146d, type: 2}
   mediumPuzzle: {fileID: 1112305595388518999}
 --- !u!1 &9165525739515996809
@@ -11172,6 +11177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f98cd2ea6c1a004f940a59151004138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mediumSprite: {fileID: 0}
   mediumInformation: {fileID: 11400000, guid: 5ecc085c7baffb94e968105531ac0b0a, type: 2}
   mediumPuzzle: {fileID: 4760833203396906265}
 --- !u!1 &9165525739544099293
@@ -11308,6 +11314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f98cd2ea6c1a004f940a59151004138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mediumSprite: {fileID: 0}
   mediumInformation: {fileID: 11400000, guid: cb0d2ef842e17f945b6e9f376620d78d, type: 2}
   mediumPuzzle: {fileID: 2759328096431137585}
 --- !u!1 &9165525739594504453
@@ -11444,6 +11451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f98cd2ea6c1a004f940a59151004138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mediumSprite: {fileID: 0}
   mediumInformation: {fileID: 11400000, guid: bffc66055dec59a41a3476709e491421, type: 2}
   mediumPuzzle: {fileID: 890104082}
 --- !u!1 &9165525739613722130
@@ -11760,7 +11768,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 565ca457a2320eb47b1dc54c7b34c3df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0d3fa7bf614eba6429d9f4b4550f84ec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11811,7 +11819,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9165525739758897693}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2715772208013817018}
+        m_MethodName: Confirm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &9165525739870162824
@@ -12096,6 +12115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f98cd2ea6c1a004f940a59151004138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mediumSprite: {fileID: 0}
   mediumInformation: {fileID: 11400000, guid: becacbbe671ecab498636c66fa1d4672, type: 2}
   mediumPuzzle: {fileID: 1499962289037196163}
 --- !u!1 &9165525740039033754
