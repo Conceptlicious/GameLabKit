@@ -242,6 +242,12 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 534669904}
+    - target: {fileID: 9165525739758897693, guid: d7f1e3559f1a9d2489ef4a5967a783f4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0d3fa7bf614eba6429d9f4b4550f84ec,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7f1e3559f1a9d2489ef4a5967a783f4, type: 3}
 --- !u!224 &143767838 stripped
@@ -361,7 +367,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 1e-45, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1759,7 +1765,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d26b7121ad5dedf4093a7033d2a7cc7b,
+      objectReference: {fileID: 21300000, guid: c95657060f59e3141bde72921fdfacb7,
         type: 3}
     - target: {fileID: 7385619711378022748, guid: 9597691b3dfb70841a60232e70cf7974,
         type: 3}
@@ -2597,7 +2603,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d26b7121ad5dedf4093a7033d2a7cc7b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c95657060f59e3141bde72921fdfacb7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4497,6 +4503,37 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1943482783}
+    - target: {fileID: 3735685552374049519, guid: 407fe366cf3e2364191b9d679c3ef99c,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735685552374049519, guid: 407fe366cf3e2364191b9d679c3ef99c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735685552374049519, guid: 407fe366cf3e2364191b9d679c3ef99c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735685552374049519, guid: 407fe366cf3e2364191b9d679c3ef99c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735685552374049519, guid: 407fe366cf3e2364191b9d679c3ef99c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0d3fa7bf614eba6429d9f4b4550f84ec,
+        type: 3}
+    - target: {fileID: 3735685552374049519, guid: 407fe366cf3e2364191b9d679c3ef99c,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 407fe366cf3e2364191b9d679c3ef99c, type: 3}
 --- !u!1 &1925147040 stripped
@@ -5527,6 +5564,26 @@ PrefabInstance:
       propertyPath: focalParent
       value: 
       objectReference: {fileID: 157469635}
+    - target: {fileID: 6100448372103171781, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: fade
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: couplings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: couplings.Array.data[1].marker
+      value: '>>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: couplings.Array.data[1].eventToCall.classRef
+      value: DismissSpeechBubbleEvent, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6100448372103171779, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: dialogueObject
@@ -5620,26 +5677,6 @@ PrefabInstance:
     - target: {fileID: 6100448373985705834, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: displaySpeechBubbles
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
-        type: 3}
-      propertyPath: couplings.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
-        type: 3}
-      propertyPath: couplings.Array.data[1].marker
-      value: '>>'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
-        type: 3}
-      propertyPath: couplings.Array.data[1].eventToCall.classRef
-      value: DismissSpeechBubbleEvent, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100448372103171781, guid: c9918d00f141af441848f74c51b2d5f0,
-        type: 3}
-      propertyPath: fade
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
