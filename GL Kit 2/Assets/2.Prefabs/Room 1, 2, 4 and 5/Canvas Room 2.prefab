@@ -219,9 +219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55d6984733761b4083d4320e25fd254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: "A game designed to inform the player about a specific subject and
-    to teach them a skill.\r The game isn't based on real-life scenarios. These games
-    are called edutainment games."
+  description: A game designed to inform the player about a specific subject and to
+    teach them a skill. The game isn't based on real-life scenarios. These games are
+    called edutainment games.
 --- !u!114 &902134705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1391,10 +1391,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55d6984733761b4083d4320e25fd254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: "A game that is designed to help the player heal or improve their well-being.
-    It can help\r people cope with disabilities or encourage people to exercise. In
-    addition, these games\r\ncan be used in mental healthcare, for example as a therapeutic
-    tool. These games are\r called health games."
+  description: A game that is designed to help the player heal or improve their well-being.
+    It can help people cope with disabilities or encourage people to exercise. In
+    addition, these games can be used in mental healthcare, for example as a therapeutic
+    tool. These games are called health games.
 --- !u!114 &399759105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2201,9 +2201,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55d6984733761b4083d4320e25fd254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: "A game which gives more insight into specific subjects or situations.
-    It makes the player\r conscious of the subject or situation. These games are called
-    awareness games."
+  description: A game which gives more insight into specific subjects or situations.
+    It makes the player conscious of the subject or situation. These games are called
+    awareness games.
 --- !u!114 &934842828
 MonoBehaviour:
   m_ObjectHideFlags: 0
