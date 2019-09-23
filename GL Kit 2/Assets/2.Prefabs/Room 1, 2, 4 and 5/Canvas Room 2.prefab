@@ -220,8 +220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: A game designed to inform the player about a specific subject and to
-    teach them a skill. The game isn't based on real-life scenarios. These games are
-    called edutainment games.
+    teach them a skill. The game isn't based on a real-life scenarios. These games
+    are called edutainment games.
 --- !u!114 &902134705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -988,9 +988,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55d6984733761b4083d4320e25fd254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A game which will activate the player to change their behavior by playing
-    the game. The player will change their lifestyle or opinion/attitude. These games
-    are called activation games.
+  description: "A game which will change the player\u2019s behaviour after they have
+    played it. The player will change their lifestyle or opinion/attitude. These games
+    are called activation games. "
 --- !u!114 &1340257408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1124,9 +1124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55d6984733761b4083d4320e25fd254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A game designed to help with the research by gathering data of the
-    players, while they are interacting with the game. These games are called research
-    games.
+  description: A game that is designed for training purposes. The player needs to
+    complete different tasks based on real-life scenarios. During the game, the player
+    learns new information, which they can apply in real-life.
 --- !u!114 &248189114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1928,9 +1928,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55d6984733761b4083d4320e25fd254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A game about a specific brand or product made to promote it. It is
+  description: 'A game about a specific brand or product made to promote it. It is
     aimed to make the player feel more attracted to the product/brand after the game.
-    These games are called advergames.
+    These games are called advergames. '
 --- !u!114 &87267476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2064,10 +2064,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55d6984733761b4083d4320e25fd254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A game that is used during an application procedure. By playing the
-    game the player gets some insight into a company. Besides, the company gets more
-    insight into the job applicant. In addition, the company can see if the applicant
-    fits a specific position. These games are called recruitment games.
+  description: A game which gives the player some insight into a company. Besides,
+    the company gets some information about the job applicant and if they will fit
+    to the specific position. These games are called recruitment games.
 --- !u!114 &1278005489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2201,9 +2200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55d6984733761b4083d4320e25fd254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A game which gives more insight into specific subjects or situations.
-    It makes the player conscious of the subject or situation. These games are called
-    awareness games.
+  description: A game which gives the player more insight into a specific subject
+    or situation. These games are called awareness games.
 --- !u!114 &934842828
 MonoBehaviour:
   m_ObjectHideFlags: 0
