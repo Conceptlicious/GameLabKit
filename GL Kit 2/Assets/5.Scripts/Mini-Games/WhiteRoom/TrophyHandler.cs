@@ -36,7 +36,7 @@ public class TrophyHandler : BetterMonoBehaviour
 			case RoomType.Goals:
 				trophySprites[(int)RoomType.Goals].gameObject.SetActive(true);
 				trophySprites[(int)RoomType.Goals].sprite = 
-					HiddenObjectHandler.Instance.LastSelectedObjectSprite;
+					HiddenObjectHandler.Instance.lastSelectedObjectSprite;
 				break;
 
 			case RoomType.Genre:

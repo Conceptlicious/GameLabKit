@@ -14,14 +14,41 @@ using GameLab;
 [RequireComponent(typeof(MonoBehaviour))]
 public class HiddenObject : BetterMonoBehaviour
 {
-	public Sprite HiddenObjectSprite { get; private set; }
-	[SerializeField] [TextArea] private string description = string.Empty;
-	public string Description => description;
-	private Image hiddenObjectImage = null;
+    [SerializeField] [TextArea] private string description = string.Empty;
+    public string Description => description;
+    private Button button = null;
+    private Sprite sprite = null;
+    private bool isFound = false;
 
-	private void Start()
-	{
-		hiddenObjectImage = GetComponent<Image>();
-		HiddenObjectSprite = hiddenObjectImage.sprite;
-	}
+    private void Start()
+    {
+        sprite = GetComponent<Image>().sprite;
+        button = GetComponent<Button>();
+
+        button.onClick.AddListener(() => Clicked());
+
+        button.interactable = false;
+    }
+
+    public void Found()
+    {
+        if (isFound)
+        {
+            return;
+        }
+
+        button.interactable = true;
+        TextUpdater.Instance.CallUpdateTextCoroutine(name, description);
+    }
+
+    public void Clicked()
+    {
+        if(!HiddenObjectHandler.Instance.MinigameIsWon)
+        {
+            Debug.Log("Mini game is not won yet");
+            return;
+        }
+
+        HiddenObjectHandler.Instance.lastSelectedObjectSprite = sprite;
+    }
 }
