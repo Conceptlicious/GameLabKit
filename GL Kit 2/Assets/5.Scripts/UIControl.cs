@@ -144,7 +144,7 @@ public class UIControl : MonoBehaviour
 		else
 		{
 			activeSpecialNeedToggles.Remove(toggleToRemove);
-			persona.Disability ^= disabilitiesToRemove;
+			persona.Disability &= ~disabilitiesToRemove;
 			OnPersonaChanged.Invoke(persona);
 		}
 	}
