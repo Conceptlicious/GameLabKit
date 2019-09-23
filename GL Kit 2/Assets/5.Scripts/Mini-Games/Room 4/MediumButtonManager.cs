@@ -8,9 +8,10 @@ using GameLab;
 public class MediumButtonManager : Manager<MediumButtonManager>
 {
     private const int MAX_AMOUNT_OF_ACTIVE_BUTTONS = 8;
-    private const string WON_MINIGAME_MESSAGE = "Congratulations you won the mini game.\n" +
-        "Click on the medium you want to send to the white room.\n Then click confirm.";
+    private const string WON_MINIGAME_MESSAGE = "Congratulations you won the mini game." +
+        "Click on the medium you want to send to the white room. Then click confirm.";
 
+    [SerializeField] private GameObject confirmButton;
     public bool MinigameIsWon { get; private set; } = false;
     [HideInInspector] public int activeButtons = 0;
     [HideInInspector] public Sprite selectedMediumSprite = null;
@@ -25,6 +26,7 @@ public class MediumButtonManager : Manager<MediumButtonManager>
             button.interactable = false;
         }
 
+        confirmButton.SetActive(false);
         EnableNextButton();
     }
 
@@ -33,6 +35,7 @@ public class MediumButtonManager : Manager<MediumButtonManager>
         if(activeButtons >= MAX_AMOUNT_OF_ACTIVE_BUTTONS)
         {
             MinigameIsWon = true;
+            confirmButton.SetActive(true);
             PuzzleManager.Instance.DisplayPieceText(Color.magenta, WON_MINIGAME_MESSAGE);            
             return;
         }
