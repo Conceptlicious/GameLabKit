@@ -45,10 +45,10 @@ public class HiddenObject : BetterMonoBehaviour
     {
         if(!HiddenObjectHandler.Instance.MinigameIsWon)
         {
-            Debug.Log("Mini game is not won yet");
             return;
         }
 
+        Debug.Log($"{name} is selected.");
         HiddenObjectHandler.Instance.lastSelectedObjectSprite = sprite;
     }
 }

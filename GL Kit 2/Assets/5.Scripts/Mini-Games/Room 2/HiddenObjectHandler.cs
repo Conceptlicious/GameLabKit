@@ -15,6 +15,8 @@ using GameLab;
 public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 {
     private const string OBJECT_ALREADY_FOUND_MESSAGE = "You have already found this object";
+    private const string WARNING = "Warning";
+    private const string WARNING_EXPLINATION = "There is no object selected";
     private const int HIDDENOBJECTS_AMOUNT = 7;
 
     public bool MinigameIsWon { get; private set; } = false;
@@ -57,6 +59,12 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 
     public void NextRoom()
     {
+        if (lastSelectedObjectSprite == null)
+        {
+            TextUpdater.Instance.CallUpdateTextCoroutine(WARNING, WARNING_EXPLINATION);
+            return;
+        }
+
         EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Goals));
         EventManager.Instance.RaiseEvent(new NextRoomEvent());
     }

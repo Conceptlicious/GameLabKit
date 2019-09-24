@@ -7,13 +7,14 @@ using GameLab;
 [RequireComponent(typeof(Image))]
 public class Flask : BetterMonoBehaviour
 {
-	public void OnFlaskSelected()
-	{
-		//Set the trophy to this
-		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Genre);
-		EventManager.Instance.RaiseEvent(saveItemEvent);
+    public static Sprite FlaskSprite { get; private set; }
 
-		NextRoomEvent newInfo = new NextRoomEvent();
-		EventManager.Instance.RaiseEvent(newInfo);
-	}
+    public void OnFlaskSelected()
+    {
+        //Set the trophy to this
+        FlaskSprite = GetComponent<Image>().sprite;
+
+        EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Genre));
+        EventManager.Instance.RaiseEvent(new NextRoomEvent());
+    }
 }

@@ -6,23 +6,28 @@ using GameLab;
 
 public class SelectButton : BetterMonoBehaviour
 {
-	private Image buttonImage;
-	private Button selectButton;
+    public static Sprite ArtSprite { get; private set; }
+    private Image buttonImage;
+    private Button selectButton;
 
-	private void Start()
-	{
-		selectButton = GetComponent<Button>();
-		buttonImage = GetComponent<Image>();
+    private void Start()
+    {
+        selectButton = GetComponent<Button>();
+        buttonImage = GetComponent<Image>();
 
-		selectButton.onClick.AddListener(() => SelectSprite(buttonImage.sprite));
-	}
+        selectButton.onClick.AddListener(() => SelectSprite(buttonImage.sprite));
+    }
 
-	private void SelectSprite(Sprite selectedSprite)
-	{
-		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.ArtStyle);
-		EventManager.Instance.RaiseEvent(saveItemEvent);
+    private void SelectSprite(Sprite selectedSprite)
+    {
+        if(!ActivePatternManager.Instance.isWon)
+        {
+            return;
+        }
 
-		NextRoomEvent newInfo = new NextRoomEvent();
-		EventManager.Instance.RaiseEvent(newInfo);
-	}
+        ArtSprite = selectedSprite;
+
+        EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.ArtStyle));
+        EventManager.Instance.RaiseEvent(new NextRoomEvent());
+    }
 }
