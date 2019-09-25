@@ -11,6 +11,21 @@ using System.Collections.Generic;
 
 public class GridHandler : Singleton<GridHandler>
 {
+	public List<DropZone> GetDropZonesUnder(RectTransform rectTransform)
+	{
+		List<DropZone> dropZonesUnder = new List<DropZone>();
+
+		foreach(DropZone dropZone in UIHandler.Instance.DropZones)
+		{
+			if (RectTransformUtility.RectangleContainsScreenPoint(dropZone.transform as RectTransform, rectTransform.position))
+			{
+				dropZonesUnder.Add(dropZone);
+			}
+		}
+
+		return dropZonesUnder;
+	}
+
 	public DropZone GetDropZoneUnder(RectTransform rectTransform)
 	{
 		foreach (DropZone dropZone in UIHandler.Instance.DropZones)

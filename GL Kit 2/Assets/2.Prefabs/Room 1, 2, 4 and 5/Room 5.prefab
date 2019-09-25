@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f7b7dded6cf8c479b363def69f75ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer: 0
   isObjectInGrid: 0
   isAbleToMove: 1
 --- !u!114 &1477973305
@@ -342,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f7b7dded6cf8c479b363def69f75ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer: 0
   isObjectInGrid: 0
   isAbleToMove: 1
 --- !u!114 &2688047106003723806
@@ -612,6 +614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neededType: 4
   secondNeededType: 3
+  layer: 0
 --- !u!1 &588704250534408186
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neededType: 10
   secondNeededType: 11
+  layer: 0
 --- !u!1 &1254116315211785421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,6 +1105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f7b7dded6cf8c479b363def69f75ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer: 1
   isObjectInGrid: 0
   isAbleToMove: 1
 --- !u!114 &7638155891395469078
@@ -1816,6 +1821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neededType: 9
   secondNeededType: 0
+  layer: 1
 --- !u!1 &2914097191177359898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2559,6 +2565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neededType: 7
   secondNeededType: 0
+  layer: 0
 --- !u!1 &4409817129669199282
 GameObject:
   m_ObjectHideFlags: 0
@@ -2648,6 +2655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neededType: 2
   secondNeededType: 0
+  layer: 0
 --- !u!1 &4415331859210297769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2811,6 +2819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neededType: 3
   secondNeededType: 4
+  layer: 0
 --- !u!1 &4472656825632284614
 GameObject:
   m_ObjectHideFlags: 0
@@ -2899,6 +2908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f7b7dded6cf8c479b363def69f75ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer: 0
   isObjectInGrid: 0
   isAbleToMove: 1
 --- !u!114 &930784817023292940
@@ -3080,6 +3090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neededType: 6
   secondNeededType: 0
+  layer: 1
 --- !u!1 &4901689504340175885
 GameObject:
   m_ObjectHideFlags: 0
@@ -3229,6 +3240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neededType: 11
   secondNeededType: 10
+  layer: 0
 --- !u!1 &4954206017357097885
 GameObject:
   m_ObjectHideFlags: 0
@@ -3391,6 +3403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f7b7dded6cf8c479b363def69f75ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer: 0
   isObjectInGrid: 0
   isAbleToMove: 1
 --- !u!114 &4603579174983565907
@@ -3750,6 +3763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neededType: 0
   secondNeededType: 0
+  layer: 0
 --- !u!1 &5571306057654437019
 GameObject:
   m_ObjectHideFlags: 0
@@ -3838,6 +3852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f7b7dded6cf8c479b363def69f75ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer: 1
   isObjectInGrid: 0
   isAbleToMove: 1
 --- !u!114 &4196363448136654270
@@ -4034,6 +4049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neededType: 8
   secondNeededType: 0
+  layer: 0
 --- !u!1 &5669586363544422286
 GameObject:
   m_ObjectHideFlags: 0
@@ -4285,6 +4301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f7b7dded6cf8c479b363def69f75ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer: 0
   isObjectInGrid: 0
   isAbleToMove: 1
 --- !u!114 &3365332845838706837
@@ -4392,6 +4409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neededType: 1
   secondNeededType: 0
+  layer: 0
 --- !u!1 &6245336723885170829
 GameObject:
   m_ObjectHideFlags: 0
@@ -4480,6 +4498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f7b7dded6cf8c479b363def69f75ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer: 0
   isObjectInGrid: 0
   isAbleToMove: 1
 --- !u!114 &5938020544445197465
@@ -4586,6 +4605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f7b7dded6cf8c479b363def69f75ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer: 0
   isObjectInGrid: 0
   isAbleToMove: 1
 --- !u!114 &7789906035838640077
@@ -5211,6 +5231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f7b7dded6cf8c479b363def69f75ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer: 0
   isObjectInGrid: 0
   isAbleToMove: 1
 --- !u!114 &1855166409646366845
@@ -5660,7 +5681,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d26b7121ad5dedf4093a7033d2a7cc7b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c95657060f59e3141bde72921fdfacb7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 0
@@ -6667,7 +6688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4318039776218632604
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6977,6 +6998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f7b7dded6cf8c479b363def69f75ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer: 0
   isObjectInGrid: 0
   isAbleToMove: 1
 --- !u!114 &6319894462091459862
@@ -7083,6 +7105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f7b7dded6cf8c479b363def69f75ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer: 0
   isObjectInGrid: 0
   isAbleToMove: 1
 --- !u!114 &6819460801172100938
@@ -7457,3 +7480,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neededType: 5
   secondNeededType: 0
+  layer: 0
