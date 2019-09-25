@@ -1105,7 +1105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f7b7dded6cf8c479b363def69f75ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer: 1
+  layer: 0
   isObjectInGrid: 0
   isAbleToMove: 1
 --- !u!114 &7638155891395469078
@@ -4605,7 +4605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f7b7dded6cf8c479b363def69f75ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer: 0
+  layer: 1
   isObjectInGrid: 0
   isAbleToMove: 1
 --- !u!114 &7789906035838640077
