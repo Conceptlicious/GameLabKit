@@ -11,8 +11,9 @@ public class PuzzleManager : Manager<PuzzleManager>
 
     public List<PuzzlePieceDrag> PuzzlePieces { get; private set; } = new List<PuzzlePieceDrag>();
     public List<PuzzlePieceSocket> PuzzlePieceSockets { get; private set; } = new List<PuzzlePieceSocket>();
-    public int PiecesInSocketNeeded { get; private set; } = 0;
+    public bool IsPuzzleInProgress { get; private set; } = false;
     [SerializeField] private Text pieceText;
+    private int PiecesInSocketNeeded = 0;
     private int piecesInSocket = 0;
     private GameObject activePuzzle = null;
 
@@ -22,7 +23,7 @@ public class PuzzleManager : Manager<PuzzleManager>
 
         foreach (Transform child in transform)
         {
-           MediumButtonManager.Instance.Puzzles.Add(child.gameObject);
+            MediumButtonManager.Instance.Puzzles.Add(child.gameObject);
         }
     }
 
@@ -60,7 +61,7 @@ public class PuzzleManager : Manager<PuzzleManager>
         return puzzlePieceSocketsUnder;
     }
 
-    public void DisplayPieceText(Color textColor, string textToDisplay = null)
+    public void DisplayPieceText(Color textColor, string textToDisplay)
     {
         pieceText.color = textColor;
         pieceText.text = textToDisplay;
@@ -74,12 +75,14 @@ public class PuzzleManager : Manager<PuzzleManager>
 
     public void NewPuzzlePieceInSocket()
     {
+        IsPuzzleInProgress = true;
         ++piecesInSocket;
 
         if (piecesInSocket == PiecesInSocketNeeded)
         {
             DisplayPieceText(Color.green, COMPLETED_PUZZLE_MESSAGE);
             MediumButtonManager.Instance.EnableNextButton();
+            IsPuzzleInProgress = false;
         }
     }
 }

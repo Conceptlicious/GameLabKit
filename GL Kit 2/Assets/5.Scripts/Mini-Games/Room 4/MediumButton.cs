@@ -7,6 +7,8 @@ using GameLab;
 [RequireComponent(typeof(MonoBehaviour))]
 public class MediumButton : BetterMonoBehaviour
 {
+    private const string PUZZLE_IN_PROGRESS_WARNING = "You can't switch level when there is a puzzle in progress"; 
+
     public Sprite mediumSprite = null;
     [SerializeField] private MediumTemplate mediumInformation;
     [SerializeField] private GameObject mediumPuzzle;
@@ -33,6 +35,12 @@ public class MediumButton : BetterMonoBehaviour
 
     public void ShowNewPuzzle(GameObject currentPuzzle)
     {
+        if(PuzzleManager.Instance.IsPuzzleInProgress)
+        {
+            PuzzleManager.Instance.DisplayPieceText(Color.yellow, PUZZLE_IN_PROGRESS_WARNING);
+            return;
+        }
+
         foreach (GameObject puzzle in MediumButtonManager.Instance.Puzzles)
         {
             puzzle.SetActive(false);
