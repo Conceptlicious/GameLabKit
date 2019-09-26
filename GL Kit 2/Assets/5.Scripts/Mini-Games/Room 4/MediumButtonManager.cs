@@ -8,53 +8,35 @@ using GameLab;
 public class MediumButtonManager : Manager<MediumButtonManager>
 {
     private const int MAX_AMOUNT_OF_ACTIVE_BUTTONS = 8;
-    private const string WON_MINIGAME_MESSAGE = "Congratulations you won the mini game." +
-        "Click on the medium you want to send to the white room. Then click confirm.";
+    private const string WON_MINIGAME_MESSAGE = "<color=#00ff00>Congratulations you won the mini game.</color>" +
+        "Click on the medium you want to send to the white room.";
 
-    [SerializeField] private GameObject confirmButton;
     public bool MinigameIsWon { get; private set; } = false;
     [HideInInspector] public int activeButtons = 0;
-    [HideInInspector] public Sprite selectedMediumSprite = null;
     [HideInInspector] public List<GameObject> Puzzles = new List<GameObject>();
     private List<Button> buttons = new List<Button>();
 
     private void Start()
     {
-        foreach(Button button in GetComponentsInChildren<Button>())
+        foreach (Button button in GetComponentsInChildren<Button>())
         {
             buttons.Add(button);
             button.interactable = false;
         }
 
-        confirmButton.SetActive(false);
         EnableNextButton();
     }
 
     public void EnableNextButton()
     {
-        if(activeButtons >= MAX_AMOUNT_OF_ACTIVE_BUTTONS)
+        if (activeButtons >= MAX_AMOUNT_OF_ACTIVE_BUTTONS)
         {
             MinigameIsWon = true;
-            confirmButton.SetActive(true);
-            PuzzleManager.Instance.DisplayPieceText(Color.magenta, WON_MINIGAME_MESSAGE);            
+            PuzzleManager.Instance.DisplayPieceText(WON_MINIGAME_MESSAGE);
             return;
         }
 
         buttons[activeButtons].interactable = true;
         ++activeButtons;
-    }
-
-    public void Confirm()
-    {
-        if(!MinigameIsWon)
-        {
-            return;
-        }
-
-        NextRoomEvent nextRoomEvent = new NextRoomEvent();
-        EventManager.Instance.RaiseEvent(nextRoomEvent);
-
-        SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Medium);
-        EventManager.Instance.RaiseEvent(saveItemEvent);
-    }
+    }    
 }

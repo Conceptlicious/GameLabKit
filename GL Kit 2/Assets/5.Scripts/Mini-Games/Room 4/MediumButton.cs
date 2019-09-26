@@ -7,6 +7,7 @@ using GameLab;
 [RequireComponent(typeof(MonoBehaviour))]
 public class MediumButton : BetterMonoBehaviour
 {
+    public static Sprite selectedMediumSprite;
     private const string PUZZLE_IN_PROGRESS_WARNING = "You can't switch level when there is a puzzle in progress"; 
 
     public Sprite mediumSprite = null;
@@ -23,14 +24,16 @@ public class MediumButton : BetterMonoBehaviour
         mediumButton.onClick.AddListener(() => ShowNewPuzzle(mediumPuzzle));
     }
 
-    private void SelectSprite(Sprite newSprite)
+    private void SelectSprite(Sprite selectedSprite)
     {
         if (!MediumButtonManager.Instance.MinigameIsWon)
         {
             return;
         }
 
-        MediumButtonManager.Instance.selectedMediumSprite = newSprite;
+        selectedMediumSprite = selectedSprite;
+        EventManager.Instance.RaiseEvent(new NextRoomEvent());
+        EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Medium));
     }
 
     public void ShowNewPuzzle(GameObject currentPuzzle)

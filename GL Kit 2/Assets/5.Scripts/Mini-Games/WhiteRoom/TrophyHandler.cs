@@ -46,7 +46,7 @@ public class TrophyHandler : BetterMonoBehaviour
 
             case RoomType.Medium:
                 trophySprites[(int)RoomType.Medium].gameObject.SetActive(true);
-                trophySprites[(int)RoomType.Medium].sprite = MediumButtonManager.Instance.selectedMediumSprite;
+                trophySprites[(int)RoomType.Medium].sprite = MediumButton.selectedMediumSprite;
                 break;
 
             case RoomType.Dynamics:
