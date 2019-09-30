@@ -4,23 +4,23 @@ using GameLab;
 
 public enum GearType
 {
-    NONE,
+	NONE,
 
-    Exploration,
-    Fantasy,
-    Creativity,
+	Exploration,
+	Fantasy,
+	Creativity,
 
-    Communication,
-    Cooperation,
-    Competition,
+	Communication,
+	Cooperation,
+	Competition,
 
-    Goals,
-    Obstacles,
-    Stategy,
+	Goals,
+	Obstacles,
+	Stategy,
 
-    Learing,
-    Rhythm,
-    Collection
+	Learing,
+	Rhythm,
+	Collection
 };
 
 //--------------------------------------------------
@@ -32,53 +32,74 @@ public enum GearType
 
 public class GearInformation : BetterMonoBehaviour
 {
-    [HideInInspector] public static bool isAbleToRotate = false;
+	[HideInInspector] public static bool isAbleToRotate = false;
 
-    [SerializeField] private GearType gearType = default;
-    public GearType GetGearType => gearType;
+	[SerializeField] private GearType gearType = default;
+	public GearType GetGearType => gearType;
 
-    [SerializeField] private float timeForRotationToStop = 2f;
-    [SerializeField] private int rotationSpeed = 50;
-    [SerializeField] private bool rotatingLeft = false;
+	[SerializeField] private float timeForRotationToStop = 2f;
 
-    public void StopGearRotationMethod(GameObject objectToCheck)
-    {
-        if (objectToCheck.activeInHierarchy)
-        {
-            StartCoroutine(StopGearRotation());
-        }
-    }
+	public void StopGearRotationMethod(GameObject objectToCheck)
+	{
+		if (objectToCheck.activeInHierarchy)
+		{
+			StartCoroutine(StopGearRotation());
+		}
+	}
 
-    private IEnumerator StopGearRotation()
-    {
-        ButtonManager.Instance.DisableButtons();
+	private IEnumerator StopGearRotation()
+	{
+		ButtonManager.Instance.DisableButtons();
 
-        yield return new WaitForSeconds(timeForRotationToStop);
-        isAbleToRotate = false;
+		yield return new WaitForSeconds(timeForRotationToStop);
 
-        transform.position = GetComponent<DragAndDrop>().BeginPosition;
-        DropZone.combinationIsRight = true;
+		isAbleToRotate = false;
 
-        foreach (DropZone dropZone in UIHandler.Instance.DropZones)
-        {
-            dropZone.Unoccupy();
-        }
+		transform.position = GetComponent<DragAndDrop>().BeginPosition;
+		DropZone.combinationIsRight = true;
 
-        ButtonManager.Instance.EnableButtons();
-    }
+		foreach (DropZone dropZone in UIHandler.Instance.DropZones)
+		{
+			dropZone.Unoccupy();
+		}
 
-    private void Update()
-    {
-        if (isAbleToRotate)
-        {
-            if (rotatingLeft)
-            {
-                CachedTransform.Rotate(Vector3.forward * (Time.deltaTime * rotationSpeed));
-            }
-            else
-            {
-                CachedTransform.Rotate(Vector3.back * (Time.deltaTime * rotationSpeed));
-            }
-        }
-    }
+		ButtonManager.Instance.EnableButtons();
+	}
+
+	/*
+	private void FixedUpdate()
+	{
+		if (isAbleToRotate)
+		{
+			if (rotatingLeft)
+			{
+				CachedTransform.Rotate(Vector3.forward * (Time.deltaTime * CalculateRotationSpeed()));
+			}
+			else
+			{
+				CachedTransform.Rotate(Vector3.back * (Time.deltaTime * CalculateRotationSpeed()));
+			}
+		}
+	}
+
+	private float CalculateRotationSpeed()
+	{
+		if(determinesSpeed)
+		{
+			return rotationSpeed;
+		}
+		else
+		{
+			float? drivingGearRotationSpeed = drivingGear.GetComponent<GearInformation>()?.rotationSpeed ?? drivingGear.GetComponent<GearRotation>()?.RotationSpeed;
+
+			if (!drivingGearRotationSpeed.HasValue)
+			{
+				return rotationSpeed;
+			}
+
+			return drivingGearRotationSpeed.Value * drivingGear.transform.localScale.magnitude / CachedTransform.localScale.magnitude;
+		}
+
+	}
+	*/
 }

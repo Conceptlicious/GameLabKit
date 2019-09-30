@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1477973307}
   - component: {fileID: 1477973306}
   - component: {fileID: 1477973305}
+  - component: {fileID: 2752971357963875443}
   m_Layer: 5
   m_Name: InteractibleGear
   m_TagString: Untagged
@@ -105,7 +106,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearType: 0
   timeForRotationToStop: 2
-  rotationSpeed: 50
+--- !u!114 &2752971357963875443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477973303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 468111049323575080}
   rotatingLeft: 0
 --- !u!1 &1890373443
 GameObject:
@@ -268,6 +284,7 @@ GameObject:
   - component: {fileID: 6778642397750166778}
   - component: {fileID: 5172866629722118771}
   - component: {fileID: 2688047106003723806}
+  - component: {fileID: 5913498293907398794}
   m_Layer: 5
   m_Name: InteractibleGear
   m_TagString: Untagged
@@ -360,7 +377,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearType: 1
   timeForRotationToStop: 2
-  rotationSpeed: 50
+--- !u!114 &5913498293907398794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69231353119418134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teethCount: 12
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 2566667712944137539}
   rotatingLeft: 1
 --- !u!1 &97247081016689350
 GameObject:
@@ -449,7 +481,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 8822068367851657848}
   rotatingLeft: 1
 --- !u!1 &114982900591294727
 GameObject:
@@ -836,7 +871,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 12
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 3202689355088118168}
   rotatingLeft: 0
 --- !u!1 &1017734528988623203
 GameObject:
@@ -1015,7 +1053,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 0}
   rotatingLeft: 1
 --- !u!1 &1352002899646079449
 GameObject:
@@ -1030,6 +1071,7 @@ GameObject:
   - component: {fileID: 6831594069230599402}
   - component: {fileID: 6168252562118094496}
   - component: {fileID: 7638155891395469078}
+  - component: {fileID: 9179051103557429514}
   m_Layer: 5
   m_Name: InteractibleGear
   m_TagString: Untagged
@@ -1122,7 +1164,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearType: 11
   timeForRotationToStop: 2
-  rotationSpeed: 50
+--- !u!114 &9179051103557429514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352002899646079449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 6370729943999592211}
   rotatingLeft: 1
 --- !u!1 &1371726469050277201
 GameObject:
@@ -1211,7 +1268,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 8754802266787793388}
   rotatingLeft: 0
 --- !u!1 &1741552132428051513
 GameObject:
@@ -1300,7 +1360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 0}
   rotatingLeft: 0
 --- !u!1 &1823566925341726251
 GameObject:
@@ -1389,7 +1452,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 5178474859255918417}
   rotatingLeft: 0
 --- !u!1 &1987401434318198629
 GameObject:
@@ -1478,7 +1544,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 2934324533629393335}
   rotatingLeft: 1
 --- !u!1 &2475585502167005353
 GameObject:
@@ -1641,7 +1710,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 6
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 6654449267620611633}
   rotatingLeft: 0
 --- !u!1 &2726221866633220809
 GameObject:
@@ -1730,7 +1802,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 6
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 8295700989149409976}
   rotatingLeft: 1
 --- !u!1 &2835035015218346741
 GameObject:
@@ -1983,7 +2058,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 6
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 6648676043424102459}
   rotatingLeft: 0
 --- !u!1 &3092968479421446658
 GameObject:
@@ -2072,7 +2150,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 6
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 3138146247195259206}
   rotatingLeft: 0
 --- !u!1 &3727169238615208839
 GameObject:
@@ -2235,7 +2316,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 0}
   rotatingLeft: 1
 --- !u!1 &3817283262419287602
 GameObject:
@@ -2385,7 +2469,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 6
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 8078301101289489396}
   rotatingLeft: 1
 --- !u!1 &4318059436343187190
 GameObject:
@@ -2474,7 +2561,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 6
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 6974727920752755282}
   rotatingLeft: 0
 --- !u!1 &4378264456913294030
 GameObject:
@@ -2833,6 +2923,7 @@ GameObject:
   - component: {fileID: 2200489815755248622}
   - component: {fileID: 4604359368456992510}
   - component: {fileID: 930784817023292940}
+  - component: {fileID: 8754802266787793388}
   m_Layer: 5
   m_Name: InteractibleGear
   m_TagString: Untagged
@@ -2925,7 +3016,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearType: 5
   timeForRotationToStop: 2
-  rotationSpeed: 50
+--- !u!114 &8754802266787793388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4472656825632284614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 4187388152580815512}
   rotatingLeft: 1
 --- !u!1 &4496545449184195895
 GameObject:
@@ -3328,6 +3434,7 @@ GameObject:
   - component: {fileID: 7322328675134029758}
   - component: {fileID: 8547155225967891377}
   - component: {fileID: 4603579174983565907}
+  - component: {fileID: 8822068367851657848}
   m_Layer: 5
   m_Name: InteractibleGear
   m_TagString: Untagged
@@ -3420,7 +3527,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearType: 7
   timeForRotationToStop: 2
-  rotationSpeed: 50
+--- !u!114 &8822068367851657848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5123639944425086246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 5904205202128385140}
   rotatingLeft: 0
 --- !u!1 &5212359637479899234
 GameObject:
@@ -3509,7 +3631,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 5913498293907398794}
   rotatingLeft: 0
 --- !u!1 &5335992732812877810
 GameObject:
@@ -3672,7 +3797,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 0}
   rotatingLeft: 1
 --- !u!1 &5561981995419118565
 GameObject:
@@ -3777,6 +3905,7 @@ GameObject:
   - component: {fileID: 1579735130634420769}
   - component: {fileID: 4015622572835265237}
   - component: {fileID: 4196363448136654270}
+  - component: {fileID: 5904205202128385140}
   m_Layer: 5
   m_Name: InteractibleGear
   m_TagString: Untagged
@@ -3869,7 +3998,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearType: 6
   timeForRotationToStop: 2
-  rotationSpeed: 50
+--- !u!114 &5904205202128385140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5571306057654437019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teethCount: 6
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 3749518874726446795}
   rotatingLeft: 1
 --- !u!1 &5606384881696204861
 GameObject:
@@ -3958,7 +4102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 1
+  rotationSpeed: 30
+  nextGearInLine: {fileID: 480441212212364150}
   rotatingLeft: 0
 --- !u!1 &5633945678141684129
 GameObject:
@@ -4211,7 +4358,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 7514777593885024665}
   rotatingLeft: 1
 --- !u!1 &5891226351578026235
 GameObject:
@@ -4226,6 +4376,7 @@ GameObject:
   - component: {fileID: 567948546646673184}
   - component: {fileID: 7209627024649731830}
   - component: {fileID: 3365332845838706837}
+  - component: {fileID: 6370729943999592211}
   m_Layer: 5
   m_Name: InteractibleGear
   m_TagString: Untagged
@@ -4318,7 +4469,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearType: 10
   timeForRotationToStop: 2
-  rotationSpeed: 50
+--- !u!114 &6370729943999592211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5891226351578026235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 3294109645601263943}
   rotatingLeft: 1
 --- !u!1 &5968921965981798470
 GameObject:
@@ -4423,6 +4589,7 @@ GameObject:
   - component: {fileID: 8274573018241386035}
   - component: {fileID: 4780513767729719548}
   - component: {fileID: 5938020544445197465}
+  - component: {fileID: 2934324533629393335}
   m_Layer: 5
   m_Name: InteractibleGear
   m_TagString: Untagged
@@ -4515,7 +4682,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearType: 2
   timeForRotationToStop: 2
-  rotationSpeed: 50
+--- !u!114 &2934324533629393335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6245336723885170829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teethCount: 6
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 575120148574737659}
   rotatingLeft: 0
 --- !u!1 &6309645951944748320
 GameObject:
@@ -4530,6 +4712,7 @@ GameObject:
   - component: {fileID: 3429506216431113703}
   - component: {fileID: 4014594047179058778}
   - component: {fileID: 7789906035838640077}
+  - component: {fileID: 3226660932670486847}
   m_Layer: 5
   m_Name: InteractibleGear
   m_TagString: Untagged
@@ -4622,7 +4805,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearType: 9
   timeForRotationToStop: 2
-  rotationSpeed: 50
+--- !u!114 &3226660932670486847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6309645951944748320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 7622498499305397693}
   rotatingLeft: 0
 --- !u!1 &6773715914027712015
 GameObject:
@@ -4785,7 +4983,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 1
+  rotationSpeed: 30
+  nextGearInLine: {fileID: 3917058592292550066}
   rotatingLeft: 0
 --- !u!1 &6923647559254868478
 GameObject:
@@ -4874,7 +5075,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 1
+  rotationSpeed: 30
+  nextGearInLine: {fileID: 5379785654291136169}
   rotatingLeft: 0
 --- !u!1 &6981893899901865075
 GameObject:
@@ -4963,7 +5167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 8655913551739763450}
   rotatingLeft: 0
 --- !u!1 &7095248522410041769
 GameObject:
@@ -5052,7 +5259,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 6
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 4077493894581776297}
   rotatingLeft: 1
 --- !u!1 &7179828577881623583
 GameObject:
@@ -5141,7 +5351,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 6
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 8945459703884828314}
   rotatingLeft: 1
 --- !u!1 &7320024192292626646
 GameObject:
@@ -5156,6 +5369,7 @@ GameObject:
   - component: {fileID: 3763062365291491168}
   - component: {fileID: 5755766016727657138}
   - component: {fileID: 1855166409646366845}
+  - component: {fileID: 480441212212364150}
   m_Layer: 5
   m_Name: InteractibleGear
   m_TagString: Untagged
@@ -5248,7 +5462,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearType: 3
   timeForRotationToStop: 2
-  rotationSpeed: 50
+--- !u!114 &480441212212364150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7320024192292626646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teethCount: 6
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 247339343261718}
   rotatingLeft: 1
 --- !u!1 &7385619710611144928
 GameObject:
@@ -6670,7 +6899,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 12
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 6471190066920127257}
   rotatingLeft: 0
 --- !u!1 &7507498735395907403
 GameObject:
@@ -6819,7 +7051,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 6
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 2752971357963875443}
   rotatingLeft: 1
 --- !u!1 &8250560040962970635
 GameObject:
@@ -6908,7 +7143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 9179051103557429514}
   rotatingLeft: 1
 --- !u!1 &8478927962908103858
 GameObject:
@@ -6923,6 +7161,7 @@ GameObject:
   - component: {fileID: 2559637030214518560}
   - component: {fileID: 3885666036711500489}
   - component: {fileID: 6319894462091459862}
+  - component: {fileID: 8655913551739763450}
   m_Layer: 5
   m_Name: InteractibleGear
   m_TagString: Untagged
@@ -7015,7 +7254,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearType: 4
   timeForRotationToStop: 2
-  rotationSpeed: 50
+--- !u!114 &8655913551739763450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478927962908103858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teethCount: 6
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 5716493679073976507}
   rotatingLeft: 1
 --- !u!1 &8542458808848253309
 GameObject:
@@ -7030,6 +7284,7 @@ GameObject:
   - component: {fileID: 8734545438457451370}
   - component: {fileID: 4640459033480868641}
   - component: {fileID: 6819460801172100938}
+  - component: {fileID: 6654449267620611633}
   m_Layer: 5
   m_Name: InteractibleGear
   m_TagString: Untagged
@@ -7122,7 +7377,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearType: 8
   timeForRotationToStop: 2
-  rotationSpeed: 50
+--- !u!114 &6654449267620611633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8542458808848253309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teethCount: 12
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 4862510330945096870}
   rotatingLeft: 1
 --- !u!1 &8895430350910534741
 GameObject:
@@ -7211,7 +7481,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 12
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 6318076474950051819}
   rotatingLeft: 0
 --- !u!1 &8939340724294797293
 GameObject:
@@ -7300,7 +7573,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 0
+  rotationSpeed: 3
+  nextGearInLine: {fileID: 3226660932670486847}
   rotatingLeft: 0
 --- !u!1 &9064263785667735389
 GameObject:
@@ -7389,7 +7665,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ac99d551bb894192cce1a6959eb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearRotationSpeed: 25
+  teethCount: 9
+  determinesSpeed: 1
+  rotationSpeed: 30
+  nextGearInLine: {fileID: 1319949097542275581}
   rotatingLeft: 0
 --- !u!1 &9210918233755318792
 GameObject:

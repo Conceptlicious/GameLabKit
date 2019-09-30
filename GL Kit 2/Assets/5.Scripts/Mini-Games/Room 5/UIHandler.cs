@@ -55,6 +55,13 @@ public class UIHandler : Singleton<UIHandler>
 					{
 						currentDropZone.Unoccupy();
 					}
+
+					GearRotation gearRotation = child.GetComponent<GearRotation>();
+
+					if(gearRotation.DeterminesSpeed)
+					{
+						gearRotation.CalculateRotaionSpeed();
+					}
 				}
 			}
 			else
@@ -154,20 +161,6 @@ public class UIHandler : Singleton<UIHandler>
 				funTypeTabs[3].SetActive(true);
 				TypeText.text = "Serious Fun";
 				break;
-		}
-
-
-	}
-
-	public void WonMiniGame()
-	{
-		if (wonMinigame)
-		{
-			SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.Dynamics);
-			EventManager.Instance.RaiseEvent(saveItemEvent);
-
-			NextRoomEvent nextRoomEvent = new NextRoomEvent();
-			EventManager.Instance.RaiseEvent(nextRoomEvent);
 		}
 	}
 
