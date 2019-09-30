@@ -7,35 +7,50 @@ using GameLab;
 [RequireComponent(typeof(MonoBehaviour))]
 public class MediumButton : BetterMonoBehaviour
 {
-	[SerializeField] private MediumTemplate mediumInformation;
-	[SerializeField] private GameObject mediumPuzzle;
+    public static Sprite selectedMediumSprite;
+    private const string PUZZLE_IN_PROGRESS_WARNING = "You can't switch level when there is a puzzle in progress"; 
 
-	private Sprite mediumSprite = null;
-	private Button mediumButton = null;
+    public Sprite mediumSprite = null;
+    [SerializeField] private MediumTemplate mediumInformation;
+    [SerializeField] private GameObject mediumPuzzle;
+    private Button mediumButton = null;
 
-	private void Start()
-	{
-		mediumButton = GetComponent<Button>();
-		mediumSprite = mediumInformation.icon;
-				
-		mediumButton.onClick.AddListener(() => SelectSprite(mediumSprite));
-		mediumButton.onClick.AddListener(() => ShowNewPuzzle(mediumPuzzle));
-	}
+    private void Start()
+    {
+        mediumButton = GetComponent<Button>();
+        mediumSprite = mediumInformation.icon;
 
-	private void SelectSprite(Sprite newSprite)
-	{
-		//Select a sprite that can be stand to the trophyHandler
-	}
+        mediumButton.onClick.AddListener(() => SelectSprite(mediumSprite));
+        mediumButton.onClick.AddListener(() => ShowNewPuzzle(mediumPuzzle));
+    }
 
-	public void ShowNewPuzzle(GameObject currentPuzzle)
-	{
-		foreach(GameObject puzzle in PuzzleManager.Instance.Puzzles)
-		{
-			puzzle.SetActive(false);
-		}
-		currentPuzzle.SetActive(true);
+    private void SelectSprite(Sprite selectedSprite)
+    {
+        if (!MediumButtonManager.Instance.MinigameIsWon)
+        {
+            return;
+        }
 
+        selectedMediumSprite = selectedSprite;
+        EventManager.Instance.RaiseEvent(new NextRoomEvent());
+        EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Medium));
+    }
 
-		PuzzleManager.Instance.SetupNewPuzzle(currentPuzzle);
-	}
+    public void ShowNewPuzzle(GameObject currentPuzzle)
+    {
+        if(PuzzleManager.Instance.IsPuzzleInProgress)
+        {
+            PuzzleManager.Instance.DisplayPieceText(Color.yellow, PUZZLE_IN_PROGRESS_WARNING);
+            return;
+        }
+
+        foreach (GameObject puzzle in MediumButtonManager.Instance.Puzzles)
+        {
+            puzzle.SetActive(false);
+        }
+
+        currentPuzzle.SetActive(true);
+
+        PuzzleManager.Instance.SetupNewPuzzle(currentPuzzle);
+    }
 }

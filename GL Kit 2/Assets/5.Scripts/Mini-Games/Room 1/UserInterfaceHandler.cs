@@ -19,6 +19,7 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 
 	private void Start()
 	{
+		Debug.Log("userinterfacehangler called");
 		SetVariables();
 	}
 
@@ -57,7 +58,7 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 		OnPersonaChanged?.Invoke(persona);
 	}
 
-	public void GenderTogglePressed(Toggle pressedToggle)
+	/*public void GenderTogglePressed(Toggle pressedToggle)
 	{
 		if(pressedToggle.name == "Unspecified")
 		{
@@ -73,7 +74,7 @@ public class UserInterfaceHandler : Singleton<UserInterfaceHandler>
 		}
 
 		OnPersonaChanged?.Invoke(persona);
-	}
+	}*/
 
 	public void TogglePressed(Toggle pressedToggle)
 	{

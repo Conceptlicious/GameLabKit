@@ -144,7 +144,7 @@ public class NodePattern : BetterMonoBehaviour
 			 * else if (nextPattern == null && isComplete)*/
 			else
 			{
-				SendSpriteRoom6.Instance.WonMinigame();
+				ActivePatternManager.Instance.isWon = true;
 			}
 
 			drawLines.ResetLine();

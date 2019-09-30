@@ -13,6 +13,8 @@ public class DropZone : BetterMonoBehaviour
 {
 	[SerializeField] private GearType neededType;	
 	[SerializeField] private GearType secondNeededType;
+	[SerializeField] private int layer;
+	public int Layer => layer;
 
 	public static int OccupiedPlaces { get; private set; } = 0;
 	[HideInInspector] public static bool combinationIsRight = true;

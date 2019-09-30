@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21409a5c2ae44d643be505fac0b5496a, type: 3}
   m_Name: PC
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: de87bd7bf151e124f87c0c1a29b3f158, type: 3}
+  icon: {fileID: 21300000, guid: b54a4451d1b6b2a4a9aa1071ef9e1452, type: 3}
   description: 'Pros
 
     - Easy development

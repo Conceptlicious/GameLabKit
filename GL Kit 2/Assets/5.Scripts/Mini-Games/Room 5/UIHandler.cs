@@ -171,8 +171,6 @@ public class UIHandler : Singleton<UIHandler>
 		}
 	}
 
-	
-
 	private void DisableTypeTabs()
 	{
 		funTypeTabs[0].SetActive(false);

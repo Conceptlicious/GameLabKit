@@ -16,7 +16,7 @@ public class TextUpdater : Singleton<TextUpdater>
 	[SerializeField] private const int TIME_OBJECT_INFO_SHOWN = 10;
 	[SerializeField] private const int TIME_LAST_OBJECT_INFO_SHOWN = 5;
 	private const string WON_MINIGAME_MESSAGE_NAME = "You won the mini-game!";
-	private const string WON_MINIGAME_MESSAGE_DESCRIPTION = "Select the item you want to take to the White Room.";
+	private const string WON_MINIGAME_MESSAGE_DESCRIPTION = "Select the item you want to take to the White Room";
 
 	private Text foundObjectNameText = null;
 	private Text foundObjectDescriptionText = null;
@@ -27,7 +27,7 @@ public class TextUpdater : Singleton<TextUpdater>
 		SetValues();
 	}
 
-	public void CallUpdateTextCoroutine(string foundObjectName, string foundObjectDescription, bool lastHiddenObjectFound)
+	public void CallUpdateTextCoroutine(string foundObjectName, string foundObjectDescription, bool lastHiddenObjectFound = false)
 	{
 		StopAllCoroutines();
 
