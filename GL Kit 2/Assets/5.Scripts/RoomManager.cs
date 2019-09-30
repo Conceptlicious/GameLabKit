@@ -16,6 +16,7 @@ public class RoomManager : Singleton<RoomManager>
     [SerializeField] private Transform focalParent;
 
     [SerializeField] private int whiteRoomID;
+	public int WhiteRoomID => whiteRoomID;
 
     [SerializeField] private bool alwaysReturnToWhiteRoom;
     [SerializeField] private bool alignFocals;
@@ -84,7 +85,7 @@ public class RoomManager : Singleton<RoomManager>
     private void registerAllListeners()
     {
         //EventSystem.RegisterListener(EventType.UI_NEXT_ROOM, OnNextRoomCommand);
-        EventManager.Instance.AddListener<NextRoomEvent>(OnNextRoomCommand);
+        EventManager.Instance.AddListener<NextRoomEvent>(OnNextRoomCommand, 10);
     }
  
 
