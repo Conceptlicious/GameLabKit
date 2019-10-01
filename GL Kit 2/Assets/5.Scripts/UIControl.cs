@@ -266,11 +266,12 @@ public class UIControl : MonoBehaviour
 
 	public void DoneButton()
 	{
-		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.TargetAudience);
-		EventManager.Instance.RaiseEvent(saveItemEvent);
-
-		NextRoomEvent nextRoomEvent = new NextRoomEvent();
-		EventManager.Instance.RaiseEvent(nextRoomEvent);
+		//SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.TargetAudience);
+		//EventManager.Instance.RaiseEvent(saveItemEvent);
+		DialogueProgression.Instance.roomPartID++;
+		DialogueProgression.Instance.RoomPartHandler();
+		//NextRoomEvent nextRoomEvent = new NextRoomEvent();
+		//EventManager.Instance.RaiseEvent(nextRoomEvent);
 	}
 
 	/// <summary>

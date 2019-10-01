@@ -15,6 +15,8 @@ public class DialogueProgression : Singleton<DialogueProgression>
 		public TextAsset RoomInkFile;
 	}
 
+	public int roomPartID;
+
 	[SerializeField] private RoomStoryFileReference[] roomStoryFiles;
 
 	public Story story;
@@ -30,7 +32,8 @@ public class DialogueProgression : Singleton<DialogueProgression>
 	protected override void Awake()
 	{
 		base.Awake();
-
+		roomPartID = 1;
+		
 		StartStory();
 	}
 
@@ -47,19 +50,36 @@ public class DialogueProgression : Singleton<DialogueProgression>
 	void StartStory ()
 	{
 		story = new Story (roomStoryFiles[0].RoomInkFile.text);
-		story.ChoosePathString("FromRoom1");
-		RefreshView();
+		RoomPartHandler();
 	}
 
 	private void OnNextRoom()
 	{
 		Vector3Int currentRoom = RoomManager.Instance.GetRoomIDs();
+		roomPartID = 1;
 
 		story = new Story(roomStoryFiles.First(storyFile => storyFile.RoomID == currentRoom.z).RoomInkFile.text);
 
 		if (currentRoom.z == RoomManager.Instance.WhiteRoomID)
 		{
-			string knotName = $"FromRoom{RoomManager.Instance.GetRoomIDs().y}";
+			string knotName = $"FromRoom{RoomManager.Instance.GetRoomIDs().y + 1}";
+			story.ChoosePathString(knotName);
+		}
+		else
+		{
+			RoomPartHandler();
+		}
+
+		RefreshView();
+	}
+
+	public void RoomPartHandler()
+	{
+		Vector3Int currentRoom = RoomManager.Instance.GetRoomIDs();		
+
+		if(currentRoom.z == 0)
+		{
+			string knotName = $"Part{roomPartID}";
 			story.ChoosePathString(knotName);
 		}
 
