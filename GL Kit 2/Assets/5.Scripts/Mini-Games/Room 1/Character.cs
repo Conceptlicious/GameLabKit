@@ -20,6 +20,7 @@ public class Character : ScriptableObject
 	public Sprite MDisabled;
 	public Sprite MDisabledDeaf;
 	public Sprite MDisabledDeafDepressed;
+	public Sprite MDisabledBlindDepressed;
 	public Sprite MDisabledDepressed;
 
 	[Header("Female")]
@@ -37,5 +38,6 @@ public class Character : ScriptableObject
 	public Sprite FDisabled;
 	public Sprite FDisabledDeaf;
 	public Sprite FDisabledDeafDepressed;
+	public Sprite FDisabledBlindDepressed;
 	public Sprite FDisabledDepressed;
 }

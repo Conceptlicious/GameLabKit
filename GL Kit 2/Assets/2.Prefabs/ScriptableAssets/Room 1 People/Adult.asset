@@ -29,6 +29,8 @@ MonoBehaviour:
   MDisabledDeaf: {fileID: 21300000, guid: 23c34550b3445ae47bfd67934062f877, type: 3}
   MDisabledDeafDepressed: {fileID: 21300000, guid: f0e489a157586e249b240bb0b10c5d5c,
     type: 3}
+  MDisabledBlindDepressed: {fileID: 21300000, guid: a644d9d321c46264bbfe45c5b7101af2,
+    type: 3}
   MDisabledDepressed: {fileID: 21300000, guid: c6cc242ad6ab0db48b0932d857a93b99, type: 3}
   Female: {fileID: 21300000, guid: 8dd21f2040954dd41be9780be8ea30b4, type: 3}
   FBlind: {fileID: 21300000, guid: 13f87dc697995394495dbf403d6b9c36, type: 3}
@@ -46,5 +48,7 @@ MonoBehaviour:
   FDisabled: {fileID: 21300000, guid: 7c9c285359c718241afa764a2a7d1471, type: 3}
   FDisabledDeaf: {fileID: 21300000, guid: 2f0443abfe2b54b4cb7ae60835754b5d, type: 3}
   FDisabledDeafDepressed: {fileID: 21300000, guid: 8ebc3d2a611ba7c4bb1b1247c5d33018,
+    type: 3}
+  FDisabledBlindDepressed: {fileID: 21300000, guid: 19877197c986fed43bf10ffde7c029db,
     type: 3}
   FDisabledDepressed: {fileID: 21300000, guid: 89460eea5f9dbf443b6f1c7e75257c52, type: 3}
