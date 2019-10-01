@@ -113,6 +113,19 @@ public class SpriteHandler : BetterMonoBehaviour
 			return personaImage.sprite;
 		}
 
+		if (blind && depressed && disabled)
+		{
+			if (isMaleOrUnspecified)
+			{
+				personaImage.sprite = characterOptions.MDisabledBlindDepressed;
+			}
+			else
+			{
+				personaImage.sprite = characterOptions.FDisabledBlindDepressed;
+			}
+			return personaImage.sprite;
+		}
+
 		if (blind && disabled)
 		{
 			if (isMaleOrUnspecified)

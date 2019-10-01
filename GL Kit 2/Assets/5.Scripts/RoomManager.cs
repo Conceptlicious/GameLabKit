@@ -15,7 +15,8 @@ public class RoomManager : Singleton<RoomManager>
 	[SerializeField] private Transform[] roomFocalPoints;
 	[SerializeField] private Transform focalParent;
 
-	[SerializeField] private int whiteRoomID;
+    [SerializeField] private int whiteRoomID;
+	public int WhiteRoomID => whiteRoomID;
 
 	[SerializeField] private bool alwaysReturnToWhiteRoom;
 	[SerializeField] private bool alignFocals;
@@ -67,25 +68,25 @@ public class RoomManager : Singleton<RoomManager>
 		return currentRoom;
 	}
 
-	/// <summary>
-	/// Focuses the camera onto a room sans transition
-	/// </summary>
-	/// <param name="pID"></param>
-	public void SnapFocusRoom(int pID)
-	{
-		pID = pID % roomFocalPoints.Length;
-		CameraSnapEvent newInfo = new CameraSnapEvent(roomFocalPoints[pID], true);
-		EventManager.Instance.RaiseEvent(newInfo);
-	}
-	
-	/// <summary>
-	/// Registers all event listeners this class needs to care about.
-	/// </summary>
-	private void registerAllListeners()
-	{
-		//EventSystem.RegisterListener(EventType.UI_NEXT_ROOM, OnNextRoomCommand);
-		EventManager.Instance.AddListener<NextRoomEvent>(OnNextRoomCommand);
-	}
+    /// <summary>
+    /// Focuses the camera onto a room sans transition
+    /// </summary>
+    /// <param name="pID"></param>
+	private void SnapFocusRoom(int pID)
+    {
+        pID = pID % roomFocalPoints.Length;
+        CameraSnapEvent newInfo = new CameraSnapEvent(roomFocalPoints[pID], true);
+        EventManager.Instance.RaiseEvent(newInfo);
+    }
+    
+    /// <summary>
+    /// Registers all event listeners this class needs to care about.
+    /// </summary>
+    private void registerAllListeners()
+    {
+        //EventSystem.RegisterListener(EventType.UI_NEXT_ROOM, OnNextRoomCommand);
+        EventManager.Instance.AddListener<NextRoomEvent>(OnNextRoomCommand, 10);
+    }
  
 
 	private void OnNextRoomCommand(NextRoomEvent pInfo)
