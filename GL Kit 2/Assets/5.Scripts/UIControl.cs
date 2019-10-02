@@ -26,6 +26,8 @@ public class UIControl : MonoBehaviour
 	[SerializeField] private int elderlyCutOff = 60;
 	[SerializeField] private Transform ageSliders = null;
 	[SerializeField] private Transform genderToggles = null;
+	//Temporary for testing Room1
+	[SerializeField] private Image choiceButtons;
 	private Slider ageSilderMin = null;
 	private Slider ageSilderMax = null;
 	private Slider AverageAgeSlider = null;
@@ -42,6 +44,7 @@ public class UIControl : MonoBehaviour
 	
 	private bool isTransitioning = false;
 	public Button speechBoxButton;
+
 
 	private void OnTransitionStart()
 	{
@@ -266,12 +269,40 @@ public class UIControl : MonoBehaviour
 
 	public void DoneButton()
 	{
+		//Temporary for testing Room1
+		DialogueProgression.Instance.roomPartID = 2;
+		DialogueProgression.Instance.RoomPartHandler();
+
 		//SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.TargetAudience);
 		//EventManager.Instance.RaiseEvent(saveItemEvent);
-		DialogueProgression.Instance.roomPartID++;
-		DialogueProgression.Instance.RoomPartHandler();
+
 		//NextRoomEvent nextRoomEvent = new NextRoomEvent();
 		//EventManager.Instance.RaiseEvent(nextRoomEvent);
+
+		//Temporary for testing Room1
+		choiceButtons.gameObject.SetActive(true);
+	}
+
+	//Temporary for testing Room1
+	public void YesButton()
+	{
+		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.TargetAudience);
+		EventManager.Instance.RaiseEvent(saveItemEvent);
+
+		DialogueProgression.Instance.roomPartID = 3;
+		DialogueProgression.Instance.RoomPartHandler();
+		choiceButtons.gameObject.SetActive(false);
+
+	}
+
+	//Temporary for testing Room1
+	public void NoButton()
+	{
+		DialogueProgression.Instance.roomPartID = 2;
+		DialogueProgression.Instance.RoomPartHandler();
+		DialogueProgression.Instance.RemoveChildren();
+		choiceButtons.gameObject.SetActive(false);
+
 	}
 
 	/// <summary>

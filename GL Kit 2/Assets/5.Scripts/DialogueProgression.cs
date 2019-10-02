@@ -15,6 +15,7 @@ public class DialogueProgression : Singleton<DialogueProgression>
 		public TextAsset RoomInkFile;
 	}
 
+	//Temporary for room1 testing
 	public int roomPartID;
 
 	[SerializeField] private RoomStoryFileReference[] roomStoryFiles;
@@ -50,12 +51,15 @@ public class DialogueProgression : Singleton<DialogueProgression>
 	void StartStory ()
 	{
 		story = new Story (roomStoryFiles[0].RoomInkFile.text);
+		//Temporary for room1 testing
 		RoomPartHandler();
+		//RefreshView();
 	}
 
 	private void OnNextRoom()
 	{
 		Vector3Int currentRoom = RoomManager.Instance.GetRoomIDs();
+		//Temporary for room1 testing
 		roomPartID = 1;
 
 		story = new Story(roomStoryFiles.First(storyFile => storyFile.RoomID == currentRoom.z).RoomInkFile.text);
@@ -65,6 +69,7 @@ public class DialogueProgression : Singleton<DialogueProgression>
 			string knotName = $"FromRoom{RoomManager.Instance.GetRoomIDs().y + 1}";
 			story.ChoosePathString(knotName);
 		}
+		//Temporary for room1 testing
 		else
 		{
 			RoomPartHandler();
@@ -73,6 +78,7 @@ public class DialogueProgression : Singleton<DialogueProgression>
 		RefreshView();
 	}
 
+	//Temporary for room1 testing
 	public void RoomPartHandler()
 	{
 		Vector3Int currentRoom = RoomManager.Instance.GetRoomIDs();		
@@ -88,6 +94,8 @@ public class DialogueProgression : Singleton<DialogueProgression>
 
 	void RefreshView ()
 	{
+		//Temporary for room1 testing
+
 		while (story.canContinue)
 		{
 			string text = story.Continue();
@@ -133,7 +141,7 @@ public class DialogueProgression : Singleton<DialogueProgression>
 		return choice;
 	}
 
-	void RemoveChildren ()
+	public void RemoveChildren ()
 	{
 		int childCount = canvas.transform.childCount;
 		for (int i = childCount - 1; i >= 0; --i)

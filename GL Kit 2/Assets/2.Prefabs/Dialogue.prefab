@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2878f5d072cec1544bffc38ba2b1bc82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomPartID: 0
   roomStoryFiles:
   - RoomID: 0
     RoomInkFile: {fileID: 4900000, guid: 7edb63f4b26fd704a9f7c1071d1564a2, type: 3}
@@ -119,7 +120,7 @@ GameObject:
   - component: {fileID: 8491550579271579667}
   - component: {fileID: 8491550579271579664}
   - component: {fileID: 8491550579271579665}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
