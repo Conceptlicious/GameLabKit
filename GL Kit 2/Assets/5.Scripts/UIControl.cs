@@ -196,7 +196,7 @@ public class UIControl : MonoBehaviour
 	public void GenderTogglePressed(Genders gender, bool isEnabled)
 	{
 		if (isEnabled)
-		{
+		{ 
 			persona.Gender = gender;
 		}
 		OnPersonaChanged?.Invoke(persona);
@@ -270,8 +270,7 @@ public class UIControl : MonoBehaviour
 	public void DoneButton()
 	{
 		//Temporary for testing Room1
-		DialogueProgression.Instance.roomPartID = 2;
-		DialogueProgression.Instance.RoomPartHandler();
+		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 
 		//SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.TargetAudience);
 		//EventManager.Instance.RaiseEvent(saveItemEvent);
@@ -289,8 +288,7 @@ public class UIControl : MonoBehaviour
 		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.TargetAudience);
 		EventManager.Instance.RaiseEvent(saveItemEvent);
 
-		DialogueProgression.Instance.roomPartID = 3;
-		DialogueProgression.Instance.RoomPartHandler();
+		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent(breakLoop: true));
 		choiceButtons.gameObject.SetActive(false);
 
 	}
@@ -298,8 +296,7 @@ public class UIControl : MonoBehaviour
 	//Temporary for testing Room1
 	public void NoButton()
 	{
-		DialogueProgression.Instance.roomPartID = 2;
-		DialogueProgression.Instance.RoomPartHandler();
+		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent(nextKnot: false));
 		DialogueProgression.Instance.RemoveChildren();
 		choiceButtons.gameObject.SetActive(false);
 
@@ -313,6 +310,9 @@ public class UIControl : MonoBehaviour
 		NextRoomEvent newInfo = new NextRoomEvent();
 		//EventSystem.ExecuteEvent(EventType.UI_NEXT_ROOM, newInfo);
 		EventManager.Instance.RaiseEvent(newInfo);
+
+
+		//RoomManager.Instance.SnapFocusRoom(3);
 	}
 
 	/// <summary>
