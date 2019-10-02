@@ -16,7 +16,7 @@ public class DialogueProgression : Singleton<DialogueProgression>
 	}
 
 	//Temporary for room1 testing
-	public int roomPartID;
+	private int roomPartID;
 
 	[SerializeField] private RoomStoryFileReference[] roomStoryFiles;
 
@@ -33,24 +33,27 @@ public class DialogueProgression : Singleton<DialogueProgression>
 	protected override void Awake()
 	{
 		base.Awake();
-		roomPartID = 1;
-		
+
+		EventManager.Instance.AddListener<ProgressDialogueEvent>(OnDialogueProgress);
+
+		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+
 		StartStory();
 	}
 
 	private void OnEnable()
 	{
-		EventManager.Instance.AddListener<NextRoomEvent>(OnNextRoom);
+		EventManager.Instance.AddListener<FinishedRoomTransition>(OnNextRoom);
 	}
 
 	private void OnDisable()
 	{
-		EventManager.InstanceIfInitialized?.RemoveListener<NextRoomEvent>(OnNextRoom);
+		EventManager.InstanceIfInitialized?.RemoveListener<FinishedRoomTransition>(OnNextRoom);
 	}
 
-	void StartStory ()
+	void StartStory()
 	{
-		story = new Story (roomStoryFiles[0].RoomInkFile.text);
+		story = new Story(roomStoryFiles[0].RoomInkFile.text);
 		//Temporary for room1 testing
 		RoomPartHandler();
 		//RefreshView();
@@ -81,9 +84,9 @@ public class DialogueProgression : Singleton<DialogueProgression>
 	//Temporary for room1 testing
 	public void RoomPartHandler()
 	{
-		Vector3Int currentRoom = RoomManager.Instance.GetRoomIDs();		
+		Vector3Int currentRoom = RoomManager.Instance.GetRoomIDs();
 
-		if(currentRoom.z == 0)
+		if (currentRoom.z == 0)
 		{
 			string knotName = $"Part{roomPartID}";
 			story.ChoosePathString(knotName);
@@ -92,7 +95,7 @@ public class DialogueProgression : Singleton<DialogueProgression>
 		RefreshView();
 	}
 
-	void RefreshView ()
+	void RefreshView()
 	{
 		//Temporary for room1 testing
 
@@ -105,48 +108,58 @@ public class DialogueProgression : Singleton<DialogueProgression>
 			storyText = text;
 		}
 
-		if(story.currentChoices.Count > 0)
+		if (story.currentChoices.Count > 0)
 		{
 			for (int i = 0; i < story.currentChoices.Count; i++)
 			{
-				Choice choice = story.currentChoices [i];
-				Button button = CreateChoiceView (choice.text.Trim());
+				Choice choice = story.currentChoices[i];
+				Button button = CreateChoiceView(choice.text.Trim());
 
-				button.onClick.AddListener (delegate{OnClickChoiceButton(choice);});
+				button.onClick.AddListener(delegate { OnClickChoiceButton(choice); });
 			}
 		}
 
 		else
 		{
 			Button choice = CreateChoiceView(" ");
-			choice.onClick.AddListener(delegate{RemoveChildren();});
+			choice.onClick.AddListener(delegate { RemoveChildren(); });
 		}
 	}
 
-	void OnClickChoiceButton (Choice choice)
+	void OnClickChoiceButton(Choice choice)
 	{
 		Debug.Log(storyText.Length);
-		story.ChooseChoiceIndex (choice.index);
+		story.ChooseChoiceIndex(choice.index);
 		RefreshView();
 	}
 
-	Button CreateChoiceView (string text)
+	Button CreateChoiceView(string text)
 	{
-		Button choice = Instantiate (buttonPrefab) as Button;
-		choice.transform.SetParent (canvas.transform, false);
+		Button choice = Instantiate(buttonPrefab) as Button;
+		choice.transform.SetParent(canvas.transform, false);
 
-		Text choiceText = choice.GetComponentInChildren<Text> ();
+		Text choiceText = choice.GetComponentInChildren<Text>();
 		choiceText.text = storyText;
 
 		return choice;
 	}
 
-	public void RemoveChildren ()
+	private void OnDialogueProgress(ProgressDialogueEvent eventData)
+	{
+		roomPartID = eventData.RoomPartID;
+
+		if (story != null)
+		{
+			RoomPartHandler();
+		}
+	}
+
+	public void RemoveChildren()
 	{
 		int childCount = canvas.transform.childCount;
 		for (int i = childCount - 1; i >= 0; --i)
 		{
-			GameObject.Destroy (canvas.transform.GetChild (i).gameObject);
+			Destroy(canvas.transform.GetChild(i).gameObject);
 		}
 	}
 }
