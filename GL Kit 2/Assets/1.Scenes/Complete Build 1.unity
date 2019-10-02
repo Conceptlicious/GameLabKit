@@ -361,7 +361,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1e-45, y: 0, z: 1.18e-43, w: 0.10058594}
+  m_BoundingSphereOverride: {x: 0, y: 1.6459476e-14, z: 4.46e-43, w: 1.05471865e-14}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -2258,7 +2258,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 806693035}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2777,7 +2777,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 806693035}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b51f6a6d70f7b94194f502369945926, type: 3}
 --- !u!224 &1480841015 stripped
@@ -3732,6 +3732,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8491550579271579667, guid: 8390df2fb17aa9a499b02b51ee9f8594,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 806693035}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8390df2fb17aa9a499b02b51ee9f8594, type: 3}
 --- !u!114 &1818154655 stripped
@@ -5477,6 +5482,56 @@ PrefabInstance:
       propertyPath: focalParent
       value: 
       objectReference: {fileID: 157469635}
+    - target: {fileID: 6100448372103171781, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: fade
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100448372103171781, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: transitionPlane
+      value: 
+      objectReference: {fileID: 354059680}
+    - target: {fileID: 6100448372103171781, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: fade
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100448372103171781, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: transitionPlane
+      value: 
+      objectReference: {fileID: 354059680}
+    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: couplings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: couplings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: couplings.Array.data[1].marker
+      value: '>>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: couplings.Array.data[1].eventToCall.classRef
+      value: DismissSpeechBubbleEvent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: couplings.Array.data[1].marker
+      value: '>>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
+        type: 3}
+      propertyPath: couplings.Array.data[1].eventToCall.classRef
+      value: DismissSpeechBubbleEvent, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6100448372103171779, guid: c9918d00f141af441848f74c51b2d5f0,
         type: 3}
       propertyPath: dialogueObject
@@ -5572,55 +5627,5 @@ PrefabInstance:
       propertyPath: displaySpeechBubbles
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
-        type: 3}
-      propertyPath: couplings.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
-        type: 3}
-      propertyPath: couplings.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
-        type: 3}
-      propertyPath: couplings.Array.data[1].marker
-      value: '>>'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
-        type: 3}
-      propertyPath: couplings.Array.data[1].eventToCall.classRef
-      value: DismissSpeechBubbleEvent, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
-        type: 3}
-      propertyPath: couplings.Array.data[1].marker
-      value: '>>'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100448372103171780, guid: c9918d00f141af441848f74c51b2d5f0,
-        type: 3}
-      propertyPath: couplings.Array.data[1].eventToCall.classRef
-      value: DismissSpeechBubbleEvent, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100448372103171781, guid: c9918d00f141af441848f74c51b2d5f0,
-        type: 3}
-      propertyPath: fade
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100448372103171781, guid: c9918d00f141af441848f74c51b2d5f0,
-        type: 3}
-      propertyPath: transitionPlane
-      value: 
-      objectReference: {fileID: 354059680}
-    - target: {fileID: 6100448372103171781, guid: c9918d00f141af441848f74c51b2d5f0,
-        type: 3}
-      propertyPath: fade
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100448372103171781, guid: c9918d00f141af441848f74c51b2d5f0,
-        type: 3}
-      propertyPath: transitionPlane
-      value: 
-      objectReference: {fileID: 354059680}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9918d00f141af441848f74c51b2d5f0, type: 3}
