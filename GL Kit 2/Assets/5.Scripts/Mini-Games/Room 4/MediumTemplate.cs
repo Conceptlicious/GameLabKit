@@ -8,6 +8,7 @@ using GameLab;
 public class MediumTemplate : ScriptableObject
 {
 	public Sprite icon;
+	public new string name;
 	[TextArea] public string description;
 	public MediumType mediumType;
 }

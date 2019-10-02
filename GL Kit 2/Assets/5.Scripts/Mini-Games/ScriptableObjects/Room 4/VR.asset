@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: VR
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: ad1999e4af39b2c4392b46a5ab9f8c90, type: 3}
+  name: Virtual Reality
   description: 'Pros
 
     - Physical engagement

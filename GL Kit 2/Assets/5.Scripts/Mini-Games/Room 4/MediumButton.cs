@@ -7,50 +7,39 @@ using GameLab;
 [RequireComponent(typeof(MonoBehaviour))]
 public class MediumButton : BetterMonoBehaviour
 {
-    public static Sprite selectedMediumSprite;
-    private const string PUZZLE_IN_PROGRESS_WARNING = "You can't switch level when there is a puzzle in progress"; 
+	public static Sprite selectedMediumSprite;
 
-    public Sprite mediumSprite = null;
-    [SerializeField] private MediumTemplate mediumInformation;
-    [SerializeField] private GameObject mediumPuzzle;
-    private Button mediumButton = null;
+	[SerializeField] private MediumTemplate mediumInformation;
+	[SerializeField] private GameObject mediumPuzzle;
+	[HideInInspector] public Sprite mediumSprite = null;
+	private Button mediumButton = null;
 
-    private void Start()
-    {
-        mediumButton = GetComponent<Button>();
-        mediumSprite = mediumInformation.icon;
+	private void Start()
+	{
+		mediumButton = GetComponent<Button>();
+		mediumSprite = mediumInformation.icon;
 
-        mediumButton.onClick.AddListener(() => SelectSprite(mediumSprite));
-        mediumButton.onClick.AddListener(() => ShowNewPuzzle(mediumPuzzle));
-    }
+		mediumButton.onClick.AddListener(() => SelectSprite(mediumSprite));
+		mediumButton.onClick.AddListener(() => ShowNewPuzzle(mediumPuzzle));
+	}
 
-    private void SelectSprite(Sprite selectedSprite)
-    {
-        if (!MediumButtonManager.Instance.MinigameIsWon)
-        {
-            return;
-        }
+	private void SelectSprite(Sprite selectedSprite)
+	{
+		selectedMediumSprite = selectedSprite;
+		EventManager.Instance.RaiseEvent(new NextRoomEvent());
+		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Medium));
+	}
 
-        selectedMediumSprite = selectedSprite;
-        EventManager.Instance.RaiseEvent(new NextRoomEvent());
-        EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Medium));
-    }
+	public void ShowNewPuzzle(GameObject currentPuzzle)
+	{
+		foreach (GameObject puzzle in PuzzleManager.Instance.puzzles)
+		{
+			puzzle.SetActive(false);
+		}
 
-    public void ShowNewPuzzle(GameObject currentPuzzle)
-    {
-        if(PuzzleManager.Instance.IsPuzzleInProgress)
-        {
-            PuzzleManager.Instance.DisplayPieceText(Color.yellow, PUZZLE_IN_PROGRESS_WARNING);
-            return;
-        }
+		currentPuzzle.SetActive(true);
 
-        foreach (GameObject puzzle in MediumButtonManager.Instance.Puzzles)
-        {
-            puzzle.SetActive(false);
-        }
-
-        currentPuzzle.SetActive(true);
-
-        PuzzleManager.Instance.SetupNewPuzzle(currentPuzzle);
-    }
+		PuzzleManager.Instance.SetupNewPuzzle(currentPuzzle);
+		MediumUIHandler.Instance.OpenScreen(mediumInformation.name , mediumInformation.description);
+	}
 }

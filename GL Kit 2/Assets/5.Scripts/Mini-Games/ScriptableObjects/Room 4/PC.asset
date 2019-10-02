@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PC
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: b54a4451d1b6b2a4a9aa1071ef9e1452, type: 3}
+  name: PC
   description: 'Pros
 
     - Easy development

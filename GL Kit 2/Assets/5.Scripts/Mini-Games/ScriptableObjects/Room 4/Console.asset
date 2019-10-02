@@ -13,16 +13,11 @@ MonoBehaviour:
   m_Name: Console
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 5e51b83d1a8fa404b92d41eeb9f60217, type: 3}
-  description: 'Pros
-
-    - Low maintenance
-
-    - Easy Local
-
-
-    Cons
-
-    - Licenses
-
-    - Very hard to develop'
+  name: Console
+  description: 'Consoles are a medium that describes standalone systems that can run
+    games without having to be connected to anything else. Consoles usually have their
+    own specific set of buttons (on the controllers) with which the player can play
+    the designated games. Currently the newest and most popular consoles are the Nintendo
+    Switch, the Playstation 4 and the XBOX One. There are systems that are portable,
+    but over the years these have proven themselves to be less popular in the west. '
   mediumType: 1

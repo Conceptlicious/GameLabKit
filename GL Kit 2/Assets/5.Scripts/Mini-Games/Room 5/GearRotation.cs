@@ -12,8 +12,6 @@ using GameLab;
 
 public class GearRotation : BetterMonoBehaviour
 {
-	private const float IMAGE_radius = 921.5f;
-
 	[SerializeField, Tooltip("S = 6, M = 9, L = 12")] private float teethCount;
 	public float TeethCount => teethCount;
 	[SerializeField] private bool determinesSpeed;

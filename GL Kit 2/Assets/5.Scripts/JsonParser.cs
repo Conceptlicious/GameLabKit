@@ -84,7 +84,7 @@ public static class JsonParser
         string path = directory + "/" + level;
         directory = Settings.PATH_ASSETS_RESOURCES + directory;
 
-        Debug.Log("path:" + path + " | dir: " + directory);
+        //Debug.Log("path:" + path + " | dir: " + directory);
         fileNames = GetFileList(directory);
         return path;
     }

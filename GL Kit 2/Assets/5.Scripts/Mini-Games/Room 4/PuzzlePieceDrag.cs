@@ -75,7 +75,7 @@ public class PuzzlePieceDrag : BetterMonoBehaviour, IDragHandler, IEndDragHandle
         if (!isSelected && canBeSelected)
         {
             Select();
-            PuzzleManager.Instance.DisplayPieceText(pieceInformation);
+            MediumUIHandler.Instance.DisplayPieceText(pieceInformation);
         }
     }
 

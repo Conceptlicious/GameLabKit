@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Mobile
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 71fd525b7607e5a498758c662b514af0, type: 3}
+  name: Mobile
   description: 'Pros
 
     - Portable
