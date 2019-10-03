@@ -99,7 +99,7 @@ public class UIControl : MonoBehaviour
 		{
 			activeSpecialNeedToggles.Add(toggleToAdd);
 			persona.Disability |= disabilities;
-			OnPersonaChanged.Invoke(persona);
+			OnPersonaChanged?.Invoke(persona);
 		}
 		else
 		{
@@ -148,7 +148,7 @@ public class UIControl : MonoBehaviour
 		{
 			activeSpecialNeedToggles.Remove(toggleToRemove);
 			persona.Disability &= ~disabilitiesToRemove;
-			OnPersonaChanged.Invoke(persona);
+			OnPersonaChanged?.Invoke(persona);
 		}
 	}
 
@@ -291,6 +291,9 @@ public class UIControl : MonoBehaviour
 		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent(breakLoop: true));
 		choiceButtons.gameObject.SetActive(false);
 
+		NextRoomEvent nextRoomEvent = new NextRoomEvent();
+		EventManager.Instance.RaiseEvent(nextRoomEvent);
+
 	}
 
 	//Temporary for testing Room1
@@ -299,6 +302,9 @@ public class UIControl : MonoBehaviour
 		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent(nextKnot: false));
 		DialogueProgression.Instance.RemoveChildren();
 		choiceButtons.gameObject.SetActive(false);
+
+		NextRoomEvent nextRoomEvent = new NextRoomEvent();
+		EventManager.Instance.RaiseEvent(nextRoomEvent);
 
 	}
 

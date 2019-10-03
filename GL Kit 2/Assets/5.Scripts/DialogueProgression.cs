@@ -43,12 +43,14 @@ public class DialogueProgression : Singleton<DialogueProgression>
 
 	private void OnEnable()
 	{
-		EventManager.Instance.AddListener<FinishedRoomTransition>(OnNextRoom);
+		EventManager.Instance.AddListener<NextRoomEvent>(RemoveChildren);
+		EventManager.Instance.AddListener<FinishedRoomTransition>(OnNextRoomReached);
 	}
 
 	private void OnDisable()
 	{
-		EventManager.InstanceIfInitialized?.RemoveListener<FinishedRoomTransition>(OnNextRoom);
+		EventManager.InstanceIfInitialized.RemoveListener<NextRoomEvent>(RemoveChildren);
+		EventManager.InstanceIfInitialized?.RemoveListener<FinishedRoomTransition>(OnNextRoomReached);
 	}
 
 	void StartStory()
@@ -59,7 +61,7 @@ public class DialogueProgression : Singleton<DialogueProgression>
 		//RefreshView();
 	}
 
-	private void OnNextRoom()
+	private void OnNextRoomReached()
 	{
 		Vector3Int currentRoom = RoomManager.Instance.GetRoomIDs();
 		//Temporary for room1 testing
@@ -128,7 +130,7 @@ public class DialogueProgression : Singleton<DialogueProgression>
 
 	void OnClickChoiceButton(Choice choice)
 	{
-		Debug.Log(storyText.Length);
+		//Debug.Log(storyText.Length);
 		story.ChooseChoiceIndex(choice.index);
 		RefreshView();
 	}
