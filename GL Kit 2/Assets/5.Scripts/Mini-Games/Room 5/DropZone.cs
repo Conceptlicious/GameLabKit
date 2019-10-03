@@ -11,17 +11,18 @@ using GameLab;
 
 public class DropZone : BetterMonoBehaviour
 {
-	[SerializeField] private GearType neededType;	
+	[SerializeField] private GearType neededType;
 	[SerializeField] private GearType secondNeededType;
-	[SerializeField] private int layer;
-	public int Layer => layer;
 
 	public static int OccupiedPlaces { get; private set; } = 0;
 	[HideInInspector] public static bool combinationIsRight = true;
+	private const int MAX_OCCUPIED_PLACES = 3;
+
+	[SerializeField] private int layer;
+	public int Layer => layer;
 
 	public bool IsOccupied { get; private set; }
 	private Transform gear = null;
-
 
 	public void Occupy(Transform gear)
 	{
@@ -34,7 +35,7 @@ public class DropZone : BetterMonoBehaviour
 		IsOccupied = true;
 
 		RightSlotCheck(gear);
-		OccupiedPlaces++;
+		UpdateOccupiedPlaces(true);
 	}
 
 	public void Unoccupy()
@@ -51,7 +52,7 @@ public class DropZone : BetterMonoBehaviour
 		gear = null;
 		IsOccupied = false;
 
-		OccupiedPlaces--;
+		UpdateOccupiedPlaces(false);
 	}
 
 	private void RightSlotCheck(Transform gearToCheck)
@@ -61,5 +62,25 @@ public class DropZone : BetterMonoBehaviour
 		{
 			combinationIsRight = false;
 		}
+	}
+
+	private void UpdateOccupiedPlaces(bool addOccupiedPlace)
+	{
+		if (addOccupiedPlace)
+		{
+			OccupiedPlaces++;
+		}
+		else
+		{
+			OccupiedPlaces--;
+		}
+
+		if (OccupiedPlaces == MAX_OCCUPIED_PLACES)
+		{
+			ButtonManager.Instance.StartRotationButton.gameObject.SetActive(true);
+			return;
+		}
+
+		ButtonManager.Instance.StartRotationButton.gameObject.SetActive(false);
 	}
 }

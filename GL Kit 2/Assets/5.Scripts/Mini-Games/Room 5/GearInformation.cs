@@ -56,50 +56,14 @@ public class GearInformation : BetterMonoBehaviour
 		isAbleToRotate = false;
 
 		transform.position = GetComponent<DragAndDrop>().BeginPosition;
+
 		DropZone.combinationIsRight = true;
 
-		foreach (DropZone dropZone in UIHandler.Instance.DropZones)
+		foreach (DropZone dropZone in UIHandler.Instance.CurrentFunTypeTab.GetComponentsInChildren<DropZone>())
 		{
 			dropZone.Unoccupy();
 		}
 
 		ButtonManager.Instance.EnableButtons();
 	}
-
-	/*
-	private void FixedUpdate()
-	{
-		if (isAbleToRotate)
-		{
-			if (rotatingLeft)
-			{
-				CachedTransform.Rotate(Vector3.forward * (Time.deltaTime * CalculateRotationSpeed()));
-			}
-			else
-			{
-				CachedTransform.Rotate(Vector3.back * (Time.deltaTime * CalculateRotationSpeed()));
-			}
-		}
-	}
-
-	private float CalculateRotationSpeed()
-	{
-		if(determinesSpeed)
-		{
-			return rotationSpeed;
-		}
-		else
-		{
-			float? drivingGearRotationSpeed = drivingGear.GetComponent<GearInformation>()?.rotationSpeed ?? drivingGear.GetComponent<GearRotation>()?.RotationSpeed;
-
-			if (!drivingGearRotationSpeed.HasValue)
-			{
-				return rotationSpeed;
-			}
-
-			return drivingGearRotationSpeed.Value * drivingGear.transform.localScale.magnitude / CachedTransform.localScale.magnitude;
-		}
-
-	}
-	*/
 }

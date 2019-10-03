@@ -20,7 +20,7 @@ public enum FunType
 
 public class UIHandler : Singleton<UIHandler>
 {
-	public Transform FunTypeTab { get; private set; }
+	public Transform CurrentFunTypeTab { get; private set; }
 	public Text TypeText { get; set; }
 	public List<DropZone> DropZones { get; } = new List<DropZone>();
 	[HideInInspector] public bool wonMinigame = false;
@@ -34,133 +34,100 @@ public class UIHandler : Singleton<UIHandler>
 
 	public void StartGearRotation()
 	{
-		if (DropZone.OccupiedPlaces == 3)
+		GearInformation.isAbleToRotate = true;
+
+		if (DropZone.combinationIsRight)
 		{
-			GearInformation.isAbleToRotate = true;
+			ButtonManager.Instance.EnableNextButton();
 
-			if (DropZone.combinationIsRight)
+			foreach(DragAndDrop dragAndDrop in CurrentFunTypeTab.GetComponentsInChildren<DragAndDrop>())
 			{
-				ButtonManager.Instance.EnableNextButton();				
-
-				foreach (Transform child in FunTypeTab)
-				{
-					DragAndDrop currentDragAndDrop = child.GetComponent<DragAndDrop>();
-					if (currentDragAndDrop != null)
-					{
-						currentDragAndDrop.isAbleToMove = false;
-					}
-
-					DropZone currentDropZone = child.GetComponent<DropZone>();
-					if (currentDropZone != null)
-					{
-						currentDropZone.Unoccupy();
-					}
-
-					GearRotation gearRotation = child.GetComponent<GearRotation>();
-
-					if(gearRotation.DeterminesSpeed)
-					{
-						gearRotation.CalculateRotaionSpeed();
-					}
-				}
+				dragAndDrop.isAbleToMove = false;
 			}
-			else
+
+			foreach (DropZone dropZone in CurrentFunTypeTab.GetComponentsInChildren<DropZone>())
 			{
-				foreach (Transform child in FunTypeTab)
+				dropZone.Unoccupy();
+			}
+
+			foreach (GearRotation gearRotation in CurrentFunTypeTab.GetComponentsInChildren<GearRotation>())
+			{
+				if (gearRotation.DeterminesSpeed)
 				{
-					GearInformation currentGearInformation = child.GetComponent<GearInformation>();
-					if (currentGearInformation != null)
-					{
-						currentGearInformation.StopGearRotationMethod(child.gameObject);
-					}
+					gearRotation.CalculateRotaionSpeed();
 				}
 			}
 		}
+		else
+		{
+			foreach (GearInformation gearInformation in CurrentFunTypeTab.GetComponentsInChildren<GearInformation>())
+			{
+				gearInformation.StopGearRotationMethod(gearInformation.gameObject);
+			}
+		}
+
 	}
 
 	public void ChangeFunType(FunType funType)
 	{
-		DropZones.Clear();
 		GearInformation.isAbleToRotate = false;
+		ButtonManager.Instance.StartRotationButton.gameObject.SetActive(false);
 
 		switch (funType)
 		{
 			case FunType.EasyFun:
-				FunTypeTab = funTypeTabs[0].transform;
+				CurrentFunTypeTab = funTypeTabs[0].transform;
 
-				foreach (Transform child in FunTypeTab)
-				{
-					DropZone currentDropZone = child.GetComponent<DropZone>();
-
-					if (currentDropZone != null)
-					{
-						currentDropZone.Unoccupy();
-						DropZones.Add(currentDropZone);
-					}
-				}
-
+				SetupDropZones(CurrentFunTypeTab);
 				DisableTypeTabs();
+
 				funTypeTabs[0].SetActive(true);
-				TypeText.text = "Easy Fun";
+				TypeText.text = CurrentFunTypeTab.name;
 				break;
 
 			case FunType.PeopleFun:
-				FunTypeTab = funTypeTabs[1].transform;
+				CurrentFunTypeTab = funTypeTabs[1].transform;
 
-				foreach (Transform child in FunTypeTab)
-				{
-					DropZone currentDropZone = child.GetComponent<DropZone>();
-
-					if (currentDropZone != null)
-					{
-						currentDropZone.Unoccupy();
-						DropZones.Add(currentDropZone);
-					}
-				}
-
+				SetupDropZones(CurrentFunTypeTab);
 				DisableTypeTabs();
+
 				funTypeTabs[1].SetActive(true);
-				TypeText.text = "People Fun";
+				TypeText.text = CurrentFunTypeTab.name;
 				break;
 
 			case FunType.HardFun:
-				FunTypeTab = funTypeTabs[2].transform;
+				CurrentFunTypeTab = funTypeTabs[2].transform;
 
-				foreach (Transform child in FunTypeTab)
-				{
-
-					DropZone currentDropZone = child.GetComponent<DropZone>();
-
-					if (currentDropZone != null)
-					{
-						currentDropZone.Unoccupy();
-						DropZones.Add(currentDropZone);
-					}
-				}
-
+				SetupDropZones(CurrentFunTypeTab);
 				DisableTypeTabs();
+
 				funTypeTabs[2].SetActive(true);
-				TypeText.text = "Hard Fun";
+				TypeText.text = CurrentFunTypeTab.name;
 				break;
 
 			case FunType.SeriousFun:
-				FunTypeTab = funTypeTabs[3].transform;
+				CurrentFunTypeTab = funTypeTabs[3].transform;
 
-				foreach (Transform child in FunTypeTab)
-				{
-					DropZone currentDropZone = child.GetComponent<DropZone>();
-
-					if (currentDropZone != null)
-					{
-						currentDropZone.Unoccupy();
-						DropZones.Add(currentDropZone);
-					}
-				}
-
+				SetupDropZones(CurrentFunTypeTab);
 				DisableTypeTabs();
+
 				funTypeTabs[3].SetActive(true);
-				TypeText.text = "Serious Fun";
+				TypeText.text = CurrentFunTypeTab.name;
 				break;
+		}
+	}
+
+	private void SetupDropZones(Transform newFuntypeTab)
+	{
+		foreach (DropZone dropZone in DropZones)
+		{
+			dropZone.Unoccupy();
+		}
+		DropZones.Clear();
+
+		foreach (DropZone dropZone in newFuntypeTab.GetComponentsInChildren<DropZone>())
+		{
+			DropZones.Add(dropZone);
 		}
 	}
 
