@@ -71,7 +71,7 @@ namespace Room3
 			}
 
 			++currentLevelIndex;
-			print(currentLevelIndex);
+			//print(currentLevelIndex);
 			SetGridInteractable(false);
 			lever.SwitchSprites();
 			SpawnLevel(levels[currentLevelIndex]);
