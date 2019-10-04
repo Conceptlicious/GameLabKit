@@ -269,7 +269,6 @@ public class UIControl : MonoBehaviour
 
 	public void DoneButton()
 	{
-		//Temporary for testing Room1
 		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 
 		//SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.TargetAudience);
@@ -278,11 +277,9 @@ public class UIControl : MonoBehaviour
 		//NextRoomEvent nextRoomEvent = new NextRoomEvent();
 		//EventManager.Instance.RaiseEvent(nextRoomEvent);
 
-		//Temporary for testing Room1
 		choiceButtons.gameObject.SetActive(true);
 	}
 
-	//Temporary for testing Room1
 	public void YesButton()
 	{
 		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.TargetAudience);
@@ -290,13 +287,8 @@ public class UIControl : MonoBehaviour
 
 		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent(breakLoop: true));
 		choiceButtons.gameObject.SetActive(false);
-
-		//NextRoomEvent nextRoomEvent = new NextRoomEvent();
-		//EventManager.Instance.RaiseEvent(nextRoomEvent);
-
 	}
 
-	//Temporary for testing Room1
 	public void NoButton()
 	{
 		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent(nextKnot: false));
@@ -310,11 +302,7 @@ public class UIControl : MonoBehaviour
 	public void FocusNextRoom()
 	{
 		NextRoomEvent newInfo = new NextRoomEvent();
-		//EventSystem.ExecuteEvent(EventType.UI_NEXT_ROOM, newInfo);
 		EventManager.Instance.RaiseEvent(newInfo);
-
-
-		//RoomManager.Instance.SnapFocusRoom(3);
 	}
 
 	/// <summary>
