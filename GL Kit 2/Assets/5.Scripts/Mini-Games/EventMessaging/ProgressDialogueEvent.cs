@@ -6,8 +6,8 @@ using GameLab;
 public class ProgressDialogueEvent : GameLabEvent
 {
 	private static bool shouldLoop;
-	private static int roomPartID;
-	public int RoomPartID => roomPartID;
+	private static int knotID;
+	public int KnotID => knotID;
 
 	//<summary>
 	// If not told different if always goes to the next knot and doesn't break out of a loop.	// 
@@ -26,7 +26,7 @@ public class ProgressDialogueEvent : GameLabEvent
 
 		if (nextKnot)
 		{
-			roomPartID++;
+			knotID++;
 			return;
 		}
 

@@ -15,8 +15,7 @@ public class DialogueProgression : Singleton<DialogueProgression>
 		public TextAsset RoomInkFile;
 	}
 
-	//Temporary for room1 testing
-	private int roomPartID;
+	private int currentKnot;
 
 	[SerializeField] private RoomStoryFileReference[] roomStoryFiles;
 
@@ -53,7 +52,7 @@ public class DialogueProgression : Singleton<DialogueProgression>
 		EventManager.InstanceIfInitialized?.RemoveListener<FinishedRoomTransition>(OnNextRoomReached);
 	}
 
-	void StartStory()
+	private void StartStory()
 	{
 		story = new Story(roomStoryFiles[0].RoomInkFile.text);
 		RoomPartHandler();
@@ -61,14 +60,14 @@ public class DialogueProgression : Singleton<DialogueProgression>
 
 	private void OnNextRoomReached()
 	{
-		Vector3Int currentRoom = RoomManager.Instance.GetRoomIDs();
-		roomPartID = 1;
+		Vector3Int currentRoom = RoomManager.Instance.GetCurrentRoomID();
+		currentKnot = 1;
 
 		story = new Story(roomStoryFiles.First(storyFile => storyFile.RoomID == currentRoom.z).RoomInkFile.text);
 
 		if (currentRoom.z == RoomManager.Instance.WhiteRoomID)
 		{
-			string knotName = $"FromRoom{RoomManager.Instance.GetRoomIDs().y + 1}";
+			string knotName = $"FromRoom{RoomManager.Instance.GetCurrentRoomID().y + 1}";
 			story.ChoosePathString(knotName);
 		}
 		else
@@ -81,18 +80,18 @@ public class DialogueProgression : Singleton<DialogueProgression>
 
 	public void RoomPartHandler()
 	{
-		Vector3Int currentRoom = RoomManager.Instance.GetRoomIDs();
+		Vector3Int currentRoom = RoomManager.Instance.GetCurrentRoomID();
 
 		if (currentRoom.z == 0)
 		{
-			string knotName = $"Part{roomPartID}";
+			string knotName = $"Part{currentKnot}";
 			story.ChoosePathString(knotName);
 		}
 
 		RefreshView();
 	}
 
-	void RefreshView()
+	private void RefreshView()
 	{
 		if(story.canContinue)
 		{
@@ -108,25 +107,25 @@ public class DialogueProgression : Singleton<DialogueProgression>
 			for (int i = 0; i < story.currentChoices.Count; i++)
 			{
 				Choice choice = story.currentChoices[i];
-				Button button = CreateChoiceView(choice.text.Trim());
+				Button button = CreateChoiceView();
 
 				button.onClick.AddListener(() => OnClickChoiceButton(choice));
 			}
 		}
 		else
 		{
-			Button choice = CreateChoiceView(" ");
+			Button choice = CreateChoiceView();
 			choice.onClick.AddListener(RemoveChildren);
 		}
 	}
 
-	void OnClickChoiceButton(Choice choice)
+	private void OnClickChoiceButton(Choice choice)
 	{
 		story.ChooseChoiceIndex(choice.index);
 		RefreshView();
 	}
 
-	Button CreateChoiceView(string text)
+	private Button CreateChoiceView()
 	{
 		Button choice = Instantiate(buttonPrefab) as Button;
 		choice.transform.SetParent(canvas.transform, false);
@@ -134,12 +133,25 @@ public class DialogueProgression : Singleton<DialogueProgression>
 		Text choiceText = choice.GetComponentInChildren<Text>();
 		choiceText.text = storyText;
 
+		choice.onClick.AddListener(DebugChoiceInfo);
+
 		return choice;
+	}
+
+	private void DebugChoiceInfo()
+	{
+		Debug.Log($"currentKnot: {currentKnot}");
+		Debug.Log($"story.canContinue: {story.canContinue} and choices: {story.currentChoices.Count}");
+		if(RoomManager.Instance.GetCurrentRoomID().z == 0 && currentKnot == 3 && !story.canContinue && story.currentChoices.Count == 0)
+		{
+			NextRoomEvent newInfo = new NextRoomEvent();
+			EventManager.Instance.RaiseEvent(newInfo);
+		}
 	}
 
 	private void OnDialogueProgress(ProgressDialogueEvent eventData)
 	{
-		roomPartID = eventData.RoomPartID;
+		currentKnot = eventData.KnotID;
 
 		if (story != null)
 		{

@@ -62,8 +62,8 @@ public class RoomManager : Singleton<RoomManager>
 	/// <summary>
 	/// Returns a Vector3 describing the (OLD ORIGIN, ORIGIN, TARGET) room IDs.
 	/// </summary>
-	/// <returns></returns>
-	public Vector3Int GetRoomIDs()
+	/// <returns>A Vector3Int that Josh thought would be a great ID system, god knows why</returns>
+	public Vector3Int GetCurrentRoomID()
 	{
 		return currentRoom;
 	}

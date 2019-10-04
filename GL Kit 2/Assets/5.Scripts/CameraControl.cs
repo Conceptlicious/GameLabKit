@@ -111,7 +111,7 @@ public class CameraControl : MonoBehaviour
 
             Destroy(targetList[(int)TargetPoints.CENTRE].gameObject);
 
-            if (RoomManager.Instance.GetRoomIDs().y != RoomManager.Instance.GetRoomIDs().z)
+            if (RoomManager.Instance.GetCurrentRoomID().y != RoomManager.Instance.GetCurrentRoomID().z)
             {
                 EventManager.Instance.RaiseEvent(new SetInteractionEvent(true));
 
