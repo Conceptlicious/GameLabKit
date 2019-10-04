@@ -32,4 +32,9 @@ public class ProgressDialogueEvent : GameLabEvent
 
 		shouldLoop = true;
 	}
+
+	public static void ResetKnotID(int toValue = 1)
+	{
+			knotID = toValue;	
+	}
 }

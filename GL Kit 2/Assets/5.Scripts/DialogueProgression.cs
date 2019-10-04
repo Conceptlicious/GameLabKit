@@ -62,6 +62,7 @@ public class DialogueProgression : Singleton<DialogueProgression>
 	{
 		Vector3Int currentRoom = RoomManager.Instance.GetCurrentRoomID();
 		currentKnot = 1;
+		ProgressDialogueEvent.ResetKnotID();
 
 		story = new Story(roomStoryFiles.First(storyFile => storyFile.RoomID == currentRoom.z).RoomInkFile.text);
 
@@ -82,7 +83,7 @@ public class DialogueProgression : Singleton<DialogueProgression>
 	{
 		Vector3Int currentRoom = RoomManager.Instance.GetCurrentRoomID();
 
-		if (currentRoom.z == 0)
+		if (currentRoom.z < 6)
 		{
 			string knotName = $"Part{currentKnot}";
 			story.ChoosePathString(knotName);
