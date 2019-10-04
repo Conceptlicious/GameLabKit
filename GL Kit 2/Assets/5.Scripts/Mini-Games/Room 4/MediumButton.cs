@@ -25,9 +25,12 @@ public class MediumButton : BetterMonoBehaviour
 
 	private void SelectSprite(Sprite selectedSprite)
 	{
-		selectedMediumSprite = selectedSprite;
-		EventManager.Instance.RaiseEvent(new NextRoomEvent());
-		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Medium));
+		if (MediumUIHandler.Instance.MinigameIsWon)
+		{
+			selectedMediumSprite = selectedSprite;
+			EventManager.Instance.RaiseEvent(new NextRoomEvent());
+			EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Medium));
+		}
 	}
 
 	public void ShowNewPuzzle(GameObject currentPuzzle)

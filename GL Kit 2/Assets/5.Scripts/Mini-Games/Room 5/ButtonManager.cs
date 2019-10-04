@@ -13,6 +13,20 @@ public class ButtonManager : Singleton<ButtonManager>
 {
 	private const float WON_MINIGAME_DELAY = 0.1f;
 
+	[SerializeField] private Button startRotationButton;
+	public Button StartRotationButton
+	{
+		get
+		{
+			return startRotationButton;
+		}
+		set
+		{
+			Debug.Log(value);
+			startRotationButton = value;
+		}
+	}
+
 	public Button EasyFun { get; private set; }
 	public Button PeopleFun { get; private set; }
 	public Button HardFun { get; private set; }
@@ -125,5 +139,8 @@ public class ButtonManager : Singleton<ButtonManager>
 		seriousFunImage = SeriousFun.transform.Find("Sprite").GetComponent<Image>();
 		SeriousFun.onClick.AddListener(() => SetLastClickedButton(seriousFunImage.sprite));
 		SeriousFun.interactable = false;
+
+		startRotationButton.onClick.AddListener(() => UIHandler.Instance.StartGearRotation());
+		startRotationButton.gameObject.SetActive(false);
 	}
 }
