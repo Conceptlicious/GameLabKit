@@ -1,3 +1,4 @@
+===Part1
 -"In deze kamer wil ik u iets leren over game dynamics."
 *[Continue]
 -"Game dynamics bepalen hoe een speler zich zal gedragen in een game,
@@ -13,15 +14,20 @@
 -"Gelukkig hebben we daar een machine voor. Handig hé? Laten we snel uitzoeken welke types of fun er zijn!"
 *[Continue]
 -"Om een type of fun te creëren moet u de juiste tandwielen in de machine plaatsen. Probeer het maar!"
-*[Continue]
+->END
+===Part2
 -"Super! U heeft 'easy fun' gecreëerd! Laten we uitzoeken wat de andere types of fun zijn!"
-*[Continue]
+->END
+===Part3
 -"U heeft zojuist alle vier de types of fun ontdekt. Nu u meer weet over easy fun (nieuwsgierigheid), 
 *[Continue]
 -people fun (vermaak) , serious fun (verheugd) en hard fun (overwinning),
 *[Continue]
 -welke denkt u dat het beste bij uw game past?."
-*[Continue]
+->END
+===Part4
 -"Goed gedaan! U heeft [type fun] gekozen Dit type wordt vaak gebruikt in serious games."
-*[Continue]
+->END
+===Part5
 -"Bent u tevreden met uw keuze?"
+->END
