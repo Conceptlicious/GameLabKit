@@ -291,8 +291,8 @@ public class UIControl : MonoBehaviour
 		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent(breakLoop: true));
 		choiceButtons.gameObject.SetActive(false);
 
-		NextRoomEvent nextRoomEvent = new NextRoomEvent();
-		EventManager.Instance.RaiseEvent(nextRoomEvent);
+		//NextRoomEvent nextRoomEvent = new NextRoomEvent();
+		//EventManager.Instance.RaiseEvent(nextRoomEvent);
 
 	}
 
@@ -302,10 +302,6 @@ public class UIControl : MonoBehaviour
 		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent(nextKnot: false));
 		DialogueProgression.Instance.RemoveChildren();
 		choiceButtons.gameObject.SetActive(false);
-
-		NextRoomEvent nextRoomEvent = new NextRoomEvent();
-		EventManager.Instance.RaiseEvent(nextRoomEvent);
-
 	}
 
 	/// <summary>
