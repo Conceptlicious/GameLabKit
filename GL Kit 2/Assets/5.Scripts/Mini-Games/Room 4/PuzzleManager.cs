@@ -7,6 +7,8 @@ using GameLab;
 [DisallowMultipleComponent]
 public class PuzzleManager : Manager<PuzzleManager>
 {
+	private const int WEARABLE_INDEX = 4;
+
 	[HideInInspector] public List<GameObject> puzzles = new List<GameObject>();
 	public List<PuzzlePieceDrag> PuzzlePieces { get; private set; } = new List<PuzzlePieceDrag>();
 	public List<PuzzlePieceSocket> PuzzlePieceSockets { get; private set; } = new List<PuzzlePieceSocket>();
@@ -21,7 +23,7 @@ public class PuzzleManager : Manager<PuzzleManager>
 
 		foreach (Transform child in transform)
 		{
-		   puzzles.Add(child.gameObject);
+			puzzles.Add(child.gameObject);
 		}
 	}
 
@@ -69,6 +71,11 @@ public class PuzzleManager : Manager<PuzzleManager>
 			IsPuzzleInProgress = false;
 			MediumUIHandler.Instance.DisplayPieceText(MediumUIHandler.Instance.ExtendedDescription);
 			MediumUIHandler.Instance.EnableNextButton();
+
+			if (MediumUIHandler.Instance.activeButtons == WEARABLE_INDEX)
+			{
+				EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+			}
 		}
-	}	
+	}
 }

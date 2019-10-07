@@ -14,6 +14,7 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 
 	public bool MinigameIsWon { get; private set; } = false;
 	public string ExtendedDescription { get; private set; }
+	
 
 	public Button closeScreenButton;
 	[SerializeField] private GameObject pieceTextHolder;

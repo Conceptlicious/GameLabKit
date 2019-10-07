@@ -29,13 +29,18 @@ public class MediumButton : BetterMonoBehaviour
 		{
 			selectedMediumSprite = selectedSprite;
 			MediumUIHandler.Instance.GameFinished();
-			//EventManager.Instance.RaiseEvent(new NextRoomEvent());
+			//
 			//EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Medium));
 		}
 	}
 
 	public void ShowNewPuzzle(GameObject currentPuzzle)
 	{
+		if(MediumUIHandler.Instance.activeButtons == 1)
+		{
+			EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+		}
+
 		foreach (GameObject puzzle in PuzzleManager.Instance.puzzles)
 		{
 			puzzle.SetActive(false);
