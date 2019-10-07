@@ -47,7 +47,6 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 		}
 
 		buttons[activeButtons].interactable = true;
-		Debug.Log($"{buttons[activeButtons].name}'s button is now enabled");
 		++activeButtons;
 	}
 
