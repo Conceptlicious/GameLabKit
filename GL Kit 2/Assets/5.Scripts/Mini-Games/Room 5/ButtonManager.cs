@@ -40,6 +40,7 @@ public class ButtonManager : Singleton<ButtonManager>
 		{
 			case 2:
 				PeopleFun.interactable = true;
+				EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 				break;
 			case 3:
 				HardFun.interactable = true;
@@ -48,6 +49,7 @@ public class ButtonManager : Singleton<ButtonManager>
 				SeriousFun.interactable = true;
 				break;
 			case 5:
+				EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 				StartCoroutine(WonMinigameDelay());
 				break;
 		}
