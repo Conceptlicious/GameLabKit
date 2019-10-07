@@ -113,9 +113,11 @@ public class NodePattern : BetterMonoBehaviour
 		fakeNodePressed = false;
 	}
 
+
 	//When a correct button is pressed, it sets current layer
 	public void SetLayer()
 	{
+
 		if (isComplete || !IsInteractable)
 		{
 			return;
@@ -144,7 +146,8 @@ public class NodePattern : BetterMonoBehaviour
 			 * else if (nextPattern == null && isComplete)*/
 			else
 			{
-				ActivePatternManager.Instance.isWon = true;
+				EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+				ActivePatternManager.Instance.isWon = true;				
 			}
 
 			drawLines.ResetLine();

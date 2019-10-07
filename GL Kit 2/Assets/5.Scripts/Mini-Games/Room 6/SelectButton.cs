@@ -6,28 +6,45 @@ using GameLab;
 
 public class SelectButton : BetterMonoBehaviour
 {
-    public static Sprite ArtSprite { get; private set; }
-    private Image buttonImage;
-    private Button selectButton;
+	[SerializeField] private Image completeButtons;
+	public static Sprite ArtSprite { get; private set; }
+	private Image buttonImage;
+	private Button selectButton;
 
-    private void Start()
-    {
-        selectButton = GetComponent<Button>();
-        buttonImage = GetComponent<Image>();
+	private void Start()
+	{
+		selectButton = GetComponent<Button>();
+		buttonImage = GetComponent<Image>();
 
-        selectButton.onClick.AddListener(() => SelectSprite(buttonImage.sprite));
-    }
+		selectButton.onClick.AddListener(() => SelectSprite(buttonImage.sprite));
+	}
 
-    private void SelectSprite(Sprite selectedSprite)
-    {
-        if(!ActivePatternManager.Instance.isWon)
-        {
-            return;
-        }
+	private void SelectSprite(Sprite selectedSprite)
+	{
+		if(!ActivePatternManager.Instance.isWon)
+		{
+			return;
+		}
 
-        ArtSprite = selectedSprite;
+		ArtSprite = selectedSprite;
+		completeButtons.gameObject.SetActive(true);
+		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+		//EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.ArtStyle));
+		//EventManager.Instance.RaiseEvent(new NextRoomEvent());
+	}
 
-        EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.ArtStyle));
-        EventManager.Instance.RaiseEvent(new NextRoomEvent());
-    }
+	public void YesButton()
+	{
+		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.ArtStyle));
+		NextRoomEvent nextRoomEvent = new NextRoomEvent();
+		completeButtons.gameObject.SetActive(false);
+		EventManager.Instance.RaiseEvent(nextRoomEvent);
+	}
+
+	public void NoButton()
+	{
+		completeButtons.gameObject.SetActive(false);
+		DialogueProgression.Instance.RemoveChildren();
+		ProgressDialogueEvent.ResetKnotID(3);
+	}
 }
