@@ -77,10 +77,10 @@ public class DropZone : BetterMonoBehaviour
 
 		if (OccupiedPlaces == MAX_OCCUPIED_PLACES)
 		{
-			ButtonManager.Instance.StartRotationButton.gameObject.SetActive(true);
+			ButtonManager.Instance.startRotationButton.gameObject.SetActive(true);
 			return;
 		}
 
-		ButtonManager.Instance.StartRotationButton.gameObject.SetActive(false);
+		ButtonManager.Instance.startRotationButton.gameObject.SetActive(false);
 	}
 }

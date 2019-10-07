@@ -71,7 +71,7 @@ public class UIHandler : Singleton<UIHandler>
 	public void ChangeFunType(FunType funType)
 	{
 		GearInformation.isAbleToRotate = false;
-		ButtonManager.Instance.StartRotationButton.gameObject.SetActive(false);
+		ButtonManager.Instance.startRotationButton.gameObject.SetActive(false);
 
 		switch (funType)
 		{
