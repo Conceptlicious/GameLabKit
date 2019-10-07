@@ -21,9 +21,9 @@ public enum FunType
 public class UIHandler : Singleton<UIHandler>
 {
 	public Transform CurrentFunTypeTab { get; private set; }
-	public Text TypeText { get; set; }
 	public List<DropZone> DropZones { get; } = new List<DropZone>();
 	[HideInInspector] public bool wonMinigame = false;
+	private Text typeText;
 	private Transform dropZonesObject = null;
 	private readonly List<GameObject> funTypeTabs = new List<GameObject>();
 
@@ -82,7 +82,7 @@ public class UIHandler : Singleton<UIHandler>
 				DisableTypeTabs();
 
 				funTypeTabs[0].SetActive(true);
-				TypeText.text = CurrentFunTypeTab.name;
+				typeText.text = CurrentFunTypeTab.name;
 				break;
 
 			case FunType.PeopleFun:
@@ -92,7 +92,7 @@ public class UIHandler : Singleton<UIHandler>
 				DisableTypeTabs();
 
 				funTypeTabs[1].SetActive(true);
-				TypeText.text = CurrentFunTypeTab.name;
+				typeText.text = CurrentFunTypeTab.name;
 				break;
 
 			case FunType.HardFun:
@@ -102,7 +102,7 @@ public class UIHandler : Singleton<UIHandler>
 				DisableTypeTabs();
 
 				funTypeTabs[2].SetActive(true);
-				TypeText.text = CurrentFunTypeTab.name;
+				typeText.text = CurrentFunTypeTab.name;
 				break;
 
 			case FunType.SeriousFun:
@@ -112,7 +112,7 @@ public class UIHandler : Singleton<UIHandler>
 				DisableTypeTabs();
 
 				funTypeTabs[3].SetActive(true);
-				TypeText.text = CurrentFunTypeTab.name;
+				typeText.text = CurrentFunTypeTab.name;
 				break;
 		}
 	}
@@ -141,7 +141,7 @@ public class UIHandler : Singleton<UIHandler>
 
 	private void SetVariables()
 	{
-		TypeText = GetComponentInChildren<Text>();
+		typeText = GetComponentInChildren<Text>();
 
 		funTypeTabs.Add(transform.Find("EasyFun").gameObject);
 		funTypeTabs.Add(transform.Find("PeopleFun").gameObject);

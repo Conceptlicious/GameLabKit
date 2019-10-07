@@ -94,9 +94,6 @@ public class ButtonManager : Singleton<ButtonManager>
 	{
 		yield return new WaitForSeconds(WON_MINIGAME_DELAY);
 		UIHandler.Instance.wonMinigame = true;
-		UIHandler.Instance.TypeText.rectTransform.sizeDelta = bigTypetextBox;
-		UIHandler.Instance.TypeText.text = "<color=#00ff00>You won the mini game!</color>" +
-			"\nNow select the dynamic you want to take to the white room.";
 	}
 
 	private void SetLastClickedButton(Sprite lastClikedButtonSprite)
