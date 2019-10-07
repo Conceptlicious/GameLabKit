@@ -10,9 +10,15 @@ public class Lever : BetterMonoBehaviour
 
 	[SerializeField] private Sprite upSprite;
 	[SerializeField] private Sprite downSprite;
+	private int pressCount = 1;
 
 	public void OnButtonPressed()
-	{		
+	{
+		if(pressCount == 1)
+		{
+			EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+			pressCount++;
+		}
 		TileGrid.Instance.SetGridInteractable(true);
 		SwitchSprites();
 	}

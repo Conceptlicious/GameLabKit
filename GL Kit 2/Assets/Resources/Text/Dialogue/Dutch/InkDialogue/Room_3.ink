@@ -11,7 +11,7 @@
 *[Continue]
 -"Oké! Laten we een genre gaan maken!"
 *[Continue]
--"Kunt u voor mij de hendel van de machine aan de linkerkant overhalen?"
+-"Kunt u voor mij de hendel van de machine aan de rechterkant overhalen?"
 ->END
 ===Part2
 -"Super!"
@@ -41,12 +41,11 @@
 ->END
 ===Part8
 -"Super! U heeft het genre 'strategie' gecreëerd, dit was het laatste genre."
-->END
-===Part9
--"Geweldig! U heeft alle bekerglazen gevuld met een genre! U kunt nu een genre kiezen die passend is voor uw game."
+*[Continue]
+-"U heeft alle bekerglazen gevuld met een genre! U kunt nu een genre kiezen die passend is voor uw game."
 *[Continue]
 -"Houdt hierbij uw doelgroep en het doel van de game in gedachten."
 ->END
-===Part10
+===Part9
 -"Geweldig! U heeft het genre [genre] gekozen voor uw serious game. Bent u tevreden met uw keuze?"
 ->END

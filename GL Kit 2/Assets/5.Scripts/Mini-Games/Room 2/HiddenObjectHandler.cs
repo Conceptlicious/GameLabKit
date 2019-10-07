@@ -79,6 +79,7 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 	{
 		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Goals));
 		NextRoomEvent nextRoomEvent = new NextRoomEvent();
+		buttonsImage.gameObject.SetActive(false);
 		EventManager.Instance.RaiseEvent(nextRoomEvent);
 	}
 
