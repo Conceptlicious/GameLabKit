@@ -35,6 +35,5 @@
 -"U kunt de informatie nog een keer bekijken door op het bijpassende scherm te klikken en als dat medium u het meest geschikt lijkt kunt u die selecteren."
 ->END
 ===Part5
-*[Continue]
 "U heeft voor [medium] gekozen. Bent u tevreden over deze keuze?"
 ->END

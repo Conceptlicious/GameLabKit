@@ -44,7 +44,7 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 		if (activeButtons >= MAX_AMOUNT_OF_ACTIVE_BUTTONS)
 		{
 			MinigameIsWon = true;
-			DisplayPieceText(WON_MINIGAME_MESSAGE);
+			EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 			return;
 		}
 
@@ -89,26 +89,5 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 
 		closeScreenButton.gameObject.SetActive(false);
 		pieceTextHolder.SetActive(false);
-	}
-
-	public void GameFinished()
-	{
-		completeButtons.gameObject.SetActive(true);
-		DialogueProgression.Instance.RemoveChildren();
-	}
-
-	public void YesButton()
-	{
-		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Medium));
-		NextRoomEvent nextRoomEvent = new NextRoomEvent();
-		completeButtons.gameObject.SetActive(false);
-		EventManager.Instance.RaiseEvent(nextRoomEvent);
-	}
-
-	public void NoButton()
-	{
-		completeButtons.gameObject.SetActive(false);
-		DialogueProgression.Instance.RemoveChildren();
-		ProgressDialogueEvent.ResetKnotID(4);
 	}
 }

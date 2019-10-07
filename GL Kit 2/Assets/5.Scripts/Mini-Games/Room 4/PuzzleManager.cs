@@ -7,7 +7,7 @@ using GameLab;
 [DisallowMultipleComponent]
 public class PuzzleManager : Manager<PuzzleManager>
 {
-	private const int WEARABLE_INDEX = 4;
+	private const int WEARABLE_INDEX = 5;
 
 	[HideInInspector] public List<GameObject> puzzles = new List<GameObject>();
 	public List<PuzzlePieceDrag> PuzzlePieces { get; private set; } = new List<PuzzlePieceDrag>();
