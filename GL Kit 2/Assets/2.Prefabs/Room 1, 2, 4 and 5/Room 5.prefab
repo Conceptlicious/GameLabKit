@@ -5961,29 +5961,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7385619711378022748}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7385619712473557255}
-        m_MethodName: WonMiniGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7385619712473557255}
-        m_MethodName: StartGearRotation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &7385619711511498492
@@ -6548,6 +6526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76cb5c79ecbfb54680501efd1540a59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startRotationButton: {fileID: 0}
 --- !u!1 &7385619712657696051
 GameObject:
   m_ObjectHideFlags: 0
