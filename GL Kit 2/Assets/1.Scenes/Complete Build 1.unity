@@ -120,6 +120,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &96845172 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5430508506423377061, guid: 9597691b3dfb70841a60232e70cf7974,
+    type: 3}
+  m_PrefabInstance: {fileID: 834691627}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &104437014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1679,6 +1691,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: WonMiniGame
       objectReference: {fileID: 0}
+    - target: {fileID: 7385619712647554433, guid: 9597691b3dfb70841a60232e70cf7974,
+        type: 3}
+      propertyPath: buttonImages
+      value: 
+      objectReference: {fileID: 96845172}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9597691b3dfb70841a60232e70cf7974, type: 3}
 --- !u!224 &834691628 stripped

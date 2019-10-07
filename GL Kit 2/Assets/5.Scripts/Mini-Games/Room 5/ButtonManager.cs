@@ -15,6 +15,8 @@ public class ButtonManager : Singleton<ButtonManager>
 
 	[HideInInspector] public Button startRotationButton;
 
+	[SerializeField] private Image buttonImages;
+
 	public Button EasyFun { get; private set; }
 	public Button PeopleFun { get; private set; }
 	public Button HardFun { get; private set; }
@@ -103,9 +105,26 @@ public class ButtonManager : Singleton<ButtonManager>
 		{
 			LastClickedButtonSprite = lastClikedButtonSprite;
 
-			EventManager.Instance.RaiseEvent(new NextRoomEvent());
-			EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Dynamics));
+			buttonImages.gameObject.SetActive(true);
+			EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+			//EventManager.Instance.RaiseEvent(new NextRoomEvent());
+			//EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Dynamics));
 		}
+	}
+
+	public void YesButton()
+	{
+		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Dynamics));
+		NextRoomEvent nextRoomEvent = new NextRoomEvent();
+		buttonImages.gameObject.SetActive(false);
+		EventManager.Instance.RaiseEvent(nextRoomEvent);
+	}
+
+	public void NoButton()
+	{
+		buttonImages.gameObject.SetActive(false);
+		DialogueProgression.Instance.RemoveChildren();
+		ProgressDialogueEvent.ResetKnotID(3);
 	}
 
 	private void SetVariables()
