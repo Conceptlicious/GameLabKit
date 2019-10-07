@@ -17,6 +17,7 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 
 	public Button closeScreenButton;
 	[SerializeField] private GameObject pieceTextHolder;
+	[SerializeField] private Image completeButtons;
 	[HideInInspector] public int activeButtons = 0;	
 	private List<Button> buttons = new List<Button>();
 	private Text pieceText = null;
@@ -87,5 +88,26 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 
 		closeScreenButton.gameObject.SetActive(false);
 		pieceTextHolder.SetActive(false);
+	}
+
+	public void GameFinished()
+	{
+		completeButtons.gameObject.SetActive(true);
+		DialogueProgression.Instance.RemoveChildren();
+	}
+
+	public void YesButton()
+	{
+		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Medium));
+		NextRoomEvent nextRoomEvent = new NextRoomEvent();
+		completeButtons.gameObject.SetActive(false);
+		EventManager.Instance.RaiseEvent(nextRoomEvent);
+	}
+
+	public void NoButton()
+	{
+		completeButtons.gameObject.SetActive(false);
+		DialogueProgression.Instance.RemoveChildren();
+		ProgressDialogueEvent.ResetKnotID(4);
 	}
 }

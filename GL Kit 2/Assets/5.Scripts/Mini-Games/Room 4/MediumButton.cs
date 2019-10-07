@@ -28,8 +28,9 @@ public class MediumButton : BetterMonoBehaviour
 		if (MediumUIHandler.Instance.MinigameIsWon)
 		{
 			selectedMediumSprite = selectedSprite;
-			EventManager.Instance.RaiseEvent(new NextRoomEvent());
-			EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Medium));
+			MediumUIHandler.Instance.GameFinished();
+			//EventManager.Instance.RaiseEvent(new NextRoomEvent());
+			//EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Medium));
 		}
 	}
 
@@ -39,7 +40,6 @@ public class MediumButton : BetterMonoBehaviour
 		{
 			puzzle.SetActive(false);
 		}
-
 		currentPuzzle.SetActive(true);
 
 		PuzzleManager.Instance.SetupNewPuzzle(currentPuzzle);
