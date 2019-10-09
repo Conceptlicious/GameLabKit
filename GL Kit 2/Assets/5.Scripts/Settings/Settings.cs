@@ -67,7 +67,7 @@ public static class Settings
 
     public const float VAL_CAMERA_FOCAL_Z_ALIGNMENT               = -935f;
 
-    public const int SYS_VAL_MAX_NUMBER_ROOM_FOCALS               = 7;
+    public const int SYS_VAL_MAX_NUMBER_ROOM_FOCALS               = 8;
 
     public const float VAL_SPEECH_BUBBLE_TRANSITION_SECONDS       = 2.0f;
 

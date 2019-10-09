@@ -79,6 +79,8 @@ MonoBehaviour:
   elderlyCutOff: 60
   ageSliders: {fileID: 0}
   genderToggles: {fileID: 0}
+  choiceButtons: {fileID: 0}
+  speechBoxButton: {fileID: 0}
 --- !u!114 &6100448372103171781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fade: 1
+  transitionPlane: {fileID: 0}
 --- !u!114 &6100448372103171780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +157,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   textField: {fileID: 0}
+  completeReading: 0
 --- !u!114 &6100448373985705834
 MonoBehaviour:
   m_ObjectHideFlags: 0
