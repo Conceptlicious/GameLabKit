@@ -89,19 +89,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2878f5d072cec1544bffc38ba2b1bc82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomPartID: 0
   roomStoryFiles:
   - RoomID: 0
-    RoomInkFile: {fileID: 4900000, guid: 7edb63f4b26fd704a9f7c1071d1564a2, type: 3}
+    RoomInkFile: {fileID: 4900000, guid: c56b2b8112d5bbc4f83393ce95202c95, type: 3}
   - RoomID: 1
-    RoomInkFile: {fileID: 4900000, guid: bc938b5568174b6419fe678f0d299dfe, type: 3}
+    RoomInkFile: {fileID: 4900000, guid: 7edb63f4b26fd704a9f7c1071d1564a2, type: 3}
   - RoomID: 2
-    RoomInkFile: {fileID: 4900000, guid: 096f09b3b4cc92d46b57d28fff161598, type: 3}
+    RoomInkFile: {fileID: 4900000, guid: bc938b5568174b6419fe678f0d299dfe, type: 3}
   - RoomID: 3
-    RoomInkFile: {fileID: 4900000, guid: 3c10c2a5a528d61459af2b9685705364, type: 3}
+    RoomInkFile: {fileID: 4900000, guid: 096f09b3b4cc92d46b57d28fff161598, type: 3}
   - RoomID: 4
-    RoomInkFile: {fileID: 4900000, guid: d2e43ad2aaafd20458638f9f8d26a37d, type: 3}
+    RoomInkFile: {fileID: 4900000, guid: 3c10c2a5a528d61459af2b9685705364, type: 3}
   - RoomID: 5
+    RoomInkFile: {fileID: 4900000, guid: d2e43ad2aaafd20458638f9f8d26a37d, type: 3}
+  - RoomID: 6
     RoomInkFile: {fileID: 4900000, guid: edde9ad057762ad468d37d3b429a8841, type: 3}
   - RoomID: 6
     RoomInkFile: {fileID: 4900000, guid: 5591d7e6dc0608249b65161b390b5eb4, type: 3}
