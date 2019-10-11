@@ -9,34 +9,22 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 {
 	private const int MAX_AMOUNT_OF_ACTIVE_BUTTONS = 8;
 	private const string PUZZLE_IN_PROGRESS_WARNING = "You can't close when there is a puzzle in progress";
-	private const string WON_MINIGAME_MESSAGE = "<color=#00ff00>Congratulations you won the mini game.</color>" +
-		"Click on the medium you want to send to the white room.";
-
-	public bool MinigameIsWon { get; private set; } = false;
-	public string ExtendedDescription { get; private set; }
 	
+	public bool MinigameIsWon { get; private set; } = false;
+	public string ExtendedDescription { get; private set; }	
 
 	public Button closeScreenButton;
 	[SerializeField] private GameObject pieceTextHolder;
-	[SerializeField] private Image completeButtons;
 	[HideInInspector] public int activeButtons = 0;	
 	private List<Button> buttons = new List<Button>();
+	private Image[] buttonIcons;
 	private Text pieceText = null;
 
 	private void Start()
 	{
-		foreach (Button button in GetComponentsInChildren<Button>())
-		{
-			buttons.Add(button);
-			button.interactable = false;
-		}
-
-		pieceText = pieceTextHolder.GetComponentInChildren<Text>();
-
+		SetVariables();
 		EnableNextButton();
-		CloseScreen();
-
-		closeScreenButton.onClick.AddListener(() => CloseScreen());
+		CloseScreen();		
 	}
 
 	public void EnableNextButton()
@@ -49,6 +37,7 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 		}
 
 		buttons[activeButtons].interactable = true;
+		buttonIcons[activeButtons].color = Color.white;
 		++activeButtons;
 	}
 
@@ -89,5 +78,25 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 
 		closeScreenButton.gameObject.SetActive(false);
 		pieceTextHolder.SetActive(false);
+	}
+
+	private void SetVariables()
+	{
+		foreach (Button button in GetComponentsInChildren<Button>())
+		{
+			buttons.Add(button);
+			button.interactable = false;
+		}
+
+		buttonIcons = new Image[buttons.Count];
+		for (int i = 0; i < buttons.Count; i++)
+		{
+			buttonIcons[i] = buttons[i].transform.GetChild(0).GetComponent<Image>();
+			buttonIcons[i].color = Color.black;
+		}
+
+		pieceText = pieceTextHolder.GetComponentInChildren<Text>();
+
+		closeScreenButton.onClick.AddListener(() => CloseScreen());
 	}
 }
