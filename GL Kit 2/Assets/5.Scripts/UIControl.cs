@@ -18,12 +18,13 @@ public class UIControl : MonoBehaviour
 {
 	private Persona persona = new Persona();
 
+	private const int TEEN_CUT_OFF = 13;
+	private const int ADULT_CUT_OFF = 20;
+	private const int ELDERLY_CUT_OFF = 60;
 	private const int ENABLED_TOGGLES_PER_LIST_MAX = 3;
 	public event Action<Persona> OnPersonaChanged;
 
-	[SerializeField] private int teenCutOff = 13;
-	[SerializeField] private int adultCutOff = 20;
-	[SerializeField] private int elderlyCutOff = 60;
+	
 	[SerializeField] private Transform ageSliders = null;
 	[SerializeField] private Transform genderToggles = null;
 	//Temporary for testing Room1
@@ -158,17 +159,17 @@ public class UIControl : MonoBehaviour
 
 		int averageAge = Mathf.RoundToInt(calculateAverageAge);
 
-		if (averageAge >= elderlyCutOff)
+		if (averageAge >= ELDERLY_CUT_OFF)
 		{
 			targetAudienceText.text = $"Eldery\n{averageAge}+";
 			persona.Age = AgeGroup.Elderly;
 		}
-		else if (averageAge >= adultCutOff)
+		else if (averageAge >= ADULT_CUT_OFF)
 		{
 			targetAudienceText.text = $"Adult\n{averageAge}";
 			persona.Age = AgeGroup.Adult;
 		}
-		else if (averageAge >= teenCutOff)
+		else if (averageAge >= TEEN_CUT_OFF)
 		{
 			targetAudienceText.text = $"Teenager\n{averageAge}";
 			persona.Age = AgeGroup.Teenager;
