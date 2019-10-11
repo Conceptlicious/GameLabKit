@@ -1,5 +1,4 @@
-===Part1
--"Dit is een placeholder text" -> DONE
-*[Continue]
-"Meer placeholders" -> DONE
-=>END
+===Intro===
+-"Dit is een placeholder text"
+"Meer placeholders"
+->END

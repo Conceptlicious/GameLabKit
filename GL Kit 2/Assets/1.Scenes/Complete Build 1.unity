@@ -485,7 +485,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!224 &180192603 stripped
 RectTransform:
@@ -1009,6 +1009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 1
     containerIndex: 0
     fieldName: Title
@@ -1096,6 +1097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 4
     containerIndex: 0
     fieldName: Step 1
@@ -1607,7 +1609,7 @@ Transform:
   - {fileID: 1624125899}
   - {fileID: 1527032682}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &792088837
 GameObject:
@@ -2373,6 +2375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 0
     containerIndex: 0
     fieldName: Fact 1
@@ -2452,6 +2455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 0
     containerIndex: 0
     fieldName: Fact 1
@@ -2901,6 +2905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 3
     containerIndex: 0
     fieldName: Step 1
@@ -2950,6 +2955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 9
     containerIndex: 0
     fieldName: Step 1
@@ -3392,6 +3398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 0
     containerIndex: 0
     fieldName: 
@@ -3650,6 +3657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 0
     containerIndex: 0
     fieldName: Fact 1
@@ -3699,6 +3707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 7
     containerIndex: 0
     fieldName: Step 1
@@ -4149,7 +4158,7 @@ PrefabInstance:
     - target: {fileID: 8491550579238917801, guid: 8390df2fb17aa9a499b02b51ee9f8594,
         type: 3}
       propertyPath: roomStoryFiles.Array.data[7].RoomID
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8491550579238917801, guid: 8390df2fb17aa9a499b02b51ee9f8594,
         type: 3}
@@ -4249,6 +4258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 8
     containerIndex: 2
     fieldName: Type
@@ -4314,6 +4324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 0
     containerIndex: 0
     fieldName: Fact 1
@@ -4389,6 +4400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 5
     containerIndex: 0
     fieldName: Step 1
@@ -5241,6 +5253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 2
     containerIndex: 0
     fieldName: Step 1
@@ -5290,6 +5303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 6
     containerIndex: 0
     fieldName: Step 1

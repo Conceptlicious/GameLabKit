@@ -1,4 +1,4 @@
-===FromRoom1
+===FromRoom1===
 -"Daar zijn we dan de ontwerpruimte!"
 *[Continue]
 -"In deze kamer kunt u de elementen zien die u tijdens het creëren van de serious game heeft gekozen."
@@ -19,14 +19,14 @@
 *[Continue]
 -om uw game verder vorm te geven."
 ->END
-===FromRoom2
+===FromRoom2===
 -"Super! U heeft een element voor deze kamer ontvangen. U kunt het element nu in de kamer plaatsen."
 *[Continue]
 -"Dat ziet er goed uit! Voelt het goed om een duidelijk doel voor uw game voor ogen te hebben?"
 *[Continue]
 -"Als u er klaar voor bent gaan we naar de volgende kamer."
 ->END
-===FromRoom3
+===FromRoom3===
 -"Hoe vindt u het tot nu toe om uw eigen serious game te maken? Het is erg fijn om met u samen te werken!"
 *[Continue]
 -"Voor de gemaakte keuze in deze kamer heeft u dit element ontvangen, u kunt het nu in de kamer plaatsen!"
@@ -35,7 +35,7 @@
 *[Continue]
 -"Laten we uitzoeken welke kamer de volgende is."
 ->END
-===FromRoom4
+===FromRoom4===
 -"Wow! Dat was een lastige beslissing, maar u heeft goed werk geleverd daarbinnen."
 *[Continue]
 -"Door uw harde  werk heeft u dit element gekregen! U kunt deze nu in de kamer plaatsen."
@@ -46,7 +46,7 @@
 *[Continue]
 -"Volgende kamer in 3… 2… 1…"
 ->END
-===FromRoom5
+===FromRoom5===
 -"Tof! We zijn al een eind op weg! We hebben onze doelgroep, doel, genre,
 *[Continue]
 -medium en type fun gekozen voor onze serious game."
@@ -59,7 +59,7 @@
 *[Continue]
 -"Bent u klaar om naar de laatste kamer te gaan? Laten we kijken wat deze kamer voor ons in petto heeft."
 ->END
-===FromRoom6
+===FromRoom6===
 -"Ik ben echt trots op wat u vandaag gedaan heeft."
 *[Continue]
 -"Laten we niet wachten en meteen het laatste element plaatsen!"

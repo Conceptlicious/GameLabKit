@@ -21,7 +21,7 @@ public class ActivePatternManager : Manager<ActivePatternManager>
 		amount++;
 		if(amount == 1)
 		{
-			EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+			//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 		}
 	}
 

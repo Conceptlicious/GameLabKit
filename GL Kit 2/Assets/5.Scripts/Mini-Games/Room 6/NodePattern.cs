@@ -146,7 +146,7 @@ public class NodePattern : BetterMonoBehaviour
 			 * else if (nextPattern == null && isComplete)*/
 			else
 			{
-				EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+				//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 				ActivePatternManager.Instance.isWon = true;				
 			}
 

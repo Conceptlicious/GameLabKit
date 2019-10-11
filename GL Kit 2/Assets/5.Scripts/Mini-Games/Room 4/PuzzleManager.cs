@@ -74,7 +74,7 @@ public class PuzzleManager : Manager<PuzzleManager>
 
 			if (MediumUIHandler.Instance.activeButtons == WEARABLE_INDEX)
 			{
-				EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+				//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 			}
 		}
 	}

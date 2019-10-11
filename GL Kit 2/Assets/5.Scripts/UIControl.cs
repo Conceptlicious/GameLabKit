@@ -268,35 +268,6 @@ public class UIControl : MonoBehaviour
 		male.onValueChanged.AddListener((isEnabled) => GenderTogglePressed(Genders.Male, isEnabled));
 	}
 
-	public void DoneButton()
-	{
-		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
-
-		//SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.TargetAudience);
-		//EventManager.Instance.RaiseEvent(saveItemEvent);
-
-		//NextRoomEvent nextRoomEvent = new NextRoomEvent();
-		//EventManager.Instance.RaiseEvent(nextRoomEvent);
-
-		choiceButtons.gameObject.SetActive(true);
-	}
-
-	public void YesButton()
-	{
-		SaveItemEvent saveItemEvent = new SaveItemEvent(RoomType.TargetAudience);
-		EventManager.Instance.RaiseEvent(saveItemEvent);
-
-		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent(breakLoop: true));
-		choiceButtons.gameObject.SetActive(false);
-	}
-
-	public void NoButton()
-	{
-		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent(nextKnot: false));
-		DialogueProgression.Instance.RemoveChildren();
-		choiceButtons.gameObject.SetActive(false);
-	}
-
 	/// <summary>
 	/// Used to force a room transition
 	/// </summary>
@@ -315,43 +286,4 @@ public class UIControl : MonoBehaviour
 		int languageOption = Mathf.Clamp(pLanguage, 0, (int)GameData.Language.TOTAL);
 		GameData.SetLanguage((GameData.Language)languageOption);
 	}
-
-	/// <summary>
-	/// Used when clicking on speech bubbles to progress dialogue.
-	/// </summary>
-	public void ProgressDialogue()
-	{
-		Debug.Log("Touch");
-		
-		if (SpeechBubble.Instance.DiagObject != null && isTransitioning == false)
-		{
-			//If we have looped back to the start after an iteration
-			if (SpeechBubble.Instance.completeReading == true)
-			{
-				SpeechBubble.Instance.completeReading = false;
-				speechBoxButton.GetComponent<Button>().enabled = false;
-				DismissSpeechBubbleEvent dismissInfo = new DismissSpeechBubbleEvent();
-				EventManager.Instance.RaiseEvent(dismissInfo);
-			}
-			else
-			{
-				speechBoxButton.GetComponent<Button>().enabled = true;
-				FillSpeechBubbleEvent newInfo = new FillSpeechBubbleEvent(SpeechBubble.Instance.DiagObject, Settings.VAL_SPEECH_BUBBLE_TRANSITION_SECONDS, UIAnimator.MoveType.TRANSITION, UIAnimator.BlurType.NONE, SpeechBubble.FillTextMethod.ITERATE, false);
-				EventManager.Instance.RaiseEvent(newInfo);				
-				Debug.Log("Field Index: " + SpeechBubble.Instance.DiagObject.Info.fieldIndex);
-			}		
-		}
-
-	}
-
-	/// <summary>
-	/// Used for creating a popup on button press.
-	/// </summary>
-	/// <param name="pDialogueObject"></param>
-	public void PopUpWithParam(DialogueObject pDialogueObject)
-	{
-		CreateSpesifiedPopUpEvent newInfo = new CreateSpesifiedPopUpEvent(pDialogueObject);
-
-	}
-
 }

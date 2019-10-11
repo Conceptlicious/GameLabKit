@@ -38,6 +38,7 @@ public class SpriteControl : BetterMonoBehaviour
 		{
 			gameObject.AddComponent<Image>();
 		}
+		image = gameObject.EnsureComponent<Image>();
 		RegisterAllListeners();
 	}
 	
@@ -48,7 +49,6 @@ public class SpriteControl : BetterMonoBehaviour
 	private void RegisterAllListeners()
 	{
 		//EventManager.Instance.AddListener(settings.eventType );
-		EventManager.Instance.AddListener<FillSpeechBubbleEvent>( OnBubbleFill );
 	}
 
 

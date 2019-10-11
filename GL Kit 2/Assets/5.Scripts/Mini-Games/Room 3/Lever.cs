@@ -16,7 +16,7 @@ public class Lever : BetterMonoBehaviour
 	{
 		if(pressCount == 1)
 		{
-			EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+			//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 			pressCount++;
 		}
 		TileGrid.Instance.SetGridInteractable(true);

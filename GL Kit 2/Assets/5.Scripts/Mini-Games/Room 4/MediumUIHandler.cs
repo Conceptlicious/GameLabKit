@@ -32,7 +32,7 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 		if (activeButtons >= MAX_AMOUNT_OF_ACTIVE_BUTTONS)
 		{
 			MinigameIsWon = true;
-			EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+			//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 			return;
 		}
 
