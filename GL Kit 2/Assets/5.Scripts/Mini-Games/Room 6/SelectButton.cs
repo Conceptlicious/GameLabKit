@@ -28,7 +28,7 @@ public class SelectButton : BetterMonoBehaviour
 
 		ArtSprite = selectedSprite;
 		completeButtons.gameObject.SetActive(true);
-		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+		//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 		//EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.ArtStyle));
 		//EventManager.Instance.RaiseEvent(new NextRoomEvent());
 	}
@@ -44,7 +44,5 @@ public class SelectButton : BetterMonoBehaviour
 	public void NoButton()
 	{
 		completeButtons.gameObject.SetActive(false);
-		DialogueProgression.Instance.RemoveChildren();
-		ProgressDialogueEvent.ResetKnotID(3);
 	}
 }

@@ -42,7 +42,7 @@ public class ButtonManager : Singleton<ButtonManager>
 		{
 			case 2:
 				PeopleFun.interactable = true;
-				EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+				//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 				break;
 			case 3:
 				HardFun.interactable = true;
@@ -51,7 +51,7 @@ public class ButtonManager : Singleton<ButtonManager>
 				SeriousFun.interactable = true;
 				break;
 			case 5:
-				EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+				//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 				StartCoroutine(WonMinigameDelay());
 				break;
 		}
@@ -103,27 +103,11 @@ public class ButtonManager : Singleton<ButtonManager>
 			LastClickedButtonSprite = lastClikedButtonSprite;
 
 			buttonImages.gameObject.SetActive(true);
-			EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+			//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 			//EventManager.Instance.RaiseEvent(new NextRoomEvent());
 			//EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Dynamics));
 		}
 	}
-
-	public void YesButton()
-	{
-		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Dynamics));
-		NextRoomEvent nextRoomEvent = new NextRoomEvent();
-		buttonImages.gameObject.SetActive(false);
-		EventManager.Instance.RaiseEvent(nextRoomEvent);
-	}
-
-	public void NoButton()
-	{
-		buttonImages.gameObject.SetActive(false);
-		DialogueProgression.Instance.RemoveChildren();
-		ProgressDialogueEvent.ResetKnotID(3);
-	}
-
 	private void SetVariables()
 	{
 		EasyFun = transform.Find("EasyFun").GetComponent<Button>();

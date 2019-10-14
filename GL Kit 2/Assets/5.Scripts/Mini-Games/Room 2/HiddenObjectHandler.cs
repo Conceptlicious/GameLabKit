@@ -48,7 +48,7 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 
 			if(foundObjects.Count <= 7)
 			{
-				EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+				//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 			}
 		}
 		else
@@ -72,7 +72,7 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 		}
 		Debug.Log("qUICK cHECK");
 		buttonsImage.gameObject.SetActive(true);
-		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+		//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 	}
 
 	public void YesButton()
@@ -86,8 +86,6 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 	public void NoButton()
 	{
 		buttonsImage.gameObject.SetActive(false);
-		DialogueProgression.Instance.RemoveChildren();
-		ProgressDialogueEvent.ResetKnotID(8);
 	}
 
 	private void SetVariables()

@@ -16,7 +16,7 @@ public class Flask : BetterMonoBehaviour
 		FlaskSprite = GetComponent<Image>().sprite;
 
 		completeButtons.gameObject.SetActive(true);
-		EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+		//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 		//EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Genre));
 		//EventManager.Instance.RaiseEvent(new NextRoomEvent());
 	}
@@ -32,7 +32,5 @@ public class Flask : BetterMonoBehaviour
 	public void NoButton()
 	{
 		completeButtons.gameObject.SetActive(false);
-		DialogueProgression.Instance.RemoveChildren();
-		ProgressDialogueEvent.ResetKnotID(8);
 	}
 }

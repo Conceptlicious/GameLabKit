@@ -30,7 +30,7 @@ public class MediumButton : BetterMonoBehaviour
 		{
 			selectedMediumSprite = selectedSprite;
 			completeButtons.gameObject.SetActive(true);
-			EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+			//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 			//EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Medium));
 		}
 	}
@@ -46,15 +46,13 @@ public class MediumButton : BetterMonoBehaviour
 	public void NoButton()
 	{
 		completeButtons.gameObject.SetActive(false);
-		DialogueProgression.Instance.RemoveChildren();
-		ProgressDialogueEvent.ResetKnotID(4);
 	}
 
 	public void ShowNewPuzzle(GameObject currentPuzzle)
 	{
 		if(MediumUIHandler.Instance.activeButtons == 1)
 		{
-			EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+			//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 		}
 
 		foreach (GameObject puzzle in PuzzleManager.Instance.puzzles)
