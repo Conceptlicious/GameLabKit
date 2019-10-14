@@ -15,6 +15,8 @@ namespace Room3
 		public event Action<TileController> Interacted;
 		public event Action<TileController> OnFinishedInteractingAt;
 
+		public Image BridgeOverlay;
+
 		public Tile MainTile { get; private set; } = null;
 		public Tile ConnectedControlledTile { get; private set; } = null;
 

@@ -66,11 +66,11 @@ namespace Room3
 			{
 				print("No more levels");
 				DestroySpawnedLevel();
-				EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+			//	EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 				flasks.SetActive(true);
 				return;
 			}
-			EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+		//	EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 			++currentLevelIndex;
 			//print(currentLevelIndex);
 			SetGridInteractable(false);
@@ -110,12 +110,15 @@ namespace Room3
 				Color32 pixel = levelPixelData[i];
 				int row = i / level.Cols;
 				int col = i % level.Cols;
+				bool overlayOn = false;
+
 				//If the pixel has the bridge tile colour make an extra tile  with different allowed connection directions
 				if (pixel.CompareRGB(levelColorSettings.BridgeTileColor))
 				{
 					mainLayer.Tiles[row, col].AllowedConnectionDirections = Tile.ConnectionDirection.East | Tile.ConnectionDirection.West;
 					bridgeLayer.Tiles[row, col].AllowedConnectionDirections = Tile.ConnectionDirection.North | Tile.ConnectionDirection.South;
 					bridgeLayer.Tiles[row, col].TileType = Tile.Type.Connection;
+					overlayOn = true;
 				}
 				// Get the tileData at the right coordinates
 				Tile tileData = mainLayer.Tiles[row, col];
@@ -123,7 +126,7 @@ namespace Room3
 				tileData.TileGroup = levelColorSettings.GetTileGroupFromColor(pixel);
 				tileData.TileType = levelColorSettings.GetTileTypeFromColor(pixel);
 				// Spawn in a game object for the tile
-				TileController tileController = SpawnTileController(row, col, anchorStepPerColumn, anchorStepPerRow);
+				TileController tileController = SpawnTileController(row, col, anchorStepPerColumn, anchorStepPerRow, overlayOn);
 				
 				tileController.AddTilesToControl(mainLayer.Tiles[row, col], bridgeLayer.Tiles[row, col]);
 				tileController.Image.color = pixel;
@@ -133,7 +136,7 @@ namespace Room3
 			}
 		}
 
-		private TileController SpawnTileController(int row, int col, float anchorStepPerColumn, float anchorStepPerRow)
+		private TileController SpawnTileController(int row, int col, float anchorStepPerColumn, float anchorStepPerRow, bool overlayOn)
 		{
 			//Instantiate a tile
 			TileController tileController = Instantiate(tileControllerPrefab, Vector3.zero, Quaternion.identity, CachedTransform);
@@ -145,6 +148,9 @@ namespace Room3
 			//Set the position on the position
 			tileController.CachedRectTransform.offsetMin = tileController.CachedRectTransform.offsetMax = Vector3.zero;
 			tileController.CachedRectTransform.localPosition = new Vector3(tileController.CachedRectTransform.localPosition.x, tileController.CachedRectTransform.localPosition.y, 0.0f);
+
+			tileController.BridgeOverlay.enabled = overlayOn;
+
 			//Return the tileController
 			return tileController;
 		}

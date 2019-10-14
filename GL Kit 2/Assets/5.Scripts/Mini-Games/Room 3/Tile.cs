@@ -64,7 +64,6 @@ namespace Room3
 			Col = col;
 			Layer = layer;
 		}
-
 		/// <summary>
 		/// Tries to connect to the provided tile. This does not consider layers and allows for tiles of different layers to be connected to each other
 		/// </summary>
