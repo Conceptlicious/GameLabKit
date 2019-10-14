@@ -6,60 +6,57 @@ using GameLab;
 
 public class TrophyHandler : BetterMonoBehaviour
 {
-    private Image[] trophySprites = new Image[6];
+	[SerializeField] Image targetAudeniceImage;
+	private Image[] trohpyImages;
 
-    private void Awake()
-    {
-        EventManager.Instance.AddListener<SaveItemEvent>(UpdateWhiteRoom);
+	private void Awake()
+	{
+		EventManager.Instance.AddListener<SaveItemEvent>(OnItemSaved);
+		SetVariables();
+	}
 
-        int currentLoop = 0;
-        foreach (Transform child in transform)
-        {
-            Image currentImage = child.GetComponent<Image>();
-            trophySprites[currentLoop] = currentImage;
+	private void OnItemSaved(SaveItemEvent eventInfo)
+	{
+		switch (eventInfo.CurrentRoomType)
+		{
+			case RoomType.TargetAudience:
+				targetAudeniceImage.gameObject.SetActive(true);
+				targetAudeniceImage.color = Color.white;
+				targetAudeniceImage.sprite = SpriteHandler.personaSprite;
+				break;
+			case RoomType.Goals:
+				trohpyImages[(int)RoomType.Goals].gameObject.SetActive(true);
+				trohpyImages[(int)RoomType.Goals].sprite =
+					HiddenObjectHandler.Instance.lastSelectedObjectSprite;
+				break;
+			case RoomType.Genre:
+				trohpyImages[(int)RoomType.Genre].gameObject.SetActive(true);
+				trohpyImages[(int)RoomType.Genre].sprite = Flask.FlaskSprite;
+				break;
+			case RoomType.Medium:
+				trohpyImages[(int)RoomType.Medium].gameObject.SetActive(true);
+				trohpyImages[(int)RoomType.Medium].sprite = MediumButton.selectedMediumSprite;
+				break;
+			case RoomType.Dynamics:
+				trohpyImages[(int)RoomType.Dynamics].gameObject.SetActive(true);
+				trohpyImages[(int)RoomType.Dynamics].sprite =
+					ButtonManager.Instance.LastClickedButtonSprite;
+				break;
+			case RoomType.ArtStyle:
+				trohpyImages[(int)RoomType.ArtStyle].gameObject.SetActive(true);
+				trohpyImages[(int)RoomType.ArtStyle].sprite = SelectButton.ArtSprite;
+				break;
+		}
+	}
 
-            currentImage.gameObject.SetActive(false);
+	private void SetVariables()
+	{
+		trohpyImages = GetComponentsInChildren<Image>();
+		foreach(Image trophyImage in trohpyImages)
+		{
+			trophyImage.gameObject.SetActive(false);
+		}
 
-            ++currentLoop;
-        }
-    }
-
-    private void UpdateWhiteRoom(SaveItemEvent eventInfo)
-    {
-        switch (eventInfo.CurrentRoomType)
-        {
-            case RoomType.TargetAudience:
-                trophySprites[(int)RoomType.TargetAudience].gameObject.SetActive(true);
-                trophySprites[(int)RoomType.TargetAudience].sprite = SpriteHandler.personaSprite;
-                break;
-
-            case RoomType.Goals:
-                trophySprites[(int)RoomType.Goals].gameObject.SetActive(true);
-                trophySprites[(int)RoomType.Goals].sprite =
-                    HiddenObjectHandler.Instance.lastSelectedObjectSprite;
-                break;
-
-            case RoomType.Genre:
-                trophySprites[(int)RoomType.Genre].gameObject.SetActive(true);
-                trophySprites[(int)RoomType.Genre].sprite = Flask.FlaskSprite;
-                break;
-
-            case RoomType.Medium:
-                trophySprites[(int)RoomType.Medium].gameObject.SetActive(true);
-                trophySprites[(int)RoomType.Medium].sprite = MediumButton.selectedMediumSprite;
-                break;
-
-            case RoomType.Dynamics:
-                trophySprites[(int)RoomType.Dynamics].gameObject.SetActive(true);
-                trophySprites[(int)RoomType.Dynamics].sprite =
-                    ButtonManager.Instance.LastClickedButtonSprite;
-                break;
-
-            case RoomType.ArtStyle:
-
-                trophySprites[(int)RoomType.ArtStyle].gameObject.SetActive(true);
-                trophySprites[(int)RoomType.ArtStyle].sprite = SelectButton.ArtSprite;
-                break;
-        }
-    }
+		targetAudeniceImage.gameObject.SetActive(false);
+	}
 }

@@ -394,7 +394,7 @@ Transform:
   - {fileID: 607383768}
   - {fileID: 1833716906}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &170076733
 GameObject:
@@ -469,7 +469,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: -0.001953125, y: -1, z: 1, w: 2}
+  m_BoundingSphereOverride: {x: -28, y: 22, z: 5e-44, w: 1e-45}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -485,7 +485,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!224 &180192603 stripped
 RectTransform:
@@ -1009,6 +1009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 1
     containerIndex: 0
     fieldName: Title
@@ -1096,6 +1097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 4
     containerIndex: 0
     fieldName: Step 1
@@ -1389,6 +1391,36 @@ Transform:
   m_Father: {fileID: 440785623}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &511950807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 511950808}
+  m_Layer: 0
+  m_Name: BlankGameObject(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &511950808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511950807}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &607383767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,7 +1567,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &740206787
 GameObject:
@@ -1577,7 +1609,7 @@ Transform:
   - {fileID: 1624125899}
   - {fileID: 1527032682}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &792088837
 GameObject:
@@ -2328,7 +2360,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1173331080
 MonoBehaviour:
@@ -2343,6 +2375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 0
     containerIndex: 0
     fieldName: Fact 1
@@ -2422,6 +2455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 0
     containerIndex: 0
     fieldName: Fact 1
@@ -2788,7 +2822,7 @@ RectTransform:
   - {fileID: 1907541452}
   - {fileID: 1697832733}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2871,6 +2905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 3
     containerIndex: 0
     fieldName: Step 1
@@ -2920,6 +2955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 9
     containerIndex: 0
     fieldName: Step 1
@@ -3362,6 +3398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 0
     containerIndex: 0
     fieldName: 
@@ -3620,6 +3657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 0
     containerIndex: 0
     fieldName: Fact 1
@@ -3669,6 +3707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 7
     containerIndex: 0
     fieldName: Step 1
@@ -3702,7 +3741,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1679826546
 GameObject:
@@ -4111,6 +4150,56 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 806693035}
+    - target: {fileID: 8491550579238917801, guid: 8390df2fb17aa9a499b02b51ee9f8594,
+        type: 3}
+      propertyPath: roomStoryFiles.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491550579238917801, guid: 8390df2fb17aa9a499b02b51ee9f8594,
+        type: 3}
+      propertyPath: roomStoryFiles.Array.data[7].RoomID
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491550579238917801, guid: 8390df2fb17aa9a499b02b51ee9f8594,
+        type: 3}
+      propertyPath: roomStoryFiles.Array.data[7].RoomInkFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 5591d7e6dc0608249b65161b390b5eb4, type: 3}
+    - target: {fileID: 8491550579238917801, guid: 8390df2fb17aa9a499b02b51ee9f8594,
+        type: 3}
+      propertyPath: roomStoryFiles.Array.data[6].RoomInkFile
+      value: 
+      objectReference: {fileID: 4900000, guid: edde9ad057762ad468d37d3b429a8841, type: 3}
+    - target: {fileID: 8491550579238917801, guid: 8390df2fb17aa9a499b02b51ee9f8594,
+        type: 3}
+      propertyPath: roomStoryFiles.Array.data[5].RoomInkFile
+      value: 
+      objectReference: {fileID: 4900000, guid: d2e43ad2aaafd20458638f9f8d26a37d, type: 3}
+    - target: {fileID: 8491550579238917801, guid: 8390df2fb17aa9a499b02b51ee9f8594,
+        type: 3}
+      propertyPath: roomStoryFiles.Array.data[4].RoomInkFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 3c10c2a5a528d61459af2b9685705364, type: 3}
+    - target: {fileID: 8491550579238917801, guid: 8390df2fb17aa9a499b02b51ee9f8594,
+        type: 3}
+      propertyPath: roomStoryFiles.Array.data[3].RoomInkFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 096f09b3b4cc92d46b57d28fff161598, type: 3}
+    - target: {fileID: 8491550579238917801, guid: 8390df2fb17aa9a499b02b51ee9f8594,
+        type: 3}
+      propertyPath: roomStoryFiles.Array.data[2].RoomInkFile
+      value: 
+      objectReference: {fileID: 4900000, guid: bc938b5568174b6419fe678f0d299dfe, type: 3}
+    - target: {fileID: 8491550579238917801, guid: 8390df2fb17aa9a499b02b51ee9f8594,
+        type: 3}
+      propertyPath: roomStoryFiles.Array.data[1].RoomInkFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 7edb63f4b26fd704a9f7c1071d1564a2, type: 3}
+    - target: {fileID: 8491550579238917801, guid: 8390df2fb17aa9a499b02b51ee9f8594,
+        type: 3}
+      propertyPath: roomStoryFiles.Array.data[0].RoomInkFile
+      value: 
+      objectReference: {fileID: 4900000, guid: c56b2b8112d5bbc4f83393ce95202c95, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8390df2fb17aa9a499b02b51ee9f8594, type: 3}
 --- !u!114 &1818154655 stripped
@@ -4169,6 +4258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 8
     containerIndex: 2
     fieldName: Type
@@ -4234,6 +4324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 0
     containerIndex: 0
     fieldName: Fact 1
@@ -4309,6 +4400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 5
     containerIndex: 0
     fieldName: Step 1
@@ -4976,7 +5068,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2058025236
 GameObject:
@@ -5161,6 +5253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 2
     containerIndex: 0
     fieldName: Step 1
@@ -5210,6 +5303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info:
+    dialogueText: 
     fileIndex: 6
     containerIndex: 0
     fieldName: Step 1

@@ -10,7 +10,9 @@ public enum RoomType
 	Genre,
 	Medium,
 	Dynamics,
-	ArtStyle
+	ArtStyle,
+	WhiteRoom,
+	FrontDoor
 };
 
 public class SaveItemEvent : GameLabEvent

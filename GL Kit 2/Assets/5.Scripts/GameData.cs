@@ -35,7 +35,6 @@ public static class GameData
     public static void SetLanguage(Language language)
     {
         gameLanguage = language;
-        Dialogue.LoadAllText();
         initialised = true;
     }
 

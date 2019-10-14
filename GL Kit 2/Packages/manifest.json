@@ -4,6 +4,7 @@
     "com.gamelab.event": "https://123099:Et1gafrlc3l@github.com/Conceptlicious/Event.git",
     "com.gamelab.json": "https://123099:Et1gafrlc3l@github.com/Conceptlicious/JsonDotNet.git",
     "com.gamelab.save": "https://123099:Et1gafrlc3l@github.com/Conceptlicious/Save.git",
+    "com.gamelab.ui": "https://123099:Et1gafrlc3l@github.com/Conceptlicious/UI.git",
     "com.unity.ads": "2.0.8",
     "com.unity.analytics": "3.3.2",
     "com.unity.collab-proxy": "1.2.16",
@@ -60,6 +61,10 @@
     },
     "com.gamelab.save": {
       "hash": "d7c07e99e3d16a87a9a37657a6977a91e4e75f3b",
+      "revision": "HEAD"
+    },
+    "com.gamelab.ui": {
+      "hash": "7f927ed80ffef659a0180a182e096d7987054ac1",
       "revision": "HEAD"
     }
   }
