@@ -1,4 +1,4 @@
-===Part1
+===Intro===
 -"We hebben al veel werk verricht vandaag! We zijn erachter gekomen wie de doelgroep van uw serious game is,
 *[Continue]
 - wat u met uw game wilt bereiken en we hebben een genre."

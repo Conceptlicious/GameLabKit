@@ -364,10 +364,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8491550579238917800}
-  - component: {fileID: 8491550579238917803}
   - component: {fileID: 8491550579238917801}
   m_Layer: 0
-  m_Name: Dialogue Controller
+  m_Name: DialogueManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -387,19 +386,6 @@ Transform:
   m_Father: {fileID: 5131571682578954824}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8491550579238917803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8491550579238917806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ce0d8573e1b2ff42af74cb80f3e5ece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: 27
 --- !u!114 &8491550579238917801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,22 +399,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomStories:
-  - roomID: 0
-    inkFileAsset: {fileID: 4900000, guid: 7edb63f4b26fd704a9f7c1071d1564a2, type: 3}
-  - roomID: 1
-    inkFileAsset: {fileID: 4900000, guid: bc938b5568174b6419fe678f0d299dfe, type: 3}
-  - roomID: 2
-    inkFileAsset: {fileID: 4900000, guid: 096f09b3b4cc92d46b57d28fff161598, type: 3}
-  - roomID: 3
-    inkFileAsset: {fileID: 4900000, guid: 3c10c2a5a528d61459af2b9685705364, type: 3}
-  - roomID: 4
-    inkFileAsset: {fileID: 4900000, guid: d2e43ad2aaafd20458638f9f8d26a37d, type: 3}
-  - roomID: 5
-    inkFileAsset: {fileID: 4900000, guid: edde9ad057762ad468d37d3b429a8841, type: 3}
-  - roomID: 6
-    inkFileAsset: {fileID: 4900000, guid: 5591d7e6dc0608249b65161b390b5eb4, type: 3}
-  - roomID: 7
-    inkFileAsset: {fileID: 4900000, guid: c56b2b8112d5bbc4f83393ce95202c95, type: 3}
+  - {fileID: 11400000, guid: 800c6e3a0673a8f4f91cbe2ef02053d8, type: 2}
+  - {fileID: 11400000, guid: 60c29dc1da9053741be6be31e1822077, type: 2}
+  - {fileID: 11400000, guid: 0f8a35a65e4c0724ba3e922f208c3726, type: 2}
+  - {fileID: 11400000, guid: 3ff362c9215510c4980e5052db7c0bc9, type: 2}
+  - {fileID: 11400000, guid: def1640f3ca820b4bb752f6cfe07551b, type: 2}
+  - {fileID: 11400000, guid: fba1289dfa9ae824b8876431b45f2502, type: 2}
+  - {fileID: 11400000, guid: 2271b03e7a014c94eaafde7f3a3628c8, type: 2}
+  - {fileID: 11400000, guid: f1c2c4e1420b7154e89dc959d5da0ed8, type: 2}
 --- !u!1 &8491550579271579671
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,7 +421,7 @@ GameObject:
   - component: {fileID: 8491550579271579665}
   - component: {fileID: 1899185007630530016}
   m_Layer: 9
-  m_Name: Canvas
+  m_Name: DialogueMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -549,4 +527,4 @@ MonoBehaviour:
   isOpenByDefault: 0
   linkedMenus: []
   continueButton: {fileID: 3731401046716518444}
-  dialogueText: {fileID: 0}
+  dialogueText: {fileID: 1914710514841876476}

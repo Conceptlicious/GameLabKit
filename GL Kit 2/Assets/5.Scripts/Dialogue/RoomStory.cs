@@ -3,9 +3,10 @@ using Ink.Runtime;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using GameLab;
 
-[Serializable]
-public class RoomStory
+[CreateAssetMenu]
+public class RoomStory : RuntimeScriptableObject
 {
 	[SerializeField] private RoomType roomID = RoomType.WhiteRoom;
 	public RoomType RoomID => roomID;
@@ -13,26 +14,39 @@ public class RoomStory
 	[SerializeField] private TextAsset inkFileAsset = null;
 	public TextAsset InkFileAsset => inkFileAsset;
 
-	[SerializeField] private Story inkStory = null;
-	public Story InkStory => inkStory;
-
-	public void Initialize()
+	private Story inkStory = null;
+	public Story InkStory
 	{
-		Debug.Assert(InkFileAsset != null && !string.IsNullOrEmpty(InkFileAsset.text));
+		get
+		{
+			if(inkStory == null)
+			{
+				InitializeStory();
+			}
 
-		inkStory = new Story(InkFileAsset.text);
+			return inkStory;
+		}
+
+		set => inkStory = value;
 	}
 
-	public void PlayKnot(string knotName)
+	public void SetCurrentKnot(string knotName) => InkStory.ChoosePathString(knotName);
+
+	public void Reset(string knotToStartFrom = null)
 	{
-		inkStory.ChoosePathString(knotName);
+		InkStory.ResetState();
+
+		if(!string.IsNullOrEmpty(knotToStartFrom))
+		{
+			SetCurrentKnot(knotToStartFrom);
+		}
 	}
 
 	public string GetNextLine()
 	{
-		if(inkStory.canContinue)
+		if(InkStory.canContinue)
 		{
-			return inkStory.Continue();
+			return InkStory.Continue();
 		}
 		else
 		{
@@ -40,5 +54,12 @@ public class RoomStory
 		}
 	}
 
+
+	private void InitializeStory()
+	{
+		Debug.Assert(InkFileAsset != null && !string.IsNullOrEmpty(InkFileAsset.text));
+
+		InkStory = new Story(InkFileAsset.text);
+	}
 }
 

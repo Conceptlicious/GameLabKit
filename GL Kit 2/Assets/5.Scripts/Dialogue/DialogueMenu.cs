@@ -10,30 +10,41 @@ public class DialogueMenu : Menu
 	[SerializeField] private Button continueButton = null;
 	[SerializeField] private TextMeshProUGUI dialogueText = null;
 
-	private void OnEnable()
-	{
-		DialogueManager.Instance.DialogueStarted += Open;
-		DialogueManager.Instance.DialogueEnded += Close;
-	}
-
-	private void OnDisable()
-	{
-		DialogueManager.Instance.DialogueStarted -= Open;
-		DialogueManager.Instance.DialogueEnded -= Close;
-	}
-
 	protected override void OnOpened()
 	{
 		base.OnOpened();
 
-		DialogueManager.Instance.DialogueContinued += SetDialogueLine;
+		continueButton.onClick.AddListener(RequestNextDialogueLine);
+
+		RequestNextDialogueLine();
 	}
 
 	protected override void OnClosed()
 	{
 		base.OnClosed();
 
-		DialogueManager.Instance.DialogueContinued -= SetDialogueLine;
+		continueButton.onClick.RemoveListener(RequestNextDialogueLine);
+	}
+
+	private void RequestNextDialogueLine()
+	{
+		RequestNextDialogueLineEvent nextDialogueLineRequest = new RequestNextDialogueLineEvent();
+		EventManager.Instance.RaiseEvent<RequestNextDialogueLineEvent>(nextDialogueLineRequest);
+
+		if(!nextDialogueLineRequest.Consumed)
+		{
+			Debug.LogWarning("Nothing is listening or consuming the dialogue line request event");
+			return;
+		}
+
+		if (nextDialogueLineRequest.DialogueCompleted)
+		{
+			Close();
+		}
+		else
+		{
+			SetDialogueLine(nextDialogueLineRequest.NextDialogueLine);
+		}
 	}
 
 	public void SetDialogueLine(string dialogueLine)

@@ -1,4 +1,4 @@
-===Part1
+﻿===Intro===
 -"We hebben al goed werk verricht vandaag! In deze laatste kamer wil ik u iets meer leren over ‘art styles’."
 *[Continue]
 -"‘Art styles’ in een game zijn erg belangrijk om emotionele betrokkenheid te creëren bij de speler."

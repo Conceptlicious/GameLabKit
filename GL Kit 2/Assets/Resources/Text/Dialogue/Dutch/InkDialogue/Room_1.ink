@@ -1,4 +1,4 @@
-===Part1===
+===Intro===
 -"Welkom in de eerste kamer. In deze kamer zoomen we in op de doelgroep die u met uw game wil bereiken."
 -"Als we het hebben over de doelgroep bedoelen we de mensen die uw game gaan spelen en hiervan profiteren." 
 -"Het is belangrijk om te weten wie u met uw game wil bereiken. Laten we beginnen!"

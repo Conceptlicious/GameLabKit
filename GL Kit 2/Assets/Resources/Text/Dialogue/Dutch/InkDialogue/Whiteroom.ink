@@ -1,4 +1,4 @@
-===FromRoom1===
+﻿===Intro===
 -"Daar zijn we dan de ontwerpruimte!"
 *[Continue]
 -"In deze kamer kunt u de elementen zien die u tijdens het creëren van de serious game heeft gekozen."

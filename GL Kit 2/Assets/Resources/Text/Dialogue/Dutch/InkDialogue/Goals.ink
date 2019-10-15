@@ -1,4 +1,4 @@
-===Part1
+﻿===Intro===
 -"Nu we meer weten over uw doelgroep, is het belangrijk om uit te zoeken wat u wil bereiken met uw serious game."
 *[Continue]
 -"Elke serious game heeft een doel nodig, dit zorgt ervoor dat de maker van de game niet uit het zicht verliest wat hij,

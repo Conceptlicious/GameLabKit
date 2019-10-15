@@ -1,4 +1,4 @@
-===Part1
+﻿===Intro===
 -"Nu we meer weten over het doel en de doelgroep van uw game, kunnen we gaan nadenken over een bijpassend genre."
 *[Continue]
 -"Alle game genres bestaan uit een aantal kenmerken die samen de speelstijl van een game vormen."

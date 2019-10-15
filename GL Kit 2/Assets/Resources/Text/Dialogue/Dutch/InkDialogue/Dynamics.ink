@@ -1,4 +1,4 @@
-===Part1
+﻿===Intro===
 -"In deze kamer wil ik u iets leren over game dynamics."
 *[Continue]
 -"Game dynamics bepalen hoe een speler zich zal gedragen in een game,
