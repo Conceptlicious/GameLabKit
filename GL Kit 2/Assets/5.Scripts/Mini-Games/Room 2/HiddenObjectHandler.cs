@@ -24,6 +24,7 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 	[SerializeField] private Image buttonsImage;
 	[HideInInspector] public Sprite lastSelectedObjectSprite;
 	private List<GameObject> foundObjects = new List<GameObject>();
+	private int currentDialoguePart = 2;
 
 	private void Start()
 	{
@@ -38,17 +39,13 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 		{
 			currentHiddenObject.Found();
 			foundObjects.Add(foundObject);
+			ProgressDialogue();
 
 			if (foundObjects.Count >= HIDDENOBJECTS_AMOUNT)
 			{
 				nextMinigameButton.SetActive(true);
 				TextUpdater.Instance.CallUpdateTextCoroutine(foundObject.name, currentHiddenObject.Description, true);
 				MinigameIsWon = true;
-			}
-
-			if(foundObjects.Count <= 7)
-			{
-				//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 			}
 		}
 		else
@@ -88,13 +85,23 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 		buttonsImage.gameObject.SetActive(false);
 	}
 
+	private void ProgressDialogue()
+	{
+		if (foundObjects.Count <= 7)
+		{
+			DialogueManager.Instance.CurrentDialogue.SetCurrentKnot($"Part{currentDialoguePart}");
+			MenuManager.Instance.OpenMenu<DialogueMenu>();
+			++currentDialoguePart;
+		}
+	}
+
 	private void OnFinishedRoomTransition(FinishedRoomTransition eventData)
 	{
 		int currentRoomID = RoomManager.Instance.GetCurrentRoomID().z;
 
 		if (currentRoomID == 2)
 		{
-			DialogueManager.Instance.SetCurrentDialogue(RoomType.Medium);
+			DialogueManager.Instance.SetCurrentDialogue(RoomType.Goals);
 			MenuManager.Instance.OpenMenu<DialogueMenu>();
 		}
 	}

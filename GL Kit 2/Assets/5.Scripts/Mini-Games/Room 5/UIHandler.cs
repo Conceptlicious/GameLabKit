@@ -145,7 +145,7 @@ public class UIHandler : Singleton<UIHandler>
 
 		if (currentRoomID == 5)
 		{
-			DialogueManager.Instance.SetCurrentDialogue(RoomType.Medium);
+			DialogueManager.Instance.SetCurrentDialogue(RoomType.Dynamics);
 			MenuManager.Instance.OpenMenu<DialogueMenu>();
 		}
 	}

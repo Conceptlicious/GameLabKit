@@ -295,7 +295,7 @@ public class UIControl : MonoBehaviour
 
 		if (currentRoomID == 1)
 		{
-			DialogueManager.Instance.SetCurrentDialogue(RoomType.Medium);
+			DialogueManager.Instance.SetCurrentDialogue(RoomType.TargetAudience);
 			MenuManager.Instance.OpenMenu<DialogueMenu>();
 		}
 	}
