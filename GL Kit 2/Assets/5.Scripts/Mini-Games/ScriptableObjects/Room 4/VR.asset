@@ -14,19 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: ad1999e4af39b2c4392b46a5ab9f8c90, type: 3}
   name: Virtual Reality
-  description: 'Pros
-
-    - Physical engagement
-
-    - Untapped market
-
-    - Realistic simualtion
-
-    Cons
-
-    - Motion Sickness
-
-    - Hard to develop
-
-    - Hard to design'
+  description: "Virtual Reality is a medium that typically is defined in terms of
+    hardware. When we talk about Virtual Reality games we talk about games that are
+    played with a headset / goggles that the user wears. By wearing it the player
+    will find themselves in a virtual world (game) where they can walk around. Over
+    the years more hardware compartments have been added, like for example controllers
+    that simulate the player\u2019s hands in the video game with which they can directly
+    interact with the virtual world, like with NPC\u2019s or objects.\r"
   mediumType: 2

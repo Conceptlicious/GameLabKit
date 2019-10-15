@@ -14,19 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 71fd525b7607e5a498758c662b514af0, type: 3}
   name: Mobile
-  description: 'Pros
-
-    - Portable
-
-    - Accesable
-
-    - Short session
-
-    Cons
-
-    - Limited control
-
-    - Low end assets
-
-    - Quick interruptions'
+  description: Mobile games are games that are played on smartphones. Mobile games
+    are apps with gaming elements and are controlled with the touch screen. The fact
+    that the only way to control mobile games with a touch screen makes understanding
+    the controls a relatively quick process, if designed well. The play style of the
+    games on this medium is very flexible and it can be left and picked up at any
+    moment.
   mediumType: 6

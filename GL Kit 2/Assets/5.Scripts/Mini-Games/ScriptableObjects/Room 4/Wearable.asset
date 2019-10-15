@@ -14,16 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: f2c96b4d91a009f4c9cf7d2e2740e360, type: 3}
   name: Wearable
-  description: 'Pros
-
-    - Medical data
-
-    - Handfree
-
-
-    Cons
-
-    - Niche market
-
-    - Multi-device'
+  description: "Wearables are digital accessories like for example activity trackers,
+    smartwatches and smart glasses. These accessories are connected to a phone, tablet
+    or a website and collect the user\u2019s data. For example, this could be activity
+    or sleep."
   mediumType: 3

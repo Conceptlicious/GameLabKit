@@ -14,19 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: fc2b10223b338f543bb6037cfa474118, type: 3}
   name: Tabletop
-  description: 'Pros
-
-    - Real life social interaction
-
-    - Easy to produce
-
-    - One buy all
-
-    Cons
-
-    - Requires people
-
-    - Mandatory setup
-
-    - Takes up space'
+  description: "Tabletop games are quite literally games you play on a tabletop. When
+    talking about tabletop games most of the time we speak of card games, boardgames
+    and dice games. The games are played physically and therefore require physical
+    objects to be played. Tabletop games usually require multiple people to play.\r"
   mediumType: 7

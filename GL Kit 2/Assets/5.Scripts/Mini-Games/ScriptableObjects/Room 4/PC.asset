@@ -14,19 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: b54a4451d1b6b2a4a9aa1071ef9e1452, type: 3}
   name: PC
-  description: 'Pros
-
-    - Easy development
-
-    - Laptop fexibilty
-
-    - High end potential
-
-    Cons
-
-    - Maintenence
-
-    - Big system
-
-    - Costs'
+  description: "PC stands for Personal Computer. Games for pc are designed to play
+    with a keyboard and\r mouse and in some cases nowadays a controller or other peripheral
+    devices. PC\u2019s can, if\r\ninvested into by the user, take on pretty much anything
+    that gets developed for it. The\r techniques for developing games for PC are very
+    advanced and flexible."
   mediumType: 0
