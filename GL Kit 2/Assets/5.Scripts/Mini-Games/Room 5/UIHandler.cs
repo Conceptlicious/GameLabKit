@@ -139,6 +139,17 @@ public class UIHandler : Singleton<UIHandler>
 		funTypeTabs[3].SetActive(false);
 	}
 
+	private void OnFinishedRoomTransition(FinishedRoomTransition eventData)
+	{
+		int currentRoomID = RoomManager.Instance.GetCurrentRoomID().z;
+
+		if (currentRoomID == 5)
+		{
+			DialogueManager.Instance.SetCurrentDialogue(RoomType.Medium);
+			MenuManager.Instance.OpenMenu<DialogueMenu>();
+		}
+	}
+
 	private void SetVariables()
 	{
 		typeText = GetComponentInChildren<Text>();
@@ -154,5 +165,6 @@ public class UIHandler : Singleton<UIHandler>
 		ButtonManager.Instance.SeriousFun.onClick.AddListener(() => ChangeFunType(FunType.SeriousFun));
 
 		ChangeFunType(FunType.EasyFun);
+		EventManager.Instance.AddListener<FinishedRoomTransition>(OnFinishedRoomTransition);
 	}
 }

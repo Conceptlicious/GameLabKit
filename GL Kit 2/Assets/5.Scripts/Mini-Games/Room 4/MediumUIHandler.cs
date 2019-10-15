@@ -80,6 +80,17 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 		pieceTextHolder.SetActive(false);
 	}
 
+	private void OnRoomTransitionFinished(FinishedRoomTransition eventData)
+	{
+		int currentRoomID = RoomManager.Instance.GetCurrentRoomID().z;
+
+		if(currentRoomID == 4)
+		{
+			DialogueManager.Instance.SetCurrentDialogue(RoomType.Medium);
+			MenuManager.Instance.OpenMenu<DialogueMenu>();
+		}
+	}
+
 	private void SetVariables()
 	{
 		foreach (Button button in GetComponentsInChildren<Button>())
@@ -98,5 +109,6 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 		pieceText = pieceTextHolder.GetComponentInChildren<Text>();
 
 		closeScreenButton.onClick.AddListener(() => CloseScreen());
+		EventManager.Instance.AddListener<FinishedRoomTransition>(OnRoomTransitionFinished);
 	}
 }

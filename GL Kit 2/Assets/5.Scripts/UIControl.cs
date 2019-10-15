@@ -266,6 +266,8 @@ public class UIControl : MonoBehaviour
 		female.onValueChanged.AddListener((isEnabled) => GenderTogglePressed(Genders.Female, 
 			isEnabled));
 		male.onValueChanged.AddListener((isEnabled) => GenderTogglePressed(Genders.Male, isEnabled));
+
+		EventManager.Instance.AddListener<FinishedRoomTransition>(OnFinishedRoomTransition);
 	}
 
 	/// <summary>
@@ -285,5 +287,16 @@ public class UIControl : MonoBehaviour
 	{
 		int languageOption = Mathf.Clamp(pLanguage, 0, (int)GameData.Language.TOTAL);
 		GameData.SetLanguage((GameData.Language)languageOption);
+	}
+
+	private void OnFinishedRoomTransition(FinishedRoomTransition eventData)
+	{
+		int currentRoomID = RoomManager.Instance.GetCurrentRoomID().z;
+
+		if (currentRoomID == 1)
+		{
+			DialogueManager.Instance.SetCurrentDialogue(RoomType.Medium);
+			MenuManager.Instance.OpenMenu<DialogueMenu>();
+		}
 	}
 }

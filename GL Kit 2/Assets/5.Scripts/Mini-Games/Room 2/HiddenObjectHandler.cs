@@ -88,8 +88,20 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 		buttonsImage.gameObject.SetActive(false);
 	}
 
+	private void OnFinishedRoomTransition(FinishedRoomTransition eventData)
+	{
+		int currentRoomID = RoomManager.Instance.GetCurrentRoomID().z;
+
+		if (currentRoomID == 2)
+		{
+			DialogueManager.Instance.SetCurrentDialogue(RoomType.Medium);
+			MenuManager.Instance.OpenMenu<DialogueMenu>();
+		}
+	}
+
 	private void SetVariables()
 	{
-		nextMinigameButton.SetActive(false); 
+		nextMinigameButton.SetActive(false);
+		EventManager.Instance.AddListener<FinishedRoomTransition>(OnFinishedRoomTransition);
 	}
 }
