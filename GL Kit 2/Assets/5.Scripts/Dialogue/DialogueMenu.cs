@@ -1,4 +1,5 @@
 ﻿using GameLab;
+using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -30,11 +31,15 @@ public class DialogueMenu : Menu
 	{
 		RequestNextDialogueLineEvent nextDialogueLineRequest = new RequestNextDialogueLineEvent();
 		EventManager.Instance.RaiseEvent<RequestNextDialogueLineEvent>(nextDialogueLineRequest);
-
 		if(!nextDialogueLineRequest.Consumed)
 		{
 			Debug.LogWarning("Nothing is listening or consuming the dialogue line request event");
 			return;
+		}
+		DestroyAllMenuListings();
+		foreach (Choice choice in nextDialogueLineRequest.Choices)
+		{
+			CreateNewListing<DialogueChoiceMenuListing>().DialogueChoice = choice;
 		}
 
 		if (nextDialogueLineRequest.DialogueCompleted)
