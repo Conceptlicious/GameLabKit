@@ -46,12 +46,14 @@ public class DialogueManager : Manager<DialogueManager>
 	{
 		EventManager.Instance.AddListener<RequestToPlayKnotEvent>(OnRequestToPlayKnot);
 		EventManager.Instance.AddListener<RequestNextDialogueLineEvent>(OnRequestNextDialogueLine, 100);
+		EventManager.Instance.AddListener<RequestMakeDialogueChoiceEvent>(OnRequestMakeDialogueChoice);
 	}
 
 	private void OnDisable()
 	{
 		EventManager.InstanceIfInitialized?.RemoveListener<RequestToPlayKnotEvent>(OnRequestToPlayKnot);
 		EventManager.InstanceIfInitialized?.RemoveListener<RequestNextDialogueLineEvent>(OnRequestNextDialogueLine);
+		EventManager.InstanceIfInitialized?.RemoveListener<RequestMakeDialogueChoiceEvent>(OnRequestMakeDialogueChoice);
 	}
 
 	private void OnRequestToPlayKnot(RequestToPlayKnotEvent playKnotEvent) => SetCurrentDialogue(playKnotEvent.RoomID, playKnotEvent.KnotToPlay);
@@ -59,10 +61,11 @@ public class DialogueManager : Manager<DialogueManager>
 	{
 		nextDialogueLineEvent.NextDialogueLine = CurrentDialogue.GetNextLine();
 		nextDialogueLineEvent.DialogueCompleted = nextDialogueLineEvent.NextDialogueLine == null;
+		nextDialogueLineEvent.Choices = CurrentDialogue.InkStory.currentChoices;
 
 		nextDialogueLineEvent.Consume();
 	}
-
+	private void OnRequestMakeDialogueChoice(RequestMakeDialogueChoiceEvent requestMakeDialogueChoiceEvent) => CurrentDialogue.InkStory.ChooseChoiceIndex(requestMakeDialogueChoiceEvent.DialogueChoice.index);
 	/// <summary>
 	/// Sets the new current dialogue.
 	/// </summary>
