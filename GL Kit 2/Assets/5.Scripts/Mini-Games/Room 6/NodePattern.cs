@@ -43,6 +43,7 @@ public class NodePattern : BetterMonoBehaviour
 	private float wrongInputTimer;
 	private bool fakeNodePressed;
 	private bool isComplete = false;
+	private int currentDialoguePart = 2;
 
 	private void Start()
 	{
@@ -55,6 +56,8 @@ public class NodePattern : BetterMonoBehaviour
 
 	private void OnEnable()
 	{
+		EventManager.Instance.AddListener<FinishedRoomTransition>(OnRoomTransitionFinished);
+
 		// register to node events
 		foreach (NodeLayer layer in layers)
 		{
@@ -64,11 +67,31 @@ public class NodePattern : BetterMonoBehaviour
 
 	private void OnDisable()
 	{
+		EventManager.InstanceIfInitialized?.RemoveListener<FinishedRoomTransition>(OnRoomTransitionFinished);
+
 		// unregister from node events	
 		foreach (NodeLayer layer in layers)
 		{
 			layer.OnInteracted -= OnInteracted;
 		}
+	}
+
+	private void OnRoomTransitionFinished(FinishedRoomTransition eventData)
+	{
+		int currentRoomID = RoomManager.Instance.GetCurrentRoomID().z;
+
+		if (currentRoomID == 6)
+		{
+			DialogueManager.Instance.SetCurrentDialogue(RoomType.ArtStyle);
+			MenuManager.Instance.OpenMenu<DialogueMenu>();
+		}
+
+	}
+
+	private void DialogueTrigger()
+	{
+		DialogueManager.Instance.CurrentDialogue.SetCurrentKnot($"Part{currentDialoguePart}");
+		MenuManager.Instance.OpenMenu<DialogueMenu>();
 	}
 
 	private void OnInteracted(NodeLayer nodeLayer, Node node)
@@ -95,10 +118,10 @@ public class NodePattern : BetterMonoBehaviour
 		}
 	}
 
-	/*Don't use Hungarian notation, pWaitTime = waitTime.
-	 * public IEnumerator WrongInputSpriteSwap(float pWaitTime)
-	 */
-	public IEnumerator WrongInputSpriteSwap(float waitTime)
+/*Don't use Hungarian notation, pWaitTime = waitTime.
+ * public IEnumerator WrongInputSpriteSwap(float pWaitTime)
+ */
+public IEnumerator WrongInputSpriteSwap(float waitTime)
 	{
 		Image currentImage = tubeSprite.GetComponent<Image>();
 		currentImage.sprite = wrongInputSprite;
@@ -147,7 +170,9 @@ public class NodePattern : BetterMonoBehaviour
 			else
 			{
 				//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
-				ActivePatternManager.Instance.isWon = true;				
+				ActivePatternManager.Instance.isWon = true;
+				currentDialoguePart = 3;
+				DialogueTrigger();
 			}
 
 			drawLines.ResetLine();

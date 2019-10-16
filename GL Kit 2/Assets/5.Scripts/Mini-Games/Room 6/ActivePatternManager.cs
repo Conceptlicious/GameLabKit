@@ -21,7 +21,8 @@ public class ActivePatternManager : Manager<ActivePatternManager>
 		amount++;
 		if(amount == 1)
 		{
-			//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+			DialogueManager.Instance.CurrentDialogue.SetCurrentKnot("Part2");
+			MenuManager.Instance.OpenMenu<DialogueMenu>();
 		}
 	}
 

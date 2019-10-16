@@ -7,6 +7,7 @@ using GameLab;
 public class SelectButton : BetterMonoBehaviour
 {
 	[SerializeField] private Image completeButtons;
+	NodePattern nodePattern;
 	public static Sprite ArtSprite { get; private set; }
 	private Image buttonImage;
 	private Button selectButton;
@@ -28,9 +29,9 @@ public class SelectButton : BetterMonoBehaviour
 
 		ArtSprite = selectedSprite;
 		completeButtons.gameObject.SetActive(true);
-		//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
-		//EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.ArtStyle));
-		//EventManager.Instance.RaiseEvent(new NextRoomEvent());
+
+		DialogueManager.Instance.CurrentDialogue.SetCurrentKnot("Part4");
+		MenuManager.Instance.OpenMenu<DialogueMenu>();
 	}
 
 	public void YesButton()
@@ -44,5 +45,6 @@ public class SelectButton : BetterMonoBehaviour
 	public void NoButton()
 	{
 		completeButtons.gameObject.SetActive(false);
+		MenuManager.Instance.CloseMenu<DialogueMenu>();
 	}
 }
