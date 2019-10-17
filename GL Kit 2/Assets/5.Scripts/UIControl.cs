@@ -87,7 +87,6 @@ public class UIControl : MonoBehaviour
 	{
 		EventManager.Instance.AddListener<NextRoomEvent>(OnTransitionStart);
 		EventManager.Instance.AddListener<FinishedRoomTransition>(OnTransitionEnd);
-		EventManager.Instance.AddListener<ProceduralButtonCreation>(OnButtonCreate);
 	}
 
 	public void AddToggleToList(Toggle toggleToAdd, ToggleGroup toggleGroup, Disabilities disabilities)
@@ -131,12 +130,6 @@ public class UIControl : MonoBehaviour
 	public void OnRedoButton()
 	{
 		Debug.Log("Redo button pressed");
-	}
-
-	private void OnButtonCreate(ProceduralButtonCreation info)
-	{
-		Debug.Log(info.ButtonName);
-		info.Button.onClick.AddListener(events[info.ButtonName]);
 	}
 
 	public void RemoveToggleFromList(Toggle toggleToRemove, Disabilities disabilitiesToRemove)
