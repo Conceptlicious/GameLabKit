@@ -16,6 +16,7 @@ public class DialogueMenu : Menu
 		base.OnOpened();
 
 		continueButton.onClick.AddListener(RequestNextDialogueLine);
+		EventManager.Instance.AddListener<RequestMakeDialogueChoiceEvent>(OnRequestMakeDialogueChoiceEvent);
 
 		RequestNextDialogueLine();
 	}
@@ -25,6 +26,11 @@ public class DialogueMenu : Menu
 		base.OnClosed();
 
 		continueButton.onClick.RemoveListener(RequestNextDialogueLine);
+	}
+
+	private void OnRequestMakeDialogueChoiceEvent()
+	{
+		DestroyAllMenuListings();
 	}
 
 	private void RequestNextDialogueLine()
@@ -42,7 +48,7 @@ public class DialogueMenu : Menu
 			CreateNewListing<DialogueChoiceMenuListing>().DialogueChoice = choice;
 		}
 
-		if (nextDialogueLineRequest.DialogueCompleted)
+		if (nextDialogueLineRequest.DialogueCompleted || nextDialogueLineRequest.NextDialogueLine == "")
 		{
 			Close();
 		}
