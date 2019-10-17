@@ -30,6 +30,9 @@ public class RoomStory : RuntimeScriptableObject
 		set => inkStory = value;
 	}
 
+	public bool IsKnotFinished => !InkStory.canContinue && InkStory.currentChoices.Count == 0;
+	
+
 	public void SetCurrentKnot(string knotName) => InkStory.ChoosePathString(knotName);
 
 	public void Reset(string knotToStartFrom = null)
