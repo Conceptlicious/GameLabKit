@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using UnityEngine.EventSystems;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 using GameLab;
+using System;
 
 //--------------------------------------------------
 //Produced by Mathias
@@ -11,7 +11,6 @@ using GameLab;
 //and which message should be send to the TextUpdater.
 //Usage: Once on the CollectedHiddenObjectBar.
 //--------------------------------------------------
-
 public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 {
 	private const string OBJECT_ALREADY_FOUND_MESSAGE = "You have already found this object";
@@ -85,6 +84,13 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 		buttonsImage.gameObject.SetActive(false);
 	}
 
+	private void ExplanationDialogue(string knotName)
+	{
+		DialogueManager.Instance.CurrentDialogue.SetCurrentKnot(knotName);
+		//When done invoke "explanation done" event.
+	}
+
+	//This need to listen to "explanation done" event.
 	private void ProgressDialogue()
 	{
 		if (foundObjects.Count <= 7)

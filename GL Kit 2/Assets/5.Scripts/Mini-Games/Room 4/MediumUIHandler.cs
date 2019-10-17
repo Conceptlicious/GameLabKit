@@ -1,18 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using GameLab;
+using System;
 
 [DisallowMultipleComponent]
 public class MediumUIHandler : Manager<MediumUIHandler>
 {
 	private const int MAX_AMOUNT_OF_ACTIVE_BUTTONS = 8;
 	private const string PUZZLE_IN_PROGRESS_WARNING = "You can't close when there is a puzzle in progress";
+
+	public event Action<string> OnPuzzleCompleted;
 	
 	public bool MinigameIsWon { get; private set; } = false;
 	public string ExtendedDescription { get; private set; }	
-
 	public Button closeScreenButton;
 	[SerializeField] private GameObject pieceTextHolder;
 	[HideInInspector] public int activeButtons = 0;	
@@ -80,6 +81,12 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 		pieceTextHolder.SetActive(false);
 	}
 
+	private void OnPuzzleCompletion(string completedPuzzleName)
+	{
+		DialogueManager.Instance.CurrentDialogue.SetCurrentKnot(completedPuzzleName);
+		MenuManager.Instance.OpenMenu<DialogueMenu>();
+	}
+
 	private void OnRoomTransitionFinished(FinishedRoomTransition eventData)
 	{
 		int currentRoomID = RoomManager.Instance.GetCurrentRoomID().z;
@@ -109,6 +116,7 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 		pieceText = pieceTextHolder.GetComponentInChildren<Text>();
 
 		closeScreenButton.onClick.AddListener(() => CloseScreen());
+		OnPuzzleCompleted += OnPuzzleCompletion;
 		EventManager.Instance.AddListener<FinishedRoomTransition>(OnRoomTransitionFinished);
 	}
 }
