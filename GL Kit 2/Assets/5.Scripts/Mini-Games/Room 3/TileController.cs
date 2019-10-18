@@ -107,6 +107,15 @@ namespace Room3
 				// a double for each loop in the controlled tiles of this controlled tiles
 				foreach(Tile otherControlledTile in tileController.controlledTiles)
 				{
+					if (TileGrid.Instance.IsOnBridgeLayer(otherControlledTile))
+					{
+						Tile bridgeControlledTile = TileGrid.Instance.GetBridgeTile(otherControlledTile);
+						if (controlledTile.TryConnectTo(bridgeControlledTile))
+						{
+							ConnectedControlledTile = bridgeControlledTile;
+							return true;
+						}
+					}
 					// if it can connect set the connectedcontrolledtile to controlledtile
 					if(controlledTile.TryConnectTo(otherControlledTile))
 					{

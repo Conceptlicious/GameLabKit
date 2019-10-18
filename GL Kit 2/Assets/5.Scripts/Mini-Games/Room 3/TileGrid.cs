@@ -51,10 +51,24 @@ namespace Room3
 				return;
 			}
 
+			EventManager.Instance.AddListener<FinishedRoomTransition>(OnFinishedTransition);
+
 			//SpawnLevel(levels[0]);
 			NextLevel();
 		}
+		
+		private void OnFinishedTransition(FinishedRoomTransition eventData)
+		{
+			int roomId = RoomManager.Instance.GetCurrentRoomID().z;
 
+			if (roomId == 3)
+			{
+				DialogueManager.Instance.SetCurrentDialogue(RoomType.Genre);
+				MenuManager.Instance.OpenMenu<DialogueMenu>();
+			}
+
+		}
+		
 		public void SetGridInteractable(bool canInteractedWith)
 		{
 			canBeInteractedWith = canInteractedWith;
@@ -168,6 +182,17 @@ namespace Room3
 			//Set the lastineractedtilecontroller to null and remove the finishedGroups
 			lastInteractedWithTileController = null;
 			finishedGroups.Clear();
+		}
+
+		public bool IsOnBridgeLayer(Tile tile)
+		{
+			return bridgeLayer.Tiles[tile.Row, tile.Col].TileType == Tile.Type.Connection;
+		}
+
+		public Tile GetBridgeTile(Tile tile)
+		{
+			Tile bridgeTile = bridgeLayer.Tiles[tile.Row, tile.Col];
+			return bridgeTile;
 		}
 
 		private void OnTileInteractedWith(TileController tileController)
