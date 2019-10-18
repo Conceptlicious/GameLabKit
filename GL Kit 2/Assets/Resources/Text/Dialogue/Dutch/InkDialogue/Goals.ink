@@ -33,35 +33,43 @@
 -"Geweldig! U heeft [doel] gekozen als doel dat u wilt bereiken met uw game. Bent u tevreden met uw keuze?"
 ->END
 ===Awareness===
+-"Awareness"
 -"Een game die meer inzicht geeft in een bepaalt onderwerp of situatie. Het maakt de speler meer bewust van het onderwerp of situatie."
 -"Dit soort games heten awareness games."
 ->END
 ===Education===
+-"Education"
 -"Een game die gemaakt is om de speler te informeren over een specifiek onderwerp en een vaardigheid aan te leren."
 -"De game is niet gebaseerd op echte senarios."
 -"Dit soort games heten education games."
 ->END
 ===Health===
+-"Health"
 -"Een game die is gemaakt om de speler zijn/haar welzijn te verbeteren. Het kan mensen met hun handicap leren omgaan,"
 -"of mensen aan te sporen tot sporten. Maar het kan ook helpen in mentale zorg, bijvoorbeelt als een therapeutisch hulpmiddel."
 -"Dit soort games heten health games."
 ->END
 ===Advertisement===
+-"Advertisement"
 -"Een game over een bepaalt merk/product om het te promoten. Na het spelen van de game zou de speler zich meer aangetrokken moeten voelen tot het merk/product."
 -"Deze games heten advertisement games."
 ->END
 ===Activation===
+-"Activation"
 -"Een game die de speler activeerd om zijn/haar gedrag aan te passen door het spelen van de game."
 -"De speler verandert zijn levens stijl of mening."
 _"Dit soort games heten activation games."
 ->END
 ===Recruitment===
+-"Recruitment"
 -"Een game die word gebruikt tijdens een solicitatie procedure. Door het spelen van de game, krijgt de speler een indruk van het bedrijf."
 -"Daar naast krijgt het bedrijf ook een indruk van hoe de speler te werk gaat."
 -"Hier door kan het bedrijf zien welke funtie bij de solicitant past."
 -"Dit soort games heten recruitment games."
 ->END
 ===Simulation===
+-"Simulation"
 -"Een game gemaakt voor trainings doeleinden. De speler moet verschillende taken die gebaseerd zijn op echte senarios voltooien."
 -"Tijdens het spelen van de game ontwikkelt de speler vaardigheden en kennis die hij/zij kan toepassen in real life."
+"Dit soort games heten simulation games "
 ->END
