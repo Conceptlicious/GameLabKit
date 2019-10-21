@@ -14,9 +14,10 @@ public class DialogueMenu : Menu
 	protected override void OnOpened()
 	{
 		base.OnOpened();
-
+		
 		continueButton.onClick.AddListener(RequestNextDialogueLine);
 		EventManager.Instance.AddListener<RequestMakeDialogueChoiceEvent>(OnRequestMakeDialogueChoiceEvent);
+		EventManager.Instance.AddListener<DialogueKnotCompletedEvent>(Close, 1000);
 
 		RequestNextDialogueLine();
 	}
@@ -26,6 +27,9 @@ public class DialogueMenu : Menu
 		base.OnClosed();
 
 		continueButton.onClick.RemoveListener(RequestNextDialogueLine);
+
+ 		EventManager.InstanceIfInitialized?.RemoveListener<RequestMakeDialogueChoiceEvent>(OnRequestMakeDialogueChoiceEvent);
+  		EventManager.InstanceIfInitialized?.RemoveListener<DialogueKnotCompletedEvent>(Close);
 	}
 
 	private void OnRequestMakeDialogueChoiceEvent()
@@ -36,26 +40,27 @@ public class DialogueMenu : Menu
 	private void RequestNextDialogueLine()
 	{
 		RequestNextDialogueLineEvent nextDialogueLineRequest = new RequestNextDialogueLineEvent();
-		EventManager.Instance.RaiseEvent<RequestNextDialogueLineEvent>(nextDialogueLineRequest);
+		EventManager.Instance.RaiseEvent(nextDialogueLineRequest);
+
 		if(!nextDialogueLineRequest.Consumed)
 		{
 			Debug.LogWarning("Nothing is listening or consuming the dialogue line request event");
 			return;
 		}
+
+		if (nextDialogueLineRequest.KnotCompleted)
+		{
+			return;
+		}
+
 		DestroyAllMenuListings();
+
 		foreach (Choice choice in nextDialogueLineRequest.Choices)
 		{
 			CreateNewListing<DialogueChoiceMenuListing>().DialogueChoice = choice;
 		}
 
-		if (nextDialogueLineRequest.DialogueCompleted || nextDialogueLineRequest.NextDialogueLine == "")
-		{
-			Close();
-		}
-		else
-		{
-			SetDialogueLine(nextDialogueLineRequest.NextDialogueLine);
-		}
+		SetDialogueLine(nextDialogueLineRequest.NextDialogueLine);
 	}
 
 	public void SetDialogueLine(string dialogueLine)

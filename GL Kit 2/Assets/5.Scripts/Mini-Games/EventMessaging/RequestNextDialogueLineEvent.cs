@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 public class RequestNextDialogueLineEvent : GameLabEvent
 {
 	public string NextDialogueLine { get; set; } = null;
-	public bool DialogueCompleted { get; set; } = false;
+	public bool KnotCompleted { get; set; } = false;
 	public List<Choice> Choices { get; set; } = new List<Choice>();
 	public bool HasChoices => Choices.Count > 0;
 }

@@ -6,6 +6,8 @@ using GameLab;
 [DisallowMultipleComponent]
 public class ActivePatternManager : Manager<ActivePatternManager>
 {
+	private const string KNOT_NAME = "Part2";
+
 	[SerializeField] private List<NodePattern> patterns;
 	[SerializeField] private NodePattern activePattern;
 	private int amount = 0;
@@ -19,9 +21,9 @@ public class ActivePatternManager : Manager<ActivePatternManager>
 		}
 		activePattern = newPattern;
 		amount++;
-		if(amount == 1)
+		if (amount == 1)
 		{
-			DialogueManager.Instance.CurrentDialogue.SetCurrentKnot("Part2");
+			DialogueManager.Instance.CurrentDialogue.CurrentKnot = KNOT_NAME;
 			MenuManager.Instance.OpenMenu<DialogueMenu>();
 		}
 	}

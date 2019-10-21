@@ -219,9 +219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55d6984733761b4083d4320e25fd254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A game designed to inform the player about a specific subject and to
-    teach them a skill. The game isn't based on a real-life scenarios. These games
-    are called edutainment games.
 --- !u!114 &902134705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,167 +605,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Select
---- !u!1 &4934541785942488682
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4934541785942488685}
-  - component: {fileID: 4934541785942488687}
-  - component: {fileID: 4934541785942488684}
-  m_Layer: 5
-  m_Name: ObjectDescriptionText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &4934541785942488685
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934541785942488682}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4934541786854160016}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -20, y: 81}
-  m_SizeDelta: {x: 400, y: 858}
-  m_Pivot: {x: 1, y: 0.5}
---- !u!222 &4934541785942488687
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934541785942488682}
-  m_CullTransparentMesh: 0
---- !u!114 &4934541785942488684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934541785942488682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 1
-    m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 43
-    m_Alignment: 1
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "A game that is used during an application procedure. By playing the game
-    the player\r gets some insight into a company. Besides, the company gets more
-    insight into the job applicant. In addition, the company can see if the applicant
-    fits a specific position. These\r games are called recruitment games."
---- !u!1 &4934541786171543477
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4934541786171543476}
-  - component: {fileID: 4934541786171543478}
-  - component: {fileID: 4934541786171543479}
-  m_Layer: 5
-  m_Name: ObjectNameText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &4934541786171543476
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934541786171543477}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4934541786854160016}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.015625, y: 0.8502179}
-  m_AnchorMax: {x: 0.25, y: 0.96732026}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 1}
---- !u!222 &4934541786171543478
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934541786171543477}
-  m_CullTransparentMesh: 0
---- !u!114 &4934541786171543479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934541786171543477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 1
-    m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 51
-    m_Alignment: 4
-    m_AlignByGeometry: 1
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Health & Well-being
 --- !u!1 &4934541786277516931
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,9 +824,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55d6984733761b4083d4320e25fd254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: "A game which will change the player\u2019s behaviour after they have
-    played it. The player will change their lifestyle or opinion/attitude. These games
-    are called activation games. "
 --- !u!114 &1340257408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1124,9 +957,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55d6984733761b4083d4320e25fd254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A game that is designed for training purposes. The player needs to
-    complete different tasks based on real-life scenarios. During the game, the player
-    learns new information, which they can apply in real-life.
 --- !u!114 &248189114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1391,10 +1221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55d6984733761b4083d4320e25fd254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A game that is designed to help the player heal or improve their well-being.
-    It can help people cope with disabilities or encourage people to exercise. In
-    addition, these games can be used in mental healthcare, for example as a therapeutic
-    tool. These games are called health games.
 --- !u!114 &399759105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1654,7 +1480,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4934541786854160016}
-  - component: {fileID: 4934541786854160019}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1674,8 +1499,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5525785916771719793}
-  - {fileID: 4934541786171543476}
-  - {fileID: 4934541785942488685}
   - {fileID: 4934541787257728170}
   m_Father: {fileID: 4934541786980325442}
   m_RootOrder: 3
@@ -1685,18 +1508,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4934541786854160019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934541786854160017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed87a3244cabe74fbf9aefa7e875526, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4934541786980325470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1929,9 +1740,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55d6984733761b4083d4320e25fd254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: 'A game about a specific brand or product made to promote it. It is
-    aimed to make the player feel more attracted to the product/brand after the game.
-    These games are called advergames. '
 --- !u!114 &87267476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2065,9 +1873,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55d6984733761b4083d4320e25fd254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A game which gives the player some insight into a company. Besides,
-    the company gets some information about the job applicant and if they will fit
-    to the specific position. These games are called recruitment games.
 --- !u!114 &1278005489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2201,8 +2006,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55d6984733761b4083d4320e25fd254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A game which gives the player more insight into a specific subject
-    or situation. These games are called awareness games.
 --- !u!114 &934842828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2377,7 +2180,7 @@ RectTransform:
   m_Children:
   - {fileID: 4934541785918166761}
   m_Father: {fileID: 4934541786854160016}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

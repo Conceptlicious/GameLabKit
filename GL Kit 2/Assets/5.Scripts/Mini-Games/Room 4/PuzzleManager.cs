@@ -7,15 +7,13 @@ using GameLab;
 [DisallowMultipleComponent]
 public class PuzzleManager : Manager<PuzzleManager>
 {
-	private const int WEARABLE_INDEX = 5;
-
 	[HideInInspector] public List<GameObject> puzzles = new List<GameObject>();
 	public List<PuzzlePieceDrag> PuzzlePieces { get; private set; } = new List<PuzzlePieceDrag>();
 	public List<PuzzlePieceSocket> PuzzlePieceSockets { get; private set; } = new List<PuzzlePieceSocket>();
 	public bool IsPuzzleInProgress { get; private set; } = false;
+	public GameObject activePuzzle = null;
 	private int PiecesInSocketNeeded = 0;
 	private int piecesInSocket = 0;
-	private GameObject activePuzzle = null;
 
 	protected override void Awake()
 	{
@@ -68,14 +66,18 @@ public class PuzzleManager : Manager<PuzzleManager>
 
 		if (piecesInSocket == PiecesInSocketNeeded)
 		{
-			IsPuzzleInProgress = false;
-			MediumUIHandler.Instance.DisplayPieceText(MediumUIHandler.Instance.ExtendedDescription);
-			MediumUIHandler.Instance.EnableNextButton();
-
-			if (MediumUIHandler.Instance.activeButtons == WEARABLE_INDEX)
-			{
-				//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
-			}
+			PuzzleCompleted();
 		}
+
+		
+	}
+
+	private void PuzzleCompleted()
+	{
+		IsPuzzleInProgress = false;
+		MediumUIHandler.Instance.EnableNextButton();
+
+		DialogueManager.Instance.CurrentDialogue.CurrentKnot = activePuzzle.name;
+		MenuManager.Instance.OpenMenu<DialogueMenu>();
 	}
 }

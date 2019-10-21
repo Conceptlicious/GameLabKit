@@ -28,20 +28,6 @@ public class DialogueManager : Manager<DialogueManager>
 		}
 	}
 
-	private void Update()
-	{
-		for(int i = 0; i < 9; ++i)
-		{
-			if(Input.GetKeyDown((KeyCode)(i + 49)))
-			{
-				SetCurrentDialogue((RoomType)i);
-				CurrentDialogue.Reset(IntroKnotName);
-				MenuManager.Instance.CloseMenu<DialogueMenu>();
-				MenuManager.Instance.OpenMenu<DialogueMenu>();
-			}
-		}
-	}
-
 	private void OnEnable()
 	{
 		EventManager.Instance.AddListener<RequestToPlayKnotEvent>(OnRequestToPlayKnot);
@@ -60,10 +46,15 @@ public class DialogueManager : Manager<DialogueManager>
 	private void OnRequestNextDialogueLine(RequestNextDialogueLineEvent nextDialogueLineEvent)
 	{
 		nextDialogueLineEvent.NextDialogueLine = CurrentDialogue.GetNextLine();
-		nextDialogueLineEvent.DialogueCompleted = nextDialogueLineEvent.NextDialogueLine == null;
+		nextDialogueLineEvent.KnotCompleted = string.IsNullOrEmpty(nextDialogueLineEvent.NextDialogueLine) && CurrentDialogue.IsKnotFinished;
 		nextDialogueLineEvent.Choices = CurrentDialogue.InkStory.currentChoices;
 
 		nextDialogueLineEvent.Consume();
+
+		if (nextDialogueLineEvent.KnotCompleted)
+		{
+			EventManager.Instance.RaiseEvent<DialogueKnotCompletedEvent>(CurrentDialogue.RoomID, CurrentDialogue.CurrentKnot);
+		}
 	}
 	private void OnRequestMakeDialogueChoice(RequestMakeDialogueChoiceEvent requestMakeDialogueChoiceEvent) => CurrentDialogue.InkStory.ChooseChoiceIndex(requestMakeDialogueChoiceEvent.DialogueChoice.index);
 	/// <summary>
@@ -96,6 +87,6 @@ public class DialogueManager : Manager<DialogueManager>
 			CurrentDialogue.Reset();
 		}
 
-		CurrentDialogue.SetCurrentKnot(knotToStartFrom);
+		CurrentDialogue.CurrentKnot = knotToStartFrom;
 	}
 }

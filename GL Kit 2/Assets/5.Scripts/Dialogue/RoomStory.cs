@@ -14,6 +14,17 @@ public class RoomStory : RuntimeScriptableObject
 	[SerializeField] private TextAsset inkFileAsset = null;
 	public TextAsset InkFileAsset => inkFileAsset;
 
+	private string currentKnot = string.Empty;
+	public string CurrentKnot
+	{
+		get => currentKnot;
+		set
+		{
+			currentKnot = value;
+			InkStory.ChoosePathString(currentKnot);
+		}
+	}
+
 	private Story inkStory = null;
 	public Story InkStory
 	{
@@ -30,10 +41,10 @@ public class RoomStory : RuntimeScriptableObject
 		set => inkStory = value;
 	}
 
+	/// <summary>
+	/// Returns true if the story can no longer continue and there are no choices left.
+	/// </summary>
 	public bool IsKnotFinished => !InkStory.canContinue && InkStory.currentChoices.Count == 0;
-	
-
-	public void SetCurrentKnot(string knotName) => InkStory.ChoosePathString(knotName);
 
 	public void Reset(string knotToStartFrom = null)
 	{
@@ -41,7 +52,7 @@ public class RoomStory : RuntimeScriptableObject
 
 		if(!string.IsNullOrEmpty(knotToStartFrom))
 		{
-			SetCurrentKnot(knotToStartFrom);
+			CurrentKnot = knotToStartFrom;
 		}
 	}
 

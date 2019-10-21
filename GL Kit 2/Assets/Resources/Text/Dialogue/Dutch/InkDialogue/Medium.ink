@@ -25,3 +25,11 @@
 ===Part5===
 -"U heeft voor [medium] gekozen. Bent u tevreden over deze keuze?"
 ->END
+===VR===
+-""
+->END
+===Browser===
+-"Browser games zijn games die overal gespeeld kunnen worden waar er een internetverbinding is. Er hoeft niets gedownload of geïnstalleerd te worden."
+-"Ze worden gespeeld via de web browser en hebben vaak een simpele speelstijl."
+-"De meeste browser games zijn ontworpen om de aandacht van de spelers snel te trekken en om de spelers daarmee constant terug te laten komen."
+->END

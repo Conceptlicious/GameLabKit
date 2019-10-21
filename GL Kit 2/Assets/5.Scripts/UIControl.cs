@@ -28,7 +28,6 @@ public class UIControl : MonoBehaviour
 	[SerializeField] private Transform ageSliders = null;
 	[SerializeField] private Transform genderToggles = null;
 	//Temporary for testing Room1
-	[SerializeField] private Image choiceButtons;
 	private Slider ageSilderMin = null;
 	private Slider ageSilderMax = null;
 	private Slider AverageAgeSlider = null;

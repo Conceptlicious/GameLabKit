@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using GameLab;
 
-[RequireComponent(typeof(MonoBehaviour))]
+[RequireComponent(typeof(Button))]
 public class MediumButton : BetterMonoBehaviour
 {
 	public static Sprite selectedMediumSprite;
@@ -62,6 +62,6 @@ public class MediumButton : BetterMonoBehaviour
 		currentPuzzle.SetActive(true);
 
 		PuzzleManager.Instance.SetupNewPuzzle(currentPuzzle);
-		MediumUIHandler.Instance.OpenScreen(mediumInformation.name , mediumInformation.description);
+		MediumUIHandler.Instance.OpenScreen(mediumInformation.name, mediumButton);
 	}
 }

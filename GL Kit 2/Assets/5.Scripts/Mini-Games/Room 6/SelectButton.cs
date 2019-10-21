@@ -6,6 +6,8 @@ using GameLab;
 
 public class SelectButton : BetterMonoBehaviour
 {
+	private const string KNOT_NAME = "Part4"; 
+
 	[SerializeField] private Image completeButtons;
 	NodePattern nodePattern;
 	public static Sprite ArtSprite { get; private set; }
@@ -30,7 +32,7 @@ public class SelectButton : BetterMonoBehaviour
 		ArtSprite = selectedSprite;
 		completeButtons.gameObject.SetActive(true);
 
-		DialogueManager.Instance.CurrentDialogue.SetCurrentKnot("Part4");
+		DialogueManager.Instance.CurrentDialogue.CurrentKnot = KNOT_NAME;
 		MenuManager.Instance.OpenMenu<DialogueMenu>();
 	}
 

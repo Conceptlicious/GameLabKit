@@ -7,13 +7,14 @@ using System;
 [DisallowMultipleComponent]
 public class MediumUIHandler : Manager<MediumUIHandler>
 {
+	private const string KNOT_3_NAME = "Part3";
+	private const string KNOT_4_NAME = "Part4";
 	private const int MAX_AMOUNT_OF_ACTIVE_BUTTONS = 8;
 	private const string PUZZLE_IN_PROGRESS_WARNING = "You can't close when there is a puzzle in progress";
+	private const string KNOT_NAME_WEARABLE = "Wearable";
+	private readonly Color32 FCE300 = new Color(252, 227, 0);
 
-	public event Action<string> OnPuzzleCompleted;
-	
 	public bool MinigameIsWon { get; private set; } = false;
-	public string ExtendedDescription { get; private set; }	
 	public Button closeScreenButton;
 	[SerializeField] private GameObject pieceTextHolder;
 	[HideInInspector] public int activeButtons = 0;	
@@ -32,8 +33,8 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 	{
 		if (activeButtons >= MAX_AMOUNT_OF_ACTIVE_BUTTONS)
 		{
-			MinigameIsWon = true;
-			//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+			MinigameIsWon = true; DialogueManager.Instance.CurrentDialogue.CurrentKnot = KNOT_4_NAME;
+			MenuManager.Instance.OpenMenu<DialogueMenu>();
 			return;
 		}
 
@@ -54,13 +55,12 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 		pieceText.text = textToDisplay;
 	}
 
-	public void OpenScreen(string mediumName, string mediumDescription)
+	public void OpenScreen(string mediumName, Button pressedButton)
 	{
 		closeScreenButton.gameObject.SetActive(true);
 		pieceTextHolder.SetActive(true);
 
-		ExtendedDescription = mediumDescription;
-
+		PuzzleManager.Instance.activePuzzle = pressedButton.gameObject;
 		pieceText.text = mediumName;
 	}
 
@@ -68,7 +68,7 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 	{
 		if(PuzzleManager.Instance.IsPuzzleInProgress)
 		{
-			DisplayPieceText(new Color32(252, 227, 0, 255), PUZZLE_IN_PROGRESS_WARNING);
+			DisplayPieceText(FCE300, PUZZLE_IN_PROGRESS_WARNING);
 			return;
 		}
 
@@ -81,12 +81,6 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 		pieceTextHolder.SetActive(false);
 	}
 
-	private void OnPuzzleCompletion(string completedPuzzleName)
-	{
-		DialogueManager.Instance.CurrentDialogue.SetCurrentKnot(completedPuzzleName);
-		MenuManager.Instance.OpenMenu<DialogueMenu>();
-	}
-
 	private void OnRoomTransitionFinished(FinishedRoomTransition eventData)
 	{
 		int currentRoomID = RoomManager.Instance.GetCurrentRoomID().z;
@@ -96,6 +90,17 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 			DialogueManager.Instance.SetCurrentDialogue(RoomType.Medium);
 			MenuManager.Instance.OpenMenu<DialogueMenu>();
 		}
+	}
+
+	private void OnDialogueKnotCompleted(DialogueKnotCompletedEvent eventData)
+	{
+		if(eventData.Knot != KNOT_NAME_WEARABLE || eventData.CompletedRoomID != RoomType.Medium)
+		{
+			return;
+		}
+
+		DialogueManager.Instance.CurrentDialogue.CurrentKnot = KNOT_3_NAME;
+		MenuManager.Instance.OpenMenu<DialogueMenu>();
 	}
 
 	private void SetVariables()
@@ -116,7 +121,7 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 		pieceText = pieceTextHolder.GetComponentInChildren<Text>();
 
 		closeScreenButton.onClick.AddListener(() => CloseScreen());
-		OnPuzzleCompleted += OnPuzzleCompletion;
 		EventManager.Instance.AddListener<FinishedRoomTransition>(OnRoomTransitionFinished);
+		EventManager.Instance.AddListener<DialogueKnotCompletedEvent>(OnDialogueKnotCompleted);
 	}
 }

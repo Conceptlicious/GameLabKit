@@ -90,7 +90,7 @@ public class NodePattern : BetterMonoBehaviour
 
 	private void DialogueTrigger()
 	{
-		DialogueManager.Instance.CurrentDialogue.SetCurrentKnot($"Part{currentDialoguePart}");
+		//DialogueManager.Instance.CurrentDialogue.SetCurrentKnot($"Part{currentDialoguePart}");
 		MenuManager.Instance.OpenMenu<DialogueMenu>();
 	}
 

@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 using GameLab;
-using System;
 
 //--------------------------------------------------
 //Produced by Mathias
@@ -13,9 +11,6 @@ using System;
 //--------------------------------------------------
 public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 {
-	private const string OBJECT_ALREADY_FOUND_MESSAGE = "You have already found this object";
-	private const string WARNING = "Warning";
-	private const string WARNING_EXPLINATION = "There is no object selected";
 	private const int HIDDENOBJECTS_AMOUNT = 7;
 
 	public bool MinigameIsWon { get; private set; } = false;
@@ -23,7 +18,9 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 	[SerializeField] private Image buttonsImage;
 	[HideInInspector] public Sprite lastSelectedObjectSprite;
 	private List<GameObject> foundObjects = new List<GameObject>();
-	private int currentDialoguePart = 2;
+	private int currentKnotID = 2;
+	private string currentKnotPath = string.Empty;
+	private string foundObjectName = string.Empty;
 
 	private void Start()
 	{
@@ -38,12 +35,13 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 		{
 			currentHiddenObject.Found();
 			foundObjects.Add(foundObject);
+			foundObjectName = foundObject.name;
+
 			ProgressDialogue();
 
 			if (foundObjects.Count >= HIDDENOBJECTS_AMOUNT)
 			{
 				nextMinigameButton.SetActive(true);
-				TextUpdater.Instance.CallUpdateTextCoroutine(foundObject.name, currentHiddenObject.Description, true);
 				MinigameIsWon = true;
 			}
 		}
@@ -51,11 +49,8 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 		{
 			if (MinigameIsWon)
 			{
-				TextUpdater.Instance.CallUpdateTextCoroutine(foundObject.name, currentHiddenObject.Description);
 				return;
 			}
-
-			TextUpdater.Instance.CallUpdateTextCoroutine(foundObject.name, OBJECT_ALREADY_FOUND_MESSAGE);
 		}
 	}
 
@@ -63,10 +58,8 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 	{
 		if (lastSelectedObjectSprite == null)
 		{
-			TextUpdater.Instance.CallUpdateTextCoroutine(WARNING, WARNING_EXPLINATION);
 			return;
-		}
-		Debug.Log("qUICK cHECK");
+		} 
 		buttonsImage.gameObject.SetActive(true);
 		//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 	}
@@ -84,20 +77,27 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 		buttonsImage.gameObject.SetActive(false);
 	}
 
-	private void ExplanationDialogue(string knotName)
+	private void OnDialogueKnotCompleted(DialogueKnotCompletedEvent eventData)
 	{
-		DialogueManager.Instance.CurrentDialogue.SetCurrentKnot(knotName);
-		//When done invoke "explanation done" event.
+		if (eventData.Knot != currentKnotPath || eventData.CompletedRoomID != RoomType.Goals)
+		{
+			return;
+		}
+		
+		//DialogueManager.Instance.CurrentDialogue.Reset();
+		DialogueManager.Instance.CurrentDialogue.CurrentKnot = foundObjectName;
+		MenuManager.Instance.OpenMenu<DialogueMenu>();
 	}
 
-	//This need to listen to "explanation done" event.
 	private void ProgressDialogue()
 	{
-		if (foundObjects.Count <= 7)
+		if (foundObjects.Count <= HIDDENOBJECTS_AMOUNT)
 		{
-			DialogueManager.Instance.CurrentDialogue.SetCurrentKnot($"Part{currentDialoguePart}");
+			currentKnotPath = $"Part{currentKnotID}";
+
+			DialogueManager.Instance.CurrentDialogue.CurrentKnot = currentKnotPath;
 			MenuManager.Instance.OpenMenu<DialogueMenu>();
-			++currentDialoguePart;
+			++currentKnotID;
 		}
 	}
 
@@ -116,5 +116,6 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 	{
 		nextMinigameButton.SetActive(false);
 		EventManager.Instance.AddListener<FinishedRoomTransition>(OnFinishedRoomTransition);
+		EventManager.Instance.AddListener<DialogueKnotCompletedEvent>(OnDialogueKnotCompleted);
 	}
 }
