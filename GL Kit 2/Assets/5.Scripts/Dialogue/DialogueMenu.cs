@@ -16,7 +16,7 @@ public class DialogueMenu : Menu
 		base.OnOpened();
 		
 		continueButton.onClick.AddListener(RequestNextDialogueLine);
-		EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(DestroyAllMenuListings);
+		EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);
 		EventManager.Instance.AddListener<DialogueKnotCompletedEvent>(Close, 1000);
 
 		RequestNextDialogueLine();
@@ -28,8 +28,14 @@ public class DialogueMenu : Menu
 
 		continueButton.onClick.RemoveListener(RequestNextDialogueLine);
 
-		EventManager.InstanceIfInitialized?.RemoveListener<DialogueChoiceSelectedEvent>(DestroyAllMenuListings);
+		EventManager.InstanceIfInitialized?.RemoveListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);
 		EventManager.InstanceIfInitialized?.RemoveListener<DialogueKnotCompletedEvent>(Close);
+	}
+
+	private void OnDialogueChoiceSelected()
+	{
+		DestroyAllMenuListings();
+		RequestNextDialogueLine();
 	}
 
 	private void RequestNextDialogueLine()

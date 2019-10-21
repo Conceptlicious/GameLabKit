@@ -241,7 +241,7 @@ public class UIControl : MonoBehaviour
 
 	private void OnDonePressed()
 	{
-		DialogueManager.Instance.CurrentDialogue.CurrentKnot = "Part2";
+		DialogueManager.Instance.CurrentDialogue.Reset("Part2");
 		MenuManager.Instance.OpenMenu<DialogueMenu>();
 	}
 

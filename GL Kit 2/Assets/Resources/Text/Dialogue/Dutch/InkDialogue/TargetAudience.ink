@@ -6,7 +6,7 @@
 ===Part2===
 -"Goed gedaan! U heeft de doelgroep voor uw game gevisualiseerd! Bent u blij met de keuzes die u heeft gemaakt?"
 * [Yes]
-->DONE
+->Part3
 * [No]
 ->END
 ===Part3===
