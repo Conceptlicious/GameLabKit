@@ -82,23 +82,31 @@ namespace Room3
 				return false;
 			}
 			// If the tilegroups aren't part of ungrouped and the tilegroups arent the same
-			if (TileGroup != Group.Ungrouped && TileGroup != tile.TileGroup)
+			if ((TileGroup != Group.Ungrouped && TileGroup != tile.TileGroup) || tile.TileGroup == null)
 			{
 				return false;
 			}
-			// If the connectiondirections of both arent allowed then return false
-			if (!IsConnectionDirectionAllowed(tile) || !tile.IsConnectionDirectionAllowed(this))
-			{
-				return false;
-			}
+
 			// If the tile isn't a neighbour of this tile return false
 			if (!IsNeighborOf(tile))
 			{
 				return false;
 			}
+
+			// If the connectiondirections of both arent allowed then return false
+			if (!IsConnectionDirectionAllowed(tile) || !tile.IsConnectionDirectionAllowed(this))
+			{
+				return false;
+			}
+
 			//Otherwise connect the tiles and return true
 			tile.NextTile = this;
 			TileGroup = tile.TileGroup;
+
+			if(TileGroup == null)
+			{
+				Debug.Log("tilegroup null");
+			}
 
 			Connected?.Invoke(tile);
 
