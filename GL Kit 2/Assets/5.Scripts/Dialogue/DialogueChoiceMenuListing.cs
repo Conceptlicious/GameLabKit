@@ -40,7 +40,7 @@ public class DialogueChoiceMenuListing : MenuListing
 
 	private void OnClick()
 	{
-		EventManager.Instance.RaiseEvent<RequestMakeDialogueChoiceEvent>(dialogueChoice);
+		EventManager.Instance.RaiseEvent<DialogueChoiceSelectedEvent>(dialogueChoice);
 	}
 
 	protected override void UnregisterFromEvents()

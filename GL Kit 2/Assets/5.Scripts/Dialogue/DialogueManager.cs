@@ -32,14 +32,14 @@ public class DialogueManager : Manager<DialogueManager>
 	{
 		EventManager.Instance.AddListener<RequestToPlayKnotEvent>(OnRequestToPlayKnot);
 		EventManager.Instance.AddListener<RequestNextDialogueLineEvent>(OnRequestNextDialogueLine, 100);
-		EventManager.Instance.AddListener<RequestMakeDialogueChoiceEvent>(OnRequestMakeDialogueChoice);
+		EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(OnRequestMakeDialogueChoice, 100);
 	}
 
 	private void OnDisable()
 	{
 		EventManager.InstanceIfInitialized?.RemoveListener<RequestToPlayKnotEvent>(OnRequestToPlayKnot);
 		EventManager.InstanceIfInitialized?.RemoveListener<RequestNextDialogueLineEvent>(OnRequestNextDialogueLine);
-		EventManager.InstanceIfInitialized?.RemoveListener<RequestMakeDialogueChoiceEvent>(OnRequestMakeDialogueChoice);
+		EventManager.InstanceIfInitialized?.RemoveListener<DialogueChoiceSelectedEvent>(OnRequestMakeDialogueChoice);
 	}
 
 	private void OnRequestToPlayKnot(RequestToPlayKnotEvent playKnotEvent) => SetCurrentDialogue(playKnotEvent.RoomID, playKnotEvent.KnotToPlay);
@@ -56,7 +56,8 @@ public class DialogueManager : Manager<DialogueManager>
 			EventManager.Instance.RaiseEvent<DialogueKnotCompletedEvent>(CurrentDialogue.RoomID, CurrentDialogue.CurrentKnot);
 		}
 	}
-	private void OnRequestMakeDialogueChoice(RequestMakeDialogueChoiceEvent requestMakeDialogueChoiceEvent) => CurrentDialogue.InkStory.ChooseChoiceIndex(requestMakeDialogueChoiceEvent.DialogueChoice.index);
+
+	private void OnRequestMakeDialogueChoice(DialogueChoiceSelectedEvent dialogueChoiceSelectedEvent) => CurrentDialogue.InkStory.ChooseChoiceIndex(dialogueChoiceSelectedEvent.DialogueChoice.index);
 	/// <summary>
 	/// Sets the new current dialogue.
 	/// </summary>
