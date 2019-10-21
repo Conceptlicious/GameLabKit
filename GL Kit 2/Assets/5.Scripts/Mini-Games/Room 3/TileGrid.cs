@@ -184,17 +184,6 @@ namespace Room3
 			finishedGroups.Clear();
 		}
 
-		public bool IsOnBridgeLayer(Tile tile)
-		{
-			return bridgeLayer.Tiles[tile.Row, tile.Col].TileType == Tile.Type.Connection;
-		}
-
-		public Tile GetBridgeTile(Tile tile)
-		{
-			Tile bridgeTile = bridgeLayer.Tiles[tile.Row, tile.Col];
-			return bridgeTile;
-		}
-
 		private void OnTileInteractedWith(TileController tileController)
 		{
 			//If it cant be interacted with then just return
