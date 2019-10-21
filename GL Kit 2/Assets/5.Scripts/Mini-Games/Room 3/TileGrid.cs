@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GameLab;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Room3
 {
@@ -27,7 +28,7 @@ namespace Room3
 
 		[SerializeField] private Lever lever;
 
-		[SerializeField] private GameObject flasks;
+		[SerializeField] private List<Image> flasks;
 
 		private int currentLevelIndex = -1;
 
@@ -81,10 +82,20 @@ namespace Room3
 				print("No more levels");
 				DestroySpawnedLevel();
 				//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
-				flasks.SetActive(true);
+
+					foreach (Image flask in flasks)
+					{
+						Button button = flask.gameObject.GetComponent<Button>();
+						button.enabled = true;
+					}
 				return;
 			}
-		  //	EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+			//	EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+			if (currentLevelIndex >= 0)
+			{
+				flasks[currentLevelIndex].enabled = true;
+			}
+
 			++currentLevelIndex;
 			//print(currentLevelIndex);
 			SetGridInteractable(false);
