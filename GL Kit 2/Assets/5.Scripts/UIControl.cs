@@ -24,9 +24,10 @@ public class UIControl : MonoBehaviour
 	private const int ENABLED_TOGGLES_PER_LIST_MAX = 3;
 	public event Action<Persona> OnPersonaChanged;
 
-	
-	[SerializeField] private Transform ageSliders = null;
-	[SerializeField] private Transform genderToggles = null;
+
+	[SerializeField] private Button doneButton;
+	[SerializeField] private Transform ageSliders;
+	[SerializeField] private Transform genderToggles;
 	//Temporary for testing Room1
 	private Slider ageSilderMin = null;
 	private Slider ageSilderMax = null;
@@ -41,7 +42,7 @@ public class UIControl : MonoBehaviour
 	private List<Toggle> activeSpecialNeedToggles = new List<Toggle>();
 	private List<Disabilities> disabilitiesList = new List<Disabilities>();
 	private Dictionary<string, UnityEngine.Events.UnityAction> events = new Dictionary<string, UnityEngine.Events.UnityAction>();
-	
+
 	private bool isTransitioning = false;
 	public Button speechBoxButton;
 
@@ -50,7 +51,7 @@ public class UIControl : MonoBehaviour
 	{
 		isTransitioning = true;
 		speechBoxButton.GetComponent<Button>().enabled = false;
-		
+
 	}
 
 	private void OnTransitionEnd()
@@ -64,19 +65,6 @@ public class UIControl : MonoBehaviour
 	{
 		RegisterAllListeners();
 		SetVariables();
-	}
-	
-	//NOTE: Please rename, Noah
-	/// <summary>
-	/// Holds the fuction procedural buttons should receive based on their name.
-	/// </summary>
-	private void ThatMethodJoshToldMeToRename()
-	{
-		events.Add("Next", OnNextButton);
-		events.Add("Back", OnBackButton);
-		events.Add("Confirm", OnConfirmButton);
-		events.Add("Start", OnStartButton);
-		events.Add("Redo", OnRedoButton);
 	}
 
 	/// <summary>
@@ -104,31 +92,6 @@ public class UIControl : MonoBehaviour
 		{
 			toggleToAdd.isOn = false;
 		}
-	}
-
-	public void OnNextButton()
-	{  
-		Debug.Log("Next button Pressed");
-	}
-
-	public void OnStartButton()
-	{
-		Debug.Log("Start button Pressed");
-	}
-
-	public void OnBackButton()
-	{
-		Debug.Log("Back button Pressed");
-	}
-
-	public void OnConfirmButton()
-	{
-		Debug.Log("Confirm button Pressed");
-	}
-
-	public void OnRedoButton()
-	{
-		Debug.Log("Redo button pressed");
 	}
 
 	public void RemoveToggleFromList(Toggle toggleToRemove, Disabilities disabilitiesToRemove)
@@ -180,7 +143,7 @@ public class UIControl : MonoBehaviour
 		OnPersonaChanged?.Invoke(persona);
 	}
 
-	
+
 	/// <summary>
 	/// Used in Room 1 for character creation.
 	/// </summary>
@@ -189,11 +152,11 @@ public class UIControl : MonoBehaviour
 	public void GenderTogglePressed(Genders gender, bool isEnabled)
 	{
 		if (isEnabled)
-		{ 
+		{
 			persona.Gender = gender;
 		}
-		OnPersonaChanged?.Invoke(persona);
 
+		OnPersonaChanged?.Invoke(persona);
 	}
 
 	public void TogglePressed(Toggle pressedToggle)
@@ -216,51 +179,24 @@ public class UIControl : MonoBehaviour
 	/// <param name="newDisabilities"></param>
 	public void SetPersonaDisabilities(Disabilities newDisabilities)
 	{
-	/*	if(newDisabilities.Count != 0)
-		{
-			foreach (Disabilities disability in newDisabilities)
+		/*	if(newDisabilities.Count != 0)
 			{
-				persona.Disability |= disability;
+				foreach (Disabilities disability in newDisabilities)
+				{
+					persona.Disability |= disability;
+				}
 			}
-		}
-		else
-		{
-			persona.Disability = new Disabilities();
-		}*/
+			else
+			{
+				persona.Disability = new Disabilities();
+			}*/
 		OnPersonaChanged?.Invoke(persona);
 	}
 
 	/// <summary>
 	/// Used in Room 1 for character creation.
 	/// </summary>
-	public void SetVariables()
-	{
-		ThatMethodJoshToldMeToRename();
-		ageSilderMin = ageSliders.Find("AgeSliderMin").GetComponent<Slider>();
-		ageSilderMax = ageSliders.Find("AgeSliderMax").GetComponent<Slider>();
-		AverageAgeSlider = ageSliders.Find("AverageAge").GetComponent<Slider>();
 
-		ageSilderMax.onValueChanged.AddListener((_) => UpdateAgeSlider());
-		ageSilderMin.onValueChanged.AddListener((_) => UpdateAgeSlider());
-
-		targetAudienceText = ageSilderMin.transform.Find("TargetAudicence").GetComponent<Text>();
-		minAgeText = ageSilderMin.transform.Find("Handle Slide Area/Handle/Text").GetComponent<Text>();
-		maxAgeText = ageSilderMax.transform.Find("Handle Slide Area/Handle/Text").GetComponent<Text>();
-
-		UpdateAgeSlider();
-
-		unspecified = genderToggles.Find("Unspecified").GetComponent<Toggle>();
-		female = genderToggles.Find("Female").GetComponent<Toggle>();
-		male = genderToggles.Find("Male").GetComponent<Toggle>();
-
-		unspecified.onValueChanged.AddListener((isEnabled) => GenderTogglePressed(Genders.Unspecified,
-			isEnabled));
-		female.onValueChanged.AddListener((isEnabled) => GenderTogglePressed(Genders.Female, 
-			isEnabled));
-		male.onValueChanged.AddListener((isEnabled) => GenderTogglePressed(Genders.Male, isEnabled));
-
-		EventManager.Instance.AddListener<FinishedRoomTransition>(OnFinishedRoomTransition);
-	}
 
 	/// <summary>
 	/// Used to force a room transition
@@ -281,6 +217,17 @@ public class UIControl : MonoBehaviour
 		GameData.SetLanguage((GameData.Language)languageOption);
 	}
 
+	private void OnDialogueKnotCompleted(DialogueKnotCompletedEvent eventData)
+	{
+		if(eventData.Knot != "Part3" || eventData.CompletedRoomID != RoomType.TargetAudience)
+		{
+			return;
+		}
+
+		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.TargetAudience));
+		EventManager.Instance.RaiseEvent(new NextRoomEvent());
+	}
+
 	private void OnFinishedRoomTransition(FinishedRoomTransition eventData)
 	{
 		int currentRoomID = RoomManager.Instance.GetCurrentRoomID().z;
@@ -290,5 +237,54 @@ public class UIControl : MonoBehaviour
 			DialogueManager.Instance.SetCurrentDialogue(RoomType.TargetAudience);
 			MenuManager.Instance.OpenMenu<DialogueMenu>();
 		}
+	}
+
+	private void OnDonePressed()
+	{
+		DialogueManager.Instance.CurrentDialogue.CurrentKnot = "Part2";
+		MenuManager.Instance.OpenMenu<DialogueMenu>();
+	}
+
+	private void OnDialogueChoiceMade(DialogueChoiceSelectedEvent eventData)
+	{
+		if(eventData.DialogueChoice.text == "Yes")
+		{
+			DialogueManager.Instance.CurrentDialogue.CurrentKnot = "Part3";
+			MenuManager.Instance.OpenMenu<DialogueMenu>();
+		}
+		else
+		{
+			MenuManager.Instance.CloseMenu<DialogueMenu>();
+		}
+	}
+
+	private void SetVariables()
+	{
+		ageSilderMin = ageSliders.Find("AgeSliderMin").GetComponent<Slider>();
+		ageSilderMax = ageSliders.Find("AgeSliderMax").GetComponent<Slider>();
+		AverageAgeSlider = ageSliders.Find("AverageAge").GetComponent<Slider>();
+
+		ageSilderMax.onValueChanged.AddListener((_) => UpdateAgeSlider());
+		ageSilderMin.onValueChanged.AddListener((_) => UpdateAgeSlider());
+
+		targetAudienceText = ageSilderMin.transform.Find("TargetAudicence").GetComponent<Text>();
+		minAgeText = ageSilderMin.transform.Find("Handle Slide Area/Handle/Text").GetComponent<Text>();
+		maxAgeText = ageSilderMax.transform.Find("Handle Slide Area/Handle/Text").GetComponent<Text>();
+
+		UpdateAgeSlider();
+
+		unspecified = genderToggles.Find("Unspecified").GetComponent<Toggle>();
+		female = genderToggles.Find("Female").GetComponent<Toggle>();
+		male = genderToggles.Find("Male").GetComponent<Toggle>();
+
+		unspecified.onValueChanged.AddListener((isEnabled) => GenderTogglePressed(Genders.Unspecified, isEnabled));
+		female.onValueChanged.AddListener((isEnabled) => GenderTogglePressed(Genders.Female, isEnabled));
+		male.onValueChanged.AddListener((isEnabled) => GenderTogglePressed(Genders.Male, isEnabled));
+
+		doneButton.onClick.AddListener(() => OnDonePressed());
+
+		EventManager.Instance.AddListener<FinishedRoomTransition>(OnFinishedRoomTransition);
+		EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceMade);
+		EventManager.Instance.AddListener<DialogueKnotCompletedEvent>(OnDialogueKnotCompleted);
 	}
 }
