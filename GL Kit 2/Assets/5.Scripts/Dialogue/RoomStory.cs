@@ -68,6 +68,14 @@ public class RoomStory : RuntimeScriptableObject
 		}
 	}
 
+	public void SetStringVariable(string variableName, string value) => inkStory.variablesState[variableName] = value;
+	public string GetStringVariable(string variableName) => inkStory.variablesState[variableName].ToString();
+
+	public void SetIntVariable(string variableName, int value) => inkStory.variablesState[variableName] = value;
+	public int GetIntVariable(string variableName) => (int)(inkStory.variablesState[variableName]);
+	
+	public void SetBoolVariable(string variableName, bool value) => inkStory.variablesState[variableName] = value;
+	public bool GetBoolVariable(string variableName) => (bool)(inkStory.variablesState[variableName]);
 
 	private void InitializeStory()
 	{
