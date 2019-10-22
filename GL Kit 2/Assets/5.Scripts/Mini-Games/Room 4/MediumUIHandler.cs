@@ -7,14 +7,14 @@ using System;
 [DisallowMultipleComponent]
 public class MediumUIHandler : Manager<MediumUIHandler>
 {
-	private const string KNOT_3_NAME = "Part3";
-	private const string KNOT_4_NAME = "Part4";
 	private const int MAX_AMOUNT_OF_ACTIVE_BUTTONS = 8;
+	private const string MEDIUM_VARIABLE = "medium";
 	private const string PUZZLE_IN_PROGRESS_WARNING = "You can't close when there is a puzzle in progress";
 	private const string KNOT_NAME_WEARABLE = "Wearable";
 	private readonly Color32 FCE300 = new Color(252, 227, 0);
 
 	public bool MinigameIsWon { get; private set; } = false;
+	public Sprite SelectedMediumSprite { get; private set; }
 	public Button closeScreenButton;
 	[SerializeField] private GameObject pieceTextHolder;
 	[HideInInspector] public int activeButtons = 0;	
@@ -33,7 +33,7 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 	{
 		if (activeButtons >= MAX_AMOUNT_OF_ACTIVE_BUTTONS)
 		{
-			MinigameIsWon = true; DialogueManager.Instance.CurrentDialogue.CurrentKnot = KNOT_4_NAME;
+			MinigameIsWon = true; DialogueManager.Instance.CurrentDialogue.CurrentKnot = "Part4";
 			MenuManager.Instance.OpenMenu<DialogueMenu>();
 			return;
 		}
@@ -62,6 +62,14 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 
 		PuzzleManager.Instance.activePuzzle = pressedButton.gameObject;
 		pieceText.text = mediumName;
+
+		if(activeButtons != 1)
+		{
+			return;
+		}
+
+		DialogueManager.Instance.CurrentDialogue.CurrentKnot = "Part2";
+		MenuManager.Instance.OpenMenu<DialogueMenu>();
 	}
 
 	public void CloseScreen()
@@ -79,6 +87,12 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 
 		closeScreenButton.gameObject.SetActive(false);
 		pieceTextHolder.SetActive(false);
+	}
+
+	public void SelectMedium(string name, Sprite sprite)
+	{
+		DialogueManager.Instance.CurrentDialogue.SetStringVariable(MEDIUM_VARIABLE, $"\"{name}\"");
+		SelectedMediumSprite = sprite;
 	}
 
 	private void OnRoomTransitionFinished(FinishedRoomTransition eventData)
@@ -99,8 +113,19 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 			return;
 		}
 
-		DialogueManager.Instance.CurrentDialogue.CurrentKnot = KNOT_3_NAME;
+		DialogueManager.Instance.CurrentDialogue.CurrentKnot = "Part3";
 		MenuManager.Instance.OpenMenu<DialogueMenu>();
+	}
+
+	private void OnDialogueChoiceSelected(DialogueChoiceSelectedEvent eventData)
+	{
+		if (eventData.DialogueChoice.text != "Yes" || DialogueManager.Instance.CurrentRoomID != RoomType.Medium)
+		{
+			return;
+		}
+
+		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Medium));
+		EventManager.Instance.RaiseEvent(new NextRoomEvent());
 	}
 
 	private void SetVariables()
@@ -123,5 +148,6 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 		closeScreenButton.onClick.AddListener(() => CloseScreen());
 		EventManager.Instance.AddListener<FinishedRoomTransition>(OnRoomTransitionFinished);
 		EventManager.Instance.AddListener<DialogueKnotCompletedEvent>(OnDialogueKnotCompleted);
+		EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);
 	}
 }

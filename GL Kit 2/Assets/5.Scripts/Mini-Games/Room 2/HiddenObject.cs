@@ -42,9 +42,8 @@ public class HiddenObject : BetterMonoBehaviour
 			return;
 		}
 
-		HiddenObjectHandler.Instance.lastSelectedObjectSprite = sprite;
-
 		DialogueManager.Instance.CurrentDialogue.Reset(KNOT_NAME);
+		HiddenObjectHandler.Instance.SelectObject(name, sprite);
 		MenuManager.Instance.OpenMenu<DialogueMenu>();
 	}
 

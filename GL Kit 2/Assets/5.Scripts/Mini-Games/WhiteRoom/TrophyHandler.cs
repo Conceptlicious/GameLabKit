@@ -27,7 +27,7 @@ public class TrophyHandler : BetterMonoBehaviour
 			case RoomType.Goals:
 				trohpyImages[(int)RoomType.Goals].gameObject.SetActive(true);
 				trohpyImages[(int)RoomType.Goals].sprite =
-					HiddenObjectHandler.Instance.lastSelectedObjectSprite;
+					HiddenObjectHandler.Instance.SelectedObjectSprite;
 				break;
 			case RoomType.Genre:
 				trohpyImages[(int)RoomType.Genre].gameObject.SetActive(true);
@@ -35,7 +35,7 @@ public class TrophyHandler : BetterMonoBehaviour
 				break;
 			case RoomType.Medium:
 				trohpyImages[(int)RoomType.Medium].gameObject.SetActive(true);
-				trohpyImages[(int)RoomType.Medium].sprite = MediumButton.selectedMediumSprite;
+				trohpyImages[(int)RoomType.Medium].sprite = MediumUIHandler.Instance.SelectedMediumSprite;
 				break;
 			case RoomType.Dynamics:
 				trohpyImages[(int)RoomType.Dynamics].gameObject.SetActive(true);

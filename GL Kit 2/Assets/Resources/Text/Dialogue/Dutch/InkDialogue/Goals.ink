@@ -1,3 +1,5 @@
+VAR goal = "doel"
+
 ===Intro===
 -"Nu we meer weten over uw doelgroep, is het belangrijk om uit te zoeken wat u wil bereiken met uw serious game."
 -"Elke serious game heeft een doel nodig, dit zorgt ervoor dat de maker van de game niet uit het zicht verliest wat hij,
@@ -30,7 +32,7 @@
 -"U kunt de informatie over de doelen nogmaals bekijken door op de objecten te klikken, zo weet u zeker dat u de goede keuze maakt."
 ->END
 ===Part9===
--"Geweldig! U heeft [doel] gekozen als doel dat u wilt bereiken met uw game. Bent u tevreden met uw keuze?"
+-"Geweldig! U heeft {goal} gekozen als doel dat u wilt bereiken met uw game. Bent u tevreden met uw keuze?"
 * [Yes]
 -> DONE
 * [No]

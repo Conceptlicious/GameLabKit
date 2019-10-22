@@ -11,7 +11,7 @@ public class PuzzleManager : Manager<PuzzleManager>
 	public List<PuzzlePieceDrag> PuzzlePieces { get; private set; } = new List<PuzzlePieceDrag>();
 	public List<PuzzlePieceSocket> PuzzlePieceSockets { get; private set; } = new List<PuzzlePieceSocket>();
 	public bool IsPuzzleInProgress { get; private set; } = false;
-	public GameObject activePuzzle = null;
+	[HideInInspector] public GameObject activePuzzle = null;
 	private int PiecesInSocketNeeded = 0;
 	private int piecesInSocket = 0;
 
@@ -67,9 +67,7 @@ public class PuzzleManager : Manager<PuzzleManager>
 		if (piecesInSocket == PiecesInSocketNeeded)
 		{
 			PuzzleCompleted();
-		}
-
-		
+		}		
 	}
 
 	private void PuzzleCompleted()

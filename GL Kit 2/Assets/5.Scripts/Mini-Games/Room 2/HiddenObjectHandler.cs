@@ -11,13 +11,14 @@ using GameLab;
 //--------------------------------------------------
 public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 {
+	private const string GOAL_VARIABLE = "goal";
 	private const int HIDDENOBJECTS_AMOUNT = 7;
 
 	public bool MinigameIsWon { get; private set; } = false;
+	public Sprite SelectedObjectSprite { get; private set; }
 	[SerializeField] private GameObject nextMinigameButton = null;
-	[HideInInspector] public Sprite lastSelectedObjectSprite;
 	private List<GameObject> foundObjects = new List<GameObject>();
-	private int currentKnotID = 2;
+	private int currentKnotID = 2;	
 	private string currentKnotPath = string.Empty;
 	private string foundObjectName = string.Empty;
 
@@ -48,6 +49,12 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 			DialogueManager.Instance.CurrentDialogue.CurrentKnot = foundObjectName;
 			MenuManager.Instance.OpenMenu<DialogueMenu>();
 		}
+	}
+
+	public void SelectObject(string name, Sprite sprite)
+	{
+		DialogueManager.Instance.CurrentDialogue.SetStringVariable(GOAL_VARIABLE, $"\"{name}\"");
+		SelectedObjectSprite = sprite;
 	}
 
 	private void ProgressDialogue()
