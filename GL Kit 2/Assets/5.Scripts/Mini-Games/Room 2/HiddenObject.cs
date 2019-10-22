@@ -14,18 +14,15 @@ using GameLab;
 [RequireComponent(typeof(MonoBehaviour))]
 public class HiddenObject : BetterMonoBehaviour
 {
+	private const string KNOT_NAME = "Part9";
+
 	private Button button = null;
 	private Sprite sprite = null;
 	private bool isFound = false;
 
 	private void Start()
 	{
-		sprite = GetComponent<Image>().sprite;
-		button = GetComponent<Button>();
-
-		button.onClick.AddListener(() => Clicked());
-
-		button.interactable = false;
+		SetVariables();
 	}
 
 	public void Found()
@@ -38,14 +35,26 @@ public class HiddenObject : BetterMonoBehaviour
 		button.interactable = true;
 	}
 
-	public void Clicked()
+	private void Clicked()
 	{
 		if (!HiddenObjectHandler.Instance.MinigameIsWon)
 		{
 			return;
 		}
 
-		Debug.Log($"{name} is selected.");
 		HiddenObjectHandler.Instance.lastSelectedObjectSprite = sprite;
+
+		DialogueManager.Instance.CurrentDialogue.Reset(KNOT_NAME);
+		MenuManager.Instance.OpenMenu<DialogueMenu>();
+	}
+
+	private void SetVariables()
+	{
+		sprite = GetComponent<Image>().sprite;
+		button = GetComponent<Button>();
+
+		button.onClick.AddListener(() => Clicked());
+
+		button.interactable = false;
 	}
 }

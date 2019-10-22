@@ -219,8 +219,8 @@ public class UIControl : MonoBehaviour
 
 	private void OnDialogueKnotCompleted(DialogueKnotCompletedEvent eventData)
 	{
-		if(eventData.Knot != "Part3" || eventData.CompletedRoomID != RoomType.TargetAudience)
-		{
+		if (eventData.Knot != "Part2" || eventData.CompletedRoomID != RoomType.TargetAudience)
+		{			
 			return;
 		}
 
@@ -243,19 +243,6 @@ public class UIControl : MonoBehaviour
 	{
 		DialogueManager.Instance.CurrentDialogue.Reset("Part2");
 		MenuManager.Instance.OpenMenu<DialogueMenu>();
-	}
-
-	private void OnDialogueChoiceMade(DialogueChoiceSelectedEvent eventData)
-	{
-		if(eventData.DialogueChoice.text == "Yes")
-		{
-			DialogueManager.Instance.CurrentDialogue.CurrentKnot = "Part3";
-			MenuManager.Instance.OpenMenu<DialogueMenu>();
-		}
-		else
-		{
-			MenuManager.Instance.CloseMenu<DialogueMenu>();
-		}
 	}
 
 	private void SetVariables()
@@ -284,7 +271,6 @@ public class UIControl : MonoBehaviour
 		doneButton.onClick.AddListener(() => OnDonePressed());
 
 		EventManager.Instance.AddListener<FinishedRoomTransition>(OnFinishedRoomTransition);
-		EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceMade);
 		EventManager.Instance.AddListener<DialogueKnotCompletedEvent>(OnDialogueKnotCompleted);
 	}
 }

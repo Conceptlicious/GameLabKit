@@ -15,9 +15,9 @@ public class TrophyHandler : BetterMonoBehaviour
 		SetVariables();
 	}
 
-	private void OnItemSaved(SaveItemEvent eventInfo)
+	private void OnItemSaved(SaveItemEvent eventData)
 	{
-		switch (eventInfo.CurrentRoomType)
+		switch (eventData.CurrentRoomType)
 		{
 			case RoomType.TargetAudience:
 				targetAudeniceImage.gameObject.SetActive(true);

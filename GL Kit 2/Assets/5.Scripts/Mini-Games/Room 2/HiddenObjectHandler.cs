@@ -15,7 +15,6 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 
 	public bool MinigameIsWon { get; private set; } = false;
 	[SerializeField] private GameObject nextMinigameButton = null;
-	[SerializeField] private Image buttonsImage;
 	[HideInInspector] public Sprite lastSelectedObjectSprite;
 	private List<GameObject> foundObjects = new List<GameObject>();
 	private int currentKnotID = 2;
@@ -29,52 +28,38 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 
 	public void ObjectFound(GameObject foundObject)
 	{
+		foundObjectName = foundObject.name;
 		HiddenObject currentHiddenObject = foundObject.GetComponent<HiddenObject>();
 
 		if (!foundObjects.Contains(foundObject))
 		{
 			currentHiddenObject.Found();
-			foundObjects.Add(foundObject);
-			foundObjectName = foundObject.name;
+			foundObjects.Add(foundObject);			
 
 			ProgressDialogue();
 
 			if (foundObjects.Count >= HIDDENOBJECTS_AMOUNT)
-			{
-				nextMinigameButton.SetActive(true);
+			{				
 				MinigameIsWon = true;
 			}
 		}
 		else
 		{
-			if (MinigameIsWon)
-			{
-				return;
-			}
+			DialogueManager.Instance.CurrentDialogue.CurrentKnot = foundObjectName;
+			MenuManager.Instance.OpenMenu<DialogueMenu>();
 		}
 	}
 
-	public void NextRoom()
+	private void ProgressDialogue()
 	{
-		if (lastSelectedObjectSprite == null)
+		if (foundObjects.Count <= HIDDENOBJECTS_AMOUNT)
 		{
-			return;
-		} 
-		buttonsImage.gameObject.SetActive(true);
-		//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
-	}
+			currentKnotPath = $"Part{currentKnotID}";
 
-	public void YesButton()
-	{
-		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Goals));
-		NextRoomEvent nextRoomEvent = new NextRoomEvent();
-		buttonsImage.gameObject.SetActive(false);
-		EventManager.Instance.RaiseEvent(nextRoomEvent);
-	}
-
-	public void NoButton()
-	{
-		buttonsImage.gameObject.SetActive(false);
+			DialogueManager.Instance.CurrentDialogue.CurrentKnot = currentKnotPath;
+			MenuManager.Instance.OpenMenu<DialogueMenu>();
+			++currentKnotID;
+		}
 	}
 
 	private void OnDialogueKnotCompleted(DialogueKnotCompletedEvent eventData)
@@ -89,16 +74,15 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 		MenuManager.Instance.OpenMenu<DialogueMenu>();
 	}
 
-	private void ProgressDialogue()
+	private void OnDialogueChoiceSelected(DialogueChoiceSelectedEvent eventData)
 	{
-		if (foundObjects.Count <= HIDDENOBJECTS_AMOUNT)
+		if(eventData.DialogueChoice.text != "Yes" || DialogueManager.Instance.CurrentRoomID != RoomType.Goals)
 		{
-			currentKnotPath = $"Part{currentKnotID}";
-
-			DialogueManager.Instance.CurrentDialogue.CurrentKnot = currentKnotPath;
-			MenuManager.Instance.OpenMenu<DialogueMenu>();
-			++currentKnotID;
+			return;
 		}
+
+		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Goals));
+		EventManager.Instance.RaiseEvent(new NextRoomEvent());		
 	}
 
 	private void OnFinishedRoomTransition(FinishedRoomTransition eventData)
@@ -117,5 +101,6 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 		nextMinigameButton.SetActive(false);
 		EventManager.Instance.AddListener<FinishedRoomTransition>(OnFinishedRoomTransition);
 		EventManager.Instance.AddListener<DialogueKnotCompletedEvent>(OnDialogueKnotCompleted);
+		EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);
 	}
 }

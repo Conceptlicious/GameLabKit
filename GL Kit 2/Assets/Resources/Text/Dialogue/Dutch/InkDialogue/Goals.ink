@@ -31,7 +31,10 @@
 ->END
 ===Part9===
 -"Geweldig! U heeft [doel] gekozen als doel dat u wilt bereiken met uw game. Bent u tevreden met uw keuze?"
-->END
+* [Yes]
+-> DONE
+* [No]
+-> END
 ===Awareness===
 -"Awareness"
 -"Een game die meer inzicht geeft in een bepaalt onderwerp of situatie. Het maakt de speler meer bewust van het onderwerp of situatie."
@@ -58,7 +61,7 @@
 -"Activation"
 -"Een game die de speler activeerd om zijn/haar gedrag aan te passen door het spelen van de game."
 -"De speler verandert zijn levens stijl of mening."
-_"Dit soort games heten activation games."
+-"Dit soort games heten activation games."
 ->END
 ===Recruitment===
 -"Recruitment"

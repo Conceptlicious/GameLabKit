@@ -12,6 +12,7 @@ public class DialogueManager : Manager<DialogueManager>
 	public const string OutroKnotName = "Outro";
 
 	public RoomStory CurrentDialogue { get; private set; } = null;
+	public RoomType CurrentRoomID { get; private set; }
 
 	[SerializeField] private List<RoomStory> roomStories = new List<RoomStory>();
 
@@ -22,7 +23,7 @@ public class DialogueManager : Manager<DialogueManager>
 		List<RoomStory> originalRoomStories = new List<RoomStory>(roomStories);
 		roomStories.Clear();
 
-		foreach(RoomStory originalRoomStory in originalRoomStories)
+		foreach (RoomStory originalRoomStory in originalRoomStories)
 		{
 			roomStories.Add(RuntimeScriptableObject.CreateInstanceFromAsset(originalRoomStory));
 		}
@@ -69,21 +70,22 @@ public class DialogueManager : Manager<DialogueManager>
 	/// </remarks>
 	public void SetCurrentDialogue(RoomType roomID, string knotToStartFrom = IntroKnotName, bool resetDialogue = true)
 	{
+		CurrentRoomID = roomID;
 		RoomStory roomStoryFromID = roomStories.GetStoryByID(roomID);
 
-		if(roomStoryFromID == null)
+		if (roomStoryFromID == null)
 		{
 			return;
 		}
 
-		if(CurrentDialogue == roomStoryFromID)
+		if (CurrentDialogue == roomStoryFromID)
 		{
 			return;
 		}
 
 		CurrentDialogue = roomStoryFromID;
 
-		if(resetDialogue)
+		if (resetDialogue)
 		{
 			CurrentDialogue.Reset();
 		}
