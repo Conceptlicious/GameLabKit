@@ -88,12 +88,6 @@ public class NodePattern : BetterMonoBehaviour
 
 	}
 
-	private void DialogueTrigger()
-	{
-		//DialogueManager.Instance.CurrentDialogue.SetCurrentKnot($"Part{currentDialoguePart}");
-		MenuManager.Instance.OpenMenu<DialogueMenu>();
-	}
-
 	private void OnInteracted(NodeLayer nodeLayer, Node node)
 	{
 		if (!ActivePatternManager.Instance.IsActivePattern(this))
@@ -118,10 +112,10 @@ public class NodePattern : BetterMonoBehaviour
 		}
 	}
 
-/*Don't use Hungarian notation, pWaitTime = waitTime.
- * public IEnumerator WrongInputSpriteSwap(float pWaitTime)
- */
-public IEnumerator WrongInputSpriteSwap(float waitTime)
+	/*Don't use Hungarian notation, pWaitTime = waitTime.
+	 * public IEnumerator WrongInputSpriteSwap(float pWaitTime)
+	 */
+	public IEnumerator WrongInputSpriteSwap(float waitTime)
 	{
 		Image currentImage = tubeSprite.GetComponent<Image>();
 		currentImage.sprite = wrongInputSprite;
@@ -140,7 +134,6 @@ public IEnumerator WrongInputSpriteSwap(float waitTime)
 	//When a correct button is pressed, it sets current layer
 	public void SetLayer()
 	{
-
 		if (isComplete || !IsInteractable)
 		{
 			return;
@@ -169,10 +162,11 @@ public IEnumerator WrongInputSpriteSwap(float waitTime)
 			 * else if (nextPattern == null && isComplete)*/
 			else
 			{
-				//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 				ActivePatternManager.Instance.isWon = true;
 				currentDialoguePart = 3;
-				DialogueTrigger();
+
+				DialogueManager.Instance.CurrentDialogue.CurrentKnot = "Part3";
+				MenuManager.Instance.OpenMenu<DialogueMenu>();
 			}
 
 			drawLines.ResetLine();

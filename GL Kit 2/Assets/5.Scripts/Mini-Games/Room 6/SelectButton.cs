@@ -6,11 +6,11 @@ using GameLab;
 
 public class SelectButton : BetterMonoBehaviour
 {
-	private const string KNOT_NAME = "Part4"; 
-
-	[SerializeField] private Image completeButtons;
-	NodePattern nodePattern;
 	public static Sprite ArtSprite { get; private set; }
+	private const string KNOT_NAME = "Part4";
+	private const string ARTSTYLE_VARIABLE = "artStyle";
+
+	[SerializeField] private string artStyleName;
 	private Image buttonImage;
 	private Button selectButton;
 
@@ -19,34 +19,20 @@ public class SelectButton : BetterMonoBehaviour
 		selectButton = GetComponent<Button>();
 		buttonImage = GetComponent<Image>();
 
-		selectButton.onClick.AddListener(() => SelectSprite(buttonImage.sprite));
+		selectButton.onClick.AddListener(() => SelectSprite(artStyleName, buttonImage.sprite));
 	}
 
-	private void SelectSprite(Sprite selectedSprite)
+	private void SelectSprite(string name, Sprite selectedSprite)
 	{
-		if(!ActivePatternManager.Instance.isWon)
+		if (!ActivePatternManager.Instance.isWon)
 		{
 			return;
 		}
 
 		ArtSprite = selectedSprite;
-		completeButtons.gameObject.SetActive(true);
 
-		DialogueManager.Instance.CurrentDialogue.CurrentKnot = KNOT_NAME;
+		DialogueManager.Instance.CurrentDialogue.Reset(KNOT_NAME);
+		DialogueManager.Instance.CurrentDialogue.SetStringVariable(ARTSTYLE_VARIABLE, $"\"{name}\"");
 		MenuManager.Instance.OpenMenu<DialogueMenu>();
-	}
-
-	public void YesButton()
-	{
-		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.ArtStyle));
-		NextRoomEvent nextRoomEvent = new NextRoomEvent();
-		completeButtons.gameObject.SetActive(false);
-		EventManager.Instance.RaiseEvent(nextRoomEvent);
-	}
-
-	public void NoButton()
-	{
-		completeButtons.gameObject.SetActive(false);
-		MenuManager.Instance.CloseMenu<DialogueMenu>();
 	}
 }
