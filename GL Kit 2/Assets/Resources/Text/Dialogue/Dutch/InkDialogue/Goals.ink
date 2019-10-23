@@ -1,15 +1,11 @@
 VAR goal = "doel"
 
 ===Intro===
--"Nu we meer weten over uw doelgroep, is het belangrijk om uit te zoeken wat u wil bereiken met uw serious game."
--"Elke serious game heeft een doel nodig, dit zorgt ervoor dat de maker van de game niet uit het zicht verliest wat hij,
-    met zijn game, bij de spelers wil bereiken."
--"Bent u er klaar voor? Zoek het eerste object om te zien welk doel het representeert."
+-"Nu we meer weten over uw doelgroep, is het belangrijk om uit te zoeken wat u wil bereiken met uw serious game. Elke serious game heeft een doel nodig, dit zorgt ervoor dat de maker van de game niet uit het zicht verliest wat hij, 
+-met zijn game, bij de spelers wil bereiken. Bent u er klaar voor? Zoek het eerste object om te zien welk doel het representeert."
 ->END
 ===Part2===
--"Uitstekend! Goed gevonden. Het gevonden object is nu zichtbaar onderin het scherm."
--"U kunt op het object klikken om de informatie over het doel nogmaals te bekijken."
--"Laten we de andere objecten gaan zoeken!"
+-"Uitstekend! Goed gevonden. Het gevonden object is nu zichtbaar onderin het scherm. U kunt op het object klikken om de informatie over het doel nogmaals te bekijken. Laten we de andere objecten gaan zoeken!"
 ->END
 ===Part3===
 -"Top! Goed werk! Laten we snel het volgende object zoeken."
@@ -27,8 +23,7 @@ VAR goal = "doel"
 -"Uitstekend! Kunt u het laatste object vinden?"
 ->END
 ===Part8===
--"Geweldig! U heeft alle objecten gevonden. Ik ben trots op u!"
--"Nu kunt u één van de doelen kiezen die u denkt dat het beste omschrijft wat u met uw game wilt bereiken."
+-"Geweldig! U heeft alle objecten gevonden. Ik ben trots op u! Nu kunt u één van de doelen kiezen die u denkt dat het beste omschrijft wat u met uw game wilt bereiken."
 -"U kunt de informatie over de doelen nogmaals bekijken door op de objecten te klikken, zo weet u zeker dat u de goede keuze maakt."
 ->END
 ===Part9===

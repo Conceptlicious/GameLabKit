@@ -8,8 +8,7 @@ VAR funType = "fun type"
 -"Super! U heeft 'easy fun' gecreëerd! Laten we uitzoeken wat de andere types of fun zijn! klik aan de linker kant op het volgende symbool."
 ->END
 ===Part3===
--"U heeft zojuist alle vier de types of fun ontdekt."
-- "Nu u meer weet over easy fun (nieuwsgierigheid), people fun (vermaak) , serious fun (verheugd) en hard fun (overwinning), welke denkt u dat het beste bij uw game past?."
+-"U heeft zojuist alle vier de types of fun ontdekt. Nu u meer weet over easy fun (nieuwsgierigheid), people fun (vermaak) , serious fun (verheugd) en hard fun (overwinning), welke denkt u dat het beste bij uw game past?."
 ->END
 ===Part4===
 -"Goed gedaan! U heeft {funType} gekozen. Bent u tevreden met uw keuze?"
