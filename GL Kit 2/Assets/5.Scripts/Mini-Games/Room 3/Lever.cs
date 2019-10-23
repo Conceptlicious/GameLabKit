@@ -14,13 +14,19 @@ public class Lever : BetterMonoBehaviour
 
 	public void OnButtonPressed()
 	{
-		if(pressCount == 1)
-		{
-			//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
-			pressCount++;
-		}
+		
 		TileGrid.Instance.SetGridInteractable(true);
 		SwitchSprites();
+
+		if(pressCount != 1)
+		{
+			return;
+		}
+
+		DialogueManager.Instance.CurrentDialogue.CurrentKnot = "Part2";
+		MenuManager.Instance.OpenMenu<DialogueMenu>();
+
+		++pressCount;
 	}
 
 	public void SwitchSprites()

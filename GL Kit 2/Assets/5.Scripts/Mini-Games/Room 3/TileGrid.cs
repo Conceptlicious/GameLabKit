@@ -9,7 +9,7 @@ namespace Room3
 	public class TileGrid : Singleton<TileGrid>
 	{
 		public bool HasInteractedWithTile => lastInteractedWithTileController != null;
-		
+
 		// TODO: CLeanup current level management
 		public Level CurrentLevel
 		{
@@ -31,6 +31,7 @@ namespace Room3
 		[SerializeField] private List<Image> flasks;
 
 		private int currentLevelIndex = -1;
+		private int currentDialoguePartID = 3;
 
 		private bool canBeInteractedWith = false;
 
@@ -53,11 +54,12 @@ namespace Room3
 			}
 
 			EventManager.Instance.AddListener<FinishedRoomTransition>(OnFinishedTransition);
+			EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);
 
 			//SpawnLevel(levels[0]);
 			NextLevel();
 		}
-		
+
 		private void OnFinishedTransition(FinishedRoomTransition eventData)
 		{
 			int roomId = RoomManager.Instance.GetCurrentRoomID().z;
@@ -67,9 +69,8 @@ namespace Room3
 				DialogueManager.Instance.SetCurrentDialogue(RoomType.Genre);
 				MenuManager.Instance.OpenMenu<DialogueMenu>();
 			}
-
 		}
-		
+
 		public void SetGridInteractable(bool canInteractedWith)
 		{
 			canBeInteractedWith = canInteractedWith;
@@ -79,16 +80,19 @@ namespace Room3
 		{
 			if (currentLevelIndex == levels.Length - 1)
 			{
-				print("No more levels");
 				DestroySpawnedLevel();
 				//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 				Flask finalFlask = flasks[currentLevelIndex].GetComponent<Flask>();
 				finalFlask.AnimationStart?.Invoke();
+
+				DialogueManager.Instance.CurrentDialogue.CurrentKnot = "Part8";
+				MenuManager.Instance.OpenMenu<DialogueMenu>();
+
 				foreach (Image flask in flasks)
-					{
-						Button button = flask.gameObject.GetComponent<Button>();
-						button.enabled = true;
-					}
+				{
+					Button button = flask.gameObject.GetComponent<Button>();
+					button.enabled = true;
+				}
 				return;
 			}
 			//	EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
@@ -96,8 +100,13 @@ namespace Room3
 			{
 				Flask flask = flasks[currentLevelIndex].GetComponent<Flask>();
 				flask.AnimationStart?.Invoke();
-				//flasks[currentLevelIndex].enabled = true;
+
+				DialogueManager.Instance.CurrentDialogue.CurrentKnot = $"Part{currentDialoguePartID}";
+				MenuManager.Instance.OpenMenu<DialogueMenu>();
+
+				++currentDialoguePartID;
 			}
+
 
 			++currentLevelIndex;
 			//print(currentLevelIndex);
@@ -155,7 +164,7 @@ namespace Room3
 				tileData.TileType = levelColorSettings.GetTileTypeFromColor(pixel);
 				// Spawn in a game object for the tile
 				TileController tileController = SpawnTileController(row, col, anchorStepPerColumn, anchorStepPerRow, overlayOn);
-				
+
 				tileController.AddTilesToControl(mainLayer.Tiles[row, col], bridgeLayer.Tiles[row, col]);
 				tileController.Image.color = pixel;
 				// add listeners 
@@ -222,12 +231,12 @@ namespace Room3
 				return;
 			}
 			//If the tile is already part of a finished group return
-			if(IsTilePartOfFinishedGroups(tileController))
+			if (IsTilePartOfFinishedGroups(tileController))
 			{
 				return;
 			}
 			// Return if it cant connect to the lastinteracted with tile
-			if(!tileController.TryConnectTo(lastInteractedWithTileController))
+			if (!tileController.TryConnectTo(lastInteractedWithTileController))
 			{
 				return;
 			}
@@ -236,7 +245,7 @@ namespace Room3
 
 			if (tileController.Row == lastInteractedWithTileController.Row)
 			{
-				
+
 				tileController.ChangeSprite(tileSpriteSettings[tileController.TileGroup.SpriteIndex].TubeWestToEast);
 			}
 			else
@@ -248,18 +257,18 @@ namespace Room3
 
 			UpdateWinStatus();
 		}
-		
+
 		private bool IsTilePartOfFinishedGroups(TileController tileController)
 		{
-			foreach(Tile controlledTile in tileController.ControlledTiles)
+			foreach (Tile controlledTile in tileController.ControlledTiles)
 			{
 				//if the tiletype is an obstacle just continue
-				if(controlledTile.TileType == Tile.Type.Obstacle)
+				if (controlledTile.TileType == Tile.Type.Obstacle)
 				{
 					continue;
 				}
 				//If the finished groups dont contain the controlledtiles their group just return false
-				if(!finishedGroups.Contains(controlledTile.TileGroup))
+				if (!finishedGroups.Contains(controlledTile.TileGroup))
 				{
 					return false;
 				}
@@ -271,7 +280,7 @@ namespace Room3
 		private void ValidatePath(TileController currentTileController, TileController lastTileController)
 		{
 			//If the last tile isnt ungrouped
-			if(lastTileController.TileGroup == Tile.Group.Ungrouped)
+			if (lastTileController.TileGroup == Tile.Group.Ungrouped)
 			{
 				return;
 			}
@@ -286,7 +295,7 @@ namespace Room3
 			int lastTileControllerConnectedTileIndexInPath = path.Tiles.IndexOf(lastTileController.ConnectedControlledTile);
 
 			// If the tile was not found or is the very first tile in the path, there is nothing before that, so we cannot do corner logic.
-			if(lastTileControllerConnectedTileIndexInPath <= 0)
+			if (lastTileControllerConnectedTileIndexInPath <= 0)
 			{
 				return;
 			}
@@ -418,7 +427,7 @@ namespace Room3
 			//Get the index of both the tile and the last tile
 			int interactedTilePathIndex = interactedTileGroupPath.Tiles.IndexOf(tile.ConnectedControlledTile);
 			int lastInteractedWithTilePathIndex = interactedTileGroupPath.Tiles.IndexOf(lastInteractedWithTileController.ConnectedControlledTile);
-			
+
 			if (interactedTilePathIndex < 0 || interactedTilePathIndex >= lastInteractedWithTilePathIndex)
 			{
 				return false;
@@ -452,7 +461,7 @@ namespace Room3
 			// go through all tilegroups
 			foreach (Tile.Group tileGroup in CurrentLevelSettings.TileGroups)
 			{
-				//return if the group isnt in finishedgroups
+				//return if the group isn't in finishedgroups
 				if (!finishedGroups.Contains(tileGroup))
 				{
 					return;
@@ -460,7 +469,17 @@ namespace Room3
 			}
 			//otherwise go to the next level as this one is complete
 			NextLevel();
-			Debug.Log("Level complete!");
+		}
+
+		private void OnDialogueChoiceSelected(DialogueChoiceSelectedEvent eventData)
+		{
+			if(eventData.DialogueChoice.text != "Yes" || DialogueManager.Instance.CurrentRoomID != RoomType.Genre)
+			{
+				return;
+			}
+
+			EventManager.Instance.RaiseEvent(new NextRoomEvent());
+			EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Genre));
 		}
 	}
 }
