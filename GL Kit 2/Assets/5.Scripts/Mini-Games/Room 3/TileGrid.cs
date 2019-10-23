@@ -82,8 +82,9 @@ namespace Room3
 				print("No more levels");
 				DestroySpawnedLevel();
 				//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
-
-					foreach (Image flask in flasks)
+				Flask finalFlask = flasks[currentLevelIndex].GetComponent<Flask>();
+				finalFlask.AnimationStart?.Invoke();
+				foreach (Image flask in flasks)
 					{
 						Button button = flask.gameObject.GetComponent<Button>();
 						button.enabled = true;
@@ -93,7 +94,9 @@ namespace Room3
 			//	EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
 			if (currentLevelIndex >= 0)
 			{
-				flasks[currentLevelIndex].enabled = true;
+				Flask flask = flasks[currentLevelIndex].GetComponent<Flask>();
+				flask.AnimationStart?.Invoke();
+				//flasks[currentLevelIndex].enabled = true;
 			}
 
 			++currentLevelIndex;
