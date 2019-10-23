@@ -105,7 +105,7 @@ public class ButtonManager : Singleton<ButtonManager>
 		LastClickedButtonSprite = sprite;
 
 		DialogueManager.Instance.CurrentDialogue.Reset("Part4");
-		DialogueManager.Instance.CurrentDialogue.SetStringVariable(FUNTYPE_VARIABLE, name);
+		DialogueManager.Instance.CurrentDialogue.SetStringVariable(FUNTYPE_VARIABLE, $"\"{name}\"");
 		MenuManager.Instance.OpenMenu<DialogueMenu>();
 	}
 
