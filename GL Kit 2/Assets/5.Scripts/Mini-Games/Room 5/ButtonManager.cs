@@ -12,18 +12,15 @@ using GameLab;
 public class ButtonManager : Singleton<ButtonManager>
 {
 	private const float WON_MINIGAME_DELAY = 0.1f;
-
-	[HideInInspector] public Button startRotationButton;
-
-	[SerializeField] private Image buttonImages;
+	private const string FUNTYPE_VARIABLE = "funType";
 
 	public Button EasyFun { get; private set; }
 	public Button PeopleFun { get; private set; }
 	public Button HardFun { get; private set; }
 	public Button SeriousFun { get; private set; }
 	public Sprite LastClickedButtonSprite { get; private set; }
+	[HideInInspector] public Button startRotationButton;
 	private int activeButtonCount = 1;
-	private Vector2 bigTypetextBox = new Vector2(900, 200);
 	private Image easyFunImage = null;
 	private Image peopleFunImage = null;
 	private Image hardFunImage = null;
@@ -42,7 +39,8 @@ public class ButtonManager : Singleton<ButtonManager>
 		{
 			case 2:
 				PeopleFun.interactable = true;
-				//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+				DialogueManager.Instance.CurrentDialogue.CurrentKnot = "Part2";
+				MenuManager.Instance.OpenMenu<DialogueMenu>();
 				break;
 			case 3:
 				HardFun.interactable = true;
@@ -51,7 +49,8 @@ public class ButtonManager : Singleton<ButtonManager>
 				SeriousFun.interactable = true;
 				break;
 			case 5:
-				//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
+				DialogueManager.Instance.CurrentDialogue.CurrentKnot = "Part3";
+				MenuManager.Instance.OpenMenu<DialogueMenu>();
 				StartCoroutine(WonMinigameDelay());
 				break;
 		}
@@ -96,42 +95,57 @@ public class ButtonManager : Singleton<ButtonManager>
 		UIHandler.Instance.wonMinigame = true;
 	}
 
-	private void SetLastClickedButton(Sprite lastClikedButtonSprite)
+	private void SetLastClickedButton(string name, Sprite sprite)
 	{
-		if (UIHandler.Instance.wonMinigame)
+		if (!UIHandler.Instance.wonMinigame)
 		{
-			LastClickedButtonSprite = lastClikedButtonSprite;
-
-			buttonImages.gameObject.SetActive(true);
-			//EventManager.Instance.RaiseEvent(new ProgressDialogueEvent());
-			//EventManager.Instance.RaiseEvent(new NextRoomEvent());
-			//EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Dynamics));
+			return;
 		}
+
+		LastClickedButtonSprite = sprite;
+
+		DialogueManager.Instance.CurrentDialogue.Reset("Part4");
+		DialogueManager.Instance.CurrentDialogue.SetStringVariable(FUNTYPE_VARIABLE, name);
+		MenuManager.Instance.OpenMenu<DialogueMenu>();
 	}
+
+	private void OnDialogueChoiceSelected(DialogueChoiceSelectedEvent eventData)
+	{
+		if(eventData.DialogueChoice.text != "Yes" || DialogueManager.Instance.CurrentRoomID != RoomType.Dynamics)
+		{
+			return;
+		}
+
+		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Dynamics));
+		EventManager.Instance.RaiseEvent(new NextRoomEvent());
+	}
+
 	private void SetVariables()
 	{
 		EasyFun = transform.Find("EasyFun").GetComponent<Button>();
 		easyFunImage = EasyFun.transform.Find("Sprite").GetComponent<Image>();
-		EasyFun.onClick.AddListener(() => SetLastClickedButton(easyFunImage.sprite));
+		EasyFun.onClick.AddListener(() => SetLastClickedButton(EasyFun.name, easyFunImage.sprite));
 		EasyFun.interactable = true;
 
 		PeopleFun = transform.Find("PeopleFun").GetComponent<Button>();
 		peopleFunImage = PeopleFun.transform.Find("Sprite").GetComponent<Image>();
-		PeopleFun.onClick.AddListener(() => SetLastClickedButton(peopleFunImage.sprite));
+		PeopleFun.onClick.AddListener(() => SetLastClickedButton(PeopleFun.name, peopleFunImage.sprite));
 		PeopleFun.interactable = false;
 
 		HardFun = transform.Find("HardFun").GetComponent<Button>();
 		hardFunImage = HardFun.transform.Find("Sprite").GetComponent<Image>();
-		HardFun.onClick.AddListener(() => SetLastClickedButton(hardFunImage.sprite));
+		HardFun.onClick.AddListener(() => SetLastClickedButton(HardFun.name, hardFunImage.sprite));
 		HardFun.interactable = false;
 
 		SeriousFun = transform.Find("SeriousFun").GetComponent<Button>();
 		seriousFunImage = SeriousFun.transform.Find("Sprite").GetComponent<Image>();
-		SeriousFun.onClick.AddListener(() => SetLastClickedButton(seriousFunImage.sprite));
+		SeriousFun.onClick.AddListener(() => SetLastClickedButton(SeriousFun.name, seriousFunImage.sprite));
 		SeriousFun.interactable = false;
 
 		startRotationButton = transform.Find("StartRotation").GetComponent<Button>();
 		startRotationButton.onClick.AddListener(() => UIHandler.Instance.StartGearRotation());
 		startRotationButton.gameObject.SetActive(false);
+
+		EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);
 	}
 }
