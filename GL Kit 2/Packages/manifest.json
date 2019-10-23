@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "com.gamelab.core": "https://strobone:Schnitzel68@github.com/Conceptlicious/Core.git",
-    "com.gamelab.event": "https://strobone:Schnitzel68@github.com/Conceptlicious/Event.git",
-    "com.gamelab.json": "https://strobone:Schnitzel68@github.com/Conceptlicious/JsonDotNet.git",
-    "com.gamelab.save": "https://strobone:Schnitzel68@github.com/Conceptlicious/Save.git",
-    "com.gamelab.ui": "https://strobone:Schnitzel68@github.com/Conceptlicious/UI.git",
+    "com.gamelab.core": "https://strobone:Schnitzel64@github.com/Conceptlicious/Core.git",
+    "com.gamelab.event": "https://strobone:Schnitzel64@github.com/Conceptlicious/Event.git",
+    "com.gamelab.json": "https://strobone:Schnitzel64@github.com/Conceptlicious/JsonDotNet.git",
+    "com.gamelab.save": "https://strobone:Schnitzel64@github.com/Conceptlicious/Save.git",
+    "com.gamelab.ui": "https://strobone:Schnitzel64@github.com/Conceptlicious/UI.git",
     "com.unity.ads": "2.0.8",
     "com.unity.analytics": "3.3.2",
     "com.unity.collab-proxy": "1.2.16",

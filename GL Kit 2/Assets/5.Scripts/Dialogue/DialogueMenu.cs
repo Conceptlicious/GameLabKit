@@ -10,10 +10,13 @@ public class DialogueMenu : Menu
 {
 	[SerializeField] private Button continueButton = null;
 	[SerializeField] private TextMeshProUGUI dialogueText = null;
+	[SerializeField] private GameObject interactionPlane = null;
 
 	protected override void OnOpened()
 	{
 		base.OnOpened();
+
+		interactionPlane.SetActive(true);
 		
 		continueButton.onClick.AddListener(RequestNextDialogueLine);
 		EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);
@@ -27,6 +30,8 @@ public class DialogueMenu : Menu
 		base.OnClosed();
 
 		continueButton.onClick.RemoveListener(RequestNextDialogueLine);
+
+		interactionPlane.SetActive(false);
 
 		EventManager.InstanceIfInitialized?.RemoveListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);
 		EventManager.InstanceIfInitialized?.RemoveListener<DialogueKnotCompletedEvent>(Close);
