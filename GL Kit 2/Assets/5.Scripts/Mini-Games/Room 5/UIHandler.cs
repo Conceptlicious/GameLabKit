@@ -73,6 +73,11 @@ public class UIHandler : Singleton<UIHandler>
 		GearInformation.isAbleToRotate = false;
 		ButtonManager.Instance.startRotationButton.gameObject.SetActive(false);
 
+		if(wonMinigame)
+		{
+			return;
+		}
+
 		switch (funType)
 		{
 			case FunType.EasyFun:
