@@ -8,6 +8,5 @@ public class FinishedRoomTransition : GameLabEvent
 	public FinishedRoomTransition()
 	{
 		
-	}
-	
+	} 	
 }

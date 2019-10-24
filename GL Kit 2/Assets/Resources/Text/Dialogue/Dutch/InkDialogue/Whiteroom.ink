@@ -1,11 +1,14 @@
 ===Intro===
 -"Daar zijn we dan de ontwerpruimte! In deze kamer kunt u de elementen zien die u tijdens het creëren van de serious game heeft gekozen. Elke keer als u een element in deze ruimte plaatst dan zal dat het uiterlijk van deze ruimte veranderen."
--"Zo is het net alsof de game voor uw ogen tot leven komt! Het ontvangen element staat symbool voor wat u gekozen heeft in de kamer. Laten we gaan kijken welk element dat voor deze kamer is."
--"Klik op het element om het op de juiste plaats in de ruimte te zetten. Laten we wat met het element gaan experimenteren door op de experiment knop te klikken."
+-"Zo is het net alsof de game voor uw ogen tot leven komt! Het ontvangen element staat symbool voor wat u gekozen heeft in de kamer."
+->END
+===FromRoom1===
+-"Laten we gaan kijken welk element dat voor deze kamer is."
 -"Dit is gaaf, maar we hebben geen tijd te verliezen, laten we naar de volgende kamer gaan, om uw game verder vorm te geven."
 ->END
 ===FromRoom2===
--"Super! U heeft een element voor deze kamer ontvangen. U kunt het element nu in de kamer plaatsen. Dat ziet er goed uit! Voelt het goed om een duidelijk doel voor uw game voor ogen te hebben? Als u er klaar voor bent gaan we naar de volgende kamer."
+-"Super! U heeft een element voor deze kamer ontvangen. U kunt het element nu in de kamer plaatsen."
+-"Dat ziet er goed uit! Voelt het goed om een duidelijk doel voor uw game voor ogen te hebben? Als u er klaar voor bent gaan we naar de volgende kamer."
 ->END
 ===FromRoom3===
 -"Hoe vindt u het tot nu toe om uw eigen serious game te maken? Het is erg fijn om met u samen te werken! Voor de gemaakte keuze in deze kamer heeft u dit element ontvangen, u kunt het nu in de kamer plaatsen!"
