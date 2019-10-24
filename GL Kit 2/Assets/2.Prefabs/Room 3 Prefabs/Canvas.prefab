@@ -89,9 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5c816f1f6731640b270789ccc8faf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completeButtons: {fileID: 1776335894256416323}
-  travelDistance: -15
-  travelSpeed: 0
+  stepDistance: 200
+  travelSpeed: 0.75
 --- !u!114 &1870083018259915846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,9 +713,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5c816f1f6731640b270789ccc8faf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completeButtons: {fileID: 1776335894256416323}
-  travelDistance: 150
-  travelSpeed: 0.5
+  stepDistance: 200
+  travelSpeed: 0.75
 --- !u!114 &3414894240043428930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,9 +879,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5c816f1f6731640b270789ccc8faf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completeButtons: {fileID: 1776335894256416323}
-  travelDistance: 750
-  travelSpeed: 2.5
+  stepDistance: 200
+  travelSpeed: 0.75
 --- !u!114 &1265692431230835356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1048,9 +1045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5c816f1f6731640b270789ccc8faf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completeButtons: {fileID: 1776335894256416323}
-  travelDistance: 300
-  travelSpeed: 1
+  stepDistance: 200
+  travelSpeed: 0.75
 --- !u!114 &9096757449704855243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1215,9 +1211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5c816f1f6731640b270789ccc8faf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completeButtons: {fileID: 1776335894256416323}
-  travelDistance: 450
-  travelSpeed: 1.5
+  stepDistance: 200
+  travelSpeed: 0.75
 --- !u!114 &4084205717082071123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1456,9 +1451,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5c816f1f6731640b270789ccc8faf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completeButtons: {fileID: 1776335894256416323}
-  travelDistance: 600
-  travelSpeed: 2
+  stepDistance: 200
+  travelSpeed: 0.75
 --- !u!114 &2903328833720012537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1678,18 +1672,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5707eef60e4256340aeec499c07954fa, type: 3}
---- !u!114 &1776335894256416323 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8563950491068064910, guid: 5707eef60e4256340aeec499c07954fa,
-    type: 3}
-  m_PrefabInstance: {fileID: 7962244898215236301}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &7203375570348232394 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 975051747957169159, guid: 5707eef60e4256340aeec499c07954fa,
