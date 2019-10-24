@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using GameLab;
 using UnityEngine.Events;
+using Room3;
 
 [RequireComponent(typeof(Image))]
 [RequireComponent(typeof(Animator))]
@@ -16,7 +17,7 @@ public class Flask : BetterMonoBehaviour
 
 	private Image flask;
 	private Animator animator = null;
-	[SerializeField, Tooltip("Distance is equivalent to what X axis point you want it to move to")] private float travelDistance = 0f;
+	[SerializeField, Tooltip("Distance is equivelant to what X axis point you want it to move to")] private float stepDistance = 0f;
 	[SerializeField, Tooltip("Duration of the flask moving in seconds")] private float travelSpeed = 0f;
 	public Action AnimationStart;
 
@@ -36,7 +37,16 @@ public class Flask : BetterMonoBehaviour
 
 	public void OnAnimationFinish()
 	{
-		LeanTween.moveLocalX(gameObject, travelDistance, travelSpeed);
+		Debug.Log("Animation Finished");
+		if (gameObject.name != "Sports")
+		{
+			TileGrid.Instance.MoveFlasks.Invoke();
+		}
+	}
+
+	public void MoveFlaskByStep()
+	{
+		LeanTween.moveLocalX(gameObject, (transform.localPosition.x + stepDistance), travelSpeed);
 	}
 
 	public void OnFlaskSelected()
