@@ -19,6 +19,8 @@ namespace Room3
 
 		public Level.ColorSettings CurrentLevelSettings => CurrentLevel != null && CurrentLevel.HasCustomColorSettings ? CurrentLevel.CustomColorSettings : defaultLevelSettings;
 
+		public Action MoveFlasks;
+
 		[SerializeField] private TileSpriteSettings[] tileSpriteSettings;
 
 		[SerializeField] private TileController tileControllerPrefab = null;
@@ -29,7 +31,6 @@ namespace Room3
 		[SerializeField] private Lever lever;
 
 		[SerializeField] private List<Image> flasks;
-
 		private int currentLevelIndex = -1;
 		private int currentDialoguePartID = 3;
 
@@ -99,6 +100,7 @@ namespace Room3
 			if (currentLevelIndex >= 0)
 			{
 				Flask flask = flasks[currentLevelIndex].GetComponent<Flask>();
+				MoveFlasks += flask.MoveFlaskByStep;
 				flask.AnimationStart?.Invoke();
 
 				DialogueManager.Instance.CurrentDialogue.CurrentKnot = $"Part{currentDialoguePartID}";

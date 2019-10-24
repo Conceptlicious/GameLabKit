@@ -426,60 +426,95 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1745395546344086990, guid: 5e89894ff5a7252458680b5389b6e81b,
+    - target: {fileID: 1804926349495510113, guid: 5e89894ff5a7252458680b5389b6e81b,
         type: 3}
-      propertyPath: travelDistance
+      propertyPath: m_AnchoredPosition.x
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 422864456848074234, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412203370329945022, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213299472711532380, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380047341707317384, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7933018654267147397, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745395546344086990, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: stepDistance
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745395546344086990, guid: 5e89894ff5a7252458680b5389b6e81b,
+        type: 3}
+      propertyPath: travelSpeed
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 359088844103300434, guid: 5e89894ff5a7252458680b5389b6e81b,
         type: 3}
-      propertyPath: travelDistance
-      value: 150
+      propertyPath: stepDistance
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 359088844103300434, guid: 5e89894ff5a7252458680b5389b6e81b,
         type: 3}
       propertyPath: travelSpeed
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 2002461562000113164, guid: 5e89894ff5a7252458680b5389b6e81b,
         type: 3}
-      propertyPath: travelDistance
-      value: 750
+      propertyPath: stepDistance
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2002461562000113164, guid: 5e89894ff5a7252458680b5389b6e81b,
         type: 3}
       propertyPath: travelSpeed
-      value: 2.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4741526665447994844, guid: 5e89894ff5a7252458680b5389b6e81b,
         type: 3}
-      propertyPath: travelDistance
-      value: 300
+      propertyPath: stepDistance
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4741526665447994844, guid: 5e89894ff5a7252458680b5389b6e81b,
         type: 3}
       propertyPath: travelSpeed
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 7134124677803446634, guid: 5e89894ff5a7252458680b5389b6e81b,
         type: 3}
-      propertyPath: travelDistance
-      value: 450
+      propertyPath: stepDistance
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7134124677803446634, guid: 5e89894ff5a7252458680b5389b6e81b,
         type: 3}
       propertyPath: travelSpeed
-      value: 1.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6590790731321864902, guid: 5e89894ff5a7252458680b5389b6e81b,
         type: 3}
-      propertyPath: travelDistance
-      value: 600
+      propertyPath: stepDistance
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6590790731321864902, guid: 5e89894ff5a7252458680b5389b6e81b,
         type: 3}
       propertyPath: travelSpeed
-      value: 2
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e89894ff5a7252458680b5389b6e81b, type: 3}
