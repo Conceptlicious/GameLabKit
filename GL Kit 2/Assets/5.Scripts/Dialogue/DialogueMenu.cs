@@ -21,7 +21,7 @@ public class DialogueMenu : Menu
 		continueButton.onClick.AddListener(RequestNextDialogueLine);
 		EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);
 		EventManager.Instance.AddListener<DialogueKnotCompletedEvent>(Close, 1000);
-
+		EventManager.Instance.RaiseEvent<DialogueOpenEvent>();
 		RequestNextDialogueLine();
 	}
 
@@ -32,7 +32,7 @@ public class DialogueMenu : Menu
 		continueButton.onClick.RemoveListener(RequestNextDialogueLine);
 
 		interactionPlane.SetActive(false);
-
+		EventManager.Instance.RaiseEvent<DialogueCloseEvent>();
 		EventManager.InstanceIfInitialized?.RemoveListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);
 		EventManager.InstanceIfInitialized?.RemoveListener<DialogueKnotCompletedEvent>(Close);
 	}
