@@ -1459,7 +1459,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 7
-  pieceInformation: 
+  pieceInformation: 'Realistic simulation
+
+'
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &218549202390946837
@@ -2765,7 +2767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 6
-  pieceInformation: 
+  pieceInformation: Untapped market
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &1272748465295556810
@@ -4505,7 +4507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 1
-  pieceInformation: 
+  pieceInformation: Motion sickness
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &2962813942371382692
@@ -5925,7 +5927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 5
-  pieceInformation: 
+  pieceInformation: Physical engagement
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &4649553750862602867
@@ -7250,7 +7252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 3
-  pieceInformation: 
+  pieceInformation: Hard to design
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &6443354068352662001
@@ -7643,7 +7645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlePieceType: 2
-  pieceInformation: 
+  pieceInformation: Hard to develop
   isInSocket: 0
   canBeSelected: 1
 --- !u!1 &6739354542929804875
@@ -9895,6 +9897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzles: []
+  activePuzzle: {fileID: 0}
 --- !u!222 &622386946854629425
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10545,8 +10548,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mediumInformation: {fileID: 11400000, guid: 521a49111baf57748ae7b38aa2142347, type: 2}
   mediumPuzzle: {fileID: 2021020464985209036}
-  completeButtons: {fileID: 1071338635255935467}
-  mediumSprite: {fileID: 0}
 --- !u!1 &9165525738576886591
 GameObject:
   m_ObjectHideFlags: 0
@@ -10757,8 +10758,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mediumInformation: {fileID: 11400000, guid: c3fe94d2a30ce0f4ea9575c006fcc20f, type: 2}
   mediumPuzzle: {fileID: 3304275458662253872}
-  completeButtons: {fileID: 1071338635255935467}
-  mediumSprite: {fileID: 0}
 --- !u!1 &9165525738681391458
 GameObject:
   m_ObjectHideFlags: 0
@@ -11028,8 +11027,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mediumInformation: {fileID: 11400000, guid: 7be04d669298f8945a64c562fb3094c7, type: 2}
   mediumPuzzle: {fileID: 2052539413283742189}
-  completeButtons: {fileID: 1071338635255935467}
-  mediumSprite: {fileID: 0}
 --- !u!1 &9165525739326985229
 GameObject:
   m_ObjectHideFlags: 0
@@ -11166,8 +11163,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mediumInformation: {fileID: 11400000, guid: e7e5c022029751d45a75e4adacb3146d, type: 2}
   mediumPuzzle: {fileID: 1112305595388518999}
-  completeButtons: {fileID: 1071338635255935467}
-  mediumSprite: {fileID: 0}
 --- !u!1 &9165525739515996809
 GameObject:
   m_ObjectHideFlags: 0
@@ -11304,8 +11299,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mediumInformation: {fileID: 11400000, guid: 5ecc085c7baffb94e968105531ac0b0a, type: 2}
   mediumPuzzle: {fileID: 4760833203396906265}
-  completeButtons: {fileID: 1071338635255935467}
-  mediumSprite: {fileID: 0}
 --- !u!1 &9165525739544099293
 GameObject:
   m_ObjectHideFlags: 0
@@ -11442,8 +11435,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mediumInformation: {fileID: 11400000, guid: cb0d2ef842e17f945b6e9f376620d78d, type: 2}
   mediumPuzzle: {fileID: 2759328096431137585}
-  completeButtons: {fileID: 1071338635255935467}
-  mediumSprite: {fileID: 0}
 --- !u!1 &9165525739594504453
 GameObject:
   m_ObjectHideFlags: 0
@@ -11580,8 +11571,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mediumInformation: {fileID: 11400000, guid: bffc66055dec59a41a3476709e491421, type: 2}
   mediumPuzzle: {fileID: 890104082}
-  completeButtons: {fileID: 1071338635255935467}
-  mediumSprite: {fileID: 0}
 --- !u!1 &9165525739613722130
 GameObject:
   m_ObjectHideFlags: 0
@@ -12114,8 +12103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mediumInformation: {fileID: 11400000, guid: becacbbe671ecab498636c66fa1d4672, type: 2}
   mediumPuzzle: {fileID: 1499962289037196163}
-  completeButtons: {fileID: 1071338635255935467}
-  mediumSprite: {fileID: 0}
 --- !u!1 &9165525740039033754
 GameObject:
   m_ObjectHideFlags: 0
@@ -12400,16 +12387,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2420083833960727297, guid: 5707eef60e4256340aeec499c07954fa,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 9165525739594504472}
-    - target: {fileID: 2420083833960727297, guid: 5707eef60e4256340aeec499c07954fa,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NoButton
-      objectReference: {fileID: 0}
     - target: {fileID: 394970663965180045, guid: 5707eef60e4256340aeec499c07954fa,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -12420,6 +12397,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: YesButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2420083833960727297, guid: 5707eef60e4256340aeec499c07954fa,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9165525739594504472}
+    - target: {fileID: 2420083833960727297, guid: 5707eef60e4256340aeec499c07954fa,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NoButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5707eef60e4256340aeec499c07954fa, type: 3}
 --- !u!224 &8471129264352938338 stripped
@@ -12428,15 +12415,3 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8648999570844423525}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1071338635255935467 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8563950491068064910, guid: 5707eef60e4256340aeec499c07954fa,
-    type: 3}
-  m_PrefabInstance: {fileID: 8648999570844423525}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
