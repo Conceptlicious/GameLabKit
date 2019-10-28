@@ -233,7 +233,7 @@ namespace Room3
 				return;
 			}
 			//If the tile is already part of a finished group return
-			if (IsTilePartOfFinishedGroups(tileController))
+			if (IsTilePartOfFinishedGroups(tileController) || IsTilePartOfFinishedGroups(lastInteractedWithTileController))
 			{
 				return;
 			}
