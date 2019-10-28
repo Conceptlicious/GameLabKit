@@ -1,28 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using GameLab;
 using UnityEngine;
 
 public class DrGameLab : BetterMonoBehaviour
 {
-	[SerializeField] private float offScreenX = 0;
-	[SerializeField] private float inScreenX = 0;
-	[SerializeField] private float durationInSeconds;
+	public event Action<bool> DrGameLabMovementCompleted = null;
 
-	private void Awake()
+	[SerializeField]
+	
+	public void MoveDrGameLab(bool moveIn)
 	{
-		EventManager.Instance.AddListener<DialogueCloseEvent>(MoveOut);
-		EventManager.Instance.AddListener<DialogueOpenEvent>(MoveIn);
+		//LeanTween.move(gameObject, moveIn ? onScreenDestination : offScreenDestination, durationInSeconds).setOnComplete(() => DrGameLabMovementCompleted(moveIn));
 	}
 
-	public void MoveIn()
+	private void DrGameLabMovedIn()
 	{
-		LeanTween.moveLocalX(gameObject, inScreenX, durationInSeconds);
+		MenuManager.Instance.OpenMenu<DialogueMenu>();
 	}
-
-	public void MoveOut()
-	{
-		LeanTween.moveLocalX(gameObject, offScreenX, durationInSeconds);
-	}
-
 }

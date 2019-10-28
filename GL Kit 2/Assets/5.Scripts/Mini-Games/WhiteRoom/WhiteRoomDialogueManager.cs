@@ -18,10 +18,14 @@ public class WhiteRoomDialogueManager : Manager<WhiteRoomDialogueManager>
 		EventManager.Instance.AddListener<DialogueKnotCompletedEvent>(OnDialogueKnotCompleted);
 	}
 
+	private void Start()
+	{
+		DialogueManager.Instance.SetCurrentDialogue(RoomType.FrontDoor);
+		MenuManager.Instance.OpenMenu<DialogueMenu>();
+	}
+
 	private void OnFinishedRoomTransition(FinishedRoomTransition eventData)
 	{
-		//Debug.Log($"Current room ID: {RoomManager.Instance.GetCurrentRoomID().z}, Previous room ID : {RoomManager.Instance.GetCurrentRoomID().y}.");
-
 		if (RoomManager.Instance.GetCurrentRoomID().z != 7)
 		{
 			return;
@@ -43,7 +47,7 @@ public class WhiteRoomDialogueManager : Manager<WhiteRoomDialogueManager>
 
 	private void OnDialogueKnotCompleted(DialogueKnotCompletedEvent eventData)
 	{
-		if (eventData.CompletedRoomID != RoomType.WhiteRoom || eventData.Knot != "Intro" && eventData.Knot != "FromRoom1")
+		if (eventData.CompletedRoomID != RoomType.WhiteRoom && eventData.CompletedRoomID != RoomType.FrontDoor || eventData.Knot != "Intro" && eventData.Knot != "FromRoom1")
 		{
 			return;
 		}

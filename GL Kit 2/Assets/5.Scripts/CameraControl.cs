@@ -38,7 +38,6 @@ public class CameraControl : MonoBehaviour
     private void SetUpCamera()
     {
         cam = Camera.main;
-        EventManager.Instance.RaiseEvent(new SetInteractionEvent(true));
 
         //Grab post processing profile
         PostProcessProfile postProfile = null;
@@ -75,7 +74,6 @@ public class CameraControl : MonoBehaviour
     {
         EventManager.Instance.AddListener<CameraTargetSelectEvent>(OnTargetSelect);
         EventManager.Instance.AddListener<CameraSnapEvent>(OnCameraSnap);
-        EventManager.Instance.AddListener<SetInteractionEvent>(OnPlaneActivity);
     }
 
     // Update is called once per frame
@@ -113,8 +111,6 @@ public class CameraControl : MonoBehaviour
 
             if (RoomManager.Instance.GetCurrentRoomID().y != RoomManager.Instance.GetCurrentRoomID().z)
             {
-                EventManager.Instance.RaiseEvent(new SetInteractionEvent(true));
-
                 FinishedRoomTransition newInfo = new FinishedRoomTransition();
                 EventManager.Instance.RaiseEvent(newInfo);
             }
@@ -135,8 +131,6 @@ public class CameraControl : MonoBehaviour
 
     private void OnTargetSelect(CameraTargetSelectEvent info)
     {
-        EventManager.Instance.RaiseEvent(new SetInteractionEvent(false));
-
         if (info != null)
         {
             //If the next and previous points are identical, keep the next but set the previous to the camera's current position
@@ -164,10 +158,5 @@ public class CameraControl : MonoBehaviour
             Debug.Log(
                 System.String.Format(EventSystem.STR_INCORRECT_EVENT_TYPE_CAST, System.Reflection.MethodBase.GetCurrentMethod().Name, GetType().FullName));
         }
-    }
-
-    private void OnPlaneActivity(SetInteractionEvent eventData)
-    {
-        transitionPlane.SetActive(eventData.planeState);
     }
 }
