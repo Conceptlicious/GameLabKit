@@ -31,10 +31,7 @@ public class UIControl : MonoBehaviour
 	//Temporary for testing Room1
 	private Slider ageSilderMin = null;
 	private Slider ageSilderMax = null;
-	private Slider AverageAgeSlider = null;
 	private Text targetAudienceText = null;
-	private Text minAgeText = null;
-	private Text maxAgeText = null;
 	private Toggle unspecified = null;
 	private Toggle female = null;
 	private Toggle male = null;
@@ -111,7 +108,6 @@ public class UIControl : MonoBehaviour
 	public void UpdateAgeSlider()
 	{
 		float calculateAverageAge = (ageSilderMin.value + ageSilderMax.value) / 2;
-
 		int averageAge = Mathf.RoundToInt(calculateAverageAge);
 
 		if (averageAge >= ELDERLY_CUT_OFF)
@@ -135,11 +131,6 @@ public class UIControl : MonoBehaviour
 			persona.Age = AgeGroup.Child;
 		}
 
-
-		minAgeText.text = ageSilderMin.value.ToString();
-		maxAgeText.text = ageSilderMax.value.ToString();
-
-		AverageAgeSlider.value = averageAge;
 		OnPersonaChanged?.Invoke(persona);
 	}
 
@@ -249,14 +240,11 @@ public class UIControl : MonoBehaviour
 	{
 		ageSilderMin = ageSliders.Find("AgeSliderMin").GetComponent<Slider>();
 		ageSilderMax = ageSliders.Find("AgeSliderMax").GetComponent<Slider>();
-		AverageAgeSlider = ageSliders.Find("AverageAge").GetComponent<Slider>();
 
 		ageSilderMax.onValueChanged.AddListener((_) => UpdateAgeSlider());
 		ageSilderMin.onValueChanged.AddListener((_) => UpdateAgeSlider());
 
 		targetAudienceText = ageSilderMin.transform.Find("TargetAudicence").GetComponent<Text>();
-		minAgeText = ageSilderMin.transform.Find("Handle Slide Area/Handle/Text").GetComponent<Text>();
-		maxAgeText = ageSilderMax.transform.Find("Handle Slide Area/Handle/Text").GetComponent<Text>();
 
 		UpdateAgeSlider();
 
