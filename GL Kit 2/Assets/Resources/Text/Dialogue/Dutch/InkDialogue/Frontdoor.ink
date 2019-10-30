@@ -1,4 +1,4 @@
 ===Intro===
--"Dit is een placeholder text"
--"Meer placeholders"
+-"Hallo! Mijn naam is Dr. Gamelab."
+-"Ik begrijp dat u interesse heeft in serious gaming. Nou, dan bent u aan het juiste adres!"
 ->END

@@ -10,9 +10,14 @@ public class DialogueMenu : Menu
 {
 	[SerializeField] private Button continueButton = null;
 	[SerializeField] private TextMeshProUGUI dialogueText = null;
+	[SerializeField] private ContentAnimation contentAnimation = null;
+
+	private bool contentAnimationPlaying = false;
 
 	protected override void OnOpened()
 	{
+		contentAnimation.OnContentAnimationPlayStateChanged += OnContentAnimationStateChanged;
+
 		continueButton.onClick.AddListener(RequestNextDialogueLine);
 		EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);
 		EventManager.Instance.AddListener<DialogueKnotCompletedEvent>(Close, 1000);
@@ -22,8 +27,12 @@ public class DialogueMenu : Menu
 
 	protected override void OnClosed()
 	{
-		continueButton.onClick.RemoveListener(RequestNextDialogueLine);
+		if(contentAnimation != null)
+		{
+			contentAnimation.OnContentAnimationPlayStateChanged -= OnContentAnimationStateChanged;
+		}
 
+		continueButton.onClick.RemoveListener(RequestNextDialogueLine);
 		EventManager.InstanceIfInitialized?.RemoveListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);
 		EventManager.InstanceIfInitialized?.RemoveListener<DialogueKnotCompletedEvent>(Close);
 	}
@@ -36,6 +45,11 @@ public class DialogueMenu : Menu
 
 	private void RequestNextDialogueLine()
 	{
+		if(contentAnimationPlaying)
+		{
+			return;
+		}
+
 		RequestNextDialogueLineEvent nextDialogueLineRequest = new RequestNextDialogueLineEvent();
 		EventManager.Instance.RaiseEvent(nextDialogueLineRequest);
 
@@ -65,6 +79,11 @@ public class DialogueMenu : Menu
 		dialogueText.text = dialogueLine;
 	}
 
+	private void OnContentAnimationStateChanged(bool contentAnimationPlaying)
+	{
+		this.contentAnimationPlaying = contentAnimationPlaying;
+	}
+
 	private void OnValidate()
 	{
 		if(continueButton == null)
@@ -75,6 +94,11 @@ public class DialogueMenu : Menu
 		if(dialogueText == null)
 		{
 			dialogueText = continueButton.GetComponentInChildren<TextMeshProUGUI>();
+		}
+
+		if (contentAnimation == null)
+		{
+			contentAnimation = GetComponentInChildren<ContentAnimation>();
 		}
 	}
 }

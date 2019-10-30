@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 using GameLab;
+using UnityEngine;
+using System.Collections;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Animator))]
 public class ContentAnimation : BetterMonoBehaviour
 {
-	private Animator contentAnimator = null;
+	public event Action<bool> OnContentAnimationPlayStateChanged;
 
+	private Animator contentAnimator = null;
 	private Menu contentOwner = null;
 	private bool didFlyOut = true; // Start of as true because the menu is closed by default
 
@@ -35,7 +36,7 @@ public class ContentAnimation : BetterMonoBehaviour
 
 	private bool OnContentOwnerClosing(Menu menu)
 	{
-		if(!didFlyOut)
+		if (!didFlyOut)
 		{
 			contentAnimator.SetTrigger("FlyOut");
 			return false;
@@ -50,5 +51,13 @@ public class ContentAnimation : BetterMonoBehaviour
 		contentOwner.Close();
 	}
 
+	private void OnAnimationStart()
+	{
+		OnContentAnimationPlayStateChanged?.Invoke(true); 
+	}
 
+	private void OnAnimationEnd()
+	{
+		OnContentAnimationPlayStateChanged?.Invoke(false);
+	}
 }
