@@ -357,7 +357,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -371,7 +371,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 3983807084501352930}
   m_OnClick:
     m_PersistentCalls:
@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 3587996346678796168}
   - component: {fileID: 6368432844304843926}
   - component: {fileID: 4684581933053863180}
+  - component: {fileID: 539762797}
   m_Layer: 10
   m_Name: Content
   m_TagString: Untagged
@@ -445,6 +446,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &539762797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5772321869396628969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8067a227611df0478cd11efb1c38edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8491550579238917806
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,6 +632,7 @@ MonoBehaviour:
   linkedMenus: []
   continueButton: {fileID: 3731401046716518444}
   dialogueText: {fileID: 1914710514841876476}
+  contentAnimation: {fileID: 539762797}
 --- !u!1001 &9011429663363140415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -694,7 +708,7 @@ PrefabInstance:
     - target: {fileID: 8575959199179353662, guid: fb7a4a01c8e20934397804a3caf86650,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.746704
+      value: -0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 8575959199179353662, guid: fb7a4a01c8e20934397804a3caf86650,
         type: 3}
@@ -735,16 +749,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.10479383
-      objectReference: {fileID: 0}
-    - target: {fileID: 1074245001309683549, guid: fb7a4a01c8e20934397804a3caf86650,
-        type: 3}
-      propertyPath: onScreenDestination
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1074245001309683549, guid: fb7a4a01c8e20934397804a3caf86650,
-        type: 3}
-      propertyPath: offScreenDestination
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb7a4a01c8e20934397804a3caf86650, type: 3}

@@ -17,16 +17,17 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 	public Sprite SelectedMediumSprite { get; private set; }
 	public Button closeScreenButton;
 	[SerializeField] private GameObject pieceTextHolder;
-	[HideInInspector] public int activeButtons = 0;	
+	[HideInInspector] public int activeButtons = 0;
 	private List<Button> buttons = new List<Button>();
 	private Image[] buttonIcons;
 	private Text pieceText = null;
+	private bool dialogueMenuShouldOpenAgain = false;
 
 	private void Start()
 	{
 		SetVariables();
 		EnableNextButton();
-		CloseScreen();		
+		CloseScreen();
 	}
 
 	public void EnableNextButton()
@@ -63,7 +64,7 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 		PuzzleManager.Instance.activePuzzle = pressedButton.gameObject;
 		pieceText.text = mediumName;
 
-		if(activeButtons != 1)
+		if (activeButtons != 1)
 		{
 			return;
 		}
@@ -74,7 +75,7 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 
 	public void CloseScreen()
 	{
-		if(PuzzleManager.Instance.IsPuzzleInProgress)
+		if (PuzzleManager.Instance.IsPuzzleInProgress)
 		{
 			DisplayPieceText(FCE300, PUZZLE_IN_PROGRESS_WARNING);
 			return;
@@ -99,7 +100,7 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 	{
 		int currentRoomID = RoomManager.Instance.GetCurrentRoomID().z;
 
-		if(currentRoomID == 4)
+		if (currentRoomID == 4)
 		{
 			DialogueManager.Instance.SetCurrentDialogue(RoomType.Medium);
 			MenuManager.Instance.OpenMenu<DialogueMenu>();
@@ -108,13 +109,24 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 
 	private void OnDialogueKnotCompleted(DialogueKnotCompletedEvent eventData)
 	{
-		if(eventData.Knot != KNOT_NAME_WEARABLE || eventData.CompletedRoomID != RoomType.Medium)
+		if (eventData.Knot != KNOT_NAME_WEARABLE || eventData.CompletedRoomID != RoomType.Medium)
 		{
 			return;
 		}
 
 		DialogueManager.Instance.CurrentDialogue.CurrentKnot = "Part3";
+		dialogueMenuShouldOpenAgain = true;
+	}
+
+	private void OnMenuClosed(Menu menu)
+	{
+		if(!dialogueMenuShouldOpenAgain || !(menu is DialogueMenu) || DialogueManager.Instance.CurrentDialogue.CurrentKnot != "Part3" || DialogueManager.Instance.CurrentRoomID != RoomType.Medium)
+		{
+			return;
+		}
+
 		MenuManager.Instance.OpenMenu<DialogueMenu>();
+		dialogueMenuShouldOpenAgain = false;
 	}
 
 	private void OnDialogueChoiceSelected(DialogueChoiceSelectedEvent eventData)
@@ -146,6 +158,9 @@ public class MediumUIHandler : Manager<MediumUIHandler>
 		pieceText = pieceTextHolder.GetComponentInChildren<Text>();
 
 		closeScreenButton.onClick.AddListener(() => CloseScreen());
+
+		MenuManager.Instance.MenuClosed += OnMenuClosed;
+
 		EventManager.Instance.AddListener<FinishedRoomTransition>(OnRoomTransitionFinished);
 		EventManager.Instance.AddListener<DialogueKnotCompletedEvent>(OnDialogueKnotCompleted);
 		EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);

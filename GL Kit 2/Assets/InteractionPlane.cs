@@ -5,13 +5,15 @@ using GameLab;
 
 public class InteractionPlane : BetterMonoBehaviour
 {
+	private bool cameraIsAnimating = false;
+
 	private void Awake()
 	{
 		MenuManager.Instance.MenuOpened += OnMenuOpened;
 		MenuManager.Instance.MenuClosed += OnMenuClosed;
 
-		EventManager.Instance.AddListener<FinishedRoomTransition>(EnableInteraction);
-		EventManager.Instance.AddListener<NextRoomEvent>(DisableInteraction);
+		EventManager.Instance.AddListener<FinishedRoomTransition>(OnFinishedRoomTransition);
+		EventManager.Instance.AddListener<NextRoomEvent>(OnNextRoomEvent);
 	}
 
 	private void OnDestroy()
@@ -22,8 +24,8 @@ public class InteractionPlane : BetterMonoBehaviour
 			MenuManager.Instance.MenuClosed -= OnMenuClosed;
 		}
 
-		EventManager.InstanceIfInitialized?.RemoveListener<FinishedRoomTransition>(EnableInteraction);
-		EventManager.InstanceIfInitialized?.RemoveListener<NextRoomEvent>(DisableInteraction);
+		EventManager.InstanceIfInitialized?.RemoveListener<FinishedRoomTransition>(OnFinishedRoomTransition);
+		EventManager.InstanceIfInitialized?.RemoveListener<NextRoomEvent>(OnNextRoomEvent);
 	}
 
 	private void OnMenuOpened(Menu menu)
@@ -38,7 +40,7 @@ public class InteractionPlane : BetterMonoBehaviour
 
 	private void OnMenuClosed(Menu menu)
 	{
-		if(!(menu is DialogueMenu))
+		if (!(menu is DialogueMenu) || cameraIsAnimating)
 		{
 			return;
 		}
@@ -46,7 +48,21 @@ public class InteractionPlane : BetterMonoBehaviour
 		EnableInteraction();
 	}
 
+	private void OnNextRoomEvent()
+	{
+		DisableInteraction();
+		cameraIsAnimating = true;
+	}
+
+	private void OnFinishedRoomTransition()
+	{
+		EnableInteraction();
+		cameraIsAnimating = false;
+	}
+
+	//private void EnableInteraction() => Debug.Log("Enabling interaction...");
 	private void EnableInteraction() => gameObject.SetActive(false);
 
+	//private void DisableInteraction() => Debug.Log("Disabling interaction...");
 	private void DisableInteraction() => gameObject.SetActive(true);
 }

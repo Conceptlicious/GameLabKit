@@ -18,9 +18,10 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 	public Sprite SelectedObjectSprite { get; private set; }
 	[SerializeField] private GameObject nextMinigameButton = null;
 	private List<GameObject> foundObjects = new List<GameObject>();
-	private int currentKnotID = 2;	
+	private int currentKnotID = 2;
 	private string currentKnotPath = string.Empty;
 	private string foundObjectName = string.Empty;
+	private bool dialogueMenuShouldOpenAgain = false;
 
 	private void Start()
 	{
@@ -35,12 +36,12 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 		if (!foundObjects.Contains(foundObject))
 		{
 			currentHiddenObject.Found();
-			foundObjects.Add(foundObject);			
+			foundObjects.Add(foundObject);
 
 			ProgressDialogue();
 
 			if (foundObjects.Count >= HIDDENOBJECTS_AMOUNT)
-			{				
+			{
 				MinigameIsWon = true;
 			}
 		}
@@ -75,21 +76,32 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 		{
 			return;
 		}
-		
+
 		//DialogueManager.Instance.CurrentDialogue.Reset();
 		DialogueManager.Instance.CurrentDialogue.CurrentKnot = foundObjectName;
+		dialogueMenuShouldOpenAgain = true;
+	}
+
+	private void OnMenuClosed(Menu menu)
+	{
+		if (!(menu is DialogueMenu) || DialogueManager.Instance.CurrentDialogue.CurrentKnot != foundObjectName || !dialogueMenuShouldOpenAgain)
+		{
+			return;
+		}
+
 		MenuManager.Instance.OpenMenu<DialogueMenu>();
+		dialogueMenuShouldOpenAgain = false;
 	}
 
 	private void OnDialogueChoiceSelected(DialogueChoiceSelectedEvent eventData)
 	{
-		if(eventData.DialogueChoice.text != "Yes" || DialogueManager.Instance.CurrentRoomID != RoomType.Goals)
+		if (eventData.DialogueChoice.text != "Yes" || DialogueManager.Instance.CurrentRoomID != RoomType.Goals)
 		{
 			return;
 		}
 
 		EventManager.Instance.RaiseEvent(new SaveItemEvent(RoomType.Goals));
-		EventManager.Instance.RaiseEvent(new NextRoomEvent());		
+		EventManager.Instance.RaiseEvent(new NextRoomEvent());
 	}
 
 	private void OnFinishedRoomTransition(FinishedRoomTransition eventData)
@@ -106,6 +118,8 @@ public class HiddenObjectHandler : Singleton<HiddenObjectHandler>
 	private void SetVariables()
 	{
 		nextMinigameButton.SetActive(false);
+
+		MenuManager.Instance.MenuClosed += OnMenuClosed;
 		EventManager.Instance.AddListener<FinishedRoomTransition>(OnFinishedRoomTransition);
 		EventManager.Instance.AddListener<DialogueKnotCompletedEvent>(OnDialogueKnotCompleted);
 		EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);

@@ -12,11 +12,9 @@ public class DialogueMenu : Menu
 	[SerializeField] private TextMeshProUGUI dialogueText = null;
 	[SerializeField] private ContentAnimation contentAnimation = null;
 
-	private bool contentAnimationPlaying = false;
-
 	protected override void OnOpened()
 	{
-		contentAnimation.OnContentAnimationPlayStateChanged += OnContentAnimationStateChanged;
+		contentAnimation.OnAnimationIsPlaying += OnIsContentAnimationPlaying;
 
 		continueButton.onClick.AddListener(RequestNextDialogueLine);
 		EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);
@@ -29,7 +27,7 @@ public class DialogueMenu : Menu
 	{
 		if(contentAnimation != null)
 		{
-			contentAnimation.OnContentAnimationPlayStateChanged -= OnContentAnimationStateChanged;
+			contentAnimation.OnAnimationIsPlaying -= OnIsContentAnimationPlaying;
 		}
 
 		continueButton.onClick.RemoveListener(RequestNextDialogueLine);
@@ -45,11 +43,6 @@ public class DialogueMenu : Menu
 
 	private void RequestNextDialogueLine()
 	{
-		if(contentAnimationPlaying)
-		{
-			return;
-		}
-
 		RequestNextDialogueLineEvent nextDialogueLineRequest = new RequestNextDialogueLineEvent();
 		EventManager.Instance.RaiseEvent(nextDialogueLineRequest);
 
@@ -79,9 +72,9 @@ public class DialogueMenu : Menu
 		dialogueText.text = dialogueLine;
 	}
 
-	private void OnContentAnimationStateChanged(bool contentAnimationPlaying)
+	private void OnIsContentAnimationPlaying(bool isPlaying)
 	{
-		this.contentAnimationPlaying = contentAnimationPlaying;
+		continueButton.interactable = isPlaying ? false : true;
 	}
 
 	private void OnValidate()

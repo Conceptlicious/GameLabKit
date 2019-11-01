@@ -111,7 +111,6 @@ public class RoomManager : Singleton<RoomManager>
 
 		CameraTargetSelectEvent newInfo = new CameraTargetSelectEvent(roomFocalPoints[currentRoom.y], roomFocalPoints[currentRoom.z], Settings.VAL_CAMERA_ZOOM_DISTANCE, true, true);
 		EventManager.Instance.RaiseEvent(newInfo);
-
 	}
 
 	/// <summary>

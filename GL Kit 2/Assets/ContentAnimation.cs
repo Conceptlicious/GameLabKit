@@ -7,7 +7,7 @@ using System.Collections;
 [RequireComponent(typeof(Animator))]
 public class ContentAnimation : BetterMonoBehaviour
 {
-	public event Action<bool> OnContentAnimationPlayStateChanged;
+	public event Action<bool> OnAnimationIsPlaying;
 
 	private Animator contentAnimator = null;
 	private Menu contentOwner = null;
@@ -53,11 +53,11 @@ public class ContentAnimation : BetterMonoBehaviour
 
 	private void OnAnimationStart()
 	{
-		OnContentAnimationPlayStateChanged?.Invoke(true); 
+		OnAnimationIsPlaying?.Invoke(true);
 	}
 
 	private void OnAnimationEnd()
 	{
-		OnContentAnimationPlayStateChanged?.Invoke(false);
+		OnAnimationIsPlaying?.Invoke(false);
 	}
 }
