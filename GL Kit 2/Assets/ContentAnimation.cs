@@ -13,6 +13,9 @@ public class ContentAnimation : BetterMonoBehaviour
 	private Menu contentOwner = null;
 	private bool didFlyOut = true; // Start of as true because the menu is closed by default
 
+	[Header("Debug")]
+	[SerializeField] UnityEngine.UI.Text debugText;
+
 	private void Awake()
 	{
 		contentAnimator = GetComponent<Animator>();
@@ -38,6 +41,7 @@ public class ContentAnimation : BetterMonoBehaviour
 	{
 		if (!didFlyOut)
 		{
+			debugText.text = Environment.StackTrace;
 			contentAnimator.SetTrigger("FlyOut");
 			return false;
 		}
@@ -54,10 +58,21 @@ public class ContentAnimation : BetterMonoBehaviour
 	private void OnAnimationStart()
 	{
 		OnAnimationIsPlaying?.Invoke(true);
+		TEST_PlayingAnimation();
 	}
 
 	private void OnAnimationEnd()
 	{
 		OnAnimationIsPlaying?.Invoke(false);
+	}
+
+	private void TEST_PlayingAnimation()
+	{
+		AnimatorClipInfo[] clipInfos = contentAnimator.GetCurrentAnimatorClipInfo(0);
+
+		foreach (AnimatorClipInfo clipInfo in clipInfos)
+		{
+			Debug.Log($"Playing clip: {clipInfo.clip}...");
+		}
 	}
 }

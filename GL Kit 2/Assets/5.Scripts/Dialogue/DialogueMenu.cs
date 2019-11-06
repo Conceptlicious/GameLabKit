@@ -14,8 +14,10 @@ public class DialogueMenu : Menu
 
 	protected override void OnOpened()
 	{
-		contentAnimation.OnAnimationIsPlaying += OnIsContentAnimationPlaying;
-
+		if (contentAnimation != null)
+		{
+			contentAnimation.OnAnimationIsPlaying += OnIsContentAnimationPlaying;
+		}
 		continueButton.onClick.AddListener(RequestNextDialogueLine);
 		EventManager.Instance.AddListener<DialogueChoiceSelectedEvent>(OnDialogueChoiceSelected);
 		EventManager.Instance.AddListener<DialogueKnotCompletedEvent>(Close, 1000);
@@ -25,7 +27,7 @@ public class DialogueMenu : Menu
 
 	protected override void OnClosed()
 	{
-		if(contentAnimation != null)
+		if (contentAnimation != null)
 		{
 			contentAnimation.OnAnimationIsPlaying -= OnIsContentAnimationPlaying;
 		}
@@ -46,7 +48,7 @@ public class DialogueMenu : Menu
 		RequestNextDialogueLineEvent nextDialogueLineRequest = new RequestNextDialogueLineEvent();
 		EventManager.Instance.RaiseEvent(nextDialogueLineRequest);
 
-		if(!nextDialogueLineRequest.Consumed)
+		if (!nextDialogueLineRequest.Consumed)
 		{
 			Debug.LogWarning("Nothing is listening or consuming the dialogue line request event");
 			return;
@@ -72,19 +74,16 @@ public class DialogueMenu : Menu
 		dialogueText.text = dialogueLine;
 	}
 
-	private void OnIsContentAnimationPlaying(bool isPlaying)
-	{
-		continueButton.interactable = isPlaying ? false : true;
-	}
+	private void OnIsContentAnimationPlaying(bool isPlaying) => continueButton.interactable = isPlaying ? false : true;
 
 	private void OnValidate()
 	{
-		if(continueButton == null)
+		if (continueButton == null)
 		{
 			continueButton = ContentContainer.Find("ContinueButton").GetComponent<Button>();
 		}
 
-		if(dialogueText == null)
+		if (dialogueText == null)
 		{
 			dialogueText = continueButton.GetComponentInChildren<TextMeshProUGUI>();
 		}

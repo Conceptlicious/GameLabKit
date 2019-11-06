@@ -83,10 +83,10 @@ public class UIAnimator
             switch (blurType)
             {
                     case BlurType.IN:
-                        PostProcessControl.Instance.SetDepthOfFieldFocal(Settings.VAL_CAMERA_BLUR_FOCALLENGTH_MAX * fracComplete);
+                        //PostProcessControl.Instance.SetDepthOfFieldFocal(Settings.VAL_CAMERA_BLUR_FOCALLENGTH_MAX * fracComplete);
                         break;
                     case BlurType.OUT:
-                        PostProcessControl.Instance.SetDepthOfFieldFocal(Settings.VAL_CAMERA_BLUR_FOCALLENGTH_MAX * (1.0f - fracComplete));
+                        //PostProcessControl.Instance.SetDepthOfFieldFocal(Settings.VAL_CAMERA_BLUR_FOCALLENGTH_MAX * (1.0f - fracComplete));
                         break;
                     case BlurType.NONE:
                         break;
