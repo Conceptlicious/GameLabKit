@@ -27,6 +27,8 @@ public class DialogueMenu : Menu
 
 	protected override void OnClosed()
 	{
+		Debug.LogError("Closed dialogue menu: " + new System.Diagnostics.StackTrace().ToString());
+
 		if (contentAnimation != null)
 		{
 			contentAnimation.OnAnimationIsPlaying -= OnIsContentAnimationPlaying;

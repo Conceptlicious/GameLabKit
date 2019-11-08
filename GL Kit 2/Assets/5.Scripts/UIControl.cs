@@ -58,7 +58,7 @@ public class UIControl : MonoBehaviour
 	}
 
 
-	private void Start()
+	private void OnEnable()
 	{
 		RegisterAllListeners();
 		SetVariables();

@@ -34,11 +34,16 @@ public class RoomManager : Singleton<RoomManager>
 		//GameData.Initialised = true;
 	}
 
+	private void OnEnable()
+	{
+		RegisterAllListeners();
+		FillFocalsWithBlanks();
+	}
+
 	void Start()
 	{
 		whiteRoomID = Mathf.Clamp(whiteRoomID, 0, roomFocalPoints.Length);
-		registerAllListeners();
-		FillFocalsWithBlanks();
+		
 		if (alignFocals)
 		{
 			AlignFocalPoints();
@@ -74,16 +79,20 @@ public class RoomManager : Singleton<RoomManager>
 	/// <param name="pID"></param>
 	public void SnapFocusRoom(int pID)
 	{
+		Debug.LogError("Snap focus room" + pID);
 		pID = pID % roomFocalPoints.Length;
+		Debug.LogError("Snap focus room clamped ID - " + pID);
 		CameraSnapEvent newInfo = new CameraSnapEvent(roomFocalPoints[pID], true);
+		Debug.LogError("Raise snap event");
 		EventManager.Instance.RaiseEvent(newInfo);
 	}
 
 	/// <summary>
 	/// Registers all event listeners this class needs to care about.
 	/// </summary>
-	private void registerAllListeners()
+	private void RegisterAllListeners()
 	{
+		Debug.LogError("registering room manager events");
 		//EventSystem.RegisterListener(EventType.UI_NEXT_ROOM, OnNextRoomCommand);
 		EventManager.Instance.AddListener<NextRoomEvent>(OnNextRoomCommand, 10);
 	}
@@ -91,6 +100,7 @@ public class RoomManager : Singleton<RoomManager>
 
 	private void OnNextRoomCommand(NextRoomEvent pInfo)
 	{
+		Debug.LogError("Next room command");
 		currentRoom.x = currentRoom.y;
 		currentRoom.y = currentRoom.z;
 
@@ -109,6 +119,7 @@ public class RoomManager : Singleton<RoomManager>
 		LevelProgressEvent newLevelInfo = new LevelProgressEvent(currentRoom.z);
 		EventManager.Instance.RaiseEvent(newLevelInfo);
 
+		Debug.LogError("raising camera select event");
 		CameraTargetSelectEvent newInfo = new CameraTargetSelectEvent(roomFocalPoints[currentRoom.y], roomFocalPoints[currentRoom.z], Settings.VAL_CAMERA_ZOOM_DISTANCE, true, true);
 		EventManager.Instance.RaiseEvent(newInfo);
 	}

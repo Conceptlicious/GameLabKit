@@ -13,9 +13,6 @@ public class ContentAnimation : BetterMonoBehaviour
 	private Menu contentOwner = null;
 	private bool didFlyOut = true; // Start of as true because the menu is closed by default
 
-	[Header("Debug")]
-	[SerializeField] UnityEngine.UI.Text debugText;
-
 	private void Awake()
 	{
 		contentAnimator = GetComponent<Animator>();
@@ -41,7 +38,6 @@ public class ContentAnimation : BetterMonoBehaviour
 	{
 		if (!didFlyOut)
 		{
-			debugText.text = Environment.StackTrace;
 			contentAnimator.SetTrigger("FlyOut");
 			return false;
 		}

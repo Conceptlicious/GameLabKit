@@ -18,8 +18,9 @@ public class WhiteRoomDialogueManager : Manager<WhiteRoomDialogueManager>
 		EventManager.Instance.AddListener<DialogueKnotCompletedEvent>(OnDialogueKnotCompleted);
 	}
 
-	private void Start()
+	private IEnumerator Start()
 	{
+		yield return null;
 		DialogueManager.Instance.SetCurrentDialogue(RoomType.FrontDoor);
 		MenuManager.Instance.OpenMenu<DialogueMenu>();
 	}

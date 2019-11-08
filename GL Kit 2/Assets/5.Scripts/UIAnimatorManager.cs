@@ -15,7 +15,7 @@ public class UIAnimatorManager : Singleton<UIAnimatorManager>
 {
 	private List<UIAnimator> animators = new List<UIAnimator>();
 	
-	void Awake()
+	private void OnEnable()
 	{
 		RegisterAllListeners();
 	}

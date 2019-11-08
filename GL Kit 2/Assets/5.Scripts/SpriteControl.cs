@@ -39,18 +39,7 @@ public class SpriteControl : BetterMonoBehaviour
 			gameObject.AddComponent<Image>();
 		}
 		image = gameObject.EnsureComponent<Image>();
-		RegisterAllListeners();
 	}
-	
-	
-	/// <summary>
-	/// Registers all event listeners this class needs to care about.
-	/// </summary>
-	private void RegisterAllListeners()
-	{
-		//EventManager.Instance.AddListener(settings.eventType );
-	}
-
 
 	private void OnBubbleFill()
 	{
