@@ -1,19 +1,25 @@
 {
   "dependencies": {
-    "com.gamelab.core": "https://strobone:Schnitzel64@github.com/Conceptlicious/Core.git",
-    "com.gamelab.event": "https://strobone:Schnitzel64@github.com/Conceptlicious/Event.git",
-    "com.gamelab.json": "https://strobone:Schnitzel64@github.com/Conceptlicious/JsonDotNet.git",
-    "com.gamelab.save": "https://strobone:Schnitzel64@github.com/Conceptlicious/Save.git",
-    "com.gamelab.ui": "https://strobone:Schnitzel64@github.com/Conceptlicious/UI.git",
-    "com.unity.ads": "2.0.8",
-    "com.unity.analytics": "3.3.2",
+    "com.gamelab.core": "https://github.com/Conceptlicious/Core.git#master",
+    "com.gamelab.events": "https://github.com/Conceptlicious/Event.git#master",
+    "com.gamelab.json": "https://github.com/Conceptlicious/JsonDotNet.git#master",
+    "com.gamelab.menus": "https://github.com/Conceptlicious/UI.git#master",
+    "com.gamelab.save": "https://github.com/Conceptlicious/Save.git#master",
+    "com.unity.2d.sprite": "1.0.0",
+    "com.unity.2d.tilemap": "1.0.0",
+    "com.unity.ads": "3.4.9",
+    "com.unity.analytics": "3.3.5",
     "com.unity.collab-proxy": "1.2.16",
-    "com.unity.package-manager-ui": "2.1.2",
-    "com.unity.purchasing": "2.0.6",
+    "com.unity.ide.rider": "1.1.4",
+    "com.unity.ide.vscode": "1.2.2",
+    "com.unity.purchasing": "2.1.1",
+    "com.unity.test-framework": "1.1.18",
     "com.unity.textmeshpro": "2.0.1",
-    "com.unity.timeline": "1.0.0",
-    "com.unity.xr.legacyinputhelpers": "2.0.2",
+    "com.unity.timeline": "1.2.6",
+    "com.unity.ugui": "1.0.0",
+    "com.unity.xr.legacyinputhelpers": "2.1.4",
     "com.unity.modules.ai": "1.0.0",
+    "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
     "com.unity.modules.assetbundle": "1.0.0",
     "com.unity.modules.audio": "1.0.0",
@@ -43,27 +49,5 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  },
-  "lock": {
-    "com.gamelab.core": {
-      "hash": "965a1ad7d85d13e68818ccf9b63b0545733b0b65",
-      "revision": "HEAD"
-    },
-    "com.gamelab.event": {
-      "hash": "68b3ed70aabfbfa5d7335045e88b3a66ecd58651",
-      "revision": "HEAD"
-    },
-    "com.gamelab.json": {
-      "hash": "3b109ecaaa8adb6e681aa93f73ab5093ed97fc53",
-      "revision": "HEAD"
-    },
-    "com.gamelab.save": {
-      "hash": "2e558ae434f95fd2eb8477b4b47d3a00cdb83dd8",
-      "revision": "HEAD"
-    },
-    "com.gamelab.ui": {
-      "hash": "34e63754db8cb6a54fcb450c5db25cae9ee44fd1",
-      "revision": "HEAD"
-    }
   }
 }
