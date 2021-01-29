@@ -1,0 +1,14 @@
+<dialogue>Start
+2N-Nu zijn we aangekomen bij een van mijn beste bots! Vertel eens wat je hier allemaal doet, I.D.K. bot.
+2T-Ik heb eigenlijk geen idee, professor.
+2N-Jawel! Jij bent hier om je geheugen te trainen, toch?
+2T-Oh ja dat klopt. %u, kan jij me even helpen, dan doe ik de deurtjes wel voor je open!
+</dialogue>
+<dialogue>Klaar
+2N-Bedankt %u. I.D.K. Bot, heb je nog vragen?
+2T-Wat is mijn doel in het leven?
+2N-Jij doet de deurtjes open. En dit doe je perfect. Geef dat je wat je daar vast hebt maar aan %u.
+1P-Het doel van dit spel is om je geheugen te trainen. In dit spel ben je ook verschillende stijlen die worden gebruikt in games tegengekomen. Een ander doel van dit spel is reclame voor GameLab maken.
+1P-In dit spel kom je allerlei voorwerpen tegen die te maken hebben met GameLab. Zo word je onbewust bekend met het merk. Misschien heb je op andere plekken ook al een paar van deze voorwerpen gezien. 
+1P-Dit is dus een education en een advertisement game.
+</dialogue>

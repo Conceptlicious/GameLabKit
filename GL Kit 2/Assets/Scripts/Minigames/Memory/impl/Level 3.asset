@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a43e013088d2f0742a47f2aaf496fde3, type: 3}
+  m_Name: Level 3
+  m_EditorClassIdentifier: 
+  opdracht: Vind <b>3</b> dezelfde <b>objecten</b>
+  requiredObject:
+  - {fileID: 21300000, guid: 4dc8a14dc190e4d42a4b69c0513f84d7, type: 3}
+  - {fileID: 21300000, guid: 4dc8a14dc190e4d42a4b69c0513f84d7, type: 3}
+  - {fileID: 21300000, guid: 4dc8a14dc190e4d42a4b69c0513f84d7, type: 3}
+  randomSprites:
+  - {fileID: 21300000, guid: 230c9308677336346887b590c5fc9be9, type: 3}
+  - {fileID: 21300000, guid: ad821165cdb7d8547b0844f701092e1f, type: 3}
+  - {fileID: 21300000, guid: e6257e56f777aa043876da92b94b70f6, type: 3}
+  - {fileID: 21300000, guid: d74ad789a3909134bae1948512683cc8, type: 3}
+  - {fileID: 21300000, guid: fb512795f057ec247be8df940aa57eda, type: 3}
+  - {fileID: 21300000, guid: 4ae7aba49ee33594eb2b88cdb8bae248, type: 3}
+  - {fileID: 21300000, guid: da3afb384cfecd741bed7b86e084d097, type: 3}
+  - {fileID: 21300000, guid: 9fd803f9bacb18f4aa196aad12bf324a, type: 3}
+  - {fileID: 21300000, guid: 39d9518bdb301b2458b28e37a7e7e1f7, type: 3}
+  - {fileID: 21300000, guid: 1223bfc910e548c4ca56311e0b26e61f, type: 3}
+  - {fileID: 21300000, guid: 2099404b3cbfc6147943cbff32b2a3e8, type: 3}
+  width: 3
+  height: 3

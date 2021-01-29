@@ -1,0 +1,55 @@
+<dialogue>Intro
+1P-Oh, je bent er al. Wat leuk dat je mijn nieuwe uitvinding wilt testen! Het is zo’n geweldige doorbraak!
+</dialogue>
+<dialogue>Intro2
+1P-Oh ja! Ik ben Professor Henk welkom in mijn GameLab. Wat was jouw naam ook al weer?
+1P-Kom snel, %u laten we snel beginnen met testen!
+</dialogue>
+<dialogue>Show portal
+1P-Met deze teleporteermachine kun je overal naartoe! Ik heb al wat van mijn robots gestuurd. Ze doen hun werk daar allemaal perfect!
+1P-LUXe bot help jij even met klaarzetten?
+2Q-Ik wil best helpen hoor, maar ik dacht dat je %u had uitgenodigd om meer te leren over serious games
+2O-Echt waar? Oh ja, dat is waar ook! Laten we dan maar snel beginnen! Ik zet de teleporter nu aan!
+</dialogue>
+<dialogue>Portal fire
+1P-Dit zag ik niet aankomen!
+2Q-Nee, jij niet nee!
+2O-Kom dit blussen, snel!
+2Q-Als ik waterdicht was, zou ik dat graag doen, Prof….
+2O-%u help mij gauw voordat helemaal niets meer werkt.
+2Q-Maar gooi alsjeblieft geen water op de elektrische blauwe vlammen.
+</dialogue>
+<dialogue>Blussen Finished
+2O-Alles werkt weer perfect, bedankt %u!
+2Q-Ja, maar het was wel op het nippertje hoor!
+2O-Heb je nog iets bijzonders gemerkt tijdens het blussen?
+2O-Op het eerste gezicht is dit een game waar je leert dat elektrische branden niet met water geblust kunnen worden. Maar na een tijdje kreeg je punten voor het blussen van branden.
+2O-En doordat je ook blauwe vlammen moest blussen moest je schakelen tussen het klikken op de vlammen en op de brandblusser.
+2O-Er werden langzaam dus meer dingen toegevoegd. Deze dingen noemen we Dynamics.
+1P-Goed, dan zetten we de teleporter maar weer aan.
+</dialogue>
+<dialogue>Turned on portal
+2O-We gaan vandaag testen of mijn machine veilig is voor menselijk gebruik. Hopelijk leer je er wat van. Veel plezier!
+1Q-Zie je die kast daar? Er stonden super belangrijke dingen in. Ik denk dat een paar van mijn brobots ze hebben meegenomen door de teleporter. Kun jij ze terughalen?
+</dialogue>
+<dialogue>Entered portal
+1P-Hallo %u, je hebt er wel zin in zie ik! Gelukkig heb ik voordat je in de teleporter stapte een communicatie apparaat op je shirt geplakt, zo kan ik nog tegen je praten.
+1P-Dit is de wereldkaart, die kan je verkennen op eigen interesse. Succes!
+</dialogue>
+<dialogue>Clicked food
+1P-Ik stuur je naar mijn beste chef!
+</dialogue>
+<dialogue>Collected
+2Q-Ah je bent terug! Goed je weer te zien %u
+2O-Zeker. Wat heb je daar allemaal bij je? Oooh dat zijn alle spullen die opeens waren verdwenen! Wat fijn dat je die hebt gevonden.
+2Q-Hoe kan je die belangrijke dingen kwijtraken, Prof?! Die hebben we toch nodig om meer serious games te maken?
+2O-Inderdaad. Ik zal ze op een veilige plek neerleggen.
+</dialogue>
+<dialogue>Kast
+1P-Al de games die je hebt gespeeld hebben allemaal een ander doel, een andere manier van spelen en een ander medium waarop het gespeeld kan worden. Je hebt dus al veel voorbeelden gezien van verschillende serious games en de aspecten ervan.
+1P-Ook alle voorwerpen die je hebt verzameld hebben te maken met een aspect van een serious game. Je hebt al redelijk wat voorbeelden voorbij zien komen. Maar als je ergens meer over wilt weten kun je op het voorwerp klikken.
+</dialogue>
+<dialogue>Exit
+1Q-%u! Bedankt voor je hulp! Nu hoeven mijn brobots me niet meer lastig te vallen.
+1P-Ik hoop dat je wat hebt geleerd en we hopen je snel weer te zien bij GameLab
+</dialogue>

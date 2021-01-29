@@ -1,0 +1,20 @@
+<dialogue>Start
+2E-Waarom smaakt alles zo ongelofelijk FLAUW!?
+2B-Maar RAM-c jouw broodjes smaken altijd heerlijk! Dat zal %u ook vinden.
+2E-%u zei je? Help mij deze klanten te helpen. Ik denk dat mijn smaaksensor kapot is!
+2B-Ik ga op zoek naar een nieuwe smaaksensor.
+1P-%u, voordat je begint moet je weten dat veel mensen RAM-c laten kiezen wat lekker en gezond is op het broodje.
+1P-Dus als er vraagtekens op het bonnetje staan moet je zelf kijken wat het gezondst is.
+</dialogue>
+<dialogue>Switch
+1E-Ik heb het gevoel dat we door een stijlverandering meer klanten kunnen aantrekken… druk eens op de rode knop!
+</dialogue>
+<dialogue>Switched
+1E-De verandering naar een cartoon stijl lijkt een jongere doelgroep aan te trekken. Kijk, de nieuwe bestellingen komen al binnen.
+</dialogue>
+<dialogue>Finished
+2B-Ik heb een nieuwe smaaksensor gevonden tussen de sla, alles is nog steeds perfect!
+1E-%u jij en je onderontwikkelde smaak zijn niet meer nodig, tot ziens!
+1P-Zoals je misschien al had gemerkt is dit een game waar je kan zien wat gezonde ingrediënten voor op brood zijn.
+1P-Ook heb je kunnen ervaren dat een andere stijl of vormgeving een andere doelgroep aantrekt. Het is voor een game belangrijk dat de stijl aansluit bij de spelers, anders willen ze het misschien niet spelen.
+</dialogue>

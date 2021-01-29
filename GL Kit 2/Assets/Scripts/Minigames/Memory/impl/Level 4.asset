@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a43e013088d2f0742a47f2aaf496fde3, type: 3}
+  m_Name: Level 4
+  m_EditorClassIdentifier: 
+  opdracht: Vind <b>3</b> objecten met dezelfde <b>kleur</b>
+  requiredObject:
+  - {fileID: 21300000, guid: 1bf96e7344c4afd46b6cd5eddb9a2b57, type: 3}
+  - {fileID: 21300000, guid: ad821165cdb7d8547b0844f701092e1f, type: 3}
+  - {fileID: 21300000, guid: f2e375766330c6a438f0ab2d74575d96, type: 3}
+  randomSprites:
+  - {fileID: 21300000, guid: 6f8799c9cee673844b15360165dea708, type: 3}
+  - {fileID: 21300000, guid: 74ad8f197357cbf4bb8605bf8be0f5d9, type: 3}
+  - {fileID: 21300000, guid: 0c45202f5afa6b040985ea3f36ec380b, type: 3}
+  - {fileID: 21300000, guid: 32ea7565fdd7e0542babadebfc9889ac, type: 3}
+  - {fileID: 21300000, guid: b5ed1bfb0a949ab4c9919fccd8318325, type: 3}
+  - {fileID: 21300000, guid: 6e4fbecbe4889884fa243c0a621251c8, type: 3}
+  - {fileID: 21300000, guid: 43d7d538dc14da342b563a96090e0612, type: 3}
+  - {fileID: 21300000, guid: 4e9cb5bd90ad0fd428cc73b9e074ba0f, type: 3}
+  - {fileID: 21300000, guid: da1e8302b50e8934188c54a8df36ce7a, type: 3}
+  - {fileID: 21300000, guid: aaddeea5ea0ea6045889b5ae9ac1a7b1, type: 3}
+  - {fileID: 21300000, guid: 230c9308677336346887b590c5fc9be9, type: 3}
+  - {fileID: 21300000, guid: e6257e56f777aa043876da92b94b70f6, type: 3}
+  - {fileID: 21300000, guid: d74ad789a3909134bae1948512683cc8, type: 3}
+  - {fileID: 21300000, guid: fb512795f057ec247be8df940aa57eda, type: 3}
+  - {fileID: 21300000, guid: 4ae7aba49ee33594eb2b88cdb8bae248, type: 3}
+  - {fileID: 21300000, guid: da3afb384cfecd741bed7b86e084d097, type: 3}
+  - {fileID: 21300000, guid: 9fd803f9bacb18f4aa196aad12bf324a, type: 3}
+  - {fileID: 21300000, guid: 39d9518bdb301b2458b28e37a7e7e1f7, type: 3}
+  - {fileID: 21300000, guid: 1223bfc910e548c4ca56311e0b26e61f, type: 3}
+  - {fileID: 21300000, guid: 2099404b3cbfc6147943cbff32b2a3e8, type: 3}
+  - {fileID: 21300000, guid: 4dc8a14dc190e4d42a4b69c0513f84d7, type: 3}
+  width: 3
+  height: 3

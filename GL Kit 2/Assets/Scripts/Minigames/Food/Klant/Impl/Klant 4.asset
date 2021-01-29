@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6ec3d89136163429b146304b25dcc0, type: 3}
+  m_Name: Klant 4
+  m_EditorClassIdentifier: 
+  customerPortrait: {fileID: 21300000, guid: 533d7faeb7ebb0d4abf66c09ebe16027, type: 3}
+  customerSaying: Mijn moeder zegt dat ik vegetarisch moet gaan eten, kan je voor
+    mij een gezond broodje maken zonder vlees
+  minIngredients: 3
+  maxIngredients: 6
+  bread: {fileID: 11400000, guid: a6e33fdd3b726e94a93f06ffc5000f25, type: 2}
+  optionalBread: {fileID: 0}
+  breadToppings: []
+  optionalButter: []
+  notAllowedIngredients:
+  - {fileID: 11400000, guid: e28599bc219c39b48943eb04af7409dd, type: 2}
+  - {fileID: 11400000, guid: b881f294461bba145b9522fdb77f1d97, type: 2}
+  - {fileID: 11400000, guid: 1e4fe8224e6bfb84a8b0e66663017cd6, type: 2}
+  ideaalBroodje:
+  - Bruin brood
+  - Komkommer/sla/tomaat
+  - Komkommer/sla/tomaat

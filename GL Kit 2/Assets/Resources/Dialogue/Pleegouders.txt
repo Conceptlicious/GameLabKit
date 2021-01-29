@@ -1,0 +1,101 @@
+<dialogue>Start
+1P-Laten we eens kijken hoe het gaat met mijn opvoedbot
+1P-Hallo daar K.M hoe gaat het?
+2R-Gaat wel, denk ik… Ik weet alleen niet zo goed hoe ik moet handelen in deze situaties.
+2U-Oké. Misschien kan %u je helpen. Wil je eerst even uitleggen wat je hier doet?
+2R-Ja prima. Laten we kijken hoe %u dit doet.
+1R-Dit is een voorbeeld van een serious game. Deze is bedoeld om te kijken of pleegouders wel geschikt zijn voor het pleegouderschap.
+1R-Het originele spel wordt gespeeld met een vr headset zodat de speler zich echt helemaal in kan leven.
+1R-Ook zit er een professional bij die de potentiële ouder observeert en feedback geeft. Het is de bedoeling dat jij je ook inleeft, %u.
+1R-Bedenk hoe jij zou handelen in deze situaties.
+</dialogue>
+<dialogue>Charlie start
+1S-Charlie, kom je er ook bij? Op zaterdagavond maken we het gezellig en spelen we een spelletje. Ken je dit spel?
+1C-Ja dat spelletje ken ik wel!
+</dialogue>
+<dialogue>Situatie 0 B
+1S-Weet je nog welke stoel voor jou is? Daar mag je gaan zitten
+1C-*zucht*
+</dialogue>
+<dialogue>Situatie 1 Start
+1C-Ik doe dit wel even! Ik ben hier heel goed in! Thuis zet ik ook altijd de spelletjes klaar. Ik win altijd!
+</dialogue>
+<dialogue>Situatie 1 A
+1S-Laat maar eens zien hoe jij het spelletje op zet Charlie.
+1C-Kijk zo spelen wij het spel thuis altijd…!
+1K-Het spel gaat helemaal niet zo!
+</dialogue>
+<dialogue>Situatie 1 B
+1S-Laat mij het spel maar even klaarzetten.
+1S-Ik zal even uitleggen hoe wij het spel hier in huis spelen…
+</dialogue>
+<dialogue>Situatie 2 Start
+1C-Waar blijft de chips en cola? Dat krijg ik thuis ook altijd als we een spelletje spelen.
+1K-We hebben pas net het avondeten op
+1C-Ik heb honger! papa heeft gezegd dat we cola en chips krijgen als we een spelletje spelen…
+</dialogue>
+<dialogue>Situatie 2 A
+1K-Hoezo papa?! Het zijn mijn vader ! Niet die van jou!
+1S-Dat is niet aardig van je Karen. Charlie woont hier pas net.
+1K-*zucht*
+</dialogue>
+<dialogue>Situatie 2 B
+1S-Je mag me wel %u noemen Charlie
+</dialogue>
+<dialogue>Situatie 2 C
+1S-Wat fijn dat je me mama/papa noemt! Dit is nu ook jouw thuis.
+</dialogue>
+<dialogue>Situatie 3 Start
+1C-Ik wil chips en cola! Wanneer komt het nou?!
+1S-Als we een rondje hebben gespeeld dan ga ik wat te drinken en eten voor ons pakken
+1C-Ik heb heel erg honger en dorst…
+1C-Wanneer krijg ik hier eens wat?!
+</dialogue>
+<dialogue>Situatie 3 A
+1C-Thuis mag ik altijd pas om 23:00 naar bed, dat mag hier vast ook wel.
+1C-Thuis had ik een hele grote kamer met een eigen tv en een PlayStation.
+1C-Thuis mag ik altijd de chips uitzoeken.
+</dialogue>
+<dialogue>Situatie 3 B
+1S-Ik zal even het dienblad met eten en drinken uit de keuken pakken.
+1K-Ik vind dit niet eerlijk. Ik moet ook altijd wachten tot het eerste rondje klaar is. Zo vind ik er niets aan!
+1S-Dat snap ik Karen. Charlie moet nog aan de situatie wennen, dus vandaag doen we het een beetje anders.
+1K-Hmm, ik vind het oneerlijk…
+</dialogue>
+<dialogue>Situatie 3 C
+1S-We gaan eerst een rondje spelen en daarna zal ik zorgen voor wat te drinken met wat lekkers erbij.
+1C-Hmm oke…
+</dialogue>
+<dialogue>Situatie 4 Start
+1C-Ik ben moe.
+1S-We maken deze ronde af en dan kun je daarna lekker slapen.
+1C-Ik wil NU naar mijn kamer!
+1K-Jij wou graag dit spel spelen en je wou graag cola en nu heb je eindelijk je cola en nu wil je naar bed…
+</dialogue>
+<dialogue>Situatie 4 A
+1C-Stom spel!
+1K-Nu is mijn zaterdagavond verpest!
+</dialogue>
+<dialogue>Situatie 4 B
+1S-Charlie, als je tot het einde van het spelletje blijft zal ik jullie voor het slapen gaan een verhaaltje voorlezen.
+1C-Hmm… Een verhaaltje is wel heel erg leuk… Okay, ik blijf wel tot het einde van het spel! Ik kan ook nog steeds winnen!
+1K-Jaaaaa! Ik kan niet wachten om te horen hoe het verhaal van gisteravond eindigt!
+</dialogue>
+<dialogue>Situatie 4 C
+1S-Ik zie dat je het moeilijk vindt en dat begrijp ik, maar in dit huis maken we altijd een spelletje af voordat we iets anders gaan doen.
+</dialogue>
+<dialogue>Ending A
+0P-Charlie smijt het spel door de kamer. Vervolgens loopt ze boos richting de trap om naar boven te gaan. Karen zit mokkend aan tafel.
+</dialogue>
+<dialogue>Ending B
+0P-Charlie vindt dit een goede deal, en speelt gezellig door. Karen wordt niet jaloers, want zij krijgt hier ook een verhaaltje door.
+</dialogue>
+<dialogue>Ending C
+0P-Charlie blijft zitten met een beteuterd gezicht en maakt het spelletje af. Haar praatjes zijn verdwenen. De sfeer aan tafel is gelaten als het spel wordt afgemaakt.
+</dialogue>
+<dialogue>Ticket
+1R-Oké %u, ik hoop dat je meer inzicht hebt gekregen in hoe jij zou handelen in dit soort situaties. Hier dit is voor jou.
+</dialogue>
+<dialogue>Ending
+1P-Met deze game en de andere games die je speelt, laten we zien wat voor verschillende genres van games er zijn. In deze game speel je een rol en maak je keuzes die invloed hebben op het verhaal, dit noemen we een Role Playing Game.
+</dialogue>

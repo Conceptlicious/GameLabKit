@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d68a6ffaaae20c489c1f7de1b1c0b42, type: 3}
+  m_Name: Senario 4
+  m_EditorClassIdentifier: 
+  situatie: 'Charlie blijft volhouden dat ze chips en cola wil. [NAAM SPELER] benoemd
+    dat ze na het eerste rondje wat te drinken en eten gaat halen. [NAAM SPELER]
+    begint opnieuw met het spel en de eerste ronde gaat van start. Charlie blijft
+    ondanks de afspraak toch volhouden dat ze nu chips en cola wil.\nWAT DOET/ZEGT
+    [NAAM SPELER]? '
+  options:
+  - text: '[NAAM SPELER] laat de situatie gebeuren. Hij/zij reageert niet op de situatie
+      en zegt er verder niks van.'
+    style: 010000
+  - text: '[NAAM SPELER] haalt het dienblad met cola, wijn en chips uit de keuken.'
+    style: 000100
+  - text: '[NAAM SPELER] benoemd nog een keer de afspraak die ze hebben gemaakt voor
+      dat ze het spel gingen spelen.'
+    style: 000001
+  dialoog: 000000

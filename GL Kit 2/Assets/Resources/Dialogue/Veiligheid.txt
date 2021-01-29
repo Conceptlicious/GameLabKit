@@ -1,0 +1,23 @@
+<dialogue>Start
+2I-We zijn gearriveerd bij mijn veiligheidsdeskundige, B.O.B.
+2W-Wat gaan we opblazen, chef?
+2I-Is hij z’n veiligheidsprotocollen kwijtgeraakt?
+2I-Hij is vergeetachtig, %u, dat zal het zijn!
+2W-Weet je nog toen….?
+2I-Hij weet het meeste nog wel, maar kun jij hem helpen zijn geheugen op te frissen. Misschien is het slim als we verschillende manieren van leren gebruiken.
+2I-We beginnen met het vinden van noodzakelijke voorwerpen om veilig aan het werk te kunnen gaan.
+</dialogue>
+<dialogue>Start 2
+1P-Deze variatie op het klassieke zoek en vind spel is vooral bedoeld om mensen te laten zien wat ze nodig hebben op een bouwterrein om veilig hun werk te doen.
+</dialogue>
+<dialogue>Finished zoek
+1P-Deze variatie op het klassieke zoek en vind spel is vooral bedoeld om mensen te laten zien wat ze nodig hebben en waar dit ligt/staat op een bouwterrein om veilig hun werk te doen.
+2I-Perfect, hij wist natuurlijk alles nog.
+2W-Waar ligt ook alweer...?
+2I-We gaan verder. %u jij helpt B.O.B. ook nog met het opfrissen van zijn bordenkennis!
+2W-Maar wat...?
+</dialogue>
+<dialogue>Finished borden
+2I-Kijk, B.O.B. is gewoon de beste veiligheidsbot die er is!
+2W-Maar wat gingen we nou opblazen?
+</dialogue>

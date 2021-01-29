@@ -1,0 +1,46 @@
+<dialogue>Start
+2M-Nu stel ik je voor aan de bot die alles weet!
+2Y-Nou meid, ik kan echt niet wachten tot ik weer lekker kan shoppen!
+2M-U.go, dit is %u.
+2Y-Oh wat goed! Dan kan %u een nieuwe kortingsbon voor mij verdienen!
+2M-Uiteraard weet U.Go alles al maar kijk je even mee %u?
+</dialogue>
+<dialogue>Fout1
+1Y-Oh wat eruuuug!
+</dialogue>
+<dialogue>Fout2
+1Y-Ik wordt chagrijnig van!
+</dialogue>
+<dialogue>Fout3
+1Y-Och, doe niet zo vervelend!
+</dialogue>
+<dialogue>Fout4
+1Y-Nou mij nie bellen hoor
+</dialogue>
+<dialogue>Goed1
+1Y-Ja dat wist ik ook wel
+</dialogue>
+<dialogue>Goed2
+1Y-Zeg moet je luisteren, wil jij wat drinken?
+</dialogue>
+<dialogue>Goed3
+1Y-Kom wij gaan SHOPPEN SHOPPEN SHOPPEN!
+</dialogue>
+<dialogue>Te duur
+1Y-Nee, die hoef ik niet!
+</dialogue>
+<dialogue>Voucher
+1Y-Ja dat is 'm!
+1Y-Bedankt, die is voor mij!
+2M-Gelukkig is U.Go erg slim.
+2Y-Neem dit lelijke ding maar, het is zo passé.
+</dialogue>
+<dialogue>Controller
+2M-Misschien dat sommige van mijn robots nog wat extra aandacht nodig hebben.
+2Y-Och, doe niet zo vervelend.
+1P-Dit is een spelletje waar de algemene kennis over Enschede op de proef wordt gesteld. Maar doordat je er vouchers voor lokale winkels mee kan verdienen, stimuleert het je om hier te gaan shoppen. 
+1P-Ook kunnen dit soort games op allerlei verschillende apparaten worden gespeeld. Een quiz kan je bijvoorbeeld doen op een mobiel, computer en spelcomputer. Dingen waarop een spel kan worden gespeeld noemen we een medium.
+</dialogue>
+<dialogue>Tip
+1Y-Nu je genoeg munten hebt, kan je voor mij die voucher kopen toch? Je kan ze halen in de winkel, klik maar op het icoontje
+</dialogue>
